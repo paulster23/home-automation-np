@@ -1,0 +1,38 @@
+services:
+
+  # ──────────────────────────────────────────────
+  # Frigate NVR — motion detection + recording
+  # Web UI: https://localhost:8971
+  # First run: visit UI to create your admin account
+  # ──────────────────────────────────────────────
+  frigate:
+    container_name: frigate
+    image: ghcr.io/blakeblackshear/frigate:stable
+    restart: unless-stopped
+    stop_grace_period: 30s
+
+    # Shared memory — increase if you add more cameras
+    shm_size: "256mb"
+
+    ports:
+      - "8971:8971"   # Web UI (HTTPS)
+      - "8554:8554"   # RTSP re-stream (optional)
+
+    volumes:
+      # Config directory — frigate.db (login database) lives here
+      - ./config:/config
+
+      # All recordings and snapshots land here
+      - ./storage:/media/frigate
+
+      # SSL Certificate (mkcert) — fullchain.pem + privkey.pem
+      - ./certs:/etc/letsencrypt/live/frigate:ro
+
+      # Tmpfs cache reduces SSD wear (1 GB in RAM)
+      - type: tmpfs
+        target: /tmp/cache
+        tmpfs:
+          size: 1000000000
+
+    environment:
+      TZ: America/New_York

@@ -1,0 +1,91 @@
+# ─────────────────────────────────────────────────────────────
+# Frigate NVR Configuration — Fresh Install
+# Camera: front_window @ 192.168.1.32
+# ─────────────────────────────────────────────────────────────
+
+# Authentication — default mode prompts you to create an admin
+# account on first visit to https://localhost:8971
+# DO NOT set "auth: none" — that locks you out of admin settings
+
+# ── Object Detection ─────────────────────────────────────────
+# Using CPU detector (fine for 1 camera on Mac/Docker Desktop)
+detectors:
+  cpu1:
+    type: cpu
+    num_threads: 3
+
+# ── MQTT (disabled — not using Home Assistant) ────────────────
+mqtt:
+  enabled: false
+
+# ── Camera Configuration ──────────────────────────────────────
+cameras:
+  front_window:
+    ffmpeg:
+      # RTSP resilience — auto-reconnect on camera drops, TCP for stability
+      input_args: preset-rtsp-restream
+      retry_interval: 10
+      inputs:
+        # Sub-stream (Fluent 896x512): used for object detection
+        - path: rtsp://admin:Lazyriver!@192.168.1.32:554/h264Preview_01_sub
+          roles:
+            - detect
+
+        # Main stream (Clear 2880x1616): used for recording full quality
+        - path: rtsp://admin:Lazyriver!@192.168.1.32:554/h264Preview_01_main
+          roles:
+            - record
+
+    # Detection settings — matched to actual sub-stream ("Fluent") resolution
+    detect:
+      enabled: true
+      width: 896
+      height: 512
+      fps: 5
+
+# ── Object Tracking ───────────────────────────────────────────
+objects:
+  track:
+    - person
+  filters:
+    person:
+      min_area: 1500
+      min_score: 0.5
+      threshold: 0.7
+
+# ── Recording ─────────────────────────────────────────────────
+# Event-only: only records clips when a person is detected.
+# Frigate 0.15+ replaced "events" with "alerts" and "detections"
+record:
+  enabled: true
+  retain:
+    days: 0          # No continuous recording retention
+    mode: all
+  alerts:
+    pre_capture: 5   # Save 5 seconds before the alert
+    post_capture: 5  # Save 5 seconds after the alert
+    retain:
+      days: 14       # Keep alert clips for 14 days
+  detections:
+    pre_capture: 5
+    post_capture: 5
+    retain:
+      days: 14       # Keep detection clips for 14 days
+
+# ── Snapshots ─────────────────────────────────────────────────
+snapshots:
+  enabled: true
+  retain:
+    default: 14
+  quality: 85
+
+# ── Motion Detection ──────────────────────────────────────────
+motion:
+  threshold: 25
+  contour_area: 10
+
+# ── Birdseye (disabled — single camera, not needed) ──────────
+birdseye:
+  enabled: false
+
+version: 0.16-0
