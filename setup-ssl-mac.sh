@@ -32,16 +32,19 @@ echo "🔑 Installing local Certificate Authority (CA)..."
 echo "   (This makes your browser trust certificates from mkcert)"
 mkcert -install
 
-# ── Step 3: Generate certificate for localhost ────────────────
+# ── Step 3: Generate certificate for localhost + local hostname ─
 # Frigate expects: fullchain.pem + privkey.pem
 # mounted at:     /etc/letsencrypt/live/frigate/ inside the container
+#
+# Includes media.local so you can access Frigate from other devices
+# on your LAN without SSL warnings.
 echo ""
-echo "📄 Generating certificate for localhost..."
+echo "📄 Generating certificate for localhost + media.local..."
 mkdir -p certs
 mkcert \
   -cert-file certs/fullchain.pem \
   -key-file  certs/privkey.pem \
-  localhost 127.0.0.1 ::1
+  localhost 127.0.0.1 ::1 media.local
 
 echo ""
 echo "✅ Done! Certificate created:"
@@ -51,5 +54,7 @@ echo ""
 echo "🚀 Now restart Frigate to use the new certificate:"
 echo "   docker compose restart frigate"
 echo ""
-echo "🌐 Then open: https://localhost:8971"
+echo "🌐 Then open:"
+echo "   https://localhost:8971     (from this machine)"
+echo "   https://media.local:8971   (from any device on your LAN)"
 echo "   No more security warnings!"
