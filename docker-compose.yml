@@ -8,6 +8,7 @@ services:
   frigate:
     container_name: frigate
     image: ghcr.io/blakeblackshear/frigate:stable
+    platform: linux/arm64
     restart: unless-stopped
     stop_grace_period: 30s
 

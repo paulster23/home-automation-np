@@ -13,6 +13,8 @@ detectors:
   cpu1:
     type: cpu
     num_threads: 3
+  apple:
+    Type: coreml
 
 # ── MQTT (disabled — not using Home Assistant) ────────────────
 mqtt:
