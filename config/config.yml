@@ -47,6 +47,7 @@ cameras:
 objects:
   track:
     - person
+    - car
   filters:
     person:
       min_area: 1500
@@ -59,7 +60,7 @@ objects:
 record:
   enabled: true
   retain:
-    days: 0          # No continuous recording retention
+    days: 1          # No continuous recording retention
     mode: all
   alerts:
     pre_capture: 5   # Save 5 seconds before the alert
