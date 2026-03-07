@@ -1,3 +1,26 @@
-# Video recordings, clips, and snapshots (large, not for version control)
-storage/
-secrets
+# ── macOS ────────────────────────────────────
+.DS_Store
+
+# ── Secrets (API keys, passwords) ───────────
+secrets/
+
+# ── Frigate runtime data ────────────────────
+# Database, model cache, recordings, snapshots
+frigate/frigate.db
+frigate/frigate.db-shm
+frigate/frigate.db-wal
+frigate/backup.db
+frigate/.exports
+frigate/.jwt_secret
+frigate/.timeline
+frigate/.vacuum
+frigate/model_cache/
+frigate/storage/
+
+# ── Home Assistant runtime data ─────────────
+# Everything in here is auto-generated on first run
+# Only track specific files you customize (like automations.yaml)
+homeassistant/
+
+# ── Music Assistant runtime data ────────────
+music-assistant/

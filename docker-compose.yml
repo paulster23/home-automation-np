@@ -1,8 +1,30 @@
+# ═══════════════════════════════════════════════════════════════
+# Home Automation Stack — Docker Compose
+# Services: Frigate, Mosquitto, Home Assistant, Music Assistant,
+#           Whisper (STT), Piper (TTS)
+# ═══════════════════════════════════════════════════════════════
+
 services:
+
+  # ──────────────────────────────────────────────
+  # Mosquitto MQTT Broker
+  # Lightweight message bus between Frigate ↔ HA
+  # No authentication (internal Docker network only)
+  # ──────────────────────────────────────────────
+  mosquitto:
+    container_name: mosquitto
+    image: eclipse-mosquitto:2
+    platform: linux/arm64
+    restart: unless-stopped
+    volumes:
+      - ./mosquitto/config:/mosquitto/config:ro
+    networks:
+      - home-automation
+
   # ──────────────────────────────────────────────
   # Frigate NVR — motion detection + recording
   # Web UI: https://localhost:8971
-  # First run: visit UI to create your admin account
+  # Publishes camera events to MQTT for Home Assistant
   # ──────────────────────────────────────────────
   frigate:
     container_name: frigate
@@ -10,17 +32,19 @@ services:
     platform: linux/arm64
     restart: unless-stopped
     stop_grace_period: 30s
+    depends_on:
+      - mosquitto
     # Shared memory — increase if you add more cameras
     shm_size: "256mb"
     ports:
       - "8971:8971"   # Web UI (HTTPS)
       - "8554:8554"   # RTSP re-stream (optional)
     volumes:
-      # Config directory — frigate.db (login database) lives here
-      - ./config:/config
-      # All recordings and snapshots land here
-      - ./storage:/media/frigate
-      # SSL Certificate (mkcert) — fullchain.pem + privkey.pem
+      # Config directory — frigate.db lives here
+      - ./frigate:/config
+      # All recordings and snapshots
+      - ./frigate/storage:/media/frigate
+      # SSL Certificate (mkcert)
       - ./certs:/etc/letsencrypt/live/frigate:ro
       # Tmpfs cache reduces SSD wear (1 GB in RAM)
       - type: tmpfs
@@ -31,7 +55,110 @@ services:
       TZ: America/New_York
     secrets:
       - PLUS_API_KEY
+    networks:
+      - home-automation
 
+  # ──────────────────────────────────────────────
+  # Home Assistant — central hub for all automation
+  # Web UI: http://localhost:8123
+  # First run: visit UI to create your admin account
+  # ──────────────────────────────────────────────
+  homeassistant:
+    container_name: homeassistant
+    image: ghcr.io/home-assistant/home-assistant:stable
+    platform: linux/arm64
+    restart: unless-stopped
+    depends_on:
+      - mosquitto
+    ports:
+      - "8123:8123"   # Web UI
+      - "6053:6053"   # ESPHome native API (Voice PE connects here)
+    volumes:
+      - ./homeassistant:/config
+    environment:
+      TZ: America/New_York
+    networks:
+      - home-automation
+
+  # ──────────────────────────────────────────────
+  # Music Assistant — Spotify, radio, media playback
+  # Web UI: http://localhost:8095
+  # Connects to HA as an integration for voice control
+  # ──────────────────────────────────────────────
+  music-assistant:
+    container_name: music-assistant
+    image: ghcr.io/music-assistant/server:latest
+    platform: linux/arm64
+    restart: unless-stopped
+    ports:
+      - "8095:8095"
+    volumes:
+      - ./music-assistant:/data
+    environment:
+      TZ: America/New_York
+    networks:
+      - home-automation
+
+  # ──────────────────────────────────────────────
+  # Whisper — local speech-to-text (Wyoming protocol)
+  # Converts your voice commands into text
+  # Using tiny-int8 model to keep memory usage low (~150MB)
+  # Upgrade to "base-int8" or "small-int8" for better
+  # accuracy if your Mac can handle it
+  # ──────────────────────────────────────────────
+  whisper:
+    container_name: whisper
+    image: rhasspy/wyoming-whisper:latest
+    platform: linux/arm64
+    restart: unless-stopped
+    ports:
+      - "10300:10300"
+    volumes:
+      - whisper-data:/data
+    environment:
+      TZ: America/New_York
+    command: --model tiny-int8 --language en
+    networks:
+      - home-automation
+
+  # ──────────────────────────────────────────────
+  # Piper — local text-to-speech (Wyoming protocol)
+  # Generates natural-sounding voice responses
+  # Very lightweight (~50MB RAM)
+  # ──────────────────────────────────────────────
+  piper:
+    container_name: piper
+    image: rhasspy/wyoming-piper:latest
+    platform: linux/arm64
+    restart: unless-stopped
+    ports:
+      - "10200:10200"
+    volumes:
+      - piper-data:/data
+    environment:
+      TZ: America/New_York
+    command: --voice en_US-lessac-medium
+    networks:
+      - home-automation
+
+# ──────────────────────────────────────────────
+# Shared Docker network — all services can reach
+# each other by container name (e.g. "mosquitto")
+# ──────────────────────────────────────────────
+networks:
+  home-automation:
+    name: home-automation
+
+# ──────────────────────────────────────────────
+# Named volumes for voice models (downloaded on first run)
+# ──────────────────────────────────────────────
+volumes:
+  whisper-data:
+  piper-data:
+
+# ──────────────────────────────────────────────
+# Secrets — API keys stored outside the compose file
+# ──────────────────────────────────────────────
 secrets:
   PLUS_API_KEY:
     file: ./secrets/PLUS_API_KEY

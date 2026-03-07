@@ -16,9 +16,12 @@ detectors:
   apple:
     Type: coreml
 
-# ── MQTT (disabled — not using Home Assistant) ────────────────
+# ── MQTT — connects Frigate → Home Assistant via Mosquitto ───
+# The hostname "mosquitto" resolves on the Docker network
 mqtt:
-  enabled: false
+  enabled: true
+  host: mosquitto
+  port: 1883
 
 # ── Camera Configuration ──────────────────────────────────────
 cameras:
