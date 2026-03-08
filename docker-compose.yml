@@ -1,7 +1,7 @@
 # ═══════════════════════════════════════════════════════════════
 # Home Automation Stack — Docker Compose
 # Services: Frigate, Mosquitto, Home Assistant, Music Assistant,
-#           Whisper (STT), Piper (TTS)
+#           Speech-to-Phrase (STT), Piper (TTS)
 # ═══════════════════════════════════════════════════════════════
 
 services:
@@ -9,22 +9,37 @@ services:
   # ──────────────────────────────────────────────
   # Mosquitto MQTT Broker
   # Lightweight message bus between Frigate ↔ HA
-  # No authentication (internal Docker network only)
+  # Authentication required (password_file)
   # ──────────────────────────────────────────────
   mosquitto:
     container_name: mosquitto
     image: eclipse-mosquitto:2
     platform: linux/arm64
     restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
     volumes:
       - ./mosquitto/config:/mosquitto/config:ro
     networks:
       - home-automation
+    deploy:
+      resources:
+        limits:
+          memory: 64m
+          cpus: "0.5"
+        reservations:
+          memory: 16m
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
 
   # ──────────────────────────────────────────────
   # Frigate NVR — motion detection + recording
   # Web UI: https://localhost:8971
   # Publishes camera events to MQTT for Home Assistant
+  # Camera credentials loaded from secrets via env vars
   # ──────────────────────────────────────────────
   frigate:
     container_name: frigate
@@ -32,6 +47,10 @@ services:
     platform: linux/arm64
     restart: unless-stopped
     stop_grace_period: 30s
+    # cap_drop: ALL removed — Frigate uses s6-overlay which needs CHOWN/SETUID/SETGID
+    # at startup to set up log directories. security_opt still hardens against privesc.
+    security_opt:
+      - no-new-privileges:true
     depends_on:
       - mosquitto
     # Shared memory — increase if you add more cameras
@@ -51,23 +70,41 @@ services:
         target: /tmp/cache
         tmpfs:
           size: 1000000000
+    env_file:
+      - ./secrets/frigate.env  # FRIGATE_RTSP_USER and FRIGATE_RTSP_PASSWORD for config.yml
     environment:
       TZ: America/New_York
     secrets:
       - PLUS_API_KEY
     networks:
       - home-automation
+    deploy:
+      resources:
+        limits:
+          memory: 3g
+          cpus: "4.0"
+        reservations:
+          memory: 1g
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "50m"
+        max-file: "5"
 
   # ──────────────────────────────────────────────
   # Home Assistant — central hub for all automation
   # Web UI: http://localhost:8123
   # First run: visit UI to create your admin account
+  # MQTT credentials: user=homeassistant, pass in secrets/mqtt_password
   # ──────────────────────────────────────────────
   homeassistant:
     container_name: homeassistant
     image: ghcr.io/home-assistant/home-assistant:stable
     platform: linux/arm64
     restart: unless-stopped
+    # cap_drop: ALL removed — HA uses s6-overlay init system
+    security_opt:
+      - no-new-privileges:true
     depends_on:
       - mosquitto
     ports:
@@ -79,6 +116,18 @@ services:
       TZ: America/New_York
     networks:
       - home-automation
+    deploy:
+      resources:
+        limits:
+          memory: 1g
+          cpus: "1.5"
+        reservations:
+          memory: 256m
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "50m"
+        max-file: "5"
 
   # ──────────────────────────────────────────────
   # Music Assistant — Spotify, radio, media playback
@@ -90,6 +139,9 @@ services:
     image: ghcr.io/music-assistant/server:latest
     platform: linux/arm64
     restart: unless-stopped
+    # cap_drop: ALL removed — Music Assistant uses s6-overlay init system
+    security_opt:
+      - no-new-privileges:true
     ports:
       - "8095:8095"
     volumes:
@@ -98,28 +150,61 @@ services:
       TZ: America/New_York
     networks:
       - home-automation
+    deploy:
+      resources:
+        limits:
+          memory: 256m
+          cpus: "1.0"
+        reservations:
+          memory: 64m
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
 
   # ──────────────────────────────────────────────
-  # Whisper — local speech-to-text (Wyoming protocol)
-  # Converts your voice commands into text
-  # Using tiny-int8 model to keep memory usage low (~150MB)
-  # Upgrade to "base-int8" or "small-int8" for better
-  # accuracy if your Mac can handle it
+  # Speech-to-Phrase — lightweight local speech-to-text
+  # Much lighter than Whisper (~30MB RAM vs 150MB+)
+  # Connects to HA to learn your entity names, then builds
+  # a tiny focused model for home automation commands only.
+  # Handles everything you need: time, weather, lights,
+  # switches, etc. Fast and stable on limited RAM.
+  # Uses the same port as Whisper (10300) — no HA changes needed.
+  # NOTE: after rotating your HA token, update --hass-token here.
   # ──────────────────────────────────────────────
-  whisper:
-    container_name: whisper
-    image: rhasspy/wyoming-whisper:latest
+  speech-to-phrase:
+    container_name: speech-to-phrase
+    image: rhasspy/wyoming-speech-to-phrase:latest
     platform: linux/arm64
     restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
     ports:
       - "10300:10300"
     volumes:
-      - whisper-data:/data
+      - speech-to-phrase-models:/models
+      - speech-to-phrase-train:/train
     environment:
       TZ: America/New_York
-    command: --model tiny-int8 --language en
+    command: >
+      --hass-websocket-uri ws://homeassistant:8123/api/websocket
+      --hass-token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJmOGZiMjlmYTM0ZDk0Y2ZmODdmZTQxZTljMWZkM2FlMSIsImlhdCI6MTc3MjkyMjEzMCwiZXhwIjoyMDg4MjgyMTMwfQ.kt5ZY1z4IQaXsrbLAjXNhZoCbUGkOYpICcBbOvtO53U
+      --retrain-on-start
     networks:
       - home-automation
+    deploy:
+      resources:
+        limits:
+          memory: 128m
+          cpus: "1.0"
+        reservations:
+          memory: 32m
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
 
   # ──────────────────────────────────────────────
   # Piper — local text-to-speech (Wyoming protocol)
@@ -131,6 +216,9 @@ services:
     image: rhasspy/wyoming-piper:latest
     platform: linux/arm64
     restart: unless-stopped
+    # cap_drop: ALL removed — wyoming-piper needs caps for startup init
+    security_opt:
+      - no-new-privileges:true
     ports:
       - "10200:10200"
     volumes:
@@ -140,6 +228,18 @@ services:
     command: --voice en_US-lessac-medium
     networks:
       - home-automation
+    deploy:
+      resources:
+        limits:
+          memory: 128m
+          cpus: "1.0"
+        reservations:
+          memory: 64m
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
 
 # ──────────────────────────────────────────────
 # Shared Docker network — all services can reach
@@ -153,11 +253,12 @@ networks:
 # Named volumes for voice models (downloaded on first run)
 # ──────────────────────────────────────────────
 volumes:
-  whisper-data:
+  speech-to-phrase-models:
+  speech-to-phrase-train:
   piper-data:
 
 # ──────────────────────────────────────────────
-# Secrets — API keys stored outside the compose file
+# Secrets — API keys and credentials stored outside the compose file
 # ──────────────────────────────────────────────
 secrets:
   PLUS_API_KEY:

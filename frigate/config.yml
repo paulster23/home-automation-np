@@ -18,10 +18,13 @@ detectors:
 
 # ── MQTT — connects Frigate → Home Assistant via Mosquitto ───
 # The hostname "mosquitto" resolves on the Docker network
+# Credentials match the password_file we set up in mosquitto/config/
 mqtt:
   enabled: true
   host: mosquitto
   port: 1883
+  user: "{FRIGATE_MQTT_USER}"
+  password: "{FRIGATE_MQTT_PASSWORD}"
 
 # ── Camera Configuration ──────────────────────────────────────
 cameras:
@@ -32,12 +35,13 @@ cameras:
       retry_interval: 10
       inputs:
         # Sub-stream (Fluent 896x512): used for object detection
-        - path: rtsp://admin:Lazyriver!@192.168.1.32:554/h264Preview_01_sub
+        # Credentials loaded from environment variables (see docker-compose.yml secrets)
+        - path: rtsp://{FRIGATE_RTSP_USER}:{FRIGATE_RTSP_PASSWORD}@192.168.1.32:554/h264Preview_01_sub
           roles:
             - detect
 
         # Main stream (Clear 2880x1616): used for recording full quality
-        - path: rtsp://admin:Lazyriver!@192.168.1.32:554/h264Preview_01_main
+        - path: rtsp://{FRIGATE_RTSP_USER}:{FRIGATE_RTSP_PASSWORD}@192.168.1.32:554/h264Preview_01_main
           roles:
             - record
 
