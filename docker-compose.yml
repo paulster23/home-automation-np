@@ -166,18 +166,17 @@ services:
         max-file: "3"
 
   # ──────────────────────────────────────────────
-  # Speech-to-Phrase — lightweight local speech-to-text
-  # Much lighter than Whisper (~30MB RAM vs 150MB+)
-  # Connects to HA to learn your entity names, then builds
-  # a tiny focused model for home automation commands only.
-  # Handles everything you need: time, weather, lights,
-  # switches, etc. Fast and stable on limited RAM.
-  # Uses the same port as Whisper (10300) — no HA changes needed.
-  # NOTE: after rotating your HA token, update --hass-token here.
+  # Whisper — general-purpose local speech-to-text
+  # Uses OpenAI's Whisper model (tiny.en) to transcribe
+  # arbitrary speech — including open-ended commands like
+  # "play the breeders" that Speech-to-Phrase can't handle.
+  # tiny.en: ~150MB RAM, fast on M1, English-only.
+  # Uses the same Wyoming protocol + port as Speech-to-Phrase
+  # so HA needs no changes.
   # ──────────────────────────────────────────────
-  speech-to-phrase:
-    container_name: speech-to-phrase
-    image: rhasspy/wyoming-speech-to-phrase:latest
+  whisper:
+    container_name: whisper
+    image: rhasspy/wyoming-whisper:latest
     platform: linux/arm64
     restart: unless-stopped
     security_opt:
@@ -185,23 +184,19 @@ services:
     ports:
       - "10300:10300"
     volumes:
-      - speech-to-phrase-models:/models
-      - speech-to-phrase-train:/train
+      - whisper-data:/data
     environment:
       TZ: America/New_York
-    command: >
-      --hass-websocket-uri ws://homeassistant:8123/api/websocket
-      --hass-token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJmOGZiMjlmYTM0ZDk0Y2ZmODdmZTQxZTljMWZkM2FlMSIsImlhdCI6MTc3MjkyMjEzMCwiZXhwIjoyMDg4MjgyMTMwfQ.kt5ZY1z4IQaXsrbLAjXNhZoCbUGkOYpICcBbOvtO53U
-      --retrain-on-start
+    command: --model tiny.en --language en --compute-type int8
     networks:
       - home-automation
     deploy:
       resources:
         limits:
-          memory: 256m
+          memory: 1g
           cpus: "1.0"
         reservations:
-          memory: 64m
+          memory: 256m
     logging:
       driver: "json-file"
       options:
@@ -255,8 +250,7 @@ networks:
 # Named volumes for voice models (downloaded on first run)
 # ──────────────────────────────────────────────
 volumes:
-  speech-to-phrase-models:
-  speech-to-phrase-train:
+  whisper-data:
   piper-data:
 
 # ──────────────────────────────────────────────
