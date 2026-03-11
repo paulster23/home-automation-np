@@ -1,6 +1,6 @@
 # ─────────────────────────────────────────────────────────────
-# Frigate NVR Configuration — Fresh Install
-# Camera: front_window @ 192.168.1.32
+# Frigate NVR Configuration
+# Camera: front_window @ 192.168.1.32 (Brooklyn street view)
 # ─────────────────────────────────────────────────────────────
 
 # Authentication — default mode prompts you to create an admin
@@ -8,13 +8,16 @@
 # DO NOT set "auth: none" — that locks you out of admin settings
 
 # ── Object Detection ─────────────────────────────────────────
-# Using CPU detector (fine for 1 camera on Mac/Docker Desktop)
+# CPU detector — sufficient for 1 camera at 5fps on M1 Mac.
+# CoreML (Apple Neural Engine) is NOT supported inside Docker on
+# macOS — Docker runs in a VM and can't access the Neural Engine.
+# To enable CoreML, you'd need to run apple-silicon-detector as
+# a separate host process and connect via ZMQ. Left as a future
+# project. See: https://github.com/frigate-nvr/apple-silicon-detector
 detectors:
   cpu1:
     type: cpu
     num_threads: 3
-  apple:
-    Type: coreml
 
 # ── MQTT — connects Frigate → Home Assistant via Mosquitto ───
 # The hostname "mosquitto" resolves on the Docker network
@@ -59,28 +62,54 @@ objects:
     - car
   filters:
     person:
-      min_area: 1500
-      min_score: 0.5
-      threshold: 0.7
+      min_area: 1500      # Ignore tiny/distant person shapes
+      min_score: 0.5      # Minimum initial detection confidence
+      threshold: 0.7      # Confirmed tracking threshold
+    car:
+      min_area: 5000      # Only detect cars large enough to be close/relevant
+                          # Filters out parked cars far in the background
+      min_score: 0.5      # Minimum initial detection confidence
+      threshold: 0.7      # Confirmed tracking threshold — reduces false positives
+
+# ── Stationary Object Filtering ───────────────────────────────
+# Stops Frigate from continuously re-alerting on objects that
+# haven't moved. Key setting for a street cam with parked cars.
+#
+# How it works (at 5fps):
+#   threshold: 50 frames = ~10 seconds before marking as stationary
+#   interval: 50 frames = re-check stationary objects every ~10 sec
+#   Once stationary, Frigate pauses detection on that object
+#   and only resumes if it moves again.
+#   max_frames.default: 3000 = ~10 min max tracking (Frigate 0.16
+#   does not support per-object max_frames — use zones in Phase 4
+#   to further limit car events by area)
+detect:
+  stationary:
+    threshold: 50
+    interval: 50          # Re-check every ~10 sec (must be > 0)
+    max_frames:
+      default: 3000       # ~10 min at 5fps before object is fully dropped
 
 # ── Recording ─────────────────────────────────────────────────
-# Event-only: only records clips when a person is detected.
-# Frigate 0.15+ replaced "events" with "alerts" and "detections"
+# active_objects mode: only keeps recording segments that contain
+# a moving tracked object (person or car). Replaces "all" which
+# was recording every motion segment — the main cause of 20-30GB/day.
+# Expected reduction: ~70-90% storage savings.
 record:
   enabled: true
   retain:
-    days: 1          # No continuous recording retention
-    mode: all
+    days: 1               # Keep 1 day of continuous recordings
+    mode: active_objects  # CHANGED from "all" — only keep segments with moving objects
   alerts:
-    pre_capture: 5   # Save 5 seconds before the alert
-    post_capture: 5  # Save 5 seconds after the alert
+    pre_capture: 5        # Save 5 seconds before the alert
+    post_capture: 5       # Save 5 seconds after the alert
     retain:
-      days: 14       # Keep alert clips for 14 days
+      days: 14            # Keep alert clips for 14 days
   detections:
     pre_capture: 5
     post_capture: 5
     retain:
-      days: 14       # Keep detection clips for 14 days
+      days: 7             # Keep detection clips for 7 days (reduced from 14)
 
 # ── Snapshots ─────────────────────────────────────────────────
 snapshots:
@@ -90,8 +119,10 @@ snapshots:
   quality: 85
 
 # ── Motion Detection ──────────────────────────────────────────
+# Raised threshold slightly (25→30) to reduce spurious motion
+# triggers from shadows, lighting changes, and distant movement.
 motion:
-  threshold: 25
+  threshold: 30
   contour_area: 10
 
 # ── Birdseye (disabled — single camera, not needed) ──────────
