@@ -1,7 +1,7 @@
 # ═══════════════════════════════════════════════════════════════
 # Home Automation Stack — Docker Compose
 # Services: Frigate, Mosquitto, Home Assistant, Music Assistant,
-#           Speech-to-Phrase (STT), Piper (TTS)
+#           Whisper (STT), Google Translate (TTS — cloud, no container)
 # ═══════════════════════════════════════════════════════════════
 
 services:
@@ -22,6 +22,13 @@ services:
       - ./mosquitto/config:/mosquitto/config:ro
     networks:
       - home-automation
+    healthcheck:
+      # Just verify the port is accepting connections — avoids auth complexity
+      test: ["CMD-SHELL", "nc -z 127.0.0.1 1883 || exit 1"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
     deploy:
       resources:
         limits:
@@ -52,7 +59,8 @@ services:
     security_opt:
       - no-new-privileges:true
     depends_on:
-      - mosquitto
+      mosquitto:
+        condition: service_started  # Start after mosquitto, don't block on health
     # Shared memory — increase if you add more cameras
     shm_size: "256mb"
     ports:
@@ -78,10 +86,16 @@ services:
       - PLUS_API_KEY
     networks:
       - home-automation
+    healthcheck:
+      test: ["CMD-SHELL", "nc -z 127.0.0.1 8971 || exit 1"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 60s   # Frigate takes time to load camera + detectors
     deploy:
       resources:
         limits:
-          memory: 3g
+          memory: 2g      # Reduced from 3g — 1 camera + CPU detection peaks ~1.5g
           cpus: "4.0"
         reservations:
           memory: 1g
@@ -106,7 +120,8 @@ services:
     security_opt:
       - no-new-privileges:true
     depends_on:
-      - mosquitto
+      mosquitto:
+        condition: service_started  # Start after mosquitto, don't block on health
     ports:
       - "8123:8123"   # Web UI
       - "6053:6053"   # ESPHome native API (Voice PE connects here)
@@ -116,6 +131,12 @@ services:
       TZ: America/New_York
     networks:
       - home-automation
+    healthcheck:
+      test: ["CMD-SHELL", "nc -z 127.0.0.1 8123 || exit 1"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 90s   # HA takes ~60-90s to fully initialize
     deploy:
       resources:
         limits:
@@ -133,6 +154,10 @@ services:
   # Music Assistant — Spotify, radio, media playback
   # Web UI: http://localhost:8095
   # Connects to HA as an integration for voice control
+  # Spotify provider handles search/playback via API.
+  # Spotify Connect (mDNS) not possible on macOS Docker Desktop.
+  # NOTE: MASS_BASE_URL uses a static IP (192.168.1.70).
+  # If the Mac Mini's IP changes, update this + music-assistant/settings.json
   # ──────────────────────────────────────────────
   music-assistant:
     container_name: music-assistant
@@ -143,15 +168,21 @@ services:
     security_opt:
       - no-new-privileges:true
     ports:
-      - "8095:8095"   # Web UI + API
-      - "8097:8097"   # Audio stream server (players fetch audio here)
+      - "8095:8095"   # Web UI
+      - "8097:8097"   # Stream server (audio delivery to players)
+    networks:
+      - home-automation
     volumes:
       - ./music-assistant:/data
     environment:
       TZ: America/New_York
       MASS_BASE_URL: http://192.168.1.70:8095
-    networks:
-      - home-automation
+    healthcheck:
+      test: ["CMD-SHELL", "nc -z 127.0.0.1 8095 || exit 1"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 120s  # MA takes ~2 min to register players + providers
     deploy:
       resources:
         limits:
@@ -171,8 +202,8 @@ services:
   # arbitrary speech — including open-ended commands like
   # "play the breeders" that Speech-to-Phrase can't handle.
   # tiny.en: ~150MB RAM, fast on M1, English-only.
-  # Uses the same Wyoming protocol + port as Speech-to-Phrase
-  # so HA needs no changes.
+  # Port is internal-only — HA connects via Docker network
+  # using container name "whisper" (verified in core.config_entries)
   # ──────────────────────────────────────────────
   whisper:
     container_name: whisper
@@ -181,8 +212,8 @@ services:
     restart: unless-stopped
     security_opt:
       - no-new-privileges:true
-    ports:
-      - "10300:10300"
+    expose:
+      - "10300"       # Internal only — HA uses whisper:10300 via Docker network
     volumes:
       - whisper-data:/data
     environment:
@@ -190,6 +221,12 @@ services:
     command: --model tiny.en --language en --compute-type int8
     networks:
       - home-automation
+    healthcheck:
+      test: ["CMD-SHELL", "nc -z 127.0.0.1 10300 || exit 1"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 30s
     deploy:
       resources:
         limits:
@@ -197,41 +234,6 @@ services:
           cpus: "1.0"
         reservations:
           memory: 256m
-    logging:
-      driver: "json-file"
-      options:
-        max-size: "10m"
-        max-file: "3"
-
-  # ──────────────────────────────────────────────
-  # Piper — local text-to-speech (Wyoming protocol)
-  # Generates natural-sounding voice responses
-  # Very lightweight (~50MB RAM)
-  # ──────────────────────────────────────────────
-  piper:
-    container_name: piper
-    image: rhasspy/wyoming-piper:latest
-    platform: linux/arm64
-    restart: unless-stopped
-    # cap_drop: ALL removed — wyoming-piper needs caps for startup init
-    security_opt:
-      - no-new-privileges:true
-    ports:
-      - "10200:10200"
-    volumes:
-      - piper-data:/data
-    environment:
-      TZ: America/New_York
-    command: --voice en_US-lessac-medium
-    networks:
-      - home-automation
-    deploy:
-      resources:
-        limits:
-          memory: 128m
-          cpus: "1.0"
-        reservations:
-          memory: 64m
     logging:
       driver: "json-file"
       options:
@@ -251,7 +253,6 @@ networks:
 # ──────────────────────────────────────────────
 volumes:
   whisper-data:
-  piper-data:
 
 # ──────────────────────────────────────────────
 # Secrets — API keys and credentials stored outside the compose file
