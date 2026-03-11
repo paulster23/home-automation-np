@@ -77,7 +77,7 @@ services:
       - type: tmpfs
         target: /tmp/cache
         tmpfs:
-          size: 1000000000
+          size: 536870912   # 512 MB — was 1 GB; sufficient for 1 camera
     env_file:
       - ./secrets/frigate.env  # FRIGATE_RTSP_USER and FRIGATE_RTSP_PASSWORD for config.yml
     environment:
@@ -95,10 +95,10 @@ services:
     deploy:
       resources:
         limits:
-          memory: 2g      # Reduced from 3g — 1 camera + CPU detection peaks ~1.5g
+          memory: 1536m   # 1 camera + CPU detection peaks ~1.5g; was 2g
           cpus: "4.0"
         reservations:
-          memory: 1g
+          memory: 768m
     logging:
       driver: "json-file"
       options:
@@ -140,7 +140,7 @@ services:
     deploy:
       resources:
         limits:
-          memory: 1g
+          memory: 768m    # HA + HACS + integrations typically 300-500 MB; was 1g
           cpus: "1.5"
         reservations:
           memory: 256m
@@ -186,7 +186,7 @@ services:
     deploy:
       resources:
         limits:
-          memory: 768m
+          memory: 512m    # Audio streaming; was 768m
           cpus: "1.5"
         reservations:
           memory: 128m
@@ -230,10 +230,10 @@ services:
     deploy:
       resources:
         limits:
-          memory: 1g
+          memory: 384m    # tiny.en model uses ~150 MB; was 1g
           cpus: "1.0"
         reservations:
-          memory: 256m
+          memory: 128m
     logging:
       driver: "json-file"
       options:
