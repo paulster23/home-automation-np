@@ -55,6 +55,54 @@ cameras:
       height: 512
       fps: 5
 
+    # ── Zones ──────────────────────────────────────────────────
+    # Three zones layered bottom-to-top on the Brooklyn street view.
+    # Coordinates are approximate (896x512) — fine-tune in Frigate UI
+    # zone editor after deployment.
+    #
+    # Frame layout (bottom to top):
+    #   y=400-512: entrance (stoop, bikes, gate) — PEOPLE ONLY
+    #   y=340-400: sidewalk — PEOPLE ONLY
+    #   y=260-340: near-side parked cars — NO ZONE (ignored)
+    #   y=180-260: active street/roadway — PEOPLE + CARS
+    #   y=0-180:   far side (buildings, far parked cars) — NO ZONE (ignored)
+    zones:
+      entrance:
+        coordinates: 0,400,896,400,896,512,0,512
+        objects:
+          - person
+      sidewalk:
+        coordinates: 250,340,896,340,896,400,250,400
+        objects:
+          - person
+      active_street:
+        coordinates: 0,180,896,180,896,260,0,260
+        objects:
+          - person
+          - car
+
+    # ── Review filtering ───────────────────────────────────────
+    # Only generate alerts for people at entrance/sidewalk.
+    # Detections include the active street (moving cars).
+    # Objects outside these zones are tracked but don't create events.
+    review:
+      alerts:
+        required_zones:
+          - entrance
+          - sidewalk
+      detections:
+        required_zones:
+          - entrance
+          - sidewalk
+          - active_street
+
+    # ── Motion mask ────────────────────────────────────────────
+    # Masks the bottom-left where iron window bars + plants cause
+    # constant false motion triggers from lighting changes.
+    motion:
+      mask:
+        - 0,320,200,320,200,512,0,512
+
 # ── Object Tracking ───────────────────────────────────────────
 objects:
   track:

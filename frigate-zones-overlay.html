@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Frigate Zone Map — front_window (896x512)</title>
+<style>
+  body { margin: 20px; font-family: -apple-system, sans-serif; background: #1a1a2e; color: #fff; }
+  h1 { font-size: 18px; margin-bottom: 4px; }
+  p.sub { color: #aaa; font-size: 13px; margin-top: 0; }
+  .container { position: relative; width: 896px; height: 512px; border: 2px solid #444; background: linear-gradient(to bottom,
+    #2d1b3d 0%,      /* sky/buildings */
+    #3d2b4d 19%,     /* far parked cars */
+    #4a4a4a 35%,     /* street */
+    #3d2b4d 51%,     /* near parked cars */
+    #555 66%,        /* sidewalk */
+    #3a3a3a 78%,     /* entrance */
+    #2a2a2a 100%     /* bottom */
+  ); }
+  .zone { position: absolute; border: 3px solid; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px; text-shadow: 0 1px 3px rgba(0,0,0,0.8); }
+  .zone-entrance {
+    left: 0; top: 400px; width: 896px; height: 112px;
+    background: rgba(255, 60, 60, 0.3); border-color: #ff3c3c;
+    color: #ff9999;
+  }
+  .zone-sidewalk {
+    left: 250px; top: 340px; width: 646px; height: 60px;
+    background: rgba(60, 180, 255, 0.3); border-color: #3cb4ff;
+    color: #99d6ff;
+  }
+  .zone-street {
+    left: 0; top: 180px; width: 896px; height: 80px;
+    background: rgba(60, 255, 120, 0.3); border-color: #3cff78;
+    color: #99ffbb;
+  }
+  .mask {
+    position: absolute;
+    left: 0; top: 320px; width: 200px; height: 192px;
+    background: repeating-linear-gradient(45deg, rgba(255,255,0,0.15), rgba(255,255,0,0.15) 4px, transparent 4px, transparent 8px);
+    border: 2px dashed #ffcc00;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px; color: #ffcc00; font-weight: 600; text-align: center;
+  }
+  .no-zone {
+    position: absolute; display: flex; align-items: center; justify-content: center;
+    color: #666; font-size: 12px; font-style: italic;
+  }
+  .no-zone-far { left: 0; top: 0; width: 896px; height: 180px; }
+  .no-zone-parked { left: 0; top: 260px; width: 896px; height: 80px; }
+  .legend { margin-top: 16px; display: flex; gap: 24px; flex-wrap: wrap; }
+  .legend-item { display: flex; align-items: center; gap: 8px; font-size: 13px; }
+  .legend-color { width: 20px; height: 14px; border: 2px solid; border-radius: 3px; }
+  .y-label { position: absolute; right: -50px; font-size: 10px; color: #888; }
+  .x-label { position: absolute; bottom: -18px; font-size: 10px; color: #888; }
+</style>
+</head>
+<body>
+  <h1>Frigate Zone Overlay — front_window camera (896 × 512)</h1>
+  <p class="sub">Compare this with your Frigate live view. Zones are drawn to scale at detection resolution.</p>
+
+  <div class="container">
+    <!-- No-zone areas -->
+    <div class="no-zone no-zone-far">⬆ NO ZONE — far buildings + far parked cars (ignored)</div>
+    <div class="no-zone no-zone-parked">NO ZONE — near-side parked cars (ignored)</div>
+
+    <!-- Active zones -->
+    <div class="zone zone-street">🟢 ACTIVE STREET — person + car (y=180–260)</div>
+    <div class="zone zone-sidewalk">🔵 SIDEWALK — person only (y=340–400)</div>
+    <div class="zone zone-entrance">🔴 ENTRANCE / STOOP — person only (y=400–512)</div>
+
+    <!-- Motion mask -->
+    <div class="mask">⚠ MOTION<br>MASK<br>(bars + plants)</div>
+
+    <!-- Y-axis labels -->
+    <div class="y-label" style="top: 0;">y=0</div>
+    <div class="y-label" style="top: 178px;">y=180</div>
+    <div class="y-label" style="top: 258px;">y=260</div>
+    <div class="y-label" style="top: 338px;">y=340</div>
+    <div class="y-label" style="top: 398px;">y=400</div>
+    <div class="y-label" style="top: 498px;">y=512</div>
+  </div>
+
+  <div class="legend">
+    <div class="legend-item">
+      <div class="legend-color" style="background: rgba(255,60,60,0.4); border-color: #ff3c3c;"></div>
+      Entrance (alerts: people at your door)
+    </div>
+    <div class="legend-item">
+      <div class="legend-color" style="background: rgba(60,180,255,0.4); border-color: #3cb4ff;"></div>
+      Sidewalk (alerts: people walking past)
+    </div>
+    <div class="legend-item">
+      <div class="legend-color" style="background: rgba(60,255,120,0.4); border-color: #3cff78;"></div>
+      Active Street (detections: moving cars + people)
+    </div>
+    <div class="legend-item">
+      <div class="legend-color" style="background: repeating-linear-gradient(45deg, rgba(255,255,0,0.2), rgba(255,255,0,0.2) 4px, transparent 4px, transparent 8px); border-color: #ffcc00;"></div>
+      Motion Mask (iron bars — no motion detection)
+    </div>
+    <div class="legend-item">
+      <div class="legend-color" style="background: #333; border-color: #666;"></div>
+      No Zone (parked cars, far buildings — no alerts)
+    </div>
+  </div>
+</body>
+</html>
