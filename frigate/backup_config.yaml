@@ -26,8 +26,8 @@ mqtt:
   enabled: true
   host: mosquitto
   port: 1883
-  user: '{FRIGATE_MQTT_USER}'
-  password: '{FRIGATE_MQTT_PASSWORD}'
+  user: "{FRIGATE_MQTT_USER}"
+  password: "{FRIGATE_MQTT_PASSWORD}"
 
 # ── Camera Configuration ──────────────────────────────────────
 cameras:
@@ -39,14 +39,12 @@ cameras:
       inputs:
         # Sub-stream (Fluent 896x512): used for object detection
         # Credentials loaded from environment variables (see docker-compose.yml secrets)
-        - path: 
-            rtsp://{FRIGATE_RTSP_USER}:{FRIGATE_RTSP_PASSWORD}@192.168.1.32:554/h264Preview_01_sub
+        - path: rtsp://{FRIGATE_RTSP_USER}:{FRIGATE_RTSP_PASSWORD}@192.168.1.32:554/h264Preview_01_sub
           roles:
             - detect
 
         # Main stream (Clear 2880x1616): used for recording full quality
-        - path: 
-            rtsp://{FRIGATE_RTSP_USER}:{FRIGATE_RTSP_PASSWORD}@192.168.1.32:554/h264Preview_01_main
+        - path: rtsp://{FRIGATE_RTSP_USER}:{FRIGATE_RTSP_PASSWORD}@192.168.1.32:554/h264Preview_01_main
           roles:
             - record
 
@@ -70,21 +68,23 @@ cameras:
     #   y=0-180:   far side (buildings, far parked cars) — NO ZONE (ignored)
     zones:
       entrance:
-        coordinates: 
-          0,0.31,0.136,0.315,0.306,0.37,0.363,0.578,1,0.739,1,1,0,1,0,0.382
-        objects: person
-        inertia: 3
-        loitering_time: 0
+        coordinates: 0,400,896,400,896,512,0,512
+        objects:
+          - person
       sidewalk:
-        coordinates: 0,0.335,1,0.476,1,0.846,0,0.587
-        objects: person
-        inertia: 3
-        loitering_time: 0
+        coordinates: 250,340,896,340,896,400,250,400
+        objects:
+          - person
       active_street:
-        coordinates: 0,0.166,1,0.297,1,0.535,0,0.34
-        objects: car
-        inertia: 3
-        loitering_time: 0
+        coordinates: 0,180,896,180,896,260,0,260
+        objects:
+          - person
+          - car
+
+    # ── Review filtering ───────────────────────────────────────
+    # Only generate alerts for people at entrance/sidewalk.
+    # Detections include the active street (moving cars).
+    # Objects outside these zones are tracked but don't create events.
     review:
       alerts:
         required_zones:
@@ -95,8 +95,15 @@ cameras:
           - entrance
           - sidewalk
           - active_street
+
+    # ── Motion mask ────────────────────────────────────────────
+    # Masks the bottom-left where iron window bars + plants cause
+    # constant false motion triggers from lighting changes.
     motion:
-      mask: 1,0,1,0.295,0,0.164,0,0
+      mask:
+        - 0,320,200,320,200,512,0,512
+
+# ── Object Tracking ───────────────────────────────────────────
 objects:
   track:
     - person
@@ -140,7 +147,7 @@ record:
   enabled: true
   retain:
     days: 1               # Keep 1 day of continuous recordings
-    mode: active_objects  # Only keep segments with moving objects
+    mode: active_objects  # CHANGED from "all" — only keep segments with moving objects
   alerts:
     pre_capture: 5        # Save 5 seconds before the alert
     post_capture: 5       # Save 5 seconds after the alert
@@ -170,4 +177,4 @@ motion:
 birdseye:
   enabled: false
 
-version: 0.16-0
+version: 0.17-0

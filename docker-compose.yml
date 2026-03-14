@@ -58,6 +58,10 @@ services:
     # at startup to set up log directories. security_opt still hardens against privesc.
     security_opt:
       - no-new-privileges:true
+    # Required for Apple Silicon detector — allows container to reach
+    # FrigateDetector.app running on the macOS host via ZMQ on port 5555
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     depends_on:
       mosquitto:
         condition: service_started  # Start after mosquitto, don't block on health
