@@ -24,3 +24,6 @@ homeassistant/
 
 # ── Music Assistant runtime data ────────────
 music-assistant/
+
+# ── Wyoming MLX Whisper (native macOS install, has its own repo) ──
+wyoming-mlx-whisper/
