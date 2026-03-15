@@ -50,7 +50,7 @@ services:
   # ──────────────────────────────────────────────
   frigate:
     container_name: frigate
-    image: ghcr.io/blakeblackshear/frigate:stable
+    image: ghcr.io/blakeblackshear/frigate:0.17.0-standard-arm64
     platform: linux/arm64
     restart: unless-stopped
     stop_grace_period: 30s
@@ -99,10 +99,10 @@ services:
     deploy:
       resources:
         limits:
-          memory: 1536m   # 1 camera + CPU detection peaks ~1.5g; was 2g
-          cpus: "4.0"
+          memory: 1024m   # reduced from 1536m — detection offloaded to Neural Engine via ZMQ
+          cpus: "2.0"     # reduced from 4.0 — no CPU detection workload
         reservations:
-          memory: 768m
+          memory: 512m
     logging:
       driver: "json-file"
       options:

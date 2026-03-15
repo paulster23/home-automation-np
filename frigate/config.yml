@@ -8,16 +8,11 @@
 # DO NOT set "auth: none" — that locks you out of admin settings
 
 # ── Object Detection ─────────────────────────────────────────
-# CPU detector — sufficient for 1 camera at 5fps on M1 Mac.
-# CoreML (Apple Neural Engine) is NOT supported inside Docker on
-# macOS — Docker runs in a VM and can't access the Neural Engine.
-# To enable CoreML, you'd need to run apple-silicon-detector as
-# a separate host process and connect via ZMQ. Left as a future
-# project. See: https://github.com/frigate-nvr/apple-silicon-detector
-detectors:
-  cpu1:
-    type: cpu
-    num_threads: 3
+# Apple Silicon ZMQ detector (Frigate 0.17+).
+# FrigateDetector.app runs on the macOS host, bridges Docker → Neural Engine
+# via ZMQ on port 5555. Must be running before Frigate starts.
+# Set as a Login Item so it starts on boot.
+# See: https://github.com/frigate-nvr/apple-silicon-detector
 
 # ── MQTT — connects Frigate → Home Assistant via Mosquitto ───
 # The hostname "mosquitto" resolves on the Docker network
@@ -129,18 +124,13 @@ detect:
     threshold: 50
     interval: 50          # Re-check every ~10 sec (must be > 0)
     max_frames:
-      default: 3000       # ~10 min at 5fps before object is fully dropped
+      default: 3000       # ~10 min at 5fps before object is fully dropped (per-object not yet used)
 
 # ── Recording ─────────────────────────────────────────────────
-# active_objects mode: only keeps recording segments that contain
-# a moving tracked object (person or car). Replaces "all" which
-# was recording every motion segment — the main cause of 20-30GB/day.
-# Expected reduction: ~70-90% storage savings.
+# Frigate 0.17: record.retain removed entirely — retention is now
+# configured per event type (alerts/detections) only.
 record:
   enabled: true
-  retain:
-    days: 1               # Keep 1 day of continuous recordings
-    mode: active_objects  # Only keep segments with moving objects
   alerts:
     pre_capture: 5        # Save 5 seconds before the alert
     post_capture: 5       # Save 5 seconds after the alert
@@ -170,4 +160,19 @@ motion:
 birdseye:
   enabled: false
 
-version: 0.16-0
+version: 0.17-0
+
+detectors:
+  apple-silicon:
+    type: zmq
+    endpoint: tcp://host.docker.internal:5555
+
+model:
+  model_type: yolo-generic
+  width: 320
+  height: 320
+  input_tensor: nchw
+  input_dtype: float
+  path: /config/model_cache/yolo.onnx
+  labelmap_path: /labelmap/coco-80.txt
+
