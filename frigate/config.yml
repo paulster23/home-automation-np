@@ -102,10 +102,9 @@ objects:
       min_score: 0.5      # Minimum initial detection confidence
       threshold: 0.7      # Confirmed tracking threshold
     car:
-      min_area: 5000      # Only detect cars large enough to be close/relevant
-                          # Filters out parked cars far in the background
-      min_score: 0.5      # Minimum initial detection confidence
-      threshold: 0.7      # Confirmed tracking threshold — reduces false positives
+      min_area: 8000      # Raised from 5000 — only close/large cars register
+      min_score: 0.65     # Raised from 0.5 — higher initial confidence required
+      threshold: 0.8      # Raised from 0.7 — stricter confirmed tracking threshold
 
 # ── Stationary Object Filtering ───────────────────────────────
 # Stops Frigate from continuously re-alerting on objects that
@@ -116,15 +115,15 @@ objects:
 #   interval: 50 frames = re-check stationary objects every ~10 sec
 #   Once stationary, Frigate pauses detection on that object
 #   and only resumes if it moves again.
-#   max_frames.default: 3000 = ~10 min max tracking (Frigate 0.16
-#   does not support per-object max_frames — use zones in Phase 4
-#   to further limit car events by area)
+#   max_frames.car: 150 = ~30 sec max before car is fully dropped
+#   max_frames.default: 3000 = ~10 min for everything else (people etc.)
 detect:
   stationary:
     threshold: 50
     interval: 50          # Re-check every ~10 sec (must be > 0)
     max_frames:
-      default: 3000       # ~10 min at 5fps before object is fully dropped (per-object not yet used)
+      default: 3000       # ~10 min at 5fps — applies to people loitering etc.
+      car: 150            # ~30 sec at 5fps — parked cars dropped quickly
 
 # ── Recording ─────────────────────────────────────────────────
 # Frigate 0.17: record.retain removed entirely — retention is now
