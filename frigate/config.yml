@@ -115,15 +115,15 @@ objects:
 #   interval: 50 frames = re-check stationary objects every ~10 sec
 #   Once stationary, Frigate pauses detection on that object
 #   and only resumes if it moves again.
-#   max_frames.car: 150 = ~30 sec max before car is fully dropped
-#   max_frames.default: 3000 = ~10 min for everything else (people etc.)
+#   max_frames.default: 3000 = ~10 min max tracking for all objects
+#   NOTE: per-object max_frames (e.g. car: 150) is NOT supported in
+#   Frigate 0.17 — only "default" key is permitted under max_frames.
 detect:
   stationary:
     threshold: 50
     interval: 50          # Re-check every ~10 sec (must be > 0)
     max_frames:
-      default: 3000       # ~10 min at 5fps — applies to people loitering etc.
-      car: 150            # ~30 sec at 5fps — parked cars dropped quickly
+      default: 3000       # ~10 min at 5fps before object is fully dropped
 
 # ── Recording ─────────────────────────────────────────────────
 # Frigate 0.17: record.retain removed entirely — retention is now
