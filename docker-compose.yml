@@ -208,10 +208,16 @@ services:
   # tiny.en: ~150MB RAM, fast on M1, English-only.
   # Port is internal-only — HA connects via Docker network
   # using container name "whisper" (verified in core.config_entries)
+  #
+  # ⚠️  INACTIVE — STT is now handled by native wyoming-mlx-whisper
+  #     running on the macOS host (LaunchAgent). Uses zero Docker RAM.
+  #     Kept here as a fallback in case native MLX Whisper breaks.
+  #     To restore: docker compose --profile stt up -d whisper
   # ──────────────────────────────────────────────
   whisper:
     container_name: whisper
     image: rhasspy/wyoming-whisper:latest
+    profiles: [stt]
     platform: linux/arm64
     restart: unless-stopped
     security_opt:
