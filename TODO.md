@@ -33,19 +33,30 @@ Frigate 0.17 only supports the `default` key under `max_frames` — per-object k
 SpotifyPlus via HACS would unlock advanced queue management and richer search. Low priority — current MA + radio_mode setup is working well.
 
 ### Voice pipeline latency optimization
-Profiling results (2026-03-15, model: `whisper-large-v3-turbo`):
+**Round 1 profiling** (2026-03-15, pre-optimization, no auto-pause):
 - "What time is it" (quiet): **8.4s total**, Whisper 2.44s
 - "Play the Replacements" (KEXP playing): **20.4s total**, Whisper 9.88s
 - "Play KCRW radio station" (music starting): **13.3s total**, Whisper 1.98s
 - "Stop" (KCRW blasting): **54.5s total**, Whisper 47.8s, WRONG transcription
 
+**Round 2 profiling** (2026-03-16, post-optimization, auto-pause active, wake sound off, LaunchAgent just reloaded):
+- "What time is it" (quiet): **~31s total**, Whisper 23.2s ← cold start after LaunchAgent reload
+- "Play Replacements radio" (auto-paused): **~21s total**, Whisper 13.5s ← warming up
+- "Play KEXP radio station" (auto-paused): **~18s total**, Whisper 7.1s ← settling
+- "Stop" (auto-paused): **~14s total**, Whisper 7.4s, **WRONG** — transcribed as "Pause." → `HassMediaPause` not `StopMusic`
+
+**Key findings:** Auto-pause is working — "Stop" went from 54.5s/wrong to 14s. But STT cold start after LaunchAgent reload is very slow (~23s first call) and settles to ~7s after warmup. Whisper still misheard "Stop" as "Pause." even in silence; this is a model accuracy issue with short words, not a background noise issue.
+
+**"Stop" paradox:** When user says "stop" → auto-pause fires → Whisper transcribes "Pause." → HA runs HassMediaPause (already paused) → error → resume automation re-starts music. Net result: music resumes instead of stopping.
+
 Remaining optimizations to try:
-- [x] **Tune VAD silence detection threshold** — ✅ Set `select.home_assistant_voice_0a3a76_finished_speaking_detection` to **aggressive** in HA UI (2026-03-16). Options: default/relaxed/aggressive. Aggressive cuts ~0.5-1s off each command. Revert to "default" if it clips mid-sentence.
+- [x] **Tune VAD silence detection threshold** — ✅ Left at **default** (2026-03-16). Aggressive was considered but skipped — user takes a brief pause before speaking and it would clip. Options: default/relaxed/aggressive via `select.home_assistant_voice_0a3a76_finished_speaking_detection` in HA UI.
 - [ ] **Try other Whisper models** — `whisper-small.en` already rejected. Consider `whisper-medium.en` or `distil-whisper-large-v3` as middle ground between speed and accuracy.
+- [ ] **Fix "Stop" misheard as "Pause"** — Options: (a) add "pause" to `StopMusic` intent sentences so mistranscription still stops music, (b) add condition to resume automation to skip if intent was stop/pause, (c) try different Whisper model that handles short words better.
 - [x] **Fix MLX Whisper LaunchAgent plist** — ✅ Fixed model (`whisper-small.en-mlx` → `whisper-large-v3-turbo`) and log paths (`/tmp/` → `wyoming-mlx-whisper/log/`) in `~/Library/LaunchAgents/com.wyoming.mlx-whisper.plist` (2026-03-16). Reload with `launchctl unload && launchctl load` to apply.
 - [x] **Test auto-pause automation** — ✅ Confirmed working 2026-03-16. Music pauses on wake word, resumes after pipeline completes.
 - [x] **Add "Stop" as a standalone voice command** — ✅ Added bare "stop" + "shut it off" to `custom_sentences/en/music.yaml` StopMusic intent (2026-03-16).
-- [x] **Remove debug logging from HA** — ✅ Removed `logger:` block from `configuration.yaml` (2026-03-16).
+- [x] **Remove debug logging from HA** — ✅ Removed `logger:` block from `configuration.yaml` (2026-03-16). Re-enabled temporarily for Round 2, removed again after.
 - [x] **Disable wake sound** — ✅ Toggle off `switch.home_assistant_voice_0a3a76_wake_sound` in HA UI (2026-03-16). Saves ~0.7s per interaction.
 
 ---
