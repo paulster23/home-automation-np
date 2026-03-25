@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Voice Bench</title>
+  <style>
+    /* ── Reset & Variables ──────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:           #0d1117;
+      --surface:      #161b22;
+      --surface2:     #1c2128;
+      --border:       #30363d;
+      --border-light: #21262d;
+      --text:         #e6edf3;
+      --text-muted:   #7d8590;
+      --text-dim:     #484f58;
+      --accent:       #58a6ff;
+      --accent-dim:   #1f3a5f;
+
+      /* Pipeline segment colors */
+      --c-listen:  #3b82f6;   /* blue  — listening / recording window */
+      --c-stt:     #f59e0b;   /* amber — whisper transcription */
+      --c-proc:    #f97316;   /* orange — HA intent processing */
+      --c-resp:    #22c55e;   /* green — TTS / responding */
+
+      /* Command type badge colors */
+      --time-bg:    #1e0a3c; --time-fg:    #c084fc;
+      --weather-bg: #0a1e3c; --weather-fg: #38bdf8;
+      --radio-bg:   #3c0a0a; --radio-fg:   #f87171;
+      --music-bg:   #0a2e0a; --music-fg:   #4ade80;
+      --home-bg:    #2e1a0a; --home-fg:    #fb923c;
+      --other-bg:   #1c2128; --other-fg:   #7d8590;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Inter", sans-serif;
+      font-size: 13px;
+      line-height: 1.5;
+      min-height: 100vh;
+    }
+
+    /* ── Header ─────────────────────────────────────────────────────────── */
+    .header {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .header h1 {
+      font-size: 16px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .live-badge {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .live-dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: #22c55e;
+      animation: blink 2s ease-in-out infinite;
+    }
+
+    .live-dot.offline { background: #ef4444; animation: none; }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0.3; }
+    }
+
+    .header-meta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .tag-chip {
+      background: var(--accent-dim);
+      color: var(--accent);
+      border: 1px solid #1f3a5f;
+      padding: 2px 8px;
+      border-radius: 12px;
+      font-family: "SF Mono", "Fira Code", monospace;
+      font-size: 11px;
+      white-space: nowrap;
+    }
+
+    .model-chip {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      padding: 2px 8px;
+      border-radius: 12px;
+      font-family: "SF Mono", "Fira Code", monospace;
+      font-size: 11px;
+      white-space: nowrap;
+    }
+
+    /* ── Filters ────────────────────────────────────────────────────────── */
+    .filters {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border-light);
+      padding: 8px 20px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .filter-label {
+      font-size: 11px;
+      color: var(--text-dim);
+      margin-right: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+    }
+
+    .filter-btn {
+      padding: 4px 12px;
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--text-muted);
+      cursor: pointer;
+      font-size: 12px;
+      font-weight: 500;
+      transition: all 0.12s;
+    }
+
+    .filter-btn:hover:not(.active) {
+      border-color: #58a6ff55;
+      color: var(--text);
+    }
+
+    .filter-btn.active {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #0d1117;
+      font-weight: 600;
+    }
+
+    .filter-btn[data-type="time"].active    { background: #c084fc; border-color: #c084fc; }
+    .filter-btn[data-type="weather"].active { background: #38bdf8; border-color: #38bdf8; }
+    .filter-btn[data-type="radio"].active   { background: #f87171; border-color: #f87171; }
+    .filter-btn[data-type="music"].active   { background: #4ade80; border-color: #4ade80; }
+    .filter-btn[data-type="home"].active    { background: #fb923c; border-color: #fb923c; }
+    .filter-btn[data-type="other"].active   { background: #7d8590; border-color: #7d8590; color: white; }
+
+    /* ── Main content ───────────────────────────────────────────────────── */
+    .content {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 16px 20px 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 80px 20px;
+      color: var(--text-muted);
+    }
+
+    .empty-state .icon { font-size: 40px; margin-bottom: 12px; }
+    .empty-state p     { font-size: 14px; }
+
+    /* ── Stats bar ──────────────────────────────────────────────────────── */
+    .stats-bar {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 12px 20px;
+      display: flex;
+      gap: 28px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .stat {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+    }
+
+    .stat-label {
+      font-size: 10px;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      letter-spacing: 0.7px;
+    }
+
+    .stat-value {
+      font-size: 18px;
+      font-weight: 700;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .stat-sub {
+      font-size: 10px;
+      color: var(--text-muted);
+    }
+
+    /* ── Pipeline legend ────────────────────────────────────────────────── */
+    .legend {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-left: auto;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .legend-dot {
+      width: 9px; height: 9px;
+      border-radius: 2px;
+      flex-shrink: 0;
+    }
+
+    /* ── Entry card ─────────────────────────────────────────────────────── */
+    .entry-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      transition: border-color 0.12s;
+    }
+
+    .entry-card:hover {
+      border-color: #444c56;
+    }
+
+    /* Card top row */
+    .entry-top {
+      padding: 12px 14px 8px;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .entry-body {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .entry-meta {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 4px;
+      flex-wrap: wrap;
+    }
+
+    .entry-ts {
+      font-size: 11px;
+      color: var(--text-muted);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .type-badge {
+      padding: 1px 7px;
+      border-radius: 4px;
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .badge-time    { background: var(--time-bg);    color: var(--time-fg); }
+    .badge-weather { background: var(--weather-bg); color: var(--weather-fg); }
+    .badge-radio   { background: var(--radio-bg);   color: var(--radio-fg); }
+    .badge-music   { background: var(--music-bg);   color: var(--music-fg); }
+    .badge-home    { background: var(--home-bg);    color: var(--home-fg); }
+    .badge-other   { background: var(--other-bg);   color: var(--other-fg); }
+
+    .warn-badge {
+      font-size: 10px;
+      color: #f97316;
+      background: #431407;
+      padding: 1px 6px;
+      border-radius: 4px;
+    }
+
+    .info-badge {
+      font-size: 10px;
+      color: #4ade80;
+      background: #052e16;
+      padding: 1px 6px;
+      border-radius: 4px;
+    }
+
+    .entry-text {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .entry-text.no-text {
+      color: var(--text-dim);
+      font-style: italic;
+    }
+
+    /* Right column: total time + stars */
+    .entry-right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 5px;
+      flex-shrink: 0;
+    }
+
+    .total-time {
+      font-size: 22px;
+      font-weight: 800;
+      font-variant-numeric: tabular-nums;
+      letter-spacing: -0.5px;
+    }
+
+    .total-time.fast { color: #22c55e; }
+    .total-time.med  { color: #f59e0b; }
+    .total-time.slow { color: #ef4444; }
+    .total-time.none { color: var(--text-dim); font-size: 14px; }
+
+    /* Star rating */
+    .stars {
+      display: flex;
+      gap: 1px;
+    }
+
+    .star {
+      cursor: pointer;
+      font-size: 15px;
+      color: var(--border);
+      transition: color 0.1s, transform 0.08s;
+      user-select: none;
+      line-height: 1;
+    }
+
+    .star.filled    { color: #f59e0b; }
+    .star:hover     { transform: scale(1.25); }
+
+    /* ── Pipeline visualization ─────────────────────────────────────────── */
+    .pipeline {
+      padding: 0 14px 12px;
+    }
+
+    .pipeline-bar {
+      display: flex;
+      height: 18px;
+      border-radius: 4px;
+      overflow: hidden;
+      gap: 2px;
+      margin-bottom: 7px;
+    }
+
+    .seg {
+      height: 100%;
+      min-width: 4px;
+      border-radius: 2px;
+      position: relative;
+      cursor: default;
+      transition: filter 0.12s;
+    }
+
+    .seg:hover { filter: brightness(1.2); }
+
+    .seg-listen { background: var(--c-listen); }
+    .seg-stt    { background: var(--c-stt); }
+    .seg-proc   { background: var(--c-proc); }
+    .seg-resp   { background: var(--c-resp); }
+
+    .pipeline-labels {
+      display: flex;
+      gap: 0;
+      flex-wrap: wrap;
+      row-gap: 4px;
+    }
+
+    .pl {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-right: 14px;
+    }
+
+    .pl-dot {
+      width: 8px; height: 8px;
+      border-radius: 2px;
+      flex-shrink: 0;
+    }
+
+    .pl-name  { color: var(--text-dim); }
+    .pl-value { font-weight: 600; font-variant-numeric: tabular-nums; color: var(--text-muted); }
+    .pl-sub   { color: var(--text-dim); font-size: 10px; }
+
+    /* Card footer */
+    .entry-footer {
+      border-top: 1px solid var(--border-light);
+      padding: 5px 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 10px;
+      color: var(--text-dim);
+    }
+
+    .footer-tag {
+      background: var(--surface2);
+      border: 1px solid var(--border-light);
+      padding: 1px 6px;
+      border-radius: 3px;
+      font-family: "SF Mono", "Fira Code", monospace;
+    }
+
+    /* ── Loading ────────────────────────────────────────────────────────── */
+    .loading {
+      text-align: center;
+      padding: 60px;
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Header -->
+<div class="header">
+  <div class="header-left">
+    <h1>🎙 Voice Bench</h1>
+    <div class="live-badge">
+      <div class="live-dot" id="live-dot"></div>
+      <span id="live-label">connecting…</span>
+    </div>
+  </div>
+  <div class="header-meta">
+    <span id="tag-chip" class="tag-chip">—</span>
+    <span id="model-chip" class="model-chip">—</span>
+    <span id="updated-label" style="font-size:11px;color:var(--text-dim)">—</span>
+  </div>
+</div>
+
+<!-- Filters -->
+<div class="filters">
+  <span class="filter-label">Filter</span>
+  <button class="filter-btn active" data-type="all">All</button>
+  <button class="filter-btn" data-type="time">⏰ Time</button>
+  <button class="filter-btn" data-type="weather">🌤 Weather</button>
+  <button class="filter-btn" data-type="radio">📻 Radio</button>
+  <button class="filter-btn" data-type="music">🎵 Music</button>
+  <button class="filter-btn" data-type="home">💡 Home</button>
+  <button class="filter-btn" data-type="other">Other</button>
+</div>
+
+<!-- Main content -->
+<div class="content" id="content">
+  <div class="loading">Loading…</div>
+</div>
+
+<script>
+// ── State ─────────────────────────────────────────────────────────────────
+let allEntries    = [];
+let currentFilter = "all";
+let localRatings  = {};   // optimistic rating cache
+
+// ── Data fetching ──────────────────────────────────────────────────────────
+async function fetchConfig() {
+  try {
+    const r   = await fetch("/api/config");
+    const cfg = await r.json();
+    document.getElementById("tag-chip").textContent   = cfg.tag   || "—";
+    document.getElementById("model-chip").textContent = cfg.whisper_model || "—";
+    if (cfg.notes) {
+      document.getElementById("model-chip").title = cfg.notes;
+    }
+  } catch (_) {}
+}
+
+async function fetchEntries() {
+  try {
+    const r = await fetch("/api/entries");
+    allEntries = await r.json();
+    setConnected(true);
+    render();
+    const now = new Date();
+    document.getElementById("updated-label").textContent =
+      "Updated " + now.toLocaleTimeString([], {hour:"2-digit", minute:"2-digit", second:"2-digit"});
+  } catch (e) {
+    setConnected(false);
+    console.error("Failed to fetch:", e);
+  }
+}
+
+function setConnected(ok) {
+  const dot   = document.getElementById("live-dot");
+  const label = document.getElementById("live-label");
+  if (ok) {
+    dot.classList.remove("offline");
+    label.textContent = "live";
+  } else {
+    dot.classList.add("offline");
+    label.textContent = "offline";
+  }
+}
+
+// ── Render ────────────────────────────────────────────────────────────────
+function render() {
+  const filtered = currentFilter === "all"
+    ? allEntries
+    : allEntries.filter(e => e.command_type === currentFilter);
+
+  const content = document.getElementById("content");
+
+  if (filtered.length === 0) {
+    const msg = currentFilter === "all"
+      ? "No voice commands logged yet. Give it a try!"
+      : `No "${currentFilter}" commands logged yet.`;
+    content.innerHTML = `<div class="empty-state">
+      <div class="icon">🎙</div>
+      <p>${msg}</p>
+    </div>`;
+    return;
+  }
+
+  // ── Stats summary ──────────────────────────────────────────────────────
+  const totals  = filtered.map(e => +e.total_ms).filter(v => v > 0);
+  const sttVals = filtered.map(e => +e.stt_ms).filter(v => v > 0);
+
+  const avg    = totals.length  ? Math.round(totals.reduce((a,b)=>a+b,0) / totals.length) : 0;
+  const avgStt = sttVals.length ? Math.round(sttVals.reduce((a,b)=>a+b,0) / sttVals.length) : 0;
+  const fast   = totals.filter(v => v < 4000).length;
+  const slow   = totals.filter(v => v > 8000).length;
+
+  const statsHtml = `
+    <div class="stats-bar">
+      <div class="stat">
+        <span class="stat-label">Commands</span>
+        <span class="stat-value">${filtered.length}</span>
+      </div>
+      <div class="stat">
+        <span class="stat-label">Avg Total</span>
+        <span class="stat-value" style="color:${speedColor(avg)}">${fmtMs(avg)}</span>
+      </div>
+      <div class="stat">
+        <span class="stat-label">Avg STT</span>
+        <span class="stat-value" style="color:${speedColor(avgStt)}">${fmtMs(avgStt)}</span>
+      </div>
+      <div class="stat">
+        <span class="stat-label">Fast &lt;4s</span>
+        <span class="stat-value" style="color:#22c55e">${fast}</span>
+        <span class="stat-sub">${totals.length ? Math.round(fast/totals.length*100) : 0}%</span>
+      </div>
+      <div class="stat">
+        <span class="stat-label">Slow &gt;8s</span>
+        <span class="stat-value" style="color:${slow>0?'#ef4444':'#22c55e'}">${slow}</span>
+        <span class="stat-sub">${totals.length ? Math.round(slow/totals.length*100) : 0}%</span>
+      </div>
+      <div class="legend">
+        <div class="legend-item">
+          <div class="legend-dot" style="background:var(--c-listen)"></div>Listening
+        </div>
+        <div class="legend-item">
+          <div class="legend-dot" style="background:var(--c-stt)"></div>STT
+        </div>
+        <div class="legend-item">
+          <div class="legend-dot" style="background:var(--c-proc)"></div>Processing
+        </div>
+        <div class="legend-item">
+          <div class="legend-dot" style="background:var(--c-resp)"></div>Response
+        </div>
+      </div>
+    </div>
+  `;
+
+  // ── Entry cards ────────────────────────────────────────────────────────
+  const cardsHtml = filtered.map(renderCard).join("");
+
+  content.innerHTML = statsHtml + cardsHtml;
+
+  // Attach star interactions after render
+  attachStarHandlers();
+}
+
+function renderCard(entry) {
+  const totalMs  = +entry.total_ms      || 0;
+  const listenMs = +entry.listening_ms  || 0;
+  const sttMs    = +entry.stt_ms        || 0;
+  const procMs   = +entry.processing_ms || 0;
+  const respMs   = +entry.responding_ms || 0;
+
+  // ── Timing breakdown ──────────────────────────────────────────────────
+  // listening_ms from HA = full recording+STT window
+  // stt_ms from whisper  = pure transcription (overlaps with listening_ms end)
+  // We derive "recording-only" as the difference, clamped to 0
+  const recMs = Math.max(0, listenMs - sttMs);
+
+  // Build pipeline segments (skip tiny/zero segments)
+  const segments = [];
+  if (recMs  > 100) segments.push({ cls: "seg-listen", ms: recMs,   label: "Recording" });
+  if (sttMs  > 100) segments.push({ cls: "seg-stt",    ms: sttMs,   label: "STT" });
+  else if (listenMs > 100 && sttMs === 0) {
+    // Only HA data, no STT correlation — show listening as whole block
+    segments.push({ cls: "seg-listen", ms: listenMs, label: "Listening" });
+  }
+  if (procMs > 50)  segments.push({ cls: "seg-proc",   ms: procMs,  label: "Processing" });
+  if (respMs > 100) segments.push({ cls: "seg-resp",   ms: respMs,  label: "Response" });
+
+  // Fallback: no breakdown at all
+  if (segments.length === 0 && totalMs > 0) {
+    segments.push({ cls: "seg-stt", ms: totalMs, label: "Total" });
+  }
+
+  const totalSeg = segments.reduce((a, s) => a + s.ms, 0) || 1;
+
+  // ── Pipeline bar HTML ─────────────────────────────────────────────────
+  const barHtml = segments.map(seg => {
+    const flex    = (seg.ms / totalSeg * 100).toFixed(1);
+    const tooltip = `${seg.label}: ${fmtMs(seg.ms)}`;
+    return `<div class="seg ${seg.cls}" style="flex:${flex}" title="${tooltip}"></div>`;
+  }).join("");
+
+  // ── Pipeline labels HTML ──────────────────────────────────────────────
+  const dotColors = {
+    "seg-listen": "var(--c-listen)",
+    "seg-stt":    "var(--c-stt)",
+    "seg-proc":   "var(--c-proc)",
+    "seg-resp":   "var(--c-resp)",
+  };
+
+  const labelsHtml = segments.map(seg => {
+    // For STT segment, show the raw whisper time if different from computed rec
+    const sub = (seg.label === "STT" && listenMs > 0 && sttMs > 0)
+      ? `<span class="pl-sub"> of ${fmtMs(listenMs)} listening</span>` : "";
+    return `<div class="pl">
+      <div class="pl-dot" style="background:${dotColors[seg.cls]}"></div>
+      <span class="pl-name">${seg.label}</span>
+      <span class="pl-value">${fmtMs(seg.ms)}</span>${sub}
+    </div>`;
+  }).join("");
+
+  // ── Speed class ───────────────────────────────────────────────────────
+  const speedCls = totalMs <= 0 ? "none"
+    : totalMs < 4000 ? "fast"
+    : totalMs < 8000 ? "med"
+    : "slow";
+
+  // ── Timestamp ─────────────────────────────────────────────────────────
+  const ts      = new Date(entry.timestamp);
+  const dateStr = ts.toLocaleDateString([], { month: "short", day: "numeric" });
+  const timeStr = ts.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit", second: "2-digit" });
+
+  // ── Badges ────────────────────────────────────────────────────────────
+  const ampMuted      = entry.amp_muted_at_wake === "true";
+  const ampKnown      = entry.amp_muted_at_wake !== "";
+  const musicPlaying  = entry.music_was_playing === "true";
+  const ampWarnHtml   = (ampKnown && !ampMuted)
+    ? `<span class="warn-badge" title="Amp was unmuted when wake word fired — ambient noise risk">⚠ amp live</span>`
+    : "";
+  const musicHtml     = (musicPlaying)
+    ? `<span class="info-badge">♪ music was playing</span>` : "";
+
+  // ── Star rating ───────────────────────────────────────────────────────
+  const rating    = localRatings[entry.id] !== undefined
+    ? localRatings[entry.id]
+    : (+entry.rating || 0);
+  const starsHtml = [1,2,3,4,5].map(n =>
+    `<span class="star ${n <= rating ? "filled" : ""}"
+      data-id="${esc(entry.id)}" data-n="${n}"
+      title="${n} star${n>1?"s":""}">★</span>`
+  ).join("");
+
+  // ── Total time display ────────────────────────────────────────────────
+  const totalDisplay = totalMs > 0 ? fmtMs(totalMs) : "—";
+
+  // ── Text ──────────────────────────────────────────────────────────────
+  const text    = entry.transcribed_text || "";
+  const textCls = text ? "entry-text" : "entry-text no-text";
+  const textOut = text ? esc(text) : "(no transcription)";
+
+  return `
+<div class="entry-card">
+  <div class="entry-top">
+    <div class="entry-body">
+      <div class="entry-meta">
+        <span class="entry-ts">${dateStr} ${timeStr}</span>
+        <span class="type-badge badge-${esc(entry.command_type)}">${esc(entry.command_type)}</span>
+        ${ampWarnHtml}
+        ${musicHtml}
+      </div>
+      <div class="${textCls}">${textOut}</div>
+    </div>
+    <div class="entry-right">
+      <span class="total-time ${speedCls}">${totalDisplay}</span>
+      <div class="stars">${starsHtml}</div>
+    </div>
+  </div>
+  <div class="pipeline">
+    <div class="pipeline-bar">${barHtml}</div>
+    <div class="pipeline-labels">${labelsHtml}</div>
+  </div>
+  <div class="entry-footer">
+    <span class="footer-tag">🏷 ${esc(entry.config_tag || "—")}</span>
+    ${entry.whisper_model ? `<span>⚡ ${esc(entry.whisper_model)}</span>` : ""}
+  </div>
+</div>`;
+}
+
+// ── Stars ─────────────────────────────────────────────────────────────────
+function attachStarHandlers() {
+  document.querySelectorAll(".star").forEach(el => {
+    el.addEventListener("click", () => {
+      const id = el.dataset.id;
+      const n  = parseInt(el.dataset.n);
+      // Toggle off if clicking same rating
+      const current = localRatings[id] !== undefined ? localRatings[id] : 0;
+      const newRating = (current === n) ? 0 : n;
+      setRating(id, newRating);
+    });
+    el.addEventListener("mouseenter", () => previewStars(el.dataset.id, +el.dataset.n));
+    el.addEventListener("mouseleave", () => resetStarPreview(el.dataset.id));
+  });
+}
+
+function previewStars(id, upTo) {
+  document.querySelectorAll(`.star[data-id="${id}"]`).forEach(s => {
+    s.style.color = (+s.dataset.n <= upTo) ? "#f59e0b" : "";
+  });
+}
+
+function resetStarPreview(id) {
+  document.querySelectorAll(`.star[data-id="${id}"]`).forEach(s => {
+    s.style.color = "";
+  });
+}
+
+async function setRating(id, rating) {
+  localRatings[id] = rating;
+  // Update stars in DOM without full re-render
+  document.querySelectorAll(`.star[data-id="${id}"]`).forEach(s => {
+    s.classList.toggle("filled", +s.dataset.n <= rating);
+  });
+  try {
+    await fetch(`/api/ratings/${id}`, {
+      method:  "POST",
+      headers: { "Content-Type": "application/json" },
+      body:    JSON.stringify({ rating }),
+    });
+  } catch (e) {
+    console.error("Failed to save rating:", e);
+  }
+}
+
+// ── Filter buttons ────────────────────────────────────────────────────────
+document.querySelectorAll(".filter-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+    currentFilter = btn.dataset.type;
+    render();
+  });
+});
+
+// ── Utilities ─────────────────────────────────────────────────────────────
+function fmtMs(ms) {
+  if (!ms || ms <= 0) return "—";
+  if (ms < 1000) return ms + "ms";
+  return (ms / 1000).toFixed(1) + "s";
+}
+
+function speedColor(ms) {
+  if (!ms || ms <= 0) return "var(--text)";
+  if (ms < 4000) return "#22c55e";
+  if (ms < 8000) return "#f59e0b";
+  return "#ef4444";
+}
+
+function esc(str) {
+  return String(str || "")
+    .replace(/&/g,  "&amp;")
+    .replace(/</g,  "&lt;")
+    .replace(/>/g,  "&gt;")
+    .replace(/"/g,  "&quot;")
+    .replace(/'/g,  "&#39;");
+}
+
+// ── Init ──────────────────────────────────────────────────────────────────
+fetchConfig();
+fetchEntries();
+setInterval(fetchEntries, 10_000);
+</script>
+</body>
+</html>

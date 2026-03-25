@@ -1187,6 +1187,165 @@ If your M1 Mac's IP changes:
 
 ---
 
+## 8. Voice Pipeline Optimization (Completed 2026-03-17)
+
+**Status:** ✅ Implemented and verified. Ongoing monitoring via voice-bench.
+
+---
+
+### 8.1 Background & Root Cause
+
+The ESPHome Voice PE satellite uses VAD (Voice Activity Detection) to decide when the user has finished speaking. It records until it detects silence. If there is ambient noise in the room (TV, speaker bleed, HVAC), the VAD window extends far beyond the user's speech — resulting in Whisper receiving 15–60 seconds of audio instead of 2–3 seconds.
+
+**Key insight from log analysis:** Music commands were always fast (~3s) while general queries were slow (15–60s). The difference: music commands trigger Music Assistant's auto-pause, which mutes the amp. With the speaker muted, the mic hears silence → short VAD window → fast STT. Non-music commands left the amp live.
+
+**Conclusion:** Always mute the amp on wake word, regardless of whether music is playing.
+
+**TV noise caveat:** The in-room TV is a separate physical audio source. Amp mute has no effect on TV audio. TV must be muted/off during voice commands for best performance.
+
+---
+
+### 8.2 STT Model: distil-whisper-large-v3
+
+Previous model: `mlx-community/whisper-large-v3-turbo`
+Current model: `mlx-community/distil-whisper-large-v3`
+
+`distil-whisper-large-v3` is a distilled version of Whisper large-v3 that runs ~2× faster with minimal accuracy loss for short home-automation commands. It is specified in the LaunchAgent plist at `~/Library/LaunchAgents/com.wyoming.mlx-whisper.plist`.
+
+**Models tested and rejected:**
+- `whisper-small.en` — too inaccurate for short/ambiguous commands (2026-03-15)
+- `whisper-large-v3-turbo` — acceptable, superseded by distil-large-v3
+
+---
+
+### 8.3 Voice Pipeline Automations (`homeassistant/automations.yaml`)
+
+Four automations manage the amp and Music Assistant around each voice command:
+
+| # | ID | Trigger | Action |
+|---|---|---|---|
+| 1 | `voice_pause_media_on_wake` | Satellite `idle → listening` | Always mute amp. If MA was playing: pause it + set `input_boolean.voice_paused_music`. |
+| 2 | `voice_unmute_after_listening` | Satellite leaves `listening` | Unmute amp. Safe window: mic is done, TTS hasn't started yet. |
+| 3 | `voice_resume_media_on_done` | Satellite → `idle` | Belt-and-suspenders unmute. If `voice_paused_music` is on and MA is still paused: resume after 1s delay. |
+| 4 | `voice_premute_when_idle` | MA → idle/paused/off **or** amp becomes unmuted | Re-mute amp if no music playing and no voice command in progress. Eliminates the cold-start slow path after automation reloads. |
+
+**Why the unmute fires on `from: "listening"`** rather than `to: "idle"`: the `idle` state fires *after* TTS completes. If we wait until then to unmute, TTS audio is silenced. Unmuting when the satellite leaves `listening` gives a clean window: mic is done recording, HA is processing, TTS hasn't started yet.
+
+**Cold-start problem and fix:** HA automation triggers only fire on state *transitions*, not on the current state at load time. After an automation reload, if the amp was already unmuted and MA was already stopped, automation #4 would never fire — leaving the amp unmuted for the first command. The fix (automation #4's second trigger) watches for the amp's `is_volume_muted` attribute transitioning to `false` and immediately re-mutes if conditions are met.
+
+---
+
+### 8.4 Intent Scripts (`homeassistant/configuration.yaml`)
+
+All 12 music-playing intent scripts follow this pattern to handle Music Assistant being unavailable after HA restart (MA takes ~1m45s to become ready):
+
+```yaml
+action:
+  # Wait up to 5s for MA to become available
+  - wait_template: "{{ states('media_player.naboo_media_player') not in ['unknown', 'unavailable'] }}"
+    timeout:
+      seconds: 5
+    continue_on_timeout: true
+  # Explicitly unmute before playing (belt-and-suspenders)
+  - action: media_player.volume_mute
+    target:
+      entity_id: media_player.home_assistant_voice_0a3a76_media_player
+    data:
+      is_volume_muted: false
+  - action: music_assistant.play_media
+    ...
+```
+
+The explicit unmute before `play_media` handles the edge case where the user's "play music" command fires during the brief period between automation #1 (mute) and automation #2 (unmute-after-listening), or after the pre-mute automation re-muted the amp.
+
+---
+
+### 8.5 Measured Performance (2026-03-17, distil-whisper-large-v3, TV off)
+
+| Command | Before | After |
+|---|---|---|
+| "What time is it?" | 8–60s | **2.85s** |
+| "What's the weather?" | 40–60s | **3.8s** |
+| "What time is it?" after music | 23s | **5.2s** |
+| Radio/music commands | 3–13s | **3.0–3.3s** |
+
+All timings verified from `wyoming-mlx-whisper/log/whisper.err` (`took X.XXX seconds` entries).
+
+---
+
+### 8.6 Voice-Bench: Continuous Performance Monitoring
+
+A lightweight benchmarking daemon (`voice-bench/`) logs every voice command's per-hop timing to a CSV file and serves a dashboard at `http://localhost:7700`.
+
+**Architecture:**
+- Python async daemon (~500 lines, ~2MB RAM idle, zero CPU when idle)
+- Subscribes to HA WebSocket for satellite state transitions (`idle → listening → processing → responding → idle`)
+- Tails `wyoming-mlx-whisper/log/whisper.err` for STT duration and transcribed text
+- Correlates both event streams into a single row per command
+- Serves dashboard via aiohttp (built-in HTTP server, no external dependencies beyond pip packages)
+
+**Data captured per command:**
+
+| Column | Source | Notes |
+|---|---|---|
+| `listening_ms` | HA satellite state | Full recording + STT window (satellite in "listening") |
+| `stt_ms` | whisper.err | Pure wyoming handler time (audio receipt + transcription) |
+| `processing_ms` | HA satellite state | HA intent processing ("processing" state duration) |
+| `responding_ms` | HA satellite state | TTS playback ("responding" state duration) |
+| `total_ms` | Computed | listening_start to pipeline_end |
+| `amp_muted_at_wake` | HA entity snapshot | Whether amp was already muted when wake word fired |
+| `music_was_playing` | HA entity snapshot | Whether MA was playing at wake time |
+| `config_tag` | `config.yaml` | Manual label for A/B comparison (e.g. "baseline-v1") |
+| `whisper_model` | LaunchAgent plist | Auto-detected from `--model` argument |
+
+**Dashboard features:**
+- Pipeline bar chart: Recording (blue) → STT (amber) → Processing (orange) → Response (green) — widths proportional to time
+- Speed color coding: green < 4s, amber < 8s, red ≥ 8s
+- Filter by command type: time, weather, radio, music, home, other
+- ⚠ warning badge when amp was unmuted at wake (ambient noise risk)
+- Per-entry star rating (1–5), persisted to `data/ratings.json`
+- Auto-refreshes every 10 seconds
+- Stats summary: count, avg total, avg STT, fast %, slow %
+
+**Files:**
+
+```
+voice-bench/
+  voice_bench.py       # Main daemon (HA websocket + log tailer + HTTP server)
+  index.html           # Dashboard frontend
+  config.yaml          # HA token, entity IDs, whisper paths, config tag
+  requirements.txt     # websockets, aiohttp, pyyaml
+  run.sh               # Creates venv, installs deps, starts daemon
+  seed_from_log.py     # One-time import of whisper.err history into CSV
+  data/
+    voice_bench.csv    # Append-only log, one row per command
+    ratings.json       # Star ratings keyed by entry ID
+  log/
+    bench.log
+    bench.err
+~/Library/LaunchAgents/com.voice-bench.plist  # Auto-start on login
+```
+
+**Setup:**
+
+```bash
+# 1. Add HA long-lived access token to voice-bench/config.yaml
+#    (HA → profile → Security → Long-Lived Access Tokens)
+
+# 2. (Optional) Seed historical data from existing whisper.err
+python3 voice-bench/seed_from_log.py
+
+# 3. Test run
+./voice-bench/run.sh
+
+# 4. Install as LaunchAgent
+launchctl load ~/Library/LaunchAgents/com.voice-bench.plist
+```
+
+**A/B testing workflow:** Before changing a setting, update `tag:` in `voice-bench/config.yaml` to a descriptive label (e.g. `"turbo-model"`). After testing, change the tag again. Filter or group by `config_tag` in the CSV to compare.
+
+---
+
 ## 9. Future Considerations (Lower Priority)
 
 ### 9.1 Frigate CoreML Detection
@@ -1409,8 +1568,8 @@ docker system prune -a --volumes  # WARNING: removes all unused images/volumes
 **Created:** 2026-03-09
 **Target System:** M1 Mac Mini, 8GB RAM, Docker Desktop
 **Stack Version:** Current (as of March 2026)
-**Status:** READY FOR IMPLEMENTATION
-**Last Updated:** Initial draft
+**Status:** SECTIONS 1–8 IMPLEMENTED. Sections 9+ are future/lower priority.
+**Last Updated:** 2026-03-17 — Added Section 8 (Voice Pipeline Optimization + voice-bench)
 
 ---
 

@@ -1,0 +1,184 @@
+id,timestamp,transcribed_text,command_type,listening_ms,stt_ms,processing_ms,responding_ms,total_ms,amp_muted_at_wake,music_was_playing,config_tag,whisper_model
+seed_0000,,Play WFMU. Radio.,radio,,219109,,,219109,,,pre-bench-history,distil-whisper-large-v3
+seed_0001,,Play WFMU Radio.,radio,,2765,,,2765,,,pre-bench-history,distil-whisper-large-v3
+seed_0002,,,other,,543,,,543,,,pre-bench-history,distil-whisper-large-v3
+seed_0003,,Play WFMU Radio Station.,radio,,6416,,,6416,,,pre-bench-history,distil-whisper-large-v3
+seed_0004,,Play KEXP radio station.,radio,,4250,,,4250,,,pre-bench-history,distil-whisper-large-v3
+seed_0005,,Stop!,other,,18183,,,18183,,,pre-bench-history,distil-whisper-large-v3
+seed_0006,,,other,,223,,,223,,,pre-bench-history,distil-whisper-large-v3
+seed_0007,,play KEXP radio station,radio,,15401,,,15401,,,pre-bench-history,distil-whisper-large-v3
+seed_0008,,Play WQXR Radio Station,radio,,14278,,,14278,,,pre-bench-history,distil-whisper-large-v3
+seed_0009,,stop the music,music,,14722,,,14722,,,pre-bench-history,distil-whisper-large-v3
+seed_0010,,pause,other,,2914,,,2914,,,pre-bench-history,distil-whisper-large-v3
+seed_0011,,,other,,233,,,233,,,pre-bench-history,distil-whisper-large-v3
+seed_0012,,,other,,142,,,142,,,pre-bench-history,distil-whisper-large-v3
+seed_0013,,,other,,107,,,107,,,pre-bench-history,distil-whisper-large-v3
+seed_0014,,What time is it?,time,,23323,,,23323,,,pre-bench-history,distil-whisper-large-v3
+seed_0015,,,other,,103,,,103,,,pre-bench-history,distil-whisper-large-v3
+seed_0016,,Play Replacements Radio,radio,,13449,,,13449,,,pre-bench-history,distil-whisper-large-v3
+seed_0017,,Play KEXP radio station.,radio,,6652,,,6652,,,pre-bench-history,distil-whisper-large-v3
+seed_0018,,,other,,120,,,120,,,pre-bench-history,distil-whisper-large-v3
+seed_0019,,Stop.,other,,19617,,,19617,,,pre-bench-history,distil-whisper-large-v3
+seed_0020,,Pause.,other,,7470,,,7470,,,pre-bench-history,distil-whisper-large-v3
+seed_0021,,What time is it?,time,,13797,,,13797,,,pre-bench-history,distil-whisper-large-v3
+seed_0022,,What time is it?,time,,270444,,,270444,,,pre-bench-history,distil-whisper-large-v3
+seed_0023,,,other,,224,,,224,,,pre-bench-history,distil-whisper-large-v3
+seed_0024,,What time is it?,time,,3969,,,3969,,,pre-bench-history,distil-whisper-large-v3
+seed_0025,,What time is it?,time,,2938,,,2938,,,pre-bench-history,distil-whisper-large-v3
+seed_0026,,What time is it?,time,,29710,,,29710,,,pre-bench-history,distil-whisper-large-v3
+seed_0027,,Play Replacements Radio.,radio,,4702,,,4702,,,pre-bench-history,distil-whisper-large-v3
+seed_0028,,Play K-E-X-P radio station.,radio,,16504,,,16504,,,pre-bench-history,distil-whisper-large-v3
+seed_0029,,Stop.,other,,3023,,,3023,,,pre-bench-history,distil-whisper-large-v3
+seed_0030,,,other,,106,,,106,,,pre-bench-history,distil-whisper-large-v3
+seed_0031,,What time is it?,time,,34530,,,34530,,,pre-bench-history,distil-whisper-large-v3
+seed_0032,,play,other,,3282,,,3282,,,pre-bench-history,distil-whisper-large-v3
+seed_0033,,Play WFMU.,radio,,2786,,,2786,,,pre-bench-history,distil-whisper-large-v3
+seed_0034,,Stop.,other,,2888,,,2888,,,pre-bench-history,distil-whisper-large-v3
+seed_0035,,Play Shark Smile Radio.,radio,,15032,,,15032,,,pre-bench-history,distil-whisper-large-v3
+seed_0036,,Play a radio station based on the song Shark Smile by Big Thief.,radio,,13415,,,13415,,,pre-bench-history,distil-whisper-large-v3
+seed_0037,,Stop.,other,,3815,,,3815,,,pre-bench-history,distil-whisper-large-v3
+seed_0038,,What time is it?,time,,21712,,,21712,,,pre-bench-history,distil-whisper-large-v3
+seed_0039,,Play Replacements Radio.,radio,,3068,,,3068,,,pre-bench-history,distil-whisper-large-v3
+seed_0040,,Play WFMU.,radio,,12709,,,12709,,,pre-bench-history,distil-whisper-large-v3
+seed_0041,,Stop.,other,,2914,,,2914,,,pre-bench-history,distil-whisper-large-v3
+seed_0042,,What time is it?,time,,16843,,,16843,,,pre-bench-history,distil-whisper-large-v3
+seed_0043,,,other,,5115,,,5115,,,pre-bench-history,distil-whisper-large-v3
+seed_0044,,,other,,325,,,325,,,pre-bench-history,distil-whisper-large-v3
+seed_0045,,What time is it?,time,,15339,,,15339,,,pre-bench-history,distil-whisper-large-v3
+seed_0046,,Play Replacements Radio.,radio,,2887,,,2887,,,pre-bench-history,distil-whisper-large-v3
+seed_0047,,Play WFMU.,radio,,2971,,,2971,,,pre-bench-history,distil-whisper-large-v3
+seed_0048,,Stop.,other,,3017,,,3017,,,pre-bench-history,distil-whisper-large-v3
+seed_0049,,We'll videos.,other,,33727,,,33727,,,pre-bench-history,distil-whisper-large-v3
+seed_0050,,,other,,222,,,222,,,pre-bench-history,distil-whisper-large-v3
+seed_0051,,,other,,271,,,271,,,pre-bench-history,distil-whisper-large-v3
+seed_0052,,Play WFMU.,radio,,17935,,,17935,,,pre-bench-history,distil-whisper-large-v3
+seed_0053,,Stop.,other,,3001,,,3001,,,pre-bench-history,distil-whisper-large-v3
+seed_0054,,What time is it?,time,,18560,,,18560,,,pre-bench-history,distil-whisper-large-v3
+seed_0055,,"With this tough jumper here, 116 to 111 at that point. Peyton Pritchard took an offensive foul from Devin Booker. But it wasn't just those offensive plays, Chris. What time is it? Down the stretch was excellent. Think about it. I think about it.",time,,18800,,,18800,,,pre-bench-history,distil-whisper-large-v3
+seed_0056,,What time is it?,time,,22584,,,22584,,,pre-bench-history,distil-whisper-large-v3
+seed_0057,,Play WFMU.,radio,,2984,,,2984,,,pre-bench-history,distil-whisper-large-v3
+seed_0058,,Play the Breeders Radio.,radio,,48289,,,48289,,,pre-bench-history,distil-whisper-large-v3
+seed_0059,,,other,,107,,,107,,,pre-bench-history,distil-whisper-large-v3
+seed_0060,,What time is it?,time,,20726,,,20726,,,pre-bench-history,distil-whisper-large-v3
+seed_0061,,Play Replacements Radio.,radio,,3125,,,3125,,,pre-bench-history,distil-whisper-large-v3
+seed_0062,,Play WFMU.,radio,,2944,,,2944,,,pre-bench-history,distil-whisper-large-v3
+seed_0063,,Stop.,other,,4456,,,4456,,,pre-bench-history,distil-whisper-large-v3
+seed_0064,,Stop!,other,,78457,,,78457,,,pre-bench-history,distil-whisper-large-v3
+seed_0065,,What time is it?,time,,15986,,,15986,,,pre-bench-history,distil-whisper-large-v3
+seed_0066,,Play Replacements Radio.,radio,,2878,,,2878,,,pre-bench-history,distil-whisper-large-v3
+seed_0067,,,other,,132,,,132,,,pre-bench-history,distil-whisper-large-v3
+seed_0068,,Play WQXR.,radio,,3760,,,3760,,,pre-bench-history,distil-whisper-large-v3
+seed_0069,,Stop.,other,,6218,,,6218,,,pre-bench-history,distil-whisper-large-v3
+seed_0070,,,other,,207,,,207,,,pre-bench-history,distil-whisper-large-v3
+seed_0071,,,other,,108,,,108,,,pre-bench-history,distil-whisper-large-v3
+seed_0072,,,other,,242,,,242,,,pre-bench-history,distil-whisper-large-v3
+seed_0073,,Play the Breeders Radio.,radio,,55199,,,55199,,,pre-bench-history,distil-whisper-large-v3
+seed_0074,,Stop!,other,,16586,,,16586,,,pre-bench-history,distil-whisper-large-v3
+seed_0075,,What time is it?,time,,15820,,,15820,,,pre-bench-history,distil-whisper-large-v3
+seed_0076,,Play the Rolling Stones Radio.,radio,,3012,,,3012,,,pre-bench-history,distil-whisper-large-v3
+seed_0077,,Play WFMU.,radio,,17339,,,17339,,,pre-bench-history,distil-whisper-large-v3
+seed_0078,,,other,,340,,,340,,,pre-bench-history,distil-whisper-large-v3
+seed_0079,,,other,,266,,,266,,,pre-bench-history,distil-whisper-large-v3
+seed_0080,,,other,,281,,,281,,,pre-bench-history,distil-whisper-large-v3
+seed_0081,,,other,,228,,,228,,,pre-bench-history,distil-whisper-large-v3
+seed_0082,,,other,,774,,,774,,,pre-bench-history,distil-whisper-large-v3
+seed_0083,,Stop.,other,,49174,,,49174,,,pre-bench-history,distil-whisper-large-v3
+seed_0084,,,other,,125,,,125,,,pre-bench-history,distil-whisper-large-v3
+seed_0085,,What time is it?,time,,16262,,,16262,,,pre-bench-history,distil-whisper-large-v3
+seed_0086,,Play the Rolling Stones Radio.,radio,,2939,,,2939,,,pre-bench-history,distil-whisper-large-v3
+seed_0087,,Play WQXR.,radio,,3095,,,3095,,,pre-bench-history,distil-whisper-large-v3
+seed_0088,,Stop.,other,,2858,,,2858,,,pre-bench-history,distil-whisper-large-v3
+seed_0089,,What time is it?,time,,15285,,,15285,,,pre-bench-history,distil-whisper-large-v3
+seed_0090,,Play the Rolling Stones Radio.,radio,,2863,,,2863,,,pre-bench-history,distil-whisper-large-v3
+seed_0091,,,other,,160,,,160,,,pre-bench-history,distil-whisper-large-v3
+seed_0092,,Stop.,other,,3803,,,3803,,,pre-bench-history,distil-whisper-large-v3
+seed_0093,,What time is it?,time,,15782,,,15782,,,pre-bench-history,distil-whisper-large-v3
+seed_0094,,,other,,101,,,101,,,pre-bench-history,distil-whisper-large-v3
+seed_0095,,What time is it?,time,,3025,,,3025,,,pre-bench-history,distil-whisper-large-v3
+seed_0096,,What time is it?,time,,3055,,,3055,,,pre-bench-history,distil-whisper-large-v3
+seed_0097,,What time is it?,time,,15456,,,15456,,,pre-bench-history,distil-whisper-large-v3
+seed_0098,,What time is it?,time,,2970,,,2970,,,pre-bench-history,distil-whisper-large-v3
+seed_0099,,What time is it?,time,,2863,,,2863,,,pre-bench-history,distil-whisper-large-v3
+seed_0100,,What's the weather?,weather,,5631,,,5631,,,pre-bench-history,distil-whisper-large-v3
+seed_0101,,What's the weather?,weather,,60902,,,60902,,,pre-bench-history,distil-whisper-large-v3
+seed_0102,,What's the weather?,weather,,40664,,,40664,,,pre-bench-history,distil-whisper-large-v3
+seed_0103,,Play.,other,,5369,,,5369,,,pre-bench-history,distil-whisper-large-v3
+seed_0104,,What time is it?,time,,15950,,,15950,,,pre-bench-history,distil-whisper-large-v3
+seed_0105,,What time is it?,time,,2829,,,2829,,,pre-bench-history,distil-whisper-large-v3
+seed_0106,,Play can radio.,radio,,2832,,,2832,,,pre-bench-history,distil-whisper-large-v3
+seed_0107,,What time is it?,time,,23166,,,23166,,,pre-bench-history,distil-whisper-large-v3
+seed_0108,,What time is it?,time,,17754,,,17754,,,pre-bench-history,distil-whisper-large-v3
+seed_0109,,What time is it?,time,,17069,,,17069,,,pre-bench-history,distil-whisper-large-v3
+seed_0110,,What time is it?,time,,3300,,,3300,,,pre-bench-history,distil-whisper-large-v3
+seed_0111,,What time is it?,time,,15721,,,15721,,,pre-bench-history,distil-whisper-large-v3
+seed_0112,,What time is it?,time,,2854,,,2854,,,pre-bench-history,distil-whisper-large-v3
+seed_0113,,What's the weather?,weather,,3806,,,3806,,,pre-bench-history,distil-whisper-large-v3
+seed_0114,,,other,,108,,,108,,,pre-bench-history,distil-whisper-large-v3
+seed_0115,,Play WFMU.,radio,,3230,,,3230,,,pre-bench-history,distil-whisper-large-v3
+seed_0116,,Stop.,other,,12947,,,12947,,,pre-bench-history,distil-whisper-large-v3
+seed_0117,,Play Led Zeppelin Radio.,radio,,3232,,,3232,,,pre-bench-history,distil-whisper-large-v3
+seed_0118,,What time is it?,time,,5197,,,5197,,,pre-bench-history,distil-whisper-large-v3
+seed_0119,,Good night.,home,,14260,,,14260,,,pre-bench-history,distil-whisper-large-v3
+seed_0120,,Turn on the light.,home,,16468,,,16468,,,pre-bench-history,distil-whisper-large-v3
+seed_0121,,turn on the speaker.,home,,18810,,,18810,,,pre-bench-history,distil-whisper-large-v3
+seed_0122,,Play WNYC radio station.,radio,,2863,,,2863,,,pre-bench-history,distil-whisper-large-v3
+seed_0123,,Play KCRW radio station.,radio,,3258,,,3258,,,pre-bench-history,distil-whisper-large-v3
+seed_0124,,Don. Turn the speaker off.,other,,16935,,,16935,,,pre-bench-history,distil-whisper-large-v3
+seed_0125,,Turn the speaker on.,other,,15696,,,15696,,,pre-bench-history,distil-whisper-large-v3
+seed_0126,,Play WNYC Radio Station.,radio,,15750,,,15750,,,pre-bench-history,distil-whisper-large-v3
+seed_0127,,So we play W.,music,,26396,,,26396,,,pre-bench-history,distil-whisper-large-v3
+seed_0128,,way W QXR.,other,,16619,,,16619,,,pre-bench-history,distil-whisper-large-v3
+seed_0129,,Stop.,other,,13191,,,13191,,,pre-bench-history,distil-whisper-large-v3
+20260317_200738_715,2026-03-17T20:07:38.715393-04:00,Stop!,other,20117,17899,401,1451,21969,,false,baseline-v1,distil-whisper-large-v3
+20260317_200805_675,2026-03-17T20:08:05.675926-04:00,Play the Pixies Radio.,radio,6828,2848,5497,3652,15978,true,false,baseline-v1,distil-whisper-large-v3
+20260317_200833_788,2026-03-17T20:08:33.788537-04:00,Turn the light up.,other,6274,3686,294,2503,9072,false,true,baseline-v1,distil-whisper-large-v3
+20260317_200847_432,2026-03-17T20:08:47.432759-04:00,Turn the light off.,other,6753,3691,777,2589,10120,true,false,baseline-v1,distil-whisper-large-v3
+20260317_200917_407,2026-03-17T20:09:17.407225-04:00,What time is it?,time,17690,15197,102,2578,20372,true,false,baseline-v1,distil-whisper-large-v3
+20260317_200942_973,2026-03-17T20:09:42.973958-04:00,What time is it?,time,5263,2927,64,1832,7159,true,false,baseline-v1,distil-whisper-large-v3
+20260317_201100_607,2026-03-17T20:11:00.607626-04:00,Play WFNU.,music,8242,4520,880,2392,11515,true,false,baseline-v1,distil-whisper-large-v3
+20260317_201118_108,2026-03-17T20:11:18.108950-04:00,Play WFMU.,radio,6345,2970,2696,2339,11381,true,false,baseline-v1,distil-whisper-large-v3
+20260317_201702_585,2026-03-17T20:17:02.585124-04:00,Play the replacements.,music,16050,12752,2516,1968,20535,false,true,baseline-v1,distil-whisper-large-v3
+20260317_201846_693,2026-03-17T20:18:46.693399-04:00,Never mind.,other,11287,8696,,,11486,false,true,baseline-v1,distil-whisper-large-v3
+20260317_214616_506,2026-03-17T21:46:16.506765-04:00,What's the weather?,weather,17213,15381,81,4176,21471,true,false,baseline-v1,distil-whisper-large-v3
+20260317_214716_624,2026-03-17T21:47:16.624554-04:00,What's the weather?,weather,4847,2928,37,3574,8459,true,false,baseline-v1,distil-whisper-large-v3
+20260317_214730_056,2026-03-17T21:47:30.056158-04:00,What time is it?,time,4791,2849,103,2443,7338,true,false,baseline-v1,distil-whisper-large-v3
+20260317_214743_298,2026-03-17T21:47:43.298680-04:00,Play K-E-X-P.,music,6661,2846,5849,2204,14714,true,false,baseline-v1,distil-whisper-large-v3
+20260317_214845_963,2026-03-17T21:48:45.963771-04:00,Stop.,other,5098,3189,62,1415,6576,false,true,baseline-v1,distil-whisper-large-v3
+20260317_224924_508,2026-03-17T22:49:24.508580-04:00,Good night.,home,17437,15381,763,2828,21029,true,false,baseline-v1,distil-whisper-large-v3
+20260318_064630_503,2026-03-18T06:46:30.503519-04:00,Candlea. Kendall iron.,other,21154,16488,369,2454,23978,true,false,baseline-v1,distil-whisper-large-v3
+20260318_064742_735,2026-03-18T06:47:42.735580-04:00,Turn the light on.,other,5947,3273,372,1980,8300,true,false,baseline-v1,distil-whisper-large-v3
+20260318_125940_606,2026-03-18T12:59:40.606960-04:00,Turn on the speaker.,home,17316,15131,659,2077,20053,true,false,baseline-v1,distil-whisper-large-v3
+20260318_130014_113,2026-03-18T13:00:14.113052-04:00,play WNYC.,radio,5954,3555,4246,2408,12609,true,false,baseline-v1,distil-whisper-large-v3
+20260318_155247_741,2026-03-18T15:52:47.741328-04:00,Turn the speaker off.,other,16431,13559,652,1904,18988,false,true,baseline-v1,distil-whisper-large-v3
+20260318_173020_873,2026-03-18T17:30:20.873778-04:00,Sam.,other,5092,2896,290,2472,7854,true,true,baseline-v1,distil-whisper-large-v3
+20260318_181033_493,2026-03-18T18:10:33.493481-04:00,Turn the speaker on.,other,14870,12806,425,2075,17371,true,false,baseline-v1,distil-whisper-large-v3
+20260318_183257_968,2026-03-18T18:32:57.968534-04:00,Play WNYC.,radio,17353,13351,4572,2422,24348,true,false,baseline-v1,distil-whisper-large-v3
+20260318_194320_198,2026-03-18T19:43:20.198174-04:00,Play WQXR.,radio,16921,13099,5104,2568,24595,false,true,baseline-v1,distil-whisper-large-v3
+20260318_202515_280,2026-03-18T20:25:15.280785-04:00,Pause.,other,14102,11916,239,1467,15809,false,true,baseline-v1,distil-whisper-large-v3
+20260318_222955_450,2026-03-18T22:29:55.450537-04:00,Good night.,home,15985,13713,728,2784,19498,true,false,baseline-v1,distil-whisper-large-v3
+20260319_065418_614,2026-03-19T06:54:18.614591-04:00,Turn the light on.,other,18158,15617,459,1953,20571,true,false,baseline-v1,distil-whisper-large-v3
+20260319_222357_404,2026-03-19T22:23:57.404695-04:00,Turn the speaker on.,other,21351,18193,537,2544,24433,true,false,baseline-v1,distil-whisper-large-v3
+20260319_234310_942,2026-03-19T23:43:10.942316-04:00,Good night.,home,24849,16597,890,2803,28543,true,false,baseline-v1,distil-whisper-large-v3
+20260320_055153_771,2026-03-20T05:51:53.771966-04:00,Turn on the light.,home,17486,14511,380,1884,19750,true,false,baseline-v1,distil-whisper-large-v3
+20260323_063201_326,2026-03-23T06:32:01.326859-04:00,,other,21151,161,461,1948,23562,true,false,baseline-v1,distil-whisper-large-v3
+20260323_184519_907,2026-03-23T18:45:19.907448-04:00,Turn on the speaker.,home,17893,14414,521,2027,20442,true,false,baseline-v1,distil-whisper-large-v3
+20260323_184617_086,2026-03-23T18:46:17.086132-04:00,Play K-E-X-P.,music,6232,3253,5520,2233,13986,true,false,baseline-v1,distil-whisper-large-v3
+20260323_191025_472,2026-03-23T19:10:25.472748-04:00,Play QWQXR.,radio,17546,14187,2183,2175,21905,false,true,baseline-v1,distil-whisper-large-v3
+20260323_191051_034,2026-03-23T19:10:51.034972-04:00,Play WQXR.,radio,6223,2866,5069,2447,13739,true,false,baseline-v1,distil-whisper-large-v3
+20260323_204806_763,2026-03-23T20:48:06.763228-04:00,Stop.,other,25361,22055,151,1586,27098,false,true,baseline-v1,distil-whisper-large-v3
+20260323_234635_191,2026-03-23T23:46:35.191177-04:00,that react with the steel surface of the to force official camp,other,17321,20908,2267,5666,25256,true,false,baseline-v1,distil-whisper-large-v3
+20260324_065843_534,2026-03-24T06:58:43.534967-04:00,Turn the light on.,other,20845,18457,502,2432,23780,true,false,baseline-v1,distil-whisper-large-v3
+20260324_185844_027,2026-03-24T18:58:44.027171-04:00,Turn speaker on.,other,19734,15583,649,2083,22468,true,false,baseline-v1,distil-whisper-large-v3
+20260324_185915_550,2026-03-24T18:59:15.550560-04:00,Play WBGO.,music,6788,2980,4358,3509,14655,true,false,baseline-v1,distil-whisper-large-v3
+20260324_190032_754,2026-03-24T19:00:32.754847-04:00,Stop.,other,15263,12996,71,1483,16817,false,true,baseline-v1,distil-whisper-large-v3
+20260324_191536_393,2026-03-24T19:15:36.393049-04:00,Play W FNU.,music,21310,16442,4922,2112,28345,true,false,baseline-v1,distil-whisper-large-v3
+20260324_191850_513,2026-03-24T19:18:50.513916-04:00,,other,32464,116,5454,2554,40473,true,false,baseline-v1,distil-whisper-large-v3
+20260324_192842_419,2026-03-24T19:28:42.419823-04:00,player radio station based on Billy Holiday.,radio,27958,23775,1152,2180,31292,false,true,baseline-v1,distil-whisper-large-v3
+20260324_192935_768,2026-03-24T19:29:35.768244-04:00,,other,73044,129,475,2543,76062,true,true,baseline-v1,distil-whisper-large-v3
+20260324_202335_289,2026-03-24T20:23:35.289943-04:00,pause,other,14350,11729,514,1485,16350,false,true,baseline-v1,distil-whisper-large-v3
+20260324_203103_282,2026-03-24T20:31:03.282435-04:00,Play WFMU.,radio,28532,26359,7794,2147,38474,true,false,turbo-q4-silero-vad,whisper-large-v3-turbo-q4
+20260324_203628_506,2026-03-24T20:36:28.506352-04:00,Pause.,other,11116,9495,248,1622,12987,false,true,turbo-q4-silero-vad,whisper-large-v3-turbo-q4
+20260324_203931_424,2026-03-24T20:39:31.424781-04:00,You,other,10369,4628,3799,2628,16798,,false,turbo-q4-silero-vad,whisper-large-v3-turbo-q4
+20260324_204438_240,2026-03-24T20:44:38.240259-04:00,Pause.,other,9533,8147,369,1487,11390,,false,turbo-q4-silero-vad,whisper-large-v3-turbo-q4
+20260324_204454_838,2026-03-24T20:44:54.838788-04:00,You,other,6412,3768,4202,3775,14390,true,false,turbo-q4-silero-vad,whisper-large-v3-turbo-q4
+20260324_205201_332,2026-03-24T20:52:01.332486-04:00,Play WFMU.,radio,11924,9288,2740,2390,17055,,false,turbo-q4-silero-vad,whisper-large-v3-turbo-q4
