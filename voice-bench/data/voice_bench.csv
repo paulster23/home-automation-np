@@ -182,3 +182,17 @@ seed_0129,,Stop.,other,,13191,,,13191,,,pre-bench-history,distil-whisper-large-v
 20260324_204438_240,2026-03-24T20:44:38.240259-04:00,Pause.,other,9533,8147,369,1487,11390,,false,turbo-q4-silero-vad,whisper-large-v3-turbo-q4
 20260324_204454_838,2026-03-24T20:44:54.838788-04:00,You,other,6412,3768,4202,3775,14390,true,false,turbo-q4-silero-vad,whisper-large-v3-turbo-q4
 20260324_205201_332,2026-03-24T20:52:01.332486-04:00,Play WFMU.,radio,11924,9288,2740,2390,17055,,false,turbo-q4-silero-vad,whisper-large-v3-turbo-q4
+20260325_192232_876,2026-03-25T19:22:32.876936-04:00,Thank you.,other,14655,3664,5215,2636,22507,,true,turbo-q4-silero-vad,whisper-large-v3-turbo-q4
+20260325_195410_442,2026-03-25T19:54:10.442815-04:00,Stop.,other,10176,8833,287,1546,12011,false,true,turbo-q4-silero-vad,whisper-large-v3-turbo-q4
+20260325_222129_717,2026-03-25T22:21:29.717350-04:00,"40 to 34. So when I look at it, we were, we out worked in it.",other,25989,10960,473,5423,31886,true,true,turbo-q4-silero-vad,whisper-large-v3-turbo-q4
+20260325_222215_045,2026-03-25T22:22:15.045130-04:00,Good day.,other,4789,3115,154,2784,7729,true,false,turbo-q4-silero-vad,whisper-large-v3-turbo-q4
+20260325_222225_198,2026-03-25T22:22:25.198264-04:00,You can take them for the trigger. You can take them for the trigger.,other,17493,19766,778,2949,21222,true,false,turbo-q4-silero-vad,whisper-large-v3-turbo-q4
+20260326_065413_525,2026-03-26T06:54:13.525675-04:00,Turn the light on.,other,11880,9878,365,2334,14580,true,false,turbo-q4-silero-vad,whisper-large-v3-turbo-q4
+20260326_174204_680,2026-03-26T17:42:04.680533-04:00,Turn the speaker on.,other,11043,9517,417,2155,13616,true,false,turbo-q4-silero-vad,whisper-large-v3-turbo-q4
+20260326_174226_513,2026-03-26T17:42:26.513523-04:00,You,other,6837,14644,4125,2482,13446,true,false,turbo-q4-silero-vad,whisper-large-v3-turbo-q4
+20260326_202339_317,2026-03-26T20:23:39.317019-04:00,stop,other,11637,9652,597,1483,13718,false,true,turbo-q4-silero-vad,whisper-large-v3-turbo-q4
+20260326_222135_335,2026-03-26T22:21:35.335374-04:00,You,other,12897,3599,861,2863,16622,true,false,turbo-q4-silero-vad,whisper-large-v3-turbo-q4
+20260327_074809_107,2026-03-27T07:48:09.107582-04:00,okay turn the light on,other,25354,14466,422,2876,28653,true,false,turbo-q4-silero-vad,whisper-large-v3-turbo-q4
+20260327_075610_034,2026-03-27T07:56:10.034873-04:00,Thank you.,other,10574,2823,333,4014,14923,true,false,turbo-q4-silero-vad,whisper-large-v3-turbo-q4
+20260327_123817_222,2026-03-27T12:38:17.222635-04:00,Play WFMU.,radio,12813,10523,4074,3552,20440,true,false,turbo-q4-silero-vad,whisper-large-v3-turbo-q4
+20260327_125236_784,2026-03-27T12:52:36.784357-04:00,Stop!,other,7149,3721,93,1723,8966,false,true,turbo-q4-silero-vad,whisper-large-v3-turbo-q4

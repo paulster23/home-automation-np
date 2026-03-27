@@ -325,22 +325,44 @@ class VoiceBench:
 
         # ── Correlate with whisper STT entries ────────────────────────────
         if self.recent_stt and s.listening_start:
-            window_end = s.listening_end or s.pipeline_end or datetime.now().astimezone()
+            # The STT result is logged by whisper AFTER the listening phase ends
+            # (whisper runs during the HA "processing" phase), so use the full
+            # pipeline end as the right boundary.
+            window_end = s.pipeline_end or s.listening_end or datetime.now().astimezone()
 
-            # Prefer an STT entry whose wall-clock time falls inside the listening window
-            for stt_ts, text, duration_ms in reversed(self.recent_stt):
+            matched_idx = None
+
+            # Primary: find the STT entry closest in time to window_end that
+            # falls within the full pipeline window (listening_start → pipeline_end).
+            best_delta = None
+            for i, (stt_ts, text, duration_ms) in enumerate(self.recent_stt):
                 if s.listening_start <= stt_ts <= window_end:
-                    s.transcribed_text = text
-                    s.stt_ms           = duration_ms
-                    break
+                    delta = abs((stt_ts - window_end).total_seconds())
+                    if best_delta is None or delta < best_delta:
+                        best_delta = delta
+                        matched_idx = i
 
-            # Fallback: most recent STT entry within 5s of listening end
+            if matched_idx is not None:
+                stt_ts, text, duration_ms = self.recent_stt[matched_idx]
+                s.transcribed_text = text
+                s.stt_ms           = duration_ms
+
+            # Fallback: nearest STT entry within 8s of window_end
             if not s.transcribed_text and self.recent_stt:
-                stt_ts, text, duration_ms = self.recent_stt[-1]
-                delta = abs((stt_ts - window_end).total_seconds())
-                if delta < 5:
+                best_delta = None
+                for i, (stt_ts, text, duration_ms) in enumerate(self.recent_stt):
+                    delta = abs((stt_ts - window_end).total_seconds())
+                    if delta < 8 and (best_delta is None or delta < best_delta):
+                        best_delta = delta
+                        matched_idx = i
+                if matched_idx is not None:
+                    stt_ts, text, duration_ms = self.recent_stt[matched_idx]
                     s.transcribed_text = text
                     s.stt_ms           = duration_ms
+
+            # Consume the matched entry so it can't pollute the next session
+            if matched_idx is not None:
+                self.recent_stt.pop(matched_idx)
 
         row = s.to_row(self.config_tag, self.whisper_model)
         self._append_csv(row)
