@@ -20,7 +20,7 @@ port: 7700
 # ── Config tag ────────────────────────────────────────────────────────────
 # Change this whenever you modify a setting you want to A/B compare.
 # Examples: "baseline-v1", "turbo-model", "aggressive-vad", "tv-off-test"
-tag: "turbo-q4-silero-vad"
+tag: "small-mlx-4bit-silero-vad"
 
 # Free-text notes (shown as tooltip on the model chip in the dashboard)
-notes: "whisper-large-v3-turbo-q4, Silero-VAD early trigger (450ms silence), pre-mute enabled"
+notes: "whisper-small-mlx-4bit, Silero-VAD early trigger (450ms silence), pre-mute enabled"

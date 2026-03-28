@@ -334,13 +334,24 @@ class VoiceBench:
 
             # Primary: find the STT entry closest in time to window_end that
             # falls within the full pipeline window (listening_start → pipeline_end).
+            # Prefer non-empty transcriptions — the small model can produce fast
+            # empty hits from noise at the edges of the window that would otherwise
+            # win on proximity alone.
             best_delta = None
+            best_delta_nonempty = None
+            matched_idx_nonempty = None
             for i, (stt_ts, text, duration_ms) in enumerate(self.recent_stt):
                 if s.listening_start <= stt_ts <= window_end:
                     delta = abs((stt_ts - window_end).total_seconds())
+                    if text and (best_delta_nonempty is None or delta < best_delta_nonempty):
+                        best_delta_nonempty = delta
+                        matched_idx_nonempty = i
                     if best_delta is None or delta < best_delta:
                         best_delta = delta
                         matched_idx = i
+            # Prefer the closest non-empty match if one exists
+            if matched_idx_nonempty is not None:
+                matched_idx = matched_idx_nonempty
 
             if matched_idx is not None:
                 stt_ts, text, duration_ms = self.recent_stt[matched_idx]
