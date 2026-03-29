@@ -146,7 +146,10 @@ class VoiceBench:
     def __init__(self, config: dict):
         self.config       = config
         self.config_tag   = config.get("tag", "default")
-        self.whisper_model = detect_whisper_model(config.get("whisper_plist", ""))
+        self.whisper_model = (
+            config.get("whisper_model")
+            or detect_whisper_model(config.get("whisper_plist", ""))
+        )
         self.notes        = config.get("notes", "")
 
         self.current_session: Optional[PipelineSession] = None
@@ -421,15 +424,30 @@ class VoiceBench:
                         continue
 
                     # Transcribed text line
-                    m = re.match(r"INFO:wyoming_mlx_whisper\.handler:\s*(.+)", line)
+                    # Matches both wyoming_mlx_whisper and wyoming_whisperkit handler loggers
+                    m = re.match(r"INFO:wyoming_(?:mlx_whisper|whisperkit)\.handler:\s*(.+)", line)
                     if m:
                         pending_text = m.group(1).strip()
                         continue
 
-                    # Timing line — immediately follows the transcription line
+                    # Timing line — wyoming_mlx_whisper emits a WARNING:asyncio slow-callback line
                     m = re.match(r"WARNING:asyncio:Executing .+? took ([\d.]+) seconds", line)
                     if m:
                         duration_ms = int(float(m.group(1)) * 1000)
+                        ts_now = datetime.now().astimezone()
+                        self.recent_stt.append((ts_now, pending_text, duration_ms))
+                        if len(self.recent_stt) > 20:
+                            self.recent_stt = self.recent_stt[-20:]
+                        print(f"[voice-bench] STT  '{(pending_text or '')[:45]}'  {duration_ms}ms")
+                        pending_text = None
+                        continue
+
+                    # Timing line — wyoming_whisperkit logs "WhisperKit internal time: Xms  wall: Yms"
+                    # We use the wall time so it matches the same real-world latency concept as the
+                    # asyncio slow-callback figure (subprocess spawn + CoreML inference).
+                    m = re.match(r"DEBUG:wyoming_whisperkit\.handler:WhisperKit internal time: [\d.]+ ms\s+wall: ([\d.]+) ms", line)
+                    if m:
+                        duration_ms = int(float(m.group(1)))
                         ts_now = datetime.now().astimezone()
                         self.recent_stt.append((ts_now, pending_text, duration_ms))
                         if len(self.recent_stt) > 20:
@@ -454,7 +472,13 @@ class VoiceBench:
         await runner.setup()
         port = self.config.get("port", 7700)
         site = web.TCPSite(runner, "0.0.0.0", port)
-        await site.start()
+        try:
+            await site.start()
+        except OSError as e:
+            if e.errno == 48:  # Address already in use
+                print(f"[voice-bench] Port {port} already in use — another instance is running. Exiting cleanly.")
+                os._exit(0)  # Bypass asyncio.gather which swallows SystemExit
+            raise
         print(f"[voice-bench] Dashboard →  http://localhost:{port}")
 
     async def _serve_index(self, _req):
@@ -517,3 +541,5 @@ if __name__ == "__main__":
         asyncio.run(bench.run())
     except KeyboardInterrupt:
         print("\n[voice-bench] Stopped.")
+    except SystemExit:
+        raise

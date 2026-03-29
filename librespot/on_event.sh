@@ -104,6 +104,16 @@ case "$PLAYER_EVENT" in
     log "→ reset state to stopped (new session)"
     ;;
 
+  play_request_id_changed)
+    # Fires on every new playback request, including voice-triggered plays via
+    # spotify_voice_assistant.play (Spotify Web API direct). That path bypasses
+    # the normal session lifecycle so session_connected never fires, leaving the
+    # state file stale as "playing". Reset here so the next "playing" event sends
+    # the webhook to reconnect naboo_media_player to the HTTP stream.
+    echo "stopped" > "$STATE_FILE"
+    log "→ reset state to stopped (new play request)"
+    ;;
+
   # Ignore everything else (preloading, changed, volume_set, etc.)
   *)
     log "ignored"

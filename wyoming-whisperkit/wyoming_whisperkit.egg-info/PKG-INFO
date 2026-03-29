@@ -1,0 +1,17 @@
+Metadata-Version: 2.4
+Name: wyoming_whisperkit
+Version: 1.0.0
+Summary: Wyoming Server for WhisperKit (Apple Silicon native STT)
+Home-page: https://github.com/argmaxinc/WhisperKit
+License: MIT
+Requires-Python: >=3.9
+Requires-Dist: wyoming
+Requires-Dist: silero-vad
+Requires-Dist: onnxruntime
+Requires-Dist: torch
+Requires-Dist: numpy
+Dynamic: home-page
+Dynamic: license
+Dynamic: requires-dist
+Dynamic: requires-python
+Dynamic: summary

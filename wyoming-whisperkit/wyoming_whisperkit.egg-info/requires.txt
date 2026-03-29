@@ -1,0 +1,5 @@
+wyoming
+silero-vad
+onnxruntime
+torch
+numpy

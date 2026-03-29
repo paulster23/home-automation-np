@@ -1,0 +1,2 @@
+[console_scripts]
+wyoming-whisperkit = wyoming_whisperkit.__main__:run

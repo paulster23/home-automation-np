@@ -1,0 +1,11 @@
+README.md
+setup.py
+wyoming_whisperkit/__init__.py
+wyoming_whisperkit/__main__.py
+wyoming_whisperkit/handler.py
+wyoming_whisperkit.egg-info/PKG-INFO
+wyoming_whisperkit.egg-info/SOURCES.txt
+wyoming_whisperkit.egg-info/dependency_links.txt
+wyoming_whisperkit.egg-info/entry_points.txt
+wyoming_whisperkit.egg-info/requires.txt
+wyoming_whisperkit.egg-info/top_level.txt

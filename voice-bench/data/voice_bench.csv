@@ -243,3 +243,23 @@ seed_0129,,Stop.,other,,13191,,,13191,,,pre-bench-history,distil-whisper-large-v
 20260329_105704_231,2026-03-29T10:57:04.231087-04:00,Play KCRW.,radio,8997,6431,13929,2330,25257,false,true,small-mlx-4bit-silero-vad,whisper-small-mlx-4bit
 20260329_151732_274,2026-03-29T15:17:32.274143-04:00,Play WFMU,radio,8750,5543,2784,2390,13925,false,true,small-mlx-4bit-silero-vad,whisper-small-mlx-4bit
 20260329_154213_531,2026-03-29T15:42:13.531452-04:00,Play WFMU,radio,8702,5890,3140,2176,14019,false,true,small-mlx-4bit-silero-vad,whisper-small-mlx-4bit
+20260329_163238_425,2026-03-29T16:32:38.425816-04:00,Play light zipline,music,5138,3349,1941,2439,9519,true,false,small-mlx-4bit-silero-vad,whisper-small-mlx-4bit
+20260329_163442_481,2026-03-29T16:34:42.481734-04:00,Play the breeders.,music,3490,1125,1478,1530,6499,true,false,small-mlx-4bit-silero-vad,whisper-small-mlx-4bit
+20260329_163854_620,2026-03-29T16:38:54.620777-04:00,Play the Pixies.,music,3918,1420,910,1542,6371,false,true,small-mlx-4bit-silero-vad,whisper-small-mlx-4bit
+20260329_164532_407,2026-03-29T16:45:32.407305-04:00,Play the Pixies!,music,5056,3267,831,1586,7473,true,false,whisperkit-small-silero-vad,whisperkit-small
+20260329_164633_559,2026-03-29T16:46:33.559337-04:00,What time is it?,time,3604,2344,175,21665,25445,true,false,whisperkit-small-silero-vad,whisperkit-small
+20260329_170621_679,2026-03-29T17:06:21.679679-04:00,,other,5999,,867,1750,8617,true,false,whisperkit-small-silero-vad,unknown
+20260329_171155_138,2026-03-29T17:11:55.138863-04:00,,other,3946,,801,1669,6417,,false,whisperkit-small-silero-vad,unknown
+20260329_171322_828,2026-03-29T17:13:22.828402-04:00,,other,3794,,206,2440,6441,true,false,whisperkit-small-silero-vad,unknown
+20260329_171628_874,2026-03-29T17:16:28.874368-04:00,,other,4670,2365,33,2552,7257,,false,whisperkit-small-silero-vad,unknown
+20260329_171744_706,2026-03-29T17:17:44.706312-04:00,What time is it?,time,2771,898,15,2295,5083,,false,whisperkit-small-silero-vad,whisperkit-small
+20260329_171752_699,2026-03-29T17:17:52.699717-04:00,Play the Pixies.,music,3133,919,1279,1656,6069,true,false,whisperkit-small-silero-vad,whisperkit-small
+20260329_171806_443,2026-03-29T17:18:06.443851-04:00,Play the replacements.,music,4227,1055,781,1761,6770,false,true,whisperkit-small-silero-vad,whisperkit-small
+20260329_171821_836,2026-03-29T17:18:21.836821-04:00,Clay WFMU,radio,3851,1112,68,2365,6284,false,true,whisperkit-small-silero-vad,whisperkit-small
+20260329_171830_977,2026-03-29T17:18:30.977408-04:00,Play WFMU,radio,4079,915,2219,2365,8664,true,false,whisperkit-small-silero-vad,whisperkit-small
+20260329_171845_661,2026-03-29T17:18:45.661069-04:00,What's the weather today?,weather,3644,937,31,3242,6917,false,true,whisperkit-small-silero-vad,whisperkit-small
+20260329_171856_123,2026-03-29T17:18:56.123626-04:00,Play KEXP.,radio,4690,1150,4112,2254,11056,true,false,whisperkit-small-silero-vad,whisperkit-small
+20260329_171945_690,2026-03-29T17:19:45.690918-04:00,Turn on the light.,home,3908,1097,256,1611,5776,false,true,whisperkit-small-silero-vad,whisperkit-small
+20260329_171954_595,2026-03-29T17:19:54.595348-04:00,Turn off the light.,home,3396,1138,251,1640,5287,true,false,whisperkit-small-silero-vad,whisperkit-small
+20260329_172000_931,2026-03-29T17:20:00.931607-04:00,Turn off the speaker.,home,3120,1027,232,1705,5059,true,false,whisperkit-small-silero-vad,whisperkit-small
+20260329_172006_987,2026-03-29T17:20:06.987904-04:00,Turn on the speaker.,home,3292,1066,235,1703,5231,true,false,whisperkit-small-silero-vad,whisperkit-small

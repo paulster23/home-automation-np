@@ -1,0 +1,128 @@
+Traceback (most recent call last):
+  File "/Users/media/containers/home-automation/voice-bench/voice_bench.py", line 517, in <module>
+    asyncio.run(bench.run())
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/runners.py", line 44, in run
+    return loop.run_until_complete(main)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/base_events.py", line 642, in run_until_complete
+    return future.result()
+  File "/Users/media/containers/home-automation/voice-bench/voice_bench.py", line 490, in run
+    await asyncio.gather(
+  File "/Users/media/containers/home-automation/voice-bench/voice_bench.py", line 457, in start_server
+    await site.start()
+  File "/Users/media/containers/home-automation/voice-bench/.venv/lib/python3.9/site-packages/aiohttp/web_runner.py", line 121, in start
+    self._server = await loop.create_server(
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/base_events.py", line 1494, in create_server
+    raise OSError(err.errno, 'error while attempting '
+OSError: [Errno 48] error while attempting to bind on address ('0.0.0.0', 7700): address already in use
+Traceback (most recent call last):
+  File "/Users/media/containers/home-automation/voice-bench/voice_bench.py", line 517, in <module>
+    asyncio.run(bench.run())
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/runners.py", line 44, in run
+    return loop.run_until_complete(main)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/base_events.py", line 642, in run_until_complete
+    return future.result()
+  File "/Users/media/containers/home-automation/voice-bench/voice_bench.py", line 490, in run
+    await asyncio.gather(
+  File "/Users/media/containers/home-automation/voice-bench/voice_bench.py", line 457, in start_server
+    await site.start()
+  File "/Users/media/containers/home-automation/voice-bench/.venv/lib/python3.9/site-packages/aiohttp/web_runner.py", line 121, in start
+    self._server = await loop.create_server(
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/base_events.py", line 1494, in create_server
+    raise OSError(err.errno, 'error while attempting '
+OSError: [Errno 48] error while attempting to bind on address ('0.0.0.0', 7700): address already in use
+Traceback (most recent call last):
+  File "/Users/media/containers/home-automation/voice-bench/voice_bench.py", line 517, in <module>
+    asyncio.run(bench.run())
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/runners.py", line 44, in run
+    return loop.run_until_complete(main)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/base_events.py", line 642, in run_until_complete
+    return future.result()
+  File "/Users/media/containers/home-automation/voice-bench/voice_bench.py", line 490, in run
+    await asyncio.gather(
+  File "/Users/media/containers/home-automation/voice-bench/voice_bench.py", line 457, in start_server
+    await site.start()
+  File "/Users/media/containers/home-automation/voice-bench/.venv/lib/python3.9/site-packages/aiohttp/web_runner.py", line 121, in start
+    self._server = await loop.create_server(
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/base_events.py", line 1494, in create_server
+    raise OSError(err.errno, 'error while attempting '
+OSError: [Errno 48] error while attempting to bind on address ('0.0.0.0', 7700): address already in use
+Traceback (most recent call last):
+  File "/Users/media/containers/home-automation/voice-bench/voice_bench.py", line 517, in <module>
+    asyncio.run(bench.run())
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/runners.py", line 44, in run
+    return loop.run_until_complete(main)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/base_events.py", line 642, in run_until_complete
+    return future.result()
+  File "/Users/media/containers/home-automation/voice-bench/voice_bench.py", line 490, in run
+    await asyncio.gather(
+  File "/Users/media/containers/home-automation/voice-bench/voice_bench.py", line 457, in start_server
+    await site.start()
+  File "/Users/media/containers/home-automation/voice-bench/.venv/lib/python3.9/site-packages/aiohttp/web_runner.py", line 121, in start
+    self._server = await loop.create_server(
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/base_events.py", line 1494, in create_server
+    raise OSError(err.errno, 'error while attempting '
+OSError: [Errno 48] error while attempting to bind on address ('0.0.0.0', 7700): address already in use
+Traceback (most recent call last):
+  File "/Users/media/containers/home-automation/voice-bench/voice_bench.py", line 517, in <module>
+    asyncio.run(bench.run())
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/runners.py", line 44, in run
+    return loop.run_until_complete(main)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/base_events.py", line 642, in run_until_complete
+    return future.result()
+  File "/Users/media/containers/home-automation/voice-bench/voice_bench.py", line 490, in run
+    await asyncio.gather(
+  File "/Users/media/containers/home-automation/voice-bench/voice_bench.py", line 457, in start_server
+    await site.start()
+  File "/Users/media/containers/home-automation/voice-bench/.venv/lib/python3.9/site-packages/aiohttp/web_runner.py", line 121, in start
+    self._server = await loop.create_server(
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/base_events.py", line 1494, in create_server
+    raise OSError(err.errno, 'error while attempting '
+OSError: [Errno 48] error while attempting to bind on address ('0.0.0.0', 7700): address already in use
+Traceback (most recent call last):
+  File "/Users/media/containers/home-automation/voice-bench/voice_bench.py", line 517, in <module>
+    asyncio.run(bench.run())
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/runners.py", line 44, in run
+    return loop.run_until_complete(main)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/base_events.py", line 642, in run_until_complete
+    return future.result()
+  File "/Users/media/containers/home-automation/voice-bench/voice_bench.py", line 490, in run
+    await asyncio.gather(
+  File "/Users/media/containers/home-automation/voice-bench/voice_bench.py", line 457, in start_server
+    await site.start()
+  File "/Users/media/containers/home-automation/voice-bench/.venv/lib/python3.9/site-packages/aiohttp/web_runner.py", line 121, in start
+    self._server = await loop.create_server(
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/base_events.py", line 1494, in create_server
+    raise OSError(err.errno, 'error while attempting '
+OSError: [Errno 48] error while attempting to bind on address ('0.0.0.0', 7700): address already in use
+Traceback (most recent call last):
+  File "/Users/media/containers/home-automation/voice-bench/voice_bench.py", line 517, in <module>
+    asyncio.run(bench.run())
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/runners.py", line 44, in run
+    return loop.run_until_complete(main)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/base_events.py", line 642, in run_until_complete
+    return future.result()
+  File "/Users/media/containers/home-automation/voice-bench/voice_bench.py", line 490, in run
+    await asyncio.gather(
+  File "/Users/media/containers/home-automation/voice-bench/voice_bench.py", line 457, in start_server
+    await site.start()
+  File "/Users/media/containers/home-automation/voice-bench/.venv/lib/python3.9/site-packages/aiohttp/web_runner.py", line 121, in start
+    self._server = await loop.create_server(
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/base_events.py", line 1494, in create_server
+    raise OSError(err.errno, 'error while attempting '
+OSError: [Errno 48] error while attempting to bind on address ('0.0.0.0', 7700): address already in use
+Traceback (most recent call last):
+  File "/Users/media/containers/home-automation/voice-bench/voice_bench.py", line 517, in <module>
+    asyncio.run(bench.run())
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/runners.py", line 44, in run
+    return loop.run_until_complete(main)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/base_events.py", line 642, in run_until_complete
+    return future.result()
+  File "/Users/media/containers/home-automation/voice-bench/voice_bench.py", line 490, in run
+    await asyncio.gather(
+  File "/Users/media/containers/home-automation/voice-bench/voice_bench.py", line 457, in start_server
+    await site.start()
+  File "/Users/media/containers/home-automation/voice-bench/.venv/lib/python3.9/site-packages/aiohttp/web_runner.py", line 121, in start
+    self._server = await loop.create_server(
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/base_events.py", line 1494, in create_server
+    raise OSError(err.errno, 'error while attempting '
+OSError: [Errno 48] error while attempting to bind on address ('0.0.0.0', 7700): address already in use

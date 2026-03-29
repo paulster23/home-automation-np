@@ -1,0 +1,296 @@
+DEBUG:__main__:Namespace(bridge='/Users/media/containers/home-automation/mac-whisper-speedtest/tools/whisperkit-bridge/.build/release/whisperkit-bridge', model='small', uri='tcp://0.0.0.0:7892', debug=True, log_format='%(levelname)s:%(name)s:%(message)s', vad=True)
+INFO:__main__:Using whisperkit-bridge: /Users/media/containers/home-automation/mac-whisper-speedtest/tools/whisperkit-bridge/.build/release/whisperkit-bridge
+INFO:__main__:Warming up WhisperKit model (small) — first run loads CoreML graphs…
+INFO:__main__:WhisperKit warm ✓
+INFO:__main__:Loading Silero-VAD (ONNX backend)…
+DEBUG:torio._extension.utils:Loading FFmpeg6
+DEBUG:torio._extension.utils:Failed to load FFmpeg6 extension.
+Traceback (most recent call last):
+  File "/Users/media/containers/home-automation/wyoming-whisperkit/.venv/lib/python3.9/site-packages/torio/_extension/utils.py", line 116, in _find_ffmpeg_extension
+    ext = _find_versionsed_ffmpeg_extension(ffmpeg_ver)
+  File "/Users/media/containers/home-automation/wyoming-whisperkit/.venv/lib/python3.9/site-packages/torio/_extension/utils.py", line 108, in _find_versionsed_ffmpeg_extension
+    _load_lib(lib)
+  File "/Users/media/containers/home-automation/wyoming-whisperkit/.venv/lib/python3.9/site-packages/torio/_extension/utils.py", line 94, in _load_lib
+    torch.ops.load_library(path)
+  File "/Users/media/containers/home-automation/wyoming-whisperkit/.venv/lib/python3.9/site-packages/torch/_ops.py", line 1478, in load_library
+    ctypes.CDLL(path)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/ctypes/__init__.py", line 366, in __init__
+    self._handle = _dlopen(self._name, mode)
+OSError: dlopen(/Users/media/containers/home-automation/wyoming-whisperkit/.venv/lib/python3.9/site-packages/torio/lib/libtorio_ffmpeg6.so, 0x0006): Library not loaded: @rpath/libavutil.58.dylib
+  Referenced from: <D0BF8BE2-7386-31C9-B6EE-5916A74CB5FE> /Users/media/containers/home-automation/wyoming-whisperkit/.venv/lib/python3.9/site-packages/torio/lib/libtorio_ffmpeg6.so
+  Reason: no LC_RPATH's found
+DEBUG:torio._extension.utils:Loading FFmpeg5
+DEBUG:torio._extension.utils:Failed to load FFmpeg5 extension.
+Traceback (most recent call last):
+  File "/Users/media/containers/home-automation/wyoming-whisperkit/.venv/lib/python3.9/site-packages/torio/_extension/utils.py", line 116, in _find_ffmpeg_extension
+    ext = _find_versionsed_ffmpeg_extension(ffmpeg_ver)
+  File "/Users/media/containers/home-automation/wyoming-whisperkit/.venv/lib/python3.9/site-packages/torio/_extension/utils.py", line 108, in _find_versionsed_ffmpeg_extension
+    _load_lib(lib)
+  File "/Users/media/containers/home-automation/wyoming-whisperkit/.venv/lib/python3.9/site-packages/torio/_extension/utils.py", line 94, in _load_lib
+    torch.ops.load_library(path)
+  File "/Users/media/containers/home-automation/wyoming-whisperkit/.venv/lib/python3.9/site-packages/torch/_ops.py", line 1478, in load_library
+    ctypes.CDLL(path)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/ctypes/__init__.py", line 366, in __init__
+    self._handle = _dlopen(self._name, mode)
+OSError: dlopen(/Users/media/containers/home-automation/wyoming-whisperkit/.venv/lib/python3.9/site-packages/torio/lib/libtorio_ffmpeg5.so, 0x0006): Library not loaded: @rpath/libavutil.57.dylib
+  Referenced from: <E89DCAAE-7EC0-3ED8-B59D-1022058313DB> /Users/media/containers/home-automation/wyoming-whisperkit/.venv/lib/python3.9/site-packages/torio/lib/libtorio_ffmpeg5.so
+  Reason: no LC_RPATH's found
+DEBUG:torio._extension.utils:Loading FFmpeg4
+DEBUG:torio._extension.utils:Failed to load FFmpeg4 extension.
+Traceback (most recent call last):
+  File "/Users/media/containers/home-automation/wyoming-whisperkit/.venv/lib/python3.9/site-packages/torio/_extension/utils.py", line 116, in _find_ffmpeg_extension
+    ext = _find_versionsed_ffmpeg_extension(ffmpeg_ver)
+  File "/Users/media/containers/home-automation/wyoming-whisperkit/.venv/lib/python3.9/site-packages/torio/_extension/utils.py", line 108, in _find_versionsed_ffmpeg_extension
+    _load_lib(lib)
+  File "/Users/media/containers/home-automation/wyoming-whisperkit/.venv/lib/python3.9/site-packages/torio/_extension/utils.py", line 94, in _load_lib
+    torch.ops.load_library(path)
+  File "/Users/media/containers/home-automation/wyoming-whisperkit/.venv/lib/python3.9/site-packages/torch/_ops.py", line 1478, in load_library
+    ctypes.CDLL(path)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/ctypes/__init__.py", line 366, in __init__
+    self._handle = _dlopen(self._name, mode)
+OSError: dlopen(/Users/media/containers/home-automation/wyoming-whisperkit/.venv/lib/python3.9/site-packages/torio/lib/libtorio_ffmpeg4.so, 0x0006): Library not loaded: @rpath/libavutil.56.dylib
+  Referenced from: <F144F519-5261-3419-86B8-D8167D854D9A> /Users/media/containers/home-automation/wyoming-whisperkit/.venv/lib/python3.9/site-packages/torio/lib/libtorio_ffmpeg4.so
+  Reason: no LC_RPATH's found
+DEBUG:torio._extension.utils:Loading FFmpeg
+DEBUG:torio._extension.utils:Failed to load FFmpeg extension.
+Traceback (most recent call last):
+  File "/Users/media/containers/home-automation/wyoming-whisperkit/.venv/lib/python3.9/site-packages/torio/_extension/utils.py", line 116, in _find_ffmpeg_extension
+    ext = _find_versionsed_ffmpeg_extension(ffmpeg_ver)
+  File "/Users/media/containers/home-automation/wyoming-whisperkit/.venv/lib/python3.9/site-packages/torio/_extension/utils.py", line 106, in _find_versionsed_ffmpeg_extension
+    raise RuntimeError(f"FFmpeg{version} extension is not available.")
+RuntimeError: FFmpeg extension is not available.
+INFO:__main__:Silero-VAD ready ✓
+INFO:__main__:wyoming-whisperkit ready on tcp://0.0.0.0:7892
+DEBUG:wyoming_whisperkit.handler:Sent info
+DEBUG:wyoming_whisperkit.handler:Sent info
+DEBUG:wyoming_whisperkit.handler:Transcribe event
+DEBUG:wyoming_whisperkit.handler:Receiving audio
+DEBUG:wyoming_whisperkit.handler:VAD armed (608 ms speech)
+INFO:wyoming_whisperkit.handler:VAD early trigger — 1.8 s audio collected (speech=928 ms, silence=480 ms)
+DEBUG:wyoming_whisperkit.handler:Transcribing 1.8 s of audio via WhisperKit (trigger=vad)
+DEBUG:wyoming_whisperkit.handler:WhisperKit internal time: 1121 ms  wall: 3267 ms
+INFO:wyoming_whisperkit.handler:Play the Pixies!
+DEBUG:wyoming_whisperkit.handler:Completed request
+DEBUG:wyoming_whisperkit.handler:Receiving audio
+DEBUG:wyoming_whisperkit.handler:AudioStop received (vad_triggered=False)
+DEBUG:wyoming_whisperkit.handler:Transcribing 0.8 s of audio via WhisperKit (trigger=audio_stop)
+DEBUG:wyoming_whisperkit.handler:WhisperKit internal time: 4 ms  wall: 1282 ms
+INFO:wyoming_whisperkit.handler:
+DEBUG:wyoming_whisperkit.handler:Completed request
+DEBUG:wyoming_whisperkit.handler:Transcribe event
+DEBUG:wyoming_whisperkit.handler:Receiving audio
+DEBUG:wyoming_whisperkit.handler:VAD armed (608 ms speech)
+INFO:wyoming_whisperkit.handler:VAD early trigger — 1.3 s audio collected (speech=608 ms, silence=480 ms)
+DEBUG:wyoming_whisperkit.handler:Transcribing 1.3 s of audio via WhisperKit (trigger=vad)
+DEBUG:wyoming_whisperkit.handler:WhisperKit internal time: 542 ms  wall: 2344 ms
+INFO:wyoming_whisperkit.handler:What time is it?
+DEBUG:wyoming_whisperkit.handler:Completed request
+DEBUG:wyoming_whisperkit.handler:Receiving audio
+DEBUG:wyoming_whisperkit.handler:AudioStop received (vad_triggered=False)
+DEBUG:wyoming_whisperkit.handler:Transcribing 0.6 s of audio via WhisperKit (trigger=audio_stop)
+DEBUG:wyoming_whisperkit.handler:WhisperKit internal time: 25 ms  wall: 1653 ms
+INFO:wyoming_whisperkit.handler:
+DEBUG:wyoming_whisperkit.handler:Completed request
+DEBUG:wyoming_whisperkit.handler:Transcribe event
+DEBUG:wyoming_whisperkit.handler:Receiving audio
+DEBUG:wyoming_whisperkit.handler:VAD armed (608 ms speech)
+INFO:wyoming_whisperkit.handler:VAD early trigger — 2.3 s audio collected (speech=992 ms, silence=480 ms)
+DEBUG:wyoming_whisperkit.handler:Transcribing 2.3 s of audio via WhisperKit (trigger=vad)
+DEBUG:wyoming_whisperkit.handler:WhisperKit internal time: 581 ms  wall: 3670 ms
+INFO:wyoming_whisperkit.handler:Play the Pixies!
+DEBUG:wyoming_whisperkit.handler:Completed request
+DEBUG:wyoming_whisperkit.handler:Receiving audio
+DEBUG:wyoming_whisperkit.handler:AudioStop received (vad_triggered=False)
+DEBUG:wyoming_whisperkit.handler:Transcribing 0.8 s of audio via WhisperKit (trigger=audio_stop)
+DEBUG:wyoming_whisperkit.handler:WhisperKit internal time: 26 ms  wall: 2434 ms
+INFO:wyoming_whisperkit.handler:
+DEBUG:wyoming_whisperkit.handler:Completed request
+DEBUG:wyoming_whisperkit.handler:Transcribe event
+DEBUG:wyoming_whisperkit.handler:Receiving audio
+DEBUG:wyoming_whisperkit.handler:VAD armed (608 ms speech)
+INFO:wyoming_whisperkit.handler:VAD early trigger — 2.0 s audio collected (speech=864 ms, silence=480 ms)
+DEBUG:wyoming_whisperkit.handler:Transcribing 2.0 s of audio via WhisperKit (trigger=vad)
+DEBUG:wyoming_whisperkit.handler:WhisperKit internal time: 385 ms  wall: 1927 ms
+INFO:wyoming_whisperkit.handler:Play the Pixies.
+DEBUG:wyoming_whisperkit.handler:Completed request
+DEBUG:wyoming_whisperkit.handler:Receiving audio
+DEBUG:wyoming_whisperkit.handler:AudioStop received (vad_triggered=False)
+DEBUG:wyoming_whisperkit.handler:Transcribing 0.6 s of audio via WhisperKit (trigger=audio_stop)
+DEBUG:wyoming_whisperkit.handler:WhisperKit internal time: 40 ms  wall: 1182 ms
+INFO:wyoming_whisperkit.handler:
+DEBUG:wyoming_whisperkit.handler:Completed request
+DEBUG:wyoming_whisperkit.handler:Transcribe event
+DEBUG:wyoming_whisperkit.handler:Receiving audio
+DEBUG:wyoming_whisperkit.handler:VAD armed (608 ms speech)
+INFO:wyoming_whisperkit.handler:VAD early trigger — 1.8 s audio collected (speech=1056 ms, silence=480 ms)
+DEBUG:wyoming_whisperkit.handler:Transcribing 1.8 s of audio via WhisperKit (trigger=vad)
+DEBUG:wyoming_whisperkit.handler:WhisperKit internal time: 693 ms  wall: 1958 ms
+INFO:wyoming_whisperkit.handler:3W-FMU
+DEBUG:wyoming_whisperkit.handler:Completed request
+DEBUG:wyoming_whisperkit.handler:Receiving audio
+DEBUG:wyoming_whisperkit.handler:AudioStop received (vad_triggered=False)
+DEBUG:wyoming_whisperkit.handler:Transcribing 0.7 s of audio via WhisperKit (trigger=audio_stop)
+DEBUG:wyoming_whisperkit.handler:WhisperKit internal time: 4 ms  wall: 1287 ms
+INFO:wyoming_whisperkit.handler:
+DEBUG:wyoming_whisperkit.handler:Completed request
+DEBUG:wyoming_whisperkit.handler:Transcribe event
+DEBUG:wyoming_whisperkit.handler:Receiving audio
+DEBUG:wyoming_whisperkit.handler:AudioStop received (vad_triggered=False)
+DEBUG:wyoming_whisperkit.handler:Transcribing 2.3 s of audio via WhisperKit (trigger=audio_stop)
+DEBUG:wyoming_whisperkit.handler:WhisperKit internal time: 429 ms  wall: 2365 ms
+INFO:wyoming_whisperkit.handler:What time is it?
+DEBUG:wyoming_whisperkit.handler:Completed request
+DEBUG:wyoming_whisperkit.handler:Transcribe event
+DEBUG:wyoming_whisperkit.handler:Receiving audio
+DEBUG:wyoming_whisperkit.handler:VAD armed (608 ms speech)
+INFO:wyoming_whisperkit.handler:VAD early trigger — 1.3 s audio collected (speech=640 ms, silence=480 ms)
+DEBUG:wyoming_whisperkit.handler:Transcribing 1.3 s of audio via WhisperKit (trigger=vad)
+DEBUG:wyoming_whisperkit.handler:WhisperKit internal time: 337 ms  wall: 1509 ms
+INFO:wyoming_whisperkit.handler:What time is it?
+DEBUG:wyoming_whisperkit.handler:Completed request
+DEBUG:wyoming_whisperkit.handler:Receiving audio
+DEBUG:wyoming_whisperkit.handler:AudioStop received (vad_triggered=False)
+DEBUG:wyoming_whisperkit.handler:Transcribing 0.5 s of audio via WhisperKit (trigger=audio_stop)
+DEBUG:wyoming_whisperkit.handler:WhisperKit internal time: 4 ms  wall: 898 ms
+INFO:wyoming_whisperkit.handler:
+DEBUG:wyoming_whisperkit.handler:Completed request
+DEBUG:wyoming_whisperkit.handler:Transcribe event
+DEBUG:wyoming_whisperkit.handler:Receiving audio
+DEBUG:wyoming_whisperkit.handler:VAD armed (608 ms speech)
+INFO:wyoming_whisperkit.handler:VAD early trigger — 1.7 s audio collected (speech=896 ms, silence=480 ms)
+DEBUG:wyoming_whisperkit.handler:Transcribing 1.7 s of audio via WhisperKit (trigger=vad)
+DEBUG:wyoming_whisperkit.handler:WhisperKit internal time: 334 ms  wall: 1484 ms
+INFO:wyoming_whisperkit.handler:Play the Pixies.
+DEBUG:wyoming_whisperkit.handler:Completed request
+DEBUG:wyoming_whisperkit.handler:Receiving audio
+DEBUG:wyoming_whisperkit.handler:AudioStop received (vad_triggered=False)
+DEBUG:wyoming_whisperkit.handler:Transcribing 0.8 s of audio via WhisperKit (trigger=audio_stop)
+DEBUG:wyoming_whisperkit.handler:WhisperKit internal time: 8 ms  wall: 919 ms
+INFO:wyoming_whisperkit.handler:
+DEBUG:wyoming_whisperkit.handler:Completed request
+DEBUG:wyoming_whisperkit.handler:Transcribe event
+DEBUG:wyoming_whisperkit.handler:Receiving audio
+DEBUG:wyoming_whisperkit.handler:VAD armed (608 ms speech)
+INFO:wyoming_whisperkit.handler:VAD early trigger — 2.6 s audio collected (speech=1248 ms, silence=480 ms)
+DEBUG:wyoming_whisperkit.handler:Transcribing 2.6 s of audio via WhisperKit (trigger=vad)
+DEBUG:wyoming_whisperkit.handler:WhisperKit internal time: 344 ms  wall: 1614 ms
+INFO:wyoming_whisperkit.handler:Play the replacements.
+DEBUG:wyoming_whisperkit.handler:Completed request
+DEBUG:wyoming_whisperkit.handler:Receiving audio
+DEBUG:wyoming_whisperkit.handler:AudioStop received (vad_triggered=False)
+DEBUG:wyoming_whisperkit.handler:Transcribing 0.8 s of audio via WhisperKit (trigger=audio_stop)
+DEBUG:wyoming_whisperkit.handler:WhisperKit internal time: 5 ms  wall: 1055 ms
+INFO:wyoming_whisperkit.handler:
+DEBUG:wyoming_whisperkit.handler:Completed request
+DEBUG:wyoming_whisperkit.handler:Transcribe event
+DEBUG:wyoming_whisperkit.handler:Receiving audio
+DEBUG:wyoming_whisperkit.handler:VAD armed (608 ms speech)
+INFO:wyoming_whisperkit.handler:VAD early trigger — 2.4 s audio collected (speech=1280 ms, silence=480 ms)
+DEBUG:wyoming_whisperkit.handler:Transcribing 2.4 s of audio via WhisperKit (trigger=vad)
+DEBUG:wyoming_whisperkit.handler:WhisperKit internal time: 335 ms  wall: 1408 ms
+INFO:wyoming_whisperkit.handler:Clay WFMU
+DEBUG:wyoming_whisperkit.handler:Completed request
+DEBUG:wyoming_whisperkit.handler:Receiving audio
+DEBUG:wyoming_whisperkit.handler:AudioStop received (vad_triggered=False)
+DEBUG:wyoming_whisperkit.handler:Transcribing 0.7 s of audio via WhisperKit (trigger=audio_stop)
+DEBUG:wyoming_whisperkit.handler:WhisperKit internal time: 6 ms  wall: 1112 ms
+INFO:wyoming_whisperkit.handler:
+DEBUG:wyoming_whisperkit.handler:Completed request
+DEBUG:wyoming_whisperkit.handler:Transcribe event
+DEBUG:wyoming_whisperkit.handler:Receiving audio
+DEBUG:wyoming_whisperkit.handler:VAD armed (608 ms speech)
+INFO:wyoming_whisperkit.handler:VAD early trigger — 2.7 s audio collected (speech=1408 ms, silence=480 ms)
+DEBUG:wyoming_whisperkit.handler:Transcribing 2.7 s of audio via WhisperKit (trigger=vad)
+DEBUG:wyoming_whisperkit.handler:WhisperKit internal time: 348 ms  wall: 1423 ms
+INFO:wyoming_whisperkit.handler:Play WFMU
+DEBUG:wyoming_whisperkit.handler:Completed request
+DEBUG:wyoming_whisperkit.handler:Receiving audio
+DEBUG:wyoming_whisperkit.handler:AudioStop received (vad_triggered=False)
+DEBUG:wyoming_whisperkit.handler:Transcribing 0.6 s of audio via WhisperKit (trigger=audio_stop)
+DEBUG:wyoming_whisperkit.handler:WhisperKit internal time: 4 ms  wall: 915 ms
+INFO:wyoming_whisperkit.handler:
+DEBUG:wyoming_whisperkit.handler:Completed request
+DEBUG:wyoming_whisperkit.handler:Transcribe event
+DEBUG:wyoming_whisperkit.handler:Receiving audio
+DEBUG:wyoming_whisperkit.handler:VAD armed (608 ms speech)
+INFO:wyoming_whisperkit.handler:VAD early trigger — 2.2 s audio collected (speech=1152 ms, silence=480 ms)
+DEBUG:wyoming_whisperkit.handler:Transcribing 2.2 s of audio via WhisperKit (trigger=vad)
+DEBUG:wyoming_whisperkit.handler:WhisperKit internal time: 385 ms  wall: 1459 ms
+INFO:wyoming_whisperkit.handler:What's the weather today?
+DEBUG:wyoming_whisperkit.handler:Completed request
+DEBUG:wyoming_whisperkit.handler:Receiving audio
+DEBUG:wyoming_whisperkit.handler:AudioStop received (vad_triggered=False)
+DEBUG:wyoming_whisperkit.handler:Transcribing 0.7 s of audio via WhisperKit (trigger=audio_stop)
+DEBUG:wyoming_whisperkit.handler:WhisperKit internal time: 5 ms  wall: 937 ms
+INFO:wyoming_whisperkit.handler:
+DEBUG:wyoming_whisperkit.handler:Completed request
+DEBUG:wyoming_whisperkit.handler:Transcribe event
+DEBUG:wyoming_whisperkit.handler:Receiving audio
+DEBUG:wyoming_whisperkit.handler:VAD armed (608 ms speech)
+INFO:wyoming_whisperkit.handler:VAD early trigger — 2.5 s audio collected (speech=1344 ms, silence=480 ms)
+DEBUG:wyoming_whisperkit.handler:Transcribing 2.5 s of audio via WhisperKit (trigger=vad)
+DEBUG:wyoming_whisperkit.handler:WhisperKit internal time: 357 ms  wall: 2186 ms
+INFO:wyoming_whisperkit.handler:Play KEXP.
+DEBUG:wyoming_whisperkit.handler:Completed request
+DEBUG:wyoming_whisperkit.handler:Receiving audio
+DEBUG:wyoming_whisperkit.handler:AudioStop received (vad_triggered=False)
+DEBUG:wyoming_whisperkit.handler:Transcribing 0.8 s of audio via WhisperKit (trigger=audio_stop)
+DEBUG:wyoming_whisperkit.handler:WhisperKit internal time: 5 ms  wall: 1150 ms
+INFO:wyoming_whisperkit.handler:
+DEBUG:wyoming_whisperkit.handler:Completed request
+DEBUG:wyoming_whisperkit.handler:Transcribe event
+DEBUG:wyoming_whisperkit.handler:Receiving audio
+DEBUG:wyoming_whisperkit.handler:VAD armed (608 ms speech)
+INFO:wyoming_whisperkit.handler:VAD early trigger — 2.2 s audio collected (speech=896 ms, silence=480 ms)
+DEBUG:wyoming_whisperkit.handler:Transcribing 2.2 s of audio via WhisperKit (trigger=vad)
+DEBUG:wyoming_whisperkit.handler:WhisperKit internal time: 448 ms  wall: 1708 ms
+INFO:wyoming_whisperkit.handler:Turn on the light.
+DEBUG:wyoming_whisperkit.handler:Completed request
+DEBUG:wyoming_whisperkit.handler:Receiving audio
+DEBUG:wyoming_whisperkit.handler:AudioStop received (vad_triggered=False)
+DEBUG:wyoming_whisperkit.handler:Transcribing 0.8 s of audio via WhisperKit (trigger=audio_stop)
+DEBUG:wyoming_whisperkit.handler:WhisperKit internal time: 4 ms  wall: 1097 ms
+INFO:wyoming_whisperkit.handler:
+DEBUG:wyoming_whisperkit.handler:Completed request
+DEBUG:wyoming_whisperkit.handler:Transcribe event
+DEBUG:wyoming_whisperkit.handler:Receiving audio
+DEBUG:wyoming_whisperkit.handler:VAD armed (608 ms speech)
+INFO:wyoming_whisperkit.handler:VAD early trigger — 1.9 s audio collected (speech=992 ms, silence=480 ms)
+DEBUG:wyoming_whisperkit.handler:Transcribing 1.9 s of audio via WhisperKit (trigger=vad)
+DEBUG:wyoming_whisperkit.handler:WhisperKit internal time: 307 ms  wall: 1498 ms
+INFO:wyoming_whisperkit.handler:Turn off the light.
+DEBUG:wyoming_whisperkit.handler:Completed request
+DEBUG:wyoming_whisperkit.handler:Receiving audio
+DEBUG:wyoming_whisperkit.handler:AudioStop received (vad_triggered=False)
+DEBUG:wyoming_whisperkit.handler:Transcribing 0.8 s of audio via WhisperKit (trigger=audio_stop)
+DEBUG:wyoming_whisperkit.handler:WhisperKit internal time: 5 ms  wall: 1138 ms
+INFO:wyoming_whisperkit.handler:
+DEBUG:wyoming_whisperkit.handler:Completed request
+DEBUG:wyoming_whisperkit.handler:Transcribe event
+DEBUG:wyoming_whisperkit.handler:Receiving audio
+DEBUG:wyoming_whisperkit.handler:VAD armed (608 ms speech)
+INFO:wyoming_whisperkit.handler:VAD early trigger — 1.8 s audio collected (speech=928 ms, silence=480 ms)
+DEBUG:wyoming_whisperkit.handler:Transcribing 1.8 s of audio via WhisperKit (trigger=vad)
+DEBUG:wyoming_whisperkit.handler:WhisperKit internal time: 342 ms  wall: 1391 ms
+INFO:wyoming_whisperkit.handler:Turn off the speaker.
+DEBUG:wyoming_whisperkit.handler:Completed request
+DEBUG:wyoming_whisperkit.handler:Receiving audio
+DEBUG:wyoming_whisperkit.handler:AudioStop received (vad_triggered=False)
+DEBUG:wyoming_whisperkit.handler:Transcribing 0.8 s of audio via WhisperKit (trigger=audio_stop)
+DEBUG:wyoming_whisperkit.handler:WhisperKit internal time: 4 ms  wall: 1027 ms
+INFO:wyoming_whisperkit.handler:
+DEBUG:wyoming_whisperkit.handler:Completed request
+DEBUG:wyoming_whisperkit.handler:Transcribe event
+DEBUG:wyoming_whisperkit.handler:Receiving audio
+DEBUG:wyoming_whisperkit.handler:VAD armed (608 ms speech)
+INFO:wyoming_whisperkit.handler:VAD early trigger — 1.8 s audio collected (speech=992 ms, silence=480 ms)
+DEBUG:wyoming_whisperkit.handler:Transcribing 1.8 s of audio via WhisperKit (trigger=vad)
+DEBUG:wyoming_whisperkit.handler:WhisperKit internal time: 321 ms  wall: 1555 ms
+INFO:wyoming_whisperkit.handler:Turn on the speaker.
+DEBUG:wyoming_whisperkit.handler:Completed request
+DEBUG:wyoming_whisperkit.handler:Receiving audio
+DEBUG:wyoming_whisperkit.handler:AudioStop received (vad_triggered=False)
+DEBUG:wyoming_whisperkit.handler:Transcribing 0.8 s of audio via WhisperKit (trigger=audio_stop)
+DEBUG:wyoming_whisperkit.handler:WhisperKit internal time: 4 ms  wall: 1066 ms
+INFO:wyoming_whisperkit.handler:
+DEBUG:wyoming_whisperkit.handler:Completed request

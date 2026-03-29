@@ -1,6 +1,6 @@
 # Home Automation — To-Do List
 
-*Last updated: 2026-03-28*
+*Last updated: 2026-03-29*
 
 ---
 
@@ -72,7 +72,7 @@ Frigate 0.17 only supports the `default` key under `max_frames` — per-object k
 - [ ] **Radio station response latency (~25s)** — Voice-initiated radio playback (e.g. "play WFMU") takes ~25 seconds from command to audio. Likely causes: MA buffering the radio stream before starting playback, RadioBrowser/TuneIn lookup latency, and/or the Voice PE's initial HTTP stream connection time. Investigate: MA stream buffer settings, whether pre-caching favorite stations helps, and whether direct URL playback (bypassing RadioBrowser search) would be faster.
 - [ ] **Fix "Stop" misheard as "Pause"** — distil-whisper-large-v3 is better but may still misfire on very short words. Option: add "pause" as a `StopMusic` alias in `custom_sentences/en/music.yaml`.
 - [ ] **Monitor small model accuracy** — `whisper-small-mlx-4bit` benchmarked perfectly on test commands but needs real-world validation across voice diversity, proper nouns (WFMU, KEXP), and noisy conditions. Watch `voice-bench` dashboard for transcription errors.
-- [ ] **Switch STT backend to WhisperKit** — Benchmarked at **0.85s avg** (0.52s warmed up) on small model — fastest of all implementations tested, with clean punctuation/capitalisation output. Requires a Wyoming protocol wrapper (`wyoming-whisperkit`). Investigate availability and drop-in compatibility with current setup.
+- [ ] **Switch STT backend to WhisperKit** — Benchmarked at **0.85s avg** (0.52s warmed up) on small model — fastest of all implementations tested, with clean punctuation/capitalisation output. **`wyoming-whisperkit` wrapper built (2026-03-29)** at `home-automation/wyoming-whisperkit/`. Port 7892, Silero-VAD enabled, patterned on `wyoming-mlx-whisper`. Swift bridge binary already compiled at `mac-whisper-speedtest/tools/whisperkit-bridge/.build/release/whisperkit-bridge`. **To install:** `cd ~/containers/home-automation/wyoming-whisperkit && chmod +x *.sh script/* && ./install_service.sh`. **To switch HA:** Wyoming integration → host `192.168.1.70` port `7892`. **To benchmark:** `cp voice-bench/config.whisperkit.yaml voice-bench/config.yaml` then restart voice-bench. Roll back: Wyoming → port 7891.
 
 ---
 
