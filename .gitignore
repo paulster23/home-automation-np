@@ -5,17 +5,20 @@
 secrets/
 
 # ── Frigate runtime data ────────────────────
-# Database, model cache, recordings, snapshots
-frigate/frigate.db
-frigate/frigate.db-shm
-frigate/frigate.db-wal
+# Database (all variants: -shm, -wal, .bak-*, backups)
+frigate/frigate.db*
 frigate/backup.db
+frigate/*.db.bak*
 frigate/.exports
 frigate/.jwt_secret
 frigate/.timeline
 frigate/.vacuum
 frigate/model_cache/
 frigate/storage/
+
+# ── Frigate config backups (auto-generated on upgrade) ──
+frigate/config.yml.bak*
+frigate/*.bak-*
 
 # ── Home Assistant runtime data ─────────────
 # Everything in here is auto-generated on first run
