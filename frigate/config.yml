@@ -6,6 +6,8 @@
 # Authentication — default mode prompts you to create an admin
 # account on first visit to https://localhost:8971
 # DO NOT set "auth: none" — that locks you out of admin settings
+auth:
+  session_length: 2592000   # 30 days (default is 86400 = 1 day)
 
 # ── Object Detection ─────────────────────────────────────────
 # Apple Silicon ZMQ detector (Frigate 0.17+).

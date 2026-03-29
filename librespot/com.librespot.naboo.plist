@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <!-- ──────────────────────────────────────────────────────────────────────
+         Librespot — Spotify Connect receiver ("Naboo")
+         Install: cp this file to ~/Library/LaunchAgents/ then:
+           chmod +x ~/containers/home-automation/librespot/run.sh
+           chmod +x ~/containers/home-automation/librespot/on_event.sh
+           launchctl load ~/Library/LaunchAgents/com.librespot.naboo.plist
+         Reload after changes:
+           launchctl unload ~/Library/LaunchAgents/com.librespot.naboo.plist
+           launchctl load  ~/Library/LaunchAgents/com.librespot.naboo.plist
+         Logs: ~/containers/home-automation/librespot/log/
+    ────────────────────────────────────────────────────────────────────────── -->
+
+    <key>Label</key>
+    <string>com.librespot.naboo</string>
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>/bin/bash</string>
+        <string>/Users/media/containers/home-automation/librespot/run.sh</string>
+    </array>
+
+    <!-- Start at login and restart automatically if it crashes -->
+    <key>RunAtLoad</key>
+    <true/>
+    <key>KeepAlive</key>
+    <true/>
+
+    <!-- stdout/stderr from the wrapper itself (librespot/ffmpeg log to their
+         own files inside run.sh via redirects) -->
+    <key>StandardOutPath</key>
+    <string>/Users/media/containers/home-automation/librespot/log/launchd.out</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/media/containers/home-automation/librespot/log/launchd.err</string>
+
+    <!-- Make Homebrew binaries and HOME available -->
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>PATH</key>
+        <string>/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin</string>
+        <key>HOME</key>
+        <string>/Users/media</string>
+    </dict>
+</dict>
+</plist>

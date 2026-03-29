@@ -1569,7 +1569,50 @@ docker system prune -a --volumes  # WARNING: removes all unused images/volumes
 **Target System:** M1 Mac Mini, 8GB RAM, Docker Desktop
 **Stack Version:** Current (as of March 2026)
 **Status:** SECTIONS 1–8 IMPLEMENTED. Sections 9+ are future/lower priority.
-**Last Updated:** 2026-03-17 — Added Section 8 (Voice Pipeline Optimization + voice-bench)
+**Last Updated:** 2026-03-28 — Added Section 9 (STT Backend Benchmarking + model switch)
+
+---
+
+## 9. STT Backend Benchmarking (2026-03-28)
+
+### Background
+
+voice-bench data (67 live sessions) showed STT averaging ~9.3s with `whisper-large-v3-turbo-q4` via `wyoming-mlx-whisper`. STT was consuming ~56% of total pipeline time.
+
+### Benchmarking Tool
+
+Installed `mac-whisper-speedtest` at `home-automation/mac-whisper-speedtest/`. Races 9 Whisper implementations on local Apple Silicon hardware with a real audio recording. Run with:
+
+```bash
+cd ~/containers/home-automation/mac-whisper-speedtest
+.venv/bin/mac-whisper-speedtest --model small --num-runs 3
+```
+
+### Results (M1 Mac Mini, small model, 3 runs each)
+
+| Implementation | Avg Time | Notes |
+|---|---|---|
+| **WhisperKit** | **0.85s** | Swift bridge, Apple Silicon native. Best output quality. |
+| mlx-whisper 4-bit | 1.29s | Current backend with new model — warmed up ~0.66s |
+| whisper.cpp | 1.39s | Running without CoreML (coreml=False) — could be faster |
+| insanely-fast-whisper | 2.21s | MPS, float16 |
+| parakeet-mlx | 2.23s | NVIDIA's model via MLX — misspells proper nouns |
+| lightning-whisper-mlx | 2.67s | |
+| faster-whisper | 2.94s | CPU only |
+| whisper-mps | ~31s | Terrible cold start; skip |
+| fluidaudio-coreml | timeout | M1 incompatible |
+
+For `large-v3-turbo` model: whisper.cpp was fastest at 5.5s; MLX-based implementations errored (model name mismatch).
+
+### Change Made
+
+Switched `wyoming-mlx-whisper` model from `mlx-community/whisper-large-v3-turbo-q4` → `mlx-community/whisper-small-mlx-4bit` in `~/Library/LaunchAgents/com.wyoming.mlx-whisper.plist`. Benchmark showed small model transcribes all typical home-automation commands accurately at ~1.3s. voice-bench tag updated to `small-mlx-4bit-silero-vad` to track before/after.
+
+Also fixed a correlation bug in `voice_bench.py`: the small model is fast enough to produce empty STT hits from ambient noise that previously beat the real transcription in the time-proximity matching. Fixed to prefer non-empty transcriptions.
+
+### Next Step: WhisperKit
+
+WhisperKit benchmarked at **0.85s avg / 0.52s warmed up** — fastest of all implementations, with the best transcription output quality (proper capitalisation and punctuation). Requires a Wyoming protocol wrapper to integrate with Home Assistant. Investigate `wyoming-whisperkit` as a drop-in replacement for `wyoming-mlx-whisper`.
 
 ---
 

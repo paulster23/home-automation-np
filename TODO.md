@@ -1,6 +1,6 @@
 # Home Automation — To-Do List
 
-*Last updated: 2026-03-17*
+*Last updated: 2026-03-28*
 
 ---
 
@@ -19,7 +19,11 @@
 - **whisper-large-v3-turbo-q4 adopted** — Better voice diversity (handles multiple household voices), near-identical speed to distil on clean audio. 4-bit quantised: ~450MB on disk vs ~1.5GB full model. Updated in plist (2026-03-24).
 - **Silero-VAD streaming layer added** — `wyoming_mlx_whisper/handler.py` now runs Silero-VAD on each incoming 32ms audio chunk. Fires transcription immediately when 450ms of post-speech silence is detected, without waiting for ESPHome's AudioStop. Cuts the 15–20s TV-noise recording window to ~2–3s. `requirements.txt` updated with `silero-vad` + `onnxruntime`. `--vad` / `--no-vad` flag added to `__main__.py`. Enabled by default via plist (2026-03-24).
 - **voice-bench installed** — Lightweight benchmarking daemon at `voice-bench/`. Logs every voice command to `voice-bench/data/voice_bench.csv` with per-hop timing (listening, STT, HA processing, TTS). Dashboard at `http://localhost:7700`. LaunchAgent: `~/Library/LaunchAgents/com.voice-bench.plist` (2026-03-17).
+- **mac-whisper-speedtest installed** — Benchmarking tool at `mac-whisper-speedtest/`. Races 9 Whisper implementations against each other on local Apple Silicon hardware. Used to identify fastest backend. Results (2026-03-28): WhisperKit 0.85s avg (small model), mlx-whisper 4-bit 1.29s, whisper.cpp 1.39s — all vs current pipeline STT average of ~9.3s.
+- **whisper-small-mlx-4bit adopted** — Switched from `whisper-large-v3-turbo-q4` to `mlx-community/whisper-small-mlx-4bit` (2026-03-28). Benchmark showed small model transcribes home-automation commands accurately at ~1.3s vs ~9.3s for turbo. Model updated in `~/Library/LaunchAgents/com.wyoming.mlx-whisper.plist`. voice-bench tag updated to `small-mlx-4bit-silero-vad`. Correlation bug fixed in `voice_bench.py`: small model produces fast empty STT hits from noise that previously won over real transcriptions — now prefers non-empty matches within the window.
+- **whisper-small.en re-evaluation note** — Previously rejected (2026-03-15) for accuracy. `whisper-small-mlx-4bit` is the 4-bit quantised multilingual small model via MLX, which is different — benchmark transcription of all test commands was accurate.
 - **FrigateDetector.app** — Added to macOS Login Items. Auto-starts on reboot.
+- **Spotify rework (2026-03-28)** — Replaced Music Assistant's Spotify role entirely with native librespot + spotcast. MA is now radio-only (RadioBrowser, TuneIn). librespot registers as "Naboo" Spotify Connect device via macOS Bonjour → streams PCM via ffmpeg HTTP on port 8765 → HA webhook automation plays stream on naboo_media_player. Voice Spotify intents rewritten to use `spotify_voice_assistant.search` + `spotcast.start(device_name="Naboo")`. MA memory reduced 512m→256m. LaunchAgent: `~/Library/LaunchAgents/com.librespot.naboo.plist`. **Pending:** install LaunchAgent, apply MA compose update, add sp_dc/sp_key cookies to secrets.yaml, restart HA.
 - **Frigate car filters tightened** — `min_area: 8000`, `min_score: 0.65`, `threshold: 0.8` in `frigate/config.yml`.
 - **Frigate stationary filtering** — `threshold: 50`, `interval: 50`, `max_frames.default: 3000` in place.
 - **Frigate zones** — `entrance`, `sidewalk`, `active_street` zones defined. `required_zones` set on alerts + detections.
@@ -33,8 +37,8 @@ Frigate 0.17 only supports the `default` key under `max_frames` — per-object k
 - **Wait:** Check if Frigate 0.18+ restores per-object support
 - **Workaround:** Set `max_frames.default` to a lower value (e.g. 500) to affect all objects — trade-off is people also stop tracking sooner
 
-### Spotify voice: optional SpotifyPlus
-SpotifyPlus via HACS would unlock advanced queue management and richer search. Low priority — current MA + radio_mode setup is working well.
+### ~~Spotify voice: optional SpotifyPlus~~
+~~SpotifyPlus via HACS would unlock advanced queue management and richer search.~~ **Superseded** — MA Spotify removed entirely 2026-03-28. Spotify now runs via librespot + spotcast. SpotifyPlus is no longer applicable.
 
 ### Voice pipeline latency optimization — ✅ Complete (ongoing monitoring via voice-bench)
 
@@ -66,6 +70,8 @@ SpotifyPlus via HACS would unlock advanced queue management and richer search. L
 
 **Remaining (lower priority):**
 - [ ] **Fix "Stop" misheard as "Pause"** — distil-whisper-large-v3 is better but may still misfire on very short words. Option: add "pause" as a `StopMusic` alias in `custom_sentences/en/music.yaml`.
+- [ ] **Monitor small model accuracy** — `whisper-small-mlx-4bit` benchmarked perfectly on test commands but needs real-world validation across voice diversity, proper nouns (WFMU, KEXP), and noisy conditions. Watch `voice-bench` dashboard for transcription errors.
+- [ ] **Switch STT backend to WhisperKit** — Benchmarked at **0.85s avg** (0.52s warmed up) on small model — fastest of all implementations tested, with clean punctuation/capitalisation output. Requires a Wyoming protocol wrapper (`wyoming-whisperkit`). Investigate availability and drop-in compatibility with current setup.
 
 ---
 

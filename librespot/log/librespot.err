@@ -1,0 +1,747 @@
+[2026-03-29T01:01:55Z INFO  librespot] librespot 0.8.0 VERGEN_IDEMPOTENT_OUTPUT (Built on 2025-11-10, Build ID: 1762793321, Profile: release)
+[2026-03-29T01:01:55Z INFO  librespot_playback::mixer::softmixer] Mixing with softvol and volume control: Log(60.0)
+[2026-03-29T01:01:55Z INFO  librespot_playback::convert] Converting with ditherer: tpdf
+[2026-03-29T01:01:55Z INFO  librespot_playback::audio_backend::pipe] Using StdoutSink (pipe) with format: S16
+[2026-03-29T01:11:33Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-03-29T01:11:33Z INFO  librespot_core::session] Authenticated as 'paulster23' !
+[2026-03-29T01:11:33Z INFO  librespot_core::session] Country: "US"
+[2026-03-29T01:11:34Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-03-29T01:11:34Z INFO  librespot_connect::spirc] active device is <e9912ea7d306062891be9d4514485cfccfc5a2d7> with session <39mHVjbb9YZjIG35U8TfpU>
+[2026-03-29T01:11:34Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-03-29T01:11:34Z INFO  librespot_playback::player] Loading <Count Of Four> with Spotify URI <spotify:track:5w3vHCHkitUnqAOPB3YMlV>
+[2026-03-29T01:11:35Z INFO  librespot_playback::player] <Count Of Four> (365738 ms) loaded
+[2026-03-29T01:16:12Z INFO  librespot] librespot 0.8.0 VERGEN_IDEMPOTENT_OUTPUT (Built on 2025-11-10, Build ID: 1762793321, Profile: release)
+[2026-03-29T01:16:12Z INFO  librespot_playback::mixer::softmixer] Mixing with softvol and volume control: Log(60.0)
+[2026-03-29T01:16:12Z INFO  librespot_playback::convert] Converting with ditherer: tpdf
+[2026-03-29T01:16:12Z INFO  librespot_playback::audio_backend::pipe] Using StdoutSink (pipe) with format: S16
+[2026-03-29T01:16:45Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-03-29T01:16:45Z INFO  librespot_core::session] Authenticated as 'paulster23' !
+[2026-03-29T01:16:45Z INFO  librespot_core::session] Country: "US"
+[2026-03-29T01:16:46Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-03-29T01:16:46Z INFO  librespot_connect::spirc] active device is <> with session <fc736a36681f4f08adffa61526eaea5d>
+[2026-03-29T01:16:46Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-03-29T01:16:46Z INFO  librespot_playback::player] Loading <Count Of Four> with Spotify URI <spotify:track:5w3vHCHkitUnqAOPB3YMlV>
+[2026-03-29T01:16:47Z WARN  librespot_playback::player] Invalid start position of 388015 ms exceeds track's duration of 365738 ms, starting track from the beginning
+[2026-03-29T01:16:47Z INFO  librespot_playback::player] <Count Of Four> (365738 ms) loaded
+[2026-03-29T01:17:21Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-03-29T01:17:21Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-03-29T01:17:29Z INFO  librespot_connect::spirc] device became inactive
+[2026-03-29T01:17:29Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-03-29T01:17:29Z WARN  librespot_connect::spirc] failed filling up next_track during stopping: Invalid state { context is not available. type: Default }
+[2026-03-29T01:17:37Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-03-29T01:17:37Z INFO  librespot_connect::spirc] session update: <Ok(NEW_SESSION)> for self, current session_id 10b2a459bff446289d18d7826f9b7b37, new session_id 02617982984236b9f9b141ea60b60a67
+[2026-03-29T01:28:40Z INFO  librespot_connect::spirc] device became inactive
+[2026-03-29T01:28:40Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-03-29T01:28:40Z WARN  librespot_connect::spirc] failed filling up next_track during stopping: Invalid state { context is not available. type: Default }
+[2026-03-29T01:28:42Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-03-29T01:36:38Z INFO  librespot] librespot 0.8.0 VERGEN_IDEMPOTENT_OUTPUT (Built on 2025-11-10, Build ID: 1762793321, Profile: release)
+[2026-03-29T01:36:38Z INFO  librespot_playback::mixer::softmixer] Mixing with softvol and volume control: Log(60.0)
+[2026-03-29T01:36:38Z INFO  librespot_playback::convert] Converting with ditherer: tpdf
+[2026-03-29T01:36:38Z INFO  librespot_playback::audio_backend::pipe] Using StdoutSink (pipe) with format: S16
+[2026-03-29T01:37:05Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-03-29T01:37:05Z INFO  librespot_core::session] Authenticated as 'paulster23' !
+[2026-03-29T01:37:05Z INFO  librespot_core::session] Country: "US"
+[2026-03-29T01:37:06Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-03-29T01:37:06Z INFO  librespot_connect::spirc] active device is <e9912ea7d306062891be9d4514485cfccfc5a2d7> with session <7q51iJSNQHoooSx3j8cmi2>
+[2026-03-29T01:37:06Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-03-29T01:37:06Z INFO  librespot_playback::player] Loading <Count Of Four> with Spotify URI <spotify:track:5w3vHCHkitUnqAOPB3YMlV>
+[2026-03-29T01:37:07Z INFO  librespot_playback::player] <Count Of Four> (365738 ms) loaded
+[2026-03-29T01:46:45Z INFO  librespot_connect::spirc] device became inactive
+[2026-03-29T01:46:45Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-03-29T01:46:45Z WARN  librespot_connect::spirc] failed filling up next_track during stopping: Invalid state { context is not available. type: Default }
+[2026-03-29T01:46:47Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-03-29T01:54:17Z INFO  librespot_connect::spirc] device became inactive
+[2026-03-29T01:54:17Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-03-29T01:54:17Z WARN  librespot_connect::spirc] failed filling up next_track during stopping: Invalid state { context is not available. type: Default }
+[2026-03-29T01:54:22Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-03-29T01:54:34Z INFO  librespot_connect::spirc] device became inactive
+[2026-03-29T01:54:34Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-03-29T01:54:34Z WARN  librespot_connect::spirc] failed filling up next_track during stopping: Invalid state { context is not available. type: Default }
+[2026-03-29T01:54:36Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-03-29T01:55:39Z INFO  librespot] librespot 0.8.0 VERGEN_IDEMPOTENT_OUTPUT (Built on 2025-11-10, Build ID: 1762793321, Profile: release)
+[2026-03-29T01:55:39Z INFO  librespot_playback::mixer::softmixer] Mixing with softvol and volume control: Log(60.0)
+[2026-03-29T01:55:39Z INFO  librespot_playback::convert] Converting with ditherer: tpdf
+[2026-03-29T01:55:39Z INFO  librespot_playback::audio_backend::pipe] Using StdoutSink (pipe) with format: S16
+[2026-03-29T01:56:03Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-03-29T01:56:03Z INFO  librespot_core::session] Authenticated as 'paulster23' !
+[2026-03-29T01:56:03Z INFO  librespot_core::session] Country: "US"
+[2026-03-29T01:56:03Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-03-29T01:56:04Z INFO  librespot_connect::spirc] active device is <e9912ea7d306062891be9d4514485cfccfc5a2d7> with session <2GOuhEKxxBhyCPsyuuF2TT>
+[2026-03-29T01:56:04Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-03-29T01:56:04Z INFO  librespot_playback::player] Loading <Count Of Four> with Spotify URI <spotify:track:5w3vHCHkitUnqAOPB3YMlV>
+[2026-03-29T01:56:05Z INFO  librespot_playback::player] <Count Of Four> (365738 ms) loaded
+[2026-03-29T01:56:10Z INFO  librespot_playback::player] Loading <Electric War> with Spotify URI <spotify:track:14uYjLYDWo0rtCHKvWF1jc>
+[2026-03-29T01:56:10Z INFO  librespot_playback::player] <Electric War> (315626 ms) loaded
+[2026-03-29T01:56:14Z INFO  librespot_playback::player] Loading <Zero Sun> with Spotify URI <spotify:track:15nhbSCU39RlG32KqkneOu>
+[2026-03-29T01:56:15Z INFO  librespot_playback::player] <Zero Sun> (207805 ms) loaded
+[2026-03-29T01:56:15Z WARN  librespot_audio::fetch::receive] Throughput 0 kbps lower than minimum 8, setting to minimum
+[2026-03-29T01:56:18Z INFO  librespot_playback::player] Loading <Spektator> with Spotify URI <spotify:track:1q6Sx9RA0m4yfV7U2Dgthx>
+[2026-03-29T01:56:18Z INFO  librespot_playback::player] <Spektator> (225984 ms) loaded
+[2026-03-29T01:56:21Z INFO  librespot_playback::player] Loading <Creaky> with Spotify URI <spotify:track:6KP6hNZ2DuOuB72c3SPNTk>
+[2026-03-29T01:56:22Z INFO  librespot_playback::player] <Creaky> (452413 ms) loaded
+[2026-03-29T01:56:29Z INFO  librespot_playback::player] Loading <’Said Soul> with Spotify URI <spotify:track:3nereh8fbNjDflNF7f1CLK>
+[2026-03-29T01:56:29Z INFO  librespot_playback::player] <’Said Soul> (164389 ms) loaded
+[2026-03-29T01:56:34Z INFO  librespot_playback::player] Loading <Sick 8> with Spotify URI <spotify:track:3b5OzSpdY89VB1VJuIcBaC>
+[2026-03-29T01:56:34Z INFO  librespot_playback::player] <Sick 8> (260522 ms) loaded
+[2026-03-29T01:56:37Z INFO  librespot_playback::player] Loading <My Now> with Spotify URI <spotify:track:5t4zQCOjSL3BmJhPlg62Ok>
+[2026-03-29T01:56:38Z INFO  librespot_playback::player] <My Now> (350127 ms) loaded
+[2026-03-29T01:56:42Z INFO  librespot_playback::player] Loading <Count Of Four> with Spotify URI <spotify:track:5w3vHCHkitUnqAOPB3YMlV>
+[2026-03-29T01:56:43Z INFO  librespot_playback::player] <Count Of Four> (365738 ms) loaded
+[2026-03-29T01:56:48Z INFO  librespot_playback::player] Loading <Electric War> with Spotify URI <spotify:track:14uYjLYDWo0rtCHKvWF1jc>
+[2026-03-29T01:56:49Z INFO  librespot_playback::player] <Electric War> (315626 ms) loaded
+[2026-03-29T01:56:54Z INFO  librespot_playback::player] Loading <Zero Sun> with Spotify URI <spotify:track:15nhbSCU39RlG32KqkneOu>
+[2026-03-29T01:56:54Z INFO  librespot_playback::player] <Zero Sun> (207805 ms) loaded
+[2026-03-29T01:56:54Z WARN  librespot_audio::fetch::receive] Throughput 4 kbps lower than minimum 8, setting to minimum
+[2026-03-29T01:56:57Z INFO  librespot_playback::player] Loading <Spektator> with Spotify URI <spotify:track:1q6Sx9RA0m4yfV7U2Dgthx>
+[2026-03-29T01:56:58Z INFO  librespot_playback::player] <Spektator> (225984 ms) loaded
+[2026-03-29T01:57:01Z INFO  librespot_playback::player] Loading <Creaky> with Spotify URI <spotify:track:6KP6hNZ2DuOuB72c3SPNTk>
+[2026-03-29T01:57:01Z INFO  librespot_playback::player] <Creaky> (452413 ms) loaded
+[2026-03-29T01:57:13Z INFO  librespot_playback::player] Loading <’Said Soul> with Spotify URI <spotify:track:3nereh8fbNjDflNF7f1CLK>
+[2026-03-29T01:57:14Z INFO  librespot_playback::player] <’Said Soul> (164389 ms) loaded
+[2026-03-29T01:57:15Z INFO  librespot_playback::player] Loading <Sick 8> with Spotify URI <spotify:track:3b5OzSpdY89VB1VJuIcBaC>
+[2026-03-29T01:57:16Z INFO  librespot_playback::player] <Sick 8> (260522 ms) loaded
+[2026-03-29T01:57:19Z INFO  librespot_playback::player] Loading <My Now> with Spotify URI <spotify:track:5t4zQCOjSL3BmJhPlg62Ok>
+[2026-03-29T01:57:19Z INFO  librespot_playback::player] <My Now> (350127 ms) loaded
+[2026-03-29T01:57:24Z INFO  librespot_playback::player] Loading <Count Of Four> with Spotify URI <spotify:track:5w3vHCHkitUnqAOPB3YMlV>
+[2026-03-29T01:57:25Z INFO  librespot_playback::player] <Count Of Four> (365738 ms) loaded
+[2026-03-29T01:57:29Z INFO  librespot_playback::player] Loading <Electric War> with Spotify URI <spotify:track:14uYjLYDWo0rtCHKvWF1jc>
+[2026-03-29T01:57:30Z INFO  librespot_playback::player] <Electric War> (315626 ms) loaded
+[2026-03-29T01:57:34Z INFO  librespot_playback::player] Loading <Zero Sun> with Spotify URI <spotify:track:15nhbSCU39RlG32KqkneOu>
+[2026-03-29T01:57:34Z INFO  librespot_playback::player] <Zero Sun> (207805 ms) loaded
+[2026-03-29T01:57:35Z WARN  librespot_audio::fetch::receive] Throughput 1 kbps lower than minimum 8, setting to minimum
+[2026-03-29T01:57:37Z INFO  librespot_playback::player] Loading <Spektator> with Spotify URI <spotify:track:1q6Sx9RA0m4yfV7U2Dgthx>
+[2026-03-29T01:57:37Z INFO  librespot_playback::player] <Spektator> (225984 ms) loaded
+[2026-03-29T01:57:41Z INFO  librespot_playback::player] Loading <Creaky> with Spotify URI <spotify:track:6KP6hNZ2DuOuB72c3SPNTk>
+[2026-03-29T01:57:41Z INFO  librespot_playback::player] <Creaky> (452413 ms) loaded
+[2026-03-29T01:57:48Z INFO  librespot_playback::player] Loading <’Said Soul> with Spotify URI <spotify:track:3nereh8fbNjDflNF7f1CLK>
+[2026-03-29T01:57:48Z INFO  librespot_playback::player] <’Said Soul> (164389 ms) loaded
+[2026-03-29T01:57:52Z INFO  librespot_playback::player] Loading <Sick 8> with Spotify URI <spotify:track:3b5OzSpdY89VB1VJuIcBaC>
+[2026-03-29T01:57:53Z INFO  librespot_playback::player] <Sick 8> (260522 ms) loaded
+[2026-03-29T01:57:56Z INFO  librespot_playback::player] Loading <My Now> with Spotify URI <spotify:track:5t4zQCOjSL3BmJhPlg62Ok>
+[2026-03-29T01:57:57Z INFO  librespot_playback::player] <My Now> (350127 ms) loaded
+[2026-03-29T01:58:01Z INFO  librespot_playback::player] Loading <Count Of Four> with Spotify URI <spotify:track:5w3vHCHkitUnqAOPB3YMlV>
+[2026-03-29T01:58:02Z INFO  librespot_playback::player] <Count Of Four> (365738 ms) loaded
+[2026-03-29T01:58:06Z INFO  librespot_playback::player] Loading <Electric War> with Spotify URI <spotify:track:14uYjLYDWo0rtCHKvWF1jc>
+[2026-03-29T01:58:07Z INFO  librespot_playback::player] <Electric War> (315626 ms) loaded
+[2026-03-29T01:58:11Z INFO  librespot_playback::player] Loading <Zero Sun> with Spotify URI <spotify:track:15nhbSCU39RlG32KqkneOu>
+[2026-03-29T01:58:12Z INFO  librespot_playback::player] <Zero Sun> (207805 ms) loaded
+[2026-03-29T01:58:12Z WARN  librespot_audio::fetch::receive] Throughput 1 kbps lower than minimum 8, setting to minimum
+[2026-03-29T01:58:14Z INFO  librespot_playback::player] Loading <Spektator> with Spotify URI <spotify:track:1q6Sx9RA0m4yfV7U2Dgthx>
+[2026-03-29T01:58:15Z INFO  librespot_playback::player] <Spektator> (225984 ms) loaded
+[2026-03-29T01:58:18Z INFO  librespot_playback::player] Loading <Creaky> with Spotify URI <spotify:track:6KP6hNZ2DuOuB72c3SPNTk>
+[2026-03-29T01:58:19Z INFO  librespot_playback::player] <Creaky> (452413 ms) loaded
+[2026-03-29T01:58:26Z INFO  librespot_playback::player] Loading <’Said Soul> with Spotify URI <spotify:track:3nereh8fbNjDflNF7f1CLK>
+[2026-03-29T01:58:27Z INFO  librespot_playback::player] <’Said Soul> (164389 ms) loaded
+[2026-03-29T01:58:29Z INFO  librespot_playback::player] Loading <Sick 8> with Spotify URI <spotify:track:3b5OzSpdY89VB1VJuIcBaC>
+[2026-03-29T01:58:30Z INFO  librespot_playback::player] <Sick 8> (260522 ms) loaded
+[2026-03-29T01:58:36Z INFO  librespot_playback::player] Loading <My Now> with Spotify URI <spotify:track:5t4zQCOjSL3BmJhPlg62Ok>
+[2026-03-29T01:58:37Z INFO  librespot_playback::player] <My Now> (350127 ms) loaded
+[2026-03-29T01:58:42Z INFO  librespot_playback::player] Loading <Count Of Four> with Spotify URI <spotify:track:5w3vHCHkitUnqAOPB3YMlV>
+[2026-03-29T01:58:42Z INFO  librespot_playback::player] <Count Of Four> (365738 ms) loaded
+[2026-03-29T01:58:48Z INFO  librespot_playback::player] Loading <Electric War> with Spotify URI <spotify:track:14uYjLYDWo0rtCHKvWF1jc>
+[2026-03-29T01:58:48Z INFO  librespot_playback::player] <Electric War> (315626 ms) loaded
+[2026-03-29T01:58:54Z INFO  librespot_playback::player] Loading <Zero Sun> with Spotify URI <spotify:track:15nhbSCU39RlG32KqkneOu>
+[2026-03-29T01:58:56Z INFO  librespot_playback::player] <Zero Sun> (207805 ms) loaded
+[2026-03-29T01:58:56Z WARN  librespot_audio::fetch::receive] Throughput 3 kbps lower than minimum 8, setting to minimum
+[2026-03-29T01:58:58Z INFO  librespot_playback::player] Loading <Spektator> with Spotify URI <spotify:track:1q6Sx9RA0m4yfV7U2Dgthx>
+[2026-03-29T01:58:59Z ERROR librespot_core::audio_key] error audio key 0 2
+[2026-03-29T01:58:59Z WARN  librespot_playback::player] Unable to load key, continuing without decryption: Service unavailable { audio key error }
+[2026-03-29T01:59:10Z ERROR librespot_playback::player] Unable to read audio file: Symphonia Decoder Error: end of stream
+[2026-03-29T01:59:10Z ERROR librespot_playback::player] Skipping to next track, unable to load track <SpotifyUri("spotify:track:1q6Sx9RA0m4yfV7U2Dgthx")>: ()
+[2026-03-29T01:59:10Z INFO  librespot_playback::player] Loading <Creaky> with Spotify URI <spotify:track:6KP6hNZ2DuOuB72c3SPNTk>
+[2026-03-29T01:59:11Z INFO  librespot_playback::player] <Creaky> (452413 ms) loaded
+[2026-03-29T01:59:18Z INFO  librespot_playback::player] Loading <’Said Soul> with Spotify URI <spotify:track:3nereh8fbNjDflNF7f1CLK>
+[2026-03-29T01:59:18Z ERROR librespot_core::audio_key] error audio key 0 2
+[2026-03-29T01:59:18Z WARN  librespot_playback::player] Unable to load key, continuing without decryption: Service unavailable { audio key error }
+[2026-03-29T01:59:25Z ERROR librespot_playback::player] Unable to read audio file: Symphonia Decoder Error: end of stream
+[2026-03-29T01:59:25Z ERROR librespot_playback::player] Skipping to next track, unable to load track <SpotifyUri("spotify:track:3nereh8fbNjDflNF7f1CLK")>: ()
+[2026-03-29T01:59:25Z INFO  librespot_playback::player] Loading <Sick 8> with Spotify URI <spotify:track:3b5OzSpdY89VB1VJuIcBaC>
+[2026-03-29T01:59:25Z ERROR librespot_core::audio_key] error audio key 0 2
+[2026-03-29T01:59:25Z WARN  librespot_playback::player] Unable to load key, continuing without decryption: Service unavailable { audio key error }
+[2026-03-29T01:59:33Z ERROR librespot_playback::player] Unable to read audio file: Symphonia Decoder Error: end of stream
+[2026-03-29T01:59:33Z ERROR librespot_playback::player] Skipping to next track, unable to load track <SpotifyUri("spotify:track:3b5OzSpdY89VB1VJuIcBaC")>: ()
+[2026-03-29T01:59:33Z INFO  librespot_playback::player] Loading <My Now> with Spotify URI <spotify:track:5t4zQCOjSL3BmJhPlg62Ok>
+[2026-03-29T01:59:33Z ERROR librespot_core::audio_key] error audio key 0 2
+[2026-03-29T01:59:33Z WARN  librespot_playback::player] Unable to load key, continuing without decryption: Service unavailable { audio key error }
+[2026-03-29T01:59:44Z ERROR librespot_playback::player] Unable to read audio file: Symphonia Decoder Error: end of stream
+[2026-03-29T01:59:44Z ERROR librespot_playback::player] Skipping to next track, unable to load track <SpotifyUri("spotify:track:5t4zQCOjSL3BmJhPlg62Ok")>: ()
+[2026-03-29T01:59:44Z INFO  librespot_playback::player] Loading <Count Of Four> with Spotify URI <spotify:track:5w3vHCHkitUnqAOPB3YMlV>
+[2026-03-29T01:59:45Z INFO  librespot_playback::player] <Count Of Four> (365738 ms) loaded
+[2026-03-29T01:59:50Z INFO  librespot_playback::player] Loading <Electric War> with Spotify URI <spotify:track:14uYjLYDWo0rtCHKvWF1jc>
+[2026-03-29T01:59:50Z ERROR librespot_core::audio_key] error audio key 0 2
+[2026-03-29T01:59:50Z WARN  librespot_playback::player] Unable to load key, continuing without decryption: Service unavailable { audio key error }
+[2026-03-29T02:00:06Z ERROR librespot_playback::player] Unable to read audio file: Symphonia Decoder Error: end of stream
+[2026-03-29T02:00:06Z ERROR librespot_playback::player] Skipping to next track, unable to load track <SpotifyUri("spotify:track:14uYjLYDWo0rtCHKvWF1jc")>: ()
+[2026-03-29T02:00:06Z INFO  librespot_playback::player] Loading <Zero Sun> with Spotify URI <spotify:track:15nhbSCU39RlG32KqkneOu>
+[2026-03-29T02:00:06Z ERROR librespot_core::audio_key] error audio key 0 2
+[2026-03-29T02:00:06Z WARN  librespot_playback::player] Unable to load key, continuing without decryption: Service unavailable { audio key error }
+[2026-03-29T02:00:17Z ERROR librespot_playback::player] Unable to read audio file: Symphonia Decoder Error: end of stream
+[2026-03-29T02:00:17Z ERROR librespot_playback::player] Skipping to next track, unable to load track <SpotifyUri("spotify:track:15nhbSCU39RlG32KqkneOu")>: ()
+[2026-03-29T02:00:17Z INFO  librespot_playback::player] Loading <Creaky> with Spotify URI <spotify:track:6KP6hNZ2DuOuB72c3SPNTk>
+[2026-03-29T02:00:18Z INFO  librespot_playback::player] <Creaky> (452413 ms) loaded
+[2026-03-29T02:00:25Z INFO  librespot_playback::player] Loading <Count Of Four> with Spotify URI <spotify:track:5w3vHCHkitUnqAOPB3YMlV>
+[2026-03-29T02:00:25Z ERROR librespot_core::audio_key] error audio key 0 2
+[2026-03-29T02:00:25Z WARN  librespot_playback::player] Unable to load key, continuing without decryption: Service unavailable { audio key error }
+[2026-03-29T02:00:42Z ERROR librespot_playback::player] Unable to read audio file: Symphonia Decoder Error: end of stream
+[2026-03-29T02:00:42Z ERROR librespot_playback::player] Skipping to next track, unable to load track <SpotifyUri("spotify:track:5w3vHCHkitUnqAOPB3YMlV")>: ()
+[2026-03-29T02:00:42Z INFO  librespot_playback::player] Loading <Creaky> with Spotify URI <spotify:track:6KP6hNZ2DuOuB72c3SPNTk>
+[2026-03-29T02:00:43Z ERROR librespot_core::audio_key] error audio key 0 2
+[2026-03-29T02:00:43Z WARN  librespot_playback::player] Unable to load key, continuing without decryption: Service unavailable { audio key error }
+[2026-03-29T02:00:59Z ERROR librespot_playback::player] Unable to read audio file: Symphonia Decoder Error: end of stream
+[2026-03-29T02:00:59Z ERROR librespot_playback::player] Skipping to next track, unable to load track <SpotifyUri("spotify:track:6KP6hNZ2DuOuB72c3SPNTk")>: ()
+[2026-03-29T02:00:59Z INFO  librespot_playback::player] Loading <Spektator> with Spotify URI <spotify:track:1q6Sx9RA0m4yfV7U2Dgthx>
+[2026-03-29T02:00:59Z INFO  librespot_playback::player] <Spektator> (225984 ms) loaded
+[2026-03-29T02:01:05Z INFO  librespot_playback::player] Loading <’Said Soul> with Spotify URI <spotify:track:3nereh8fbNjDflNF7f1CLK>
+[2026-03-29T02:01:06Z ERROR librespot_core::audio_key] error audio key 0 2
+[2026-03-29T02:01:06Z WARN  librespot_playback::player] Unable to load key, continuing without decryption: Service unavailable { audio key error }
+[2026-03-29T02:01:11Z ERROR librespot_playback::player] Unable to read audio file: Symphonia Decoder Error: end of stream
+[2026-03-29T02:01:11Z ERROR librespot_playback::player] Skipping to next track, unable to load track <SpotifyUri("spotify:track:3nereh8fbNjDflNF7f1CLK")>: ()
+[2026-03-29T02:01:11Z INFO  librespot_playback::player] Loading <Spektator> with Spotify URI <spotify:track:1q6Sx9RA0m4yfV7U2Dgthx>
+[2026-03-29T02:01:11Z ERROR librespot_core::audio_key] error audio key 0 2
+[2026-03-29T02:01:11Z WARN  librespot_playback::player] Unable to load key, continuing without decryption: Service unavailable { audio key error }
+[2026-03-29T02:01:20Z ERROR librespot_playback::player] Unable to read audio file: Symphonia Decoder Error: end of stream
+[2026-03-29T02:01:20Z ERROR librespot_playback::player] Skipping to next track, unable to load track <SpotifyUri("spotify:track:1q6Sx9RA0m4yfV7U2Dgthx")>: ()
+[2026-03-29T02:01:20Z INFO  librespot_playback::player] Loading <Sick 8> with Spotify URI <spotify:track:3b5OzSpdY89VB1VJuIcBaC>
+[2026-03-29T02:01:21Z INFO  librespot_playback::player] <Sick 8> (260522 ms) loaded
+[2026-03-29T02:01:28Z INFO  librespot_playback::player] Loading <My Now> with Spotify URI <spotify:track:5t4zQCOjSL3BmJhPlg62Ok>
+[2026-03-29T02:01:28Z ERROR librespot_core::audio_key] error audio key 0 2
+[2026-03-29T02:01:28Z WARN  librespot_playback::player] Unable to load key, continuing without decryption: Service unavailable { audio key error }
+[2026-03-29T02:01:39Z INFO  librespot_connect::spirc] device became inactive
+[2026-03-29T02:01:40Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-03-29T02:01:40Z WARN  librespot_connect::spirc] failed filling up next_track during stopping: Invalid state { context is not available. type: Default }
+[2026-03-29T02:01:41Z ERROR librespot_playback::player] Unable to read audio file: Symphonia Decoder Error: end of stream
+[2026-03-29T02:01:43Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-03-29T02:01:43Z INFO  librespot_playback::player] Loading <My Now> with Spotify URI <spotify:track:5t4zQCOjSL3BmJhPlg62Ok>
+[2026-03-29T02:01:43Z ERROR librespot_core::audio_key] error audio key 0 2
+[2026-03-29T02:01:43Z WARN  librespot_playback::player] Unable to load key, continuing without decryption: Service unavailable { audio key error }
+[2026-03-29T02:01:57Z ERROR librespot_playback::player] Unable to read audio file: Symphonia Decoder Error: Deadline expired before operation could complete { wait timeout exceeded }
+[2026-03-29T02:01:57Z ERROR librespot_playback::player] Skipping to next track, unable to load track <SpotifyUri("spotify:track:5t4zQCOjSL3BmJhPlg62Ok")>: ()
+[2026-03-29T02:01:57Z INFO  librespot_connect::spirc] Not playing next track because there are no more tracks left in queue.
+[2026-03-29T02:01:59Z INFO  librespot_playback::player] Loading <Electric War> with Spotify URI <spotify:track:14uYjLYDWo0rtCHKvWF1jc>
+[2026-03-29T02:02:00Z INFO  librespot_playback::player] <Electric War> (315626 ms) loaded
+[2026-03-29T02:02:04Z INFO  librespot_connect::spirc] Not playing next track because there are no more tracks left in queue.
+[2026-03-29T02:02:08Z INFO  librespot_playback::player] Loading <Electric War> with Spotify URI <spotify:track:14uYjLYDWo0rtCHKvWF1jc>
+[2026-03-29T02:02:08Z ERROR librespot_core::audio_key] error audio key 0 2
+[2026-03-29T02:02:08Z WARN  librespot_playback::player] Unable to load key, continuing without decryption: Service unavailable { audio key error }
+[2026-03-29T02:02:21Z ERROR librespot_playback::player] Unable to read audio file: Symphonia Decoder Error: end of stream
+[2026-03-29T02:02:21Z ERROR librespot_playback::player] Skipping to next track, unable to load track <SpotifyUri("spotify:track:14uYjLYDWo0rtCHKvWF1jc")>: ()
+[2026-03-29T02:02:21Z INFO  librespot_connect::spirc] Not playing next track because there are no more tracks left in queue.
+[2026-03-29T02:03:34Z INFO  librespot_playback::player] Loading <Electric War> with Spotify URI <spotify:track:14uYjLYDWo0rtCHKvWF1jc>
+[2026-03-29T02:03:35Z INFO  librespot_playback::player] <Electric War> (315626 ms) loaded
+[2026-03-29T02:03:40Z INFO  librespot_connect::spirc] Not playing next track because there are no more tracks left in queue.
+[2026-03-29T02:03:41Z INFO  librespot_connect::spirc] Not playing next track because there are no more tracks left in queue.
+[2026-03-29T02:03:42Z ERROR librespot_playback::player] Player::seek called from invalid state: Stopped
+[2026-03-29T02:03:44Z INFO  librespot_playback::player] Loading <Electric War> with Spotify URI <spotify:track:14uYjLYDWo0rtCHKvWF1jc>
+[2026-03-29T02:03:44Z INFO  librespot_playback::player] <Electric War> (315626 ms) loaded
+[2026-03-29T02:03:54Z INFO  librespot_connect::spirc] Not playing next track because there are no more tracks left in queue.
+[2026-03-29T02:04:02Z INFO  librespot_playback::player] Loading <Electric War> with Spotify URI <spotify:track:14uYjLYDWo0rtCHKvWF1jc>
+[2026-03-29T02:04:03Z INFO  librespot_playback::player] <Electric War> (315626 ms) loaded
+[2026-03-29T02:04:12Z INFO  librespot_connect::spirc] Not playing next track because there are no more tracks left in queue.
+[2026-03-29T02:06:49Z INFO  librespot] librespot 0.8.0 VERGEN_IDEMPOTENT_OUTPUT (Built on 2025-11-10, Build ID: 1762793321, Profile: release)
+[2026-03-29T02:06:49Z INFO  librespot_playback::mixer::softmixer] Mixing with softvol and volume control: Log(60.0)
+[2026-03-29T02:06:49Z INFO  librespot_playback::convert] Converting with ditherer: tpdf
+[2026-03-29T02:06:49Z INFO  librespot_playback::audio_backend::pipe] Using StdoutSink (pipe) with format: S16
+[2026-03-29T02:07:15Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-03-29T02:07:15Z INFO  librespot_core::session] Authenticated as 'paulster23' !
+[2026-03-29T02:07:15Z INFO  librespot_core::session] Country: "US"
+[2026-03-29T02:07:16Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-03-29T02:07:16Z INFO  librespot_connect::spirc] active device is <e9912ea7d306062891be9d4514485cfccfc5a2d7> with session <7zRmXHe2Gu9wXkHIbapB9r>
+[2026-03-29T02:07:16Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-03-29T02:07:16Z INFO  librespot_playback::player] Loading <Electric War> with Spotify URI <spotify:track:14uYjLYDWo0rtCHKvWF1jc>
+[2026-03-29T02:07:17Z INFO  librespot_playback::player] <Electric War> (315626 ms) loaded
+[2026-03-29T02:07:22Z INFO  librespot_playback::player] Loading <Zero Sun> with Spotify URI <spotify:track:15nhbSCU39RlG32KqkneOu>
+[2026-03-29T02:07:22Z INFO  librespot_playback::player] <Zero Sun> (207805 ms) loaded
+[2026-03-29T02:07:23Z WARN  librespot_audio::fetch::receive] Throughput 1 kbps lower than minimum 8, setting to minimum
+[2026-03-29T02:07:28Z INFO  librespot_playback::player] Loading <Spektator> with Spotify URI <spotify:track:1q6Sx9RA0m4yfV7U2Dgthx>
+[2026-03-29T02:07:32Z INFO  librespot_playback::player] <Spektator> (225984 ms) loaded
+[2026-03-29T02:07:55Z INFO  librespot_playback::player] Loading <Creaky> with Spotify URI <spotify:track:6KP6hNZ2DuOuB72c3SPNTk>
+[2026-03-29T02:07:56Z INFO  librespot_playback::player] <Creaky> (452413 ms) loaded
+[2026-03-29T02:08:04Z INFO  librespot_playback::player] Loading <’Said Soul> with Spotify URI <spotify:track:3nereh8fbNjDflNF7f1CLK>
+[2026-03-29T02:08:04Z INFO  librespot_playback::player] <’Said Soul> (164389 ms) loaded
+[2026-03-29T02:08:09Z INFO  librespot_playback::player] Loading <Sick 8> with Spotify URI <spotify:track:3b5OzSpdY89VB1VJuIcBaC>
+[2026-03-29T02:08:09Z INFO  librespot_playback::player] <Sick 8> (260522 ms) loaded
+[2026-03-29T02:08:14Z INFO  librespot_playback::player] Loading <My Now> with Spotify URI <spotify:track:5t4zQCOjSL3BmJhPlg62Ok>
+[2026-03-29T02:08:15Z INFO  librespot_playback::player] <My Now> (350127 ms) loaded
+[2026-03-29T02:08:21Z INFO  librespot_playback::player] Loading <Count Of Four> with Spotify URI <spotify:track:5w3vHCHkitUnqAOPB3YMlV>
+[2026-03-29T02:08:22Z INFO  librespot_playback::player] <Count Of Four> (365738 ms) loaded
+[2026-03-29T02:08:28Z INFO  librespot_playback::player] Loading <Electric War> with Spotify URI <spotify:track:14uYjLYDWo0rtCHKvWF1jc>
+[2026-03-29T02:08:28Z ERROR librespot_core::audio_key] error audio key 0 2
+[2026-03-29T02:08:28Z WARN  librespot_playback::player] Unable to load key, continuing without decryption: Service unavailable { audio key error }
+[2026-03-29T02:08:41Z ERROR librespot_playback::player] Unable to read audio file: Symphonia Decoder Error: end of stream
+[2026-03-29T02:08:41Z ERROR librespot_playback::player] Skipping to next track, unable to load track <SpotifyUri("spotify:track:14uYjLYDWo0rtCHKvWF1jc")>: ()
+[2026-03-29T02:08:41Z INFO  librespot_playback::player] Loading <Zero Sun> with Spotify URI <spotify:track:15nhbSCU39RlG32KqkneOu>
+[2026-03-29T02:08:42Z INFO  librespot_playback::player] <Zero Sun> (207805 ms) loaded
+[2026-03-29T02:08:42Z WARN  librespot_audio::fetch::receive] Throughput 2 kbps lower than minimum 8, setting to minimum
+[2026-03-29T02:08:46Z INFO  librespot_playback::player] Loading <Spektator> with Spotify URI <spotify:track:1q6Sx9RA0m4yfV7U2Dgthx>
+[2026-03-29T02:08:46Z ERROR librespot_core::audio_key] error audio key 0 2
+[2026-03-29T02:08:46Z WARN  librespot_playback::player] Unable to load key, continuing without decryption: Service unavailable { audio key error }
+[2026-03-29T02:08:55Z ERROR librespot_playback::player] Unable to read audio file: Symphonia Decoder Error: end of stream
+[2026-03-29T02:08:56Z ERROR librespot_playback::player] Skipping to next track, unable to load track <SpotifyUri("spotify:track:1q6Sx9RA0m4yfV7U2Dgthx")>: ()
+[2026-03-29T02:08:56Z INFO  librespot_playback::player] Loading <Creaky> with Spotify URI <spotify:track:6KP6hNZ2DuOuB72c3SPNTk>
+[2026-03-29T02:08:56Z ERROR librespot_core::audio_key] error audio key 0 2
+[2026-03-29T02:08:56Z WARN  librespot_playback::player] Unable to load key, continuing without decryption: Service unavailable { audio key error }
+[2026-03-29T02:09:15Z ERROR librespot_playback::player] Unable to read audio file: Symphonia Decoder Error: end of stream
+[2026-03-29T02:09:15Z ERROR librespot_playback::player] Skipping to next track, unable to load track <SpotifyUri("spotify:track:6KP6hNZ2DuOuB72c3SPNTk")>: ()
+[2026-03-29T02:09:15Z INFO  librespot_playback::player] Loading <’Said Soul> with Spotify URI <spotify:track:3nereh8fbNjDflNF7f1CLK>
+[2026-03-29T02:09:16Z INFO  librespot_playback::player] <’Said Soul> (164389 ms) loaded
+[2026-03-29T02:09:18Z INFO  librespot_playback::player] Loading <Sick 8> with Spotify URI <spotify:track:3b5OzSpdY89VB1VJuIcBaC>
+[2026-03-29T02:09:18Z ERROR librespot_core::audio_key] error audio key 0 2
+[2026-03-29T02:09:18Z WARN  librespot_playback::player] Unable to load key, continuing without decryption: Service unavailable { audio key error }
+[2026-03-29T02:09:28Z ERROR librespot_playback::player] Unable to read audio file: Symphonia Decoder Error: end of stream
+[2026-03-29T02:09:28Z ERROR librespot_playback::player] Skipping to next track, unable to load track <SpotifyUri("spotify:track:3b5OzSpdY89VB1VJuIcBaC")>: ()
+[2026-03-29T02:09:28Z INFO  librespot_playback::player] Loading <My Now> with Spotify URI <spotify:track:5t4zQCOjSL3BmJhPlg62Ok>
+[2026-03-29T02:09:28Z ERROR librespot_core::audio_key] error audio key 0 2
+[2026-03-29T02:09:28Z WARN  librespot_playback::player] Unable to load key, continuing without decryption: Service unavailable { audio key error }
+[2026-03-29T02:09:42Z ERROR librespot_playback::player] Unable to read audio file: Symphonia Decoder Error: end of stream
+[2026-03-29T02:09:42Z ERROR librespot_playback::player] Skipping to next track, unable to load track <SpotifyUri("spotify:track:5t4zQCOjSL3BmJhPlg62Ok")>: ()
+[2026-03-29T02:09:42Z INFO  librespot_playback::player] Loading <Count Of Four> with Spotify URI <spotify:track:5w3vHCHkitUnqAOPB3YMlV>
+[2026-03-29T02:09:43Z INFO  librespot_playback::player] <Count Of Four> (365738 ms) loaded
+[2026-03-29T02:09:50Z INFO  librespot_playback::player] Loading <Zero Sun> with Spotify URI <spotify:track:15nhbSCU39RlG32KqkneOu>
+[2026-03-29T02:09:50Z ERROR librespot_core::audio_key] error audio key 0 2
+[2026-03-29T02:09:50Z WARN  librespot_playback::player] Unable to load key, continuing without decryption: Service unavailable { audio key error }
+[2026-03-29T02:10:00Z ERROR librespot_playback::player] Unable to read audio file: Symphonia Decoder Error: end of stream
+[2026-03-29T02:10:00Z ERROR librespot_playback::player] Skipping to next track, unable to load track <SpotifyUri("spotify:track:15nhbSCU39RlG32KqkneOu")>: ()
+[2026-03-29T02:10:00Z INFO  librespot_playback::player] Loading <’Said Soul> with Spotify URI <spotify:track:3nereh8fbNjDflNF7f1CLK>
+[2026-03-29T02:10:00Z ERROR librespot_core::audio_key] error audio key 0 2
+[2026-03-29T02:10:00Z WARN  librespot_playback::player] Unable to load key, continuing without decryption: Service unavailable { audio key error }
+[2026-03-29T02:10:06Z ERROR librespot_playback::player] Unable to read audio file: Symphonia Decoder Error: end of stream
+[2026-03-29T02:10:06Z ERROR librespot_playback::player] Skipping to next track, unable to load track <SpotifyUri("spotify:track:3nereh8fbNjDflNF7f1CLK")>: ()
+[2026-03-29T02:10:06Z INFO  librespot_playback::player] Loading <Count Of Four> with Spotify URI <spotify:track:5w3vHCHkitUnqAOPB3YMlV>
+[2026-03-29T02:10:07Z ERROR librespot_core::audio_key] error audio key 0 2
+[2026-03-29T02:10:07Z WARN  librespot_playback::player] Unable to load key, continuing without decryption: Service unavailable { audio key error }
+[2026-03-29T02:10:24Z ERROR librespot_playback::player] Unable to read audio file: Symphonia Decoder Error: end of stream
+[2026-03-29T02:10:24Z ERROR librespot_playback::player] Skipping to next track, unable to load track <SpotifyUri("spotify:track:5w3vHCHkitUnqAOPB3YMlV")>: ()
+[2026-03-29T02:10:24Z INFO  librespot_playback::player] Loading <Electric War> with Spotify URI <spotify:track:14uYjLYDWo0rtCHKvWF1jc>
+[2026-03-29T02:10:25Z INFO  librespot_playback::player] <Electric War> (315626 ms) loaded
+[2026-03-29T02:10:35Z INFO  librespot_playback::player] Loading <Spektator> with Spotify URI <spotify:track:1q6Sx9RA0m4yfV7U2Dgthx>
+[2026-03-29T02:10:35Z ERROR librespot_core::audio_key] error audio key 0 2
+[2026-03-29T02:10:35Z WARN  librespot_playback::player] Unable to load key, continuing without decryption: Service unavailable { audio key error }
+[2026-03-29T02:10:45Z ERROR librespot_playback::player] Unable to read audio file: Symphonia Decoder Error: end of stream
+[2026-03-29T02:10:45Z ERROR librespot_playback::player] Skipping to next track, unable to load track <SpotifyUri("spotify:track:1q6Sx9RA0m4yfV7U2Dgthx")>: ()
+[2026-03-29T02:10:45Z INFO  librespot_playback::player] Loading <Electric War> with Spotify URI <spotify:track:14uYjLYDWo0rtCHKvWF1jc>
+[2026-03-29T02:10:46Z INFO  librespot_playback::player] <Electric War> (315626 ms) loaded
+[2026-03-29T02:10:52Z INFO  librespot_playback::player] Loading <Creaky> with Spotify URI <spotify:track:6KP6hNZ2DuOuB72c3SPNTk>
+[2026-03-29T02:10:53Z ERROR librespot_core::audio_key] error audio key 0 2
+[2026-03-29T02:10:53Z WARN  librespot_playback::player] Unable to load key, continuing without decryption: Service unavailable { audio key error }
+[2026-03-29T02:11:11Z ERROR librespot_playback::player] Unable to read audio file: Symphonia Decoder Error: end of stream
+[2026-03-29T02:11:11Z ERROR librespot_playback::player] Skipping to next track, unable to load track <SpotifyUri("spotify:track:6KP6hNZ2DuOuB72c3SPNTk")>: ()
+[2026-03-29T02:11:11Z INFO  librespot_playback::player] Loading <Electric War> with Spotify URI <spotify:track:14uYjLYDWo0rtCHKvWF1jc>
+[2026-03-29T02:11:11Z ERROR librespot_core::audio_key] error audio key 0 2
+[2026-03-29T02:11:11Z WARN  librespot_playback::player] Unable to load key, continuing without decryption: Service unavailable { audio key error }
+[2026-03-29T02:11:23Z ERROR librespot_playback::player] Unable to read audio file: Symphonia Decoder Error: end of stream
+[2026-03-29T02:11:23Z ERROR librespot_playback::player] Skipping to next track, unable to load track <SpotifyUri("spotify:track:14uYjLYDWo0rtCHKvWF1jc")>: ()
+[2026-03-29T02:11:23Z INFO  librespot_playback::player] Loading <Sick 8> with Spotify URI <spotify:track:3b5OzSpdY89VB1VJuIcBaC>
+[2026-03-29T02:11:24Z INFO  librespot_playback::player] <Sick 8> (260522 ms) loaded
+[2026-03-29T02:11:25Z WARN  librespot_audio::fetch::receive] Throughput 6 kbps lower than minimum 8, setting to minimum
+[2026-03-29T02:11:38Z INFO  librespot_playback::player] Loading <My Now> with Spotify URI <spotify:track:5t4zQCOjSL3BmJhPlg62Ok>
+[2026-03-29T02:11:38Z ERROR librespot_core::audio_key] error audio key 0 2
+[2026-03-29T02:11:38Z WARN  librespot_playback::player] Unable to load key, continuing without decryption: Service unavailable { audio key error }
+[2026-03-29T02:11:52Z ERROR librespot_playback::player] Unable to read audio file: Symphonia Decoder Error: end of stream
+[2026-03-29T02:11:52Z ERROR librespot_playback::player] Skipping to next track, unable to load track <SpotifyUri("spotify:track:5t4zQCOjSL3BmJhPlg62Ok")>: ()
+[2026-03-29T02:11:52Z INFO  librespot_playback::player] Loading <Sick 8> with Spotify URI <spotify:track:3b5OzSpdY89VB1VJuIcBaC>
+[2026-03-29T02:11:53Z INFO  librespot_playback::player] <Sick 8> (260522 ms) loaded
+[2026-03-29T02:11:57Z INFO  librespot_playback::player] Loading <Zero Sun> with Spotify URI <spotify:track:15nhbSCU39RlG32KqkneOu>
+[2026-03-29T02:11:57Z ERROR librespot_core::audio_key] error audio key 0 2
+[2026-03-29T02:11:57Z WARN  librespot_playback::player] Unable to load key, continuing without decryption: Service unavailable { audio key error }
+[2026-03-29T02:12:07Z ERROR librespot_playback::player] Unable to read audio file: Symphonia Decoder Error: end of stream
+[2026-03-29T02:12:07Z ERROR librespot_playback::player] Skipping to next track, unable to load track <SpotifyUri("spotify:track:15nhbSCU39RlG32KqkneOu")>: ()
+[2026-03-29T02:12:07Z INFO  librespot_playback::player] Loading <Sick 8> with Spotify URI <spotify:track:3b5OzSpdY89VB1VJuIcBaC>
+[2026-03-29T02:12:08Z ERROR librespot_core::audio_key] error audio key 0 2
+[2026-03-29T02:12:08Z WARN  librespot_playback::player] Unable to load key, continuing without decryption: Service unavailable { audio key error }
+[2026-03-29T02:12:18Z ERROR librespot_playback::player] Unable to read audio file: Symphonia Decoder Error: end of stream
+[2026-03-29T02:12:18Z ERROR librespot_playback::player] Skipping to next track, unable to load track <SpotifyUri("spotify:track:3b5OzSpdY89VB1VJuIcBaC")>: ()
+[2026-03-29T02:12:18Z INFO  librespot_playback::player] Loading <’Said Soul> with Spotify URI <spotify:track:3nereh8fbNjDflNF7f1CLK>
+[2026-03-29T02:12:18Z ERROR librespot_core::audio_key] error audio key 0 2
+[2026-03-29T02:12:18Z WARN  librespot_playback::player] Unable to load key, continuing without decryption: Service unavailable { audio key error }
+[2026-03-29T02:12:24Z ERROR librespot_playback::player] Unable to read audio file: Symphonia Decoder Error: end of stream
+[2026-03-29T02:12:24Z ERROR librespot_playback::player] Skipping to next track, unable to load track <SpotifyUri("spotify:track:3nereh8fbNjDflNF7f1CLK")>: ()
+[2026-03-29T02:12:24Z INFO  librespot_playback::player] Loading <Count Of Four> with Spotify URI <spotify:track:5w3vHCHkitUnqAOPB3YMlV>
+[2026-03-29T02:12:24Z ERROR librespot_core::audio_key] error audio key 0 2
+[2026-03-29T02:12:24Z WARN  librespot_playback::player] Unable to load key, continuing without decryption: Service unavailable { audio key error }
+[2026-03-29T02:12:45Z ERROR librespot_playback::player] Unable to read audio file: Symphonia Decoder Error: Deadline expired before operation could complete { wait timeout exceeded }
+[2026-03-29T02:12:45Z ERROR librespot_playback::player] Skipping to next track, unable to load track <SpotifyUri("spotify:track:5w3vHCHkitUnqAOPB3YMlV")>: ()
+[2026-03-29T02:12:45Z INFO  librespot_playback::player] Loading <Spektator> with Spotify URI <spotify:track:1q6Sx9RA0m4yfV7U2Dgthx>
+[2026-03-29T02:12:45Z INFO  librespot_playback::player] <Spektator> (225984 ms) loaded
+[2026-03-29T02:12:55Z INFO  librespot_playback::player] Loading <Creaky> with Spotify URI <spotify:track:6KP6hNZ2DuOuB72c3SPNTk>
+[2026-03-29T02:12:55Z ERROR librespot_core::audio_key] error audio key 0 2
+[2026-03-29T02:12:55Z WARN  librespot_playback::player] Unable to load key, continuing without decryption: Service unavailable { audio key error }
+[2026-03-29T02:13:13Z ERROR librespot_playback::player] Unable to read audio file: Symphonia Decoder Error: end of stream
+[2026-03-29T02:13:13Z ERROR librespot_playback::player] Skipping to next track, unable to load track <SpotifyUri("spotify:track:6KP6hNZ2DuOuB72c3SPNTk")>: ()
+[2026-03-29T02:13:13Z INFO  librespot_playback::player] Loading <Spektator> with Spotify URI <spotify:track:1q6Sx9RA0m4yfV7U2Dgthx>
+[2026-03-29T02:13:13Z INFO  librespot_playback::player] <Spektator> (225984 ms) loaded
+[2026-03-29T02:13:17Z INFO  librespot_playback::player] Loading <Electric War> with Spotify URI <spotify:track:14uYjLYDWo0rtCHKvWF1jc>
+[2026-03-29T02:13:17Z ERROR librespot_core::audio_key] error audio key 0 2
+[2026-03-29T02:13:17Z WARN  librespot_playback::player] Unable to load key, continuing without decryption: Service unavailable { audio key error }
+[2026-03-29T02:13:30Z ERROR librespot_playback::player] Unable to read audio file: Symphonia Decoder Error: end of stream
+[2026-03-29T02:13:30Z ERROR librespot_playback::player] Skipping to next track, unable to load track <SpotifyUri("spotify:track:14uYjLYDWo0rtCHKvWF1jc")>: ()
+[2026-03-29T02:13:30Z INFO  librespot_playback::player] Loading <Spektator> with Spotify URI <spotify:track:1q6Sx9RA0m4yfV7U2Dgthx>
+[2026-03-29T02:13:30Z ERROR librespot_core::audio_key] error audio key 0 2
+[2026-03-29T02:13:30Z WARN  librespot_playback::player] Unable to load key, continuing without decryption: Service unavailable { audio key error }
+[2026-03-29T02:13:45Z ERROR librespot_playback::player] Unable to read audio file: Symphonia Decoder Error: Deadline expired before operation could complete { wait timeout exceeded }
+[2026-03-29T02:13:45Z ERROR librespot_playback::player] Skipping to next track, unable to load track <SpotifyUri("spotify:track:1q6Sx9RA0m4yfV7U2Dgthx")>: ()
+[2026-03-29T02:13:45Z INFO  librespot_playback::player] Loading <My Now> with Spotify URI <spotify:track:5t4zQCOjSL3BmJhPlg62Ok>
+[2026-03-29T02:13:45Z INFO  librespot_playback::player] <My Now> (350127 ms) loaded
+[2026-03-29T02:13:58Z INFO  librespot_playback::player] Loading <Zero Sun> with Spotify URI <spotify:track:15nhbSCU39RlG32KqkneOu>
+[2026-03-29T02:13:59Z ERROR librespot_core::audio_key] error audio key 0 2
+[2026-03-29T02:13:59Z WARN  librespot_playback::player] Unable to load key, continuing without decryption: Service unavailable { audio key error }
+[2026-03-29T02:14:08Z ERROR librespot_playback::player] Unable to read audio file: Symphonia Decoder Error: end of stream
+[2026-03-29T02:14:08Z ERROR librespot_playback::player] Skipping to next track, unable to load track <SpotifyUri("spotify:track:15nhbSCU39RlG32KqkneOu")>: ()
+[2026-03-29T02:14:08Z INFO  librespot_playback::player] Loading <My Now> with Spotify URI <spotify:track:5t4zQCOjSL3BmJhPlg62Ok>
+[2026-03-29T02:14:09Z INFO  librespot_playback::player] <My Now> (350127 ms) loaded
+[2026-03-29T02:14:14Z INFO  librespot_playback::player] Loading <Sick 8> with Spotify URI <spotify:track:3b5OzSpdY89VB1VJuIcBaC>
+[2026-03-29T02:14:14Z ERROR librespot_core::audio_key] error audio key 0 2
+[2026-03-29T02:14:14Z WARN  librespot_playback::player] Unable to load key, continuing without decryption: Service unavailable { audio key error }
+[2026-03-29T02:14:24Z ERROR librespot_playback::player] Unable to read audio file: Symphonia Decoder Error: end of stream
+[2026-03-29T02:14:24Z ERROR librespot_playback::player] Skipping to next track, unable to load track <SpotifyUri("spotify:track:3b5OzSpdY89VB1VJuIcBaC")>: ()
+[2026-03-29T02:14:24Z INFO  librespot_playback::player] Loading <My Now> with Spotify URI <spotify:track:5t4zQCOjSL3BmJhPlg62Ok>
+[2026-03-29T02:14:24Z ERROR librespot_core::audio_key] error audio key 0 2
+[2026-03-29T02:14:24Z WARN  librespot_playback::player] Unable to load key, continuing without decryption: Service unavailable { audio key error }
+[2026-03-29T02:14:36Z ERROR librespot_playback::player] Unable to read audio file: Symphonia Decoder Error: end of stream
+[2026-03-29T02:14:36Z ERROR librespot_playback::player] Skipping to next track, unable to load track <SpotifyUri("spotify:track:5t4zQCOjSL3BmJhPlg62Ok")>: ()
+[2026-03-29T02:14:36Z INFO  librespot_playback::player] Loading <’Said Soul> with Spotify URI <spotify:track:3nereh8fbNjDflNF7f1CLK>
+[2026-03-29T02:14:36Z ERROR librespot_core::audio_key] error audio key 0 2
+[2026-03-29T02:14:36Z WARN  librespot_playback::player] Unable to load key, continuing without decryption: Service unavailable { audio key error }
+[2026-03-29T02:14:41Z ERROR librespot_playback::player] Unable to read audio file: Symphonia Decoder Error: end of stream
+[2026-03-29T02:14:41Z ERROR librespot_playback::player] Skipping to next track, unable to load track <SpotifyUri("spotify:track:3nereh8fbNjDflNF7f1CLK")>: ()
+[2026-03-29T02:14:41Z INFO  librespot_playback::player] Loading <Count Of Four> with Spotify URI <spotify:track:5w3vHCHkitUnqAOPB3YMlV>
+[2026-03-29T02:14:42Z INFO  librespot_playback::player] <Count Of Four> (365738 ms) loaded
+[2026-03-29T02:14:56Z INFO  librespot_playback::player] Loading <Creaky> with Spotify URI <spotify:track:6KP6hNZ2DuOuB72c3SPNTk>
+[2026-03-29T02:14:56Z ERROR librespot_core::audio_key] error audio key 0 2
+[2026-03-29T02:14:56Z WARN  librespot_playback::player] Unable to load key, continuing without decryption: Service unavailable { audio key error }
+[2026-03-29T02:15:17Z ERROR librespot_playback::player] Unable to read audio file: Symphonia Decoder Error: end of stream
+[2026-03-29T02:15:17Z ERROR librespot_playback::player] Skipping to next track, unable to load track <SpotifyUri("spotify:track:6KP6hNZ2DuOuB72c3SPNTk")>: ()
+[2026-03-29T02:15:17Z INFO  librespot_playback::player] Loading <Count Of Four> with Spotify URI <spotify:track:5w3vHCHkitUnqAOPB3YMlV>
+[2026-03-29T02:15:18Z INFO  librespot_playback::player] <Count Of Four> (365738 ms) loaded
+[2026-03-29T02:15:28Z INFO  librespot_playback::player] Loading <Electric War> with Spotify URI <spotify:track:14uYjLYDWo0rtCHKvWF1jc>
+[2026-03-29T02:15:28Z ERROR librespot_core::audio_key] error audio key 0 2
+[2026-03-29T02:15:28Z WARN  librespot_playback::player] Unable to load key, continuing without decryption: Service unavailable { audio key error }
+[2026-03-29T02:15:42Z ERROR librespot_playback::player] Unable to read audio file: Symphonia Decoder Error: end of stream
+[2026-03-29T02:15:42Z ERROR librespot_playback::player] Skipping to next track, unable to load track <SpotifyUri("spotify:track:14uYjLYDWo0rtCHKvWF1jc")>: ()
+[2026-03-29T02:15:42Z INFO  librespot_playback::player] Loading <Count Of Four> with Spotify URI <spotify:track:5w3vHCHkitUnqAOPB3YMlV>
+[2026-03-29T02:15:43Z ERROR librespot_core::audio_key] error audio key 0 2
+[2026-03-29T02:15:43Z WARN  librespot_playback::player] Unable to load key, continuing without decryption: Service unavailable { audio key error }
+[2026-03-29T02:15:59Z ERROR librespot_playback::player] Unable to read audio file: Symphonia Decoder Error: end of stream
+[2026-03-29T02:15:59Z ERROR librespot_playback::player] Skipping to next track, unable to load track <SpotifyUri("spotify:track:5w3vHCHkitUnqAOPB3YMlV")>: ()
+[2026-03-29T02:15:59Z INFO  librespot_playback::player] Loading <Spektator> with Spotify URI <spotify:track:1q6Sx9RA0m4yfV7U2Dgthx>
+[2026-03-29T02:15:59Z INFO  librespot_playback::player] <Spektator> (225984 ms) loaded
+[2026-03-29T02:16:06Z INFO  librespot_playback::player] Loading <Zero Sun> with Spotify URI <spotify:track:15nhbSCU39RlG32KqkneOu>
+[2026-03-29T02:16:06Z ERROR librespot_core::audio_key] error audio key 0 2
+[2026-03-29T02:16:06Z WARN  librespot_playback::player] Unable to load key, continuing without decryption: Service unavailable { audio key error }
+[2026-03-29T02:16:18Z ERROR librespot_playback::player] Unable to read audio file: Symphonia Decoder Error: end of stream
+[2026-03-29T02:16:18Z ERROR librespot_playback::player] Skipping to next track, unable to load track <SpotifyUri("spotify:track:15nhbSCU39RlG32KqkneOu")>: ()
+[2026-03-29T02:16:18Z INFO  librespot_playback::player] Loading <Spektator> with Spotify URI <spotify:track:1q6Sx9RA0m4yfV7U2Dgthx>
+[2026-03-29T02:16:19Z INFO  librespot_playback::player] <Spektator> (225984 ms) loaded
+[2026-03-29T02:16:25Z INFO  librespot_playback::player] Loading <Sick 8> with Spotify URI <spotify:track:3b5OzSpdY89VB1VJuIcBaC>
+[2026-03-29T02:16:25Z ERROR librespot_core::audio_key] error audio key 0 2
+[2026-03-29T02:16:25Z WARN  librespot_playback::player] Unable to load key, continuing without decryption: Service unavailable { audio key error }
+[2026-03-29T02:16:34Z ERROR librespot_playback::player] Unable to read audio file: Symphonia Decoder Error: end of stream
+[2026-03-29T02:16:34Z ERROR librespot_playback::player] Skipping to next track, unable to load track <SpotifyUri("spotify:track:3b5OzSpdY89VB1VJuIcBaC")>: ()
+[2026-03-29T02:16:34Z INFO  librespot_playback::player] Loading <Spektator> with Spotify URI <spotify:track:1q6Sx9RA0m4yfV7U2Dgthx>
+[2026-03-29T02:16:34Z ERROR librespot_core::audio_key] error audio key 0 2
+[2026-03-29T02:16:34Z WARN  librespot_playback::player] Unable to load key, continuing without decryption: Service unavailable { audio key error }
+[2026-03-29T02:16:44Z ERROR librespot_playback::player] Unable to read audio file: Symphonia Decoder Error: end of stream
+[2026-03-29T02:16:44Z ERROR librespot_playback::player] Skipping to next track, unable to load track <SpotifyUri("spotify:track:1q6Sx9RA0m4yfV7U2Dgthx")>: ()
+[2026-03-29T02:16:44Z INFO  librespot_playback::player] Loading <My Now> with Spotify URI <spotify:track:5t4zQCOjSL3BmJhPlg62Ok>
+[2026-03-29T02:16:44Z ERROR librespot_core::audio_key] error audio key 0 2
+[2026-03-29T02:16:44Z WARN  librespot_playback::player] Unable to load key, continuing without decryption: Service unavailable { audio key error }
+[2026-03-29T02:16:58Z ERROR librespot_playback::player] Unable to read audio file: Symphonia Decoder Error: end of stream
+[2026-03-29T02:16:58Z ERROR librespot_playback::player] Skipping to next track, unable to load track <SpotifyUri("spotify:track:5t4zQCOjSL3BmJhPlg62Ok")>: ()
+[2026-03-29T02:16:58Z INFO  librespot_playback::player] Loading <’Said Soul> with Spotify URI <spotify:track:3nereh8fbNjDflNF7f1CLK>
+[2026-03-29T02:16:58Z INFO  librespot_playback::player] <’Said Soul> (164389 ms) loaded
+[2026-03-29T02:17:04Z INFO  librespot_playback::player] Loading <Creaky> with Spotify URI <spotify:track:6KP6hNZ2DuOuB72c3SPNTk>
+[2026-03-29T02:17:04Z ERROR librespot_core::audio_key] error audio key 0 2
+[2026-03-29T02:17:04Z WARN  librespot_playback::player] Unable to load key, continuing without decryption: Service unavailable { audio key error }
+[2026-03-29T02:17:23Z ERROR librespot_playback::player] Unable to read audio file: Symphonia Decoder Error: end of stream
+[2026-03-29T02:17:23Z ERROR librespot_playback::player] Skipping to next track, unable to load track <SpotifyUri("spotify:track:6KP6hNZ2DuOuB72c3SPNTk")>: ()
+[2026-03-29T02:17:23Z INFO  librespot_playback::player] Loading <’Said Soul> with Spotify URI <spotify:track:3nereh8fbNjDflNF7f1CLK>
+[2026-03-29T02:17:23Z ERROR librespot_core::audio_key] error audio key 0 2
+[2026-03-29T02:17:23Z WARN  librespot_playback::player] Unable to load key, continuing without decryption: Service unavailable { audio key error }
+[2026-03-29T02:17:28Z ERROR librespot_playback::player] Unable to read audio file: Symphonia Decoder Error: end of stream
+[2026-03-29T02:17:28Z ERROR librespot_playback::player] Skipping to next track, unable to load track <SpotifyUri("spotify:track:3nereh8fbNjDflNF7f1CLK")>: ()
+[2026-03-29T02:17:28Z INFO  librespot_playback::player] Loading <Electric War> with Spotify URI <spotify:track:14uYjLYDWo0rtCHKvWF1jc>
+[2026-03-29T02:17:37Z INFO  librespot_playback::player] <Electric War> (315626 ms) loaded
+[2026-03-29T02:17:37Z ERROR librespot_playback::player] Skipping to next track, unable to get next packet for track <SpotifyUri("spotify:track:14uYjLYDWo0rtCHKvWF1jc")>: SymphoniaDecoder("channel closed")
+[2026-03-29T02:17:37Z ERROR librespot_playback::player] Skipping to next track, unable to get next packet for track <SpotifyUri("spotify:track:14uYjLYDWo0rtCHKvWF1jc")>: SymphoniaDecoder("channel closed")
+[2026-03-29T02:17:37Z ERROR librespot_playback::player] Skipping to next track, unable to get next packet for track <SpotifyUri("spotify:track:14uYjLYDWo0rtCHKvWF1jc")>: SymphoniaDecoder("channel closed")
+[2026-03-29T02:17:37Z ERROR librespot_playback::player] Skipping to next track, unable to get next packet for track <SpotifyUri("spotify:track:14uYjLYDWo0rtCHKvWF1jc")>: SymphoniaDecoder("channel closed")
+[2026-03-29T02:17:37Z ERROR librespot_playback::player] Skipping to next track, unable to get next packet for track <SpotifyUri("spotify:track:14uYjLYDWo0rtCHKvWF1jc")>: SymphoniaDecoder("channel closed")
+[2026-03-29T02:17:37Z ERROR librespot_playback::player] Skipping to next track, unable to get next packet for track <SpotifyUri("spotify:track:14uYjLYDWo0rtCHKvWF1jc")>: SymphoniaDecoder("channel closed")
+[2026-03-29T02:17:37Z ERROR librespot_playback::player] Skipping to next track, unable to get next packet for track <SpotifyUri("spotify:track:14uYjLYDWo0rtCHKvWF1jc")>: SymphoniaDecoder("channel closed")
+[2026-03-29T02:17:37Z ERROR librespot_playback::player] Skipping to next track, unable to get next packet for track <SpotifyUri("spotify:track:14uYjLYDWo0rtCHKvWF1jc")>: SymphoniaDecoder("channel closed")
+[2026-03-29T02:17:37Z INFO  librespot_playback::player] Loading <Electric War> with Spotify URI <spotify:track:14uYjLYDWo0rtCHKvWF1jc>
+[2026-03-29T02:17:37Z INFO  librespot_playback::player] Loading <Count Of Four> with Spotify URI <spotify:track:5w3vHCHkitUnqAOPB3YMlV>
+[2026-03-29T02:17:37Z INFO  librespot_playback::player] Loading <Count Of Four> with Spotify URI <spotify:track:5w3vHCHkitUnqAOPB3YMlV>
+[2026-03-29T02:17:37Z INFO  librespot_playback::player] Loading <Count Of Four> with Spotify URI <spotify:track:5w3vHCHkitUnqAOPB3YMlV>
+[2026-03-29T02:17:37Z INFO  librespot_playback::player] Loading <Electric War> with Spotify URI <spotify:track:14uYjLYDWo0rtCHKvWF1jc>
+[2026-03-29T02:17:37Z INFO  librespot_playback::player] Loading <Count Of Four> with Spotify URI <spotify:track:5w3vHCHkitUnqAOPB3YMlV>
+[2026-03-29T02:17:37Z INFO  librespot_playback::player] Loading <Electric War> with Spotify URI <spotify:track:14uYjLYDWo0rtCHKvWF1jc>
+[2026-03-29T02:17:37Z INFO  librespot_playback::player] Loading <Zero Sun> with Spotify URI <spotify:track:15nhbSCU39RlG32KqkneOu>
+[2026-03-29T02:17:37Z ERROR librespot_core::audio_key] error audio key 0 2
+[2026-03-29T02:17:37Z WARN  librespot_playback::player] Unable to load key, continuing without decryption: Service unavailable { audio key error }
+[2026-03-29T02:17:38Z ERROR librespot_core::audio_key] error audio key 0 2
+[2026-03-29T02:17:38Z WARN  librespot_playback::player] Unable to load key, continuing without decryption: Service unavailable { audio key error }
+[2026-03-29T02:17:38Z ERROR librespot_core::audio_key] error audio key 0 2
+[2026-03-29T02:17:38Z ERROR librespot_core::audio_key] error audio key 0 2
+[2026-03-29T02:17:38Z ERROR librespot_core::audio_key] error audio key 0 2
+[2026-03-29T02:17:38Z WARN  librespot_playback::player] Unable to load key, continuing without decryption: Service unavailable { audio key error }
+[2026-03-29T02:17:38Z WARN  librespot_playback::player] Unable to load key, continuing without decryption: Service unavailable { audio key error }
+[2026-03-29T02:17:38Z ERROR librespot_core::audio_key] error audio key 0 2
+[2026-03-29T02:17:38Z WARN  librespot_playback::player] Unable to load key, continuing without decryption: Service unavailable { audio key error }
+[2026-03-29T02:17:38Z WARN  librespot_playback::player] Unable to load key, continuing without decryption: Service unavailable { audio key error }
+[2026-03-29T02:17:38Z ERROR librespot_core::audio_key] error audio key 0 2
+[2026-03-29T02:17:38Z ERROR librespot_core::audio_key] error audio key 0 2
+[2026-03-29T02:17:38Z WARN  librespot_playback::player] Unable to load key, continuing without decryption: Service unavailable { audio key error }
+[2026-03-29T02:17:38Z WARN  librespot_playback::player] Unable to load key, continuing without decryption: Service unavailable { audio key error }
+[2026-03-29T02:17:39Z ERROR librespot_playback::player] Unable to read audio file: Symphonia Decoder Error: channel closed
+[2026-03-29T02:17:39Z ERROR librespot_playback::player] Unable to read audio file: Symphonia Decoder Error: channel closed
+[2026-03-29T02:17:47Z ERROR librespot_playback::player] Unable to read audio file: Symphonia Decoder Error: Deadline expired before operation could complete { wait timeout exceeded }
+[2026-03-29T02:17:47Z ERROR librespot_playback::player] Unable to read audio file: Symphonia Decoder Error: Deadline expired before operation could complete { wait timeout exceeded }
+[2026-03-29T02:17:47Z ERROR librespot_playback::player] Unable to read audio file: Symphonia Decoder Error: Deadline expired before operation could complete { wait timeout exceeded }
+[2026-03-29T02:17:47Z ERROR librespot_playback::player] Unable to read audio file: Symphonia Decoder Error: Deadline expired before operation could complete { wait timeout exceeded }
+[2026-03-29T02:17:47Z ERROR librespot_playback::player] Unable to read audio file: Symphonia Decoder Error: Deadline expired before operation could complete { wait timeout exceeded }
+[2026-03-29T02:17:47Z ERROR librespot_playback::player] Unable to read audio file: Symphonia Decoder Error: Deadline expired before operation could complete { wait timeout exceeded }
+[2026-03-29T02:17:47Z ERROR librespot_playback::player] Skipping to next track, unable to load track <SpotifyUri("spotify:track:5w3vHCHkitUnqAOPB3YMlV")>: ()
+[2026-03-29T02:17:47Z INFO  librespot_playback::player] Loading <Electric War> with Spotify URI <spotify:track:14uYjLYDWo0rtCHKvWF1jc>
+[2026-03-29T02:17:47Z ERROR librespot_core::audio_key] error audio key 0 2
+[2026-03-29T02:17:47Z WARN  librespot_playback::player] Unable to load key, continuing without decryption: Service unavailable { audio key error }
+[2026-03-29T02:18:03Z ERROR librespot_playback::player] Unable to read audio file: Symphonia Decoder Error: Deadline expired before operation could complete { wait timeout exceeded }
+[2026-03-29T02:18:03Z ERROR librespot_playback::player] Skipping to next track, unable to load track <SpotifyUri("spotify:track:14uYjLYDWo0rtCHKvWF1jc")>: ()
+[2026-03-29T02:18:03Z INFO  librespot_playback::player] Loading <Zero Sun> with Spotify URI <spotify:track:15nhbSCU39RlG32KqkneOu>
+[2026-03-29T02:18:04Z INFO  librespot_playback::player] <Zero Sun> (207805 ms) loaded
+[2026-03-29T02:18:04Z WARN  librespot_audio::fetch::receive] Throughput 5 kbps lower than minimum 8, setting to minimum
+[2026-03-29T02:18:10Z INFO  librespot_playback::player] Loading <Sick 8> with Spotify URI <spotify:track:3b5OzSpdY89VB1VJuIcBaC>
+[2026-03-29T02:18:11Z ERROR librespot_core::audio_key] error audio key 0 2
+[2026-03-29T02:18:11Z WARN  librespot_playback::player] Unable to load key, continuing without decryption: Service unavailable { audio key error }
+[2026-03-29T02:18:21Z ERROR librespot_playback::player] Unable to read audio file: Symphonia Decoder Error: end of stream
+[2026-03-29T02:18:21Z ERROR librespot_playback::player] Skipping to next track, unable to load track <SpotifyUri("spotify:track:3b5OzSpdY89VB1VJuIcBaC")>: ()
+[2026-03-29T02:18:21Z INFO  librespot_playback::player] Loading <Zero Sun> with Spotify URI <spotify:track:15nhbSCU39RlG32KqkneOu>
+[2026-03-29T02:18:22Z ERROR librespot_core::audio_key] error audio key 0 2
+[2026-03-29T02:18:22Z WARN  librespot_playback::player] Unable to load key, continuing without decryption: Service unavailable { audio key error }
+[2026-03-29T02:18:31Z ERROR librespot_playback::player] Unable to read audio file: Symphonia Decoder Error: end of stream
+[2026-03-29T02:18:31Z ERROR librespot_playback::player] Skipping to next track, unable to load track <SpotifyUri("spotify:track:15nhbSCU39RlG32KqkneOu")>: ()
+[2026-03-29T02:18:31Z INFO  librespot_playback::player] Loading <Spektator> with Spotify URI <spotify:track:1q6Sx9RA0m4yfV7U2Dgthx>
+[2026-03-29T02:18:32Z INFO  librespot_playback::player] <Spektator> (225984 ms) loaded
+[2026-03-29T02:18:38Z INFO  librespot_playback::player] Loading <My Now> with Spotify URI <spotify:track:5t4zQCOjSL3BmJhPlg62Ok>
+[2026-03-29T02:18:38Z ERROR librespot_core::audio_key] error audio key 0 2
+[2026-03-29T02:18:38Z WARN  librespot_playback::player] Unable to load key, continuing without decryption: Service unavailable { audio key error }
+[2026-03-29T02:18:52Z ERROR librespot_playback::player] Unable to read audio file: Symphonia Decoder Error: end of stream
+[2026-03-29T02:18:52Z ERROR librespot_playback::player] Skipping to next track, unable to load track <SpotifyUri("spotify:track:5t4zQCOjSL3BmJhPlg62Ok")>: ()
+[2026-03-29T02:18:52Z INFO  librespot_playback::player] Loading <Spektator> with Spotify URI <spotify:track:1q6Sx9RA0m4yfV7U2Dgthx>
+[2026-03-29T02:18:53Z ERROR librespot_core::audio_key] error audio key 0 2
+[2026-03-29T02:18:53Z WARN  librespot_playback::player] Unable to load key, continuing without decryption: Service unavailable { audio key error }
+[2026-03-29T02:18:54Z INFO  librespot] librespot 0.8.0 VERGEN_IDEMPOTENT_OUTPUT (Built on 2025-11-10, Build ID: 1762793321, Profile: release)
+[2026-03-29T02:18:54Z INFO  librespot_playback::mixer::softmixer] Mixing with softvol and volume control: Log(60.0)
+[2026-03-29T02:18:54Z INFO  librespot_playback::convert] Converting with ditherer: tpdf
+[2026-03-29T02:18:54Z INFO  librespot_playback::audio_backend::pipe] Using StdoutSink (pipe) with format: S16
+[2026-03-29T02:19:22Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-03-29T02:19:22Z INFO  librespot_core::session] Authenticated as 'paulster23' !
+[2026-03-29T02:19:22Z INFO  librespot_core::session] Country: "US"
+[2026-03-29T02:19:23Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-03-29T02:19:23Z INFO  librespot_connect::spirc] active device is <e9912ea7d306062891be9d4514485cfccfc5a2d7> with session <2yvqg9qZxIRg34RWEyu1Zr>
+[2026-03-29T02:19:23Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-03-29T02:19:23Z INFO  librespot_playback::player] Loading <Spektator> with Spotify URI <spotify:track:1q6Sx9RA0m4yfV7U2Dgthx>
+[2026-03-29T02:19:24Z INFO  librespot_playback::player] <Spektator> (225984 ms) loaded
+[2026-03-29T02:19:27Z INFO  librespot_playback::player] Loading <Creaky> with Spotify URI <spotify:track:6KP6hNZ2DuOuB72c3SPNTk>
+[2026-03-29T02:19:27Z ERROR librespot_core::audio_key] error audio key 0 2
+[2026-03-29T02:19:27Z WARN  librespot_playback::player] Unable to load key, continuing without decryption: Service unavailable { audio key error }
+[2026-03-29T02:19:40Z INFO  librespot_playback::player] Loading <’Said Soul> with Spotify URI <spotify:track:3nereh8fbNjDflNF7f1CLK>
+[2026-03-29T02:19:40Z INFO  librespot_playback::player] <’Said Soul> (164389 ms) loaded
+[2026-03-29T02:19:43Z INFO  librespot_playback::player] Loading <Sick 8> with Spotify URI <spotify:track:3b5OzSpdY89VB1VJuIcBaC>
+[2026-03-29T02:19:44Z ERROR librespot_core::audio_key] error audio key 0 2
+[2026-03-29T02:19:44Z WARN  librespot_playback::player] Unable to load key, continuing without decryption: Service unavailable { audio key error }
+[2026-03-29T02:19:46Z INFO  librespot_playback::player] Loading <’Said Soul> with Spotify URI <spotify:track:3nereh8fbNjDflNF7f1CLK>
+[2026-03-29T02:19:46Z ERROR librespot_core::audio_key] error audio key 0 2
+[2026-03-29T02:19:46Z WARN  librespot_playback::player] Unable to load key, continuing without decryption: Service unavailable { audio key error }
+[2026-03-29T02:19:46Z ERROR librespot_playback::player] Unable to read audio file: Symphonia Decoder Error: end of stream
+[2026-03-29T02:19:52Z INFO  librespot_playback::player] Loading <’Said Soul> with Spotify URI <spotify:track:3nereh8fbNjDflNF7f1CLK>
+[2026-03-29T02:19:52Z ERROR librespot_core::audio_key] error audio key 0 2
+[2026-03-29T02:19:52Z WARN  librespot_playback::player] Unable to load key, continuing without decryption: Service unavailable { audio key error }
+[2026-03-29T02:19:52Z ERROR librespot_playback::player] Unable to read audio file: Symphonia Decoder Error: end of stream
+[2026-03-29T02:19:53Z ERROR librespot_playback::player] Unable to read audio file: Symphonia Decoder Error: end of stream
+[2026-03-29T02:19:58Z ERROR librespot_playback::player] Unable to read audio file: Symphonia Decoder Error: end of stream
+[2026-03-29T02:19:58Z ERROR librespot_playback::player] Skipping to next track, unable to load track <SpotifyUri("spotify:track:3nereh8fbNjDflNF7f1CLK")>: ()
+[2026-03-29T02:19:58Z INFO  librespot_playback::player] Loading <Sick 8> with Spotify URI <spotify:track:3b5OzSpdY89VB1VJuIcBaC>
+[2026-03-29T02:19:58Z INFO  librespot_playback::player] Loading <Sick 8> with Spotify URI <spotify:track:3b5OzSpdY89VB1VJuIcBaC>
+[2026-03-29T02:19:58Z ERROR librespot_core::audio_key] error audio key 0 2
+[2026-03-29T02:19:58Z WARN  librespot_playback::player] Unable to load key, continuing without decryption: Service unavailable { audio key error }
+[2026-03-29T02:19:58Z ERROR librespot_core::audio_key] error audio key 0 2
+[2026-03-29T02:19:58Z WARN  librespot_playback::player] Unable to load key, continuing without decryption: Service unavailable { audio key error }
+[2026-03-29T02:20:01Z INFO  librespot_playback::player] Loading <Sick 8> with Spotify URI <spotify:track:3b5OzSpdY89VB1VJuIcBaC>
+[2026-03-29T02:20:01Z ERROR librespot_core::audio_key] error audio key 0 2
+[2026-03-29T02:20:01Z WARN  librespot_playback::player] Unable to load key, continuing without decryption: Service unavailable { audio key error }
+[2026-03-29T02:20:04Z INFO  librespot_playback::player] Loading <Sick 8> with Spotify URI <spotify:track:3b5OzSpdY89VB1VJuIcBaC>
+[2026-03-29T02:20:05Z ERROR librespot_core::audio_key] error audio key 0 2
+[2026-03-29T02:20:05Z WARN  librespot_playback::player] Unable to load key, continuing without decryption: Service unavailable { audio key error }
+[2026-03-29T02:20:05Z INFO  librespot_playback::player] Loading <’Said Soul> with Spotify URI <spotify:track:3nereh8fbNjDflNF7f1CLK>
+[2026-03-29T02:20:06Z ERROR librespot_core::audio_key] error audio key 0 2
+[2026-03-29T02:20:06Z WARN  librespot_playback::player] Unable to load key, continuing without decryption: Service unavailable { audio key error }
+[2026-03-29T02:20:06Z INFO  librespot_playback::player] Loading <Creaky> with Spotify URI <spotify:track:6KP6hNZ2DuOuB72c3SPNTk>
+[2026-03-29T02:20:07Z ERROR librespot_core::audio_key] error audio key 0 2
+[2026-03-29T02:20:07Z WARN  librespot_playback::player] Unable to load key, continuing without decryption: Service unavailable { audio key error }
+[2026-03-29T02:20:07Z ERROR librespot_playback::player] Unable to read audio file: Symphonia Decoder Error: Deadline expired before operation could complete { wait timeout exceeded }
+[2026-03-29T02:20:07Z ERROR librespot_playback::player] Unable to read audio file: Symphonia Decoder Error: Deadline expired before operation could complete { wait timeout exceeded }
+[2026-03-29T02:20:09Z ERROR librespot_playback::player] Unable to read audio file: Symphonia Decoder Error: channel closed
+[2026-03-29T02:20:09Z ERROR librespot_playback::player] Skipping to next track, unable to load track <SpotifyUri("spotify:track:6KP6hNZ2DuOuB72c3SPNTk")>: ()
+[2026-03-29T02:20:09Z INFO  librespot_playback::player] Loading <’Said Soul> with Spotify URI <spotify:track:3nereh8fbNjDflNF7f1CLK>
+[2026-03-29T02:20:09Z ERROR librespot_core::audio_key] error audio key 0 2
+[2026-03-29T02:20:09Z WARN  librespot_playback::player] Unable to load key, continuing without decryption: Service unavailable { audio key error }
+[2026-03-29T02:20:12Z ERROR librespot_playback::player] Unable to read audio file: Symphonia Decoder Error: Deadline expired before operation could complete { wait timeout exceeded }
+[2026-03-29T02:20:14Z ERROR librespot_playback::player] Unable to read audio file: Symphonia Decoder Error: Deadline expired before operation could complete { wait timeout exceeded }
+[2026-03-29T02:20:14Z ERROR librespot_playback::player] Unable to read audio file: Symphonia Decoder Error: Deadline expired before operation could complete { wait timeout exceeded }
+[2026-03-29T02:20:18Z ERROR librespot_playback::player] Unable to read audio file: Symphonia Decoder Error: Deadline expired before operation could complete { wait timeout exceeded }
+[2026-03-29T02:20:18Z ERROR librespot_playback::player] Skipping to next track, unable to load track <SpotifyUri("spotify:track:3nereh8fbNjDflNF7f1CLK")>: ()
+[2026-03-29T02:20:18Z INFO  librespot_playback::player] Loading <Sick 8> with Spotify URI <spotify:track:3b5OzSpdY89VB1VJuIcBaC>
+[2026-03-29T02:20:18Z INFO  librespot_playback::player] <Sick 8> (260522 ms) loaded
+[2026-03-29T02:20:26Z INFO  librespot_playback::player] Loading <My Now> with Spotify URI <spotify:track:5t4zQCOjSL3BmJhPlg62Ok>
+[2026-03-29T02:20:26Z ERROR librespot_core::audio_key] error audio key 0 2
+[2026-03-29T02:20:26Z WARN  librespot_playback::player] Unable to load key, continuing without decryption: Service unavailable { audio key error }
+[2026-03-29T02:20:34Z WARN  librespot_audio::fetch::receive] Time to first byte 1843 ms exceeds maximum 1500, setting to maximum
+[2026-03-29T02:20:39Z ERROR librespot_playback::player] Unable to read audio file: Symphonia Decoder Error: end of stream
+[2026-03-29T02:20:39Z ERROR librespot_playback::player] Skipping to next track, unable to load track <SpotifyUri("spotify:track:5t4zQCOjSL3BmJhPlg62Ok")>: ()
+[2026-03-29T02:20:39Z INFO  librespot_playback::player] Loading <Count Of Four> with Spotify URI <spotify:track:5w3vHCHkitUnqAOPB3YMlV>
+[2026-03-29T02:20:39Z ERROR librespot_core::audio_key] error audio key 0 2
+[2026-03-29T02:20:39Z WARN  librespot_playback::player] Unable to load key, continuing without decryption: Service unavailable { audio key error }
+[2026-03-29T02:21:01Z ERROR librespot_playback::player] Unable to read audio file: Symphonia Decoder Error: Deadline expired before operation could complete { wait timeout exceeded }
+[2026-03-29T02:21:01Z ERROR librespot_playback::player] Skipping to next track, unable to load track <SpotifyUri("spotify:track:5w3vHCHkitUnqAOPB3YMlV")>: ()
+[2026-03-29T02:21:01Z INFO  librespot_playback::player] Loading <Electric War> with Spotify URI <spotify:track:14uYjLYDWo0rtCHKvWF1jc>
+[2026-03-29T02:21:02Z INFO  librespot_playback::player] <Electric War> (315626 ms) loaded
+[2026-03-29T02:21:10Z INFO  librespot_playback::player] Loading <Zero Sun> with Spotify URI <spotify:track:15nhbSCU39RlG32KqkneOu>
+[2026-03-29T02:21:10Z ERROR librespot_core::audio_key] error audio key 0 2
+[2026-03-29T02:21:10Z WARN  librespot_playback::player] Unable to load key, continuing without decryption: Service unavailable { audio key error }
+[2026-03-29T02:21:17Z ERROR librespot_playback::player] Unable to read audio file: Symphonia Decoder Error: end of stream
+[2026-03-29T02:21:17Z ERROR librespot_playback::player] Skipping to next track, unable to load track <SpotifyUri("spotify:track:15nhbSCU39RlG32KqkneOu")>: ()
+[2026-03-29T02:21:17Z INFO  librespot_playback::player] Loading <Spektator> with Spotify URI <spotify:track:1q6Sx9RA0m4yfV7U2Dgthx>
+[2026-03-29T02:21:17Z ERROR librespot_core::audio_key] error audio key 0 2
+[2026-03-29T02:21:17Z WARN  librespot_playback::player] Unable to load key, continuing without decryption: Service unavailable { audio key error }
+[2026-03-29T02:21:26Z ERROR librespot_playback::player] Unable to read audio file: Symphonia Decoder Error: end of stream
+[2026-03-29T02:21:26Z ERROR librespot_playback::player] Skipping to next track, unable to load track <SpotifyUri("spotify:track:1q6Sx9RA0m4yfV7U2Dgthx")>: ()
+[2026-03-29T02:21:26Z INFO  librespot_playback::player] Loading <Sick 8> with Spotify URI <spotify:track:3b5OzSpdY89VB1VJuIcBaC>
+[2026-03-29T02:21:27Z INFO  librespot_playback::player] <Sick 8> (260522 ms) loaded
+[2026-03-29T02:21:31Z INFO  librespot_playback::player] Loading <Electric War> with Spotify URI <spotify:track:14uYjLYDWo0rtCHKvWF1jc>
+[2026-03-29T02:21:31Z ERROR librespot_core::audio_key] error audio key 0 2
+[2026-03-29T02:21:31Z WARN  librespot_playback::player] Unable to load key, continuing without decryption: Service unavailable { audio key error }
+[2026-03-29T02:21:43Z ERROR librespot_playback::player] Unable to read audio file: Symphonia Decoder Error: end of stream
+[2026-03-29T02:21:43Z ERROR librespot_playback::player] Skipping to next track, unable to load track <SpotifyUri("spotify:track:14uYjLYDWo0rtCHKvWF1jc")>: ()
+[2026-03-29T02:21:44Z INFO  librespot_playback::player] Loading <Sick 8> with Spotify URI <spotify:track:3b5OzSpdY89VB1VJuIcBaC>
+[2026-03-29T02:21:44Z ERROR librespot_core::audio_key] error audio key 0 2
+[2026-03-29T02:21:44Z WARN  librespot_playback::player] Unable to load key, continuing without decryption: Service unavailable { audio key error }
+[2026-03-29T02:21:58Z ERROR librespot_playback::player] Unable to read audio file: Symphonia Decoder Error: Deadline expired before operation could complete { wait timeout exceeded }
+[2026-03-29T02:21:58Z ERROR librespot_playback::player] Skipping to next track, unable to load track <SpotifyUri("spotify:track:3b5OzSpdY89VB1VJuIcBaC")>: ()
+[2026-03-29T02:21:58Z INFO  librespot_playback::player] Loading <Creaky> with Spotify URI <spotify:track:6KP6hNZ2DuOuB72c3SPNTk>
+[2026-03-29T02:21:59Z INFO  librespot_playback::player] <Creaky> (452413 ms) loaded
+[2026-03-29T02:45:18Z INFO  librespot] librespot 0.8.0 VERGEN_IDEMPOTENT_OUTPUT (Built on 2025-11-10, Build ID: 1762793321, Profile: release)
+[2026-03-29T02:45:18Z INFO  librespot_playback::mixer::softmixer] Mixing with softvol and volume control: Log(60.0)
+[2026-03-29T02:45:18Z INFO  librespot_playback::convert] Converting with ditherer: tpdf
+[2026-03-29T02:45:18Z INFO  librespot_playback::audio_backend::pipe] Using StdoutSink (pipe) with format: S16
+[2026-03-29T02:46:02Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-03-29T02:46:03Z INFO  librespot_core::session] Authenticated as 'paulster23' !
+[2026-03-29T02:46:03Z INFO  librespot_core::session] Country: "US"
+[2026-03-29T02:46:03Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-03-29T02:46:03Z INFO  librespot_connect::spirc] active device is <e9912ea7d306062891be9d4514485cfccfc5a2d7> with session <5zwpP9HHHzV04CCfD7SCb0>
+[2026-03-29T02:46:04Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-03-29T02:46:04Z INFO  librespot_playback::player] Loading <Hold On Hope> with Spotify URI <spotify:track:1uIsJdRjJ1G2GEWZFjtpKq>
+[2026-03-29T02:46:04Z INFO  librespot_playback::player] <Hold On Hope> (211066 ms) loaded
+[2026-03-29T02:46:07Z INFO  librespot_playback::player] Loading <Plainclothes Man> with Spotify URI <spotify:track:7yYf5GF0jX6M6KywKygE0c>
+[2026-03-29T02:46:08Z INFO  librespot_playback::player] <Plainclothes Man> (208000 ms) loaded
+[2026-03-29T02:46:11Z INFO  librespot_playback::player] Loading <Blue> with Spotify URI <spotify:track:5cDfI3KOa64zbuUgD6a4hG>
+[2026-03-29T02:46:11Z INFO  librespot_playback::player] <Blue> (189506 ms) loaded
+[2026-03-29T02:46:14Z INFO  librespot_playback::player] Loading <Stuck Between Stations - 2016 - Remaster> with Spotify URI <spotify:track:1Ux0zAxDqCLje8HT3uoXxd>
+[2026-03-29T02:46:14Z INFO  librespot_playback::player] <Stuck Between Stations - 2016 - Remaster> (249546 ms) loaded
+[2026-03-29T02:46:17Z INFO  librespot_playback::player] Loading <The Ballad Of El Goodo> with Spotify URI <spotify:track:1B5kQto4k99RG67TJEwwS5>
+[2026-03-29T02:46:18Z INFO  librespot_playback::player] <The Ballad Of El Goodo> (260160 ms) loaded
+[2026-03-29T02:46:24Z INFO  librespot_playback::player] Loading <Game Of Pricks> with Spotify URI <spotify:track:3qDjdkXjsrRdwxIFdaLuwR>
+[2026-03-29T02:46:24Z INFO  librespot_playback::player] <Game Of Pricks> (135160 ms) loaded
+[2026-03-29T02:46:27Z INFO  librespot_playback::player] Loading <Sparky's Dream> with Spotify URI <spotify:track:1tpjZwsodyFBEo6kxrxLQr>
+[2026-03-29T02:46:28Z INFO  librespot_playback::player] <Sparky's Dream> (197333 ms) loaded
+[2026-03-29T02:50:03Z ERROR librespot_core::session] Connection to server closed.
+[2026-03-29T02:55:05Z INFO  librespot] librespot 0.8.0 VERGEN_IDEMPOTENT_OUTPUT (Built on 2025-11-10, Build ID: 1762793321, Profile: release)
+[2026-03-29T02:55:05Z INFO  librespot_playback::mixer::softmixer] Mixing with softvol and volume control: Log(60.0)
+[2026-03-29T02:55:05Z INFO  librespot_playback::convert] Converting with ditherer: tpdf
+[2026-03-29T02:55:05Z INFO  librespot_playback::audio_backend::pipe] Using StdoutSink (pipe) with format: S16
+[2026-03-29T02:56:13Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-03-29T02:56:13Z INFO  librespot_core::session] Authenticated as 'paulster23' !
+[2026-03-29T02:56:13Z INFO  librespot_core::session] Country: "US"
+[2026-03-29T02:56:14Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-03-29T02:56:14Z INFO  librespot_connect::spirc] active device is <e9912ea7d306062891be9d4514485cfccfc5a2d7> with session <0ULnXAGHaCvEnAc3enBdtk>
+[2026-03-29T02:56:14Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-03-29T02:56:14Z INFO  librespot_playback::player] Loading <The God of Lying (feat. IDLES)> with Spotify URI <spotify:track:0eUO2hEBOyZXDgqKSpXd98>
+[2026-03-29T02:56:15Z INFO  librespot_playback::player] <The God of Lying (feat. IDLES)> (189021 ms) loaded
+[2026-03-29T02:57:17Z INFO  librespot_playback::player] Loading <Look How Far...> with Spotify URI <spotify:track:4ZwsQGsqUGewXIjNBXfrXr>
+[2026-03-29T02:57:18Z INFO  librespot_playback::player] <Look How Far...> (115744 ms) loaded
+[2026-03-29T02:57:49Z INFO  librespot_playback::player] Loading <Mother> with Spotify URI <spotify:track:0avZP07YeTpD9J8sEccLjf>
+[2026-03-29T02:57:50Z INFO  librespot_playback::player] <Mother> (207145 ms) loaded
+[2026-03-29T02:57:50Z WARN  librespot_audio::fetch::receive] Throughput 4 kbps lower than minimum 8, setting to minimum
+[2026-03-29T02:59:04Z INFO  librespot_playback::player] Loading <Dog Dribble> with Spotify URI <spotify:track:6skfouZ5bFFU3vxWaBla3B>
+[2026-03-29T02:59:04Z INFO  librespot_playback::player] <Dog Dribble> (255000 ms) loaded
+[2026-03-29T03:09:33Z INFO  librespot] librespot 0.8.0 VERGEN_IDEMPOTENT_OUTPUT (Built on 2025-11-10, Build ID: 1762793321, Profile: release)
+[2026-03-29T03:09:33Z INFO  librespot_playback::mixer::softmixer] Mixing with softvol and volume control: Log(60.0)
+[2026-03-29T03:09:33Z INFO  librespot_playback::convert] Converting with ditherer: tpdf
+[2026-03-29T03:09:33Z INFO  librespot_playback::audio_backend::pipe] Using StdoutSink (pipe) with format: S16
+[2026-03-29T03:10:07Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-03-29T03:10:07Z INFO  librespot_core::session] Authenticated as 'paulster23' !
+[2026-03-29T03:10:07Z INFO  librespot_core::session] Country: "US"
+[2026-03-29T03:10:08Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-03-29T03:10:08Z INFO  librespot_connect::spirc] active device is <e9912ea7d306062891be9d4514485cfccfc5a2d7> with session <3zhAhVG0aKL4oKlfw1pZeW>
+[2026-03-29T03:10:08Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-03-29T03:10:08Z INFO  librespot_playback::player] Loading <Husbands> with Spotify URI <spotify:track:0xATIfA17cJDb9pYAuw70Y>
+[2026-03-29T03:10:09Z INFO  librespot_playback::player] <Husbands> (248229 ms) loaded
+[2026-03-29T03:10:35Z INFO  librespot_connect::spirc] device became inactive
+[2026-03-29T03:10:35Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-03-29T03:10:35Z WARN  librespot_connect::spirc] failed filling up next_track during stopping: Invalid state { context is not available. type: Default }
+[2026-03-29T03:10:37Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-03-29T03:10:37Z INFO  librespot_playback::player] Loading <Husbands> with Spotify URI <spotify:track:0xATIfA17cJDb9pYAuw70Y>
+[2026-03-29T03:10:38Z INFO  librespot_playback::player] <Husbands> (248229 ms) loaded
+[2026-03-29T03:12:08Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-03-29T03:12:09Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-03-29T03:12:09Z INFO  librespot_core::session] Authenticated as 'paulster23' !
+[2026-03-29T03:12:09Z INFO  librespot_core::session] Country: "US"
+[2026-03-29T03:12:10Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-03-29T03:12:10Z INFO  librespot_connect::spirc] active device is <e9912ea7d306062891be9d4514485cfccfc5a2d7> with session <6qG47kxkO6AGXJJ8CPvEsu>
+[2026-03-29T03:12:11Z WARN  librespot_core::dealer] Websocket peer does not respond.
+[2026-03-29T03:12:15Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-03-29T03:12:15Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-03-29T03:12:16Z WARN  librespot_core::dealer] Websocket connection failed: IO error: peer closed connection without sending TLS close_notify: https://docs.rs/rustls/latest/rustls/manual/_03_howto/index.html#unexpected-eof
+[2026-03-29T03:12:16Z WARN  librespot_core::dealer] Wasn't able to reply to dealer request: channel closed
+[2026-03-29T03:12:16Z INFO  librespot_core::session] Authenticated as 'paulster23' !
+[2026-03-29T03:12:16Z INFO  librespot_core::session] Country: "US"
+[2026-03-29T03:12:16Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-03-29T03:12:16Z INFO  librespot_connect::spirc] active device is <e9912ea7d306062891be9d4514485cfccfc5a2d7> with session <6qG47kxkO6AGXJJ8CPvEsu>
+[2026-03-29T03:12:22Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-03-29T03:12:22Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-03-29T03:12:22Z WARN  librespot_core::dealer] Websocket connection failed: IO error: peer closed connection without sending TLS close_notify: https://docs.rs/rustls/latest/rustls/manual/_03_howto/index.html#unexpected-eof
+[2026-03-29T03:12:22Z WARN  librespot_core::dealer] Wasn't able to reply to dealer request: channel closed
+[2026-03-29T03:12:22Z INFO  librespot_core::session] Authenticated as 'paulster23' !
+[2026-03-29T03:12:22Z INFO  librespot_core::session] Country: "US"
+[2026-03-29T03:12:23Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-03-29T03:12:23Z INFO  librespot_connect::spirc] active device is <e9912ea7d306062891be9d4514485cfccfc5a2d7> with session <6qG47kxkO6AGXJJ8CPvEsu>
+[2026-03-29T03:12:29Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-03-29T03:12:29Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-03-29T03:12:29Z WARN  librespot_core::dealer] Websocket connection failed: IO error: peer closed connection without sending TLS close_notify: https://docs.rs/rustls/latest/rustls/manual/_03_howto/index.html#unexpected-eof
+[2026-03-29T03:12:29Z WARN  librespot_core::dealer] Wasn't able to reply to dealer request: channel closed
+[2026-03-29T03:12:29Z INFO  librespot_core::session] Authenticated as 'paulster23' !
+[2026-03-29T03:12:29Z INFO  librespot_core::session] Country: "US"
+[2026-03-29T03:12:30Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-03-29T03:12:30Z INFO  librespot_connect::spirc] active device is <e9912ea7d306062891be9d4514485cfccfc5a2d7> with session <6qG47kxkO6AGXJJ8CPvEsu>
+[2026-03-29T03:12:36Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-03-29T03:12:36Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-03-29T03:12:36Z WARN  librespot_core::dealer] Websocket connection failed: IO error: peer closed connection without sending TLS close_notify: https://docs.rs/rustls/latest/rustls/manual/_03_howto/index.html#unexpected-eof
+[2026-03-29T03:12:36Z INFO  librespot_core::session] Authenticated as 'paulster23' !
+[2026-03-29T03:12:36Z INFO  librespot_core::session] Country: "US"
+[2026-03-29T03:12:37Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-03-29T03:12:37Z INFO  librespot_connect::spirc] active device is <e9912ea7d306062891be9d4514485cfccfc5a2d7> with session <6qG47kxkO6AGXJJ8CPvEsu>
+[2026-03-29T03:17:06Z INFO  librespot] librespot 0.8.0 VERGEN_IDEMPOTENT_OUTPUT (Built on 2025-11-10, Build ID: 1762793321, Profile: release)
+[2026-03-29T03:17:06Z INFO  librespot_playback::mixer::softmixer] Mixing with softvol and volume control: Log(60.0)
+[2026-03-29T03:17:06Z INFO  librespot_playback::convert] Converting with ditherer: tpdf
+[2026-03-29T03:17:06Z INFO  librespot_playback::audio_backend::pipe] Using StdoutSink (pipe) with format: S16
+[2026-03-29T03:17:41Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-03-29T03:17:41Z INFO  librespot_core::session] Authenticated as 'paulster23' !
+[2026-03-29T03:17:41Z INFO  librespot_core::session] Country: "US"
+[2026-03-29T03:17:42Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-03-29T03:17:42Z INFO  librespot_connect::spirc] active device is <> with session <7h7JGdKFJR0k2vWuMuLXbY>
+[2026-03-29T03:17:50Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-03-29T03:17:50Z INFO  librespot_playback::player] Loading <Good Times Bad Times - 1993 Remaster> with Spotify URI <spotify:track:0QwZfbw26QeUoIy82Z2jYp>
+[2026-03-29T03:17:51Z INFO  librespot_playback::player] <Good Times Bad Times - 1993 Remaster> (166266 ms) loaded
+[2026-03-29T03:18:02Z INFO  librespot_playback::player] Loading <Babe I'm Gonna Leave You - 1990 Remaster> with Spotify URI <spotify:track:4OMu5a8sFpcRCPCcsoEaov>
+[2026-03-29T03:18:03Z INFO  librespot_playback::player] <Babe I'm Gonna Leave You - 1990 Remaster> (401066 ms) loaded
+[2026-03-29T03:18:20Z INFO  librespot_playback::player] Loading <You Shook Me - 1993 Remaster> with Spotify URI <spotify:track:0CrseEjTnYoB625tKoUowp>
+[2026-03-29T03:18:21Z INFO  librespot_playback::player] <You Shook Me - 1993 Remaster> (388093 ms) loaded

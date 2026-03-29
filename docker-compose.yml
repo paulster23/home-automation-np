@@ -32,10 +32,10 @@ services:
     deploy:
       resources:
         limits:
-          memory: 64m
+          memory: 16m    # reduced from 64m — avg 2m, max 11m (lightweight MQTT broker)
           cpus: "0.5"
         reservations:
-          memory: 16m
+          memory: 8m
     logging:
       driver: "json-file"
       options:
@@ -144,10 +144,10 @@ services:
     deploy:
       resources:
         limits:
-          memory: 768m    # HA + HACS + integrations typically 300-500 MB; was 1g
+          memory: 640m    # reduced from 768m — avg 460m, max 507m; 640m gives 133m headroom above observed peak
           cpus: "1.5"
         reservations:
-          memory: 256m
+          memory: 192m
     logging:
       driver: "json-file"
       options:
@@ -190,10 +190,10 @@ services:
     deploy:
       resources:
         limits:
-          memory: 512m    # Audio streaming; was 768m
-          cpus: "1.5"
+          memory: 384m    # Radio-only + Spotify via librespot; was 256m (too tight — OOM risk), was 512m originally
+          cpus: "1.0"
         reservations:
-          memory: 128m
+          memory: 64m
     logging:
       driver: "json-file"
       options:
