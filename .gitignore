@@ -4,6 +4,13 @@
 # ── Secrets (API keys, passwords) ───────────
 secrets/
 
+# ── TLS certificates (private key must never be committed) ───────────
+certs/privkey.pem
+certs/*.key
+
+# ── MQTT broker auth ─────────────────────────────────────────────────
+mosquitto/config/password_file
+
 # ── Frigate runtime data ────────────────────
 # Database (all variants: -shm, -wal, .bak-*, backups)
 frigate/frigate.db*
