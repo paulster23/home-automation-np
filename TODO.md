@@ -69,6 +69,7 @@ Frigate 0.17 only supports the `default` key under `max_frames` — per-object k
 - [x] **voice-bench installed** — ✅ Daemon + dashboard at `http://localhost:7700`. Logs all commands to CSV with per-hop timing. See `voice-bench/` directory (2026-03-17).
 
 **Remaining (lower priority):**
+- [ ] **Radio station response latency (~25s)** — Voice-initiated radio playback (e.g. "play WFMU") takes ~25 seconds from command to audio. Likely causes: MA buffering the radio stream before starting playback, RadioBrowser/TuneIn lookup latency, and/or the Voice PE's initial HTTP stream connection time. Investigate: MA stream buffer settings, whether pre-caching favorite stations helps, and whether direct URL playback (bypassing RadioBrowser search) would be faster.
 - [ ] **Fix "Stop" misheard as "Pause"** — distil-whisper-large-v3 is better but may still misfire on very short words. Option: add "pause" as a `StopMusic` alias in `custom_sentences/en/music.yaml`.
 - [ ] **Monitor small model accuracy** — `whisper-small-mlx-4bit` benchmarked perfectly on test commands but needs real-world validation across voice diversity, proper nouns (WFMU, KEXP), and noisy conditions. Watch `voice-bench` dashboard for transcription errors.
 - [ ] **Switch STT backend to WhisperKit** — Benchmarked at **0.85s avg** (0.52s warmed up) on small model — fastest of all implementations tested, with clean punctuation/capitalisation output. Requires a Wyoming protocol wrapper (`wyoming-whisperkit`). Investigate availability and drop-in compatibility with current setup.

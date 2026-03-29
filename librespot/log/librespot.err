@@ -788,3 +788,21 @@
 [2026-03-29T14:52:04Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
 [2026-03-29T14:52:04Z INFO  librespot_playback::player] Loading <A.W.I.B> with Spotify URI <spotify:track:2hnnjHp3SE6almAOzgDxKM>
 [2026-03-29T14:52:06Z INFO  librespot_playback::player] <A.W.I.B> (156813 ms) loaded
+[2026-03-29T14:56:36Z INFO  librespot_playback::player] Loading <Killuminatti> with Spotify URI <spotify:track:4pZe2SRXhtZN5BAMhTi6AY>
+[2026-03-29T14:56:37Z INFO  librespot_playback::player] <Killuminatti> (162845 ms) loaded
+[2026-03-29T14:59:11Z INFO  librespot_playback::player] Loading <I Toldjuh> with Spotify URI <spotify:track:2ceOIHXbKxkw7vDNKe2Jso>
+[2026-03-29T14:59:12Z INFO  librespot_playback::player] <I Toldjuh> (159010 ms) loaded
+[2026-03-29T15:01:42Z INFO  librespot_playback::player] Loading <Blade2> with Spotify URI <spotify:track:0toFSkrJq3aFTDQ3zoTo5G>
+[2026-03-29T15:01:43Z INFO  librespot_playback::player] <Blade2> (121315 ms) loaded
+[2026-03-29T15:03:38Z INFO  librespot_playback::player] Loading <Rollin> with Spotify URI <spotify:track:0O8jbCMMgPw9ed1sokF3fz>
+[2026-03-29T15:03:38Z INFO  librespot_playback::player] <Rollin> (141451 ms) loaded
+[2026-03-29T15:05:53Z INFO  librespot_playback::player] Loading <Fact Colossal> with Spotify URI <spotify:track:4ha80OaQI8TgVl12xcOG5Q>
+[2026-03-29T15:05:54Z INFO  librespot_playback::player] <Fact Colossal> (237073 ms) loaded
+[2026-03-29T15:09:38Z INFO  librespot_playback::player] Loading <You know I'm cold but I'm hot, I got a fever> with Spotify URI <spotify:track:0OUyi9Gd76nwif8um1z85e>
+[2026-03-29T15:09:39Z INFO  librespot_playback::player] <You know I'm cold but I'm hot, I got a fever> (102896 ms) loaded
+[2026-03-29T15:11:16Z INFO  librespot_playback::player] Loading <Omg> with Spotify URI <spotify:track:2sO0Kl3CXDWWWXtKaRCdXl>
+[2026-03-29T15:11:17Z INFO  librespot_playback::player] <Omg> (168500 ms) loaded
+[2026-03-29T15:13:57Z INFO  librespot_playback::player] Loading <Sun Ra in a 65> with Spotify URI <spotify:track:5BeXT94nSOjprIegXk0JgG>
+[2026-03-29T15:13:58Z INFO  librespot_playback::player] <Sun Ra in a 65> (145658 ms) loaded
+[2026-03-29T15:16:16Z INFO  librespot_playback::player] Loading <Ruckus> with Spotify URI <spotify:track:2e7dA6ow15brIG92PiaWtR>
+[2026-03-29T15:16:17Z INFO  librespot_playback::player] <Ruckus> (177655 ms) loaded

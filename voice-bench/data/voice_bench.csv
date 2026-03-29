@@ -240,3 +240,4 @@ seed_0129,,Stop.,other,,13191,,,13191,,,pre-bench-history,distil-whisper-large-v
 20260329_105147_324,2026-03-29T10:51:47.324385-04:00,We're playing KEXP.,radio,3242,963,144,2441,5828,false,true,small-mlx-4bit-silero-vad,whisper-small-mlx-4bit
 20260329_105159_654,2026-03-29T10:51:59.654713-04:00,play kpxp,music,4028,852,1186,2759,7974,true,false,small-mlx-4bit-silero-vad,whisper-small-mlx-4bit
 20260329_105211_054,2026-03-29T10:52:11.054081-04:00,Play KEXP,radio,3889,872,16247,2128,22264,false,true,small-mlx-4bit-silero-vad,whisper-small-mlx-4bit
+20260329_105704_231,2026-03-29T10:57:04.231087-04:00,Play KCRW.,radio,8997,6431,13929,2330,25257,false,true,small-mlx-4bit-silero-vad,whisper-small-mlx-4bit
