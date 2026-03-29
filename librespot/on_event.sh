@@ -97,6 +97,13 @@ case "$PLAYER_EVENT" in
     send_webhook "librespot_stopped"
     ;;
 
+  session_connected|session_disconnected)
+    # New Spotify session — reset state so the next "playing" event fires the
+    # webhook instead of assuming the stream is still alive from a prior session.
+    echo "stopped" > "$STATE_FILE"
+    log "→ reset state to stopped (new session)"
+    ;;
+
   # Ignore everything else (preloading, changed, volume_set, etc.)
   *)
     log "ignored"
