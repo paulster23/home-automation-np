@@ -42,7 +42,13 @@ CSV_COLUMNS = [
 
 def load_config(path: Path) -> dict:
     with open(path) as f:
-        return yaml.safe_load(f)
+        cfg = yaml.safe_load(f)
+    # Allow token to live in a separate secrets file (keeps it out of git).
+    # If ha_token_file is set, read the token from that file and override ha_token.
+    token_file = cfg.get("ha_token_file")
+    if token_file:
+        cfg["ha_token"] = Path(token_file).expanduser().read_text().strip()
+    return cfg
 
 
 def detect_whisper_model(plist_path: str) -> str:

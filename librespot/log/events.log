@@ -1392,3 +1392,9 @@
 2026-03-29T21:18:11Z PLAYER_EVENT=loading ignored
 2026-03-29T21:18:12Z PLAYER_EVENT=track_changed ignored
 2026-03-29T21:18:12Z PLAYER_EVENT=playing → notifying HA: librespot_playing
+2026-03-29T21:21:25Z PLAYER_EVENT=preload_next ignored
+2026-03-29T21:21:26Z PLAYER_EVENT=preloading ignored
+2026-03-29T21:21:53Z PLAYER_EVENT=end_of_track ignored
+2026-03-29T21:21:53Z PLAYER_EVENT=play_request_id_changed → reset state to stopped (new play request)
+2026-03-29T21:21:53Z PLAYER_EVENT=track_changed ignored
+2026-03-29T21:21:53Z PLAYER_EVENT=playing → notifying HA: librespot_playing
