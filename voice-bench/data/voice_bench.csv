@@ -242,3 +242,4 @@ seed_0129,,Stop.,other,,13191,,,13191,,,pre-bench-history,distil-whisper-large-v
 20260329_105211_054,2026-03-29T10:52:11.054081-04:00,Play KEXP,radio,3889,872,16247,2128,22264,false,true,small-mlx-4bit-silero-vad,whisper-small-mlx-4bit
 20260329_105704_231,2026-03-29T10:57:04.231087-04:00,Play KCRW.,radio,8997,6431,13929,2330,25257,false,true,small-mlx-4bit-silero-vad,whisper-small-mlx-4bit
 20260329_151732_274,2026-03-29T15:17:32.274143-04:00,Play WFMU,radio,8750,5543,2784,2390,13925,false,true,small-mlx-4bit-silero-vad,whisper-small-mlx-4bit
+20260329_154213_531,2026-03-29T15:42:13.531452-04:00,Play WFMU,radio,8702,5890,3140,2176,14019,false,true,small-mlx-4bit-silero-vad,whisper-small-mlx-4bit
