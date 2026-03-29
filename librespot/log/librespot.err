@@ -745,3 +745,46 @@
 [2026-03-29T03:18:03Z INFO  librespot_playback::player] <Babe I'm Gonna Leave You - 1990 Remaster> (401066 ms) loaded
 [2026-03-29T03:18:20Z INFO  librespot_playback::player] Loading <You Shook Me - 1993 Remaster> with Spotify URI <spotify:track:0CrseEjTnYoB625tKoUowp>
 [2026-03-29T03:18:21Z INFO  librespot_playback::player] <You Shook Me - 1993 Remaster> (388093 ms) loaded
+[2026-03-29T03:28:23Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-03-29T03:28:23Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-03-29T03:28:23Z INFO  librespot_playback::player] Loading <Do You Feel Bad About It> with Spotify URI <spotify:track:7IhcB78csUcYT49w1GuK5O>
+[2026-03-29T03:28:24Z INFO  librespot_playback::player] <Do You Feel Bad About It> (127626 ms) loaded
+[2026-03-29T03:47:12Z INFO  librespot_connect::spirc] device became inactive
+[2026-03-29T03:47:12Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-03-29T03:47:12Z WARN  librespot_connect::spirc] failed filling up next_track during stopping: Invalid state { context is not available. type: Default }
+[2026-03-29T03:47:12Z INFO  librespot_connect::spirc] session update: <Ok(SESSION_DELETED)> for self, current session_id 78d6023688c24eff914f2bc0dfb523b6, new session_id 16c18329e334607c2947958af4957111
+[2026-03-29T11:21:14Z WARN  librespot_core::dealer] Websocket peer does not respond.
+[2026-03-29T11:21:16Z INFO  librespot_connect::spirc] active device is <> with session <78d6023688c24eff914f2bc0dfb523b6>
+[2026-03-29T14:16:18Z WARN  librespot_core::dealer] Websocket peer does not respond.
+[2026-03-29T14:16:20Z INFO  librespot_connect::spirc] active device is <> with session <78d6023688c24eff914f2bc0dfb523b6>
+[2026-03-29T14:35:52Z WARN  librespot_core::dealer] Websocket peer does not respond.
+[2026-03-29T14:35:53Z INFO  librespot_connect::spirc] active device is <> with session <78d6023688c24eff914f2bc0dfb523b6>
+[2026-03-29T14:37:21Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-03-29T14:37:21Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-03-29T14:37:22Z INFO  librespot_playback::player] Loading <Where Is My Mind? - 2007 Remaster> with Spotify URI <spotify:track:7wCmS9TTVUcIhRalDYFgPy>
+[2026-03-29T14:37:22Z INFO  librespot_connect::spirc] session update: <Ok(NEW_SESSION)> for self, current session_id 16c18329e334607c2947958af4957111, new session_id 6291ba43d7e6801bfb0e359bd9ee67cb
+[2026-03-29T14:37:24Z INFO  librespot_playback::player] <Where Is My Mind? - 2007 Remaster> (234973 ms) loaded
+[2026-03-29T14:37:59Z INFO  librespot_connect::spirc] delayed volume update for all devices: volume is now 59637
+[2026-03-29T14:38:00Z INFO  librespot_playback::player] Loading <Here Comes Your Man> with Spotify URI <spotify:track:4IvZLDtwBHmBmwgDIUbuwa>
+[2026-03-29T14:38:01Z INFO  librespot_playback::player] <Here Comes Your Man> (201186 ms) loaded
+[2026-03-29T14:38:04Z INFO  librespot_playback::player] Loading <All I Think About Now> with Spotify URI <spotify:track:3NfqN997u9A3YAAafgzhIa>
+[2026-03-29T14:38:05Z INFO  librespot_playback::player] <All I Think About Now> (187320 ms) loaded
+[2026-03-29T14:38:36Z INFO  librespot_connect::spirc] device became inactive
+[2026-03-29T14:38:37Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-03-29T14:38:37Z WARN  librespot_connect::spirc] failed filling up next_track during stopping: Invalid state { context is not available. type: Default }
+[2026-03-29T14:38:40Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-03-29T14:38:40Z INFO  librespot_playback::player] Loading <All I Think About Now> with Spotify URI <spotify:track:3NfqN997u9A3YAAafgzhIa>
+[2026-03-29T14:38:41Z INFO  librespot_connect::spirc] session update: <Ok(NEW_SESSION)> for self, current session_id 6291ba43d7e6801bfb0e359bd9ee67cb, new session_id 2b7804ab53cbd87b8d7f7cfe7694ac96
+[2026-03-29T14:38:41Z INFO  librespot_playback::player] <All I Think About Now> (187320 ms) loaded
+[2026-03-29T14:43:32Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-03-29T14:43:32Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-03-29T14:43:32Z INFO  librespot_playback::player] Loading <Swingin Party - 2008 Remaster> with Spotify URI <spotify:track:14g6foD6sxO1qgkDKuPgWv>
+[2026-03-29T14:43:33Z INFO  librespot_playback::player] <Swingin Party - 2008 Remaster> (233573 ms) loaded
+[2026-03-29T14:44:52Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-03-29T14:44:52Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-03-29T14:44:53Z INFO  librespot_playback::player] Loading <Kemakmuran> with Spotify URI <spotify:track:4c3tXbVe5zZKAlO8GQE42D>
+[2026-03-29T14:44:54Z INFO  librespot_playback::player] <Kemakmuran> (174480 ms) loaded
+[2026-03-29T14:52:04Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-03-29T14:52:04Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-03-29T14:52:04Z INFO  librespot_playback::player] Loading <A.W.I.B> with Spotify URI <spotify:track:2hnnjHp3SE6almAOzgDxKM>
+[2026-03-29T14:52:06Z INFO  librespot_playback::player] <A.W.I.B> (156813 ms) loaded

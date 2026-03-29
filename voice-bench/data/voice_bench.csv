@@ -220,3 +220,23 @@ seed_0129,,Stop.,other,,13191,,,13191,,,pre-bench-history,distil-whisper-large-v
 20260328_231103_778,2026-03-28T23:11:03.778492-04:00,What time is it?,time,3755,2503,334,2441,6531,true,false,small-mlx-4bit-silero-vad,whisper-small-mlx-4bit
 20260328_231911_350,2026-03-28T23:19:11.350176-04:00,Play title TK by the Breeders.,music,4842,2139,916,2277,8036,true,false,small-mlx-4bit-silero-vad,whisper-small-mlx-4bit
 20260328_231922_473,2026-03-28T23:19:22.473702-04:00,Play the breeders,music,2858,906,823,2114,5796,true,false,small-mlx-4bit-silero-vad,whisper-small-mlx-4bit
+20260328_232930_430,2026-03-28T23:29:30.430041-04:00,Play the Pixies!,music,9910,7388,1350,2130,13390,true,false,small-mlx-4bit-silero-vad,whisper-small-mlx-4bit
+20260328_233632_637,2026-03-28T23:36:32.637953-04:00,Play the Pixies!,music,7378,5643,3895,1559,12833,true,false,small-mlx-4bit-silero-vad,whisper-small-mlx-4bit
+20260328_234345_072,2026-03-28T23:43:45.072062-04:00,Play the Pixies.,music,6508,4475,728,4469,11706,true,false,small-mlx-4bit-silero-vad,whisper-small-mlx-4bit
+20260328_234409_184,2026-03-28T23:44:09.184338-04:00,Play the pecsis,music,3075,1374,679,3411,7166,false,false,small-mlx-4bit-silero-vad,whisper-small-mlx-4bit
+20260328_234657_564,2026-03-28T23:46:57.564822-04:00,Play the Pixies,music,3327,1426,1261,1720,6309,true,false,small-mlx-4bit-silero-vad,whisper-small-mlx-4bit
+20260329_011540_514,2026-03-29T01:15:40.514890-04:00,Good night.,home,19551,6142,612,2776,22940,true,false,small-mlx-4bit-silero-vad,whisper-small-mlx-4bit
+20260329_100903_075,2026-03-29T10:09:03.075649-04:00,Turn on the light.,home,7786,5739,371,1855,10012,true,false,small-mlx-4bit-silero-vad,whisper-small-mlx-4bit
+20260329_103143_450,2026-03-29T10:31:43.450147-04:00,Turn on the speaker.,home,5851,3972,461,1872,8186,true,false,small-mlx-4bit-silero-vad,whisper-small-mlx-4bit
+20260329_103154_919,2026-03-29T10:31:54.919716-04:00,Play the Pixies.,music,3957,943,792,1650,6399,true,false,small-mlx-4bit-silero-vad,whisper-small-mlx-4bit
+20260329_103357_271,2026-03-29T10:33:57.271527-04:00,Play the Pixies!,music,4534,1840,795,1592,6922,true,false,small-mlx-4bit-silero-vad,whisper-small-mlx-4bit
+20260329_103714_289,2026-03-29T10:37:14.289466-04:00,Play the Pixies!,music,6633,4204,1241,1574,9448,true,false,small-mlx-4bit-silero-vad,whisper-small-mlx-4bit
+20260329_104327_033,2026-03-29T10:43:27.033250-04:00,Play the replacements.,music,4287,1983,1385,1899,7572,true,false,small-mlx-4bit-silero-vad,whisper-small-mlx-4bit
+20260329_104346_399,2026-03-29T10:43:46.399477-04:00,"Stop. Come on, Beth, ready? Yep.",other,7329,933,545,5882,13757,false,true,small-mlx-4bit-silero-vad,whisper-small-mlx-4bit
+20260329_104446_492,2026-03-29T10:44:46.492596-04:00,Play WSMU.,music,5158,3235,1827,4197,11183,true,false,small-mlx-4bit-silero-vad,whisper-small-mlx-4bit
+20260329_104508_683,2026-03-29T10:45:08.683140-04:00,Play WFMU,radio,4159,1451,22456,2449,29065,true,false,small-mlx-4bit-silero-vad,whisper-small-mlx-4bit
+20260329_105007_137,2026-03-29T10:50:07.137019-04:00,Tune in to WSFU.,other,5203,2701,,,26274,true,false,small-mlx-4bit-silero-vad,whisper-small-mlx-4bit
+20260329_105104_152,2026-03-29T10:51:04.152410-04:00,Tune in to WFMU.,radio,4362,1162,3779,2151,10294,false,true,small-mlx-4bit-silero-vad,whisper-small-mlx-4bit
+20260329_105147_324,2026-03-29T10:51:47.324385-04:00,We're playing KEXP.,radio,3242,963,144,2441,5828,false,true,small-mlx-4bit-silero-vad,whisper-small-mlx-4bit
+20260329_105159_654,2026-03-29T10:51:59.654713-04:00,play kpxp,music,4028,852,1186,2759,7974,true,false,small-mlx-4bit-silero-vad,whisper-small-mlx-4bit
+20260329_105211_054,2026-03-29T10:52:11.054081-04:00,Play KEXP,radio,3889,872,16247,2128,22264,false,true,small-mlx-4bit-silero-vad,whisper-small-mlx-4bit
