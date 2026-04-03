@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "/Users/media/containers/home-automation/librespot/serve_http.py", line 60, in <module>
+    client.setsockopt(socket.IPPROTO_TCP, socket.TCP_NODELAY, 1)
+OSError: [Errno 22] Invalid argument

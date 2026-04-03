@@ -1,19 +1,14 @@
 #!/usr/bin/env python3
 """
-Minimal HTTP streaming server for librespot audio.
+HTTP streaming server for librespot audio.
 
-Reads encoded MP3 bytes from stdin (piped from ffmpeg) and serves them to
-a single HTTP client on port 8765.
+Reads MP3 bytes from stdin (piped from ffmpeg) and serves them to a single
+HTTP client on port 8765. Stays bound to port 8765 while waiting for a client
+— naboo can connect at any time and immediately start receiving audio.
 
-Key property: stdin is ALWAYS drained, even when no client is connected.
-This prevents the upstream ffmpeg→librespot pipeline from blocking on a
-full pipe buffer — the root cause of the Naboo playback deadlock.
-
-When a new HTTP client connects while one is already active, the old
-connection is closed and the new one takes over (handles HA reconnects).
-
-Exits when stdin closes (librespot/ffmpeg stopped) → LaunchAgent restarts.
+Single-client: if a new client connects, the old one is closed.
 """
+import select
 import socket
 import sys
 
@@ -29,53 +24,66 @@ HTTP_HEADER = (
 
 srv = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 srv.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+srv.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEPORT, 1)
 srv.bind(("0.0.0.0", PORT))
 srv.listen(1)
-srv.setblocking(False)  # Non-blocking accept — never stall on waiting for clients
+srv.setblocking(False)
 
 client = None
+stdin_fd = sys.stdin.buffer.fileno()
 
 while True:
-    # Always read stdin first — this is what keeps upstream from blocking.
-    # When librespot is playing, ffmpeg produces ~24 KB/s of MP3 data.
-    # When librespot is idle, ffmpeg produces nothing and read() blocks here
-    # (which is fine — no audio to serve anyway).
-    data = sys.stdin.buffer.read(CHUNK)
-    if not data:
-        break  # stdin closed → ffmpeg/librespot exited → exit cleanly
-
-    # Accept any pending connection (non-blocking — returns immediately if none).
+    # Monitor stdin (audio from ffmpeg) and the server socket simultaneously.
+    # Timeout 1s so we don't block forever if stdin goes quiet.
+    read_fds = [srv, stdin_fd]
     try:
-        conn, addr = srv.accept()
-        # New client connected. Close the old one if present.
-        if client:
+        readable, _, _ = select.select(read_fds, [], [], 1.0)
+    except (OSError, ValueError):
+        break
+
+    for fd in readable:
+
+        # ── New HTTP client ───────────────────────────────────────────────────
+        if fd is srv:
             try:
-                client.close()
+                conn, _ = srv.accept()
+            except OSError:
+                continue
+            if client:
+                try:
+                    client.close()
+                except OSError:
+                    pass
+            client = conn
+            client.setblocking(True)
+            try:
+                client.setsockopt(socket.IPPROTO_TCP, socket.TCP_NODELAY, 1)
             except OSError:
                 pass
-        client = conn
-        client.setsockopt(socket.IPPROTO_TCP, socket.TCP_NODELAY, 1)
-        client.sendall(HTTP_HEADER)
-    except BlockingIOError:
-        pass  # No pending connection — that's normal, keep draining stdin
-
-    # Forward audio data to the connected client.
-    if client:
-        try:
-            client.sendall(data)
-        except OSError:
-            # Client disconnected — stop sending, keep draining stdin.
             try:
-                client.close()
+                client.sendall(HTTP_HEADER)
             except OSError:
-                pass
-            client = None
-    # If no client: data is silently discarded. Upstream never blocks.
+                try:
+                    client.close()
+                except OSError:
+                    pass
+                client = None
 
-# Clean up
-if client:
-    try:
-        client.close()
-    except OSError:
-        pass
-srv.close()
+        # ── Audio data from ffmpeg via stdin ──────────────────────────────────
+        elif fd == stdin_fd:
+            try:
+                data = sys.stdin.buffer.read1(CHUNK)
+            except OSError:
+                data = b""
+            if not data:
+                # stdin closed — ffmpeg exited, we're done
+                raise SystemExit(0)
+            if client:
+                try:
+                    client.sendall(data)
+                except OSError:
+                    try:
+                        client.close()
+                    except OSError:
+                        pass
+                    client = None

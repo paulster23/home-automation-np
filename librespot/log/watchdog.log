@@ -1,0 +1,1372 @@
+2026-03-31T01:21:17Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T01:21:17Z [watchdog] kickstart issued
+2026-03-31T01:26:17Z [watchdog] OK — librespot running (pids=73288) port 8765 open
+2026-03-31T01:31:28Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T01:31:28Z [watchdog] kickstart issued
+2026-03-31T01:36:28Z [watchdog] OK — librespot running (pids=73937) port 8765 open
+2026-03-31T01:41:38Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T01:41:38Z [watchdog] kickstart issued
+2026-03-31T01:46:38Z [watchdog] OK — librespot running (pids=75344) port 8765 open
+2026-03-31T01:51:48Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T01:51:48Z [watchdog] kickstart issued
+2026-03-31T01:56:48Z [watchdog] OK — librespot running (pids=76585) port 8765 open
+2026-03-31T02:01:59Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T02:01:59Z [watchdog] kickstart issued
+2026-03-31T02:06:59Z [watchdog] OK — librespot running (pids=77835) port 8765 open
+2026-03-31T02:12:09Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T02:12:09Z [watchdog] kickstart issued
+2026-03-31T02:17:09Z [watchdog] OK — librespot running (pids=79118) port 8765 open
+2026-03-31T02:22:19Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T02:22:20Z [watchdog] kickstart issued
+2026-03-31T02:27:20Z [watchdog] OK — librespot running (pids=80402) port 8765 open
+2026-03-31T02:32:30Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T02:32:30Z [watchdog] kickstart issued
+2026-03-31T02:37:30Z [watchdog] OK — librespot running (pids=81617) port 8765 open
+2026-03-31T02:42:40Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T02:42:40Z [watchdog] kickstart issued
+2026-03-31T02:47:40Z [watchdog] OK — librespot running (pids=82834) port 8765 open
+2026-03-31T02:52:48Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T02:52:48Z [watchdog] kickstart issued
+2026-03-31T02:57:48Z [watchdog] OK — librespot running (pids=84163) port 8765 open
+2026-03-31T03:02:56Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T03:02:56Z [watchdog] kickstart issued
+2026-03-31T03:07:56Z [watchdog] OK — librespot running (pids=85369) port 8765 open
+2026-03-31T03:13:04Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T03:13:04Z [watchdog] kickstart issued
+2026-03-31T03:18:04Z [watchdog] OK — librespot running (pids=86606) port 8765 open
+2026-03-31T03:23:12Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T03:23:12Z [watchdog] kickstart issued
+2026-03-31T03:28:12Z [watchdog] OK — librespot running (pids=87875) port 8765 open
+2026-03-31T03:33:20Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T03:33:20Z [watchdog] kickstart issued
+2026-03-31T03:38:21Z [watchdog] OK — librespot running (pids=89096) port 8765 open
+2026-03-31T03:43:28Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T03:43:28Z [watchdog] kickstart issued
+2026-03-31T03:48:28Z [watchdog] OK — librespot running (pids=90460) port 8765 open
+2026-03-31T03:53:36Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T03:53:36Z [watchdog] kickstart issued
+2026-03-31T03:58:37Z [watchdog] OK — librespot running (pids=91635) port 8765 open
+2026-03-31T04:03:44Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T04:03:44Z [watchdog] kickstart issued
+2026-03-31T04:08:45Z [watchdog] OK — librespot running (pids=92850) port 8765 open
+2026-03-31T04:13:52Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T04:13:52Z [watchdog] kickstart issued
+2026-03-31T04:18:53Z [watchdog] OK — librespot running (pids=94122) port 8765 open
+2026-03-31T04:24:01Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T04:24:01Z [watchdog] kickstart issued
+2026-03-31T04:29:01Z [watchdog] OK — librespot running (pids=95348) port 8765 open
+2026-03-31T04:34:08Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T04:34:09Z [watchdog] kickstart issued
+2026-03-31T04:39:09Z [watchdog] OK — librespot running (pids=96532) port 8765 open
+2026-03-31T04:44:17Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T04:44:17Z [watchdog] kickstart issued
+2026-03-31T04:49:17Z [watchdog] OK — librespot running (pids=97909) port 8765 open
+2026-03-31T04:54:25Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T04:54:25Z [watchdog] kickstart issued
+2026-03-31T04:59:25Z [watchdog] OK — librespot running (pids=99137) port 8765 open
+2026-03-31T05:04:33Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T05:04:33Z [watchdog] kickstart issued
+2026-03-31T05:09:33Z [watchdog] OK — librespot running (pids=623) port 8765 open
+2026-03-31T05:14:41Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T05:14:41Z [watchdog] kickstart issued
+2026-03-31T05:19:41Z [watchdog] OK — librespot running (pids=1995) port 8765 open
+2026-03-31T05:24:49Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T05:24:49Z [watchdog] kickstart issued
+2026-03-31T05:29:49Z [watchdog] OK — librespot running (pids=3254) port 8765 open
+2026-03-31T05:34:57Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T05:34:57Z [watchdog] kickstart issued
+2026-03-31T05:39:57Z [watchdog] OK — librespot running (pids=4469) port 8765 open
+2026-03-31T05:45:05Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T05:45:05Z [watchdog] kickstart issued
+2026-03-31T05:50:05Z [watchdog] OK — librespot running (pids=5813) port 8765 open
+2026-03-31T05:55:13Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T05:55:13Z [watchdog] kickstart issued
+2026-03-31T06:00:13Z [watchdog] OK — librespot running (pids=7034) port 8765 open
+2026-03-31T06:05:21Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T06:05:21Z [watchdog] kickstart issued
+2026-03-31T06:10:21Z [watchdog] OK — librespot running (pids=8299) port 8765 open
+2026-03-31T06:15:29Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T06:15:29Z [watchdog] kickstart issued
+2026-03-31T06:20:29Z [watchdog] OK — librespot running (pids=9638) port 8765 open
+2026-03-31T06:25:37Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T06:25:37Z [watchdog] kickstart issued
+2026-03-31T06:30:37Z [watchdog] OK — librespot running (pids=10835) port 8765 open
+2026-03-31T06:35:45Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T06:35:45Z [watchdog] kickstart issued
+2026-03-31T06:40:45Z [watchdog] OK — librespot running (pids=12051) port 8765 open
+2026-03-31T06:45:53Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T06:45:53Z [watchdog] kickstart issued
+2026-03-31T06:50:53Z [watchdog] OK — librespot running (pids=13376) port 8765 open
+2026-03-31T06:56:01Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T06:56:01Z [watchdog] kickstart issued
+2026-03-31T07:01:01Z [watchdog] OK — librespot running (pids=14602) port 8765 open
+2026-03-31T07:06:09Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T07:06:09Z [watchdog] kickstart issued
+2026-03-31T07:11:09Z [watchdog] OK — librespot running (pids=15883) port 8765 open
+2026-03-31T07:16:17Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T07:16:17Z [watchdog] kickstart issued
+2026-03-31T07:21:17Z [watchdog] OK — librespot running (pids=17169) port 8765 open
+2026-03-31T07:26:25Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T07:26:25Z [watchdog] kickstart issued
+2026-03-31T07:31:25Z [watchdog] OK — librespot running (pids=18375) port 8765 open
+2026-03-31T07:36:33Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T07:36:33Z [watchdog] kickstart issued
+2026-03-31T07:41:34Z [watchdog] OK — librespot running (pids=19652) port 8765 open
+2026-03-31T07:46:41Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T07:46:42Z [watchdog] kickstart issued
+2026-03-31T07:51:42Z [watchdog] OK — librespot running (pids=20931) port 8765 open
+2026-03-31T07:56:50Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T07:56:50Z [watchdog] kickstart issued
+2026-03-31T08:01:50Z [watchdog] OK — librespot running (pids=22165) port 8765 open
+2026-03-31T08:06:58Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T08:06:58Z [watchdog] kickstart issued
+2026-03-31T08:11:58Z [watchdog] OK — librespot running (pids=23381) port 8765 open
+2026-03-31T08:17:06Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T08:17:06Z [watchdog] kickstart issued
+2026-03-31T08:22:06Z [watchdog] OK — librespot running (pids=24667) port 8765 open
+2026-03-31T08:27:14Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T08:27:14Z [watchdog] kickstart issued
+2026-03-31T08:32:14Z [watchdog] OK — librespot running (pids=25925) port 8765 open
+2026-03-31T08:37:22Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T08:37:22Z [watchdog] kickstart issued
+2026-03-31T08:42:22Z [watchdog] OK — librespot running (pids=27146) port 8765 open
+2026-03-31T08:47:30Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T08:47:30Z [watchdog] kickstart issued
+2026-03-31T08:52:30Z [watchdog] OK — librespot running (pids=28368) port 8765 open
+2026-03-31T08:57:38Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T08:57:38Z [watchdog] kickstart issued
+2026-03-31T09:02:38Z [watchdog] OK — librespot running (pids=29736) port 8765 open
+2026-03-31T09:07:46Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T09:07:46Z [watchdog] kickstart issued
+2026-03-31T09:12:46Z [watchdog] OK — librespot running (pids=30958) port 8765 open
+2026-03-31T09:17:54Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T09:17:54Z [watchdog] kickstart issued
+2026-03-31T09:22:54Z [watchdog] OK — librespot running (pids=32132) port 8765 open
+2026-03-31T09:28:02Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T09:28:02Z [watchdog] kickstart issued
+2026-03-31T09:33:02Z [watchdog] OK — librespot running (pids=33338) port 8765 open
+2026-03-31T09:38:10Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T09:38:10Z [watchdog] kickstart issued
+2026-03-31T09:43:10Z [watchdog] OK — librespot running (pids=34587) port 8765 open
+2026-03-31T09:48:18Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T09:48:18Z [watchdog] kickstart issued
+2026-03-31T09:53:18Z [watchdog] OK — librespot running (pids=35849) port 8765 open
+2026-03-31T09:58:26Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T09:58:26Z [watchdog] kickstart issued
+2026-03-31T10:03:26Z [watchdog] OK — librespot running (pids=37140) port 8765 open
+2026-03-31T10:08:34Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T10:08:34Z [watchdog] kickstart issued
+2026-03-31T10:13:34Z [watchdog] OK — librespot running (pids=38471) port 8765 open
+2026-03-31T10:18:42Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T10:18:42Z [watchdog] kickstart issued
+2026-03-31T10:23:42Z [watchdog] OK — librespot running (pids=39665) port 8765 open
+2026-03-31T10:28:50Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T10:28:50Z [watchdog] kickstart issued
+2026-03-31T10:33:50Z [watchdog] OK — librespot running (pids=40880) port 8765 open
+2026-03-31T10:38:58Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T10:38:58Z [watchdog] kickstart issued
+2026-03-31T10:43:58Z [watchdog] OK — librespot running (pids=42203) port 8765 open
+2026-03-31T10:49:06Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T10:49:06Z [watchdog] kickstart issued
+2026-03-31T10:54:06Z [watchdog] OK — librespot running (pids=43382) port 8765 open
+2026-03-31T10:59:14Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T10:59:14Z [watchdog] kickstart issued
+2026-03-31T11:04:14Z [watchdog] OK — librespot running (pids=44631) port 8765 open
+2026-03-31T11:09:22Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T11:09:22Z [watchdog] kickstart issued
+2026-03-31T11:14:22Z [watchdog] OK — librespot running (pids=46024) port 8765 open
+2026-03-31T11:19:30Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T11:19:30Z [watchdog] kickstart issued
+2026-03-31T11:24:30Z [watchdog] OK — librespot running (pids=47255) port 8765 open
+2026-03-31T11:29:38Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T11:29:38Z [watchdog] kickstart issued
+2026-03-31T11:34:38Z [watchdog] OK — librespot running (pids=48483) port 8765 open
+2026-03-31T11:39:46Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T11:39:46Z [watchdog] kickstart issued
+2026-03-31T11:44:46Z [watchdog] OK — librespot running (pids=49747) port 8765 open
+2026-03-31T11:49:54Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T11:49:54Z [watchdog] kickstart issued
+2026-03-31T11:54:54Z [watchdog] OK — librespot running (pids=51106) port 8765 open
+2026-03-31T12:00:02Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T12:00:02Z [watchdog] kickstart issued
+2026-03-31T12:05:03Z [watchdog] OK — librespot running (pids=52365) port 8765 open
+2026-03-31T12:10:10Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T12:10:10Z [watchdog] kickstart issued
+2026-03-31T12:15:10Z [watchdog] OK — librespot running (pids=53699) port 8765 open
+2026-03-31T12:20:18Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T12:20:18Z [watchdog] kickstart issued
+2026-03-31T12:25:18Z [watchdog] OK — librespot running (pids=54909) port 8765 open
+2026-03-31T12:30:26Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T12:30:26Z [watchdog] kickstart issued
+2026-03-31T12:35:26Z [watchdog] OK — librespot running (pids=56185) port 8765 open
+2026-03-31T12:40:34Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T12:40:34Z [watchdog] kickstart issued
+2026-03-31T12:45:34Z [watchdog] OK — librespot running (pids=57540) port 8765 open
+2026-03-31T12:50:42Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T12:50:42Z [watchdog] kickstart issued
+2026-03-31T12:55:42Z [watchdog] OK — librespot running (pids=58778) port 8765 open
+2026-03-31T13:00:50Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T13:00:50Z [watchdog] kickstart issued
+2026-03-31T13:05:51Z [watchdog] OK — librespot running (pids=60077) port 8765 open
+2026-03-31T13:10:58Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T13:10:58Z [watchdog] kickstart issued
+2026-03-31T13:15:59Z [watchdog] OK — librespot running (pids=61458) port 8765 open
+2026-03-31T13:21:06Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T13:21:06Z [watchdog] kickstart issued
+2026-03-31T13:26:06Z [watchdog] OK — librespot running (pids=62746) port 8765 open
+2026-03-31T13:31:14Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T13:31:14Z [watchdog] kickstart issued
+2026-03-31T13:36:15Z [watchdog] OK — librespot running (pids=63992) port 8765 open
+2026-03-31T13:41:22Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T13:41:22Z [watchdog] kickstart issued
+2026-03-31T13:46:23Z [watchdog] OK — librespot running (pids=65315) port 8765 open
+2026-03-31T13:51:30Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T13:51:30Z [watchdog] kickstart issued
+2026-03-31T13:56:31Z [watchdog] OK — librespot running (pids=66628) port 8765 open
+2026-03-31T14:01:38Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T14:01:38Z [watchdog] kickstart issued
+2026-03-31T14:06:39Z [watchdog] OK — librespot running (pids=67937) port 8765 open
+2026-03-31T14:11:46Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T14:11:46Z [watchdog] kickstart issued
+2026-03-31T14:16:47Z [watchdog] OK — librespot running (pids=69271) port 8765 open
+2026-03-31T14:21:54Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T14:21:54Z [watchdog] kickstart issued
+2026-03-31T14:26:55Z [watchdog] OK — librespot running (pids=70588) port 8765 open
+2026-03-31T14:32:02Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T14:32:02Z [watchdog] kickstart issued
+2026-03-31T14:37:02Z [watchdog] OK — librespot running (pids=71849) port 8765 open
+2026-03-31T14:42:10Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T14:42:10Z [watchdog] kickstart issued
+2026-03-31T14:47:10Z [watchdog] OK — librespot running (pids=73127) port 8765 open
+2026-03-31T14:52:18Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T14:52:18Z [watchdog] kickstart issued
+2026-03-31T14:57:19Z [watchdog] OK — librespot running (pids=74399) port 8765 open
+2026-03-31T15:02:26Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T15:02:26Z [watchdog] kickstart issued
+2026-03-31T15:07:27Z [watchdog] OK — librespot running (pids=75638) port 8765 open
+2026-03-31T15:12:34Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T15:12:34Z [watchdog] kickstart issued
+2026-03-31T15:17:35Z [watchdog] OK — librespot running (pids=76909) port 8765 open
+2026-03-31T15:22:42Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T15:22:42Z [watchdog] kickstart issued
+2026-03-31T15:27:43Z [watchdog] OK — librespot running (pids=78147) port 8765 open
+2026-03-31T15:32:51Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T15:32:51Z [watchdog] kickstart issued
+2026-03-31T15:37:51Z [watchdog] OK — librespot running (pids=79573) port 8765 open
+2026-03-31T15:42:59Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T15:42:59Z [watchdog] kickstart issued
+2026-03-31T15:47:59Z [watchdog] OK — librespot running (pids=80835) port 8765 open
+2026-03-31T15:53:07Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T15:53:07Z [watchdog] kickstart issued
+2026-03-31T15:58:07Z [watchdog] OK — librespot running (pids=82146) port 8765 open
+2026-03-31T16:03:15Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T16:03:15Z [watchdog] kickstart issued
+2026-03-31T16:08:15Z [watchdog] OK — librespot running (pids=83503) port 8765 open
+2026-03-31T16:13:23Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T16:13:23Z [watchdog] kickstart issued
+2026-03-31T16:18:23Z [watchdog] OK — librespot running (pids=84887) port 8765 open
+2026-03-31T16:23:31Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T16:23:31Z [watchdog] kickstart issued
+2026-03-31T16:28:31Z [watchdog] OK — librespot running (pids=86176) port 8765 open
+2026-03-31T16:33:39Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T16:33:39Z [watchdog] kickstart issued
+2026-03-31T16:38:39Z [watchdog] OK — librespot running (pids=87496) port 8765 open
+2026-03-31T16:43:47Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T16:43:47Z [watchdog] kickstart issued
+2026-03-31T16:48:47Z [watchdog] OK — librespot running (pids=88876) port 8765 open
+2026-03-31T16:53:55Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T16:53:55Z [watchdog] kickstart issued
+2026-03-31T16:58:55Z [watchdog] OK — librespot running (pids=90167) port 8765 open
+2026-03-31T17:04:03Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T17:04:03Z [watchdog] kickstart issued
+2026-03-31T17:09:03Z [watchdog] OK — librespot running (pids=91483) port 8765 open
+2026-03-31T17:14:11Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T17:14:11Z [watchdog] kickstart issued
+2026-03-31T17:19:11Z [watchdog] OK — librespot running (pids=92810) port 8765 open
+2026-03-31T17:24:19Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T17:24:19Z [watchdog] kickstart issued
+2026-03-31T17:29:19Z [watchdog] OK — librespot running (pids=94127) port 8765 open
+2026-03-31T17:34:27Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T17:34:27Z [watchdog] kickstart issued
+2026-03-31T17:39:27Z [watchdog] OK — librespot running (pids=95375) port 8765 open
+2026-03-31T17:44:35Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T17:44:35Z [watchdog] kickstart issued
+2026-03-31T17:49:35Z [watchdog] OK — librespot running (pids=96811) port 8765 open
+2026-03-31T17:54:43Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T17:54:43Z [watchdog] kickstart issued
+2026-03-31T17:59:43Z [watchdog] OK — librespot running (pids=98168) port 8765 open
+2026-03-31T18:04:51Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T18:04:51Z [watchdog] kickstart issued
+2026-03-31T18:09:51Z [watchdog] OK — librespot running (pids=99463) port 8765 open
+2026-03-31T18:14:59Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T18:14:59Z [watchdog] kickstart issued
+2026-03-31T18:19:59Z [watchdog] OK — librespot running (pids=1094) port 8765 open
+2026-03-31T18:25:07Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T18:25:07Z [watchdog] kickstart issued
+2026-03-31T18:30:07Z [watchdog] OK — librespot running (pids=2425) port 8765 open
+2026-03-31T18:35:15Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T18:35:15Z [watchdog] kickstart issued
+2026-03-31T18:40:15Z [watchdog] OK — librespot running (pids=3710) port 8765 open
+2026-03-31T18:45:23Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T18:45:23Z [watchdog] kickstart issued
+2026-03-31T18:50:23Z [watchdog] OK — librespot running (pids=5108) port 8765 open
+2026-03-31T18:55:31Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T18:55:31Z [watchdog] kickstart issued
+2026-03-31T19:00:31Z [watchdog] OK — librespot running (pids=6378) port 8765 open
+2026-03-31T19:05:39Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T19:05:39Z [watchdog] kickstart issued
+2026-03-31T19:10:39Z [watchdog] OK — librespot running (pids=7635) port 8765 open
+2026-03-31T19:15:47Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T19:15:47Z [watchdog] kickstart issued
+2026-03-31T19:20:47Z [watchdog] OK — librespot running (pids=9078) port 8765 open
+2026-03-31T19:25:55Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T19:25:55Z [watchdog] kickstart issued
+2026-03-31T19:30:55Z [watchdog] OK — librespot running (pids=10266) port 8765 open
+2026-03-31T19:36:03Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T19:36:03Z [watchdog] kickstart issued
+2026-03-31T19:41:03Z [watchdog] OK — librespot running (pids=11512) port 8765 open
+2026-03-31T19:46:11Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T19:46:11Z [watchdog] kickstart issued
+2026-03-31T19:51:11Z [watchdog] OK — librespot running (pids=12891) port 8765 open
+2026-03-31T19:56:19Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T19:56:19Z [watchdog] kickstart issued
+2026-03-31T20:01:19Z [watchdog] OK — librespot running (pids=14116) port 8765 open
+2026-03-31T20:06:27Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T20:06:27Z [watchdog] kickstart issued
+2026-03-31T20:11:27Z [watchdog] OK — librespot running (pids=15370) port 8765 open
+2026-03-31T20:16:35Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T20:16:35Z [watchdog] kickstart issued
+2026-03-31T20:21:35Z [watchdog] OK — librespot running (pids=16713) port 8765 open
+2026-03-31T20:26:43Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T20:26:43Z [watchdog] kickstart issued
+2026-03-31T20:31:43Z [watchdog] OK — librespot running (pids=17936) port 8765 open
+2026-03-31T20:36:51Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T20:36:51Z [watchdog] kickstart issued
+2026-03-31T20:41:51Z [watchdog] OK — librespot running (pids=19223) port 8765 open
+2026-03-31T20:46:59Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T20:46:59Z [watchdog] kickstart issued
+2026-03-31T20:51:59Z [watchdog] OK — librespot running (pids=20580) port 8765 open
+2026-03-31T20:57:07Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T20:57:07Z [watchdog] kickstart issued
+2026-03-31T21:02:07Z [watchdog] OK — librespot running (pids=21887) port 8765 open
+2026-03-31T21:07:15Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T21:07:15Z [watchdog] kickstart issued
+2026-03-31T21:12:15Z [watchdog] OK — librespot running (pids=23175) port 8765 open
+2026-03-31T21:17:23Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T21:17:23Z [watchdog] kickstart issued
+2026-03-31T21:22:23Z [watchdog] OK — librespot running (pids=24498) port 8765 open
+2026-03-31T21:27:31Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T21:27:31Z [watchdog] kickstart issued
+2026-03-31T21:32:31Z [watchdog] OK — librespot running (pids=25782) port 8765 open
+2026-03-31T21:37:39Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T21:37:39Z [watchdog] kickstart issued
+2026-03-31T21:42:39Z [watchdog] OK — librespot running (pids=27118) port 8765 open
+2026-03-31T21:47:47Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T21:47:47Z [watchdog] kickstart issued
+2026-03-31T21:52:47Z [watchdog] OK — librespot running (pids=28467) port 8765 open
+2026-03-31T21:57:55Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T21:57:55Z [watchdog] kickstart issued
+2026-03-31T22:02:55Z [watchdog] OK — librespot running (pids=29729) port 8765 open
+2026-03-31T22:08:03Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T22:08:03Z [watchdog] kickstart issued
+2026-03-31T22:13:03Z [watchdog] OK — librespot running (pids=31050) port 8765 open
+2026-03-31T22:18:11Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T22:18:11Z [watchdog] kickstart issued
+2026-03-31T22:23:11Z [watchdog] OK — librespot running (pids=32356) port 8765 open
+2026-03-31T22:28:19Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T22:28:19Z [watchdog] kickstart issued
+2026-03-31T22:33:19Z [watchdog] OK — librespot running (pids=33627) port 8765 open
+2026-03-31T22:38:27Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T22:38:27Z [watchdog] kickstart issued
+2026-03-31T22:43:27Z [watchdog] OK — librespot running (pids=34917) port 8765 open
+2026-03-31T22:48:35Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T22:48:35Z [watchdog] kickstart issued
+2026-03-31T22:53:35Z [watchdog] OK — librespot running (pids=36260) port 8765 open
+2026-03-31T22:58:43Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T22:58:43Z [watchdog] kickstart issued
+2026-03-31T23:03:43Z [watchdog] OK — librespot running (pids=37527) port 8765 open
+2026-03-31T23:08:51Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T23:08:51Z [watchdog] kickstart issued
+2026-03-31T23:13:51Z [watchdog] OK — librespot running (pids=38690) port 8765 open
+2026-03-31T23:18:59Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T23:18:59Z [watchdog] kickstart issued
+2026-03-31T23:23:59Z [watchdog] OK — librespot running (pids=39843) port 8765 open
+2026-03-31T23:29:07Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T23:29:07Z [watchdog] kickstart issued
+2026-03-31T23:34:07Z [watchdog] OK — librespot running (pids=41135) port 8765 open
+2026-03-31T23:39:15Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T23:39:15Z [watchdog] kickstart issued
+2026-03-31T23:44:15Z [watchdog] OK — librespot running (pids=42425) port 8765 open
+2026-03-31T23:49:23Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T23:49:23Z [watchdog] kickstart issued
+2026-03-31T23:54:23Z [watchdog] OK — librespot running (pids=43629) port 8765 open
+2026-03-31T23:59:31Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-03-31T23:59:31Z [watchdog] kickstart issued
+2026-04-01T00:04:31Z [watchdog] OK — librespot running (pids=44726) port 8765 open
+2026-04-01T00:09:39Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-01T00:09:39Z [watchdog] kickstart issued
+2026-04-01T00:14:39Z [watchdog] OK — librespot running (pids=46103) port 8765 open
+2026-04-01T00:19:39Z [watchdog] OK — librespot running (pids=46103) port 8765 open
+2026-04-01T00:24:47Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-01T00:24:47Z [watchdog] kickstart issued
+2026-04-01T00:29:55Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-01T00:29:55Z [watchdog] kickstart issued
+2026-04-01T00:35:03Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-01T00:35:03Z [watchdog] kickstart issued
+2026-04-01T00:40:11Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-01T00:40:11Z [watchdog] kickstart issued
+2026-04-01T00:45:11Z [watchdog] OK — librespot running (pids=50290) port 8765 open
+2026-04-01T00:50:19Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-01T00:50:19Z [watchdog] kickstart issued
+2026-04-01T00:55:19Z [watchdog] OK — librespot running (pids=51515) port 8765 open
+2026-04-01T01:00:27Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-01T01:00:27Z [watchdog] kickstart issued
+2026-04-01T01:05:27Z [watchdog] OK — librespot running (pids=52888) port 8765 open
+2026-04-01T01:10:35Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-01T01:10:35Z [watchdog] kickstart issued
+2026-04-01T01:15:35Z [watchdog] OK — librespot running (pids=54107) port 8765 open
+2026-04-01T01:20:43Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-01T01:20:43Z [watchdog] kickstart issued
+2026-04-01T01:25:43Z [watchdog] OK — librespot running (pids=55393) port 8765 open
+2026-04-01T01:30:51Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-01T01:30:51Z [watchdog] kickstart issued
+2026-04-01T01:35:51Z [watchdog] OK — librespot running (pids=56676) port 8765 open
+2026-04-01T01:40:59Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-01T01:40:59Z [watchdog] kickstart issued
+2026-04-01T01:45:59Z [watchdog] OK — librespot running (pids=58024) port 8765 open
+2026-04-01T01:51:07Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-01T01:51:07Z [watchdog] kickstart issued
+2026-04-01T01:56:07Z [watchdog] OK — librespot running (pids=59330) port 8765 open
+2026-04-01T02:01:15Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-01T02:01:15Z [watchdog] kickstart issued
+2026-04-01T02:06:15Z [watchdog] OK — librespot running (pids=60779) port 8765 open
+2026-04-01T02:11:23Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-01T02:11:23Z [watchdog] kickstart issued
+2026-04-01T02:16:23Z [watchdog] OK — librespot running (pids=62052) port 8765 open
+2026-04-01T02:21:31Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-01T02:21:31Z [watchdog] kickstart issued
+2026-04-01T02:26:31Z [watchdog] OK — librespot running (pids=63488) port 8765 open
+2026-04-01T02:31:39Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-01T02:31:39Z [watchdog] kickstart issued
+2026-04-01T02:36:39Z [watchdog] OK — librespot running (pids=64783) port 8765 open
+2026-04-01T02:41:47Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-01T02:41:47Z [watchdog] kickstart issued
+2026-04-01T02:46:47Z [watchdog] OK — librespot running (pids=66037) port 8765 open
+2026-04-01T02:51:55Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-01T02:51:55Z [watchdog] kickstart issued
+2026-04-01T02:56:55Z [watchdog] OK — librespot running (pids=67411) port 8765 open
+2026-04-01T03:02:03Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-01T03:02:03Z [watchdog] kickstart issued
+2026-04-01T03:07:03Z [watchdog] OK — librespot running (pids=68747) port 8765 open
+2026-04-01T03:12:11Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-01T03:12:11Z [watchdog] kickstart issued
+2026-04-01T03:17:11Z [watchdog] OK — librespot running (pids=69988) port 8765 open
+2026-04-01T03:22:19Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-01T03:22:19Z [watchdog] kickstart issued
+2026-04-01T03:27:19Z [watchdog] OK — librespot running (pids=71238) port 8765 open
+2026-04-01T03:32:27Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-01T03:32:27Z [watchdog] kickstart issued
+2026-04-01T03:37:27Z [watchdog] OK — librespot running (pids=72448) port 8765 open
+2026-04-01T03:42:35Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-01T03:42:35Z [watchdog] kickstart issued
+2026-04-01T03:47:35Z [watchdog] OK — librespot running (pids=73672) port 8765 open
+2026-04-01T03:52:43Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-01T03:52:43Z [watchdog] kickstart issued
+2026-04-01T03:57:43Z [watchdog] OK — librespot running (pids=74907) port 8765 open
+2026-04-01T04:02:51Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-01T04:02:51Z [watchdog] kickstart issued
+2026-04-01T04:07:51Z [watchdog] OK — librespot running (pids=76230) port 8765 open
+2026-04-01T04:12:59Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-01T04:12:59Z [watchdog] kickstart issued
+2026-04-01T04:17:59Z [watchdog] OK — librespot running (pids=77512) port 8765 open
+2026-04-01T04:23:07Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-01T04:23:07Z [watchdog] kickstart issued
+2026-04-01T04:28:07Z [watchdog] OK — librespot running (pids=78747) port 8765 open
+2026-04-01T04:33:15Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-01T04:33:15Z [watchdog] kickstart issued
+2026-04-01T04:38:15Z [watchdog] OK — librespot running (pids=80012) port 8765 open
+2026-04-01T04:43:23Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-01T04:43:23Z [watchdog] kickstart issued
+2026-04-01T04:48:23Z [watchdog] OK — librespot running (pids=81319) port 8765 open
+2026-04-01T04:53:31Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-01T04:53:31Z [watchdog] kickstart issued
+2026-04-01T04:58:31Z [watchdog] OK — librespot running (pids=82646) port 8765 open
+2026-04-01T05:03:39Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-01T05:03:39Z [watchdog] kickstart issued
+2026-04-01T05:08:39Z [watchdog] OK — librespot running (pids=83897) port 8765 open
+2026-04-01T05:13:47Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-01T05:13:47Z [watchdog] kickstart issued
+2026-04-01T05:18:47Z [watchdog] OK — librespot running (pids=85224) port 8765 open
+2026-04-01T05:23:55Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-01T05:23:55Z [watchdog] kickstart issued
+2026-04-01T05:28:55Z [watchdog] OK — librespot running (pids=86549) port 8765 open
+2026-04-01T05:34:03Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-01T05:34:03Z [watchdog] kickstart issued
+2026-04-01T05:39:03Z [watchdog] OK — librespot running (pids=87792) port 8765 open
+2026-04-01T05:44:11Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-01T05:44:11Z [watchdog] kickstart issued
+2026-04-01T05:49:11Z [watchdog] OK — librespot running (pids=89186) port 8765 open
+2026-04-01T05:54:19Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-01T05:54:19Z [watchdog] kickstart issued
+2026-04-01T05:59:19Z [watchdog] OK — librespot running (pids=90495) port 8765 open
+2026-04-01T06:04:27Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-01T06:04:27Z [watchdog] kickstart issued
+2026-04-01T06:09:27Z [watchdog] OK — librespot running (pids=91687) port 8765 open
+2026-04-01T06:14:35Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-01T06:14:35Z [watchdog] kickstart issued
+2026-04-01T06:19:35Z [watchdog] OK — librespot running (pids=93044) port 8765 open
+2026-04-01T06:24:43Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-01T06:24:43Z [watchdog] kickstart issued
+2026-04-01T06:29:44Z [watchdog] OK — librespot running (pids=94337) port 8765 open
+2026-04-01T06:34:51Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-01T06:34:51Z [watchdog] kickstart issued
+2026-04-01T06:39:52Z [watchdog] OK — librespot running (pids=95620) port 8765 open
+2026-04-01T06:44:59Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-01T06:44:59Z [watchdog] kickstart issued
+2026-04-01T06:50:00Z [watchdog] OK — librespot running (pids=96869) port 8765 open
+2026-04-01T06:55:07Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-01T06:55:08Z [watchdog] kickstart issued
+2026-04-01T07:00:08Z [watchdog] OK — librespot running (pids=98132) port 8765 open
+2026-04-01T07:05:16Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-01T07:05:16Z [watchdog] kickstart issued
+2026-04-01T07:10:16Z [watchdog] OK — librespot running (pids=99411) port 8765 open
+2026-04-01T07:15:24Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-01T07:15:24Z [watchdog] kickstart issued
+2026-04-01T07:20:24Z [watchdog] OK — librespot running (pids=1063) port 8765 open
+2026-04-01T07:25:32Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-01T07:25:32Z [watchdog] kickstart issued
+2026-04-01T07:30:32Z [watchdog] OK — librespot running (pids=2305) port 8765 open
+2026-04-01T07:35:40Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-01T07:35:40Z [watchdog] kickstart issued
+2026-04-01T07:40:40Z [watchdog] OK — librespot running (pids=3545) port 8765 open
+2026-04-01T07:45:48Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-01T07:45:48Z [watchdog] kickstart issued
+2026-04-01T07:50:48Z [watchdog] OK — librespot running (pids=4859) port 8765 open
+2026-04-01T07:55:56Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-01T07:55:56Z [watchdog] kickstart issued
+2026-04-01T08:00:56Z [watchdog] OK — librespot running (pids=6184) port 8765 open
+2026-04-01T08:06:04Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-01T08:06:04Z [watchdog] kickstart issued
+2026-04-01T08:11:04Z [watchdog] OK — librespot running (pids=7450) port 8765 open
+2026-04-01T08:16:12Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-01T08:16:12Z [watchdog] kickstart issued
+2026-04-01T08:21:12Z [watchdog] OK — librespot running (pids=8782) port 8765 open
+2026-04-01T08:26:20Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-01T08:26:20Z [watchdog] kickstart issued
+2026-04-01T08:31:20Z [watchdog] OK — librespot running (pids=9995) port 8765 open
+2026-04-01T08:36:28Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-01T08:36:28Z [watchdog] kickstart issued
+2026-04-01T08:41:28Z [watchdog] OK — librespot running (pids=11276) port 8765 open
+2026-04-01T08:46:36Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-01T08:46:36Z [watchdog] kickstart issued
+2026-04-01T08:51:36Z [watchdog] OK — librespot running (pids=12574) port 8765 open
+2026-04-01T08:56:44Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-01T08:56:44Z [watchdog] kickstart issued
+2026-04-01T09:01:44Z [watchdog] OK — librespot running (pids=13905) port 8765 open
+2026-04-01T09:06:52Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-01T09:06:52Z [watchdog] kickstart issued
+2026-04-01T09:11:52Z [watchdog] OK — librespot running (pids=15122) port 8765 open
+2026-04-01T09:17:00Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-01T09:17:00Z [watchdog] kickstart issued
+2026-04-01T09:22:00Z [watchdog] OK — librespot running (pids=16406) port 8765 open
+2026-04-01T09:27:08Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-01T09:27:08Z [watchdog] kickstart issued
+2026-04-01T09:32:08Z [watchdog] OK — librespot running (pids=17702) port 8765 open
+2026-04-01T09:37:16Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-01T09:37:16Z [watchdog] kickstart issued
+2026-04-01T09:42:16Z [watchdog] OK — librespot running (pids=18959) port 8765 open
+2026-04-01T09:47:24Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-01T09:47:24Z [watchdog] kickstart issued
+2026-04-01T09:52:24Z [watchdog] OK — librespot running (pids=20335) port 8765 open
+2026-04-01T09:57:32Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-01T09:57:32Z [watchdog] kickstart issued
+2026-04-01T10:02:32Z [watchdog] OK — librespot running (pids=21600) port 8765 open
+2026-04-01T10:07:40Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-01T10:07:40Z [watchdog] kickstart issued
+2026-04-01T10:12:40Z [watchdog] OK — librespot running (pids=22835) port 8765 open
+2026-04-01T10:17:48Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-01T10:17:48Z [watchdog] kickstart issued
+2026-04-01T10:22:48Z [watchdog] OK — librespot running (pids=24106) port 8765 open
+2026-04-01T10:27:56Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-01T10:27:56Z [watchdog] kickstart issued
+2026-04-01T10:32:56Z [watchdog] OK — librespot running (pids=25395) port 8765 open
+2026-04-01T10:38:04Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-01T10:38:04Z [watchdog] kickstart issued
+2026-04-01T10:43:04Z [watchdog] OK — librespot running (pids=26643) port 8765 open
+2026-04-01T10:48:12Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-01T10:48:12Z [watchdog] kickstart issued
+2026-04-01T10:53:12Z [watchdog] OK — librespot running (pids=27917) port 8765 open
+2026-04-01T10:58:20Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-01T10:58:20Z [watchdog] kickstart issued
+2026-04-01T11:03:20Z [watchdog] OK — librespot running (pids=29184) port 8765 open
+2026-04-01T11:08:28Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-01T11:08:28Z [watchdog] kickstart issued
+2026-04-01T11:13:28Z [watchdog] OK — librespot running (pids=30528) port 8765 open
+2026-04-01T11:18:36Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-01T11:18:36Z [watchdog] kickstart issued
+2026-04-01T11:23:36Z [watchdog] OK — librespot running (pids=31798) port 8765 open
+2026-04-01T11:28:44Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-01T11:28:44Z [watchdog] kickstart issued
+2026-04-01T11:33:44Z [watchdog] OK — librespot running (pids=33044) port 8765 open
+2026-04-01T11:38:52Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-01T11:38:52Z [watchdog] kickstart issued
+2026-04-01T11:43:52Z [watchdog] OK — librespot running (pids=34276) port 8765 open
+2026-04-01T11:49:00Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-01T11:49:00Z [watchdog] kickstart issued
+2026-04-01T11:54:00Z [watchdog] OK — librespot running (pids=35500) port 8765 open
+2026-04-01T11:59:08Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-01T11:59:08Z [watchdog] kickstart issued
+2026-04-01T12:04:08Z [watchdog] OK — librespot running (pids=36785) port 8765 open
+2026-04-01T12:09:16Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-01T12:09:16Z [watchdog] kickstart issued
+2026-04-01T12:14:16Z [watchdog] OK — librespot running (pids=38148) port 8765 open
+2026-04-01T12:19:24Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-01T12:19:24Z [watchdog] kickstart issued
+2026-04-01T12:24:24Z [watchdog] OK — librespot running (pids=39463) port 8765 open
+2026-04-01T12:29:32Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-01T12:29:32Z [watchdog] kickstart issued
+2026-04-01T12:34:32Z [watchdog] OK — librespot running (pids=40782) port 8765 open
+2026-04-01T12:39:40Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-01T12:39:40Z [watchdog] kickstart issued
+2026-04-01T12:44:40Z [watchdog] OK — librespot running (pids=42142) port 8765 open
+2026-04-01T12:49:48Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-01T12:49:48Z [watchdog] kickstart issued
+2026-04-01T12:54:48Z [watchdog] OK — librespot running (pids=43381) port 8765 open
+2026-04-01T12:59:56Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-01T12:59:56Z [watchdog] kickstart issued
+2026-04-01T13:04:56Z [watchdog] OK — librespot running (pids=44670) port 8765 open
+2026-04-01T13:10:04Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-01T13:10:04Z [watchdog] kickstart issued
+2026-04-01T13:15:04Z [watchdog] OK — librespot running (pids=45994) port 8765 open
+2026-04-01T13:20:12Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-01T13:20:12Z [watchdog] kickstart issued
+2026-04-01T13:25:12Z [watchdog] OK — librespot running (pids=47352) port 8765 open
+2026-04-01T13:30:20Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-01T13:30:20Z [watchdog] kickstart issued
+2026-04-01T13:35:20Z [watchdog] OK — librespot running (pids=48630) port 8765 open
+2026-04-01T13:40:28Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-01T13:40:28Z [watchdog] kickstart issued
+2026-04-01T13:45:28Z [watchdog] OK — librespot running (pids=49877) port 8765 open
+2026-04-01T13:50:36Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-01T13:50:36Z [watchdog] kickstart issued
+2026-04-01T13:55:36Z [watchdog] OK — librespot running (pids=51198) port 8765 open
+2026-04-01T14:00:44Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-01T14:00:44Z [watchdog] kickstart issued
+2026-04-01T14:05:44Z [watchdog] OK — librespot running (pids=52490) port 8765 open
+2026-04-01T14:10:52Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-01T14:10:52Z [watchdog] kickstart issued
+2026-04-01T14:15:52Z [watchdog] OK — librespot running (pids=53721) port 8765 open
+2026-04-01T14:21:00Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-01T14:21:00Z [watchdog] kickstart issued
+2026-04-01T14:26:00Z [watchdog] OK — librespot running (pids=55052) port 8765 open
+2026-04-01T14:31:08Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-01T14:31:08Z [watchdog] kickstart issued
+2026-04-01T14:36:08Z [watchdog] OK — librespot running (pids=56276) port 8765 open
+2026-04-01T14:41:16Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-01T14:41:16Z [watchdog] kickstart issued
+2026-04-01T14:46:16Z [watchdog] OK — librespot running (pids=57577) port 8765 open
+2026-04-01T14:51:24Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-01T14:51:24Z [watchdog] kickstart issued
+2026-04-01T14:56:24Z [watchdog] OK — librespot running (pids=58852) port 8765 open
+2026-04-01T15:01:32Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-01T15:01:32Z [watchdog] kickstart issued
+2026-04-01T15:06:32Z [watchdog] OK — librespot running (pids=60148) port 8765 open
+2026-04-01T15:11:40Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-01T15:11:40Z [watchdog] kickstart issued
+2026-04-01T15:16:40Z [watchdog] OK — librespot running (pids=61367) port 8765 open
+2026-04-01T15:21:48Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-01T15:21:48Z [watchdog] kickstart issued
+2026-04-01T15:26:48Z [watchdog] OK — librespot running (pids=62682) port 8765 open
+2026-04-01T15:31:56Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-01T15:31:56Z [watchdog] kickstart issued
+2026-04-01T15:36:56Z [watchdog] OK — librespot running (pids=64080) port 8765 open
+2026-04-01T15:42:04Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-01T15:42:04Z [watchdog] kickstart issued
+2026-04-01T15:47:04Z [watchdog] OK — librespot running (pids=65321) port 8765 open
+2026-04-01T15:52:12Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-01T15:52:12Z [watchdog] kickstart issued
+2026-04-01T15:57:12Z [watchdog] OK — librespot running (pids=66623) port 8765 open
+2026-04-01T16:02:20Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-01T16:02:20Z [watchdog] kickstart issued
+2026-04-01T16:07:21Z [watchdog] OK — librespot running (pids=67951) port 8765 open
+2026-04-01T16:12:29Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-01T16:12:29Z [watchdog] kickstart issued
+2026-04-01T16:17:29Z [watchdog] OK — librespot running (pids=69274) port 8765 open
+2026-04-01T16:22:37Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-01T16:22:37Z [watchdog] kickstart issued
+2026-04-01T16:27:37Z [watchdog] OK — librespot running (pids=70474) port 8765 open
+2026-04-01T16:32:45Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-01T16:32:45Z [watchdog] kickstart issued
+2026-04-01T16:37:45Z [watchdog] OK — librespot running (pids=71734) port 8765 open
+2026-04-01T16:42:53Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-01T16:42:53Z [watchdog] kickstart issued
+2026-04-01T16:47:53Z [watchdog] OK — librespot running (pids=73110) port 8765 open
+2026-04-01T16:53:01Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-01T16:53:01Z [watchdog] kickstart issued
+2026-04-01T16:58:01Z [watchdog] OK — librespot running (pids=74422) port 8765 open
+2026-04-01T17:03:09Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-01T17:03:09Z [watchdog] kickstart issued
+2026-04-01T17:08:09Z [watchdog] OK — librespot running (pids=75726) port 8765 open
+2026-04-01T17:13:17Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-01T17:13:17Z [watchdog] kickstart issued
+2026-04-01T17:18:17Z [watchdog] OK — librespot running (pids=77032) port 8765 open
+2026-04-01T17:23:25Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-01T17:23:25Z [watchdog] kickstart issued
+2026-04-01T17:28:25Z [watchdog] OK — librespot running (pids=78245) port 8765 open
+2026-04-01T17:33:33Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-01T17:33:33Z [watchdog] kickstart issued
+2026-04-01T17:38:33Z [watchdog] OK — librespot running (pids=79476) port 8765 open
+2026-04-01T17:43:41Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-01T17:43:41Z [watchdog] kickstart issued
+2026-04-01T17:48:41Z [watchdog] OK — librespot running (pids=80835) port 8765 open
+2026-04-01T17:53:49Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-01T17:53:49Z [watchdog] kickstart issued
+2026-04-01T17:58:49Z [watchdog] OK — librespot running (pids=82068) port 8765 open
+2026-04-01T18:03:57Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-01T18:03:57Z [watchdog] kickstart issued
+2026-04-01T18:08:57Z [watchdog] OK — librespot running (pids=83293) port 8765 open
+2026-04-01T18:14:05Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-01T18:14:05Z [watchdog] kickstart issued
+2026-04-01T18:19:05Z [watchdog] OK — librespot running (pids=84621) port 8765 open
+2026-04-01T18:24:13Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-01T18:24:13Z [watchdog] kickstart issued
+2026-04-01T18:29:13Z [watchdog] OK — librespot running (pids=85952) port 8765 open
+2026-04-01T18:34:21Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-01T18:34:21Z [watchdog] kickstart issued
+2026-04-01T18:39:21Z [watchdog] OK — librespot running (pids=87304) port 8765 open
+2026-04-01T18:44:29Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-01T18:44:29Z [watchdog] kickstart issued
+2026-04-01T18:49:29Z [watchdog] OK — librespot running (pids=88813) port 8765 open
+2026-04-01T18:54:37Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-01T18:54:37Z [watchdog] kickstart issued
+2026-04-01T18:59:37Z [watchdog] OK — librespot running (pids=90131) port 8765 open
+2026-04-01T19:04:45Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-01T19:04:45Z [watchdog] kickstart issued
+2026-04-01T19:09:45Z [watchdog] OK — librespot running (pids=91403) port 8765 open
+2026-04-01T19:14:53Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-01T19:14:53Z [watchdog] kickstart issued
+2026-04-01T19:19:53Z [watchdog] OK — librespot running (pids=92810) port 8765 open
+2026-04-01T19:25:01Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-01T19:25:01Z [watchdog] kickstart issued
+2026-04-01T19:30:01Z [watchdog] OK — librespot running (pids=94070) port 8765 open
+2026-04-01T19:35:09Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-01T19:35:09Z [watchdog] kickstart issued
+2026-04-01T19:40:09Z [watchdog] OK — librespot running (pids=95351) port 8765 open
+2026-04-01T19:45:17Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-01T19:45:17Z [watchdog] kickstart issued
+2026-04-01T19:50:17Z [watchdog] OK — librespot running (pids=96718) port 8765 open
+2026-04-01T19:55:25Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-01T19:55:25Z [watchdog] kickstart issued
+2026-04-01T20:00:25Z [watchdog] OK — librespot running (pids=98121) port 8765 open
+2026-04-01T20:05:25Z [watchdog] OK — librespot running (pids=98121) port 8765 open
+2026-04-01T20:10:26Z [watchdog] OK — librespot running (pids=98121) port 8765 open
+2026-04-01T20:15:26Z [watchdog] OK — librespot running (pids=98121) port 8765 open
+2026-04-01T20:20:26Z [watchdog] OK — librespot running (pids=98121) port 8765 open
+2026-04-01T20:25:26Z [watchdog] OK — librespot running (pids=98121) port 8765 open
+2026-04-01T20:30:26Z [watchdog] OK — librespot running (pids=98121) port 8765 open
+2026-04-01T20:35:26Z [watchdog] OK — librespot running (pids=98121) port 8765 open
+2026-04-01T20:40:26Z [watchdog] OK — librespot running (pids=98121) port 8765 open
+2026-04-01T20:45:26Z [watchdog] OK — librespot running (pids=98121) port 8765 open
+2026-04-01T20:50:26Z [watchdog] OK — librespot running (pids=98121) port 8765 open
+2026-04-01T20:55:26Z [watchdog] OK — librespot running (pids=98121) port 8765 open
+2026-04-01T21:00:26Z [watchdog] OK — librespot running (pids=98121) port 8765 open
+2026-04-01T21:05:27Z [watchdog] OK — librespot running (pids=98121) port 8765 open
+2026-04-01T21:10:27Z [watchdog] OK — librespot running (pids=98121) port 8765 open
+2026-04-01T21:15:27Z [watchdog] OK — librespot running (pids=98121) port 8765 open
+2026-04-01T21:20:27Z [watchdog] OK — librespot running (pids=98121) port 8765 open
+2026-04-01T21:25:27Z [watchdog] OK — librespot running (pids=98121) port 8765 open
+2026-04-01T21:30:27Z [watchdog] OK — librespot running (pids=98121) port 8765 open
+2026-04-01T21:35:27Z [watchdog] OK — librespot running (pids=98121) port 8765 open
+2026-04-01T21:40:27Z [watchdog] OK — librespot running (pids=98121) port 8765 open
+2026-04-01T21:45:27Z [watchdog] OK — librespot running (pids=98121) port 8765 open
+2026-04-01T21:50:27Z [watchdog] OK — librespot running (pids=98121) port 8765 open
+2026-04-01T21:55:27Z [watchdog] OK — librespot running (pids=98121) port 8765 open
+2026-04-01T22:00:28Z [watchdog] OK — librespot running (pids=98121) port 8765 open
+2026-04-01T22:05:28Z [watchdog] OK — librespot running (pids=98121) port 8765 open
+2026-04-01T22:10:28Z [watchdog] OK — librespot running (pids=98121) port 8765 open
+2026-04-01T22:15:28Z [watchdog] OK — librespot running (pids=98121) port 8765 open
+2026-04-01T22:20:28Z [watchdog] OK — librespot running (pids=98121) port 8765 open
+2026-04-01T22:25:28Z [watchdog] OK — librespot running (pids=98121) port 8765 open
+2026-04-01T22:30:28Z [watchdog] OK — librespot running (pids=98121) port 8765 open
+2026-04-01T22:35:28Z [watchdog] OK — librespot running (pids=98121) port 8765 open
+2026-04-01T22:40:28Z [watchdog] OK — librespot running (pids=98121) port 8765 open
+2026-04-01T22:45:28Z [watchdog] OK — librespot running (pids=98121) port 8765 open
+2026-04-01T22:50:28Z [watchdog] OK — librespot running (pids=98121) port 8765 open
+2026-04-01T22:55:28Z [watchdog] OK — librespot running (pids=98121) port 8765 open
+2026-04-01T23:00:29Z [watchdog] OK — librespot running (pids=98121) port 8765 open
+2026-04-01T23:05:29Z [watchdog] OK — librespot running (pids=98121) port 8765 open
+2026-04-01T23:10:29Z [watchdog] OK — librespot running (pids=98121) port 8765 open
+2026-04-01T23:15:29Z [watchdog] OK — librespot running (pids=98121) port 8765 open
+2026-04-01T23:20:29Z [watchdog] OK — librespot running (pids=98121) port 8765 open
+2026-04-01T23:25:29Z [watchdog] OK — librespot running (pids=98121) port 8765 open
+2026-04-01T23:30:29Z [watchdog] OK — librespot running (pids=98121) port 8765 open
+2026-04-01T23:35:37Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-01T23:35:37Z [watchdog] kickstart issued
+2026-04-01T23:40:45Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-01T23:40:45Z [watchdog] kickstart issued
+2026-04-01T23:45:53Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-01T23:45:53Z [watchdog] kickstart issued
+2026-04-01T23:51:01Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-01T23:51:01Z [watchdog] kickstart issued
+2026-04-01T23:56:01Z [watchdog] OK — librespot running (pids=30660) port 8765 open
+2026-04-02T00:01:09Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T00:01:09Z [watchdog] kickstart issued
+2026-04-02T00:06:09Z [watchdog] OK — librespot running (pids=31968) port 8765 open
+2026-04-02T00:11:17Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T00:11:17Z [watchdog] kickstart issued
+2026-04-02T00:16:17Z [watchdog] OK — librespot running (pids=33315) port 8765 open
+2026-04-02T00:21:25Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T00:21:25Z [watchdog] kickstart issued
+2026-04-02T00:26:33Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T00:26:33Z [watchdog] kickstart issued
+2026-04-02T00:31:41Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T00:31:41Z [watchdog] kickstart issued
+2026-04-02T00:36:41Z [watchdog] OK — librespot running (pids=36376) port 8765 open
+2026-04-02T00:41:41Z [watchdog] OK — librespot running (pids=36376) port 8765 open
+2026-04-02T00:46:41Z [watchdog] OK — librespot running (pids=36376) port 8765 open
+2026-04-02T00:51:49Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T00:51:49Z [watchdog] kickstart issued
+2026-04-02T00:56:49Z [watchdog] OK — librespot running (pids=38983) port 8765 open
+2026-04-02T01:01:57Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T01:01:57Z [watchdog] kickstart issued
+2026-04-02T01:06:57Z [watchdog] OK — librespot running (pids=40307) port 8765 open
+2026-04-02T01:12:05Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T01:12:05Z [watchdog] kickstart issued
+2026-04-02T01:17:13Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T01:17:13Z [watchdog] kickstart issued
+2026-04-02T01:22:13Z [watchdog] OK — librespot running (pids=42546) port 8765 open
+2026-04-02T01:27:13Z [watchdog] OK — librespot running (pids=42546) port 8765 open
+2026-04-02T01:32:13Z [watchdog] OK — librespot running (pids=42546) port 8765 open
+2026-04-02T01:37:14Z [watchdog] OK — librespot running (pids=42546) port 8765 open
+2026-04-02T01:42:14Z [watchdog] OK — librespot running (pids=42546) port 8765 open
+2026-04-02T01:47:14Z [watchdog] OK — librespot running (pids=42546) port 8765 open
+2026-04-02T01:52:14Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T01:52:14Z [watchdog] kickstart issued
+2026-04-02T01:57:14Z [watchdog] OK — librespot running (pids=47922) port 8765 open
+2026-04-02T02:02:14Z [watchdog] OK — librespot running (pids=47922) port 8765 open
+2026-04-02T02:07:14Z [watchdog] OK — librespot running (pids=49850) port 8765 open
+2026-04-02T02:12:22Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T02:12:22Z [watchdog] kickstart issued
+2026-04-02T02:17:22Z [watchdog] OK — librespot running (pids=50920) port 8765 open
+2026-04-02T02:22:30Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T02:22:30Z [watchdog] kickstart issued
+2026-04-02T02:27:38Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T02:27:38Z [watchdog] kickstart issued
+2026-04-02T02:32:38Z [watchdog] OK — librespot running (pids=53657) port 8765 open
+2026-04-02T02:37:46Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T02:37:46Z [watchdog] kickstart issued
+2026-04-02T02:42:46Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T02:42:46Z [watchdog] kickstart issued
+2026-04-02T02:47:46Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T02:47:46Z [watchdog] kickstart issued
+2026-04-02T02:52:47Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T02:52:47Z [watchdog] kickstart issued
+2026-04-02T02:57:47Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T02:57:47Z [watchdog] kickstart issued
+2026-04-02T03:02:47Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T03:02:47Z [watchdog] kickstart issued
+2026-04-02T03:07:47Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T03:07:47Z [watchdog] kickstart issued
+2026-04-02T03:12:47Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T03:12:47Z [watchdog] kickstart issued
+2026-04-02T03:17:47Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T03:17:47Z [watchdog] kickstart issued
+2026-04-02T03:22:47Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T03:22:47Z [watchdog] kickstart issued
+2026-04-02T03:27:47Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T03:27:47Z [watchdog] kickstart issued
+2026-04-02T03:32:47Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T03:32:47Z [watchdog] kickstart issued
+2026-04-02T03:37:47Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T03:37:48Z [watchdog] kickstart issued
+2026-04-02T03:42:48Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T03:42:48Z [watchdog] kickstart issued
+2026-04-02T03:47:48Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T03:47:48Z [watchdog] kickstart issued
+2026-04-02T03:52:48Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T03:52:48Z [watchdog] kickstart issued
+2026-04-02T03:57:48Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T03:57:48Z [watchdog] kickstart issued
+2026-04-02T04:02:48Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T04:02:48Z [watchdog] kickstart issued
+2026-04-02T04:07:48Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T04:07:48Z [watchdog] kickstart issued
+2026-04-02T04:12:48Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T04:12:48Z [watchdog] kickstart issued
+2026-04-02T04:17:48Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T04:17:49Z [watchdog] kickstart issued
+2026-04-02T04:22:49Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T04:22:49Z [watchdog] kickstart issued
+2026-04-02T04:27:49Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T04:27:49Z [watchdog] kickstart issued
+2026-04-02T04:32:49Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T04:32:49Z [watchdog] kickstart issued
+2026-04-02T04:37:49Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T04:37:49Z [watchdog] kickstart issued
+2026-04-02T04:42:49Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T04:42:49Z [watchdog] kickstart issued
+2026-04-02T04:47:49Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T04:47:49Z [watchdog] kickstart issued
+2026-04-02T04:52:49Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T04:52:49Z [watchdog] kickstart issued
+2026-04-02T04:57:49Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T04:57:49Z [watchdog] kickstart issued
+2026-04-02T05:02:49Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T05:02:50Z [watchdog] kickstart issued
+2026-04-02T05:07:50Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T05:07:50Z [watchdog] kickstart issued
+2026-04-02T05:12:50Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T05:12:50Z [watchdog] kickstart issued
+2026-04-02T05:17:50Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T05:17:50Z [watchdog] kickstart issued
+2026-04-02T05:22:50Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T05:22:50Z [watchdog] kickstart issued
+2026-04-02T05:27:50Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T05:27:50Z [watchdog] kickstart issued
+2026-04-02T05:32:50Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T05:32:50Z [watchdog] kickstart issued
+2026-04-02T05:37:50Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T05:37:50Z [watchdog] kickstart issued
+2026-04-02T05:42:50Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T05:42:50Z [watchdog] kickstart issued
+2026-04-02T05:47:50Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T05:47:50Z [watchdog] kickstart issued
+2026-04-02T05:52:51Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T05:52:51Z [watchdog] kickstart issued
+2026-04-02T05:57:51Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T05:57:51Z [watchdog] kickstart issued
+2026-04-02T06:02:51Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T06:02:51Z [watchdog] kickstart issued
+2026-04-02T06:07:52Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T06:07:52Z [watchdog] kickstart issued
+2026-04-02T06:12:52Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T06:12:52Z [watchdog] kickstart issued
+2026-04-02T06:17:52Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T06:17:52Z [watchdog] kickstart issued
+2026-04-02T06:22:52Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T06:22:52Z [watchdog] kickstart issued
+2026-04-02T06:27:52Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T06:27:52Z [watchdog] kickstart issued
+2026-04-02T06:32:52Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T06:32:52Z [watchdog] kickstart issued
+2026-04-02T06:37:52Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T06:37:52Z [watchdog] kickstart issued
+2026-04-02T06:42:52Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T06:42:53Z [watchdog] kickstart issued
+2026-04-02T06:47:53Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T06:47:53Z [watchdog] kickstart issued
+2026-04-02T06:52:53Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T06:52:53Z [watchdog] kickstart issued
+2026-04-02T06:57:53Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T06:57:53Z [watchdog] kickstart issued
+2026-04-02T07:02:53Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T07:02:53Z [watchdog] kickstart issued
+2026-04-02T07:07:53Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T07:07:53Z [watchdog] kickstart issued
+2026-04-02T07:12:53Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T07:12:53Z [watchdog] kickstart issued
+2026-04-02T07:17:53Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T07:17:53Z [watchdog] kickstart issued
+2026-04-02T07:22:53Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T07:22:53Z [watchdog] kickstart issued
+2026-04-02T07:27:54Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T07:27:54Z [watchdog] kickstart issued
+2026-04-02T07:32:54Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T07:32:54Z [watchdog] kickstart issued
+2026-04-02T07:37:54Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T07:37:54Z [watchdog] kickstart issued
+2026-04-02T07:42:54Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T07:42:54Z [watchdog] kickstart issued
+2026-04-02T07:47:54Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T07:47:54Z [watchdog] kickstart issued
+2026-04-02T07:52:54Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T07:52:54Z [watchdog] kickstart issued
+2026-04-02T07:57:54Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T07:57:54Z [watchdog] kickstart issued
+2026-04-02T08:02:54Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T08:02:54Z [watchdog] kickstart issued
+2026-04-02T08:07:55Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T08:07:55Z [watchdog] kickstart issued
+2026-04-02T08:12:55Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T08:12:55Z [watchdog] kickstart issued
+2026-04-02T08:17:55Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T08:17:55Z [watchdog] kickstart issued
+2026-04-02T08:22:55Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T08:22:55Z [watchdog] kickstart issued
+2026-04-02T08:27:55Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T08:27:55Z [watchdog] kickstart issued
+2026-04-02T08:32:55Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T08:32:55Z [watchdog] kickstart issued
+2026-04-02T08:37:55Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T08:37:55Z [watchdog] kickstart issued
+2026-04-02T08:42:55Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T08:42:55Z [watchdog] kickstart issued
+2026-04-02T08:47:56Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T08:47:56Z [watchdog] kickstart issued
+2026-04-02T08:52:56Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T08:52:56Z [watchdog] kickstart issued
+2026-04-02T08:57:56Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T08:57:56Z [watchdog] kickstart issued
+2026-04-02T09:02:56Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T09:02:56Z [watchdog] kickstart issued
+2026-04-02T09:07:57Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T09:07:57Z [watchdog] kickstart issued
+2026-04-02T09:12:57Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T09:12:57Z [watchdog] kickstart issued
+2026-04-02T09:17:57Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T09:17:57Z [watchdog] kickstart issued
+2026-04-02T09:22:57Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T09:22:57Z [watchdog] kickstart issued
+2026-04-02T09:27:57Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T09:27:57Z [watchdog] kickstart issued
+2026-04-02T09:32:57Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T09:32:57Z [watchdog] kickstart issued
+2026-04-02T09:37:57Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T09:37:57Z [watchdog] kickstart issued
+2026-04-02T09:42:57Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T09:42:57Z [watchdog] kickstart issued
+2026-04-02T09:47:57Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T09:47:57Z [watchdog] kickstart issued
+2026-04-02T09:52:58Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T09:52:58Z [watchdog] kickstart issued
+2026-04-02T09:57:58Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T09:57:58Z [watchdog] kickstart issued
+2026-04-02T10:02:58Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T10:02:58Z [watchdog] kickstart issued
+2026-04-02T10:07:58Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T10:07:58Z [watchdog] kickstart issued
+2026-04-02T10:12:58Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T10:12:58Z [watchdog] kickstart issued
+2026-04-02T10:17:58Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T10:17:58Z [watchdog] kickstart issued
+2026-04-02T10:22:58Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T10:22:58Z [watchdog] kickstart issued
+2026-04-02T10:27:58Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T10:27:58Z [watchdog] kickstart issued
+2026-04-02T10:32:58Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T10:32:58Z [watchdog] kickstart issued
+2026-04-02T10:37:59Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T10:37:59Z [watchdog] kickstart issued
+2026-04-02T10:42:59Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T10:42:59Z [watchdog] kickstart issued
+2026-04-02T10:47:59Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T10:47:59Z [watchdog] kickstart issued
+2026-04-02T10:52:59Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T10:52:59Z [watchdog] kickstart issued
+2026-04-02T10:57:59Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T10:57:59Z [watchdog] kickstart issued
+2026-04-02T11:02:59Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T11:02:59Z [watchdog] kickstart issued
+2026-04-02T11:07:59Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T11:07:59Z [watchdog] kickstart issued
+2026-04-02T11:12:59Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T11:12:59Z [watchdog] kickstart issued
+2026-04-02T11:17:59Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T11:17:59Z [watchdog] kickstart issued
+2026-04-02T11:23:00Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T11:23:00Z [watchdog] kickstart issued
+2026-04-02T11:28:00Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T11:28:00Z [watchdog] kickstart issued
+2026-04-02T11:33:00Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T11:33:00Z [watchdog] kickstart issued
+2026-04-02T11:38:00Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T11:38:00Z [watchdog] kickstart issued
+2026-04-02T11:43:00Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T11:43:00Z [watchdog] kickstart issued
+2026-04-02T11:48:00Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T11:48:00Z [watchdog] kickstart issued
+2026-04-02T11:53:00Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T11:53:00Z [watchdog] kickstart issued
+2026-04-02T11:58:00Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T11:58:00Z [watchdog] kickstart issued
+2026-04-02T12:03:00Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T12:03:00Z [watchdog] kickstart issued
+2026-04-02T12:08:01Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T12:08:01Z [watchdog] kickstart issued
+2026-04-02T12:13:01Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T12:13:01Z [watchdog] kickstart issued
+2026-04-02T12:18:01Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T12:18:01Z [watchdog] kickstart issued
+2026-04-02T12:23:01Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T12:23:01Z [watchdog] kickstart issued
+2026-04-02T12:28:01Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T12:28:01Z [watchdog] kickstart issued
+2026-04-02T12:33:01Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T12:33:01Z [watchdog] kickstart issued
+2026-04-02T12:38:01Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T12:38:01Z [watchdog] kickstart issued
+2026-04-02T12:43:01Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T12:43:01Z [watchdog] kickstart issued
+2026-04-02T12:48:01Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T12:48:02Z [watchdog] kickstart issued
+2026-04-02T12:53:02Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T12:53:02Z [watchdog] kickstart issued
+2026-04-02T12:58:02Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T12:58:02Z [watchdog] kickstart issued
+2026-04-02T13:03:02Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T13:03:02Z [watchdog] kickstart issued
+2026-04-02T13:08:02Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T13:08:02Z [watchdog] kickstart issued
+2026-04-02T13:13:02Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T13:13:02Z [watchdog] kickstart issued
+2026-04-02T13:18:02Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T13:18:02Z [watchdog] kickstart issued
+2026-04-02T13:23:02Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T13:23:02Z [watchdog] kickstart issued
+2026-04-02T13:28:02Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T13:28:02Z [watchdog] kickstart issued
+2026-04-02T13:33:02Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T13:33:02Z [watchdog] kickstart issued
+2026-04-02T13:38:03Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T13:38:03Z [watchdog] kickstart issued
+2026-04-02T13:43:03Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T13:43:03Z [watchdog] kickstart issued
+2026-04-02T13:48:03Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T13:48:03Z [watchdog] kickstart issued
+2026-04-02T13:53:03Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T13:53:03Z [watchdog] kickstart issued
+2026-04-02T13:58:03Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T13:58:03Z [watchdog] kickstart issued
+2026-04-02T14:03:03Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T14:03:03Z [watchdog] kickstart issued
+2026-04-02T14:08:03Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T14:08:03Z [watchdog] kickstart issued
+2026-04-02T14:13:03Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T14:13:03Z [watchdog] kickstart issued
+2026-04-02T14:18:03Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T14:18:03Z [watchdog] kickstart issued
+2026-04-02T14:23:04Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T14:23:04Z [watchdog] kickstart issued
+2026-04-02T14:28:04Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T14:28:04Z [watchdog] kickstart issued
+2026-04-02T14:33:04Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T14:33:04Z [watchdog] kickstart issued
+2026-04-02T14:38:04Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T14:38:04Z [watchdog] kickstart issued
+2026-04-02T14:43:04Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T14:43:04Z [watchdog] kickstart issued
+2026-04-02T14:48:04Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T14:48:04Z [watchdog] kickstart issued
+2026-04-02T14:53:04Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T14:53:04Z [watchdog] kickstart issued
+2026-04-02T14:58:04Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T14:58:04Z [watchdog] kickstart issued
+2026-04-02T15:03:05Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T15:03:05Z [watchdog] kickstart issued
+2026-04-02T15:08:05Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T15:08:05Z [watchdog] kickstart issued
+2026-04-02T15:13:05Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T15:13:05Z [watchdog] kickstart issued
+2026-04-02T15:18:05Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T15:18:05Z [watchdog] kickstart issued
+2026-04-02T15:23:05Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T15:23:05Z [watchdog] kickstart issued
+2026-04-02T15:28:05Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T15:28:05Z [watchdog] kickstart issued
+2026-04-02T15:33:05Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T15:33:05Z [watchdog] kickstart issued
+2026-04-02T15:38:05Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T15:38:05Z [watchdog] kickstart issued
+2026-04-02T15:43:05Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T15:43:05Z [watchdog] kickstart issued
+2026-04-02T15:48:05Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T15:48:06Z [watchdog] kickstart issued
+2026-04-02T15:53:06Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T15:53:06Z [watchdog] kickstart issued
+2026-04-02T15:58:06Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T15:58:06Z [watchdog] kickstart issued
+2026-04-02T16:03:06Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T16:03:06Z [watchdog] kickstart issued
+2026-04-02T16:08:06Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T16:08:06Z [watchdog] kickstart issued
+2026-04-02T16:13:06Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T16:13:06Z [watchdog] kickstart issued
+2026-04-02T16:18:06Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T16:18:06Z [watchdog] kickstart issued
+2026-04-02T16:23:06Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T16:23:06Z [watchdog] kickstart issued
+2026-04-02T16:28:06Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T16:28:06Z [watchdog] kickstart issued
+2026-04-02T16:33:06Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T16:33:06Z [watchdog] kickstart issued
+2026-04-02T16:38:06Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T16:38:07Z [watchdog] kickstart issued
+2026-04-02T16:43:07Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T16:43:07Z [watchdog] kickstart issued
+2026-04-02T16:48:07Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T16:48:07Z [watchdog] kickstart issued
+2026-04-02T16:53:07Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T16:53:07Z [watchdog] kickstart issued
+2026-04-02T16:58:07Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T16:58:07Z [watchdog] kickstart issued
+2026-04-02T17:03:07Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T17:03:07Z [watchdog] kickstart issued
+2026-04-02T17:08:07Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T17:08:07Z [watchdog] kickstart issued
+2026-04-02T17:13:07Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T17:13:07Z [watchdog] kickstart issued
+2026-04-02T17:18:07Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T17:18:07Z [watchdog] kickstart issued
+2026-04-02T17:23:07Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T17:23:07Z [watchdog] kickstart issued
+2026-04-02T17:28:08Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T17:28:08Z [watchdog] kickstart issued
+2026-04-02T17:33:08Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T17:33:08Z [watchdog] kickstart issued
+2026-04-02T17:38:08Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T17:38:08Z [watchdog] kickstart issued
+2026-04-02T17:43:08Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T17:43:08Z [watchdog] kickstart issued
+2026-04-02T17:48:08Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T17:48:08Z [watchdog] kickstart issued
+2026-04-02T17:53:08Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T17:53:08Z [watchdog] kickstart issued
+2026-04-02T17:58:08Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T17:58:08Z [watchdog] kickstart issued
+2026-04-02T18:03:08Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T18:03:08Z [watchdog] kickstart issued
+2026-04-02T18:08:08Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T18:08:08Z [watchdog] kickstart issued
+2026-04-02T18:13:08Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T18:13:09Z [watchdog] kickstart issued
+2026-04-02T18:18:09Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T18:18:09Z [watchdog] kickstart issued
+2026-04-02T18:23:09Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T18:23:09Z [watchdog] kickstart issued
+2026-04-02T18:28:09Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T18:28:09Z [watchdog] kickstart issued
+2026-04-02T18:33:09Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T18:33:09Z [watchdog] kickstart issued
+2026-04-02T18:38:09Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T18:38:09Z [watchdog] kickstart issued
+2026-04-02T18:43:09Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T18:43:09Z [watchdog] kickstart issued
+2026-04-02T18:48:09Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T18:48:09Z [watchdog] kickstart issued
+2026-04-02T18:53:09Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T18:53:09Z [watchdog] kickstart issued
+2026-04-02T18:58:09Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T18:58:09Z [watchdog] kickstart issued
+2026-04-02T19:03:09Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T19:03:09Z [watchdog] kickstart issued
+2026-04-02T19:08:10Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T19:08:10Z [watchdog] kickstart issued
+2026-04-02T19:13:10Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T19:13:10Z [watchdog] kickstart issued
+2026-04-02T19:18:10Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T19:18:10Z [watchdog] kickstart issued
+2026-04-02T19:23:10Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T19:23:10Z [watchdog] kickstart issued
+2026-04-02T19:28:10Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T19:28:10Z [watchdog] kickstart issued
+2026-04-02T19:33:10Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T19:33:10Z [watchdog] kickstart issued
+2026-04-02T19:38:11Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T19:38:11Z [watchdog] kickstart issued
+2026-04-02T19:43:11Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T19:43:11Z [watchdog] kickstart issued
+2026-04-02T19:48:11Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T19:48:11Z [watchdog] kickstart issued
+2026-04-02T19:53:12Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T19:53:12Z [watchdog] kickstart issued
+2026-04-02T19:58:12Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T19:58:12Z [watchdog] kickstart issued
+2026-04-02T20:03:12Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T20:03:12Z [watchdog] kickstart issued
+2026-04-02T20:08:12Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T20:08:12Z [watchdog] kickstart issued
+2026-04-02T20:13:12Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T20:13:12Z [watchdog] kickstart issued
+2026-04-02T20:18:12Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T20:18:12Z [watchdog] kickstart issued
+2026-04-02T20:23:12Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T20:23:12Z [watchdog] kickstart issued
+2026-04-02T20:28:12Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T20:28:12Z [watchdog] kickstart issued
+2026-04-02T20:33:12Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T20:33:12Z [watchdog] kickstart issued
+2026-04-02T20:38:13Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T20:38:13Z [watchdog] kickstart issued
+2026-04-02T20:43:13Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T20:43:13Z [watchdog] kickstart issued
+2026-04-02T20:48:13Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T20:48:13Z [watchdog] kickstart issued
+2026-04-02T20:53:13Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T20:53:13Z [watchdog] kickstart issued
+2026-04-02T20:58:13Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T20:58:13Z [watchdog] kickstart issued
+2026-04-02T21:03:13Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T21:03:13Z [watchdog] kickstart issued
+2026-04-02T21:08:13Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T21:08:13Z [watchdog] kickstart issued
+2026-04-02T21:13:13Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T21:13:13Z [watchdog] kickstart issued
+2026-04-02T21:18:13Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T21:18:13Z [watchdog] kickstart issued
+2026-04-02T21:23:13Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T21:23:14Z [watchdog] kickstart issued
+2026-04-02T21:28:14Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T21:28:14Z [watchdog] kickstart issued
+2026-04-02T21:33:14Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T21:33:14Z [watchdog] kickstart issued
+2026-04-02T21:38:14Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T21:38:14Z [watchdog] kickstart issued
+2026-04-02T21:43:14Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T21:43:14Z [watchdog] kickstart issued
+2026-04-02T21:48:14Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T21:48:14Z [watchdog] kickstart issued
+2026-04-02T21:53:14Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T21:53:14Z [watchdog] kickstart issued
+2026-04-02T21:58:15Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T21:58:15Z [watchdog] kickstart issued
+2026-04-02T22:03:15Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T22:03:15Z [watchdog] kickstart issued
+2026-04-02T22:08:15Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T22:08:15Z [watchdog] kickstart issued
+2026-04-02T22:13:15Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T22:13:15Z [watchdog] kickstart issued
+2026-04-02T22:18:15Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T22:18:15Z [watchdog] kickstart issued
+2026-04-02T22:23:15Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T22:23:15Z [watchdog] kickstart issued
+2026-04-02T22:28:15Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T22:28:15Z [watchdog] kickstart issued
+2026-04-02T22:33:15Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T22:33:15Z [watchdog] kickstart issued
+2026-04-02T22:38:15Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T22:38:15Z [watchdog] kickstart issued
+2026-04-02T22:43:16Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T22:43:16Z [watchdog] kickstart issued
+2026-04-02T22:48:16Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T22:48:16Z [watchdog] kickstart issued
+2026-04-02T22:53:16Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T22:53:16Z [watchdog] kickstart issued
+2026-04-02T22:58:16Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T22:58:16Z [watchdog] kickstart issued
+2026-04-02T23:03:16Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T23:03:16Z [watchdog] kickstart issued
+2026-04-02T23:08:16Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T23:08:16Z [watchdog] kickstart issued
+2026-04-02T23:13:16Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T23:13:16Z [watchdog] kickstart issued
+2026-04-02T23:18:16Z [watchdog] RESTARTING librespot — serve_http.py port 8765 not listening
+2026-04-02T23:18:16Z [watchdog] kickstart issued
+2026-04-02T23:19:32Z [watchdog] OK — librespot running (pids=16369) port 8765 open
+2026-04-02T23:24:32Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-04-02T23:24:32Z [watchdog] kickstart issued
+2026-04-02T23:29:32Z [watchdog] OK — librespot running (pids=17156) port 8765 open
+2026-04-02T23:34:33Z [watchdog] OK — librespot running (pids=17156) port 8765 open
+2026-04-02T23:39:33Z [watchdog] OK — librespot running (pids=17156) port 8765 open
+2026-04-02T23:44:33Z [watchdog] OK — librespot running (pids=17156) port 8765 open
+2026-04-02T23:45:49Z [watchdog] OK — librespot running (pids=20089) port 8765 open
+2026-04-02T23:48:29Z [watchdog] OK — librespot running (pids=20502) port 8765 open
+2026-04-02T23:53:29Z [watchdog] RESTARTING librespot — ffmpeg process not found
+2026-04-02T23:53:29Z [watchdog] kickstart issued
+2026-04-02T23:58:29Z [watchdog] OK — librespot running (pids=21739) port 8765 open
+2026-04-03T00:03:29Z [watchdog] OK — librespot running (pids=21739) port 8765 open
+2026-04-03T00:08:29Z [watchdog] OK — librespot running (pids=21739) port 8765 open
+2026-04-03T00:13:29Z [watchdog] OK — librespot running (pids=21739) port 8765 open
+2026-04-03T00:18:30Z [watchdog] OK — librespot running (pids=21739) port 8765 open
+2026-04-03T00:23:30Z [watchdog] OK — librespot running (pids=21739) port 8765 open
+2026-04-03T00:28:30Z [watchdog] OK — librespot running (pids=21739) port 8765 open

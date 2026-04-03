@@ -1,6 +1,6 @@
 # Home Automation — To-Do List
 
-*Last updated: 2026-03-29*
+*Last updated: 2026-03-30*
 
 ---
 
@@ -69,10 +69,13 @@ Frigate 0.17 only supports the `default` key under `max_frames` — per-object k
 - [x] **voice-bench installed** — ✅ Daemon + dashboard at `http://localhost:7700`. Logs all commands to CSV with per-hop timing. See `voice-bench/` directory (2026-03-17).
 
 **Remaining (lower priority):**
-- [ ] **Radio station response latency (~25s)** — Voice-initiated radio playback (e.g. "play WFMU") takes ~25 seconds from command to audio. Likely causes: MA buffering the radio stream before starting playback, RadioBrowser/TuneIn lookup latency, and/or the Voice PE's initial HTTP stream connection time. Investigate: MA stream buffer settings, whether pre-caching favorite stations helps, and whether direct URL playback (bypassing RadioBrowser search) would be faster.
+- [x] **Radio station response latency** — ~~25s~~ No longer a significant issue. Retested 2026-03-30 with WhisperKit-small: median **11.1s** total (1.1s STT + 4.1s HA/MA RadioBrowser lookup + 2.4s TTS), worst case 16.8s. The original 25s+ times were pre-optimization STT (ambient noise, no VAD). Remaining variability (2–10s processing) is RadioBrowser lookup latency — external and not worth chasing. Hardcoding stream URLs for top stations would shave 2–4s but adds maintenance burden.
 - [ ] **Fix "Stop" misheard as "Pause"** — distil-whisper-large-v3 is better but may still misfire on very short words. Option: add "pause" as a `StopMusic` alias in `custom_sentences/en/music.yaml`.
 - [ ] **Monitor small model accuracy** — `whisper-small-mlx-4bit` benchmarked perfectly on test commands but needs real-world validation across voice diversity, proper nouns (WFMU, KEXP), and noisy conditions. Watch `voice-bench` dashboard for transcription errors.
-- [ ] **Switch STT backend to WhisperKit** — Benchmarked at **0.85s avg** (0.52s warmed up) on small model — fastest of all implementations tested, with clean punctuation/capitalisation output. **`wyoming-whisperkit` wrapper built (2026-03-29)** at `home-automation/wyoming-whisperkit/`. Port 7892, Silero-VAD enabled, patterned on `wyoming-mlx-whisper`. Swift bridge binary already compiled at `mac-whisper-speedtest/tools/whisperkit-bridge/.build/release/whisperkit-bridge`. **To install:** `cd ~/containers/home-automation/wyoming-whisperkit && chmod +x *.sh script/* && ./install_service.sh`. **To switch HA:** Wyoming integration → host `192.168.1.70` port `7892`. **To benchmark:** `cp voice-bench/config.whisperkit.yaml voice-bench/config.yaml` then restart voice-bench. Roll back: Wyoming → port 7891.
+- [x] **Switch STT backend to WhisperKit** — ✅ Complete (2026-03-29). Wyoming wrapper at `home-automation/wyoming-whisperkit/`, port 7892, Silero-VAD enabled. Active as of 2026-03-29 — voice-bench config tag `whisperkit-small-silero-vad` confirms. Benchmarked at 0.85s; real-world STT averaging ~1.1s on radio commands (vs 3–5s with mlx-whisper). Fallback: Wyoming → port 7891 (mlx-whisper still installed).
+- [x] **Librespot "Naboo" watchdog + serve_http.py crash loop fix** — ✅ Complete (2026-03-30/31). Two fixes:
+  1. `watchdog.sh` + `com.librespot.naboo-watchdog.plist` — checks every 5 min: (1) librespot process alive, (2) port 8765 open; restarts via `launchctl kickstart -k`. Installed and confirmed catching real failures.
+  2. **Root cause:** `serve_http.py` used only `SO_REUSEADDR` which does NOT bypass `TIME_WAIT` on macOS (Linux behaviour only). Rapid restarts left port 8765 in `TIME_WAIT` → bind failure → cascade crash loop. Fixed by adding `SO_REUSEPORT` (one line). Confirmed working 2026-03-31.
 
 ---
 

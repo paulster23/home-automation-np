@@ -35,7 +35,7 @@ _LOGGER = logging.getLogger(__name__)
 VAD_CHUNK_SAMPLES = 512   # 32 ms @ 16 kHz — required by Silero
 VAD_THRESHOLD     = 0.5
 VAD_MIN_SPEECH_MS = 600   # arm after 600 ms of confirmed speech
-VAD_SILENCE_MS    = 450   # trigger 450 ms after speech ends
+VAD_SILENCE_MS    = 900   # trigger 900 ms after speech ends
 VAD_MAX_SPEECH_MS = 10_000
 
 

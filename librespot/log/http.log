@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "/Users/media/containers/home-automation/librespot/serve_http.py", line 101, in <module>
+    client.sendall(HTTP_HEADER)
+BrokenPipeError: [Errno 32] Broken pipe

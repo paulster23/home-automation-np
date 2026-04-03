@@ -46,3 +46,1135 @@ Error opening output file http://0.0.0.0:8765.
 [out#0/mp3 @ 0xb31028180] Terminating thread with return code -32 (Broken pipe)
 [out#0/mp3 @ 0xb31028180] Error writing trailer: Broken pipe
 [out#0/mp3 @ 0xb31028180] Error closing file: Broken pipe
+[aost#0:0/libmp3lame @ 0x9c8828000] Error submitting a packet to the muxer: Broken pipe
+    Last message repeated 1 times
+[out#0/mp3 @ 0x9c881c180] Error muxing a packet
+[out#0/mp3 @ 0x9c881c180] Task finished with error code: -32 (Broken pipe)
+[out#0/mp3 @ 0x9c881c180] Terminating thread with return code -32 (Broken pipe)
+[out#0/mp3 @ 0x9c881c180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x9c881c180] Error closing file: Broken pipe
+[aost#0:0/libmp3lame @ 0xc22c2c000] Error submitting a packet to the muxer: Broken pipe
+    Last message repeated 1 times
+[out#0/mp3 @ 0xc22c20180] Error muxing a packet
+[out#0/mp3 @ 0xc22c20180] Task finished with error code: -32 (Broken pipe)
+[out#0/mp3 @ 0xc22c20180] Terminating thread with return code -32 (Broken pipe)
+[out#0/mp3 @ 0xc22c20180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xc22c20180] Error closing file: Broken pipe
+[out#0/mp3 @ 0xc56c20180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xc56c20180] Error closing file: Broken pipe
+[out#0/mp3 @ 0xb8e810180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xb8e810180] Error closing file: Broken pipe
+[out#0/mp3 @ 0xaeac00840] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xaeac00840] Error closing file: Broken pipe
+[out#0/mp3 @ 0x9fac20180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x9fac20180] Error closing file: Broken pipe
+[out#0/mp3 @ 0x8a8c20180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x8a8c20180] Error closing file: Broken pipe
+[out#0/mp3 @ 0x845028180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x845028180] Error closing file: Broken pipe
+[out#0/mp3 @ 0x8d2c20180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x8d2c20180] Error closing file: Broken pipe
+[out#0/mp3 @ 0xb32c00840] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xb32c00840] Error closing file: Broken pipe
+[out#0/mp3 @ 0x71ac00840] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x71ac00840] Error closing file: Broken pipe
+[out#0/mp3 @ 0xb90c24180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xb90c24180] Error closing file: Broken pipe
+[out#0/mp3 @ 0xc0cc20180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xc0cc20180] Error closing file: Broken pipe
+[out#0/mp3 @ 0xafcc24180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xafcc24180] Error closing file: Broken pipe
+[out#0/mp3 @ 0x7fec00840] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x7fec00840] Error closing file: Broken pipe
+[out#0/mp3 @ 0x96cc20180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x96cc20180] Error closing file: Broken pipe
+[out#0/mp3 @ 0x8a8c20180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x8a8c20180] Error closing file: Broken pipe
+[out#0/mp3 @ 0x797028180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x797028180] Error closing file: Broken pipe
+[out#0/mp3 @ 0x8e0c20180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x8e0c20180] Error closing file: Broken pipe
+[out#0/mp3 @ 0x758c00840] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x758c00840] Error closing file: Broken pipe
+[out#0/mp3 @ 0xbdd028180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xbdd028180] Error closing file: Broken pipe
+[out#0/mp3 @ 0xa33028180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xa33028180] Error closing file: Broken pipe
+[out#0/mp3 @ 0x80ec20180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x80ec20180] Error closing file: Broken pipe
+[out#0/mp3 @ 0x900c20180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x900c20180] Error closing file: Broken pipe
+[out#0/mp3 @ 0xb08c00840] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xb08c00840] Error closing file: Broken pipe
+[out#0/mp3 @ 0xa2ac00840] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xa2ac00840] Error closing file: Broken pipe
+[out#0/mp3 @ 0xb19028180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xb19028180] Error closing file: Broken pipe
+[out#0/mp3 @ 0xb4ac20180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xb4ac20180] Error closing file: Broken pipe
+[out#0/mp3 @ 0x9ccc24180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x9ccc24180] Error closing file: Broken pipe
+[out#0/mp3 @ 0xa50c20180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xa50c20180] Error closing file: Broken pipe
+[out#0/mp3 @ 0xbf2c20180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xbf2c20180] Error closing file: Broken pipe
+[out#0/mp3 @ 0xb22c00840] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xb22c00840] Error closing file: Broken pipe
+[out#0/mp3 @ 0x79ac00840] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x79ac00840] Error closing file: Broken pipe
+[out#0/mp3 @ 0xa18c24180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xa18c24180] Error closing file: Broken pipe
+[out#0/mp3 @ 0xbd6c00840] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xbd6c00840] Error closing file: Broken pipe
+[out#0/mp3 @ 0xbd1028180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xbd1028180] Error closing file: Broken pipe
+[out#0/mp3 @ 0x812c24180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x812c24180] Error closing file: Broken pipe
+[out#0/mp3 @ 0x905028180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x905028180] Error closing file: Broken pipe
+[out#0/mp3 @ 0xc38c20180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xc38c20180] Error closing file: Broken pipe
+[out#0/mp3 @ 0xb26c24180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xb26c24180] Error closing file: Broken pipe
+[out#0/mp3 @ 0x75ec24180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x75ec24180] Error closing file: Broken pipe
+[out#0/mp3 @ 0x8d0c00840] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x8d0c00840] Error closing file: Broken pipe
+[out#0/mp3 @ 0x7c0c00840] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x7c0c00840] Error closing file: Broken pipe
+[out#0/mp3 @ 0xbe4c20180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xbe4c20180] Error closing file: Broken pipe
+[out#0/mp3 @ 0x772c00840] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x772c00840] Error closing file: Broken pipe
+[out#0/mp3 @ 0xac8c20180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xac8c20180] Error closing file: Broken pipe
+[out#0/mp3 @ 0xad4c00840] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xad4c00840] Error closing file: Broken pipe
+[out#0/mp3 @ 0xc8cc00840] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xc8cc00840] Error closing file: Broken pipe
+[out#0/mp3 @ 0xc53028180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xc53028180] Error closing file: Broken pipe
+[out#0/mp3 @ 0xb03028180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xb03028180] Error closing file: Broken pipe
+[out#0/mp3 @ 0x8a2c00840] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x8a2c00840] Error closing file: Broken pipe
+[out#0/mp3 @ 0x7dec00840] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x7dec00840] Error closing file: Broken pipe
+[out#0/mp3 @ 0xb11028180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xb11028180] Error closing file: Broken pipe
+[out#0/mp3 @ 0xb04c20180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xb04c20180] Error closing file: Broken pipe
+[out#0/mp3 @ 0x704c00840] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x704c00840] Error closing file: Broken pipe
+[out#0/mp3 @ 0xc18c20180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xc18c20180] Error closing file: Broken pipe
+[out#0/mp3 @ 0xb04c00840] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xb04c00840] Error closing file: Broken pipe
+[out#0/mp3 @ 0xc3cc00840] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xc3cc00840] Error closing file: Broken pipe
+[out#0/mp3 @ 0x9eb028180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x9eb028180] Error closing file: Broken pipe
+[out#0/mp3 @ 0x7f9028180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x7f9028180] Error closing file: Broken pipe
+[out#0/mp3 @ 0x958c24180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x958c24180] Error closing file: Broken pipe
+[out#0/mp3 @ 0x928c24180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x928c24180] Error closing file: Broken pipe
+[out#0/mp3 @ 0x830c20180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x830c20180] Error closing file: Broken pipe
+[out#0/mp3 @ 0xb42c00840] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xb42c00840] Error closing file: Broken pipe
+[out#0/mp3 @ 0x886c20180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x886c20180] Error closing file: Broken pipe
+[out#0/mp3 @ 0xb62c20180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xb62c20180] Error closing file: Broken pipe
+[out#0/mp3 @ 0xb92c00840] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xb92c00840] Error closing file: Broken pipe
+[out#0/mp3 @ 0x7b0c00840] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x7b0c00840] Error closing file: Broken pipe
+[out#0/mp3 @ 0xa75028180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xa75028180] Error closing file: Broken pipe
+[out#0/mp3 @ 0xb88c20180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xb88c20180] Error closing file: Broken pipe
+[out#0/mp3 @ 0x804c00840] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x804c00840] Error closing file: Broken pipe
+[out#0/mp3 @ 0x782c20180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x782c20180] Error closing file: Broken pipe
+[out#0/mp3 @ 0x758c18180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x758c18180] Error closing file: Broken pipe
+[out#0/mp3 @ 0xb72c20180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xb72c20180] Error closing file: Broken pipe
+[out#0/mp3 @ 0x8b8c20180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x8b8c20180] Error closing file: Broken pipe
+[out#0/mp3 @ 0xc38c24180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xc38c24180] Error closing file: Broken pipe
+[out#0/mp3 @ 0x95cc24180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x95cc24180] Error closing file: Broken pipe
+[out#0/mp3 @ 0x722c00840] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x722c00840] Error closing file: Broken pipe
+[out#0/mp3 @ 0xc40c20180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xc40c20180] Error closing file: Broken pipe
+[out#0/mp3 @ 0x8d6c24180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x8d6c24180] Error closing file: Broken pipe
+[out#0/mp3 @ 0xaff028180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xaff028180] Error closing file: Broken pipe
+[out#0/mp3 @ 0x978c00840] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x978c00840] Error closing file: Broken pipe
+[out#0/mp3 @ 0x737028180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x737028180] Error closing file: Broken pipe
+[out#0/mp3 @ 0xb40c20180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xb40c20180] Error closing file: Broken pipe
+[out#0/mp3 @ 0xa4ec24180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xa4ec24180] Error closing file: Broken pipe
+[out#0/mp3 @ 0xa0ec20180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xa0ec20180] Error closing file: Broken pipe
+[out#0/mp3 @ 0xa4d028180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xa4d028180] Error closing file: Broken pipe
+[out#0/mp3 @ 0x88ec00840] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x88ec00840] Error closing file: Broken pipe
+[out#0/mp3 @ 0x8c1028180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x8c1028180] Error closing file: Broken pipe
+[out#0/mp3 @ 0xb42c00840] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xb42c00840] Error closing file: Broken pipe
+[out#0/mp3 @ 0xc12c20180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xc12c20180] Error closing file: Broken pipe
+[out#0/mp3 @ 0x9b6c20180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x9b6c20180] Error closing file: Broken pipe
+[out#0/mp3 @ 0xbcec20180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xbcec20180] Error closing file: Broken pipe
+[out#0/mp3 @ 0x8db028180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x8db028180] Error closing file: Broken pipe
+[out#0/mp3 @ 0xb4cc00840] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xb4cc00840] Error closing file: Broken pipe
+[out#0/mp3 @ 0xc23028180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xc23028180] Error closing file: Broken pipe
+[out#0/mp3 @ 0x7f4c00840] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x7f4c00840] Error closing file: Broken pipe
+[out#0/mp3 @ 0xb42c00840] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xb42c00840] Error closing file: Broken pipe
+[out#0/mp3 @ 0xa78c24180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xa78c24180] Error closing file: Broken pipe
+[out#0/mp3 @ 0x88cc20180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x88cc20180] Error closing file: Broken pipe
+[out#0/mp3 @ 0xb30c00840] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xb30c00840] Error closing file: Broken pipe
+[out#0/mp3 @ 0x73ac20180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x73ac20180] Error closing file: Broken pipe
+[out#0/mp3 @ 0xc08c24180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xc08c24180] Error closing file: Broken pipe
+[out#0/mp3 @ 0x94f028180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x94f028180] Error closing file: Broken pipe
+[out#0/mp3 @ 0x994c20180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x994c20180] Error closing file: Broken pipe
+[out#0/mp3 @ 0x785028180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x785028180] Error closing file: Broken pipe
+[out#0/mp3 @ 0x744c00840] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x744c00840] Error closing file: Broken pipe
+[out#0/mp3 @ 0x91ac24180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x91ac24180] Error closing file: Broken pipe
+[out#0/mp3 @ 0x811028180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x811028180] Error closing file: Broken pipe
+[out#0/mp3 @ 0x72ac20180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x72ac20180] Error closing file: Broken pipe
+[out#0/mp3 @ 0x800c20180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x800c20180] Error closing file: Broken pipe
+[out#0/mp3 @ 0x8e2c00840] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x8e2c00840] Error closing file: Broken pipe
+[out#0/mp3 @ 0xab9028180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xab9028180] Error closing file: Broken pipe
+[out#0/mp3 @ 0xaecc00840] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xaecc00840] Error closing file: Broken pipe
+[out#0/mp3 @ 0xa2cc00840] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xa2cc00840] Error closing file: Broken pipe
+[out#0/mp3 @ 0x882c20180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x882c20180] Error closing file: Broken pipe
+[out#0/mp3 @ 0xa10c00840] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xa10c00840] Error closing file: Broken pipe
+[out#0/mp3 @ 0x798c24180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x798c24180] Error closing file: Broken pipe
+[out#0/mp3 @ 0x9aec20180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x9aec20180] Error closing file: Broken pipe
+[out#0/mp3 @ 0x788c20180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x788c20180] Error closing file: Broken pipe
+[out#0/mp3 @ 0xcaec20180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xcaec20180] Error closing file: Broken pipe
+[out#0/mp3 @ 0x92f028180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x92f028180] Error closing file: Broken pipe
+[out#0/mp3 @ 0xba5028180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xba5028180] Error closing file: Broken pipe
+[out#0/mp3 @ 0xb14c24180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xb14c24180] Error closing file: Broken pipe
+[out#0/mp3 @ 0x914c00840] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x914c00840] Error closing file: Broken pipe
+[out#0/mp3 @ 0xb1d028180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xb1d028180] Error closing file: Broken pipe
+[out#0/mp3 @ 0x80ac24180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x80ac24180] Error closing file: Broken pipe
+[out#0/mp3 @ 0x78b028180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x78b028180] Error closing file: Broken pipe
+[out#0/mp3 @ 0x7f5028180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x7f5028180] Error closing file: Broken pipe
+[out#0/mp3 @ 0xa5cc24180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xa5cc24180] Error closing file: Broken pipe
+[out#0/mp3 @ 0x7aac20180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x7aac20180] Error closing file: Broken pipe
+[out#0/mp3 @ 0x920c24180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x920c24180] Error closing file: Broken pipe
+[out#0/mp3 @ 0x884c24180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x884c24180] Error closing file: Broken pipe
+[out#0/mp3 @ 0xc80c20180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xc80c20180] Error closing file: Broken pipe
+[out#0/mp3 @ 0xa4ac00840] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xa4ac00840] Error closing file: Broken pipe
+[out#0/mp3 @ 0x919404180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x919404180] Error closing file: Broken pipe
+[out#0/mp3 @ 0xc24c24180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xc24c24180] Error closing file: Broken pipe
+[out#0/mp3 @ 0xa4f028180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xa4f028180] Error closing file: Broken pipe
+[aost#0:0/libmp3lame @ 0x728c2c000] Error submitting a packet to the muxer: Broken pipe
+    Last message repeated 1 times
+[out#0/mp3 @ 0x728c24180] Error muxing a packet
+[out#0/mp3 @ 0x728c24180] Task finished with error code: -32 (Broken pipe)
+[out#0/mp3 @ 0x728c24180] Terminating thread with return code -32 (Broken pipe)
+[out#0/mp3 @ 0x728c24180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x728c24180] Error closing file: Broken pipe
+[aost#0:0/libmp3lame @ 0xcb4c2c000] Error submitting a packet to the muxer: Broken pipe
+    Last message repeated 1 times
+[out#0/mp3 @ 0xcb4c20180] Error muxing a packet
+[out#0/mp3 @ 0xcb4c20180] Task finished with error code: -32 (Broken pipe)
+[out#0/mp3 @ 0xcb4c20180] Terminating thread with return code -32 (Broken pipe)
+[out#0/mp3 @ 0xcb4c20180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xcb4c20180] Error closing file: Broken pipe
+[out#0/mp3 @ 0xadac18180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xadac18180] Error closing file: Broken pipe
+[out#0/mp3 @ 0xad6c24180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xad6c24180] Error closing file: Broken pipe
+[out#0/mp3 @ 0xb02c20180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xb02c20180] Error closing file: Broken pipe
+[out#0/mp3 @ 0xba0c20180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xba0c20180] Error closing file: Broken pipe
+[out#0/mp3 @ 0xb66c24180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xb66c24180] Error closing file: Broken pipe
+[out#0/mp3 @ 0x82ac00840] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x82ac00840] Error closing file: Broken pipe
+[out#0/mp3 @ 0xae6c24180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xae6c24180] Error closing file: Broken pipe
+[out#0/mp3 @ 0xca0c24180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xca0c24180] Error closing file: Broken pipe
+[out#0/mp3 @ 0xb7101c180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xb7101c180] Error closing file: Broken pipe
+[out#0/mp3 @ 0x88ac00840] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x88ac00840] Error closing file: Broken pipe
+[out#0/mp3 @ 0xc50c00840] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xc50c00840] Error closing file: Broken pipe
+[out#0/mp3 @ 0xb50c20180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xb50c20180] Error closing file: Broken pipe
+[out#0/mp3 @ 0x926c00840] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x926c00840] Error closing file: Broken pipe
+[out#0/mp3 @ 0xbc8c24180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xbc8c24180] Error closing file: Broken pipe
+[out#0/mp3 @ 0xc84c24180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xc84c24180] Error closing file: Broken pipe
+[out#0/mp3 @ 0x77cc24180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x77cc24180] Error closing file: Broken pipe
+[out#0/mp3 @ 0x988c24180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x988c24180] Error closing file: Broken pipe
+[out#0/mp3 @ 0x8a7028180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x8a7028180] Error closing file: Broken pipe
+[out#0/mp3 @ 0x7e8c20180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x7e8c20180] Error closing file: Broken pipe
+[out#0/mp3 @ 0x97d028180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x97d028180] Error closing file: Broken pipe
+[out#0/mp3 @ 0x980c00840] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x980c00840] Error closing file: Broken pipe
+[out#0/mp3 @ 0xc16c24180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xc16c24180] Error closing file: Broken pipe
+[out#0/mp3 @ 0x777028180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x777028180] Error closing file: Broken pipe
+[out#0/mp3 @ 0xbaac24180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xbaac24180] Error closing file: Broken pipe
+[out#0/mp3 @ 0x856c20180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x856c20180] Error closing file: Broken pipe
+[out#0/mp3 @ 0xad3028180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xad3028180] Error closing file: Broken pipe
+[out#0/mp3 @ 0xc2cc24180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xc2cc24180] Error closing file: Broken pipe
+[out#0/mp3 @ 0x7ff028180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x7ff028180] Error closing file: Broken pipe
+[out#0/mp3 @ 0x798c00840] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x798c00840] Error closing file: Broken pipe
+[out#0/mp3 @ 0x8b3028180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x8b3028180] Error closing file: Broken pipe
+[out#0/mp3 @ 0x709028180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x709028180] Error closing file: Broken pipe
+[out#0/mp3 @ 0xa33028180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xa33028180] Error closing file: Broken pipe
+[out#0/mp3 @ 0xc22404180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xc22404180] Error closing file: Broken pipe
+[out#0/mp3 @ 0xbacc20180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xbacc20180] Error closing file: Broken pipe
+[out#0/mp3 @ 0x854c24180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x854c24180] Error closing file: Broken pipe
+[out#0/mp3 @ 0xb1cc24180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xb1cc24180] Error closing file: Broken pipe
+[out#0/mp3 @ 0x780c20180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x780c20180] Error closing file: Broken pipe
+[out#0/mp3 @ 0xa12c00840] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xa12c00840] Error closing file: Broken pipe
+[out#0/mp3 @ 0x93cc20180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x93cc20180] Error closing file: Broken pipe
+[out#0/mp3 @ 0xca5028180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xca5028180] Error closing file: Broken pipe
+[out#0/mp3 @ 0x880c00840] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x880c00840] Error closing file: Broken pipe
+[out#0/mp3 @ 0x946c00840] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x946c00840] Error closing file: Broken pipe
+[out#0/mp3 @ 0xbaac24180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xbaac24180] Error closing file: Broken pipe
+[out#0/mp3 @ 0x7bac00840] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x7bac00840] Error closing file: Broken pipe
+[out#0/mp3 @ 0x9f6c24180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x9f6c24180] Error closing file: Broken pipe
+[out#0/mp3 @ 0x90ac24180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x90ac24180] Error closing file: Broken pipe
+[out#0/mp3 @ 0xbd6c24180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xbd6c24180] Error closing file: Broken pipe
+[out#0/mp3 @ 0x97f028180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x97f028180] Error closing file: Broken pipe
+[out#0/mp3 @ 0xaa5028180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xaa5028180] Error closing file: Broken pipe
+[out#0/mp3 @ 0x9f2c20180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x9f2c20180] Error closing file: Broken pipe
+[out#0/mp3 @ 0xaab028180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xaab028180] Error closing file: Broken pipe
+[out#0/mp3 @ 0x87d028180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x87d028180] Error closing file: Broken pipe
+[out#0/mp3 @ 0x724c1c180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x724c1c180] Error closing file: Broken pipe
+[out#0/mp3 @ 0x7fcc24180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x7fcc24180] Error closing file: Broken pipe
+[out#0/mp3 @ 0x814c20180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x814c20180] Error closing file: Broken pipe
+[out#0/mp3 @ 0xc84c00840] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xc84c00840] Error closing file: Broken pipe
+[out#0/mp3 @ 0xc6ec20180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xc6ec20180] Error closing file: Broken pipe
+[out#0/mp3 @ 0x7a9028180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x7a9028180] Error closing file: Broken pipe
+[out#0/mp3 @ 0xc38c00840] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xc38c00840] Error closing file: Broken pipe
+[out#0/mp3 @ 0xc3cc00840] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xc3cc00840] Error closing file: Broken pipe
+[out#0/mp3 @ 0xbe0c20180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xbe0c20180] Error closing file: Broken pipe
+[out#0/mp3 @ 0x9a6c20180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x9a6c20180] Error closing file: Broken pipe
+[out#0/mp3 @ 0xc92c20180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xc92c20180] Error closing file: Broken pipe
+[out#0/mp3 @ 0x9d5028180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x9d5028180] Error closing file: Broken pipe
+[out#0/mp3 @ 0x71cc00840] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x71cc00840] Error closing file: Broken pipe
+[out#0/mp3 @ 0x938c20180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x938c20180] Error closing file: Broken pipe
+[out#0/mp3 @ 0xc7680c180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xc7680c180] Error closing file: Broken pipe
+[out#0/mp3 @ 0x8f0c24180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x8f0c24180] Error closing file: Broken pipe
+[out#0/mp3 @ 0xb30c20180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xb30c20180] Error closing file: Broken pipe
+[out#0/mp3 @ 0x7b5028180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x7b5028180] Error closing file: Broken pipe
+[out#0/mp3 @ 0x8ce404180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x8ce404180] Error closing file: Broken pipe
+[out#0/mp3 @ 0x82cc1c180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x82cc1c180] Error closing file: Broken pipe
+[out#0/mp3 @ 0xb4ec24180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xb4ec24180] Error closing file: Broken pipe
+[out#0/mp3 @ 0xb7cc20180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xb7cc20180] Error closing file: Broken pipe
+[out#0/mp3 @ 0x794c00840] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x794c00840] Error closing file: Broken pipe
+[out#0/mp3 @ 0xc07028180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xc07028180] Error closing file: Broken pipe
+[out#0/mp3 @ 0xa00c24180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xa00c24180] Error closing file: Broken pipe
+[out#0/mp3 @ 0xb12c20180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xb12c20180] Error closing file: Broken pipe
+[out#0/mp3 @ 0x848c20180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x848c20180] Error closing file: Broken pipe
+[out#0/mp3 @ 0x89cc00840] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x89cc00840] Error closing file: Broken pipe
+[out#0/mp3 @ 0xaa2c20180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xaa2c20180] Error closing file: Broken pipe
+[out#0/mp3 @ 0xc3ec24180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xc3ec24180] Error closing file: Broken pipe
+[out#0/mp3 @ 0xb1cc24180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xb1cc24180] Error closing file: Broken pipe
+[out#0/mp3 @ 0xb28c20180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xb28c20180] Error closing file: Broken pipe
+[out#0/mp3 @ 0x8a5028180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x8a5028180] Error closing file: Broken pipe
+[out#0/mp3 @ 0x8b2c00840] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x8b2c00840] Error closing file: Broken pipe
+[out#0/mp3 @ 0x916c00840] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x916c00840] Error closing file: Broken pipe
+[out#0/mp3 @ 0x89cc20180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x89cc20180] Error closing file: Broken pipe
+[out#0/mp3 @ 0xb52c20180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xb52c20180] Error closing file: Broken pipe
+[out#0/mp3 @ 0xb77010180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xb77010180] Error closing file: Broken pipe
+[out#0/mp3 @ 0x872c00840] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x872c00840] Error closing file: Broken pipe
+[out#0/mp3 @ 0x8bb028180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x8bb028180] Error closing file: Broken pipe
+[out#0/mp3 @ 0x9e8c24180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x9e8c24180] Error closing file: Broken pipe
+[out#0/mp3 @ 0x8c8c24180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x8c8c24180] Error closing file: Broken pipe
+[out#0/mp3 @ 0xacec24180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xacec24180] Error closing file: Broken pipe
+[out#0/mp3 @ 0x768c00840] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x768c00840] Error closing file: Broken pipe
+[out#0/mp3 @ 0xba0c20180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xba0c20180] Error closing file: Broken pipe
+[out#0/mp3 @ 0x9eac20180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x9eac20180] Error closing file: Broken pipe
+[out#0/mp3 @ 0xa95028180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xa95028180] Error closing file: Broken pipe
+[out#0/mp3 @ 0x898c20180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x898c20180] Error closing file: Broken pipe
+[out#0/mp3 @ 0x94ac24180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x94ac24180] Error closing file: Broken pipe
+[out#0/mp3 @ 0xb16c00840] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xb16c00840] Error closing file: Broken pipe
+[out#0/mp3 @ 0xa7ac00840] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xa7ac00840] Error closing file: Broken pipe
+[out#0/mp3 @ 0xa41028180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xa41028180] Error closing file: Broken pipe
+[out#0/mp3 @ 0x94ec24180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x94ec24180] Error closing file: Broken pipe
+[out#0/mp3 @ 0x92c80c180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x92c80c180] Error closing file: Broken pipe
+[out#0/mp3 @ 0xc22c24180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xc22c24180] Error closing file: Broken pipe
+[out#0/mp3 @ 0xbbcc00840] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xbbcc00840] Error closing file: Broken pipe
+[out#0/mp3 @ 0x76d028180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x76d028180] Error closing file: Broken pipe
+[out#0/mp3 @ 0x90ac24180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x90ac24180] Error closing file: Broken pipe
+[out#0/mp3 @ 0x802c00840] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x802c00840] Error closing file: Broken pipe
+[out#0/mp3 @ 0xab0c00840] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xab0c00840] Error closing file: Broken pipe
+[out#0/mp3 @ 0x8cec20180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x8cec20180] Error closing file: Broken pipe
+[out#0/mp3 @ 0x978c00840] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x978c00840] Error closing file: Broken pipe
+[out#0/mp3 @ 0xaaec20180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xaaec20180] Error closing file: Broken pipe
+[out#0/mp3 @ 0x918c00840] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x918c00840] Error closing file: Broken pipe
+[out#0/mp3 @ 0xbfcc24180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xbfcc24180] Error closing file: Broken pipe
+[aost#0:0/libmp3lame @ 0xc66c2c000] Error submitting a packet to the muxer: Broken pipe
+    Last message repeated 1 times
+[out#0/mp3 @ 0xc66c24180] Error muxing a packet
+[out#0/mp3 @ 0xc66c24180] Task finished with error code: -32 (Broken pipe)
+[out#0/mp3 @ 0xc66c24180] Terminating thread with return code -32 (Broken pipe)
+[out#0/mp3 @ 0xc66c24180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xc66c24180] Error closing file: Broken pipe
+[out#0/mp3 @ 0xa73028180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xa73028180] Error closing file: Broken pipe
+[out#0/mp3 @ 0xa24c00840] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xa24c00840] Error closing file: Broken pipe
+[out#0/mp3 @ 0xb7ac20180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xb7ac20180] Error closing file: Broken pipe
+[out#0/mp3 @ 0xabec20180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xabec20180] Error closing file: Broken pipe
+[out#0/mp3 @ 0xbf4c00840] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xbf4c00840] Error closing file: Broken pipe
+[out#0/mp3 @ 0x716c00840] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x716c00840] Error closing file: Broken pipe
+[out#0/mp3 @ 0xcb3028180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xcb3028180] Error closing file: Broken pipe
+[out#0/mp3 @ 0x70f028180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x70f028180] Error closing file: Broken pipe
+[aost#0:0/libmp3lame @ 0x8b4c20000] Error submitting a packet to the muxer: Broken pipe
+    Last message repeated 1 times
+[out#0/mp3 @ 0x8b5028180] Error muxing a packet
+[out#0/mp3 @ 0x8b5028180] Task finished with error code: -32 (Broken pipe)
+[out#0/mp3 @ 0x8b5028180] Terminating thread with return code -32 (Broken pipe)
+[out#0/mp3 @ 0x8b5028180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x8b5028180] Error closing file: Broken pipe
+[out#0/mp3 @ 0x884c24180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x884c24180] Error closing file: Broken pipe
+[out#0/mp3 @ 0x73ec00840] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x73ec00840] Error closing file: Broken pipe
+[out#0/mp3 @ 0x736c20180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x736c20180] Error closing file: Broken pipe
+[aost#0:0/libmp3lame @ 0x9d0400000] Error submitting a packet to the muxer: Broken pipe
+    Last message repeated 1 times
+[out#0/mp3 @ 0x9d0c24180] Error muxing a packet
+[out#0/mp3 @ 0x9d0c24180] Task finished with error code: -32 (Broken pipe)
+[out#0/mp3 @ 0x9d0c24180] Terminating thread with return code -32 (Broken pipe)
+[out#0/mp3 @ 0x9d0c24180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x9d0c24180] Error closing file: Broken pipe
+[aost#0:0/libmp3lame @ 0x73ec20000] Error submitting a packet to the muxer: Broken pipe
+    Last message repeated 1 times
+[out#0/mp3 @ 0x73ec00840] Error muxing a packet
+[out#0/mp3 @ 0x73ec00840] Task finished with error code: -32 (Broken pipe)
+[out#0/mp3 @ 0x73ec00840] Terminating thread with return code -32 (Broken pipe)
+[out#0/mp3 @ 0x73ec00840] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x73ec00840] Error closing file: Broken pipe
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+File '/tmp/librespot.fifo' already exists. Exiting.
+Error opening output file /tmp/librespot.fifo.
+[aost#0:0/libmp3lame @ 0xa48c2c000] Error submitting a packet to the muxer: Broken pipe
+    Last message repeated 1 times
+[out#0/mp3 @ 0xa48c24180] Error muxing a packet
+[out#0/mp3 @ 0xa48c24180] Task finished with error code: -32 (Broken pipe)
+[out#0/mp3 @ 0xa48c24180] Terminating thread with return code -32 (Broken pipe)
+[out#0/mp3 @ 0xa48c24180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xa48c24180] Error closing file: Broken pipe
+[http @ 0x8dac30080] Error reading HTTP response: End of file
+[out#0/mp3 @ 0x8dac24180] Error opening output http://0.0.0.0:8765: End of file
+Error opening output file http://0.0.0.0:8765.
+Error opening output files: End of file
+[out#0/mp3 @ 0xc3cc20180] Error opening output http://0.0.0.0:8765: Immediate exit requested
+Error opening output file http://0.0.0.0:8765.
+[aost#0:0/libmp3lame @ 0x93ec20000] Error submitting a packet to the muxer: Broken pipe
+    Last message repeated 1 times
+[out#0/mp3 @ 0x93f028180] Error muxing a packet
+[out#0/mp3 @ 0x93f028180] Task finished with error code: -32 (Broken pipe)
+[out#0/mp3 @ 0x93f028180] Terminating thread with return code -32 (Broken pipe)
+[out#0/mp3 @ 0x93f028180] Error writing trailer: Broken pipe
+[http @ 0x93f034080] URL read error: Connection reset by peer
+[out#0/mp3 @ 0x93f028180] Error closing file: Connection reset by peer
+[out#0/mp3 @ 0x8d2c1c180] Error opening output http://0.0.0.0:8765: Immediate exit requested
+Error opening output file http://0.0.0.0:8765.
+[in#0/s16le @ 0x71ec14000] Error during demuxing: Immediate exit requested
+[out#0/mp3 @ 0x71ec00840] Error writing trailer: Immediate exit requested
+[out#0/mp3 @ 0x71ec00840] Error closing file: Immediate exit requested

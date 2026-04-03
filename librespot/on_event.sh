@@ -104,14 +104,30 @@ case "$PLAYER_EVENT" in
     log "→ reset state to stopped (new session)"
     ;;
 
+  end_of_track)
+    # Natural track completion — the next play_request_id_changed is a skip,
+    # not a fresh voice-initiated play. Leave a flag so we can tell them apart.
+    touch "$BASE_DIR/log/.end_of_track_flag"
+    log "→ end_of_track (flagged for next play_request_id_changed)"
+    ;;
+
   play_request_id_changed)
-    # Fires on every new playback request, including voice-triggered plays via
-    # spotify_voice_assistant.play (Spotify Web API direct). That path bypasses
-    # the normal session lifecycle so session_connected never fires, leaving the
-    # state file stale as "playing". Reset here so the next "playing" event sends
-    # the webhook to reconnect naboo_media_player to the HTTP stream.
-    echo "stopped" > "$STATE_FILE"
-    log "→ reset state to stopped (new play request)"
+    # Fires on BOTH:
+    #   (a) voice-triggered plays via spotify_voice_assistant (Spotify Web API),
+    #       which bypass session_connected — we need to reset state here so the
+    #       next "playing" event reconnects naboo.
+    #   (b) natural track advances (end_of_track → play_request_id_changed).
+    #       In this case we must NOT reset state or a post-stop auto-advance
+    #       will re-trigger the librespot_playing webhook and restart the stream.
+    #
+    # Distinguish them via the end_of_track flag file.
+    if [ -f "$BASE_DIR/log/.end_of_track_flag" ]; then
+      rm -f "$BASE_DIR/log/.end_of_track_flag"
+      log "→ play_request_id_changed after end_of_track (track skip, ignoring)"
+    else
+      echo "stopped" > "$STATE_FILE"
+      log "→ reset state to stopped (fresh play request, no preceding end_of_track)"
+    fi
     ;;
 
   # Ignore everything else (preloading, changed, volume_set, etc.)
