@@ -1,6 +1,6 @@
 # Home Automation — To-Do List
 
-*Last updated: 2026-03-30*
+*Last updated: 2026-04-08*
 
 ---
 
@@ -27,10 +27,24 @@
 - **Frigate car filters tightened** — `min_area: 8000`, `min_score: 0.65`, `threshold: 0.8` in `frigate/config.yml`.
 - **Frigate stationary filtering** — `threshold: 50`, `interval: 50`, `max_frames.default: 3000` in place.
 - **Frigate zones** — `entrance`, `sidewalk`, `active_street` zones defined. `required_zones` set on alerts + detections.
+- **Librespot stream failures (2026-04-09)** — Fixed stale `/tmp/librespot.fifo` + reloaded plist from repo. Pipeline running clean (librespot → ffmpeg pipe:1 → serve_http.py). Was causing 428 MA errors + 172 broken pipes per week via watchdog restart loop.
+- **Frigate health check endpoint (2026-04-09)** — Changed from bare TCP `nc -z` (421 HTTP 400s/week) to `curl -sf http://localhost:5000/api/version`. Container healthy, noise eliminated.
 
 ---
 
 ## 🔲 Pending
+
+### ~~Raise homeassistant memory limit to 768m~~ — ✅ Done 2026-04-08
+Was at 640m; Apr 2 report showed 501–512m usage (78–80%, HIGH risk). Raised back to 768m in `docker-compose.yml`. Apply with `docker compose up -d homeassistant` — HA will recreate with the new limit (no data loss, config volume persists).
+
+### ~~Fix Frigate health check endpoint~~ — ✅ Done (2026-04-09)
+Changed healthcheck from `nc -z 127.0.0.1 8971` (bare TCP, caused 421 HTTP 400s/week) to `curl -sf http://localhost:5000/api/version` (Frigate's internal FastAPI endpoint). Container recreated and confirmed healthy. HTTP 400 noise eliminated.
+
+### ~~Investigate librespot → Music Assistant stream failures~~ — ✅ Fixed (2026-04-09)
+Root cause: stale `/tmp/librespot.fifo` left behind from the failed FIFO-based architecture (removed 2026-04-02), combined with the LaunchAgent plist in `~/Library/LaunchAgents/` pointing at that FIFO path instead of the correct `pipe:1 | serve_http.py` chain. ffmpeg failed on every start with "File already exists", causing the watchdog to restart every ~5 min and generating all 428 MA errors + 172 broken pipes. Fix: `rm -f /tmp/librespot.fifo` + reload plists from repo. Confirmed clean: one start at 2026-04-10T01:48:36Z, all three processes running (librespot → ffmpeg pipe:1 → serve_http.py), no subsequent watchdog restarts.
+
+### Stop/remove idle Docker whisper container — P7 (hygiene)
+Apr 2 report: faster-whisper container has had zero transcription requests since Mar 15. WhisperKit (port 7892) is the active STT backend. The container is profile-gated (`profiles: [stt]`) so it's not consuming RAM, but it's dead weight. Once WhisperKit has been stable for another week, remove the `whisper` service definition from compose or comment it out. Update `SYSTEM_CONTEXT.md` accordingly.
 
 ### Frigate: per-object max_frames for car
 Frigate 0.17 only supports the `default` key under `max_frames` — per-object keys (e.g. `car: 150`) cause a schema validation error. Options:
@@ -85,6 +99,6 @@ Frigate 0.17 only supports the `default` key under `max_frames` — per-object k
 - [ ] Centralized logging (Loki/Promtail) — only if log-tailer + direct file reads aren't enough
 - [ ] HA System Monitor integration — CPU/memory dashboard in HA
 - [ ] Network isolation for media stack — separate `download-net` and `media-net` bridge networks
-- [ ] Move speedtest-tracker APP_KEY to secrets file
+- [x] ~~Move speedtest-tracker APP_KEY to secrets file~~ — **Done 2026-03-28** (tracked in infra/TODO.md completed section)
 - [ ] Tailscale for remote access — access services away from home without port forwarding
 - [ ] Frigate CoreML detection — Apple Neural Engine path (currently using ZMQ via FrigateDetector.app)
