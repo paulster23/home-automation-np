@@ -28,8 +28,12 @@ frigate/config.yml.bak*
 frigate/*.bak-*
 
 # ── Home Assistant runtime data ─────────────
-# Everything in here is auto-generated on first run
-# Only track specific files you customize (like automations.yaml)
+# Everything in here is auto-generated on first run.
+# Customized config files are force-tracked with git add -f:
+#   homeassistant/automations.yaml
+#   homeassistant/configuration.yaml
+#   homeassistant/custom_sentences/
+# All other HA runtime files (DB, .storage, themes, etc.) are ignored.
 homeassistant/
 
 # ── Music Assistant runtime data ────────────
