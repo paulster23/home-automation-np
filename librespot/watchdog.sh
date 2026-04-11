@@ -55,5 +55,16 @@ if ! nc -z -w 2 127.0.0.1 "${STREAM_PORT}" 2>/dev/null; then
   exit 0
 fi
 
+# ── Check 3: ffmpeg process is running ───────────────────────────────────────
+# serve_http.py can stay alive with port 8765 open even after ffmpeg dies
+# (broken pipe from the librespot stdout → ffmpeg → serve_http chain).
+# The watchdog previously passed in this state, leaving MA connected to a
+# silent stream. Check that at least one ffmpeg process exists.
+FFMPEG_PIDS=$(pgrep -x ffmpeg 2>/dev/null)
+if [ -z "$FFMPEG_PIDS" ]; then
+  restart_librespot "ffmpeg process not found (pipe broken)"
+  exit 0
+fi
+
 # ── All checks passed ────────────────────────────────────────────────────────
-log "OK — librespot running (pids=${PIDS}) port ${STREAM_PORT} open"
+log "OK — librespot running (pids=${PIDS}) port ${STREAM_PORT} open ffmpeg running (pids=${FFMPEG_PIDS})"

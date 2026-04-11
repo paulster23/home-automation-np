@@ -1,0 +1,60 @@
+language: "en"
+
+lists:
+  # Supports 1–99 for each unit; HA parses the number word → integer automatically
+  hours:
+    range:
+      type: number
+      from: 1
+      to: 12
+  minutes:
+    range:
+      type: number
+      from: 1
+      to: 59
+  seconds:
+    range:
+      type: number
+      from: 1
+      to: 59
+
+intents:
+  SetTimer:
+    data:
+      # Hours only: "set a timer for 2 hours"
+      - sentences:
+          - "(set [a] timer|timer) for {hours} hour[s]"
+        slots:
+          hours: "{hours}"
+
+      # Minutes only: "set a timer for 10 minutes"
+      - sentences:
+          - "(set [a] timer|timer) for {minutes} minute[s]"
+        slots:
+          minutes: "{minutes}"
+
+      # Seconds only: "set a timer for 30 seconds"
+      - sentences:
+          - "(set [a] timer|timer) for {seconds} second[s]"
+        slots:
+          seconds: "{seconds}"
+
+      # Hours and minutes: "set a timer for 1 hour and 30 minutes"
+      - sentences:
+          - "(set [a] timer|timer) for {hours} hour[s] and {minutes} minute[s]"
+        slots:
+          hours: "{hours}"
+          minutes: "{minutes}"
+
+      # Minutes and seconds: "set a timer for 5 minutes and 30 seconds"
+      - sentences:
+          - "(set [a] timer|timer) for {minutes} minute[s] and {seconds} second[s]"
+        slots:
+          minutes: "{minutes}"
+          seconds: "{seconds}"
+
+  CancelTimer:
+    data:
+      - sentences:
+          - "(cancel|stop|clear) [the] timer"
+          - "never mind [the] timer"

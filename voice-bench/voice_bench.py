@@ -332,6 +332,13 @@ class VoiceBench:
             return
         self.current_session = None
 
+        # Wait briefly for the whisper log tail loop to catch up. The VAD
+        # transcription result (slower, ~1.5-2.5s wall time) may not have been
+        # written to the log file yet when the satellite hits idle. The AudioStop
+        # cleanup transcription is faster and arrives first, so without this wait
+        # the correlator sees only the null/blank result and logs (no transcription).
+        await asyncio.sleep(0.5)
+
         # ── Correlate with whisper STT entries ────────────────────────────
         if self.recent_stt and s.listening_start:
             # The STT result is logged by whisper AFTER the listening phase ends
@@ -430,10 +437,23 @@ class VoiceBench:
                         continue
 
                     # Transcribed text line
-                    # Matches both wyoming_mlx_whisper and wyoming_whisperkit handler loggers
-                    m = re.match(r"INFO:wyoming_(?:mlx_whisper|whisperkit)\.handler:\s*(.+)", line)
+                    # Matches both wyoming_mlx_whisper and wyoming_whisperkit handler loggers.
+                    # Exclude VAD status lines (e.g. "VAD early trigger — ...") which are also
+                    # emitted as INFO from the same logger but are not transcription output.
+                    # When VAD fires early, the handler transcribes twice: once for the VAD
+                    # clip (real text) and once for the trailing AudioStop audio (empty).
+                    # The empty INFO line resets pending_text so the stale real text can't be
+                    # re-used by the second timing line.
+                    m = re.match(r"INFO:wyoming_(?:mlx_whisper|whisperkit)\.handler:(.*)", line)
                     if m:
-                        pending_text = m.group(1).strip()
+                        text = m.group(1).strip()
+                        # Reject: empty, VAD status lines, or WhisperKit blank-audio sentinel
+                        if text and not text.startswith("VAD ") and text != "[BLANK_AUDIO]":
+                            pending_text = text
+                        else:
+                            # Empty, VAD status, or [BLANK_AUDIO] — reset so the next timing
+                            # line doesn't re-use a stale pending_text from a prior transcription
+                            pending_text = None
                         continue
 
                     # Timing line — wyoming_mlx_whisper emits a WARNING:asyncio slow-callback line

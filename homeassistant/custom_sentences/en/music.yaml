@@ -1,0 +1,195 @@
+language: "en"
+
+lists:
+  artist:
+    wildcard: true
+  album:
+    wildcard: true
+  playlist:
+    wildcard: true
+  station:
+    wildcard: true
+  song:
+    wildcard: true
+  podcast:
+    wildcard: true
+
+  # Known broadcast radio call signs.
+  # Each station has its clean form + space-separated form so Whisper spelling
+  # it out letter-by-letter ("K E X P") still matches. Hyphens ("K-E-X-P")
+  # are treated as word separators by HA's tokenizer and also match.
+  callsign:
+    values:
+      - kexp        # KEXP Seattle
+      - "k e x p"
+      - wfmu        # WFMU New Jersey freeform
+      - "w f m u"
+      - kcrw        # KCRW Santa Monica
+      - "k c r w"
+      - wqxr        # WQXR NYC classical
+      - "w q x r"
+      - wnyc        # WNYC NYC public radio
+      - "w n y c"
+
+  genre:
+    values:
+      - jazz
+      - rock
+      - pop
+      - classical
+      - ambient
+      - hip hop
+      - blues
+      - indie
+      - electronic
+      - folk
+      - country
+      - soul
+      - funk
+      - metal
+      - punk
+      - reggae
+      - r and b
+      - latin
+      - lo fi
+      - lofi
+      - chill
+      - dance
+      - house
+      - techno
+      - drum and bass
+      - garage
+      - dub
+      - ska
+      - gospel
+      - bluegrass
+      - americana
+      - world
+      - afrobeat
+      - bossa nova
+      - smooth jazz
+      - new wave
+      - shoegaze
+      - grunge
+      - alternative
+      - post punk
+
+intents:
+  PlayMusic:
+    data:
+      - sentences:
+          - "(play|listen to|put on) [some] {artist}"
+          - "(play|listen to|put on) [some] music by {artist}"
+
+  PlayAlbum:
+    data:
+      - sentences:
+          - "(play|listen to|put on) [the] album {album}"
+          - "(play|put on) {album} album"
+
+  PlayPlaylist:
+    data:
+      - sentences:
+          - "(play|listen to|put on) [the] [my] playlist {playlist}"
+          - "(play|put on) {playlist} playlist"
+
+  PlaySong:
+    data:
+      - sentences:
+          - "(play|listen to|put on) [the] song {song}"
+          - "(play|listen to|put on) [the] track {song}"
+
+  PlayPodcast:
+    data:
+      - sentences:
+          - "(play|listen to|put on) [the] podcast {podcast}"
+          - "(play|listen to|put on) [the] {podcast} podcast"
+          - "(resume|continue) [the] [podcast] {podcast}"
+          - "(resume|continue) [the] {podcast} podcast"
+
+  PlayEpisode:
+    data:
+      - sentences:
+          - "play [the] (latest|newest|new|recent) episode of [the] [podcast] {podcast}"
+          - "play [a] (new|recent) episode of [the] [podcast] {podcast}"
+          - "(play|put on) [an] episode of [the] [podcast] {podcast}"
+
+  PlayLikedSongs:
+    data:
+      - sentences:
+          - "(play|listen to|put on) [my] liked songs"
+          - "(play|listen to|put on) [my] favorites"
+          - "(play|listen to|put on) [my] saved songs"
+
+  StopMusic:
+    data:
+      - sentences:
+          - "stop"
+          - "pause"
+          - "stop [the] music"
+          - "stop playing"
+          - "pause [the] music"
+          - "turn off [the] music"
+          - "shut [it] off"
+
+  WhatsPlaying:
+    data:
+      - sentences:
+          - "what's playing [right now]"
+          - "what is playing [right now]"
+          - "what song is this"
+          - "what am I listening to"
+          - "what is this [song]"
+
+  AddToQueue:
+    data:
+      - sentences:
+          - "add [the] [song] {song} to [the] queue"
+          - "queue [up] [the] [song] {song}"
+
+  PlayGenre:
+    data:
+      - sentences:
+          - "(play|listen to|put on) [some] {genre} [music]"
+          - "(play|put on) [some] {genre} radio"
+
+  PlayArtistRadio:
+    data:
+      - sentences:
+          - "(play|start|put on) radio (for|based on) {artist}"
+          - "(play|start|put on) [a|an] {artist} (mix|radio mix|radio)"
+          - "play (music|songs|more) like {artist}"
+
+  # Broadcast radio stations by call sign.
+  # Named-list slots beat wildcards, so "play KEXP" routes here instead of
+  # PlayMusic, even without saying "radio station" at the end.
+  PlayCallSign:
+    data:
+      - sentences:
+          - "(play|put on|tune in to) [the] {callsign} [radio]"
+
+  # Seed a Spotify/MA radio from a specific *song* (not an artist).
+  # Requires the word "song" to disambiguate from artist radio.
+  # Examples: "play song Shark Smile radio"
+  #           "play radio for the song Shark Smile"
+  PlaySongRadio:
+    data:
+      - sentences:
+          - "play [the] song {song} radio"
+          - "play {song} song radio"
+          - "play radio for [the] song {song}"
+          - "play radio based on [the] song {song}"
+
+  PlayRadio:
+    data:
+      - sentences:
+          - "(play|put on) [the] {station} radio station"
+          - "(tune|tune in) to [the] {station} [radio] [station]"
+
+  SkipTrack:
+    data:
+      - sentences:
+          - "(skip|next) [track|song]"
+          - "next (please|one)"
+          - "skip [this] [song|track]"
+          - "play [the] next [song|track]"

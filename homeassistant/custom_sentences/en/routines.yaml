@@ -1,0 +1,12 @@
+language: "en"
+intents:
+  GoodNight:
+    data:
+      - sentences:
+          - "goodnight"
+          - "good night"
+          - "night night"
+          - "bedtime"
+          - "time for bed"
+          - "I'm going to bed"
+          - "lights out"

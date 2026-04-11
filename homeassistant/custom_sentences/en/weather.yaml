@@ -1,0 +1,10 @@
+language: "en"
+
+intents:
+  GetWeather:
+    data:
+      - sentences:
+          - "(what's|what is) [the] weather [like] [(today|right now|outside)]"
+          - "how's the weather [(today|right now|outside)]"
+          - "weather [forecast]"
+          - "is it (cold|warm|hot|raining|sunny) [(today|outside|right now)]"

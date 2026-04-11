@@ -1,0 +1,585 @@
+
+# Loads default set of integrations. Do not remove.
+default_config:
+
+
+# Load frontend themes from the themes folder
+frontend:
+  themes: !include_dir_merge_named themes
+
+automation: !include automations.yaml
+script: !include scripts.yaml
+scene: !include scenes.yaml
+
+conversation:
+
+# Custom component — must be declared here to trigger async_setup and register
+# the spotify_voice_assistant.search service used by voice intents.
+spotify_voice_assistant:
+
+# ── Spotcast — DISABLED ──────────────────────────────────────────────────────
+# Spotcast v4 is broken: Spotify removed the /server-time endpoint it depends on.
+# All voice intents now use spotify_voice_assistant.play which calls
+# the Spotify Web API directly (start_playback with device_id).
+# spotcast:
+#   sp_dc: !secret spotcast_sp_dc
+#   sp_key: !secret spotcast_sp_key
+
+# ── Database housekeeping ──────────────────────────────────────────────────────
+# Auto-purge entity state history older than 30 days to prevent DB bloat.
+# Without this, home-assistant_v2.db grows ~1-2 MB/month and never shrinks.
+recorder:
+  purge_keep_days: 30
+  commit_interval: 1
+
+# ── Voice pipeline helpers ────────────────────────────────────────────────────
+# Tracks whether we auto-paused music for a voice command, so we know
+# whether to resume after the pipeline finishes.
+input_boolean:
+  voice_paused_music:
+    name: Voice paused music
+    icon: mdi:music-note-off
+  radio_active:
+    name: Radio is playing
+    icon: mdi:radio
+
+# ── Timers ────────────────────────────────────────────────────────────────────
+timer:
+  general:
+    name: Timer
+    duration: "00:00:00"
+
+# ── Music & voice command intents ─────────────────────────────────────────────
+intent_script:
+  GetWeather:
+    speech:
+      text: >
+        {% set condition = states('weather.home') %}
+        {% set conditions = {
+          'sunny': 'sunny',
+          'clear-night': 'clear',
+          'cloudy': 'cloudy',
+          'partlycloudy': 'partly cloudy',
+          'rainy': 'rainy',
+          'pouring': 'pouring rain',
+          'snowy': 'snowy',
+          'snowy-rainy': 'a wintry mix',
+          'windy': 'windy',
+          'windy-variant': 'windy with clouds',
+          'fog': 'foggy',
+          'lightning': 'stormy',
+          'lightning-rainy': 'stormy'
+        } %}
+        {% set now = now() %}
+        {% set is_night = now.hour >= 21 or now.hour < 6 %}
+        {% set friendly = conditions.get(condition, condition) %}
+        {% if condition == 'sunny' and is_night %}
+          {% set friendly = 'clear' %}
+        {% endif %}
+        It's currently {{ state_attr('weather.home', 'temperature') | round }}° and {{ friendly }}.
+    action: []
+
+  # ── Spotify intents (via spotify_voice_assistant custom component) ───────────
+  # Flow: spotify_voice_assistant.search → URI → spotify_voice_assistant.play
+  #   → Spotify Web API start_playback(device="Naboo") → librespot plays
+  #   → on_event.sh webhook → naboo_media_player plays http://192.168.1.70:8765
+  #
+  # voice_paused_music is cleared before playback fires so the resume automation
+  # doesn't try to restart the old stream after the pipeline completes.
+  # ─────────────────────────────────────────────────────────────────────────────
+
+  PlayMusic:
+    speech:
+      text: ""
+    action:
+      # Unmute amp so audio plays when the stream reaches naboo
+      - action: media_player.volume_mute
+        continue_on_error: true
+        target:
+          entity_id: media_player.home_assistant_voice_0a3a76_media_player
+        data:
+          is_volume_muted: false
+      # HA's intent matcher sometimes routes call signs here instead of
+      # PlayCallSign. Detect and redirect to Music Assistant radio.
+      - choose:
+          - conditions:
+              - >-
+                {{ artist | lower | replace('-','') | replace(' ','')
+                   in ['kexp','wfmu','kcrw','wqxr','wnyc',
+                        'wsmu','wbmu','wfmyou'] }}
+            sequence:
+              # Stop Spotify so it doesn't reassert over the radio stream
+              - action: spotify_voice_assistant.pause
+              - action: input_boolean.turn_on
+                target:
+                  entity_id: input_boolean.radio_active
+              # Correct Whisper mishearings before hitting RadioBrowser
+              - action: music_assistant.play_media
+                target:
+                  entity_id: media_player.naboo_media_player
+                data:
+                  media_id: >-
+                    {% set clean = artist | lower | replace('-','') | replace(' ','') %}
+                    {% if clean in ['wsmu','wbmu','wfmyou'] %}WFMU
+                    {% else %}{{ clean | upper }}{% endif %}
+                  media_type: radio
+        # Normal Spotify artist playback
+        default:
+          - action: input_boolean.turn_off
+            target:
+              entity_id: input_boolean.voice_paused_music
+          - action: input_boolean.turn_off
+            target:
+              entity_id: input_boolean.radio_active
+          - action: spotify_voice_assistant.search
+            data:
+              query: "{{ artist }}"
+              type: artist
+            response_variable: search_result
+          - condition: template
+            value_template: "{{ 'uri' in search_result }}"
+          - action: spotify_voice_assistant.play
+            data:
+              uri: "{{ search_result.uri }}"
+              device_name: "Naboo"
+
+  PlayAlbum:
+    speech:
+      text: ""
+    action:
+      - action: input_boolean.turn_off
+        continue_on_error: true
+        target:
+          entity_id: input_boolean.voice_paused_music
+      - action: media_player.volume_mute
+        continue_on_error: true
+        target:
+          entity_id: media_player.home_assistant_voice_0a3a76_media_player
+        data:
+          is_volume_muted: false
+      - action: spotify_voice_assistant.search
+        data:
+          query: "{{ album }}"
+          type: album
+        response_variable: search_result
+      - condition: template
+        value_template: "{{ 'uri' in search_result }}"
+      - action: spotify_voice_assistant.play
+        data:
+          uri: "{{ search_result.uri }}"
+          device_name: "Naboo"
+
+  PlayPlaylist:
+    speech:
+      text: ""
+    action:
+      - action: input_boolean.turn_off
+        continue_on_error: true
+        target:
+          entity_id: input_boolean.voice_paused_music
+      - action: media_player.volume_mute
+        continue_on_error: true
+        target:
+          entity_id: media_player.home_assistant_voice_0a3a76_media_player
+        data:
+          is_volume_muted: false
+      # Searches user library first, then public Spotify playlists
+      - action: spotify_voice_assistant.search
+        data:
+          query: "{{ playlist }}"
+          type: playlist
+        response_variable: search_result
+      - condition: template
+        value_template: "{{ 'uri' in search_result }}"
+      - action: spotify_voice_assistant.play
+        data:
+          uri: "{{ search_result.uri }}"
+          device_name: "Naboo"
+
+  PlayGenre:
+    speech:
+      text: ""
+    action:
+      - action: input_boolean.turn_off
+        continue_on_error: true
+        target:
+          entity_id: input_boolean.voice_paused_music
+      - action: media_player.volume_mute
+        continue_on_error: true
+        target:
+          entity_id: media_player.home_assistant_voice_0a3a76_media_player
+        data:
+          is_volume_muted: false
+      # Search for a genre playlist and play on Naboo
+      - action: spotify_voice_assistant.search
+        data:
+          query: "{{ genre }}"
+          type: playlist
+        response_variable: search_result
+      - condition: template
+        value_template: "{{ 'uri' in search_result }}"
+      - action: spotify_voice_assistant.play
+        data:
+          uri: "{{ search_result.uri }}"
+          device_name: "Naboo"
+
+  PlaySong:
+    speech:
+      text: ""
+    action:
+      - action: input_boolean.turn_off
+        continue_on_error: true
+        target:
+          entity_id: input_boolean.voice_paused_music
+      - action: media_player.volume_mute
+        continue_on_error: true
+        target:
+          entity_id: media_player.home_assistant_voice_0a3a76_media_player
+        data:
+          is_volume_muted: false
+      - action: spotify_voice_assistant.search
+        data:
+          query: "{{ song }}"
+          type: track
+        response_variable: search_result
+      - condition: template
+        value_template: "{{ 'uri' in search_result }}"
+      - action: spotify_voice_assistant.play
+        data:
+          uri: "{{ search_result.uri }}"
+          device_name: "Naboo"
+
+  PlayPodcast:
+    speech:
+      text: ""
+    action:
+      - action: input_boolean.turn_off
+        continue_on_error: true
+        target:
+          entity_id: input_boolean.voice_paused_music
+      - action: media_player.volume_mute
+        continue_on_error: true
+        target:
+          entity_id: media_player.home_assistant_voice_0a3a76_media_player
+        data:
+          is_volume_muted: false
+      # RSS bypass: podcast_play fetches the latest episode directly via iTunes
+      # Search API + RSS, then plays the MP3 URL on naboo. This avoids librespot
+      # entirely (librespot cannot decode spotify:episode: audio keys — known bug).
+      - action: spotify_voice_assistant.podcast_play
+        data:
+          query: "{{ podcast }}"
+
+  # Play the latest episode of a podcast by name.
+  # Same RSS bypass as PlayPodcast — both intents route here.
+  # Say: "play the latest episode of the Daily"
+  #      "play an episode of Radiolab"
+  PlayEpisode:
+    speech:
+      text: ""
+    action:
+      - action: input_boolean.turn_off
+        continue_on_error: true
+        target:
+          entity_id: input_boolean.voice_paused_music
+      - action: media_player.volume_mute
+        continue_on_error: true
+        target:
+          entity_id: media_player.home_assistant_voice_0a3a76_media_player
+        data:
+          is_volume_muted: false
+      - action: spotify_voice_assistant.podcast_play
+        data:
+          query: "{{ podcast }}"
+
+  PlayLikedSongs:
+    speech:
+      text: ""
+    action:
+      - action: input_boolean.turn_off
+        continue_on_error: true
+        target:
+          entity_id: input_boolean.voice_paused_music
+      - action: media_player.volume_mute
+        continue_on_error: true
+        target:
+          entity_id: media_player.home_assistant_voice_0a3a76_media_player
+        data:
+          is_volume_muted: false
+      # Play Liked Songs on Naboo via direct Spotify Web API
+      - action: spotify_voice_assistant.play
+        data:
+          uri: "spotify:user:paulster23:collection"
+          device_name: "Naboo"
+
+  StopMusic:
+    speech:
+      text: ""
+    action:
+      # Clear the auto-pause flag FIRST so the resume automation won't
+      # re-start music after the pipeline finishes
+      - action: input_boolean.turn_off
+        continue_on_error: true
+        target:
+          entity_id: input_boolean.voice_paused_music
+      # Ensure the ESPHome amp is never left muted after a stop command.
+      # (The resume automation is the normal unmute path, but it won't fire
+      # after StopMusic because its conditions are intentionally not met.)
+      - action: media_player.volume_mute
+        continue_on_error: true
+        target:
+          entity_id: media_player.home_assistant_voice_0a3a76_media_player
+        data:
+          is_volume_muted: false
+      - action: media_player.media_stop
+        target:
+          entity_id: media_player.naboo_media_player
+
+  WhatsPlaying:
+    speech:
+      text: >
+        {% set player = 'media_player.naboo_media_player' %}
+        {% if states(player) == 'playing' %}
+          Now playing {{ state_attr(player, 'media_title') | default('something') }}
+          {% if state_attr(player, 'media_artist') %}
+            by {{ state_attr(player, 'media_artist') }}
+          {% endif %}.
+        {% else %}
+          Nothing is playing right now.
+        {% endif %}
+    action: []
+
+  AddToQueue:
+    speech:
+      text: ""
+    action:
+      # Note: this replaces current playback rather than true queuing.
+      # For true queuing, use the Spotify app directly.
+      - action: input_boolean.turn_off
+        continue_on_error: true
+        target:
+          entity_id: input_boolean.voice_paused_music
+      - action: media_player.volume_mute
+        continue_on_error: true
+        target:
+          entity_id: media_player.home_assistant_voice_0a3a76_media_player
+        data:
+          is_volume_muted: false
+      - action: spotify_voice_assistant.search
+        data:
+          query: "{{ song }}"
+          type: track
+        response_variable: search_result
+      - condition: template
+        value_template: "{{ 'uri' in search_result }}"
+      - action: spotify_voice_assistant.play
+        data:
+          uri: "{{ search_result.uri }}"
+          device_name: "Naboo"
+
+  PlayArtistRadio:
+    speech:
+      text: ""
+    action:
+      # Plays the artist catalog. For a true radio experience,
+      # open Spotify app → Go to artist → Radio.
+      - action: input_boolean.turn_off
+        continue_on_error: true
+        target:
+          entity_id: input_boolean.voice_paused_music
+      - action: media_player.volume_mute
+        continue_on_error: true
+        target:
+          entity_id: media_player.home_assistant_voice_0a3a76_media_player
+        data:
+          is_volume_muted: false
+      - action: spotify_voice_assistant.search
+        data:
+          query: "{{ artist }}"
+          type: artist
+        response_variable: search_result
+      - condition: template
+        value_template: "{{ 'uri' in search_result }}"
+      - action: spotify_voice_assistant.play
+        data:
+          uri: "{{ search_result.uri }}"
+          device_name: "Naboo"
+
+  # Broadcast radio by call sign ("play KEXP", "play K-E-X-P radio").
+  # Normalises whatever Whisper heard into an uppercase callsign by stripping
+  # spaces and hyphens, then passes it to RadioBrowser via Music Assistant.
+  PlayCallSign:
+    speech:
+      text: ""
+    action:
+      - wait_template: "{{ states('media_player.naboo_media_player') not in ['unknown', 'unavailable'] }}"
+        timeout:
+          seconds: 5
+        continue_on_timeout: true
+      - action: media_player.volume_mute
+        continue_on_error: true
+        target:
+          entity_id: media_player.home_assistant_voice_0a3a76_media_player
+        data:
+          is_volume_muted: false
+      - choose:
+          # Whisper mishearing corrections for known problem calls
+          - conditions:
+              - >-
+                {{ callsign | lower | replace('-', '') | replace(' ', '')
+                   in ['wsmu', 'wbmu', 'wfmyou'] }}
+            sequence:
+              - action: music_assistant.play_media
+                target:
+                  entity_id: media_player.naboo_media_player
+                data:
+                  media_id: "WFMU"
+                  media_type: radio
+        # Default: strip spaces/hyphens and uppercase
+        # "k e x p" / "K-E-X-P" / "kexp" all become "KEXP"
+        default:
+          - action: music_assistant.play_media
+            target:
+              entity_id: media_player.naboo_media_player
+            data:
+              media_id: >-
+                {{ callsign | replace('-', '') | replace(' ', '') | upper }}
+              media_type: radio
+
+  # Song-seeded radio ("play song Shark Smile radio").
+  # Requires the word "song" in the command to distinguish from artist radio.
+  PlaySongRadio:
+    speech:
+      text: ""
+    action:
+      # Plays the track directly (no song-radio mode available).
+      - action: input_boolean.turn_off
+        continue_on_error: true
+        target:
+          entity_id: input_boolean.voice_paused_music
+      - action: media_player.volume_mute
+        continue_on_error: true
+        target:
+          entity_id: media_player.home_assistant_voice_0a3a76_media_player
+        data:
+          is_volume_muted: false
+      - action: spotify_voice_assistant.search
+        data:
+          query: "{{ song }}"
+          type: track
+        response_variable: search_result
+      - condition: template
+        value_template: "{{ 'uri' in search_result }}"
+      - action: spotify_voice_assistant.play
+        data:
+          uri: "{{ search_result.uri }}"
+          device_name: "Naboo"
+
+  PlayRadio:
+    speech:
+      text: ""
+    action:
+      - wait_template: "{{ states('media_player.naboo_media_player') not in ['unknown', 'unavailable'] }}"
+        timeout:
+          seconds: 5
+        continue_on_timeout: true
+      - action: media_player.volume_mute
+        continue_on_error: true
+        target:
+          entity_id: media_player.home_assistant_voice_0a3a76_media_player
+        data:
+          is_volume_muted: false
+      # Normalise call-letter spellings ("W-F-M-U" → "WFMU") then apply
+      # any Whisper mishearing corrections before hitting RadioBrowser.
+      - choose:
+          - conditions:
+              - >-
+                {{ station | lower | replace('-', '') | replace(' ', '')
+                   in ['wsmu', 'wbmu', 'wfmyou'] }}
+            sequence:
+              - action: music_assistant.play_media
+                target:
+                  entity_id: media_player.naboo_media_player
+                data:
+                  media_id: "WFMU"
+                  media_type: radio
+        # Everything else: normalise spaces/hyphens and pass to MA/RadioBrowser
+        default:
+          - action: music_assistant.play_media
+            target:
+              entity_id: media_player.naboo_media_player
+            data:
+              media_id: >-
+                {{ station | replace('-', '') | replace(' ', '') | upper
+                   if station | replace('-', '') | replace(' ', '') | length == 4
+                   else station }}
+              media_type: radio
+
+  GoodNight:
+    speech:
+      text: ""
+    action:
+      - action: switch.turn_off
+        target:
+          entity_id:
+            - switch.plug_1
+            - switch.speaker
+      - action: media_player.media_stop
+        target:
+          entity_id: media_player.naboo_media_player
+
+  # ── Skip track ────────────────────────────────────────────────────────────────
+  SkipTrack:
+    speech:
+      text: ""
+    action:
+      - action: media_player.media_next_track
+        target:
+          entity_id: media_player.naboo_media_player
+
+  # ── Timer intents ─────────────────────────────────────────────────────────────
+  # Uses the existing timer.general helper (already defined above).
+  # Duration is parsed from hours/minutes/seconds slots. Any slot not spoken
+  # defaults to 0. HA timer fires a timer.finished event when it expires.
+  SetTimer:
+    speech:
+      text: >
+        {% set h = hours | default(0) | int %}
+        {% set m = minutes | default(0) | int %}
+        {% set s = seconds | default(0) | int %}
+        {% set total = h * 3600 + m * 60 + s %}
+        {% if total == 0 %}
+          Sorry, I didn't catch a duration for that timer.
+        {% elif h > 0 and m > 0 %}
+          Timer set for {{ h }} hour{% if h != 1 %}s{% endif %} and {{ m }} minute{% if m != 1 %}s{% endif %}.
+        {% elif h > 0 %}
+          Timer set for {{ h }} hour{% if h != 1 %}s{% endif %}.
+        {% elif m > 0 and s > 0 %}
+          Timer set for {{ m }} minute{% if m != 1 %}s{% endif %} and {{ s }} second{% if s != 1 %}s{% endif %}.
+        {% elif m > 0 %}
+          Timer set for {{ m }} minute{% if m != 1 %}s{% endif %}.
+        {% else %}
+          Timer set for {{ s }} second{% if s != 1 %}s{% endif %}.
+        {% endif %}
+    action:
+      - variables:
+          h: "{{ hours | default(0) | int }}"
+          m: "{{ minutes | default(0) | int }}"
+          s: "{{ seconds | default(0) | int }}"
+          total: "{{ (hours | default(0) | int) * 3600 + (minutes | default(0) | int) * 60 + (seconds | default(0) | int) }}"
+      - condition: template
+        value_template: "{{ total | int > 0 }}"
+      - action: timer.start
+        target:
+          entity_id: timer.general
+        data:
+          duration: "{{ '%02d:%02d:%02d' | format(h | int, m | int, s | int) }}"
+
+  CancelTimer:
+    speech:
+      text: "Timer cancelled."
+    action:
+      - action: timer.cancel
+        target:
+          entity_id: timer.general
+

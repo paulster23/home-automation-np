@@ -1,6 +1,6 @@
 # Home Automation — To-Do List
 
-*Last updated: 2026-04-08*
+*Last updated: 2026-04-10*
 
 ---
 
@@ -42,6 +42,9 @@ Changed healthcheck from `nc -z 127.0.0.1 8971` (bare TCP, caused 421 HTTP 400s/
 
 ### ~~Investigate librespot → Music Assistant stream failures~~ — ✅ Fixed (2026-04-09)
 Root cause: stale `/tmp/librespot.fifo` left behind from the failed FIFO-based architecture (removed 2026-04-02), combined with the LaunchAgent plist in `~/Library/LaunchAgents/` pointing at that FIFO path instead of the correct `pipe:1 | serve_http.py` chain. ffmpeg failed on every start with "File already exists", causing the watchdog to restart every ~5 min and generating all 428 MA errors + 172 broken pipes. Fix: `rm -f /tmp/librespot.fifo` + reload plists from repo. Confirmed clean: one start at 2026-04-10T01:48:36Z, all three processes running (librespot → ffmpeg pipe:1 → serve_http.py), no subsequent watchdog restarts.
+
+### ~~Naboo silent after pipeline recovery~~ — ✅ Fixed (2026-04-10)
+ffmpeg broken pipe left serve_http.py alive (port 8765 open), so watchdog passed but pipeline was dead. Pre-mute automation fired when naboo went idle. On pipeline restart, MA radio play has no unmute path. Two fixes: (1) added ffmpeg process check to `watchdog.sh`; (2) added `naboo_unmute_on_play` automation — fires on any naboo → playing transition while amp is muted.
 
 ### Stop/remove idle Docker whisper container — P7 (hygiene)
 Apr 2 report: faster-whisper container has had zero transcription requests since Mar 15. WhisperKit (port 7892) is the active STT backend. The container is profile-gated (`profiles: [stt]`) so it's not consuming RAM, but it's dead weight. Once WhisperKit has been stable for another week, remove the `whisper` service definition from compose or comment it out. Update `SYSTEM_CONTEXT.md` accordingly.
@@ -86,6 +89,10 @@ Frigate 0.17 only supports the `default` key under `max_frames` — per-object k
 - [x] **Radio station response latency** — ~~25s~~ No longer a significant issue. Retested 2026-03-30 with WhisperKit-small: median **11.1s** total (1.1s STT + 4.1s HA/MA RadioBrowser lookup + 2.4s TTS), worst case 16.8s. The original 25s+ times were pre-optimization STT (ambient noise, no VAD). Remaining variability (2–10s processing) is RadioBrowser lookup latency — external and not worth chasing. Hardcoding stream URLs for top stations would shave 2–4s but adds maintenance burden.
 - [ ] **Fix "Stop" misheard as "Pause"** — distil-whisper-large-v3 is better but may still misfire on very short words. Option: add "pause" as a `StopMusic` alias in `custom_sentences/en/music.yaml`.
 - [ ] **Monitor small model accuracy** — `whisper-small-mlx-4bit` benchmarked perfectly on test commands but needs real-world validation across voice diversity, proper nouns (WFMU, KEXP), and noisy conditions. Watch `voice-bench` dashboard for transcription errors.
+- [x] **Fix voice-bench port 7700 binding** — ✅ Fixed 2026-04-10. LaunchAgent was in a broken launchd domain state (bootout/unload both returned I/O error 5). Port was already free by the time we diagnosed — previous crash loop had died. `launchctl bootstrap gui/501` brought it back up cleanly. Also fixed a related bug: VAD early-trigger log lines (INFO level, same logger as transcription) were being captured as the transcript text in the CSV. Fixed by adding `not m.group(1).startswith("VAD ")` guard in `voice_bench.py` tail_whisper_log().
+- [ ] **voice-bench (no transcription) for radio commands** — P8/low. VAD early-trigger path produces two WhisperKit transcriptions per command (real text ~2s wall, blank ~1s wall). Session finalizer races the slower result. Multiple fix attempts broke MA muting. Decided to defer — latency and hang tracking still work, transcription text field unreliable for radio commands. Candidate for deprecation.
+- [ ] **Investigate Apr 8 listening-phase hangs** — Discovered 2026-04-10. Four listening hangs of 120-168s clustered between 14:07-19:21 on Apr 8. Main blocker to <7s voice KPI. Possible causes: ESPHome Voice PE firmware issue, WiFi micro-disconnect, or mic driver stuck state. Check HA ESPHome logs for that timeframe.
+- [x] **Add listening-phase timeout** — ✅ Fixed 2026-04-10. Added `voice_listening_timeout` automation: aborts pipeline via `assist_satellite.abort` if satellite stays in `listening` for 15+ seconds. Covers ambient noise hangs (worst observed: 461s). HA automation approach used instead of ESPHome reflash — same effect, no firmware change needed.
 - [x] **Switch STT backend to WhisperKit** — ✅ Complete (2026-03-29). Wyoming wrapper at `home-automation/wyoming-whisperkit/`, port 7892, Silero-VAD enabled. Active as of 2026-03-29 — voice-bench config tag `whisperkit-small-silero-vad` confirms. Benchmarked at 0.85s; real-world STT averaging ~1.1s on radio commands (vs 3–5s with mlx-whisper). Fallback: Wyoming → port 7891 (mlx-whisper still installed).
 - [x] **Librespot "Naboo" watchdog + serve_http.py crash loop fix** — ✅ Complete (2026-03-30/31). Two fixes:
   1. `watchdog.sh` + `com.librespot.naboo-watchdog.plist` — checks every 5 min: (1) librespot process alive, (2) port 8765 open; restarts via `launchctl kickstart -k`. Installed and confirmed catching real failures.
