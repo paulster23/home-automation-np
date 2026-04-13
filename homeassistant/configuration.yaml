@@ -322,6 +322,11 @@ intent_script:
         continue_on_error: true
         target:
           entity_id: input_boolean.voice_paused_music
+      # Clear radio_active so librespot_stream_resilience works normally again
+      - action: input_boolean.turn_off
+        continue_on_error: true
+        target:
+          entity_id: input_boolean.radio_active
       # Ensure the ESPHome amp is never left muted after a stop command.
       # (The resume automation is the normal unmute path, but it won't fire
       # after StopMusic because its conditions are intentionally not met.)
@@ -422,6 +427,10 @@ intent_script:
           entity_id: media_player.home_assistant_voice_0a3a76_media_player
         data:
           is_volume_muted: false
+      # Set radio_active so librespot_stream_resilience doesn't stomp the radio stream
+      - action: input_boolean.turn_on
+        target:
+          entity_id: input_boolean.radio_active
       - choose:
           # Whisper mishearing corrections for known problem calls
           - conditions:
@@ -489,6 +498,10 @@ intent_script:
           entity_id: media_player.home_assistant_voice_0a3a76_media_player
         data:
           is_volume_muted: false
+      # Set radio_active so librespot_stream_resilience doesn't stomp the radio stream
+      - action: input_boolean.turn_on
+        target:
+          entity_id: input_boolean.radio_active
       # Normalise call-letter spellings ("W-F-M-U" → "WFMU") then apply
       # any Whisper mishearing corrections before hitting RadioBrowser.
       - choose:
