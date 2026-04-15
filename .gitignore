@@ -42,3 +42,4 @@ music-assistant/
 # ── Wyoming MLX Whisper (native macOS install, has its own repo) ──
 wyoming-mlx-whisper/
 frigate/.fuse_hidden*
+wyoming-whisperkit/.venv/
