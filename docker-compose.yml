@@ -32,7 +32,7 @@ services:
     deploy:
       resources:
         limits:
-          memory: 16m    # reduced from 64m — avg 2m, max 11m (lightweight MQTT broker)
+          memory: 8m     # trimmed from 16m (2026-04-14) — avg 2m, max 11m; 8m still gives safe headroom
           cpus: "0.5"
         reservations:
           memory: 8m
@@ -100,7 +100,7 @@ services:
     deploy:
       resources:
         limits:
-          memory: 1024m   # reduced from 1536m — detection offloaded to Neural Engine via ZMQ
+          memory: 1310m   # raised from 1024m (2026-04-14) — persistent 96% peak; 1.28GiB = 1310m to stay within budget
           cpus: "2.0"     # reduced from 4.0 — no CPU detection workload
         reservations:
           memory: 512m
@@ -186,7 +186,7 @@ services:
       TZ: America/New_York
       MASS_BASE_URL: http://192.168.1.70:8095
     healthcheck:
-      test: ["CMD-SHELL", "nc -z 127.0.0.1 8095 || exit 1"]
+      test: ["CMD", "wget", "-qO", "/dev/null", "http://localhost:8095/"]
       interval: 30s
       timeout: 5s
       retries: 3
@@ -194,7 +194,7 @@ services:
     deploy:
       resources:
         limits:
-          memory: 384m    # Radio-only + Spotify via librespot; was 256m (too tight — OOM risk), was 512m originally
+          memory: 512m    # raised from 384m (2026-04-13) — avg 90%, peak 99.3% of 384m; persistent OOM risk over 3 weekly reports
           cpus: "1.0"
         reservations:
           memory: 64m

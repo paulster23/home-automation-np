@@ -82,3 +82,144 @@
 [voice-bench] Starting daemon…
 [voice-bench] venv ready, skipping pip.
 [voice-bench] Starting daemon…
+[voice-bench] venv ready, skipping pip.
+[voice-bench] Starting daemon…
+[voice-bench] venv ready, skipping pip.
+[voice-bench] Starting daemon…
+[voice-bench] venv ready, skipping pip.
+[voice-bench] Starting daemon…
+[voice-bench] venv ready, skipping pip.
+[voice-bench] Starting daemon…
+[voice-bench] venv ready, skipping pip.
+[voice-bench] Starting daemon…
+[voice-bench] Loaded 414 existing entries from CSV
+[voice-bench] Tailing whisper log: /Users/media/containers/home-automation/wyoming-whisperkit/log/whisper.err  (offset=168854)
+[voice-bench] Dashboard →  http://localhost:7700
+[voice-bench] Connected to HA ✓  watching: assist_satellite.home_assistant_voice_0a3a76_assist_satellite
+[voice-bench] [19:33:20] ▶ Wake → listening  amp_muted=True  music=False
+[voice-bench] STT  ''  2831ms
+[voice-bench] [19:33:27] listening → processing  (7161ms)
+[voice-bench] ✓  '?'  total=7.3s  stt=2.8s  type=other  tag=whisperkit-small-silero-vad
+[voice-bench] STT  'Play WFMU.'  1139ms
+[voice-bench] [19:41:44] ▶ Wake → listening  amp_muted=False  music=True
+[voice-bench] [19:41:49] listening → processing  (5444ms)
+[voice-bench] STT  ''  2504ms
+[voice-bench] STT  'Play KEXP'  1317ms
+[voice-bench] ✓  'Play KEXP'  total=6.4s  stt=1.3s  type=radio  tag=whisperkit-small-silero-vad
+[voice-bench] [19:49:27] ▶ Wake → listening  amp_muted=False  music=True
+[voice-bench] STT  ''  2534ms
+[voice-bench] [19:49:32] listening → processing  (4504ms)
+[voice-bench] [19:49:32] → responding
+[voice-bench] STT  'Come on, boss.'  1639ms
+[voice-bench] ✓  'Come on, boss.'  total=9.0s  stt=1.6s  type=other  tag=whisperkit-small-silero-vad
+[voice-bench] [20:15:03] ▶ Wake → listening  amp_muted=True  music=False
+[voice-bench] STT  ''  2084ms
+[voice-bench] [20:15:08] listening → processing  (4858ms)
+[voice-bench] STT  'Play KEXP.'  936ms
+[voice-bench] ✓  'Play KEXP.'  total=6.0s  stt=0.9s  type=radio  tag=whisperkit-small-silero-vad
+[voice-bench] [20:39:55] ▶ Wake → listening  amp_muted=False  music=True
+[voice-bench] STT  ''  2354ms
+[voice-bench] [20:40:00] listening → processing  (5055ms)
+[voice-bench] ✓  '?'  total=5.1s  stt=2.4s  type=other  tag=whisperkit-small-silero-vad
+[voice-bench] STT  'Please WFMU.'  1236ms
+[voice-bench] [20:40:26] ▶ Wake → listening  amp_muted=False  music=True
+[voice-bench] STT  ''  1672ms
+[voice-bench] [20:40:31] listening → processing  (4521ms)
+[voice-bench] STT  'Play WQBR.'  1167ms
+[voice-bench] ✓  'Play WQBR.'  total=6.5s  stt=1.2s  type=music  tag=whisperkit-small-silero-vad
+[voice-bench] [20:40:36] ▶ Wake → listening  amp_muted=False  music=True
+[voice-bench] [20:40:42] listening → processing  (5385ms)
+[voice-bench] [20:40:42] → responding
+[voice-bench] STT  ''  1805ms
+[voice-bench] STT  'PlayWQXR'  966ms
+[voice-bench] ✓  'PlayWQXR'  total=7.8s  stt=1.0s  type=radio  tag=whisperkit-small-silero-vad
+[voice-bench] [20:40:48] ▶ Wake → listening  amp_muted=False  music=False
+[voice-bench] [20:40:53] listening → processing  (4490ms)
+[voice-bench] [20:40:53] → responding
+[voice-bench] STT  ''  1527ms
+[voice-bench] STT  'PlayWQXR'  761ms
+[voice-bench] ✓  'PlayWQXR'  total=6.9s  stt=0.8s  type=radio  tag=whisperkit-small-silero-vad
+[voice-bench] [20:40:57] ▶ Wake → listening  amp_muted=False  music=False
+[voice-bench] [20:41:02] listening → processing  (4593ms)
+[voice-bench] STT  ''  1740ms
+[voice-bench] STT  'Play Elefant's Gerald.'  1042ms
+[voice-bench] ✓  'Play Elefant's Gerald.'  total=6.1s  stt=1.0s  type=music  tag=whisperkit-small-silero-vad
+[voice-bench] [21:57:33] ▶ Wake → listening  amp_muted=False  music=True
+[voice-bench] STT  ''  3045ms
+[voice-bench] [21:57:40] listening → processing  (7005ms)
+[voice-bench] ✓  '?'  total=7.1s  stt=3.0s  type=other  tag=whisperkit-small-silero-vad
+[voice-bench] [22:39:12] ▶ Wake → listening  amp_muted=True  music=False
+[voice-bench] STT  ''  5064ms
+[voice-bench] [22:39:20] listening → processing  (8079ms)
+[voice-bench] ✓  '?'  total=9.1s  stt=5.1s  type=other  tag=whisperkit-small-silero-vad
+[voice-bench] STT  'play WFMU'  3205ms
+[voice-bench] [22:42:20] ▶ Wake → listening  amp_muted=False  music=True
+[voice-bench] STT  '(water splashing)'  3123ms
+[voice-bench] [22:42:26] listening → processing  (6101ms)
+[voice-bench] ✓  '(water splashing)'  total=6.3s  stt=3.1s  type=other  tag=whisperkit-small-silero-vad
+[voice-bench] [23:46:22] ▶ Wake → listening  amp_muted=False  music=True
+[voice-bench] STT  'pause'  2603ms
+[voice-bench] ✓  'pause'  total=164.3s  stt=2.6s  type=other  tag=whisperkit-small-silero-vad
+[voice-bench] [00:30:19] ▶ Wake → listening  amp_muted=True  music=False
+[voice-bench] [00:30:25] listening → processing  (5201ms)
+[voice-bench] STT  'Stop.'  2156ms
+[voice-bench] ✓  'Stop.'  total=5.9s  stt=2.2s  type=other  tag=whisperkit-small-silero-vad
+[voice-bench] [16:50:18] ▶ Wake → listening  amp_muted=True  music=False
+[voice-bench] STT  ''  2247ms
+[voice-bench] [16:50:22] listening → processing  (4133ms)
+[voice-bench] [16:50:22] → responding
+[voice-bench] STT  'Turn the speaker on.'  1432ms
+[voice-bench] ✓  'Turn the speaker on.'  total=6.2s  stt=1.4s  type=other  tag=whisperkit-small-silero-vad
+[voice-bench] [18:52:04] ▶ Wake → listening  amp_muted=True  music=False
+[voice-bench] STT  ''  2958ms
+[voice-bench] [18:52:10] listening → processing  (6236ms)
+[voice-bench] STT  'Play WQXR.'  1297ms
+[voice-bench] ✓  'Play WQXR.'  total=8.3s  stt=1.3s  type=radio  tag=whisperkit-small-silero-vad
+[voice-bench] [18:56:30] ▶ Wake → listening  amp_muted=True  music=False
+[voice-bench] STT  ''  1710ms
+[voice-bench] [18:56:35] listening → processing  (4885ms)
+[voice-bench] STT  'Play KX'  982ms
+[voice-bench] ✓  'Play KX'  total=5.6s  stt=1.0s  type=music  tag=whisperkit-small-silero-vad
+[voice-bench] [18:56:36] ▶ Wake → listening  amp_muted=False  music=True
+[voice-bench] [18:56:42] listening → processing  (6339ms)
+[voice-bench] STT  ''  1702ms
+[voice-bench] STT  'Play WQXR.'  977ms
+[voice-bench] ✓  'Play WQXR.'  total=7.2s  stt=1.0s  type=radio  tag=whisperkit-small-silero-vad
+[voice-bench] [18:56:59] ▶ Wake → listening  amp_muted=False  music=True
+[voice-bench] [18:57:05] listening → processing  (5767ms)
+[voice-bench] STT  ''  1676ms
+[voice-bench] STT  'play KCRW'  725ms
+[voice-bench] ✓  'play KCRW'  total=6.8s  stt=0.7s  type=radio  tag=whisperkit-small-silero-vad
+[voice-bench] [19:52:31] ▶ Wake → listening  amp_muted=False  music=True
+[voice-bench] [19:52:37] listening → processing  (6185ms)
+[voice-bench] STT  ''  2275ms
+[voice-bench] ✓  '?'  total=6.7s  stt=2.3s  type=other  tag=whisperkit-small-silero-vad
+[voice-bench] STT  'Play WFMU.'  1341ms
+[voice-bench] [20:49:49] ▶ Wake → listening  amp_muted=False  music=True
+[voice-bench] [20:49:53] listening → processing  (4146ms)
+[voice-bench] STT  ''  2191ms
+[voice-bench] ✓  '?'  total=4.3s  stt=2.2s  type=other  tag=whisperkit-small-silero-vad
+[voice-bench] STT  'Stop.'  1285ms
+[voice-bench] [00:08:04] ▶ Wake → listening  amp_muted=True  music=False
+[voice-bench] STT  ''  2189ms
+[voice-bench] [00:08:09] listening → processing  (5822ms)
+[voice-bench] ✓  '?'  total=6.4s  stt=2.2s  type=other  tag=whisperkit-small-silero-vad
+[voice-bench] [12:38:28] ▶ Wake → listening  amp_muted=True  music=False
+[voice-bench] STT  ''  2339ms
+[voice-bench] [12:38:32] listening → processing  (4563ms)
+[voice-bench] [12:38:32] → responding
+[voice-bench] STT  'Turn the speaker on.'  2192ms
+[voice-bench] ✓  'Turn the speaker on.'  total=7.1s  stt=2.2s  type=other  tag=whisperkit-small-silero-vad
+[voice-bench] [19:52:10] ▶ Wake → listening  amp_muted=True  music=False
+[voice-bench] [19:52:16] listening → processing  (5464ms)
+[voice-bench] STT  ''  2221ms
+[voice-bench] STT  'Play WQXR.'  1417ms
+[voice-bench] ✓  'Play WQXR.'  total=7.2s  stt=1.4s  type=radio  tag=whisperkit-small-silero-vad
+[voice-bench] [20:29:51] ▶ Wake → listening  amp_muted=False  music=True
+[voice-bench] [20:30:09] listening → processing  (17665ms)
+[voice-bench] STT  ''  3128ms
+[voice-bench] [20:30:09] → responding
+[voice-bench] STT  'Stop. I just want to watch the end of this ga'  1708ms
+[voice-bench] ✓  'Stop. I just want to watch the end of this game. I'  total=31.9s  stt=1.7s  type=other  tag=whisperkit-small-silero-vad
+[voice-bench] [22:41:05] ▶ Wake → listening  amp_muted=False  music=False
+[voice-bench] [22:41:10] listening → processing  (5071ms)

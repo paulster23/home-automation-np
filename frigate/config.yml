@@ -104,7 +104,7 @@ objects:
       min_score: 0.5      # Minimum initial detection confidence
       threshold: 0.7      # Confirmed tracking threshold
     car:
-      min_area: 8000      # Raised from 5000 — only close/large cars register
+      min_area: 12000     # Raised from 8000 — 2026-04-08: reduce distant/small car events
       min_score: 0.65     # Raised from 0.5 — higher initial confidence required
       threshold: 0.8      # Raised from 0.7 — stricter confirmed tracking threshold
 
@@ -134,14 +134,14 @@ record:
   enabled: true
   alerts:
     pre_capture: 5        # Save 5 seconds before the alert
-    post_capture: 5       # Save 5 seconds after the alert
+    post_capture: 2       # Reduced from 5 — 2026-04-08 disk crisis
     retain:
       days: 14            # Keep alert clips for 14 days
   detections:
     pre_capture: 5
-    post_capture: 5
+    post_capture: 2       # Reduced from 5 — 2026-04-08 disk crisis
     retain:
-      days: 7             # Keep detection clips for 7 days (reduced from 14)
+      days: 2             # Reduced from 7 — 2026-04-08 disk crisis (200GB spike)
 
 # ── Snapshots ─────────────────────────────────────────────────
 snapshots:

@@ -5944,3 +5944,738 @@
 [2026-04-03T00:16:08Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
 [2026-04-03T00:16:09Z INFO  librespot_playback::player] Loading <Swingin Party - 2008 Remaster> with Spotify URI <spotify:track:14g6foD6sxO1qgkDKuPgWv>
 [2026-04-03T00:16:10Z INFO  librespot_playback::player] <Swingin Party - 2008 Remaster> (233573 ms) loaded
+[2026-04-03T01:14:32Z INFO  librespot_connect::spirc] device became inactive
+[2026-04-03T01:14:33Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-04-03T01:14:33Z WARN  librespot_connect::spirc] failed filling up next_track during stopping: Invalid state { context is not available. type: Default }
+[2026-04-03T14:33:49Z WARN  librespot_core::dealer] Websocket peer does not respond.
+[2026-04-03T14:33:50Z INFO  librespot_connect::spirc] active device is <b9b9297f586aa27c776a22471ab264a69ef52b74> with session <026d8c62-f3e0-42de-afd8-11baaff1b1fc>
+[2026-04-03T14:34:23Z WARN  librespot_core::dealer] Websocket peer does not respond.
+[2026-04-03T14:34:24Z INFO  librespot_connect::spirc] active device is <b9b9297f586aa27c776a22471ab264a69ef52b74> with session <026d8c62-f3e0-42de-afd8-11baaff1b1fc>
+[2026-04-03T14:44:27Z WARN  librespot_core::dealer] Websocket peer does not respond.
+[2026-04-03T14:44:28Z INFO  librespot_connect::spirc] active device is <b9b9297f586aa27c776a22471ab264a69ef52b74> with session <026d8c62-f3e0-42de-afd8-11baaff1b1fc>
+[2026-04-03T14:45:01Z WARN  librespot_core::dealer] Websocket peer does not respond.
+[2026-04-03T14:45:01Z INFO  librespot_connect::spirc] active device is <b9b9297f586aa27c776a22471ab264a69ef52b74> with session <026d8c62-f3e0-42de-afd8-11baaff1b1fc>
+[2026-04-03T15:03:04Z WARN  librespot_core::dealer] Websocket peer does not respond.
+[2026-04-03T15:03:06Z INFO  librespot_connect::spirc] active device is <b9b9297f586aa27c776a22471ab264a69ef52b74> with session <026d8c62-f3e0-42de-afd8-11baaff1b1fc>
+[2026-04-03T15:03:38Z WARN  librespot_core::dealer] Websocket peer does not respond.
+[2026-04-03T15:03:39Z INFO  librespot_connect::spirc] active device is <b9b9297f586aa27c776a22471ab264a69ef52b74> with session <026d8c62-f3e0-42de-afd8-11baaff1b1fc>
+[2026-04-04T01:39:12Z WARN  librespot_core::dealer] Websocket peer does not respond.
+[2026-04-04T01:39:13Z INFO  librespot_connect::spirc] active device is <> with session <026d8c62-f3e0-42de-afd8-11baaff1b1fc>
+[2026-04-04T10:10:46Z WARN  librespot_core::dealer] Websocket peer does not respond.
+[2026-04-04T10:10:47Z INFO  librespot_connect::spirc] active device is <> with session <026d8c62-f3e0-42de-afd8-11baaff1b1fc>
+[2026-04-05T01:26:19Z WARN  librespot_core::dealer] Websocket peer does not respond.
+[2026-04-05T01:26:20Z INFO  librespot_connect::spirc] active device is <e9912ea7d306062891be9d4514485cfccfc5a2d7> with session <4bR7x3wxgZTZRIEKx1gbTW>
+[2026-04-05T02:08:53Z WARN  librespot_core::dealer] Websocket peer does not respond.
+[2026-04-05T02:08:55Z INFO  librespot_connect::spirc] active device is <> with session <4bR7x3wxgZTZRIEKx1gbTW>
+[2026-04-05T02:42:57Z WARN  librespot_core::dealer] Websocket peer does not respond.
+[2026-04-05T02:42:58Z INFO  librespot_connect::spirc] active device is <e9912ea7d306062891be9d4514485cfccfc5a2d7> with session <4bR7x3wxgZTZRIEKx1gbTW>
+[2026-04-05T04:56:01Z WARN  librespot_core::dealer] Websocket peer does not respond.
+[2026-04-05T04:56:02Z INFO  librespot_connect::spirc] active device is <> with session <4bR7x3wxgZTZRIEKx1gbTW>
+[2026-04-05T11:49:05Z WARN  librespot_core::dealer] Websocket peer does not respond.
+[2026-04-05T11:49:06Z INFO  librespot_connect::spirc] active device is <> with session <4bR7x3wxgZTZRIEKx1gbTW>
+[2026-04-06T06:03:39Z WARN  librespot_core::dealer] Websocket peer does not respond.
+[2026-04-06T06:03:42Z INFO  librespot_connect::spirc] active device is <> with session <4bR7x3wxgZTZRIEKx1gbTW>
+[2026-04-06T08:49:44Z WARN  librespot_core::dealer] Websocket peer does not respond.
+[2026-04-06T08:49:46Z INFO  librespot_connect::spirc] active device is <> with session <4bR7x3wxgZTZRIEKx1gbTW>
+[2026-04-06T21:43:19Z WARN  librespot_core::dealer] Websocket peer does not respond.
+[2026-04-06T21:43:21Z INFO  librespot_connect::spirc] active device is <> with session <4bR7x3wxgZTZRIEKx1gbTW>
+[2026-04-07T02:01:53Z WARN  librespot_core::dealer] Websocket peer does not respond.
+[2026-04-07T02:01:54Z INFO  librespot_connect::spirc] active device is <e9912ea7d306062891be9d4514485cfccfc5a2d7> with session <3HsUSAQtRcIrB1FWL1qmDA>
+[2026-04-07T02:18:27Z WARN  librespot_core::dealer] Websocket peer does not respond.
+[2026-04-07T02:18:30Z INFO  librespot_connect::spirc] active device is <e9912ea7d306062891be9d4514485cfccfc5a2d7> with session <3HsUSAQtRcIrB1FWL1qmDA>
+[2026-04-07T02:37:31Z WARN  librespot_core::dealer] Websocket peer does not respond.
+[2026-04-07T02:37:32Z INFO  librespot_connect::spirc] active device is <e9912ea7d306062891be9d4514485cfccfc5a2d7> with session <3HsUSAQtRcIrB1FWL1qmDA>
+[2026-04-07T02:53:35Z WARN  librespot_core::dealer] Websocket peer does not respond.
+[2026-04-07T02:53:36Z INFO  librespot_connect::spirc] active device is <e9912ea7d306062891be9d4514485cfccfc5a2d7> with session <3HsUSAQtRcIrB1FWL1qmDA>
+[2026-04-07T03:56:49Z WARN  librespot_core::dealer] failure during data parsing for hm://collection/collection/paulster23/json: Invalid state { base64 decoding failed: Invalid symbol 123, offset 0. }
+[2026-04-07T13:06:09Z WARN  librespot_core::dealer] Websocket peer does not respond.
+[2026-04-07T13:06:12Z INFO  librespot_connect::spirc] active device is <> with session <0omntC5DTAOO7Hhyfd1suX>
+[2026-04-07T14:32:44Z WARN  librespot_core::dealer] Websocket peer does not respond.
+[2026-04-07T14:32:48Z INFO  librespot_connect::spirc] active device is <> with session <0omntC5DTAOO7Hhyfd1suX>
+[2026-04-07T20:03:51Z WARN  librespot_core::dealer] Websocket peer does not respond.
+[2026-04-07T20:03:55Z INFO  librespot_connect::spirc] active device is <> with session <0omntC5DTAOO7Hhyfd1suX>
+[2026-04-07T21:22:01Z WARN  librespot_core::dealer] Websocket connection failed: WebSocket protocol error: Remote sent after having closed
+[2026-04-07T21:22:01Z WARN  librespot_core::dealer] Error while closing websocket: WebSocket protocol error: Sending after closing is not allowed
+[2026-04-07T21:22:06Z INFO  librespot_connect::spirc] active device is <> with session <0omntC5DTAOO7Hhyfd1suX>
+[2026-04-08T02:07:07Z WARN  librespot_core::dealer] Websocket peer does not respond.
+[2026-04-10T01:48:36Z INFO  librespot] librespot 0.8.0 VERGEN_IDEMPOTENT_OUTPUT (Built on 2025-11-10, Build ID: 1762793321, Profile: release)
+[2026-04-10T01:48:36Z INFO  librespot_playback::mixer::softmixer] Mixing with softvol and volume control: Log(60.0)
+[2026-04-10T01:48:36Z INFO  librespot_playback::convert] Converting with ditherer: tpdf
+[2026-04-10T01:48:36Z INFO  librespot_playback::audio_backend::pipe] Using StdoutSink (pipe) with format: S16
+[2026-04-10T01:48:37Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-04-10T01:48:38Z INFO  librespot_core::session] Authenticated as 'paulster23' !
+[2026-04-10T01:48:38Z INFO  librespot_core::session] Country: "US"
+[2026-04-10T01:48:39Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-04-10T01:48:39Z INFO  librespot_connect::spirc] active device is <> with session <0omntC5DTAOO7Hhyfd1suX>
+[2026-04-10T07:43:07Z ERROR librespot_core::session] Connection to server closed.
+[2026-04-10T20:31:12Z WARN  librespot_core::dealer] Websocket peer does not respond.
+[2026-04-10T20:31:13Z INFO  librespot_connect::spirc] active device is <> with session <0omntC5DTAOO7Hhyfd1suX>
+[2026-04-10T20:31:13Z WARN  librespot_core::dealer] Websocket connection failed: IO error: peer closed connection without sending TLS close_notify: https://docs.rs/rustls/latest/rustls/manual/_03_howto/index.html#unexpected-eof
+[2026-04-10T20:31:13Z WARN  librespot] Spirc shut down unexpectedly
+[2026-04-10T20:31:14Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-04-10T20:31:14Z INFO  librespot_core::session] Authenticated as 'paulster23' !
+[2026-04-10T20:31:14Z INFO  librespot_core::session] Country: "US"
+[2026-04-10T20:31:15Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-04-10T20:31:15Z INFO  librespot_connect::spirc] active device is <> with session <0omntC5DTAOO7Hhyfd1suX>
+[2026-04-10T21:26:47Z INFO  librespot] librespot 0.8.0 VERGEN_IDEMPOTENT_OUTPUT (Built on 2025-11-10, Build ID: 1762793321, Profile: release)
+[2026-04-10T21:26:47Z INFO  librespot_playback::mixer::softmixer] Mixing with softvol and volume control: Log(60.0)
+[2026-04-10T21:26:47Z INFO  librespot_playback::convert] Converting with ditherer: tpdf
+[2026-04-10T21:26:47Z INFO  librespot_playback::audio_backend::pipe] Using StdoutSink (pipe) with format: S16
+[2026-04-10T21:26:48Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-04-10T21:26:48Z INFO  librespot_core::session] Authenticated as 'paulster23' !
+[2026-04-10T21:26:48Z INFO  librespot_core::session] Country: "US"
+[2026-04-10T21:26:49Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-04-10T21:26:50Z INFO  librespot_connect::spirc] active device is <> with session <0omntC5DTAOO7Hhyfd1suX>
+[2026-04-10T22:12:52Z WARN  librespot_core::dealer] Websocket peer does not respond.
+[2026-04-10T22:12:54Z INFO  librespot_connect::spirc] active device is <> with session <04ZqnHclLREGk8AbTkBInp>
+[2026-04-11T00:40:32Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-04-11T00:40:32Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-04-11T00:40:33Z INFO  librespot_playback::player] Loading <Manchild> with Spotify URI <spotify:track:2BwO5K8Q7EPAJSGze3AAh9>
+[2026-04-11T00:40:33Z INFO  librespot_connect::spirc] session update: <Ok(NEW_SESSION)> for self, current session_id e7bfd551beb44e54be2833b1b1d41bdb, new session_id 6fb2c2f43e28018a4b7952f87a2a8435
+[2026-04-11T00:40:34Z INFO  librespot_playback::player] <Manchild> (213645 ms) loaded
+[2026-04-11T00:41:03Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-04-11T00:41:03Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-04-11T00:41:03Z INFO  librespot_playback::player] Loading <Ángel> with Spotify URI <spotify:track:2rYjkYQWpn66nf5Ihk7SHJ>
+[2026-04-11T00:41:04Z INFO  librespot_playback::player] <Ángel> (289600 ms) loaded
+[2026-04-11T00:45:11Z INFO  librespot_playback::player] Loading <De la Noche a la Mañana> with Spotify URI <spotify:track:2xezpH0r1pT7kcx2TPNsZ0>
+[2026-04-11T00:45:12Z INFO  librespot_playback::player] <De la Noche a la Mañana> (260613 ms) loaded
+[2026-04-11T00:45:46Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-04-11T00:45:46Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-04-11T00:45:46Z WARN  librespot_core::dealer] Websocket connection failed: IO error: peer closed connection without sending TLS close_notify: https://docs.rs/rustls/latest/rustls/manual/_03_howto/index.html#unexpected-eof
+[2026-04-11T00:45:46Z INFO  librespot_core::session] Authenticated as 'paulster-us' !
+[2026-04-11T00:45:46Z INFO  librespot_core::session] Country: "US"
+[2026-04-11T00:45:47Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-04-11T00:45:47Z INFO  librespot_connect::spirc] active device is <4f1b625ba8219e00893d9560b3f2ec707b48d9d1> with session <4W4uXn2utqu5ep2xrLt057>
+[2026-04-11T00:45:47Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-04-11T00:45:48Z INFO  librespot_playback::player] Loading <Limehouse Blues> with Spotify URI <spotify:track:1Et1KM6nmOwbrEUQI8dtc7>
+[2026-04-11T00:45:48Z INFO  librespot_connect::spirc] device became inactive
+[2026-04-11T00:45:48Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-04-11T00:45:48Z WARN  librespot_connect::spirc] failed filling up next_track during stopping: Invalid state { context is not available. type: Default }
+[2026-04-11T00:45:48Z INFO  librespot_connect::spirc] session update: <Ok(NEW_SESSION)> for self, current session_id 7d8c999964704ebcb82c85bd57e3f46c, new session_id df04888aa5b5e99cbd321fa0bf466337
+[2026-04-11T00:45:48Z INFO  librespot_playback::player] <Limehouse Blues> (166000 ms) loaded
+[2026-04-11T00:45:51Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-04-11T00:45:51Z INFO  librespot_playback::player] Loading <Limehouse Blues> with Spotify URI <spotify:track:1Et1KM6nmOwbrEUQI8dtc7>
+[2026-04-11T00:45:52Z INFO  librespot_playback::player] <Limehouse Blues> (166000 ms) loaded
+[2026-04-11T00:47:50Z INFO  librespot_playback::player] Loading <When Day Is Done> with Spotify URI <spotify:track:1ewAKhtVXU9zzK2HPbX8cb>
+[2026-04-11T00:47:50Z INFO  librespot_playback::player] <When Day Is Done> (192400 ms) loaded
+[2026-04-11T00:50:53Z INFO  librespot_playback::player] Loading <St. Louis Blues> with Spotify URI <spotify:track:1AwBPJOJuyAxIBKyhg153s>
+[2026-04-11T00:50:54Z INFO  librespot_playback::player] <St. Louis Blues> (162733 ms) loaded
+[2026-04-11T00:53:28Z INFO  librespot_playback::player] Loading <Minor Swing> with Spotify URI <spotify:track:3qPQxLOF4cAi7rvHUn4cqE>
+[2026-04-11T00:53:29Z INFO  librespot_playback::player] <Minor Swing> (196626 ms) loaded
+[2026-04-11T00:56:36Z INFO  librespot_playback::player] Loading <My Serenade> with Spotify URI <spotify:track:02M5DvRoOiiPuBTQSpHYuA>
+[2026-04-11T00:56:36Z INFO  librespot_playback::player] <My Serenade> (182866 ms) loaded
+[2026-04-11T00:59:30Z INFO  librespot_playback::player] Loading <You Rascal You> with Spotify URI <spotify:track:5tSmb1dTCnio8QRb0CXjtx>
+[2026-04-11T00:59:31Z INFO  librespot_playback::player] <You Rascal You> (187973 ms) loaded
+[2026-04-11T01:02:29Z INFO  librespot_playback::player] Loading <Montmartre> with Spotify URI <spotify:track:0XX4H46p4ahalPWzLz1zrr>
+[2026-04-11T01:02:29Z INFO  librespot_playback::player] <Montmartre> (145973 ms) loaded
+[2026-04-11T01:04:48Z INFO  librespot_playback::player] Loading <I'll See You in My Dreams> with Spotify URI <spotify:track:4655sgfPWznUKvgn1tatz6>
+[2026-04-11T01:04:48Z INFO  librespot_playback::player] <I'll See You in My Dreams> (153333 ms) loaded
+[2026-04-11T01:07:14Z INFO  librespot_playback::player] Loading <Naguine> with Spotify URI <spotify:track:3tLFWTuHRrBOFppiDA3pHT>
+[2026-04-11T01:07:14Z INFO  librespot_playback::player] <Naguine> (149960 ms) loaded
+[2026-04-11T01:09:36Z INFO  librespot_playback::player] Loading <Nuages - avec le Quintette Hot Club de France> with Spotify URI <spotify:track:06MbYREPut224KHBRjyiYM>
+[2026-04-11T01:09:37Z INFO  librespot_playback::player] <Nuages - avec le Quintette Hot Club de France> (197280 ms) loaded
+[2026-04-11T01:12:44Z INFO  librespot_playback::player] Loading <Blues clair> with Spotify URI <spotify:track:2KLnwPZAa7G9dCtq5m1pGI>
+[2026-04-11T01:12:45Z INFO  librespot_playback::player] <Blues clair> (183400 ms) loaded
+[2026-04-11T01:15:39Z INFO  librespot_playback::player] Loading <Place de Brouckere> with Spotify URI <spotify:track:4ryT12OMraUMCIhBb4bbly>
+[2026-04-11T01:15:40Z INFO  librespot_playback::player] <Place de Brouckere> (176306 ms) loaded
+[2026-04-11T01:18:27Z INFO  librespot_playback::player] Loading <Manoir de mes rêves> with Spotify URI <spotify:track:1wHLmxW8nUKiYOC25uskP1>
+[2026-04-11T01:18:28Z INFO  librespot_playback::player] <Manoir de mes rêves> (200773 ms) loaded
+[2026-04-11T01:21:38Z INFO  librespot_playback::player] Loading <Django's Tiger> with Spotify URI <spotify:track:3MC79TErHHp9FODo2ErBQ1>
+[2026-04-11T01:21:39Z INFO  librespot_playback::player] <Django's Tiger> (158013 ms) loaded
+[2026-04-11T01:24:09Z INFO  librespot_playback::player] Loading <Ol' Man River> with Spotify URI <spotify:track:0MWuBu7R8svPnlcas59cXN>
+[2026-04-11T01:24:09Z INFO  librespot_playback::player] <Ol' Man River> (157840 ms) loaded
+[2026-04-11T01:26:39Z INFO  librespot_playback::player] Loading <Diminushing> with Spotify URI <spotify:track:6lxPn9j76u4hdt8WNvxdcq>
+[2026-04-11T01:26:40Z INFO  librespot_playback::player] <Diminushing> (195293 ms) loaded
+[2026-04-11T01:29:45Z INFO  librespot_playback::player] Loading <Lady Be Good> with Spotify URI <spotify:track:3oWRO3D9LVZQeEMZ5BDm8z>
+[2026-04-11T01:29:46Z INFO  librespot_playback::player] <Lady Be Good> (177013 ms) loaded
+[2026-04-11T01:32:34Z INFO  librespot_playback::player] Loading <To Each His Own (Symphonie)> with Spotify URI <spotify:track:3PVFKkVksFKRJkmHCvCOjW>
+[2026-04-11T01:32:34Z INFO  librespot_playback::player] <To Each His Own (Symphonie)> (184880 ms) loaded
+[2026-04-11T01:35:58Z INFO  librespot_playback::player] Loading <Georgia on My Mind> with Spotify URI <spotify:track:0EVjhZNbdBHmWmxGtivz1E>
+[2026-04-11T01:35:59Z INFO  librespot_playback::player] <Georgia on My Mind> (195146 ms) loaded
+[2026-04-11T01:38:36Z INFO  librespot_playback::player] Loading <Minor Swing> with Spotify URI <spotify:track:6kiOEYn9t3rjwDElofgnuG>
+[2026-04-11T01:38:36Z INFO  librespot_playback::player] <Minor Swing> (205933 ms) loaded
+[2026-04-11T01:41:52Z INFO  librespot_playback::player] Loading <The Train and the River> with Spotify URI <spotify:track:21PGL4nJcX5xk2UlRw7F23>
+[2026-04-11T01:41:52Z INFO  librespot_playback::player] <The Train and the River> (213386 ms) loaded
+[2026-04-11T01:45:15Z INFO  librespot_playback::player] Loading <Blue Drag> with Spotify URI <spotify:track:6M7wfb504kCbEPuKXfwcau>
+[2026-04-11T01:45:16Z INFO  librespot_playback::player] <Blue Drag> (261453 ms) loaded
+[2026-04-11T01:49:24Z INFO  librespot_playback::player] Loading <The Sheik of Araby> with Spotify URI <spotify:track:4t30z7yPGvIyrybsuykDnA>
+[2026-04-11T01:49:24Z INFO  librespot_playback::player] <The Sheik of Araby> (188333 ms) loaded
+[2026-04-11T01:52:23Z INFO  librespot_playback::player] Loading <Way Down Yonder in New Orleans> with Spotify URI <spotify:track:0kcYhUfAlMlvx6xiZg2CQa>
+[2026-04-11T01:52:24Z INFO  librespot_playback::player] <Way Down Yonder in New Orleans> (175333 ms) loaded
+[2026-04-11T01:55:10Z INFO  librespot_playback::player] Loading <Tears> with Spotify URI <spotify:track:6RNtMMMt5NJOiuUA3BIVTh>
+[2026-04-11T01:55:11Z INFO  librespot_playback::player] <Tears> (158693 ms) loaded
+[2026-04-11T01:57:42Z INFO  librespot_playback::player] Loading <Flambée montalbanaise> with Spotify URI <spotify:track:08uHkHwOCjxmGm4xMrfky1>
+[2026-04-11T01:57:42Z INFO  librespot_playback::player] <Flambée montalbanaise> (161266 ms) loaded
+[2026-04-11T02:00:15Z INFO  librespot_playback::player] Loading <Bleu citron> with Spotify URI <spotify:track:2t8WSb4idwrFvgnuFzz7kf>
+[2026-04-11T02:00:16Z INFO  librespot_playback::player] <Bleu citron> (151853 ms) loaded
+[2026-04-11T02:02:39Z INFO  librespot_playback::player] Loading <Work Song> with Spotify URI <spotify:track:0GSXh7IeBpk5uJDv7KsuKZ>
+[2026-04-11T02:02:40Z INFO  librespot_playback::player] <Work Song> (252960 ms) loaded
+[2026-04-11T02:06:41Z INFO  librespot_playback::player] Loading <Blue in Green> with Spotify URI <spotify:track:6A24sEqvWg3mhU5fOLsjom>
+[2026-04-11T02:06:41Z INFO  librespot_playback::player] <Blue in Green> (219600 ms) loaded
+[2026-04-11T02:10:10Z INFO  librespot_playback::player] Loading <I'm Coming Virginia> with Spotify URI <spotify:track:7rT4rEFsQqSbBTus52G1dk>
+[2026-04-11T02:10:10Z INFO  librespot_playback::player] <I'm Coming Virginia> (193493 ms) loaded
+[2026-04-11T02:13:14Z INFO  librespot_playback::player] Loading <Topsy> with Spotify URI <spotify:track:0AFzoxnoTSJ0IvgefXuD1C>
+[2026-04-11T02:13:15Z INFO  librespot_playback::player] <Topsy> (185546 ms) loaded
+[2026-04-11T02:16:11Z INFO  librespot_playback::player] Loading <Blue Skies> with Spotify URI <spotify:track:0lSfJPJSQcjCODDkVrnyfW>
+[2026-04-11T02:16:12Z INFO  librespot_playback::player] <Blue Skies> (227933 ms) loaded
+[2026-04-11T02:19:48Z INFO  librespot_playback::player] Loading <Songe d'automne> with Spotify URI <spotify:track:1sUbrYb20WAdDd9AwoAlc2>
+[2026-04-11T02:19:48Z INFO  librespot_playback::player] <Songe d'automne> (238200 ms) loaded
+[2026-04-11T02:23:35Z INFO  librespot_playback::player] Loading <Lorsque Django Jouait - Instrumental> with Spotify URI <spotify:track:583PLFwXisXdaPbcGnQiFx>
+[2026-04-11T02:23:35Z INFO  librespot_playback::player] <Lorsque Django Jouait - Instrumental> (160680 ms) loaded
+[2026-04-11T02:26:08Z INFO  librespot_playback::player] Loading <Blue Note Boogie> with Spotify URI <spotify:track:0EM6XvukQPiXdUY724xVyE>
+[2026-04-11T02:26:08Z INFO  librespot_playback::player] <Blue Note Boogie> (238840 ms) loaded
+[2026-04-11T02:29:55Z INFO  librespot_playback::player] Loading <When Your Lover Has Gone> with Spotify URI <spotify:track:2EXLM4IvppZELEuvrHGbKQ>
+[2026-04-11T02:29:56Z INFO  librespot_playback::player] <When Your Lover Has Gone> (210000 ms) loaded
+[2026-04-11T02:33:15Z INFO  librespot_playback::player] Loading <My Melancholy Baby> with Spotify URI <spotify:track:1SDvm4WAujlsLkj0R1YCYu>
+[2026-04-11T02:33:16Z INFO  librespot_playback::player] <My Melancholy Baby> (168493 ms) loaded
+[2026-04-11T02:35:55Z INFO  librespot_playback::player] Loading <Mojo Woman> with Spotify URI <spotify:track:6BReNinW2sNTJ1yKRNOkLG>
+[2026-04-11T02:35:56Z INFO  librespot_playback::player] <Mojo Woman> (243333 ms) loaded
+[2026-04-11T02:39:48Z INFO  librespot_playback::player] Loading <Zaïdy> with Spotify URI <spotify:track:3ElE02I5lNr8BAKECanuQQ>
+[2026-04-11T02:39:49Z INFO  librespot_playback::player] <Zaïdy> (215893 ms) loaded
+[2026-04-11T02:43:13Z INFO  librespot_playback::player] Loading <My Blue Heaven> with Spotify URI <spotify:track:328QzSQ4wQT1MdjUqpM66v>
+[2026-04-11T02:43:15Z INFO  librespot_playback::player] <My Blue Heaven> (212480 ms) loaded
+[2026-04-11T02:46:36Z INFO  librespot_playback::player] Loading <Bei Dir war es immer so schön> with Spotify URI <spotify:track:3PbwCz45ksPMm02ta945aj>
+[2026-04-11T02:46:37Z INFO  librespot_playback::player] <Bei Dir war es immer so schön> (276106 ms) loaded
+[2026-04-11T02:50:59Z INFO  librespot_playback::player] Loading <Gotta Dance> with Spotify URI <spotify:track:4GJ5AOmZfOqNlBhnYC8JFI>
+[2026-04-11T02:51:02Z INFO  librespot_playback::player] <Gotta Dance> (155173 ms) loaded
+[2026-04-11T02:53:27Z INFO  librespot_playback::player] Loading <Anniversary Song> with Spotify URI <spotify:track:1vZvb1VYTBgWDgmg6a9omU>
+[2026-04-11T02:53:27Z INFO  librespot_playback::player] <Anniversary Song> (211266 ms) loaded
+[2026-04-11T02:56:48Z INFO  librespot_playback::player] Loading <St. Louis Blues> with Spotify URI <spotify:track:2OBta0X7oBpvOwu2saLudm>
+[2026-04-11T02:56:49Z INFO  librespot_playback::player] <St. Louis Blues> (211767 ms) loaded
+[2026-04-11T03:00:10Z INFO  librespot_playback::player] Loading <Assanhado> with Spotify URI <spotify:track:6X9k283SywFCA33UpjTa6o>
+[2026-04-11T03:00:11Z INFO  librespot_playback::player] <Assanhado> (176226 ms) loaded
+[2026-04-11T03:02:57Z INFO  librespot_playback::player] Loading <Royal Garden Blues> with Spotify URI <spotify:track:5QmNHjHo3Ovzas0y7nbdEy>
+[2026-04-11T03:02:58Z INFO  librespot_playback::player] <Royal Garden Blues> (185000 ms) loaded
+[2026-04-11T03:05:53Z INFO  librespot_playback::player] Loading <Hungaria> with Spotify URI <spotify:track:3bS7AcjV8Dn2ulBF9XdZCo>
+[2026-04-11T03:05:54Z INFO  librespot_playback::player] <Hungaria> (171706 ms) loaded
+[2026-04-11T03:08:37Z INFO  librespot_playback::player] Loading <Rockin' in Rhythm> with Spotify URI <spotify:track:1Drr3PYSjXyg5t482ITFK3>
+[2026-04-11T03:08:37Z INFO  librespot_playback::player] <Rockin' in Rhythm> (183226 ms) loaded
+[2026-04-11T03:11:32Z INFO  librespot_playback::player] Loading <Swing 42> with Spotify URI <spotify:track:3n9LOtOJRK0dpGUhfFoaqj>
+[2026-04-11T03:11:35Z INFO  librespot_playback::player] <Swing 42> (168400 ms) loaded
+[2026-04-11T03:14:12Z INFO  librespot_playback::player] Loading <Round Midnight> with Spotify URI <spotify:track:4NhksmgV69osPocF1yVOEx>
+[2026-04-11T03:14:13Z INFO  librespot_playback::player] <Round Midnight> (332973 ms) loaded
+[2026-04-11T03:19:29Z INFO  librespot_playback::player] Loading <Blues In The Closet> with Spotify URI <spotify:track:6wUTOT2h9VzvjwFPPxdnze>
+[2026-04-11T03:19:29Z INFO  librespot_playback::player] <Blues In The Closet> (169173 ms) loaded
+[2026-04-11T03:22:10Z INFO  librespot_playback::player] Loading <Canone> with Spotify URI <spotify:track:1Ijw5RqcmorUId8F6U92vi>
+[2026-04-11T03:22:10Z INFO  librespot_playback::player] <Canone> (192746 ms) loaded
+[2026-04-11T03:25:13Z INFO  librespot_playback::player] Loading <Song Of The Islands> with Spotify URI <spotify:track:3qV5npA4QgP5mwjT0w32HF>
+[2026-04-11T03:25:15Z INFO  librespot_playback::player] <Song Of The Islands> (157146 ms) loaded
+[2026-04-11T03:27:43Z INFO  librespot_playback::player] Loading <Six-Appeal> with Spotify URI <spotify:track:5PlPQH5xehX1fbJXMmGZhS>
+[2026-04-11T03:27:44Z INFO  librespot_playback::player] <Six-Appeal> (199973 ms) loaded
+[2026-04-11T03:30:53Z INFO  librespot_playback::player] Loading <Brazil> with Spotify URI <spotify:track:7EgyUrTd8PQIbMzRVRFeGC>
+[2026-04-11T03:30:56Z INFO  librespot_playback::player] <Brazil> (168720 ms) loaded
+[2026-04-11T03:33:34Z INFO  librespot_playback::player] Loading <This Here> with Spotify URI <spotify:track:77tXih9Z5Jid24z21GOJE5>
+[2026-04-11T03:33:35Z INFO  librespot_playback::player] <This Here> (212200 ms) loaded
+[2026-04-11T03:36:56Z INFO  librespot_playback::player] Loading <Seven Come Eleven (feat. Benny Goodman & Charlie Christian)> with Spotify URI <spotify:track:5SikmTT1Bf2M1NetWLeDyi>
+[2026-04-11T03:36:58Z INFO  librespot_playback::player] <Seven Come Eleven (feat. Benny Goodman & Charlie Christian)> (165800 ms) loaded
+[2026-04-11T03:39:34Z INFO  librespot_playback::player] Loading <For Magnio> with Spotify URI <spotify:track:6HV3Ma60s7MHw9bNE1bjME>
+[2026-04-11T03:39:36Z INFO  librespot_playback::player] <For Magnio> (202493 ms) loaded
+[2026-04-11T03:42:50Z INFO  librespot_playback::player] Loading <Jeannette> with Spotify URI <spotify:track:1A7LkcBBOAkYoTcqfHnOxz>
+[2026-04-11T03:42:57Z ERROR librespot_core::audio_key] Audio key response timeout
+[2026-04-11T03:42:57Z WARN  librespot_playback::player] Unable to load key, continuing without decryption: Operation aborted { audio key response timeout }
+[2026-04-11T03:42:59Z WARN  librespot_audio::fetch::receive] Time to first byte 1508 ms exceeds maximum 1500, setting to maximum
+[2026-04-11T03:43:03Z WARN  librespot_audio::fetch::receive] Time to first byte 1872 ms exceeds maximum 1500, setting to maximum
+[2026-04-11T03:43:09Z WARN  librespot_audio::fetch::receive] Time to first byte 2285 ms exceeds maximum 1500, setting to maximum
+[2026-04-11T03:43:14Z WARN  librespot_audio::fetch::receive] Time to first byte 2254 ms exceeds maximum 1500, setting to maximum
+[2026-04-11T03:43:19Z WARN  librespot_audio::fetch::receive] Time to first byte 2544 ms exceeds maximum 1500, setting to maximum
+[2026-04-11T03:43:29Z WARN  librespot_audio::fetch::receive] Time to first byte 3077 ms exceeds maximum 1500, setting to maximum
+[2026-04-11T03:43:34Z WARN  librespot_audio::fetch::receive] Time to first byte 1960 ms exceeds maximum 1500, setting to maximum
+[2026-04-11T03:43:39Z WARN  librespot_audio::fetch::receive] Time to first byte 2662 ms exceeds maximum 1500, setting to maximum
+[2026-04-11T03:43:44Z WARN  librespot_audio::fetch::receive] Time to first byte 1739 ms exceeds maximum 1500, setting to maximum
+[2026-04-11T03:43:50Z WARN  librespot_core::dealer] Websocket peer does not respond.
+[2026-04-11T03:43:51Z WARN  librespot_audio::fetch::receive] Time to first byte 3011 ms exceeds maximum 1500, setting to maximum
+[2026-04-11T03:43:55Z WARN  librespot_audio::fetch::receive] Time to first byte 2400 ms exceeds maximum 1500, setting to maximum
+[2026-04-11T03:43:55Z INFO  librespot_connect::spirc] active device is <0596f720dd52a9e2e2d0020d00931a1b91014e64> with session <df04888aa5b5e99cbd321fa0bf466337>
+[2026-04-11T03:44:00Z WARN  librespot_audio::fetch::receive] Time to first byte 2585 ms exceeds maximum 1500, setting to maximum
+[2026-04-11T03:44:01Z ERROR librespot_playback::player] Unable to read audio file: Symphonia Decoder Error: end of stream
+[2026-04-11T03:44:01Z ERROR librespot_playback::player] Skipping to next track, unable to load track <SpotifyUri("spotify:track:1A7LkcBBOAkYoTcqfHnOxz")>: ()
+[2026-04-11T03:44:01Z INFO  librespot_playback::player] Loading <Blue River> with Spotify URI <spotify:track:2T4GIQJMJEPEpRk1VDK1kV>
+[2026-04-11T03:44:08Z INFO  librespot_playback::player] <Blue River> (205640 ms) loaded
+[2026-04-11T03:44:10Z WARN  librespot_audio::fetch::receive] Time to first byte 2196 ms exceeds maximum 1500, setting to maximum
+[2026-04-11T03:44:19Z WARN  librespot_audio::fetch::receive] Time to first byte 1580 ms exceeds maximum 1500, setting to maximum
+[2026-04-11T03:44:31Z WARN  librespot_audio::fetch::receive] Time to first byte 3134 ms exceeds maximum 1500, setting to maximum
+[2026-04-11T03:46:03Z INFO  librespot_playback::player] Loading <Taj Mahal> with Spotify URI <spotify:track:1DumbW2DvQy7ZLwbPW88rh>
+[2026-04-11T03:46:04Z INFO  librespot_playback::player] <Taj Mahal> (201320 ms) loaded
+[2026-04-11T03:49:14Z INFO  librespot_playback::player] Loading <Vech a no Drom> with Spotify URI <spotify:track:37hWJHGWMO9e4x8YEe1NzD>
+[2026-04-11T03:49:15Z INFO  librespot_playback::player] <Vech a no Drom> (213680 ms) loaded
+[2026-04-11T03:52:38Z INFO  librespot_playback::player] Loading <Mélodie au crepuscule> with Spotify URI <spotify:track:6CZQwiTBILFbYB1BJqkElj>
+[2026-04-11T03:52:39Z INFO  librespot_playback::player] <Mélodie au crepuscule> (231275 ms) loaded
+[2026-04-11T03:56:19Z INFO  librespot_playback::player] Loading <Montagne Sainte Genevieve> with Spotify URI <spotify:track:1hDxQCWKxNuXzLRDUY8cHo>
+[2026-04-11T03:56:20Z INFO  librespot_playback::player] <Montagne Sainte Genevieve> (276466 ms) loaded
+[2026-04-11T04:00:42Z INFO  librespot_playback::player] Loading <The Way You Look Tonight> with Spotify URI <spotify:track:5UxtjsBaehiTRnsVcUqUcM>
+[2026-04-11T04:00:44Z INFO  librespot_playback::player] <The Way You Look Tonight> (168773 ms) loaded
+[2026-04-11T04:03:22Z INFO  librespot_playback::player] Loading <Ostrich Walk> with Spotify URI <spotify:track:52S3Yq3o87V1foc5MBBZKx>
+[2026-04-11T04:03:23Z INFO  librespot_playback::player] <Ostrich Walk> (189906 ms) loaded
+[2026-04-11T04:06:23Z INFO  librespot_playback::player] Loading <After You're Gone> with Spotify URI <spotify:track:0gGBsUh6KzomYrr4oQGlHC>
+[2026-04-11T04:06:24Z INFO  librespot_playback::player] <After You're Gone> (187133 ms) loaded
+[2026-04-11T04:09:21Z INFO  librespot_playback::player] Loading <Avant de mourir> with Spotify URI <spotify:track:5iBFF46UfrvYmIIvzBPQy8>
+[2026-04-11T04:09:22Z INFO  librespot_playback::player] <Avant de mourir> (183373 ms) loaded
+[2026-04-11T04:12:44Z INFO  librespot_connect::spirc] Not playing next track because there are no more tracks left in queue.
+[2026-04-12T10:13:55Z WARN  librespot_core::dealer] Websocket peer does not respond.
+[2026-04-12T10:13:57Z INFO  librespot_connect::spirc] trying to take over control automatically, session_id: df04888aa5b5e99cbd321fa0bf466337
+[2026-04-12T10:13:57Z INFO  librespot_playback::player] Loading <Georgia on My Mind> with Spotify URI <spotify:track:0EVjhZNbdBHmWmxGtivz1E>
+[2026-04-12T10:13:57Z INFO  librespot_connect::state::context] couldn't distinguish index from current or previous tracks in the updated context
+[2026-04-12T10:13:57Z INFO  librespot_connect::state::context] falling back to index 0
+[2026-04-12T10:13:58Z INFO  librespot_playback::player] <Georgia on My Mind> (195146 ms) loaded
+[2026-04-12T12:52:05Z WARN  librespot_core::dealer] Websocket connection failed: IO error: peer closed connection without sending TLS close_notify: https://docs.rs/rustls/latest/rustls/manual/_03_howto/index.html#unexpected-eof
+[2026-04-12T12:52:06Z INFO  librespot_connect::spirc] trying to take over control automatically, session_id: df04888aa5b5e99cbd321fa0bf466337
+[2026-04-12T12:52:06Z INFO  librespot_connect::state::context] couldn't distinguish index from current or previous tracks in the updated context
+[2026-04-12T12:52:06Z INFO  librespot_connect::state::context] falling back to index 0
+[2026-04-12T15:15:09Z WARN  librespot_core::dealer] Websocket peer does not respond.
+[2026-04-12T15:15:10Z INFO  librespot_connect::spirc] trying to take over control automatically, session_id: df04888aa5b5e99cbd321fa0bf466337
+[2026-04-12T15:15:10Z INFO  librespot_connect::state::context] couldn't distinguish index from current or previous tracks in the updated context
+[2026-04-12T15:15:10Z INFO  librespot_connect::state::context] falling back to index 0
+[2026-04-12T16:38:41Z INFO  librespot_connect::spirc] device became inactive
+[2026-04-12T16:38:41Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-04-12T16:38:41Z WARN  librespot_connect::spirc] failed filling up next_track during stopping: Invalid state { context is not available. type: Default }
+[2026-04-12T16:38:53Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-04-12T16:38:53Z INFO  librespot_playback::player] Loading <Georgia on My Mind> with Spotify URI <spotify:track:0EVjhZNbdBHmWmxGtivz1E>
+[2026-04-12T16:38:53Z INFO  librespot_connect::spirc] session update: <Ok(NEW_SESSION)> for self, current session_id df04888aa5b5e99cbd321fa0bf466337, new session_id 8607b724fab0364ab3c641f157fc90c9
+[2026-04-12T16:38:53Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Autoplay
+[2026-04-12T16:38:53Z ERROR librespot_connect::context_resolver] setup of state failed: Invalid state { context is not available. type: Autoplay }, last used resolve ResolveContext {
+        resolve: Uri(
+            "spotify:album:6n4MbIocFJ9oHFszyhN1uF",
+        ),
+        fallback: Some(
+            "spotify:track:0EVjhZNbdBHmWmxGtivz1E",
+        ),
+        update: Default,
+        action: Replace,
+    }
+[2026-04-12T16:38:53Z INFO  librespot_playback::player] <Georgia on My Mind> (195146 ms) loaded
+[2026-04-12T16:39:12Z WARN  librespot_core::dealer] Websocket peer does not respond.
+[2026-04-12T16:39:14Z INFO  librespot_connect::spirc] active device is <0596f720dd52a9e2e2d0020d00931a1b91014e64> with session <8607b724fab0364ab3c641f157fc90c9>
+[2026-04-12T16:41:19Z INFO  librespot_playback::player] Loading <The Sheik of Araby> with Spotify URI <spotify:track:4t30z7yPGvIyrybsuykDnA>
+[2026-04-12T16:41:20Z INFO  librespot_playback::player] <The Sheik of Araby> (188333 ms) loaded
+[2026-04-12T16:44:19Z INFO  librespot_playback::player] Loading <Midnight Blue - Remastered 1999/Rudy Van Gelder Edition> with Spotify URI <spotify:track:2kF9Ijd7I2Kk2P4bYqUmzG>
+[2026-04-12T16:44:20Z INFO  librespot_playback::player] <Midnight Blue - Remastered 1999/Rudy Van Gelder Edition> (242346 ms) loaded
+[2026-04-12T16:48:10Z INFO  librespot_playback::player] Loading <The Train and the River> with Spotify URI <spotify:track:21PGL4nJcX5xk2UlRw7F23>
+[2026-04-12T16:48:10Z INFO  librespot_playback::player] <The Train and the River> (213386 ms) loaded
+[2026-04-12T16:51:33Z INFO  librespot_playback::player] Loading <Minor Swing> with Spotify URI <spotify:track:6kiOEYn9t3rjwDElofgnuG>
+[2026-04-12T16:51:34Z INFO  librespot_playback::player] <Minor Swing> (205933 ms) loaded
+[2026-04-12T16:54:49Z INFO  librespot_playback::player] Loading <Songe d'automne> with Spotify URI <spotify:track:1sUbrYb20WAdDd9AwoAlc2>
+[2026-04-12T16:54:50Z INFO  librespot_playback::player] <Songe d'automne> (238200 ms) loaded
+[2026-04-12T16:58:36Z INFO  librespot_playback::player] Loading <My Melancholy Baby> with Spotify URI <spotify:track:1SDvm4WAujlsLkj0R1YCYu>
+[2026-04-12T16:58:37Z INFO  librespot_playback::player] <My Melancholy Baby> (168493 ms) loaded
+[2026-04-12T17:01:16Z INFO  librespot_playback::player] Loading <La bande des trois> with Spotify URI <spotify:track:1qmw2KZbLcdxOPmi2zyf25>
+[2026-04-12T17:01:17Z INFO  librespot_playback::player] <La bande des trois> (209026 ms) loaded
+[2026-04-12T17:04:35Z INFO  librespot_playback::player] Loading <Lorsque Django Jouait - Instrumental> with Spotify URI <spotify:track:583PLFwXisXdaPbcGnQiFx>
+[2026-04-12T17:04:36Z INFO  librespot_playback::player] <Lorsque Django Jouait - Instrumental> (160680 ms) loaded
+[2026-04-12T17:07:08Z INFO  librespot_playback::player] Loading <Bleu citron> with Spotify URI <spotify:track:2t8WSb4idwrFvgnuFzz7kf>
+[2026-04-12T17:07:09Z INFO  librespot_playback::player] <Bleu citron> (151853 ms) loaded
+[2026-04-12T17:09:33Z INFO  librespot_playback::player] Loading <Blue Drag> with Spotify URI <spotify:track:6M7wfb504kCbEPuKXfwcau>
+[2026-04-12T17:09:34Z INFO  librespot_playback::player] <Blue Drag> (261453 ms) loaded
+[2026-04-12T17:13:42Z INFO  librespot_playback::player] Loading <Work Song> with Spotify URI <spotify:track:0GSXh7IeBpk5uJDv7KsuKZ>
+[2026-04-12T17:13:42Z INFO  librespot_playback::player] <Work Song> (252960 ms) loaded
+[2026-04-12T17:17:43Z INFO  librespot_playback::player] Loading <After You're Gone> with Spotify URI <spotify:track:0gGBsUh6KzomYrr4oQGlHC>
+[2026-04-12T17:17:43Z INFO  librespot_playback::player] <After You're Gone> (187133 ms) loaded
+[2026-04-12T17:20:41Z INFO  librespot_playback::player] Loading <Mojo Woman> with Spotify URI <spotify:track:6BReNinW2sNTJ1yKRNOkLG>
+[2026-04-12T17:20:42Z INFO  librespot_playback::player] <Mojo Woman> (243333 ms) loaded
+[2026-04-12T17:24:33Z INFO  librespot_playback::player] Loading <My Blue Heaven> with Spotify URI <spotify:track:328QzSQ4wQT1MdjUqpM66v>
+[2026-04-12T17:24:34Z INFO  librespot_playback::player] <My Blue Heaven> (212480 ms) loaded
+[2026-04-12T17:27:55Z INFO  librespot_playback::player] Loading <Flambée montalbanaise> with Spotify URI <spotify:track:08uHkHwOCjxmGm4xMrfky1>
+[2026-04-12T17:27:56Z INFO  librespot_playback::player] <Flambée montalbanaise> (161266 ms) loaded
+[2026-04-12T17:30:29Z INFO  librespot_playback::player] Loading <Take Ten> with Spotify URI <spotify:track:4eMlKFVJ7gAKKtVYXP2tfX>
+[2026-04-12T17:30:29Z INFO  librespot_playback::player] <Take Ten> (189293 ms) loaded
+[2026-04-12T17:33:29Z INFO  librespot_playback::player] Loading <Blues In The Closet> with Spotify URI <spotify:track:6wUTOT2h9VzvjwFPPxdnze>
+[2026-04-12T17:33:30Z INFO  librespot_playback::player] <Blues In The Closet> (169173 ms) loaded
+[2026-04-12T17:36:10Z INFO  librespot_playback::player] Loading <Ain't Misbehavin> with Spotify URI <spotify:track:2QdaQk0cmwWpK07P8iYPNA>
+[2026-04-12T17:36:11Z INFO  librespot_playback::player] <Ain't Misbehavin> (173600 ms) loaded
+[2026-04-12T17:38:56Z INFO  librespot_playback::player] Loading <Way Down Yonder in New Orleans> with Spotify URI <spotify:track:0kcYhUfAlMlvx6xiZg2CQa>
+[2026-04-12T17:38:56Z INFO  librespot_playback::player] <Way Down Yonder in New Orleans> (175333 ms) loaded
+[2026-04-12T17:41:43Z INFO  librespot_playback::player] Loading <Six-Appeal> with Spotify URI <spotify:track:5PlPQH5xehX1fbJXMmGZhS>
+[2026-04-12T17:41:43Z INFO  librespot_playback::player] <Six-Appeal> (199973 ms) loaded
+[2026-04-12T17:44:53Z INFO  librespot_playback::player] Loading <Hungaria> with Spotify URI <spotify:track:3bS7AcjV8Dn2ulBF9XdZCo>
+[2026-04-12T17:44:54Z INFO  librespot_playback::player] <Hungaria> (171706 ms) loaded
+[2026-04-12T17:47:36Z INFO  librespot_playback::player] Loading <St. Louis Blues> with Spotify URI <spotify:track:2OBta0X7oBpvOwu2saLudm>
+[2026-04-12T17:47:37Z INFO  librespot_playback::player] <St. Louis Blues> (211767 ms) loaded
+[2026-04-12T17:50:58Z INFO  librespot_playback::player] Loading <Out of Nowhere> with Spotify URI <spotify:track:5Qwm8Ghl2c3aYVRjPDUtuB>
+[2026-04-12T17:50:59Z INFO  librespot_playback::player] <Out of Nowhere> (196680 ms) loaded
+[2026-04-12T17:54:06Z INFO  librespot_playback::player] Loading <Zaïdy> with Spotify URI <spotify:track:3ElE02I5lNr8BAKECanuQQ>
+[2026-04-12T17:54:06Z INFO  librespot_playback::player] <Zaïdy> (215893 ms) loaded
+[2026-04-12T17:57:31Z INFO  librespot_playback::player] Loading <Ostrich Walk> with Spotify URI <spotify:track:52S3Yq3o87V1foc5MBBZKx>
+[2026-04-12T17:57:32Z INFO  librespot_playback::player] <Ostrich Walk> (189906 ms) loaded
+[2026-04-12T18:00:32Z INFO  librespot_playback::player] Loading <Volga Boatman> with Spotify URI <spotify:track:4qnvL2jtPBFzQ3W3u8JphU>
+[2026-04-12T18:00:32Z INFO  librespot_playback::player] <Volga Boatman> (232506 ms) loaded
+[2026-04-12T18:04:13Z INFO  librespot_playback::player] Loading <Summertime - Remastered Version> with Spotify URI <spotify:track:7CuBlIDvB2FIdHGaOYQYUn>
+[2026-04-12T18:04:14Z INFO  librespot_playback::player] <Summertime - Remastered Version> (356613 ms) loaded
+[2026-04-12T18:09:53Z INFO  librespot_playback::player] Loading <Place du Tertre> with Spotify URI <spotify:track:04X40SfCrLmilPKTORSvqI>
+[2026-04-12T18:09:54Z INFO  librespot_playback::player] <Place du Tertre> (292960 ms) loaded
+[2026-04-12T18:14:32Z INFO  librespot_playback::player] Loading <Anniversary Song> with Spotify URI <spotify:track:1vZvb1VYTBgWDgmg6a9omU>
+[2026-04-12T18:14:34Z INFO  librespot_playback::player] <Anniversary Song> (211266 ms) loaded
+[2026-04-12T18:17:53Z INFO  librespot_playback::player] Loading <Bistro Fada> with Spotify URI <spotify:track:08T5wMbEnPN8ghT8o24KY6>
+[2026-04-12T18:17:54Z INFO  librespot_playback::player] <Bistro Fada> (182933 ms) loaded
+[2026-04-12T18:19:16Z INFO  librespot_connect::state::context] couldn't distinguish index from current or previous tracks in the updated context
+[2026-04-12T18:19:16Z INFO  librespot_connect::state::context] falling back to index 0
+[2026-04-12T18:19:23Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-04-12T18:19:23Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-04-12T18:19:23Z INFO  librespot_core::session] Authenticated as 'paulster-us' !
+[2026-04-12T18:19:23Z INFO  librespot_core::session] Country: "US"
+[2026-04-12T18:19:23Z WARN  librespot_core::dealer] Websocket connection failed: IO error: peer closed connection without sending TLS close_notify: https://docs.rs/rustls/latest/rustls/manual/_03_howto/index.html#unexpected-eof
+[2026-04-12T18:19:23Z WARN  librespot_core::dealer] Wasn't able to reply to dealer request: channel closed
+[2026-04-12T18:19:24Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-04-12T18:19:24Z INFO  librespot_connect::spirc] active device is <> with session <8607b724fab0364ab3c641f157fc90c9>
+[2026-04-12T18:19:30Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-04-12T18:19:30Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-04-12T18:19:30Z WARN  librespot_core::dealer] Websocket connection failed: IO error: peer closed connection without sending TLS close_notify: https://docs.rs/rustls/latest/rustls/manual/_03_howto/index.html#unexpected-eof
+[2026-04-12T18:19:30Z INFO  librespot_core::session] Authenticated as 'paulster-us' !
+[2026-04-12T18:19:30Z INFO  librespot_core::session] Country: "US"
+[2026-04-12T18:19:31Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-04-12T18:19:31Z INFO  librespot_connect::spirc] active device is <> with session <8607b724fab0364ab3c641f157fc90c9>
+[2026-04-12T18:19:33Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-04-12T18:19:34Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Autoplay
+[2026-04-12T18:19:34Z ERROR librespot_connect::context_resolver] setup of state failed: Invalid state { context is not available. type: Autoplay }, last used resolve ResolveContext {
+        resolve: Uri(
+            "spotify:album:6n4MbIocFJ9oHFszyhN1uF",
+        ),
+        fallback: Some(
+            "spotify:track:08T5wMbEnPN8ghT8o24KY6",
+        ),
+        update: Default,
+        action: Replace,
+    }
+[2026-04-12T18:19:45Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-04-12T18:19:45Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-04-12T18:19:46Z INFO  librespot_core::session] Authenticated as 'paulster-us' !
+[2026-04-12T18:19:46Z INFO  librespot_core::session] Country: "US"
+[2026-04-12T18:19:47Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-04-12T18:19:47Z INFO  librespot_connect::spirc] active device is <> with session <9043de0c86284243a7684fa9de5da442>
+[2026-04-12T18:19:51Z WARN  librespot_core::dealer] Websocket connection failed: IO error: peer closed connection without sending TLS close_notify: https://docs.rs/rustls/latest/rustls/manual/_03_howto/index.html#unexpected-eof
+[2026-04-12T18:19:51Z WARN  librespot_core::dealer] Wasn't able to reply to dealer request: channel closed
+[2026-04-12T18:19:51Z WARN  librespot_core::dealer] Wasn't able to reply to dealer request: channel closed
+[2026-04-12T18:19:52Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-04-12T18:19:52Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-04-12T18:19:52Z WARN  librespot_core::dealer] Websocket connection failed: IO error: peer closed connection without sending TLS close_notify: https://docs.rs/rustls/latest/rustls/manual/_03_howto/index.html#unexpected-eof
+[2026-04-12T18:19:52Z WARN  librespot_core::dealer] Wasn't able to reply to dealer request: channel closed
+[2026-04-12T18:19:52Z INFO  librespot_core::session] Authenticated as 'paulster-us' !
+[2026-04-12T18:19:52Z INFO  librespot_core::session] Country: "US"
+[2026-04-12T18:19:53Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-04-12T18:19:53Z INFO  librespot_connect::spirc] active device is <> with session <9043de0c86284243a7684fa9de5da442>
+[2026-04-12T18:19:58Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-04-12T18:19:59Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-04-12T18:19:59Z WARN  librespot_core::dealer] Websocket connection failed: IO error: peer closed connection without sending TLS close_notify: https://docs.rs/rustls/latest/rustls/manual/_03_howto/index.html#unexpected-eof
+[2026-04-12T18:19:59Z WARN  librespot_core::dealer] Wasn't able to reply to dealer request: channel closed
+[2026-04-12T18:19:59Z INFO  librespot_core::session] Authenticated as 'paulster-us' !
+[2026-04-12T18:19:59Z INFO  librespot_core::session] Country: "US"
+[2026-04-12T18:19:59Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-04-12T18:20:00Z INFO  librespot_connect::spirc] active device is <> with session <9043de0c86284243a7684fa9de5da442>
+[2026-04-12T18:20:05Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-04-12T18:20:06Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-04-12T18:20:06Z WARN  librespot_core::dealer] Websocket connection failed: IO error: peer closed connection without sending TLS close_notify: https://docs.rs/rustls/latest/rustls/manual/_03_howto/index.html#unexpected-eof
+[2026-04-12T18:20:06Z WARN  librespot_core::dealer] Wasn't able to reply to dealer request: channel closed
+[2026-04-12T18:20:06Z INFO  librespot_core::session] Authenticated as 'paulster-us' !
+[2026-04-12T18:20:06Z INFO  librespot_core::session] Country: "US"
+[2026-04-12T18:20:06Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-04-12T18:20:06Z INFO  librespot_connect::spirc] active device is <> with session <9043de0c86284243a7684fa9de5da442>
+[2026-04-12T18:20:12Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-04-12T18:20:12Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-04-12T18:20:12Z WARN  librespot_core::dealer] Websocket connection failed: IO error: peer closed connection without sending TLS close_notify: https://docs.rs/rustls/latest/rustls/manual/_03_howto/index.html#unexpected-eof
+[2026-04-12T18:20:12Z INFO  librespot_core::session] Authenticated as 'paulster-us' !
+[2026-04-12T18:20:12Z INFO  librespot_core::session] Country: "US"
+[2026-04-12T18:20:13Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-04-12T18:20:13Z INFO  librespot_connect::spirc] active device is <> with session <9043de0c86284243a7684fa9de5da442>
+[2026-04-12T18:20:16Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-04-12T18:20:16Z INFO  librespot_playback::player] Loading <Swing 42> with Spotify URI <spotify:track:3n9LOtOJRK0dpGUhfFoaqj>
+[2026-04-12T18:20:16Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Autoplay
+[2026-04-12T18:20:16Z ERROR librespot_connect::context_resolver] setup of state failed: Invalid state { context is not available. type: Autoplay }, last used resolve ResolveContext {
+        resolve: Uri(
+            "spotify:album:6n4MbIocFJ9oHFszyhN1uF",
+        ),
+        fallback: Some(
+            "spotify:track:3n9LOtOJRK0dpGUhfFoaqj",
+        ),
+        update: Default,
+        action: Replace,
+    }
+[2026-04-12T18:20:16Z INFO  librespot_playback::player] <Swing 42> (168400 ms) loaded
+[2026-04-12T19:08:46Z WARN  librespot_core::dealer] Websocket peer does not respond.
+[2026-04-12T19:08:52Z INFO  librespot_connect::spirc] trying to take over control automatically, session_id: cb05502e2ccd4d448c668f2728de35b3
+[2026-04-12T19:08:52Z INFO  librespot_playback::player] Loading <The Sheik of Araby> with Spotify URI <spotify:track:4t30z7yPGvIyrybsuykDnA>
+[2026-04-12T19:08:52Z INFO  librespot_connect::state::context] couldn't distinguish index from current or previous tracks in the updated context
+[2026-04-12T19:08:52Z INFO  librespot_connect::state::context] falling back to index 0
+[2026-04-12T19:08:53Z INFO  librespot_playback::player] <The Sheik of Araby> (188333 ms) loaded
+[2026-04-12T20:22:54Z WARN  librespot_core::dealer] Websocket peer does not respond.
+[2026-04-12T20:22:56Z INFO  librespot_connect::spirc] trying to take over control automatically, session_id: cb05502e2ccd4d448c668f2728de35b3
+[2026-04-12T20:22:56Z INFO  librespot_connect::state::context] couldn't distinguish index from current or previous tracks in the updated context
+[2026-04-12T20:22:56Z INFO  librespot_connect::state::context] falling back to index 0
+[2026-04-12T22:03:01Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-04-12T22:03:01Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-04-12T22:03:01Z INFO  librespot_core::session] Authenticated as 'paulster23' !
+[2026-04-12T22:03:01Z INFO  librespot_core::session] Country: "US"
+[2026-04-12T22:03:01Z WARN  librespot_core::dealer] Websocket connection failed: IO error: peer closed connection without sending TLS close_notify: https://docs.rs/rustls/latest/rustls/manual/_03_howto/index.html#unexpected-eof
+[2026-04-12T22:03:02Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-04-12T22:03:02Z INFO  librespot_connect::spirc] active device is <e9912ea7d306062891be9d4514485cfccfc5a2d7> with session <5IPWOfrEYVJyXoTu451oFZ>
+[2026-04-12T22:03:02Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-04-12T22:03:02Z INFO  librespot_playback::player] Loading <More Bad Miles Of Road> with Spotify URI <spotify:track:1AA516QeuI12Y8HdZQ9kAg>
+[2026-04-12T22:03:03Z INFO  librespot_playback::player] <More Bad Miles Of Road> (228249 ms) loaded
+[2026-04-12T22:06:12Z INFO  librespot_playback::player] Loading <Why Don't You Do It> with Spotify URI <spotify:track:1nS5ZzyBDZ4Dp2ddkWNMtf>
+[2026-04-12T22:06:12Z INFO  librespot_playback::player] <Why Don't You Do It> (190866 ms) loaded
+[2026-04-12T22:09:14Z INFO  librespot_playback::player] Loading <Eyes Were Young> with Spotify URI <spotify:track:5cC0CdoJauSjYISQGLvgVZ>
+[2026-04-12T22:09:14Z INFO  librespot_playback::player] <Eyes Were Young> (317573 ms) loaded
+[2026-04-12T22:14:16Z INFO  librespot_playback::player] Loading <Better Call Saul Main Title Theme (Extended)> with Spotify URI <spotify:track:7bfsr4blCxi101cuqR1JKo>
+[2026-04-12T22:14:17Z INFO  librespot_playback::player] <Better Call Saul Main Title Theme (Extended)> (198760 ms) loaded
+[2026-04-12T22:15:53Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-04-12T22:15:53Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-04-12T22:15:54Z INFO  librespot_playback::player] Loading <Great Princess Story> with Spotify URI <spotify:track:20Mywa39BBhTYB8ukVxXd0>
+[2026-04-12T22:15:54Z INFO  librespot_playback::player] <Great Princess Story> (251266 ms) loaded
+[2026-04-12T22:19:13Z INFO  librespot_playback::player] Loading <Pure Sticker Shock> with Spotify URI <spotify:track:07juhUaoL15fifnfK5H6B6>
+[2026-04-12T22:19:14Z INFO  librespot_playback::player] <Pure Sticker Shock> (249986 ms) loaded
+[2026-04-12T22:20:45Z INFO  librespot_connect::spirc] device became inactive
+[2026-04-12T22:20:45Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-04-12T22:20:45Z WARN  librespot_connect::spirc] failed filling up next_track during stopping: Invalid state { context is not available. type: Default }
+[2026-04-12T22:20:51Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-04-12T22:20:51Z INFO  librespot_playback::player] Loading <Pure Sticker Shock> with Spotify URI <spotify:track:07juhUaoL15fifnfK5H6B6>
+[2026-04-12T22:20:51Z INFO  librespot_connect::spirc] session update: <Ok(NEW_SESSION)> for self, current session_id 431f05da94834eeda4198ecdbecf415d, new session_id 4dcd0454a720e895602945ab68b58851
+[2026-04-12T22:20:52Z INFO  librespot_playback::player] <Pure Sticker Shock> (249986 ms) loaded
+[2026-04-12T22:24:09Z INFO  librespot_playback::player] Loading <Ballad of the Last Payphone> with Spotify URI <spotify:track:1TF4p5bdfEWoB6VEHC8nqk>
+[2026-04-12T22:24:10Z INFO  librespot_playback::player] <Ballad of the Last Payphone> (229506 ms) loaded
+[2026-04-12T22:27:48Z INFO  librespot_playback::player] Loading <Spooky Action> with Spotify URI <spotify:track:7ETZ1YF6gjWDDSvOxfdkvw>
+[2026-04-12T22:27:48Z INFO  librespot_playback::player] <Spooky Action> (293493 ms) loaded
+[2026-04-12T22:32:27Z INFO  librespot_playback::player] Loading <Wish You Could See Me I’m Killing It> with Spotify URI <spotify:track:3TMlpyYbf9xjYsPL6ow8z6>
+[2026-04-12T22:32:28Z INFO  librespot_playback::player] <Wish You Could See Me I’m Killing It> (219506 ms) loaded
+[2026-04-12T22:33:04Z WARN  librespot_core::dealer] Websocket peer does not respond.
+[2026-04-12T22:33:06Z INFO  librespot_connect::spirc] active device is <e9912ea7d306062891be9d4514485cfccfc5a2d7> with session <5P1NL01N65Vhswvofs3Wlp>
+[2026-04-12T22:33:08Z INFO  librespot_connect::spirc] device became inactive
+[2026-04-12T22:33:08Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-04-12T22:33:08Z WARN  librespot_connect::spirc] failed filling up next_track during stopping: Invalid state { context is not available. type: Default }
+[2026-04-12T22:33:09Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-04-12T22:33:09Z INFO  librespot_playback::player] Loading <Great Princess Story> with Spotify URI <spotify:track:20Mywa39BBhTYB8ukVxXd0>
+[2026-04-12T22:33:10Z INFO  librespot_playback::player] <Great Princess Story> (251266 ms) loaded
+[2026-04-12T22:43:33Z INFO  librespot_connect::spirc] session update: <Ok(SESSION_DELETED)> for self, current session_id 4dcd0454a720e895602945ab68b58851, new session_id 4dcd0454a720e895602945ab68b58851
+[2026-04-12T22:43:33Z INFO  librespot_connect::spirc] device became inactive
+[2026-04-12T22:43:34Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-04-12T22:43:34Z WARN  librespot_connect::spirc] failed filling up next_track during stopping: Invalid state { context is not available. type: Default }
+[2026-04-13T02:10:49Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-04-13T02:10:49Z INFO  librespot_playback::player] Loading <Acting School> with Spotify URI <spotify:track:1aohqa0DNsvnNQo1vr3s0f>
+[2026-04-13T02:10:50Z INFO  librespot_connect::spirc] session update: <Ok(NEW_SESSION)> for self, current session_id 4dcd0454a720e895602945ab68b58851, new session_id 859cc824861351c544549723d8dec8f4
+[2026-04-13T02:10:50Z INFO  librespot_playback::player] <Acting School> (205440 ms) loaded
+[2026-04-13T02:13:27Z INFO  librespot_playback::player] Loading <Old Tv> with Spotify URI <spotify:track:2ZqoUsmjKYAYdUMhO0HCdy>
+[2026-04-13T02:13:28Z INFO  librespot_playback::player] <Old Tv> (209560 ms) loaded
+[2026-04-13T02:16:46Z INFO  librespot_playback::player] Loading <Shouldn't Say Mine> with Spotify URI <spotify:track:4WznYprer9KENt5kwCUgcm>
+[2026-04-13T02:16:47Z INFO  librespot_playback::player] <Shouldn't Say Mine> (222240 ms) loaded
+[2026-04-13T02:20:18Z INFO  librespot_playback::player] Loading <True Love> with Spotify URI <spotify:track:2UNzwVp6F1W1UZYN64KmJv>
+[2026-04-13T02:20:19Z INFO  librespot_playback::player] <True Love> (189586 ms) loaded
+[2026-04-13T02:23:18Z INFO  librespot_playback::player] Loading <Possession> with Spotify URI <spotify:track:74Cn9HGwELSPIuHgnT1fLh>
+[2026-04-13T02:23:19Z INFO  librespot_playback::player] <Possession> (211840 ms) loaded
+[2026-04-13T02:26:40Z INFO  librespot_playback::player] Loading <Your Shadow> with Spotify URI <spotify:track:5ioVu27JX2MT8b9F2pCrnY>
+[2026-04-13T02:26:42Z INFO  librespot_playback::player] <Your Shadow> (145106 ms) loaded
+[2026-04-13T02:28:58Z INFO  librespot_playback::player] Loading <Annabelle Goodbye> with Spotify URI <spotify:track:0CaectaOzOJprjtoFoBRTy>
+[2026-04-13T02:28:59Z INFO  librespot_playback::player] <Annabelle Goodbye> (161800 ms) loaded
+[2026-04-13T02:30:09Z WARN  librespot_core::dealer] Websocket peer does not respond.
+[2026-04-13T02:30:10Z INFO  librespot_connect::spirc] active device is <0596f720dd52a9e2e2d0020d00931a1b91014e64> with session <859cc824861351c544549723d8dec8f4>
+[2026-04-13T02:31:32Z INFO  librespot_playback::player] Loading <Nothing for Me, Please> with Spotify URI <spotify:track:2HPK2aum6SEPP7MwV8pAmQ>
+[2026-04-13T02:31:34Z INFO  librespot_playback::player] <Nothing for Me, Please> (153920 ms) loaded
+[2026-04-13T02:34:27Z INFO  librespot_playback::player] Loading <So Much Better> with Spotify URI <spotify:track:3Gku0wkRcZBeiEpNv5ESC5>
+[2026-04-13T02:34:29Z INFO  librespot_playback::player] <So Much Better> (184866 ms) loaded
+[2026-04-13T02:36:55Z INFO  librespot_playback::player] Loading <Loving Spoons> with Spotify URI <spotify:track:2USauCsJAtxlBpEbr8DSQ8>
+[2026-04-13T02:36:56Z INFO  librespot_playback::player] <Loving Spoons> (181312 ms) loaded
+[2026-04-13T02:39:48Z INFO  librespot_playback::player] Loading <Spider> with Spotify URI <spotify:track:5RyBqIGm2gRGIDSpq0cKFY>
+[2026-04-13T02:39:52Z INFO  librespot_playback::player] <Spider> (230522 ms) loaded
+[2026-04-13T02:41:00Z INFO  librespot_connect::state::context] couldn't distinguish index from current or previous tracks in the updated context
+[2026-04-13T02:41:00Z INFO  librespot_connect::state::context] falling back to index 0
+[2026-04-13T02:52:46Z INFO  librespot_connect::spirc] session update: <Ok(SESSION_DELETED)> for self, current session_id 859cc824861351c544549723d8dec8f4, new session_id 859cc824861351c544549723d8dec8f4
+[2026-04-13T03:00:11Z INFO  librespot_connect::spirc] device became inactive
+[2026-04-13T03:00:11Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-04-13T03:00:11Z WARN  librespot_connect::spirc] failed filling up next_track during stopping: Invalid state { context is not available. type: Default }
+[2026-04-13T03:38:43Z WARN  librespot_core::dealer] Websocket peer does not respond.
+[2026-04-13T03:38:44Z INFO  librespot_connect::spirc] trying to take over control automatically, session_id: 859cc824861351c544549723d8dec8f4
+[2026-04-13T03:38:44Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-04-13T03:38:44Z INFO  librespot_playback::player] Loading <Spider> with Spotify URI <spotify:track:5RyBqIGm2gRGIDSpq0cKFY>
+[2026-04-13T03:38:44Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Autoplay
+[2026-04-13T03:38:44Z ERROR librespot_connect::context_resolver] setup of state failed: Invalid state { context is not available. type: Autoplay }, last used resolve ResolveContext {
+        resolve: Uri(
+            "spotify:album:5lD8qrCKItixc6J8T5G2fK",
+        ),
+        fallback: Some(
+            "spotify:track:5RyBqIGm2gRGIDSpq0cKFY",
+        ),
+        update: Default,
+        action: Replace,
+    }
+[2026-04-13T03:38:44Z WARN  librespot_playback::player] Invalid start position of 1197228 ms exceeds track's duration of 230522 ms, starting track from the beginning
+[2026-04-13T03:38:45Z INFO  librespot_playback::player] <Spider> (230522 ms) loaded
+[2026-04-13T03:42:47Z WARN  librespot_core::dealer] Websocket peer does not respond.
+[2026-04-13T03:42:48Z INFO  librespot_connect::spirc] trying to take over control automatically, session_id: 859cc824861351c544549723d8dec8f4
+[2026-04-13T03:42:48Z INFO  librespot_playback::player] Loading <So Much Better> with Spotify URI <spotify:track:3Gku0wkRcZBeiEpNv5ESC5>
+[2026-04-13T03:42:48Z INFO  librespot_connect::state::context] couldn't distinguish index from current or previous tracks in the updated context
+[2026-04-13T03:42:48Z INFO  librespot_connect::state::context] falling back to index 0
+[2026-04-13T03:42:49Z INFO  librespot_playback::player] <So Much Better> (184866 ms) loaded
+[2026-04-13T03:54:08Z INFO  librespot_connect::spirc] device became inactive
+[2026-04-13T03:54:08Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-04-13T03:54:08Z WARN  librespot_connect::spirc] failed filling up next_track during stopping: Invalid state { context is not available. type: Default }
+[2026-04-13T11:08:50Z WARN  librespot_core::dealer] Websocket peer does not respond.
+[2026-04-13T11:08:52Z INFO  librespot_connect::spirc] trying to take over control automatically, session_id: 859cc824861351c544549723d8dec8f4
+[2026-04-13T11:08:52Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-04-13T11:08:52Z INFO  librespot_playback::player] Loading <So Much Better> with Spotify URI <spotify:track:3Gku0wkRcZBeiEpNv5ESC5>
+[2026-04-13T11:08:52Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Autoplay
+[2026-04-13T11:08:52Z ERROR librespot_connect::context_resolver] setup of state failed: Invalid state { context is not available. type: Autoplay }, last used resolve ResolveContext {
+        resolve: Uri(
+            "spotify:album:5lD8qrCKItixc6J8T5G2fK",
+        ),
+        fallback: Some(
+            "spotify:track:3Gku0wkRcZBeiEpNv5ESC5",
+        ),
+        update: Default,
+        action: Replace,
+    }
+[2026-04-13T11:08:53Z WARN  librespot_playback::player] Invalid start position of 678732 ms exceeds track's duration of 184866 ms, starting track from the beginning
+[2026-04-13T11:08:53Z INFO  librespot_playback::player] <So Much Better> (184866 ms) loaded
+[2026-04-13T11:12:07Z INFO  librespot_connect::spirc] device became inactive
+[2026-04-13T11:12:07Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-04-13T11:12:07Z WARN  librespot_connect::spirc] failed filling up next_track during stopping: Invalid state { context is not available. type: Default }
+[2026-04-13T11:12:24Z WARN  librespot_core::dealer] Websocket peer does not respond.
+[2026-04-13T11:12:25Z INFO  librespot_connect::spirc] trying to take over control automatically, session_id: 859cc824861351c544549723d8dec8f4
+[2026-04-13T11:12:25Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-04-13T11:12:26Z INFO  librespot_playback::player] Loading <Before You Hit the Ground> with Spotify URI <spotify:track:1hkgNqWRMUyj6ywqiXe4Nm>
+[2026-04-13T11:12:26Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Autoplay
+[2026-04-13T11:12:26Z ERROR librespot_connect::context_resolver] setup of state failed: Invalid state { context is not available. type: Autoplay }, last used resolve ResolveContext {
+        resolve: Uri(
+            "spotify:album:5lD8qrCKItixc6J8T5G2fK",
+        ),
+        fallback: Some(
+            "spotify:track:1hkgNqWRMUyj6ywqiXe4Nm",
+        ),
+        update: Default,
+        action: Replace,
+    }
+[2026-04-13T11:12:27Z INFO  librespot_playback::player] <Before You Hit the Ground> (204013 ms) loaded
+[2026-04-13T11:33:02Z INFO  librespot_connect::spirc] device became inactive
+[2026-04-13T11:33:02Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-04-13T11:33:02Z WARN  librespot_connect::spirc] failed filling up next_track during stopping: Invalid state { context is not available. type: Default }
+[2026-04-13T12:51:28Z WARN  librespot_core::dealer] Websocket peer does not respond.
+[2026-04-13T12:51:30Z INFO  librespot_connect::spirc] trying to take over control automatically, session_id: 859cc824861351c544549723d8dec8f4
+[2026-04-13T12:51:30Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-04-13T12:51:30Z INFO  librespot_playback::player] Loading <Before You Hit the Ground> with Spotify URI <spotify:track:1hkgNqWRMUyj6ywqiXe4Nm>
+[2026-04-13T12:51:30Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Autoplay
+[2026-04-13T12:51:30Z ERROR librespot_connect::context_resolver] setup of state failed: Invalid state { context is not available. type: Autoplay }, last used resolve ResolveContext {
+        resolve: Uri(
+            "spotify:album:5lD8qrCKItixc6J8T5G2fK",
+        ),
+        fallback: Some(
+            "spotify:track:1hkgNqWRMUyj6ywqiXe4Nm",
+        ),
+        update: Default,
+        action: Replace,
+    }
+[2026-04-13T12:51:30Z WARN  librespot_playback::player] Invalid start position of 1428309 ms exceeds track's duration of 204013 ms, starting track from the beginning
+[2026-04-13T12:51:31Z INFO  librespot_playback::player] <Before You Hit the Ground> (204013 ms) loaded
+[2026-04-13T12:54:04Z INFO  librespot_connect::spirc] device became inactive
+[2026-04-13T12:54:04Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-04-13T12:54:04Z WARN  librespot_connect::spirc] failed filling up next_track during stopping: Invalid state { context is not available. type: Default }
+[2026-04-13T14:32:02Z WARN  librespot_core::dealer] Websocket peer does not respond.
+[2026-04-13T14:32:04Z INFO  librespot_connect::spirc] trying to take over control automatically, session_id: 859cc824861351c544549723d8dec8f4
+[2026-04-13T14:32:04Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-04-13T14:32:04Z INFO  librespot_playback::player] Loading <So Much Better> with Spotify URI <spotify:track:3Gku0wkRcZBeiEpNv5ESC5>
+[2026-04-13T14:32:04Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Autoplay
+[2026-04-13T14:32:04Z ERROR librespot_connect::context_resolver] setup of state failed: Invalid state { context is not available. type: Autoplay }, last used resolve ResolveContext {
+        resolve: Uri(
+            "spotify:album:5lD8qrCKItixc6J8T5G2fK",
+        ),
+        fallback: Some(
+            "spotify:track:3Gku0wkRcZBeiEpNv5ESC5",
+        ),
+        update: Default,
+        action: Replace,
+    }
+[2026-04-13T14:32:05Z INFO  librespot_playback::player] <So Much Better> (184866 ms) loaded
+[2026-04-13T14:34:33Z INFO  librespot_connect::spirc] device became inactive
+[2026-04-13T14:34:33Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-04-13T14:34:33Z WARN  librespot_connect::spirc] failed filling up next_track during stopping: Invalid state { context is not available. type: Default }
+[2026-04-13T20:05:36Z WARN  librespot_core::dealer] Websocket peer does not respond.
+[2026-04-13T20:05:38Z INFO  librespot_connect::spirc] trying to take over control automatically, session_id: 859cc824861351c544549723d8dec8f4
+[2026-04-13T20:05:38Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-04-13T20:05:38Z INFO  librespot_playback::player] Loading <Before You Hit the Ground> with Spotify URI <spotify:track:1hkgNqWRMUyj6ywqiXe4Nm>
+[2026-04-13T20:05:39Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Autoplay
+[2026-04-13T20:05:39Z ERROR librespot_connect::context_resolver] setup of state failed: Invalid state { context is not available. type: Autoplay }, last used resolve ResolveContext {
+        resolve: Uri(
+            "spotify:album:5lD8qrCKItixc6J8T5G2fK",
+        ),
+        fallback: Some(
+            "spotify:track:1hkgNqWRMUyj6ywqiXe4Nm",
+        ),
+        update: Default,
+        action: Replace,
+    }
+[2026-04-13T20:05:39Z WARN  librespot_playback::player] Invalid start position of 300231 ms exceeds track's duration of 204013 ms, starting track from the beginning
+[2026-04-13T20:05:40Z INFO  librespot_playback::player] <Before You Hit the Ground> (204013 ms) loaded
+[2026-04-13T20:16:11Z WARN  librespot_core::dealer] Websocket peer does not respond.
+[2026-04-13T20:16:13Z INFO  librespot_connect::spirc] trying to take over control automatically, session_id: 859cc824861351c544549723d8dec8f4
+[2026-04-13T20:16:13Z INFO  librespot_playback::player] Loading <So Much Better> with Spotify URI <spotify:track:3Gku0wkRcZBeiEpNv5ESC5>
+[2026-04-13T20:16:13Z INFO  librespot_connect::state::context] couldn't distinguish index from current or previous tracks in the updated context
+[2026-04-13T20:16:13Z INFO  librespot_connect::state::context] falling back to index 0
+[2026-04-13T20:16:14Z INFO  librespot_playback::player] <So Much Better> (184866 ms) loaded
+[2026-04-13T21:06:28Z INFO  librespot_connect::spirc] device became inactive
+[2026-04-13T21:06:29Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-04-13T21:06:29Z WARN  librespot_connect::spirc] failed filling up next_track during stopping: Invalid state { context is not available. type: Default }
+[2026-04-13T22:07:45Z WARN  librespot_core::dealer] Websocket peer does not respond.
+[2026-04-13T22:07:47Z INFO  librespot_connect::spirc] trying to take over control automatically, session_id: 859cc824861351c544549723d8dec8f4
+[2026-04-13T22:07:47Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-04-13T22:07:47Z INFO  librespot_playback::player] Loading <So Much Better> with Spotify URI <spotify:track:3Gku0wkRcZBeiEpNv5ESC5>
+[2026-04-13T22:07:47Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Autoplay
+[2026-04-13T22:07:47Z ERROR librespot_connect::context_resolver] setup of state failed: Invalid state { context is not available. type: Autoplay }, last used resolve ResolveContext {
+        resolve: Uri(
+            "spotify:album:5lD8qrCKItixc6J8T5G2fK",
+        ),
+        fallback: Some(
+            "spotify:track:3Gku0wkRcZBeiEpNv5ESC5",
+        ),
+        update: Default,
+        action: Replace,
+    }
+[2026-04-13T22:07:48Z WARN  librespot_playback::player] Invalid start position of 3014578 ms exceeds track's duration of 184866 ms, starting track from the beginning
+[2026-04-13T22:07:48Z INFO  librespot_playback::player] <So Much Better> (184866 ms) loaded
+[2026-04-13T22:17:49Z INFO  librespot_connect::spirc] device became inactive
+[2026-04-13T22:17:49Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-04-13T22:17:49Z WARN  librespot_connect::spirc] failed filling up next_track during stopping: Invalid state { context is not available. type: Default }
+[2026-04-13T22:34:50Z WARN  librespot_core::dealer] Websocket peer does not respond.
+[2026-04-13T22:34:51Z INFO  librespot_connect::spirc] trying to take over control automatically, session_id: 859cc824861351c544549723d8dec8f4
+[2026-04-13T22:34:51Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-04-13T22:34:51Z INFO  librespot_playback::player] Loading <Before You Hit the Ground> with Spotify URI <spotify:track:1hkgNqWRMUyj6ywqiXe4Nm>
+[2026-04-13T22:34:51Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Autoplay
+[2026-04-13T22:34:51Z ERROR librespot_connect::context_resolver] setup of state failed: Invalid state { context is not available. type: Autoplay }, last used resolve ResolveContext {
+        resolve: Uri(
+            "spotify:album:5lD8qrCKItixc6J8T5G2fK",
+        ),
+        fallback: Some(
+            "spotify:track:1hkgNqWRMUyj6ywqiXe4Nm",
+        ),
+        update: Default,
+        action: Replace,
+    }
+[2026-04-13T22:34:51Z WARN  librespot_playback::player] Invalid start position of 600493 ms exceeds track's duration of 204013 ms, starting track from the beginning
+[2026-04-13T22:34:52Z INFO  librespot_playback::player] <Before You Hit the Ground> (204013 ms) loaded
+[2026-04-13T22:43:28Z INFO  librespot_connect::spirc] device became inactive
+[2026-04-13T22:43:29Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-04-13T22:43:29Z WARN  librespot_connect::spirc] failed filling up next_track during stopping: Invalid state { context is not available. type: Default }
+[2026-04-14T00:10:23Z WARN  librespot_core::dealer] Websocket peer does not respond.
+[2026-04-14T00:10:25Z INFO  librespot_connect::spirc] trying to take over control automatically, session_id: 859cc824861351c544549723d8dec8f4
+[2026-04-14T00:10:25Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-04-14T00:10:25Z INFO  librespot_playback::player] Loading <So Much Better> with Spotify URI <spotify:track:3Gku0wkRcZBeiEpNv5ESC5>
+[2026-04-14T00:10:25Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Autoplay
+[2026-04-14T00:10:25Z ERROR librespot_connect::context_resolver] setup of state failed: Invalid state { context is not available. type: Autoplay }, last used resolve ResolveContext {
+        resolve: Uri(
+            "spotify:album:5lD8qrCKItixc6J8T5G2fK",
+        ),
+        fallback: Some(
+            "spotify:track:3Gku0wkRcZBeiEpNv5ESC5",
+        ),
+        update: Default,
+        action: Replace,
+    }
+[2026-04-14T00:10:25Z WARN  librespot_playback::player] Invalid start position of 516117 ms exceeds track's duration of 184866 ms, starting track from the beginning
+[2026-04-14T00:10:26Z INFO  librespot_playback::player] <So Much Better> (184866 ms) loaded
+[2026-04-14T02:48:27Z WARN  librespot_core::dealer] Websocket peer does not respond.
+[2026-04-14T02:48:33Z INFO  librespot_connect::spirc] trying to take over control automatically, session_id: 859cc824861351c544549723d8dec8f4
+[2026-04-14T02:48:34Z INFO  librespot_playback::player] Loading <Before You Hit the Ground> with Spotify URI <spotify:track:1hkgNqWRMUyj6ywqiXe4Nm>
+[2026-04-14T02:48:35Z INFO  librespot_connect::state::context] couldn't distinguish index from current or previous tracks in the updated context
+[2026-04-14T02:48:35Z INFO  librespot_connect::state::context] falling back to index 0
+[2026-04-14T02:48:43Z INFO  librespot_playback::player] <Before You Hit the Ground> (204013 ms) loaded
+[2026-04-14T03:40:04Z WARN  librespot_core::dealer] Websocket peer does not respond.
+[2026-04-14T03:40:10Z INFO  librespot_connect::spirc] trying to take over control automatically, session_id: 859cc824861351c544549723d8dec8f4
+[2026-04-14T03:40:10Z INFO  librespot_connect::state::context] couldn't distinguish index from current or previous tracks in the updated context
+[2026-04-14T03:40:10Z INFO  librespot_connect::state::context] falling back to index 0
+[2026-04-14T03:55:42Z WARN  librespot_core::dealer] Websocket peer does not respond.
+[2026-04-14T03:55:59Z INFO  librespot_connect::spirc] trying to take over control automatically, session_id: 859cc824861351c544549723d8dec8f4
+[2026-04-14T03:56:01Z INFO  librespot_connect::state::context] couldn't distinguish index from current or previous tracks in the updated context
+[2026-04-14T03:56:01Z INFO  librespot_connect::state::context] falling back to index 0
+[2026-04-15T00:06:02Z ERROR librespot_core::session] Connection to server closed.

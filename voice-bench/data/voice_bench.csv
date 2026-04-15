@@ -389,3 +389,74 @@ seed_0129,,Stop.,other,,13191,,,13191,,,pre-bench-history,distil-whisper-large-v
 20260402_201636_372,2026-04-02T20:16:36.372631-04:00,"VAD early trigger — 2.9 s audio collected (speech=1440 ms, silence=928 ms)",other,4519,1526,,,5461,false,true,whisperkit-small-silero-vad,whisperkit-small
 20260402_201656_350,2026-04-02T20:16:56.350958-04:00,Play the Daily Podcast.,music,4213,951,,,7782,false,true,whisperkit-small-silero-vad,whisperkit-small
 20260402_201717_555,2026-04-02T20:17:17.555968-04:00,,other,4368,1763,,,4468,false,true,whisperkit-small-silero-vad,whisperkit-small
+20260402_230727_002,2026-04-02T23:07:27.002003-04:00,Stop!,other,5869,2345,,,7209,true,false,whisperkit-small-silero-vad,whisperkit-small
+20260403_055551_048,2026-04-03T05:55:51.048692-04:00,Good night.,home,7858,2627,274,7420,15553,false,false,whisperkit-small-silero-vad,whisperkit-small
+20260408_140734_345,2026-04-08T14:07:34.345288-04:00,"VAD early trigger — 2.5 s audio collected (speech=864 ms, silence=928 ms)",other,121561,119130,494,2122,124178,true,false,whisperkit-small-silero-vad,whisperkit-small
+20260408_172903_216,2026-04-08T17:29:03.216870-04:00,Turn the speaker on.,other,166226,2137,,,168329,false,false,whisperkit-small-silero-vad,whisperkit-small
+20260408_181854_798,2026-04-08T18:18:54.798187-04:00,,other,130232,127820,,,130388,false,true,whisperkit-small-silero-vad,whisperkit-small
+20260408_192157_576,2026-04-08T19:21:57.576422-04:00,"Bye, WQXR.",radio,128680,2293,276,2503,131460,false,false,whisperkit-small-silero-vad,whisperkit-small
+20260408_223040_516,2026-04-08T22:30:40.516357-04:00,Turn on the light.,home,4536,1405,302,1835,6674,true,false,whisperkit-small-silero-vad,whisperkit-small
+20260409_002852_646,2026-04-09T00:28:52.646062-04:00,,other,17389,2408,,,18093,true,false,whisperkit-small-silero-vad,whisperkit-small
+20260409_064656_724,2026-04-09T06:46:56.724351-04:00,Turn on the light.,home,4325,1541,254,1868,6447,false,false,whisperkit-small-silero-vad,whisperkit-small
+20260409_134309_211,2026-04-09T13:43:09.211070-04:00,Turn the speaker on.,other,5087,1494,330,1874,7292,true,false,whisperkit-small-silero-vad,whisperkit-small
+20260409_134323_971,2026-04-09T13:43:23.971005-04:00,"VAD early trigger — 2.4 s audio collected (speech=1312 ms, silence=928 ms)",other,4273,1825,,,4320,true,false,whisperkit-small-silero-vad,whisperkit-small
+20260409_134435_751,2026-04-09T13:44:35.751126-04:00,Play WNYC.,radio,4649,1625,,,7804,false,false,whisperkit-small-silero-vad,whisperkit-small
+20260409_210055_894,2026-04-09T21:00:55.894075-04:00,[water splashing],other,461593,2914,,,461593,false,true,whisperkit-small-silero-vad,whisperkit-small
+20260410_003837_809,2026-04-10T00:38:37.809448-04:00,in that serious that whatever that was right really I was like that's a really great way to be like like a playfulness and he kind of also - Yeah.,other,15709,1266,392,10079,26181,true,false,whisperkit-small-silero-vad,whisperkit-small
+20260410_003906_392,2026-04-10T00:39:06.392658-04:00,,other,5427,1838,,,6009,true,false,whisperkit-small-silero-vad,whisperkit-small
+20260410_171300_019,2026-04-10T17:13:00.019658-04:00,Turn on the speaker.,home,5433,1508,393,1880,7707,,false,whisperkit-small-silero-vad,whisperkit-small
+20260410_171310_307,2026-04-10T17:13:10.307289-04:00,"VAD early trigger — 2.7 s audio collected (speech=1120 ms, silence=928 ms)",other,4485,1790,,,6211,true,false,whisperkit-small-silero-vad,whisperkit-small
+20260410_171930_846,2026-04-10T17:19:30.846809-04:00,,other,6494,2786,,,6624,,false,whisperkit-small-silero-vad,whisperkit-small
+20260410_172158_812,2026-04-10T17:21:58.812104-04:00,Play KEXP,radio,5552,2565,,,19620,,false,whisperkit-small-silero-vad,whisperkit-small
+20260410_172716_303,2026-04-10T17:27:16.303277-04:00,,other,5950,3410,,,6889,true,true,whisperkit-small-silero-vad,whisperkit-small
+20260410_173003_901,2026-04-10T17:30:03.901077-04:00,,other,5103,2492,,,5236,false,true,whisperkit-small-silero-vad,whisperkit-small
+20260410_191951_347,2026-04-10T19:19:51.347272-04:00,Plankie exp,other,5192,1717,129,2434,7755,false,true,whisperkit-small-silero-vad,whisperkit-small
+20260410_192004_369,2026-04-10T19:20:04.369779-04:00,,other,5470,1859,,,6698,false,false,whisperkit-small-silero-vad,whisperkit-small
+20260410_192747_188,2026-04-10T19:27:47.188946-04:00,Play KCRW.,radio,6135,1069,,,17267,,true,whisperkit-small-silero-vad,whisperkit-small
+20260410_193320_118,2026-04-10T19:33:20.118211-04:00,,other,7161,2831,,,7272,true,false,whisperkit-small-silero-vad,whisperkit-small
+20260410_194144_532,2026-04-10T19:41:44.532418-04:00,Play KEXP,radio,5444,1317,,,6372,false,true,whisperkit-small-silero-vad,whisperkit-small
+20260410_194927_640,2026-04-10T19:49:27.640794-04:00,"Come on, boss.",other,4504,1639,153,4294,8953,false,true,whisperkit-small-silero-vad,whisperkit-small
+20260410_201503_156,2026-04-10T20:15:03.156462-04:00,Play KEXP.,radio,4858,936,,,6017,true,false,whisperkit-small-silero-vad,whisperkit-small
+20260410_203955_421,2026-04-10T20:39:55.421697-04:00,,other,5055,2354,,,5118,false,true,whisperkit-small-silero-vad,whisperkit-small
+20260410_204026_798,2026-04-10T20:40:26.798286-04:00,Play WQBR.,music,4521,1167,,,6538,false,true,whisperkit-small-silero-vad,whisperkit-small
+20260410_204036_993,2026-04-10T20:40:36.993271-04:00,PlayWQXR,radio,5385,966,63,2381,7831,false,true,whisperkit-small-silero-vad,whisperkit-small
+20260410_204048_543,2026-04-10T20:40:48.543654-04:00,PlayWQXR,radio,4490,761,13,2437,6942,false,false,whisperkit-small-silero-vad,whisperkit-small
+20260410_204057_728,2026-04-10T20:40:57.728584-04:00,Play Elefant's Gerald.,music,4593,1042,,,6132,false,false,whisperkit-small-silero-vad,whisperkit-small
+20260410_215733_766,2026-04-10T21:57:33.766831-04:00,,other,7005,3045,,,7120,false,true,whisperkit-small-silero-vad,whisperkit-small
+20260410_223912_568,2026-04-10T22:39:12.568108-04:00,,other,8079,5064,,,9064,true,false,whisperkit-small-silero-vad,whisperkit-small
+20260410_224220_896,2026-04-10T22:42:20.896082-04:00,(water splashing),other,6101,3123,,,6265,false,true,whisperkit-small-silero-vad,whisperkit-small
+20260410_234622_915,2026-04-10T23:46:22.915512-04:00,pause,other,164346,2603,,,164346,false,true,whisperkit-small-silero-vad,whisperkit-small
+20260411_003019_896,2026-04-11T00:30:19.896920-04:00,Stop.,other,5201,2156,,,5869,true,false,whisperkit-small-silero-vad,whisperkit-small
+20260411_165018_035,2026-04-11T16:50:18.035650-04:00,Turn the speaker on.,other,4133,1432,290,1793,6216,true,false,whisperkit-small-silero-vad,whisperkit-small
+20260411_185204_415,2026-04-11T18:52:04.415597-04:00,Play WQXR.,radio,6236,1297,,,8312,true,false,whisperkit-small-silero-vad,whisperkit-small
+20260411_185630_529,2026-04-11T18:56:30.529502-04:00,Play KX,music,4885,982,,,5625,true,false,whisperkit-small-silero-vad,whisperkit-small
+20260411_185636_472,2026-04-11T18:56:36.472214-04:00,Play WQXR.,radio,6339,977,,,7159,false,true,whisperkit-small-silero-vad,whisperkit-small
+20260411_185659_317,2026-04-11T18:56:59.317354-04:00,play KCRW,radio,5767,725,,,6850,false,true,whisperkit-small-silero-vad,whisperkit-small
+20260411_195231_790,2026-04-11T19:52:31.790043-04:00,,other,6185,2275,,,6709,false,true,whisperkit-small-silero-vad,whisperkit-small
+20260411_204949_183,2026-04-11T20:49:49.183965-04:00,,other,4146,2191,,,4272,false,true,whisperkit-small-silero-vad,whisperkit-small
+20260412_000804_166,2026-04-12T00:08:04.166428-04:00,,other,5822,2189,,,6398,true,false,whisperkit-small-silero-vad,whisperkit-small
+20260412_123828_098,2026-04-12T12:38:28.098044-04:00,Turn the speaker on.,other,4563,2192,315,2209,7089,true,false,whisperkit-small-silero-vad,whisperkit-small
+20260412_195210_536,2026-04-12T19:52:10.536931-04:00,Play WQXR.,radio,5464,1417,,,7157,true,false,whisperkit-small-silero-vad,whisperkit-small
+20260412_202951_718,2026-04-12T20:29:51.718252-04:00,"Stop. I just want to watch the end of this game. I'll... I'll... Oh, yeah, okay. I'll just... I'll just... the beast was so... Yeah, yeah. No, I'll do the... I'll do the thing. Yeah. So...",other,17665,1708,286,13977,31929,false,true,whisperkit-small-silero-vad,whisperkit-small
+20260412_224105_651,2026-04-12T22:41:05.651441-04:00,,other,5071,2271,,,5163,false,false,whisperkit-small-silero-vad,whisperkit-small
+20260412_225933_611,2026-04-12T22:59:33.611017-04:00,Stop.,other,5939,2265,,,6667,false,false,whisperkit-small-silero-vad,whisperkit-small
+20260413_065951_364,2026-04-13T06:59:51.364310-04:00,to another fight,other,4398,1492,128,2703,7231,true,false,whisperkit-small-silero-vad,whisperkit-small
+20260413_070114_072,2026-04-13T07:01:14.072153-04:00,Turn on the light.,home,4629,1644,288,2089,7006,true,false,whisperkit-small-silero-vad,whisperkit-small
+20260413_130631_239,2026-04-13T13:06:31.239986-04:00,Turn the speaker on.,other,5436,1581,338,1964,7738,true,false,whisperkit-small-silero-vad,whisperkit-small
+20260413_130702_908,2026-04-13T13:07:02.908691-04:00,Play WNYC.,radio,4371,1314,,,6855,true,false,whisperkit-small-silero-vad,whisperkit-small
+20260413_183315_811,2026-04-13T18:33:15.811443-04:00,Play WNYC.,radio,5195,1132,,,6853,true,false,whisperkit-small-silero-vad,whisperkit-small
+20260413_185036_467,2026-04-13T18:50:36.467504-04:00,PlayWNYC,radio,6741,1006,343,2519,9603,true,false,whisperkit-small-silero-vad,whisperkit-small
+20260413_185053_915,2026-04-13T18:50:53.915351-04:00,,other,5601,2559,,,6750,false,false,whisperkit-small-silero-vad,whisperkit-small
+20260413_185128_800,2026-04-13T18:51:28.800791-04:00,,other,5916,2981,,,6988,false,true,whisperkit-small-silero-vad,whisperkit-small
+20260413_192030_544,2026-04-13T19:20:30.544214-04:00,play WNYC,radio,7073,1152,,,8217,true,false,whisperkit-small-silero-vad,whisperkit-small
+20260413_193220_110,2026-04-13T19:32:20.110772-04:00,effect. Play WFMU.,radio,6408,1828,55,2512,8976,false,true,whisperkit-small-silero-vad,whisperkit-small
+20260413_193231_057,2026-04-13T19:32:31.057333-04:00,Please type WFMU.,radio,5736,1687,58,3082,8876,false,false,whisperkit-small-silero-vad,whisperkit-small
+20260413_193245_035,2026-04-13T19:32:45.035388-04:00,,other,5100,2670,,,5878,false,false,whisperkit-small-silero-vad,whisperkit-small
+20260413_195800_187,2026-04-13T19:58:00.187974-04:00,Play WQXR.,radio,6986,2031,,,9396,false,true,whisperkit-small-silero-vad,whisperkit-small
+20260413_225139_063,2026-04-13T22:51:39.063949-04:00,,other,15363,6539,105,4555,20024,true,false,whisperkit-small-silero-vad,whisperkit-small
+20260413_225240_371,2026-04-13T22:52:40.371531-04:00,"Okay Naboo, goodnight!",home,17879,6188,,,19260,true,false,whisperkit-small-silero-vad,whisperkit-small
+20260414_084229_230,2026-04-14T08:42:29.230312-04:00,"Well, if you don't, I know someone that could do it for you. Pretty cheap. It's a special price.",other,10833,1650,110,2426,13369,false,false,whisperkit-small-silero-vad,whisperkit-small
+20260414_132916_171,2026-04-14T13:29:16.171898-04:00,Turn the speaker on.,other,4868,1362,316,1948,7134,true,false,whisperkit-small-silero-vad,whisperkit-small
+20260414_132929_466,2026-04-14T13:29:29.466391-04:00,Play WNYC.,radio,4076,1036,,,5380,false,false,whisperkit-small-silero-vad,whisperkit-small
+20260414_193408_498,2026-04-14T19:34:08.498508-04:00,,other,5693,2746,,,6515,false,true,whisperkit-small-silero-vad,whisperkit-small
+20260414_205011_173,2026-04-14T20:50:11.173537-04:00,,other,5402,2532,,,5773,false,true,whisperkit-small-silero-vad,whisperkit-small
