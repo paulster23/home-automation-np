@@ -46,6 +46,16 @@ Root cause: stale `/tmp/librespot.fifo` left behind from the failed FIFO-based a
 ### ~~Naboo silent after pipeline recovery~~ — ✅ Fixed (2026-04-10)
 ffmpeg broken pipe left serve_http.py alive (port 8765 open), so watchdog passed but pipeline was dead. Pre-mute automation fired when naboo went idle. On pipeline restart, MA radio play has no unmute path. Two fixes: (1) added ffmpeg process check to `watchdog.sh`; (2) added `naboo_unmute_on_play` automation — fires on any naboo → playing transition while amp is muted.
 
+### Fix librespot FIFO crash loop — P1 URGENT (recurrence 2026-04-15)
+`/tmp/librespot.fifo` has reappeared on disk (second occurrence — first was 2026-04-09). `librespot--stream.log` is full of `Error opening output file /tmp/librespot.fifo. File already exists. Exiting.` — pipeline is in crash loop since 2026-04-10T21:26:47Z. **Spotify voice commands are broken.**
+Fix: `rm -f /tmp/librespot.fifo` then reload plists from repo (see OPS_RUNBOOK.md → Librespot pipeline troubleshooting).
+**Permanent fix:** Add `rm -f /tmp/librespot.fifo` as first line of `home-automation/librespot/run.sh` to prevent recurrence. Commit + reload plists.
+*Discovered 2026-04-15*
+
+### Verify/fix assist_satellite.abort in HA 2026.4 — P1 URGENT
+`voice_abort_pipeline_if_listening_phase_exceeds_15_seconds` automation is failing with `Action assist_satellite.abort not found`. Broken since at least Apr 13 (two failures logged). This is the ONLY protection against multi-minute listening hangs (worst observed: 461s). Check HA 2026.4 changelog for service rename — look under Developer Tools → Actions for current `assist_satellite` service names. Update automation accordingly and verify manually.
+*Discovered 2026-04-15*
+
 ### Stop/remove idle Docker whisper container — P7 (hygiene)
 Apr 2 report: faster-whisper container has had zero transcription requests since Mar 15. WhisperKit (port 7892) is the active STT backend. The container is profile-gated (`profiles: [stt]`) so it's not consuming RAM, but it's dead weight. Once WhisperKit has been stable for another week, remove the `whisper` service definition from compose or comment it out. Update `SYSTEM_CONTEXT.md` accordingly.
 
@@ -109,3 +119,5 @@ Frigate 0.17 only supports the `default` key under `max_frames` — per-object k
 - [x] ~~Move speedtest-tracker APP_KEY to secrets file~~ — **Done 2026-03-28** (tracked in infra/TODO.md completed section)
 - [ ] Tailscale for remote access — access services away from home without port forwarding
 - [ ] Frigate CoreML detection — Apple Neural Engine path (currently using ZMQ via FrigateDetector.app)
+- [ ] Tune Silero-VAD silence threshold from 900ms → 700ms — median listening time is 5,470ms (dominant latency source); ~200ms win on short commands. Test with voice-bench before committing. *Suggested 2026-04-15*
+- [ ] Add WFMU mishearing corrections: "Please type WFMU" and "effect. Play WFMU" — WhisperKit misheard Play WFMU twice on Apr 13. Add to PlayCallSign aliases or add preprocessing to strip leading noise tokens before station matching. *Discovered 2026-04-15*

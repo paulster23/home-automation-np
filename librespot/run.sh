@@ -26,6 +26,11 @@ LIBRESPOT="/opt/homebrew/bin/librespot"
 FFMPEG="/opt/homebrew/bin/ffmpeg"
 PYTHON="/usr/bin/python3"
 
+# Guard against stale FIFO from failed architecture attempts or reboots that
+# don't clear /tmp. ffmpeg refuses to overwrite an existing file at its output
+# path, so any leftover FIFO causes an immediate crash loop.
+rm -f /tmp/librespot.fifo
+
 echo "$(date -u +"%Y-%m-%dT%H:%M:%SZ") Starting librespot pipeline" >> "$LOG_DIR/run.log"
 
 exec "$LIBRESPOT" \
