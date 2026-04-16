@@ -1,6 +1,6 @@
 # Home Automation — To-Do List
 
-*Last updated: 2026-04-10*
+*Last updated: 2026-04-16*
 
 ---
 
@@ -46,15 +46,11 @@ Root cause: stale `/tmp/librespot.fifo` left behind from the failed FIFO-based a
 ### ~~Naboo silent after pipeline recovery~~ — ✅ Fixed (2026-04-10)
 ffmpeg broken pipe left serve_http.py alive (port 8765 open), so watchdog passed but pipeline was dead. Pre-mute automation fired when naboo went idle. On pipeline restart, MA radio play has no unmute path. Two fixes: (1) added ffmpeg process check to `watchdog.sh`; (2) added `naboo_unmute_on_play` automation — fires on any naboo → playing transition while amp is muted.
 
-### Fix librespot FIFO crash loop — P1 URGENT (recurrence 2026-04-15)
-`/tmp/librespot.fifo` has reappeared on disk (second occurrence — first was 2026-04-09). `librespot--stream.log` is full of `Error opening output file /tmp/librespot.fifo. File already exists. Exiting.` — pipeline is in crash loop since 2026-04-10T21:26:47Z. **Spotify voice commands are broken.**
-Fix: `rm -f /tmp/librespot.fifo` then reload plists from repo (see OPS_RUNBOOK.md → Librespot pipeline troubleshooting).
-**Permanent fix:** Add `rm -f /tmp/librespot.fifo` as first line of `home-automation/librespot/run.sh` to prevent recurrence. Commit + reload plists.
-*Discovered 2026-04-15*
+### ~~Fix librespot FIFO crash loop~~ — ✅ Fixed (2026-04-15, second occurrence)
+`/tmp/librespot.fifo` reappeared on disk (second occurrence — first was 2026-04-09). Pipeline was in crash loop since 2026-04-10T21:26:47Z. Fix applied: `rm -f /tmp/librespot.fifo` + killed stale processes + reloaded plists. **Permanent fix:** Added `rm -f /tmp/librespot.fifo` guard (with comment) to `home-automation/librespot/run.sh` — runs on every pipeline start before ffmpeg launches, preventing recurrence regardless of cause. Committed to home-automation repo.
 
-### Verify/fix assist_satellite.abort in HA 2026.4 — P1 URGENT
-`voice_abort_pipeline_if_listening_phase_exceeds_15_seconds` automation is failing with `Action assist_satellite.abort not found`. Broken since at least Apr 13 (two failures logged). This is the ONLY protection against multi-minute listening hangs (worst observed: 461s). Check HA 2026.4 changelog for service rename — look under Developer Tools → Actions for current `assist_satellite` service names. Update automation accordingly and verify manually.
-*Discovered 2026-04-15*
+### ~~Verify/fix assist_satellite.abort in HA 2026.4~~ — ✅ Fixed (2026-04-15)
+`assist_satellite.abort` was never a real HA action (confirmed via Developer Tools → Actions — not present). Automation `voice_listening_timeout` completely rewritten: fires `persistent_notification.create` at 15s warn and at 60s urgent alert directing manual intervention. Hard restart not implemented: `esphome.home_assistant_voice_0a3a76_restart` action doesn't exist in this firmware, and no restart button entity is exposed (confirmed via template query of all ESPHome entities). To enable hard restart: upgrade ESPHome Voice PE firmware to a version that exposes the restart action. Automation committed via `git add -f homeassistant/automations.yaml`.
 
 ### Stop/remove idle Docker whisper container — P7 (hygiene)
 Apr 2 report: faster-whisper container has had zero transcription requests since Mar 15. WhisperKit (port 7892) is the active STT backend. The container is profile-gated (`profiles: [stt]`) so it's not consuming RAM, but it's dead weight. Once WhisperKit has been stable for another week, remove the `whisper` service definition from compose or comment it out. Update `SYSTEM_CONTEXT.md` accordingly.
@@ -102,7 +98,7 @@ Frigate 0.17 only supports the `default` key under `max_frames` — per-object k
 - [x] **Fix voice-bench port 7700 binding** — ✅ Fixed 2026-04-10. LaunchAgent was in a broken launchd domain state (bootout/unload both returned I/O error 5). Port was already free by the time we diagnosed — previous crash loop had died. `launchctl bootstrap gui/501` brought it back up cleanly. Also fixed a related bug: VAD early-trigger log lines (INFO level, same logger as transcription) were being captured as the transcript text in the CSV. Fixed by adding `not m.group(1).startswith("VAD ")` guard in `voice_bench.py` tail_whisper_log().
 - [ ] **voice-bench (no transcription) for radio commands** — P8/low. VAD early-trigger path produces two WhisperKit transcriptions per command (real text ~2s wall, blank ~1s wall). Session finalizer races the slower result. Multiple fix attempts broke MA muting. Decided to defer — latency and hang tracking still work, transcription text field unreliable for radio commands. Candidate for deprecation.
 - [ ] **Investigate Apr 8 listening-phase hangs** — Discovered 2026-04-10. Four listening hangs of 120-168s clustered between 14:07-19:21 on Apr 8. Main blocker to <7s voice KPI. Possible causes: ESPHome Voice PE firmware issue, WiFi micro-disconnect, or mic driver stuck state. Check HA ESPHome logs for that timeframe.
-- [x] **Add listening-phase timeout** — ✅ Fixed 2026-04-10. Added `voice_listening_timeout` automation: aborts pipeline via `assist_satellite.abort` if satellite stays in `listening` for 15+ seconds. Covers ambient noise hangs (worst observed: 461s). HA automation approach used instead of ESPHome reflash — same effect, no firmware change needed.
+- [x] **Add listening-phase timeout** — ✅ Fixed 2026-04-10, rewritten 2026-04-15. `voice_listening_timeout` automation fires `persistent_notification` at 15s (warn) and 60s (urgent + manual intervention instructions). Original used `assist_satellite.abort` which never existed — replaced. Hard restart not possible without ESPHome firmware exposing a restart action. Covers ambient noise hangs (worst observed: 461s).
 - [x] **Switch STT backend to WhisperKit** — ✅ Complete (2026-03-29). Wyoming wrapper at `home-automation/wyoming-whisperkit/`, port 7892, Silero-VAD enabled. Active as of 2026-03-29 — voice-bench config tag `whisperkit-small-silero-vad` confirms. Benchmarked at 0.85s; real-world STT averaging ~1.1s on radio commands (vs 3–5s with mlx-whisper). Fallback: Wyoming → port 7891 (mlx-whisper still installed).
 - [x] **Librespot "Naboo" watchdog + serve_http.py crash loop fix** — ✅ Complete (2026-03-30/31). Two fixes:
   1. `watchdog.sh` + `com.librespot.naboo-watchdog.plist` — checks every 5 min: (1) librespot process alive, (2) port 8765 open; restarts via `launchctl kickstart -k`. Installed and confirmed catching real failures.
