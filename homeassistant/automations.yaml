@@ -163,6 +163,10 @@
       for:
         seconds: 15
   action:
+    - condition: template
+      value_template: >
+        {{ states('assist_satellite.home_assistant_voice_0a3a76_assist_satellite')
+           not in ['unavailable', 'unknown'] }}
     - action: assist_satellite.abort
       target:
         entity_id: assist_satellite.home_assistant_voice_0a3a76_assist_satellite
