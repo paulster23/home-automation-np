@@ -153,7 +153,7 @@
 #    On abort, the satellite returns to idle and the mute automations clean up
 #    normally (voice_unmute_after_listening fires on listening → idle transition).
 - id: voice_listening_timeout
-  alias: "Voice – Abort pipeline if listening phase exceeds 15 seconds"
+  alias: "Voice – Recover Naboo if stuck in listening for too long"
   mode: single
   max_exceeded: silent
   trigger:
@@ -162,14 +162,44 @@
       to: "listening"
       for:
         seconds: 15
+      id: warn
+    - platform: state
+      entity_id: assist_satellite.home_assistant_voice_0a3a76_assist_satellite
+      to: "listening"
+      for:
+        seconds: 60
+      id: restart
   action:
-    - condition: template
-      value_template: >
-        {{ states('assist_satellite.home_assistant_voice_0a3a76_assist_satellite')
-           not in ['unavailable', 'unknown'] }}
-    - action: assist_satellite.abort
-      target:
-        entity_id: assist_satellite.home_assistant_voice_0a3a76_assist_satellite
+    # At 15s: create a persistent notification so the hang is visible in HA.
+    # The pipeline will usually self-recover when ESPHome's own VAD timeout
+    # fires (~30s). If not, the 60s trigger below restarts the device.
+    - if:
+        - condition: trigger
+          id: warn
+      then:
+        - action: persistent_notification.create
+          data:
+            notification_id: naboo_listening_hang
+            title: "Naboo listening hang"
+            message: >
+              Naboo has been in "listening" for 15+ seconds
+              ({{ now().strftime('%H:%M:%S') }}). Pipeline may be stuck.
+              Will restart device if still listening at 60s.
+    # At 60s: device is genuinely stuck. Restart Naboo via ESPHome action.
+    # This causes a ~5s reboot but is the only reliable remote abort.
+    - if:
+        - condition: trigger
+          id: restart
+      then:
+        - action: persistent_notification.create
+          data:
+            notification_id: naboo_listening_hang
+            title: "Naboo listening hang — restarting device"
+            message: >
+              Naboo stuck in "listening" for 60s
+              ({{ now().strftime('%H:%M:%S') }}). Restarting device to recover.
+        - action: esphome.home_assistant_voice_0a3a76_restart
+          data: {}
 
 # 6. VAD SENSITIVITY: set Naboo's "Finished speaking detection" to "relaxed"
 #    on every HA startup and every time the device reconnects.
