@@ -207,52 +207,12 @@ services:
   # ──────────────────────────────────────────────
   # Whisper — general-purpose local speech-to-text
   # Uses OpenAI's Whisper model (tiny.en) to transcribe
-  # arbitrary speech — including open-ended commands like
-  # "play the breeders" that Speech-to-Phrase can't handle.
-  # tiny.en: ~150MB RAM, fast on M1, English-only.
-  # Port is internal-only — HA connects via Docker network
-  # using container name "whisper" (verified in core.config_entries)
-  #
-  # ⚠️  INACTIVE — STT is now handled by native wyoming-mlx-whisper
-  #     running on the macOS host (LaunchAgent). Uses zero Docker RAM.
-  #     Kept here as a fallback in case native MLX Whisper breaks.
-  #     To restore: docker compose --profile stt up -d whisper
-  # ──────────────────────────────────────────────
-  whisper:
-    container_name: whisper
-    image: rhasspy/wyoming-whisper:latest
-    profiles: [stt]
-    platform: linux/arm64
-    restart: unless-stopped
-    security_opt:
-      - no-new-privileges:true
-    expose:
-      - "10300"       # Internal only — HA uses whisper:10300 via Docker network
-    volumes:
-      - whisper-data:/data
-    environment:
-      TZ: America/New_York
-    command: --model tiny.en --language en --compute-type int8
-    networks:
-      - home-automation
-    healthcheck:
-      test: ["CMD-SHELL", "nc -z 127.0.0.1 10300 || exit 1"]
-      interval: 30s
-      timeout: 5s
-      retries: 3
-      start_period: 30s
-    deploy:
-      resources:
-        limits:
-          memory: 768m    # tiny.en peaks ~400-500 MB during transcription on ARM64
-          cpus: "2.0"     # bumped from 1.0 — Whisper STT was taking 15-17s per transcription
-        reservations:
-          memory: 256m
-    logging:
-      driver: "json-file"
-      options:
-        max-size: "10m"
-        max-file: "3"
+  # whisper container removed 2026-04-22 — inactive since 2026-03-15.
+  # STT is handled by native wyoming-whisperkit (LaunchAgent, port 7892).
+  # Fallback is wyoming-mlx-whisper (LaunchAgent, port 7891).
+  # To restore Docker whisper if both native backends fail:
+  #   git show HEAD~1:home-automation/docker-compose.yml | grep -A40 'whisper:'
+  #   docker compose --profile stt up -d whisper
 
 # ──────────────────────────────────────────────
 # Shared Docker network — all services can reach
@@ -266,7 +226,8 @@ networks:
 # Named volumes for voice models (downloaded on first run)
 # ──────────────────────────────────────────────
 volumes:
-  whisper-data:
+  # whisper-data volume removed 2026-04-22 with whisper service.
+  # Run `docker volume rm home-automation_whisper-data` to reclaim disk space.
 
 # ──────────────────────────────────────────────
 # Secrets — API keys and credentials stored outside the compose file

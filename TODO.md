@@ -1,6 +1,6 @@
 # Home Automation — To-Do List
 
-*Last updated: 2026-04-16*
+*Last updated: 2026-04-22*
 
 ---
 
@@ -52,8 +52,17 @@ ffmpeg broken pipe left serve_http.py alive (port 8765 open), so watchdog passed
 ### ~~Verify/fix assist_satellite.abort in HA 2026.4~~ — ✅ Fixed (2026-04-15)
 `assist_satellite.abort` was never a real HA action (confirmed via Developer Tools → Actions — not present). Automation `voice_listening_timeout` completely rewritten: fires `persistent_notification.create` at 15s warn and at 60s urgent alert directing manual intervention. Hard restart not implemented: `esphome.home_assistant_voice_0a3a76_restart` action doesn't exist in this firmware, and no restart button entity is exposed (confirmed via template query of all ESPHome entities). To enable hard restart: upgrade ESPHome Voice PE firmware to a version that exposes the restart action. Automation committed via `git add -f homeassistant/automations.yaml`.
 
-### Stop/remove idle Docker whisper container — P7 (hygiene)
-Apr 2 report: faster-whisper container has had zero transcription requests since Mar 15. WhisperKit (port 7892) is the active STT backend. The container is profile-gated (`profiles: [stt]`) so it's not consuming RAM, but it's dead weight. Once WhisperKit has been stable for another week, remove the `whisper` service definition from compose or comment it out. Update `SYSTEM_CONTEXT.md` accordingly.
+### ~~Remove spotcast integration~~ — ✅ Done 2026-04-22
+Removed via HACS. `configuration.yaml` spotcast block was already commented out. `secrets.yaml` spotcast keys removed. No HA restart required (no active config block). *Discovered and resolved 2026-04-22*
+
+### ~~Investigate HA unexpected restart (Apr 20 23:17 UTC)~~ — ✅ Investigated 2026-04-22, not a bug
+MA did a clean Docker restart at 23:17:04 (`shutdown requested!` in MA log — graceful). HA's MA client logged `Server disconnected` at 23:17:05; ESPHome's Naboo cascade-errored mid-stream (`Reader failed with connection error`, `Media source is in error state`). HA's s6-rc restarted at 23:17:49 in response to the ESPHome cascade, not due to OOM or crash. Unclean SQLite session (id=115, from 2026-04-18 02:08:40) was pre-existing from the Apr 18 librespot FIFO cluster, not from this event. ESPHome `Reader timed out` at 23:20 is Naboo reconnecting post-restart — expected. Recurring MA WebSocket disconnects (Apr 21 07:31, Apr 22 15:41) are MA periodic restarts, normal. No action needed.
+
+### Wyze DNS timeouts still occurring post-fix — MEDIUM
+Wyze `api.wyzecam.com` DNS timeouts resumed at 2026-04-19 18:43 ET, within 12 minutes of gluetun VPN reconnect at 18:29-31 ET. The DNS fix (1.1.1.1/8.8.8.8 pinned in HA's compose) was applied 2026-04-09 and eliminated the baseline Wyze timeout rate. New hypothesis: gluetun VPN reconnect events create a transient DNS gap even for containers using direct resolvers — possibly due to Docker network bridge reconfiguration during reconnect. Correlate future Wyze timeout bursts against gluetun reconnect timestamps in `infra/log-reports/gluetun.log`. If confirmed, may need to add a post-reconnect delay or health-gate in gluetun config. *Discovered 2026-04-22*
+
+### ~~Stop/remove idle Docker whisper container~~ — ✅ Done 2026-04-22
+Service definition removed from `docker-compose.yml`. WhisperKit stable since 2026-03-29 (nearly a month). `whisper-data` volume declaration also removed. Run `docker volume rm home-automation_whisper-data` to reclaim the ~150MB disk space the model data occupies. Fallback path restored in a comment in compose.
 
 ### Frigate: per-object max_frames for car
 Frigate 0.17 only supports the `default` key under `max_frames` — per-object keys (e.g. `car: 150`) cause a schema validation error. Options:
