@@ -29,7 +29,24 @@ PYTHON="/usr/bin/python3"
 # Guard against stale FIFO from failed architecture attempts or reboots that
 # don't clear /tmp. ffmpeg refuses to overwrite an existing file at its output
 # path, so any leftover FIFO causes an immediate crash loop.
+#
+# This has occurred three times (2026-04-09, 2026-04-15, 2026-04-18). Root cause:
+# com.librespot.naboo-http.plist is a dead artifact from the Apr 2 FIFO architecture.
+# If it is still loaded in ~/Library/LaunchAgents/, remove it:
+#   launchctl unload ~/Library/LaunchAgents/com.librespot.naboo-http.plist
+#   rm ~/Library/LaunchAgents/com.librespot.naboo-http.plist
+#   rm -f /tmp/librespot.fifo
+# macOS /private/tmp survives reboots (cleaned by daily periodic only), so any
+# FIFO created during debugging can persist indefinitely without this guard.
 rm -f /tmp/librespot.fifo
+
+# Verify no competing process has recreated the FIFO between the rm and exec.
+# If something recreates it (e.g. a stale loaded plist), abort immediately with
+# a clear error rather than entering a silent crash loop.
+if [ -e /tmp/librespot.fifo ]; then
+  echo "$(date -u +"%Y-%m-%dT%H:%M:%SZ") FATAL: /tmp/librespot.fifo was recreated after rm -f — stale plist likely loaded. Run: launchctl unload ~/Library/LaunchAgents/com.librespot.naboo-http.plist && rm ~/Library/LaunchAgents/com.librespot.naboo-http.plist && rm -f /tmp/librespot.fifo" >> "$LOG_DIR/run.log"
+  exit 1
+fi
 
 echo "$(date -u +"%Y-%m-%dT%H:%M:%SZ") Starting librespot pipeline" >> "$LOG_DIR/run.log"
 
