@@ -194,7 +194,7 @@ services:
     deploy:
       resources:
         limits:
-          memory: 512m    # raised from 384m (2026-04-13) — avg 90%, peak 99.3% of 384m; persistent OOM risk over 3 weekly reports
+          memory: 640m    # raised from 512m (2026-04-25) — avg 72%, peak 99.5% of 512m; flagged 3 consecutive weekly reports
           cpus: "1.0"
         reservations:
           memory: 64m
@@ -225,9 +225,8 @@ networks:
 # ──────────────────────────────────────────────
 # Named volumes for voice models (downloaded on first run)
 # ──────────────────────────────────────────────
-volumes:
-  # whisper-data volume removed 2026-04-22 with whisper service.
-  # Run `docker volume rm home-automation_whisper-data` to reclaim disk space.
+# volumes block removed — whisper-data volume removed 2026-04-22 with whisper service.
+# Run `docker volume rm home-automation_whisper-data` to reclaim disk space if not already done.
 
 # ──────────────────────────────────────────────
 # Secrets — API keys and credentials stored outside the compose file

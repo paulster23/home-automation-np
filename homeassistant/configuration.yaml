@@ -2,6 +2,21 @@
 # Loads default set of integrations. Do not remove.
 default_config:
 
+# ── Reverse proxy (Caddy) ──────────────────────────────────────────────────────
+# Allows HA to accept connections proxied through Caddy at /ha/.
+# use_x_forwarded_for: trust X-Forwarded-For headers from Caddy.
+# trusted_proxies: Caddy container IP + Docker bridge range.
+# use_x_frame_options: false allows HA frontend to load in iframes (e.g. dashboards).
+http:
+  use_x_forwarded_for: true
+  trusted_proxies:
+    - 172.17.0.0/16
+    - 172.18.0.0/16
+    - 172.19.0.0/16
+    - 172.20.0.0/16
+  use_x_frame_options: false
+  server_host: "0.0.0.0"
+
 
 # Load frontend themes from the themes folder
 frontend:
@@ -105,7 +120,7 @@ intent_script:
           - conditions:
               - >-
                 {{ artist | lower | replace('-','') | replace(' ','')
-                   in ['kexp','wfmu','kcrw','wqxr','wnyc',
+                   in ['kexp','wfmu','kcrw','wqxr','wnyc','wbgo',
                         'wsmu','wbmu','wfmyou'] }}
             sequence:
               # Stop Spotify so it doesn't reassert over the radio stream
@@ -336,6 +351,11 @@ intent_script:
           entity_id: media_player.home_assistant_voice_0a3a76_media_player
         data:
           is_volume_muted: false
+      # Pause Spotify on the Naboo device so librespot_stream_resilience
+      # doesn't see spotify_paulster23 still "playing" and immediately
+      # reconnect the HTTP stream, undoing the stop command.
+      - action: spotify_voice_assistant.pause
+        continue_on_error: true
       - action: media_player.media_stop
         target:
           entity_id: media_player.naboo_media_player
