@@ -73,12 +73,12 @@ cameras:
         inertia: 3
         loitering_time: 0
       sidewalk:
-        coordinates: 0,0.335,1,0.476,1,0.846,0,0.587
+        coordinates: 0,0.434,1,0.683,1,1,0,0.678
         objects: person
         inertia: 3
         loitering_time: 0
       active_street:
-        coordinates: 0,0.166,1,0.297,1,0.535,0,0.34
+        coordinates: 0,0.166,1,0.297,1,0.685,0,0.436
         objects: car
         inertia: 3
         loitering_time: 0
@@ -93,7 +93,7 @@ cameras:
           - sidewalk
           - active_street
     motion:
-      mask: 1,0,1,0.295,0,0.164,0,0
+      mask: 1,0,1,0.352,0,0.144,0,0
 objects:
   track:
     - person

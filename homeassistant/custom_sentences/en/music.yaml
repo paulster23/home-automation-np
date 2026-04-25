@@ -30,6 +30,8 @@ lists:
       - "w q x r"
       - wnyc        # WNYC NYC public radio
       - "w n y c"
+      - wbgo        # WBGO NYC jazz 88.3
+      - "w b g o"
 
   genre:
     values:

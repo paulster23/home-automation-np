@@ -1187,3 +1187,16 @@ Error opening output file http://0.0.0.0:8765.
 [out#0/mp3 @ 0xa84c24180] Error closing file: Broken pipe
 [out#0/mp3 @ 0x8ec80c180] Error writing trailer: Broken pipe
 [out#0/mp3 @ 0x8ec80c180] Error closing file: Broken pipe
+[aost#0:0/libmp3lame @ 0xb6a400000] Error submitting a packet to the muxer: Immediate exit requested
+    Last message repeated 1 times
+[out#0/mp3 @ 0xb6ac24180] Error muxing a packet
+[out#0/mp3 @ 0xb6ac24180] Task finished with error code: -1414092869 (Immediate exit requested)
+[out#0/mp3 @ 0xb6ac24180] Terminating thread with return code -1414092869 (Immediate exit requested)
+[out#0/mp3 @ 0xb6ac24180] Error writing trailer: Immediate exit requested
+[out#0/mp3 @ 0xb6ac24180] Error closing file: Immediate exit requested
+[out#0/mp3 @ 0x9c4c24180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x9c4c24180] Error closing file: Broken pipe
+[out#0/mp3 @ 0x776c20180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x776c20180] Error closing file: Broken pipe
+[out#0/mp3 @ 0xb23028180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xb23028180] Error closing file: Broken pipe
