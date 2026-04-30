@@ -124,6 +124,10 @@ services:
     platform: linux/arm64
     restart: unless-stopped
     # cap_drop: ALL removed — HA uses s6-overlay init system
+    # Entrypoint wrapper: runs patch_hacs.sh before /init to reapply the
+    # startup-timeout patch if HACS updated itself and overwrote base.py.
+    # exec /init ensures s6-overlay remains PID 1. Added 2026-04-30.
+    entrypoint: ["/bin/bash", "-c", "/config/scripts/patch_hacs.sh; exec /init"]
     security_opt:
       - no-new-privileges:true
     depends_on:
