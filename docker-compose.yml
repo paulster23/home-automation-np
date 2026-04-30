@@ -68,7 +68,9 @@ services:
     # Shared memory — increase if you add more cameras
     shm_size: "256mb"
     ports:
-      - "8971:8971"   # Web UI (HTTPS)
+      # 8971 removed — Frigate web UI served exclusively via Caddy reverse proxy
+      # (infra stack). Direct host exposure caused a port binding conflict with
+      # Caddy's 100.101.158.73:8971 binding on macOS Docker Desktop.
       - "8554:8554"   # RTSP re-stream (optional)
     volumes:
       # Config directory — frigate.db lives here
