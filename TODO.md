@@ -1,6 +1,6 @@
 # Home Automation — To-Do List
 
-*Last updated: 2026-04-22*
+*Last updated: 2026-04-29*
 
 ---
 
@@ -67,10 +67,8 @@ Wyze `api.wyzecam.com` DNS timeouts resumed at 2026-04-19 18:43 ET, within 12 mi
 ### ~~Stop/remove idle Docker whisper container~~ — ✅ Done 2026-04-22
 Service definition removed from `docker-compose.yml`. WhisperKit stable since 2026-03-29 (nearly a month). `whisper-data` volume declaration also removed. Run `docker volume rm home-automation_whisper-data` to reclaim the ~150MB disk space the model data occupies. Fallback path restored in a comment in compose.
 
-### Frigate: per-object max_frames for car
-Frigate 0.17 only supports the `default` key under `max_frames` — per-object keys (e.g. `car: 150`) cause a schema validation error. Options:
-- **Wait:** Check if Frigate 0.18+ restores per-object support
-- **Workaround:** Set `max_frames.default` to a lower value (e.g. 500) to affect all objects — trade-off is people also stop tracking sooner
+### ~~Frigate: per-object max_frames for car~~ — ✅ Done 2026-04-29
+Per-object keys under `stationary.max_frames` ARE supported in Frigate 0.17.x — confirmed in docs Apr 2026 (original TODO was wrong). Applied `car: 150` (~30s at 5fps) in `frigate/config.yml`. Container restarted, config loaded clean. People tracking unaffected (still uses `default: 3000`).
 
 ### ~~Spotify voice: optional SpotifyPlus~~
 ~~SpotifyPlus via HACS would unlock advanced queue management and richer search.~~ **Superseded** — MA Spotify removed entirely 2026-03-28. Spotify now runs via librespot + official HA Spotify integration. spotcast removed (v4 broken). SpotifyPlus is no longer applicable.
@@ -127,5 +125,5 @@ Frigate 0.17 only supports the `default` key under `max_frames` — per-object k
 - [x] ~~Move speedtest-tracker APP_KEY to secrets file~~ — **Done 2026-03-28** (tracked in infra/TODO.md completed section)
 - [ ] Tailscale for remote access — access services away from home without port forwarding
 - [ ] Frigate CoreML detection — Apple Neural Engine path (currently using ZMQ via FrigateDetector.app)
-- [ ] Tune Silero-VAD silence threshold from 900ms → 700ms — median listening time is 5,470ms (dominant latency source); ~200ms win on short commands. Test with voice-bench before committing. *Suggested 2026-04-15*
+- [x] ~~Tune Silero-VAD silence threshold from 900ms → 700ms~~ — **Done 2026-04-29.** Edited `VAD_SILENCE_MS` in `wyoming_whisperkit/handler.py` (line 38). LaunchAgent reloaded via `launchctl kickstart`. Monitor voice-bench for clipped transcripts on short commands ("Stop", "Off") — if seen, raise to 800ms.
 - [ ] Add WFMU mishearing corrections: "Please type WFMU" and "effect. Play WFMU" — WhisperKit misheard Play WFMU twice on Apr 13. Add to PlayCallSign aliases or add preprocessing to strip leading noise tokens before station matching. *Discovered 2026-04-15*
