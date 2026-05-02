@@ -24,6 +24,10 @@ lists:
       - "k e x p"
       - wfmu        # WFMU New Jersey freeform
       - "w f m u"
+      - wsmu        # Whisper mishearing of WFMU
+      - wsnu        # Whisper mishearing of WFMU
+      - wbmu        # Whisper mishearing of WFMU
+      - wfmyou      # Whisper mishearing of WFMU
       - kcrw        # KCRW Santa Monica
       - "k c r w"
       - wqxr        # WQXR NYC classical
@@ -168,7 +172,7 @@ intents:
   PlayCallSign:
     data:
       - sentences:
-          - "(play|put on|tune in to) [the] {callsign} [radio]"
+          - "(play|please|put on|tune in to) [the] {callsign} [radio]"
 
   # Seed a Spotify/MA radio from a specific *song* (not an artist).
   # Requires the word "song" to disambiguate from artist radio.

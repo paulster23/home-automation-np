@@ -1,0 +1,83 @@
+radio_play_station:
+  alias: "Play Radio Station with Fallback"
+  description: >
+    Tries each URL for the requested station in order.
+    Announces via assist_satellite TTS if falling back to a backup stream,
+    or if all streams are unreachable.
+  mode: restart
+  fields:
+    station:
+      description: "Normalised call sign (kexp, wfmu, kcrw, wqxr, wnyc, wbgo)"
+      selector:
+        text:
+  variables:
+    station_streams:
+      kexp:
+        - "https://kexp-mp3-128.streamguys1.com/kexp128.mp3"
+      wfmu:
+        - "http://stream2.wfmu.org/freeform-128k"
+        - "http://stream0.wfmu.org/freeform-128k"
+      kcrw:
+        - "https://streams.kcrw.com/kcrw_mp3"
+      wqxr:
+        - "http://stream.wqxr.org/wqxr"
+      wnyc:
+        - "https://fm939.wnyc.org/wnycfm-web"
+      wbgo:
+        - "https://ais-sa8.cdnstream1.com/3629_128.mp3"
+    urls: "{{ station_streams.get(station, []) }}"
+  sequence:
+    # Unknown station — no URLs in the table
+    - if:
+        - condition: template
+          value_template: "{{ urls | length == 0 }}"
+      then:
+        - action: assist_satellite.announce
+          target:
+            entity_id: assist_satellite.home_assistant_voice_0a3a76_assist_satellite
+          data:
+            message: "Sorry, I don't have a stream for that station."
+        - stop: "Unknown station"
+    # Try each URL in sequence; stop on first that reaches playing state
+    - repeat:
+        for_each: "{{ urls }}"
+        sequence:
+          - action: media_player.play_media
+            target:
+              entity_id: media_player.home_assistant_voice_0a3a76_media_player
+            data:
+              media_content_id: "{{ repeat.item }}"
+              media_content_type: music
+          # Wait up to 12 s for the player to reach "playing" state.
+          # A stream that is completely unreachable will go idle or stay
+          # buffering; a working stream transitions to playing.
+          - wait_for_trigger:
+              - platform: state
+                entity_id: media_player.home_assistant_voice_0a3a76_media_player
+                to: "playing"
+            timeout:
+              seconds: 12
+          - if:
+              - condition: template
+                value_template: "{{ wait.completed }}"
+            then:
+              # Stream is up — done.
+              - stop: "Stream started"
+            else:
+              - if:
+                  # More URLs remain — try the next one with a spoken heads-up
+                  - condition: template
+                    value_template: "{{ not repeat.last }}"
+                then:
+                  - action: assist_satellite.announce
+                    target:
+                      entity_id: assist_satellite.home_assistant_voice_0a3a76_assist_satellite
+                    data:
+                      message: "Trouble connecting. Trying backup stream."
+                else:
+                  # All URLs exhausted
+                  - action: assist_satellite.announce
+                    target:
+                      entity_id: assist_satellite.home_assistant_voice_0a3a76_assist_satellite
+                    data:
+                      message: "{{ station | upper }} is not available right now."

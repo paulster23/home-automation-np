@@ -132,30 +132,19 @@ intent_script:
               - >-
                 {{ artist | lower | replace('-','') | replace(' ','')
                    in ['kexp','wfmu','kcrw','wqxr','wnyc','wbgo',
-                        'wsmu','wbmu','wfmyou'] }}
+                        'wsmu','wsnu','wbmu','wfmyou'] }}
             sequence:
               # Stop Spotify so it doesn't reassert over the radio stream
               - action: spotify_voice_assistant.pause
               - action: input_boolean.turn_on
                 target:
                   entity_id: input_boolean.radio_active
-              - action: media_player.play_media
-                target:
-                  entity_id: media_player.home_assistant_voice_0a3a76_media_player
+              # Delegate to radio_play_station script for URL fallback and TTS feedback.
+              - action: script.radio_play_station
                 data:
-                  media_content_id: >-
-                    {% set stations = {
-                      'kexp': 'https://kexp-mp3-128.streamguys1.com/kexp128.mp3',
-                      'wfmu': 'http://stream0.wfmu.org/freeform-128k',
-                      'kcrw': 'https://streams.kcrw.com/kcrw_mp3',
-                      'wqxr': 'http://stream.wqxr.org/wqxr',
-                      'wnyc': 'https://fm939.wnyc.org/wnycfm-web',
-                      'wbgo': 'https://ais-sa8.cdnstream1.com/3629_128.mp3'
-                    } %}
+                  station: >-
                     {% set clean = artist | lower | replace('-','') | replace(' ','') %}
-                    {% if clean in ['wsmu','wbmu','wfmyou'] %}{% set clean = 'wfmu' %}{% endif %}
-                    {{ stations.get(clean, '') }}
-                  media_content_type: music
+                    {% if clean in ['wsmu','wsnu','wbmu','wfmyou'] %}wfmu{% else %}{{ clean }}{% endif %}
         # Normal Spotify artist playback
         default:
           - action: input_boolean.turn_off
@@ -469,25 +458,12 @@ intent_script:
       # Stop Spotify so it doesn't reassert over the radio stream
       - action: spotify_voice_assistant.pause
         continue_on_error: true
-      # Direct stream lookup. Normalise call letters ("K-E-X-P" / "k e x p" → "kexp"),
-      # apply WFMU mishearing corrections, then play the hardcoded stream URL.
-      - action: media_player.play_media
-        target:
-          entity_id: media_player.home_assistant_voice_0a3a76_media_player
+      # Delegate to radio_play_station script for URL fallback and TTS feedback.
+      - action: script.radio_play_station
         data:
-          media_content_id: >-
-            {% set stations = {
-              'kexp': 'https://kexp-mp3-128.streamguys1.com/kexp128.mp3',
-              'wfmu': 'http://stream0.wfmu.org/freeform-128k',
-              'kcrw': 'https://streams.kcrw.com/kcrw_mp3',
-              'wqxr': 'http://stream.wqxr.org/wqxr',
-              'wnyc': 'https://fm939.wnyc.org/wnycfm-web',
-              'wbgo': 'https://ais-sa8.cdnstream1.com/3629_128.mp3'
-            } %}
+          station: >-
             {% set clean = callsign | lower | replace('-', '') | replace(' ', '') %}
-            {% if clean in ['wsmu', 'wbmu', 'wfmyou'] %}{% set clean = 'wfmu' %}{% endif %}
-            {{ stations.get(clean, '') }}
-          media_content_type: music
+            {% if clean in ['wsmu', 'wsnu', 'wbmu', 'wfmyou'] %}wfmu{% else %}{{ clean }}{% endif %}
 
   # Song-seeded radio ("play song Shark Smile radio").
   # Requires the word "song" in the command to distinguish from artist radio.
@@ -535,24 +511,12 @@ intent_script:
       # Stop Spotify so it doesn't reassert over the radio stream
       - action: spotify_voice_assistant.pause
         continue_on_error: true
-      # Direct stream lookup. Normalise call letters and apply mishearing corrections.
-      - action: media_player.play_media
-        target:
-          entity_id: media_player.home_assistant_voice_0a3a76_media_player
+      # Delegate to radio_play_station script for URL fallback and TTS feedback.
+      - action: script.radio_play_station
         data:
-          media_content_id: >-
-            {% set stations = {
-              'kexp': 'https://kexp-mp3-128.streamguys1.com/kexp128.mp3',
-              'wfmu': 'http://stream0.wfmu.org/freeform-128k',
-              'kcrw': 'https://streams.kcrw.com/kcrw_mp3',
-              'wqxr': 'http://stream.wqxr.org/wqxr',
-              'wnyc': 'https://fm939.wnyc.org/wnycfm-web',
-              'wbgo': 'https://ais-sa8.cdnstream1.com/3629_128.mp3'
-            } %}
+          station: >-
             {% set clean = station | lower | replace('-', '') | replace(' ', '') %}
-            {% if clean in ['wsmu', 'wbmu', 'wfmyou'] %}{% set clean = 'wfmu' %}{% endif %}
-            {{ stations.get(clean, '') }}
-          media_content_type: music
+            {% if clean in ['wsmu', 'wsnu', 'wbmu', 'wfmyou'] %}wfmu{% else %}{{ clean }}{% endif %}
 
   GoodNight:
     speech:

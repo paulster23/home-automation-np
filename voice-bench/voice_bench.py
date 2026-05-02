@@ -337,7 +337,10 @@ class VoiceBench:
         # written to the log file yet when the satellite hits idle. The AudioStop
         # cleanup transcription is faster and arrives first, so without this wait
         # the correlator sees only the null/blank result and logs (no transcription).
-        await asyncio.sleep(0.5)
+        # Bumped 0.5 → 1.5s: direct ESPHome path completes faster than the old
+        # MA-proxied path, so the pipeline end now races the whisper log write
+        # more aggressively.
+        await asyncio.sleep(1.5)
 
         # ── Correlate with whisper STT entries ────────────────────────────
         if self.recent_stt and s.listening_start:
