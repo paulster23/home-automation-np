@@ -578,3 +578,6 @@ seed_0129,,Stop.,other,,13191,,,13191,,,pre-bench-history,distil-whisper-large-v
 20260501_110642_431,2026-05-01T11:06:42.431288-04:00,"Okay Naboo, turn on the speaker.",home,4352,1171,381,1741,6476,false,true,whisperkit-small-silero-vad,whisperkit-small
 20260501_214402_778,2026-05-01T21:44:02.778766-04:00,Player Radio station based on the band New Pornographers.,radio,6943,1623,201,5816,12961,true,true,whisperkit-small-silero-vad,whisperkit-small
 20260501_214420_372,2026-05-01T21:44:20.372585-04:00,Play a radio station based on the new pornographers.,radio,6255,1174,,,7134,false,true,whisperkit-small-silero-vad,whisperkit-small
+20260502_001015_692,2026-05-02T00:10:15.692520-04:00,,other,9855,2235,,,10732,true,false,whisperkit-small-silero-vad,whisperkit-small
+20260502_103940_188,2026-05-02T10:39:40.188620-04:00,Turn on the speaker.,home,4286,1650,537,2035,6859,false,false,whisperkit-small-esphome-direct,whisperkit-small
+20260502_103953_882,2026-05-02T10:39:53.882577-04:00,,other,5854,1715,,,6011,false,false,whisperkit-small-esphome-direct,whisperkit-small

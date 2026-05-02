@@ -25,5 +25,5 @@ whisper_model: "whisperkit-small"
 port: 7700
 
 # ── Config tag ────────────────────────────────────────────────────────────
-tag: "whisperkit-small-silero-vad"
-notes: "WhisperKit small (CoreML/ANE), Silero-VAD early trigger (450ms silence), benchmarked 0.85s avg"
+tag: "whisperkit-small-esphome-direct"
+notes: "WhisperKit small (CoreML/ANE), Silero-VAD early trigger (450ms silence). Audio: direct ESPHome (bypass MA proxy) for Spotify+radio. Radio via hardcoded direct MP3 streams (KEXP/WFMU/KCRW/WQXR/WNYC/WBGO). Changed 2026-05-02."
