@@ -1,6 +1,6 @@
 # Home Automation — To-Do List
 
-*Last updated: 2026-04-29*
+*Last updated: 2026-05-02*
 
 ---
 
@@ -113,6 +113,12 @@ Per-object keys under `stationary.max_frames` ARE supported in Frigate 0.17.x �
 - [x] **Librespot "Naboo" watchdog + serve_http.py crash loop fix** — ✅ Complete (2026-03-30/31). Two fixes:
   1. `watchdog.sh` + `com.librespot.naboo-watchdog.plist` — checks every 5 min: (1) librespot process alive, (2) port 8765 open; restarts via `launchctl kickstart -k`. Installed and confirmed catching real failures.
   2. **Root cause:** `serve_http.py` used only `SO_REUSEADDR` which does NOT bypass `TIME_WAIT` on macOS (Linux behaviour only). Rapid restarts left port 8765 in `TIME_WAIT` → bind failure → cascade crash loop. Fixed by adding `SO_REUSEPORT` (one line). Confirmed working 2026-03-31.
+
+---
+
+## 🔲 Open Bugs (waiting on upstream)
+
+- [ ] **Spotify coordinator MissingField crash loop** — HA's `spotifyaio` library fails to parse Spotify API responses since Spotify removed `GET /playlists/{id}/tracks` in Feb 2026. Error: `MissingField: Field "items" of type PlaylistTracks is missing in Playlist instance`. Fires every ~10–20s during playback, causes lag. Persists in HA 2026.4.4. Tracked at [GitHub #166884](https://github.com/home-assistant/core/issues/166884). **Workaround:** avoid Spotify algorithmic/radio playlists (Daily Mix, Discover Weekly). Watch HA 2026.5 for a fix.
 
 ---
 
