@@ -11,9 +11,20 @@ Single-client: if a new client connects, the old one is closed.
 import select
 import socket
 import sys
+import time
 
 PORT = 8765
-CHUNK = 8192
+CHUNK = 2048  # smaller chunks → smoother pacing, faster select() loop
+# 192k MP3 = 24000 bytes/sec × 1.05 = 25200. The 5% headroom lets ESPHome
+# build a small safety buffer so pipeline stalls between tracks don't cause
+# dropouts. Rate-limit is unconditional — without it librespot/ffmpeg run at
+# CPU speed (runaway decode), and ESPHome greedily downloads the entire track
+# over localhost eliminating backpressure and making skips/pauses unresponsive.
+BYTES_PER_SEC = int(192 * 1000 * 1.05 // 8)  # 25200
+# Small TCP send buffer: limits in-flight data to ~170ms at 25200 bytes/sec.
+# Default macOS SO_SNDBUF is ~128 KB = 5+ seconds of audio buffered in the
+# kernel — that's the main source of the lag and skip latency.
+SNDBUF = 8192
 HTTP_HEADER = (
     b"HTTP/1.0 200 OK\r\n"
     b"Content-Type: audio/mpeg\r\n"
@@ -31,6 +42,11 @@ srv.setblocking(False)
 
 client = None
 stdin_fd = sys.stdin.buffer.fileno()
+
+# Cumulative rate-limiter: tracks total bytes processed and wall-clock start
+# so we sleep only the deficit — no oversleep when sendall() itself takes time.
+_rate_start = time.monotonic()
+_rate_bytes = 0
 
 while True:
     # Monitor stdin (audio from ffmpeg) and the server socket simultaneously.
@@ -61,6 +77,19 @@ while True:
             except OSError:
                 pass
             try:
+                # Small send buffer limits kernel-buffered data to ~170ms,
+                # keeping skip/pause latency low. macOS rounds up to minimum.
+                client.setsockopt(socket.SOL_SOCKET, socket.SO_SNDBUF, SNDBUF)
+            except OSError:
+                pass
+            # Reset rate-limiter on each new connection so idle time between
+            # plays doesn't accumulate a negative deficit. Without this, a
+            # pause/resume cycle lets the deficit go deeply negative, causing
+            # a burst send that pre-fills ESPHome's buffer and grows lag with
+            # every play cycle.
+            _rate_start = time.monotonic()
+            _rate_bytes = 0
+            try:
                 client.sendall(HTTP_HEADER)
             except OSError:
                 try:
@@ -87,3 +116,11 @@ while True:
                     except OSError:
                         pass
                     client = None
+
+            # Unconditional real-time rate limiter (cumulative).
+            # Sleeps only the deficit so sendall() time counts toward pacing.
+            _rate_bytes += len(data)
+            expected = _rate_bytes / BYTES_PER_SEC
+            deficit = expected - (time.monotonic() - _rate_start)
+            if deficit > 0:
+                time.sleep(deficit)

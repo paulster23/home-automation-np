@@ -524,3 +524,57 @@ seed_0129,,Stop.,other,,13191,,,13191,,,pre-bench-history,distil-whisper-large-v
 20260424_200810_087,2026-04-24T20:08:10.087733-04:00,(sizzling),other,17404,2389,,,17738,false,true,whisperkit-small-silero-vad,whisperkit-small
 20260424_213321_474,2026-04-24T21:33:21.474342-04:00,Stop.,other,6736,2242,,,6987,false,true,whisperkit-small-silero-vad,whisperkit-small
 20260424_235244_726,2026-04-24T23:52:44.726390-04:00,Stop!,other,5887,2288,,,6557,true,false,whisperkit-small-silero-vad,whisperkit-small
+20260425_192840_265,2026-04-25T19:28:40.265671-04:00,Turn on the speaker.,home,4636,1356,502,2262,7401,true,false,whisperkit-small-silero-vad,whisperkit-small
+20260425_192851_521,2026-04-25T19:28:51.521447-04:00,,other,11423,1969,341,875,12640,false,false,whisperkit-small-silero-vad,whisperkit-small
+20260425_192906_296,2026-04-25T19:29:06.296454-04:00,,other,6031,1570,,,7188,false,false,whisperkit-small-silero-vad,whisperkit-small
+20260425_192928_860,2026-04-25T19:29:28.860762-04:00,Play WBGO.,music,4460,1131,,,7216,true,false,whisperkit-small-silero-vad,whisperkit-small
+20260425_204239_850,2026-04-25T20:42:39.850268-04:00,,other,325313,2518,,,325313,false,true,whisperkit-small-silero-vad,whisperkit-small
+20260426_001319_920,2026-04-26T00:13:19.920292-04:00,time to go out on,other,5062,1594,139,5267,10469,true,false,whisperkit-small-silero-vad,whisperkit-small
+20260426_001334_421,2026-04-26T00:13:34.421304-04:00,Turn the light on.,other,4745,1332,68,1820,6634,false,false,whisperkit-small-silero-vad,whisperkit-small
+20260426_001440_216,2026-04-26T00:14:40.216446-04:00,,other,16921,1863,,,17518,true,false,whisperkit-small-silero-vad,whisperkit-small
+20260426_123346_966,2026-04-26T12:33:46.966395-04:00,Turn on the speaker.,home,5281,1672,307,2137,7726,false,false,whisperkit-small-silero-vad,whisperkit-small
+20260426_123356_475,2026-04-26T12:33:56.475773-04:00,play WFMU,radio,4865,2012,,,6902,false,false,whisperkit-small-silero-vad,whisperkit-small
+20260426_124041_393,2026-04-26T12:40:41.393406-04:00,,other,6645,3625,,,7001,false,true,whisperkit-small-silero-vad,whisperkit-small
+20260426_130654_251,2026-04-26T13:06:54.251282-04:00,play KEXP,radio,4820,822,,,7246,true,false,whisperkit-small-silero-vad,whisperkit-small
+20260426_175411_633,2026-04-26T17:54:11.633141-04:00,Playball Spurs,other,6231,1224,311,1381,7924,true,false,whisperkit-small-silero-vad,whisperkit-small
+20260426_175604_961,2026-04-26T17:56:04.961056-04:00,,other,4988,2010,45,832,5866,true,false,whisperkit-small-silero-vad,whisperkit-small
+20260426_175907_259,2026-04-26T17:59:07.259557-04:00,,other,4752,1931,43,676,5472,true,false,whisperkit-small-silero-vad,whisperkit-small
+20260426_183227_990,2026-04-26T18:32:27.990717-04:00,,other,5626,2222,148,677,6452,true,false,whisperkit-small-silero-vad,whisperkit-small
+20260426_183358_196,2026-04-26T18:33:58.196664-04:00,all spurs.,other,3925,1115,204,2474,6603,true,false,whisperkit-small-silero-vad,whisperkit-small
+20260426_183407_272,2026-04-26T18:34:07.272606-04:00,Playball Spurs,other,4768,900,51,738,5558,false,false,whisperkit-small-silero-vad,whisperkit-small
+20260426_183938_010,2026-04-26T18:39:38.010608-04:00,Playball Spurs,other,5225,926,60,653,5939,true,false,whisperkit-small-silero-vad,whisperkit-small
+20260426_191036_690,2026-04-26T19:10:36.690313-04:00,Play WBGO Jazz!,music,8130,1228,,,9519,true,false,whisperkit-small-silero-vad,whisperkit-small
+20260426_191056_976,2026-04-26T19:10:56.976707-04:00,,other,4694,1700,,,5330,false,true,whisperkit-small-silero-vad,whisperkit-small
+20260426_193502_995,2026-04-26T19:35:02.995282-04:00,,other,3772,1918,,,3977,false,true,whisperkit-small-silero-vad,whisperkit-small
+20260427_004554_091,2026-04-27T00:45:54.091989-04:00,,other,4929,2080,,,5642,true,false,whisperkit-small-silero-vad,whisperkit-small
+20260427_065428_111,2026-04-27T06:54:28.111030-04:00,Turn on the light.,home,4890,1491,289,1817,6997,true,false,whisperkit-small-silero-vad,whisperkit-small
+20260427_140400_543,2026-04-27T14:04:00.543553-04:00,Turn the speaker on.,other,4736,1355,254,1830,6821,true,false,whisperkit-small-silero-vad,whisperkit-small
+20260427_140412_186,2026-04-27T14:04:12.186844-04:00,Play WNYC.,radio,4060,1123,,,5996,false,false,whisperkit-small-silero-vad,whisperkit-small
+20260427_153119_671,2026-04-27T15:31:19.671519-04:00,"Stop. Okay, now we turn the speaker off.",other,6237,1127,365,2085,8687,false,true,whisperkit-small-silero-vad,whisperkit-small
+20260427_183606_262,2026-04-27T18:36:06.262902-04:00,,other,5542,2138,246,1605,7394,true,false,whisperkit-small-silero-vad,whisperkit-small
+20260427_183620_457,2026-04-27T18:36:20.457514-04:00,play WNYC.,radio,3989,1053,,,5870,false,false,whisperkit-small-silero-vad,whisperkit-small
+20260427_191844_125,2026-04-27T19:18:44.125617-04:00,And you play WBGO.,music,5314,783,47,2526,7887,false,true,whisperkit-small-silero-vad,whisperkit-small
+20260427_191853_741,2026-04-27T19:18:53.741332-04:00,,other,4704,1580,,,5231,false,false,whisperkit-small-silero-vad,whisperkit-small
+20260427_192455_536,2026-04-27T19:24:55.536389-04:00,,other,4846,1876,,,5492,false,true,whisperkit-small-silero-vad,whisperkit-small
+20260427_192536_217,2026-04-27T19:25:36.217276-04:00,,other,6036,1723,,,6765,true,false,whisperkit-small-silero-vad,whisperkit-small
+20260427_235042_490,2026-04-27T23:50:42.490345-04:00,,other,5177,2313,,,5875,true,false,whisperkit-small-silero-vad,whisperkit-small
+20260428_123413_281,2026-04-28T12:34:13.281896-04:00,Turn the speaker on.,other,4261,1022,240,1700,6202,false,false,whisperkit-small-silero-vad,whisperkit-small
+20260428_123439_554,2026-04-28T12:34:39.554014-04:00,play WNYC.,radio,4262,990,,,5601,true,false,whisperkit-small-silero-vad,whisperkit-small
+20260428_195320_709,2026-04-28T19:53:20.709877-04:00,Play WNYC Radio,radio,5739,1144,,,6926,false,true,whisperkit-small-silero-vad,whisperkit-small
+20260428_211727_076,2026-04-28T21:17:27.076346-04:00,turn this speaker off.,other,4232,1172,286,2017,6535,false,true,whisperkit-small-silero-vad,whisperkit-small
+20260429_170650_884,2026-04-29T17:06:50.884099-04:00,,other,5125,2175,232,2481,7840,false,true,whisperkit-small-silero-vad,whisperkit-small
+20260429_172734_517,2026-04-29T17:27:34.517844-04:00,Turn on the speaker.,home,4870,1159,256,1847,6974,false,true,whisperkit-small-silero-vad,whisperkit-small
+20260429_224058_905,2026-04-29T22:40:58.905692-04:00,,other,6754,3078,,,7496,true,false,whisperkit-small-silero-vad,whisperkit-small
+20260430_005324_437,2026-04-30T00:53:24.437129-04:00,,other,5642,2635,,,6474,false,true,whisperkit-small-silero-vad,whisperkit-small
+20260430_181822_737,2026-04-30T18:18:22.737017-04:00,Play KEXT.,music,4661,1496,,,6543,true,true,whisperkit-small-silero-vad,whisperkit-small
+20260430_181834_310,2026-04-30T18:18:34.310913-04:00,Turn on the speaker.,home,4067,1888,276,1778,6121,false,true,whisperkit-small-silero-vad,whisperkit-small
+20260430_181856_797,2026-04-30T18:18:56.797743-04:00,Play KEXP,radio,4051,1445,,,6016,false,true,whisperkit-small-silero-vad,whisperkit-small
+20260430_194034_465,2026-04-30T19:40:34.465366-04:00,,other,5551,2852,,,7076,true,true,whisperkit-small-silero-vad,whisperkit-small
+20260430_194118_599,2026-04-30T19:41:18.599557-04:00,,other,4936,1683,,,5017,false,true,whisperkit-small-silero-vad,whisperkit-small
+20260430_194151_711,2026-04-30T19:41:51.711200-04:00,Play KXP,music,4135,1211,,,5332,false,true,whisperkit-small-silero-vad,whisperkit-small
+20260430_204007_380,2026-04-30T20:40:07.380557-04:00,,other,1076702,1739,,,1076702,false,true,whisperkit-small-silero-vad,whisperkit-small
+20260430_234815_141,2026-04-30T23:48:15.141353-04:00,,other,5007,2160,,,5918,true,true,whisperkit-small-silero-vad,whisperkit-small
+20260501_083218_835,2026-05-01T08:32:18.835654-04:00,Good night.,home,17081,2061,272,1800,19154,false,true,whisperkit-small-silero-vad,whisperkit-small
+20260501_110642_431,2026-05-01T11:06:42.431288-04:00,"Okay Naboo, turn on the speaker.",home,4352,1171,381,1741,6476,false,true,whisperkit-small-silero-vad,whisperkit-small
+20260501_214402_778,2026-05-01T21:44:02.778766-04:00,Player Radio station based on the band New Pornographers.,radio,6943,1623,201,5816,12961,true,true,whisperkit-small-silero-vad,whisperkit-small
+20260501_214420_372,2026-05-01T21:44:20.372585-04:00,Play a radio station based on the new pornographers.,radio,6255,1174,,,7134,false,true,whisperkit-small-silero-vad,whisperkit-small

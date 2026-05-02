@@ -119,14 +119,26 @@ case "$PLAYER_EVENT" in
     #   (b) natural track advances (end_of_track → play_request_id_changed).
     #       In this case we must NOT reset state or a post-stop auto-advance
     #       will re-trigger the librespot_playing webhook and restart the stream.
+    #   (c) user skips a track from the Spotify app while already playing.
+    #       Previously this reset state → webhook → ESPHome dropped/reopened
+    #       HTTP connection, causing an audio gap on every skip. With ESPHome
+    #       reading directly from port 8765, the stream carries new audio
+    #       automatically — no reconnect needed while already playing.
     #
-    # Distinguish them via the end_of_track flag file.
+    # Distinguish via end_of_track flag + current state.
     if [ -f "$BASE_DIR/log/.end_of_track_flag" ]; then
       rm -f "$BASE_DIR/log/.end_of_track_flag"
       log "→ play_request_id_changed after end_of_track (track skip, ignoring)"
     else
-      echo "stopped" > "$STATE_FILE"
-      log "→ reset state to stopped (fresh play request, no preceding end_of_track)"
+      PREV_STATE=$(cat "$STATE_FILE" 2>/dev/null || echo "stopped")
+      if [ "$PREV_STATE" = "playing" ]; then
+        # Stream is live — Spotify app skip or new voice play. Audio pipe
+        # carries new content automatically; no reconnect needed.
+        log "→ play_request_id_changed while playing (stream live, ignoring)"
+      else
+        echo "stopped" > "$STATE_FILE"
+        log "→ reset state to stopped (fresh play request, stream was not live)"
+      fi
     fi
     ;;
 

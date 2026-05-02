@@ -36,14 +36,14 @@
         is_volume_muted: true
     # Only pause MA and set the resume flag if music was actually playing
     - condition: state
-      entity_id: media_player.naboo_media_player
+      entity_id: media_player.home_assistant_voice_0a3a76_media_player
       state: "playing"
     - action: input_boolean.turn_on
       target:
         entity_id: input_boolean.voice_paused_music
     - action: media_player.media_pause
       target:
-        entity_id: media_player.naboo_media_player
+        entity_id: media_player.home_assistant_voice_0a3a76_media_player
 
 # 2. UNMUTE EARLY: fires the instant speech recording ends (satellite leaves
 #    "listening"). At this point the mic is done but TTS hasn't started yet —
@@ -83,7 +83,7 @@
       entity_id: input_boolean.voice_paused_music
       state: "on"
     - condition: state
-      entity_id: media_player.naboo_media_player
+      entity_id: media_player.home_assistant_voice_0a3a76_media_player
       state: "paused"
     - action: input_boolean.turn_off
       target:
@@ -93,7 +93,7 @@
         seconds: 1
     - action: media_player.media_play
       target:
-        entity_id: media_player.naboo_media_player
+        entity_id: media_player.home_assistant_voice_0a3a76_media_player
 
 # 4. PRE-MUTE: keeps the amp muted whenever no music is playing.
 #    This eliminates the "first command" slow path — the amp is already
@@ -112,7 +112,7 @@
     # but MA's RadioBrowser lookup takes 2-15s before the stream starts.
     # Previous "immediate" mute on idle was the root cause of the stuck-mute bug.
     - platform: state
-      entity_id: media_player.naboo_media_player
+      entity_id: media_player.home_assistant_voice_0a3a76_media_player
       to:
         - "idle"
         - "off"
@@ -121,7 +121,7 @@
     # Paused → wait 15s before muting (same reason, plus allows for
     # voice_resume_media_on_done and librespot_stream_resilience to settle).
     - platform: state
-      entity_id: media_player.naboo_media_player
+      entity_id: media_player.home_assistant_voice_0a3a76_media_player
       to: "paused"
       for:
         seconds: 15
@@ -132,7 +132,7 @@
       state: "idle"
     # Don't mute if naboo is actively playing
     - condition: template
-      value_template: "{{ not is_state('media_player.naboo_media_player', 'playing') }}"
+      value_template: "{{ not is_state('media_player.home_assistant_voice_0a3a76_media_player', 'playing') }}"
     # Don't mute if Spotify is actively playing — naboo may be mid-reconnect
     - condition: template
       value_template: "{{ not is_state('media_player.spotify_paulster23', 'playing') }}"
@@ -230,8 +230,10 @@
 
 # ── Librespot (Spotify Connect) ───────────────────────────────────────────────
 # librespot fires webhooks via on_event.sh when playback starts/stops.
-# We play the HTTP stream on naboo_media_player so the existing voice-pause
-# automations (above) still work — they watch this same entity.
+# We play the HTTP stream directly on the ESPHome entity to bypass MA's
+# streaming proxy (which adds ~10s buffer lag). Voice-pause automations
+# still work — MA syncs state from the ESPHome entity to naboo_media_player,
+# so all state watches below remain valid.
 #
 # Stream: http://192.168.1.70:8765 (ffmpeg MP3, served by run.sh)
 # ─────────────────────────────────────────────────────────────────────────────
@@ -257,14 +259,16 @@
     - condition: state
       entity_id: input_boolean.radio_active
       state: "off"
-    # Start the stream, wait for naboo to reach "playing", then unmute.
+    # Start the stream directly on the ESPHome entity — bypasses MA's streaming
+    # proxy and its ~10s buffer. MA syncs state from ESPHome, so wait_template
+    # below on naboo_media_player still resolves correctly.
     - action: media_player.play_media
       target:
-        entity_id: media_player.naboo_media_player
+        entity_id: media_player.home_assistant_voice_0a3a76_media_player
       data:
         media_content_id: "http://192.168.1.70:8765"
         media_content_type: music
-    - wait_template: "{{ is_state('media_player.naboo_media_player', 'playing') }}"
+    - wait_template: "{{ is_state('media_player.home_assistant_voice_0a3a76_media_player', 'playing') }}"
       timeout: "00:00:20"
     # Short delay so voice_premute_when_idle (triggered by the idle→playing
     # transition) fires and settles before we unmute — ensures we unmute last.
@@ -286,16 +290,15 @@
   action:
     # HA restart orphan fix: librespot keeps streaming through an HA restart,
     # so no session_connected event fires to reset the state file. On startup,
-    # wait for MA to reconnect (~2 min), clear any stuck radio lock, then
-    # re-attach naboo to the HTTP stream. If Spotify is actively streaming,
-    # it plays immediately. If not, serve_http.py is idle and naboo goes quiet.
+    # wait for HA integrations (ESPHome, MA) to fully reconnect (~2 min), clear
+    # any stuck radio lock, then re-attach naboo to the HTTP stream directly.
     - delay: "00:02:00"
     - action: input_boolean.turn_off
       target:
         entity_id: input_boolean.radio_active
     - action: media_player.play_media
       target:
-        entity_id: media_player.naboo_media_player
+        entity_id: media_player.home_assistant_voice_0a3a76_media_player
       data:
         media_content_id: "http://192.168.1.70:8765"
         media_content_type: music
@@ -311,12 +314,12 @@
     # Pause music (if playing) so the announcement is heard clearly
     - if:
         - condition: state
-          entity_id: media_player.naboo_media_player
+          entity_id: media_player.home_assistant_voice_0a3a76_media_player
           state: playing
       then:
         - action: media_player.media_pause
           target:
-            entity_id: media_player.naboo_media_player
+            entity_id: media_player.home_assistant_voice_0a3a76_media_player
         - action: input_boolean.turn_on
           target:
             entity_id: input_boolean.voice_paused_music
@@ -342,7 +345,7 @@
       then:
         - action: media_player.media_play
           target:
-            entity_id: media_player.naboo_media_player
+            entity_id: media_player.home_assistant_voice_0a3a76_media_player
         - action: input_boolean.turn_off
           target:
             entity_id: input_boolean.voice_paused_music
@@ -363,7 +366,7 @@
   max_exceeded: silent
   trigger:
     - platform: state
-      entity_id: media_player.naboo_media_player
+      entity_id: media_player.home_assistant_voice_0a3a76_media_player
       to:
         - "idle"
         - "paused"
@@ -381,18 +384,19 @@
       entity_id: assist_satellite.home_assistant_voice_0a3a76_assist_satellite
       state: "idle"
   action:
+    # Play directly on ESPHome entity to bypass MA proxy (same as librespot_playing).
     - action: media_player.play_media
       target:
-        entity_id: media_player.naboo_media_player
+        entity_id: media_player.home_assistant_voice_0a3a76_media_player
       data:
         media_content_id: "http://192.168.1.70:8765"
         media_content_type: music
     # Wait for naboo to reach playing, then unmute the amp.
     # voice_premute_when_idle muted it when the stream dropped — we undo that here.
-    - wait_template: "{{ is_state('media_player.naboo_media_player', 'playing') }}"
+    - wait_template: "{{ is_state('media_player.home_assistant_voice_0a3a76_media_player', 'playing') }}"
       timeout: "00:00:20"
     - condition: template
-      value_template: "{{ is_state('media_player.naboo_media_player', 'playing') }}"
+      value_template: "{{ is_state('media_player.home_assistant_voice_0a3a76_media_player', 'playing') }}"
     - action: media_player.volume_mute
       target:
         entity_id: media_player.home_assistant_voice_0a3a76_media_player
@@ -413,7 +417,7 @@
   mode: restart
   trigger:
     - platform: state
-      entity_id: media_player.naboo_media_player
+      entity_id: media_player.home_assistant_voice_0a3a76_media_player
       to: "playing"
   action:
     - action: media_player.volume_mute
@@ -436,4 +440,4 @@
         entity_id: input_boolean.radio_active
     - action: media_player.media_stop
       target:
-        entity_id: media_player.naboo_media_player
+        entity_id: media_player.home_assistant_voice_0a3a76_media_player

@@ -60,9 +60,9 @@ exec "$LIBRESPOT" \
   --disable-audio-cache \
   --cache "$HOME/.config/librespot" \
   --initial-volume 100 \
+  --zeroconf-port 5354 \
   2>>"$LOG_DIR/librespot.err" \
 | "$FFMPEG" \
-  -re \
   -hide_banner -loglevel error \
   -f s16le -ar 44100 -ac 2 \
   -i pipe:0 \
