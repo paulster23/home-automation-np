@@ -21,6 +21,16 @@ whisper_log:   "/Users/media/containers/home-automation/wyoming-whisperkit/log/w
 whisper_plist: "/Users/media/Library/LaunchAgents/com.wyoming.whisperkit.plist"
 whisper_model: "whisperkit-small"
 
+# ── Stream health monitoring ──────────────────────────────────────────────
+# Path to serve_http.py's stream.log — tailed for pipe stall events.
+# Set to "" to disable stall correlation (dropout tracking still works via HA).
+librespot_stream_log: "/Users/media/containers/home-automation/librespot/log/stream.log"
+# HA entity for radio-active flag — used to determine stream type at play_start
+radio_active_entity: "input_boolean.radio_active"
+# Gap duration in seconds below which playing→stopped→playing is a dropout,
+# not two separate sessions. Should exceed the librespot reconnect window (~7s).
+dropout_window_secs: 30
+
 # ── Dashboard ─────────────────────────────────────────────────────────────
 port: 7700
 

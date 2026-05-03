@@ -21,6 +21,11 @@ whisper_log:   "/Users/media/containers/home-automation/wyoming-whisperkit/log/w
 whisper_plist: "/Users/media/Library/LaunchAgents/com.wyoming.whisperkit.plist"
 whisper_model: "whisperkit-small"
 
+# ── Stream health monitoring ──────────────────────────────────────────────
+librespot_stream_log: "/Users/media/containers/home-automation/librespot/log/stream.log"
+radio_active_entity:  "input_boolean.radio_active"
+dropout_window_secs:  30
+
 # ── Dashboard ─────────────────────────────────────────────────────────────
 port: 7700
 

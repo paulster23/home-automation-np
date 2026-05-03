@@ -7,6 +7,21 @@ transitions, tails the wyoming-mlx-whisper log for STT timing, and
 correlates both into per-command rows written to a CSV file.
 
 Also serves a lightweight HTTP dashboard at http://localhost:7700
+
+Stream health monitoring (StreamMonitor)
+────────────────────────────────────────
+In parallel with voice benchmarking, StreamMonitor tracks audio stream
+health for all active streams (Spotify Connect via librespot, or radio).
+
+It watches two data sources:
+  1. HA state_changed events on the amp entity — detects dropouts (playing
+     → not-playing → playing within dropout_window_secs) vs. real stops.
+  2. librespot/log/stream.log written by serve_http.py — detects pipe stalls
+     (ffmpeg stdin going dry) and correlates them with dropout events.
+
+Events are written to data/stream_health.csv and exposed via:
+  GET /api/stream/status   — live stream state + 24h stats
+  GET /api/stream/events   — last 200 stream_health.csv rows
 """
 
 import argparse
@@ -17,7 +32,8 @@ import os
 import plistlib
 import re
 import sys
-from datetime import datetime
+import time
+from datetime import datetime, timezone, timedelta
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple
 
@@ -36,6 +52,12 @@ CSV_COLUMNS = [
     "listening_ms", "stt_ms", "processing_ms", "responding_ms", "total_ms",
     "amp_muted_at_wake", "music_was_playing",
     "config_tag", "whisper_model",
+]
+
+STREAM_CSV_FILE    = DATA_DIR / "stream_health.csv"
+STREAM_CSV_COLUMNS = [
+    "id", "timestamp", "stream_type", "source_detail",
+    "event", "duration_ms", "correlated_stall_ms", "notes",
 ]
 
 # ── Helpers ──────────────────────────────────────────────────────────────────
@@ -91,6 +113,352 @@ def ms_between(t1: Optional[datetime], t2: Optional[datetime]) -> Optional[int]:
     if t1 and t2:
         return max(0, int((t2 - t1).total_seconds() * 1000))
     return None
+
+
+# ── StreamMonitor ─────────────────────────────────────────────────────────────
+
+class StreamMonitor:
+    """
+    Tracks audio stream health for Spotify Connect (librespot) and radio.
+
+    Integrates two data sources:
+      - HA amp entity state changes (fed in via on_amp_state from watch_ha)
+      - serve_http.py stream.log (tailed for pipe stall events)
+
+    Detects:
+      play_start  — amp transitioned to playing
+      play_stop   — amp was playing, stopped, did not recover within dropout_window
+      dropout     — amp was playing, brief gap, then recovered within dropout_window
+      pipe_stall  — serve_http.py stdin went dry (from stream.log tail)
+    """
+
+    # Known station name fragments → display name
+    _STATION_NAMES = {
+        "kexp": "KEXP", "wfmu": "WFMU", "kcrw": "KCRW",
+        "wqxr": "WQXR", "wnyc": "WNYC", "wbgo": "WBGO",
+    }
+
+    def __init__(self, config: dict, entity_states: Dict[str, str],
+                 entity_attrs: Dict[str, dict]):
+        self.amp_entity      = config.get("amp_entity", "")
+        self.radio_entity    = config.get("radio_active_entity",
+                                          "input_boolean.radio_active")
+        self.stream_log_path = config.get("librespot_stream_log", "")
+        self.dropout_window  = float(config.get("dropout_window_secs", 30))
+
+        # Shared references to VoiceBench's entity state mirrors — always current
+        self._entity_states = entity_states
+        self._entity_attrs  = entity_attrs
+
+        # Current play-session state machine
+        self._play_start:    Optional[datetime] = None
+        self._play_stop:     Optional[datetime] = None   # set on playing→stopped
+        self._stream_type:   str = "unknown"
+        self._source_detail: str = ""
+        self._dropout_task:  Optional[asyncio.Task] = None
+
+        # Stall correlation: most recent STALL_END from stream.log
+        self._last_stall_end_mono: float = 0.0
+        self._last_stall_end_ms:   int   = 0
+        self._stalls_this_session: int   = 0
+
+        # In-memory event cache for the API (last 2000 rows)
+        self._events_cache: List[dict] = []
+        self._load_csv()
+
+        print(f"[stream-monitor] Initialized  amp={self.amp_entity}"
+              f"  dropout_window={self.dropout_window}s"
+              f"  stream_log={self.stream_log_path or '(none)'}")
+
+    # ── CSV ───────────────────────────────────────────────────────────────────
+
+    def _load_csv(self):
+        if STREAM_CSV_FILE.exists():
+            with open(STREAM_CSV_FILE, newline="") as f:
+                self._events_cache = list(csv.DictReader(f))
+        print(f"[stream-monitor] Loaded {len(self._events_cache)} existing stream events")
+
+    def _append_csv(self, row: dict):
+        DATA_DIR.mkdir(parents=True, exist_ok=True)
+        is_new = not STREAM_CSV_FILE.exists()
+        with open(STREAM_CSV_FILE, "a", newline="") as f:
+            writer = csv.DictWriter(f, fieldnames=STREAM_CSV_COLUMNS)
+            if is_new:
+                writer.writeheader()
+            writer.writerow({k: row.get(k, "") for k in STREAM_CSV_COLUMNS})
+        self._events_cache.append(row)
+        if len(self._events_cache) > 2000:
+            self._events_cache = self._events_cache[-2000:]
+
+    def _log_event(self, event: str, ts: datetime, *,
+                   duration_ms: Optional[int] = None,
+                   correlated_stall_ms: Optional[int] = None,
+                   notes: str = "") -> None:
+        row = {
+            "id":                  ts.strftime("%Y%m%d_%H%M%S_%f")[:-3],
+            "timestamp":           ts.isoformat(),
+            "stream_type":         self._stream_type,
+            "source_detail":       self._source_detail,
+            "event":               event,
+            "duration_ms":         duration_ms if duration_ms is not None else "",
+            "correlated_stall_ms": correlated_stall_ms if correlated_stall_ms is not None else "",
+            "notes":               notes,
+        }
+        self._append_csv(row)
+        corr = f"  stall={correlated_stall_ms}ms" if correlated_stall_ms else ""
+        dur  = f"  {duration_ms}ms" if duration_ms is not None else ""
+        print(f"[stream-monitor] {event:12s} {self._stream_type:8s}"
+              f"  {self._source_detail[:20]}{dur}{corr}")
+
+    # ── Stream type detection ─────────────────────────────────────────────────
+
+    def _refresh_stream_type(self) -> None:
+        """Determine current stream type from shared HA entity state."""
+        radio_state = self._entity_states.get(self.radio_entity, "off")
+        if radio_state == "on":
+            self._stream_type = "radio"
+            attrs = self._entity_attrs.get(self.amp_entity, {})
+            url   = attrs.get("media_content_id", "")
+            self._source_detail = self._station_from_url(url) or url[:40] or "radio"
+        else:
+            self._stream_type   = "spotify"
+            self._source_detail = "librespot"
+
+    @classmethod
+    def _station_from_url(cls, url: str) -> str:
+        url_lower = url.lower()
+        for fragment, name in cls._STATION_NAMES.items():
+            if fragment in url_lower:
+                return name
+        return ""
+
+    # ── HA amp state handler (called from VoiceBench.watch_ha) ───────────────
+
+    async def on_amp_state(self, old_state: str, new_state: str,
+                           ts: datetime) -> None:
+        """
+        Called whenever the amp entity changes state.
+
+        State machine:
+          * → playing      : play_start (or dropout recovery)
+          playing → other  : start dropout_window timer
+          timer fires      : play_stop (no recovery within window)
+        """
+        if new_state == "playing":
+            if self._play_stop is not None:
+                # ── Dropout recovery ──────────────────────────────────────────
+                dropout_ms = int((ts - self._play_stop).total_seconds() * 1000)
+
+                # Correlate: was there a pipe stall logged in the last dropout_window?
+                corr_stall: Optional[int] = None
+                if self._last_stall_end_mono > 0:
+                    age_s = time.monotonic() - self._last_stall_end_mono
+                    if age_s < self.dropout_window:
+                        corr_stall = self._last_stall_end_ms
+
+                self._log_event("dropout", self._play_stop,
+                                duration_ms=dropout_ms,
+                                correlated_stall_ms=corr_stall)
+
+                # Cancel the play_stop timer — we recovered before it fired
+                if self._dropout_task and not self._dropout_task.done():
+                    self._dropout_task.cancel()
+                    self._dropout_task = None
+
+                self._play_stop         = None
+                self._last_stall_end_ms = 0
+                # Keep _play_start and session — still in the same play session
+
+            elif self._play_start is None:
+                # ── Fresh play start ──────────────────────────────────────────
+                self._refresh_stream_type()
+                self._play_start          = ts
+                self._stalls_this_session = 0
+                self._last_stall_end_ms   = 0
+                self._log_event("play_start", ts)
+
+        elif old_state == "playing" and new_state in ("idle", "paused", "off", "unavailable"):
+            # ── Playing stopped — may be dropout or real stop ─────────────────
+            self._play_stop = ts
+
+            # Cancel any existing timer before starting a fresh one
+            if self._dropout_task and not self._dropout_task.done():
+                self._dropout_task.cancel()
+            self._dropout_task = asyncio.create_task(self._dropout_timer(ts))
+
+    async def _dropout_timer(self, stop_ts: datetime) -> None:
+        """
+        Wait dropout_window seconds. If amp still not playing, it's a real
+        stop — log play_stop and reset session state.
+        """
+        await asyncio.sleep(self.dropout_window)
+
+        # _play_stop still set means no recovery arrived during the window
+        if self._play_stop is not None and self._play_start is not None:
+            session_ms = int((stop_ts - self._play_start).total_seconds() * 1000)
+            self._log_event("play_stop", stop_ts,
+                            duration_ms=session_ms,
+                            notes=f"session {session_ms // 1000}s")
+
+        # Reset session state regardless
+        self._play_start          = None
+        self._play_stop           = None
+        self._stalls_this_session = 0
+        self._dropout_task        = None
+
+    # ── serve_http.py stream.log tail ─────────────────────────────────────────
+
+    async def tail_stream_log(self) -> None:
+        """
+        Tail librespot/log/stream.log for STALL_* and CLIENT_* events.
+        STALL_END events update the stall correlation state used by on_amp_state.
+        """
+        log_path = Path(self.stream_log_path).expanduser()
+
+        # Start at current EOF so we don't replay history on startup
+        last_pos = log_path.stat().st_size if log_path.exists() else 0
+        print(f"[stream-monitor] Tailing stream log: {log_path}  (offset={last_pos})")
+
+        while True:
+            await asyncio.sleep(0.25)
+            try:
+                if not log_path.exists():
+                    continue
+
+                current_size = log_path.stat().st_size
+                if current_size < last_pos:
+                    last_pos = 0   # file rotated or truncated
+                if current_size <= last_pos:
+                    continue
+
+                with open(log_path) as f:
+                    f.seek(last_pos)
+                    new_text = f.read()
+                last_pos = current_size
+
+                for line in new_text.splitlines():
+                    line = line.strip()
+                    if not line:
+                        continue
+                    await self._parse_stream_log_line(line)
+
+            except Exception as e:
+                print(f"[stream-monitor] stream.log tail error: {e!r}")
+                await asyncio.sleep(2)
+
+    async def _parse_stream_log_line(self, line: str) -> None:
+        # Format: 2026-05-03T05:24:17.123Z <EVENT_TOKEN> [rest]
+        parts = line.split(" ", 2)
+        if len(parts) < 2:
+            return
+        ts_str, event_token = parts[0], parts[1]
+        rest = parts[2] if len(parts) > 2 else ""
+
+        try:
+            ts = datetime.fromisoformat(ts_str.replace("Z", "+00:00")).astimezone()
+        except ValueError:
+            ts = datetime.now().astimezone()
+
+        if event_token == "STALL_END":
+            # STALL_END <ms>ms — record for correlation and log to CSV
+            m = re.match(r"(\d+)ms", rest)
+            stall_ms = int(m.group(1)) if m else 0
+            self._last_stall_end_mono  = time.monotonic()
+            self._last_stall_end_ms    = stall_ms
+            self._stalls_this_session += 1
+            # Log pipe_stall to stream_health.csv only during an active session
+            if self._play_start is not None:
+                self._log_event("pipe_stall", ts, duration_ms=stall_ms)
+
+        elif event_token == "CLIENT_CONNECT":
+            print(f"[stream-monitor] ESPHome connected  {rest}")
+
+        elif event_token == "CLIENT_DISCONNECT":
+            print(f"[stream-monitor] ESPHome disconnected  {rest}")
+
+    # ── API handlers ──────────────────────────────────────────────────────────
+
+    async def api_status(self, _req: web.Request) -> web.Response:
+        now        = datetime.now(timezone.utc)
+        cutoff_24h = (now - timedelta(hours=24)).isoformat()
+
+        recent   = [e for e in self._events_cache if e.get("timestamp", "") >= cutoff_24h]
+        dropouts = [e for e in recent if e["event"] == "dropout"]
+        stalls   = [e for e in recent if e["event"] == "pipe_stall"]
+        dropout_durations = [int(e["duration_ms"]) for e in dropouts if e.get("duration_ms")]
+        correlated        = [e for e in dropouts if e.get("correlated_stall_ms")]
+
+        # Dropouts per hour over the observed window
+        if recent:
+            oldest_ts = datetime.fromisoformat(recent[0]["timestamp"])
+            if oldest_ts.tzinfo is None:
+                oldest_ts = oldest_ts.replace(tzinfo=timezone.utc)
+            hours_window = max(
+                (now - oldest_ts.astimezone(timezone.utc)).total_seconds() / 3600,
+                0.1
+            )
+        else:
+            hours_window = 1.0
+        dropouts_per_hr = round(len(dropouts) / hours_window, 1)
+
+        mean_dropout = (round(sum(dropout_durations) / len(dropout_durations))
+                        if dropout_durations else None)
+        max_dropout  = max(dropout_durations) if dropout_durations else None
+        corr_pct     = (round(len(correlated) / len(dropouts) * 100)
+                        if dropouts else None)
+
+        # Current playing duration
+        playing_duration_s = None
+        if self._play_start is not None and self._play_stop is None:
+            playing_duration_s = int(
+                (datetime.now().astimezone() - self._play_start).total_seconds()
+            )
+
+        # Last dropout for the status card
+        last_dropout = next(
+            (e for e in reversed(self._events_cache) if e["event"] == "dropout"),
+            None
+        )
+
+        amp_state = self._entity_states.get(self.amp_entity, "")
+        if amp_state == "playing":
+            state = "playing"
+        elif amp_state in ("idle", "paused", "off"):
+            state = "stopped"
+        else:
+            state = "unknown"
+
+        return web.json_response({
+            "state":                  state,
+            "stream_type":            self._stream_type,
+            "source_detail":          self._source_detail,
+            "playing_since_iso":      self._play_start.isoformat() if self._play_start else None,
+            "playing_duration_s":     playing_duration_s,
+            "stalls_this_session":    self._stalls_this_session,
+            "last_dropout_ms":        int(last_dropout["duration_ms"]) if last_dropout and last_dropout.get("duration_ms") else None,
+            "last_dropout_iso":       last_dropout["timestamp"] if last_dropout else None,
+            "dropouts_24h":           len(dropouts),
+            "dropouts_per_hr":        dropouts_per_hr,
+            "mean_dropout_ms":        mean_dropout,
+            "max_dropout_ms":         max_dropout,
+            "stalls_24h":             len(stalls),
+            "stall_correlated_count": len(correlated),
+            "stall_correlation_pct":  corr_pct,
+        })
+
+    async def api_events(self, _req: web.Request) -> web.Response:
+        return web.json_response(list(reversed(self._events_cache[-200:])))
+
+    # ── Main coroutine ────────────────────────────────────────────────────────
+
+    async def run(self) -> None:
+        if self.stream_log_path:
+            await self.tail_stream_log()
+        else:
+            # No stream log configured — on_amp_state is still called externally.
+            # Keep the coroutine alive so asyncio.gather doesn't drop it.
+            while True:
+                await asyncio.sleep(3600)
 
 
 # ── Pipeline Session ─────────────────────────────────────────────────────────
@@ -167,6 +535,15 @@ class VoiceBench:
 
         self.entries_cache: List[dict] = []
         self._load_csv()
+
+        # Stream monitor — enabled if amp_entity is configured
+        amp_entity = config.get("amp_entity", "")
+        if amp_entity:
+            self.stream_monitor: Optional[StreamMonitor] = StreamMonitor(
+                config, self.entity_states, self.entity_attrs
+            )
+        else:
+            self.stream_monitor = None
 
     # ── CSV ──────────────────────────────────────────────────────────────────
 
@@ -266,6 +643,17 @@ class VoiceBench:
                             except Exception:
                                 ts = datetime.now().astimezone()
                             await self._on_satellite(old_state, new_state, ts, amp_id, music_id)
+
+                        # ── Feed amp state changes to stream monitor ────────
+                        elif self.stream_monitor and entity_id == amp_id and amp_id:
+                            raw_ts = new_obj.get("last_updated", "")
+                            try:
+                                ts = datetime.fromisoformat(
+                                    raw_ts.replace("Z", "+00:00")
+                                ).astimezone()
+                            except Exception:
+                                ts = datetime.now().astimezone()
+                            await self.stream_monitor.on_amp_state(old_state, new_state, ts)
 
             except Exception as e:
                 print(f"[voice-bench] HA WebSocket error: {e!r} — reconnecting in 5s…")
@@ -497,6 +885,11 @@ class VoiceBench:
         app.router.add_post("/api/ratings/{entry_id}",   self._api_set_rating)
         app.router.add_get("/api/config",                self._api_config)
 
+        # Stream health endpoints (only if stream monitor is active)
+        if self.stream_monitor:
+            app.router.add_get("/api/stream/status", self.stream_monitor.api_status)
+            app.router.add_get("/api/stream/events", self.stream_monitor.api_events)
+
         runner = web.AppRunner(app, access_log=None)
         await runner.setup()
         port = self.config.get("port", 7700)
@@ -531,20 +924,24 @@ class VoiceBench:
 
     async def _api_config(self, _req):
         return web.json_response({
-            "tag":           self.config_tag,
-            "whisper_model": self.whisper_model,
-            "notes":         self.notes,
+            "tag":                   self.config_tag,
+            "whisper_model":         self.whisper_model,
+            "notes":                 self.notes,
+            "stream_monitor_active": self.stream_monitor is not None,
         })
 
     # ── Entry point ───────────────────────────────────────────────────────────
 
     async def run(self):
         DATA_DIR.mkdir(parents=True, exist_ok=True)
-        await asyncio.gather(
+        tasks = [
             self.watch_ha(),
             self.tail_whisper_log(),
             self.start_server(),
-        )
+        ]
+        if self.stream_monitor:
+            tasks.append(self.stream_monitor.run())
+        await asyncio.gather(*tasks)
 
 
 # ── main ─────────────────────────────────────────────────────────────────────

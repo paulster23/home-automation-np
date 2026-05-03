@@ -5,6 +5,230 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Voice Bench</title>
   <style>
+    /* ── Tab navigation ─────────────────────────────────────────────────── */
+    .tab-bar {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 0 20px;
+      display: flex;
+      gap: 0;
+    }
+
+    .tab-btn {
+      padding: 10px 18px;
+      background: transparent;
+      border: none;
+      border-bottom: 2px solid transparent;
+      color: var(--text-muted);
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 500;
+      transition: color 0.12s, border-color 0.12s;
+      margin-bottom: -1px;
+    }
+
+    .tab-btn:hover:not(.active) { color: var(--text); }
+
+    .tab-btn.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    /* ── Stream health layout ────────────────────────────────────────────── */
+    .stream-content {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 16px 20px 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    /* Live status card */
+    .stream-status-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .stream-status-left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .stream-state-dot {
+      width: 11px; height: 11px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .stream-state-dot.playing  { background: #22c55e; animation: blink 2s ease-in-out infinite; }
+    .stream-state-dot.stopped  { background: #484f58; }
+    .stream-state-dot.unknown  { background: #f59e0b; animation: blink 2s ease-in-out infinite; }
+
+    .stream-type-badge {
+      padding: 3px 10px;
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .stream-type-badge.spotify { background: #0a2e0a; color: #4ade80; }
+    .stream-type-badge.radio   { background: #3c0a0a; color: #f87171; }
+    .stream-type-badge.unknown { background: var(--surface2); color: var(--text-muted); }
+
+    .stream-status-main {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .stream-status-sub {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 3px;
+    }
+
+    .stream-status-right {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .stream-stat {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 1px;
+    }
+
+    .stream-stat-value {
+      font-size: 20px;
+      font-weight: 700;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .stream-stat-label {
+      font-size: 10px;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+    }
+
+    /* Stream stats bar (reuses .stats-bar base styles) */
+
+    /* Event timeline */
+    .stream-event-row {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 10px 14px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      transition: border-color 0.12s;
+    }
+
+    .stream-event-row:hover { border-color: #444c56; }
+
+    .stream-event-row.ev-dropout   { border-left: 3px solid #ef4444; }
+    .stream-event-row.ev-play_stop { border-left: 3px solid #484f58; }
+    .stream-event-row.ev-play_start{ border-left: 3px solid #22c55e; }
+    .stream-event-row.ev-pipe_stall{ border-left: 3px solid #f59e0b; }
+
+    .stream-ev-ts {
+      font-size: 11px;
+      color: var(--text-muted);
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap;
+      flex-shrink: 0;
+      width: 90px;
+    }
+
+    .stream-ev-badge {
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      flex-shrink: 0;
+      width: 76px;
+      text-align: center;
+    }
+    .stream-ev-badge.dropout    { background: #3c0a0a; color: #f87171; }
+    .stream-ev-badge.play_stop  { background: #1c2128; color: #7d8590; }
+    .stream-ev-badge.play_start { background: #0a2e0a; color: #4ade80; }
+    .stream-ev-badge.pipe_stall { background: #3c2800; color: #fbbf24; }
+
+    .stream-ev-body {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .stream-ev-dur {
+      font-size: 14px;
+      font-weight: 700;
+      font-variant-numeric: tabular-nums;
+      color: var(--text);
+      flex-shrink: 0;
+    }
+    .stream-ev-dur.long { color: #ef4444; }
+    .stream-ev-dur.med  { color: #f59e0b; }
+    .stream-ev-dur.short{ color: #22c55e; }
+
+    .stream-ev-bar-wrap {
+      flex: 1;
+      min-width: 60px;
+      max-width: 200px;
+      height: 6px;
+      background: var(--surface2);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+
+    .stream-ev-bar {
+      height: 100%;
+      border-radius: 3px;
+      background: #ef4444;
+    }
+
+    .stall-chip {
+      font-size: 10px;
+      background: #3c2800;
+      color: #fbbf24;
+      padding: 1px 6px;
+      border-radius: 4px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .stream-ev-source {
+      font-size: 11px;
+      color: var(--text-dim);
+      white-space: nowrap;
+    }
+
+    .stream-section-header {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      letter-spacing: 0.7px;
+      padding: 4px 0 2px;
+    }
+
     /* ── Reset & Variables ──────────────────────────────────────────────── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -477,8 +701,14 @@
   </div>
 </div>
 
-<!-- Filters -->
-<div class="filters">
+<!-- Tab bar -->
+<div class="tab-bar">
+  <button class="tab-btn active" data-tab="voice">🎙 Voice Commands</button>
+  <button class="tab-btn" data-tab="stream">🎵 Stream Health</button>
+</div>
+
+<!-- Filters (voice tab only) -->
+<div class="filters" id="filters-bar">
   <span class="filter-label">Filter</span>
   <button class="filter-btn active" data-type="all">All</button>
   <button class="filter-btn" data-type="time">⏰ Time</button>
@@ -489,16 +719,58 @@
   <button class="filter-btn" data-type="other">Other</button>
 </div>
 
-<!-- Main content -->
+<!-- Voice commands tab -->
 <div class="content" id="content">
   <div class="loading">Loading…</div>
 </div>
 
+<!-- Stream health tab -->
+<div class="stream-content" id="stream-content" style="display:none">
+  <div id="stream-status-card" class="stream-status-card">
+    <div class="stream-status-left">
+      <div class="stream-state-dot unknown"></div>
+      <div>
+        <div class="stream-status-main">Loading…</div>
+      </div>
+    </div>
+  </div>
+  <div id="stream-stats-bar" class="stats-bar" style="display:none"></div>
+  <div class="stream-section-header" id="stream-timeline-header" style="display:none">Recent events</div>
+  <div id="stream-timeline"></div>
+</div>
+
 <script>
 // ── State ─────────────────────────────────────────────────────────────────
-let allEntries    = [];
-let currentFilter = "all";
-let localRatings  = {};   // optimistic rating cache
+let allEntries      = [];
+let currentFilter   = "all";
+let localRatings    = {};
+let currentTab      = "voice";
+let streamMonitorActive = false;
+
+// ── Tab switching ──────────────────────────────────────────────────────────
+document.querySelectorAll(".tab-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+    currentTab = btn.dataset.tab;
+
+    const voiceContent  = document.getElementById("content");
+    const streamContent = document.getElementById("stream-content");
+    const filtersBar    = document.getElementById("filters-bar");
+
+    if (currentTab === "voice") {
+      voiceContent.style.display  = "";
+      streamContent.style.display = "none";
+      filtersBar.style.display    = "";
+    } else {
+      voiceContent.style.display  = "none";
+      streamContent.style.display = "";
+      filtersBar.style.display    = "none";
+      fetchStreamStatus();
+      fetchStreamEvents();
+    }
+  });
+});
 
 // ── Data fetching ──────────────────────────────────────────────────────────
 async function fetchConfig() {
@@ -510,6 +782,10 @@ async function fetchConfig() {
     if (cfg.notes) {
       document.getElementById("model-chip").title = cfg.notes;
     }
+    streamMonitorActive = !!cfg.stream_monitor_active;
+    // Show/hide stream tab based on whether monitor is active
+    const streamTab = document.querySelector('.tab-btn[data-tab="stream"]');
+    if (streamTab) streamTab.style.display = streamMonitorActive ? "" : "none";
   } catch (_) {}
 }
 
@@ -518,7 +794,7 @@ async function fetchEntries() {
     const r = await fetch("/api/entries");
     allEntries = await r.json();
     setConnected(true);
-    render();
+    if (currentTab === "voice") render();
     const now = new Date();
     document.getElementById("updated-label").textContent =
       "Updated " + now.toLocaleTimeString([], {hour:"2-digit", minute:"2-digit", second:"2-digit"});
@@ -538,6 +814,210 @@ function setConnected(ok) {
     dot.classList.add("offline");
     label.textContent = "offline";
   }
+}
+
+// ── Stream health data fetching ────────────────────────────────────────────
+async function fetchStreamStatus() {
+  try {
+    const r  = await fetch("/api/stream/status");
+    const st = await r.json();
+    renderStreamStatus(st);
+  } catch (e) {
+    document.getElementById("stream-status-card").innerHTML =
+      `<div class="stream-status-left"><div class="stream-state-dot unknown"></div>
+       <div><div class="stream-status-main" style="color:var(--text-muted)">Stream monitor offline</div></div></div>`;
+  }
+}
+
+async function fetchStreamEvents() {
+  try {
+    const r      = await fetch("/api/stream/events");
+    const events = await r.json();
+    renderStreamEvents(events);
+  } catch (_) {}
+}
+
+function renderStreamStatus(st) {
+  const card = document.getElementById("stream-status-card");
+
+  const stateClass = st.state === "playing" ? "playing"
+    : st.state === "stopped" ? "stopped" : "unknown";
+
+  // Source badge
+  const srcType = (st.stream_type || "unknown").toLowerCase();
+  const srcLabel = srcType === "spotify" ? "Spotify"
+    : srcType === "radio" ? "Radio" : st.stream_type || "Unknown";
+  const srcDetail = st.source_detail ? ` · ${esc(st.source_detail)}` : "";
+
+  // Main status line
+  let mainLine = "";
+  if (st.state === "playing" && st.playing_duration_s != null) {
+    mainLine = `Playing for ${fmtDur(st.playing_duration_s)}`;
+  } else if (st.state === "stopped") {
+    mainLine = "Stopped";
+  } else {
+    mainLine = "Unknown";
+  }
+
+  // Sub line
+  let subParts = [];
+  if (st.stalls_this_session > 0) {
+    subParts.push(`${st.stalls_this_session} stall${st.stalls_this_session > 1 ? "s" : ""} this session`);
+  }
+  if (st.last_dropout_iso) {
+    const ago = Math.round((Date.now() - new Date(st.last_dropout_iso).getTime()) / 1000);
+    subParts.push(`last dropout ${ago < 60 ? ago + "s ago" : Math.round(ago/60) + "m ago"}`
+      + (st.last_dropout_ms ? ` (${(st.last_dropout_ms/1000).toFixed(1)}s gap)` : ""));
+  }
+  const subLine = subParts.length ? subParts.join("  ·  ") : (st.state === "playing" ? "No issues detected" : "");
+
+  // Right-side stats
+  let statsHtml = "";
+  if (st.dropouts_24h != null) {
+    const dropColor = st.dropouts_24h === 0 ? "#22c55e" : st.dropouts_24h < 5 ? "#f59e0b" : "#ef4444";
+    statsHtml += `
+      <div class="stream-stat">
+        <span class="stream-stat-value" style="color:${dropColor}">${st.dropouts_24h}</span>
+        <span class="stream-stat-label">Dropouts 24h</span>
+      </div>`;
+  }
+  if (st.mean_dropout_ms != null) {
+    statsHtml += `
+      <div class="stream-stat">
+        <span class="stream-stat-value" style="color:#f59e0b">${(st.mean_dropout_ms/1000).toFixed(1)}s</span>
+        <span class="stream-stat-label">Avg gap</span>
+      </div>`;
+  }
+  if (st.max_dropout_ms != null) {
+    statsHtml += `
+      <div class="stream-stat">
+        <span class="stream-stat-value" style="color:#ef4444">${(st.max_dropout_ms/1000).toFixed(1)}s</span>
+        <span class="stream-stat-label">Max gap</span>
+      </div>`;
+  }
+  if (st.stall_correlation_pct != null) {
+    const corrColor = st.stall_correlation_pct > 60 ? "#ef4444"
+      : st.stall_correlation_pct > 30 ? "#f59e0b" : "#22c55e";
+    statsHtml += `
+      <div class="stream-stat">
+        <span class="stream-stat-value" style="color:${corrColor}">${st.stall_correlation_pct}%</span>
+        <span class="stream-stat-label" title="% dropouts with a pipe stall in the same window">Pipe-stall corr.</span>
+      </div>`;
+  }
+
+  card.innerHTML = `
+    <div class="stream-status-left">
+      <div class="stream-state-dot ${stateClass}"></div>
+      <span class="stream-type-badge ${srcType}">${srcLabel}${srcDetail}</span>
+      <div>
+        <div class="stream-status-main">${esc(mainLine)}</div>
+        ${subLine ? `<div class="stream-status-sub">${esc(subLine)}</div>` : ""}
+      </div>
+    </div>
+    ${statsHtml ? `<div class="stream-status-right">${statsHtml}</div>` : ""}
+  `;
+
+  // 24h stats bar
+  const statsBar = document.getElementById("stream-stats-bar");
+  if (st.dropouts_24h != null) {
+    const dph = st.dropouts_per_hr != null ? st.dropouts_per_hr.toFixed(1) : "—";
+    const meanStr = st.mean_dropout_ms != null ? (st.mean_dropout_ms/1000).toFixed(1)+"s" : "—";
+    const maxStr  = st.max_dropout_ms  != null ? (st.max_dropout_ms /1000).toFixed(1)+"s" : "—";
+    const corrStr = st.stall_correlation_pct != null ? st.stall_correlation_pct+"%" : "—";
+    const stallStr = st.stalls_24h != null ? st.stalls_24h : "—";
+    statsBar.innerHTML = `
+      <div class="stat"><span class="stat-label">Dropouts/hr (24h)</span>
+        <span class="stat-value">${dph}</span></div>
+      <div class="stat"><span class="stat-label">Avg gap</span>
+        <span class="stat-value">${meanStr}</span></div>
+      <div class="stat"><span class="stat-label">Max gap</span>
+        <span class="stat-value">${maxStr}</span></div>
+      <div class="stat"><span class="stat-label">Pipe stalls (24h)</span>
+        <span class="stat-value">${stallStr}</span></div>
+      <div class="stat"><span class="stat-label">Stall correlation</span>
+        <span class="stat-value" title="% of dropouts that had a concurrent pipe stall">${corrStr}</span></div>
+    `;
+    statsBar.style.display = "";
+  }
+}
+
+function renderStreamEvents(events) {
+  const timeline = document.getElementById("stream-timeline");
+  const header   = document.getElementById("stream-timeline-header");
+
+  if (!events || events.length === 0) {
+    timeline.innerHTML = `<div class="empty-state"><div class="icon">📭</div>
+      <p>No stream events yet. Play some music and check back.</p></div>`;
+    header.style.display = "none";
+    return;
+  }
+
+  header.style.display = "";
+
+  // Max dropout duration for bar scaling
+  const dropoutDurs = events
+    .filter(e => e.event === "dropout" && e.duration_ms)
+    .map(e => +e.duration_ms);
+  const maxDur = dropoutDurs.length ? Math.max(...dropoutDurs) : 1;
+
+  const html = events.map(e => renderStreamEvent(e, maxDur)).join("");
+  timeline.innerHTML = html;
+}
+
+function renderStreamEvent(e, maxDur) {
+  const ts      = new Date(e.timestamp);
+  const dateStr = ts.toLocaleDateString([], { month: "short", day: "numeric" });
+  const timeStr = ts.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit", second: "2-digit" });
+  const event   = e.event || "unknown";
+  const durMs   = +e.duration_ms || 0;
+  const stallMs = +e.correlated_stall_ms || 0;
+
+  // Source label
+  const srcType   = (e.stream_type || "").toLowerCase();
+  const srcDetail = e.source_detail || "";
+  const srcLabel  = srcDetail ? `${srcType} · ${srcDetail}` : srcType;
+
+  // Duration display + color
+  let durHtml = "";
+  let barHtml = "";
+  if (event === "dropout" && durMs > 0) {
+    const durCls = durMs > 10000 ? "long" : durMs > 5000 ? "med" : "short";
+    const barPct = Math.min(100, Math.round(durMs / maxDur * 100));
+    durHtml = `<span class="stream-ev-dur ${durCls}">${(durMs/1000).toFixed(1)}s</span>`;
+    barHtml = `<div class="stream-ev-bar-wrap">
+      <div class="stream-ev-bar" style="width:${barPct}%"></div>
+    </div>`;
+  } else if (event === "pipe_stall" && durMs > 0) {
+    durHtml = `<span class="stream-ev-dur med">${durMs}ms</span>`;
+  } else if (event === "play_stop" && durMs > 0) {
+    durHtml = `<span class="stream-ev-dur" style="color:var(--text-muted);font-size:12px">session ${fmtDur(Math.round(durMs/1000))}</span>`;
+  }
+
+  // Stall correlation chip
+  const stallChip = stallMs > 0
+    ? `<span class="stall-chip" title="Pipe stall of ${stallMs}ms was logged in this dropout window">⚡ pipe stall ${stallMs}ms</span>`
+    : "";
+
+  // Event label text
+  const labelMap = {
+    dropout:    "DROPOUT",
+    play_stop:  "STOPPED",
+    play_start: "STARTED",
+    pipe_stall: "PIPE STALL",
+  };
+  const label = labelMap[event] || event.toUpperCase();
+
+  return `
+<div class="stream-event-row ev-${esc(event)}">
+  <span class="stream-ev-ts">${dateStr}<br>${timeStr}</span>
+  <span class="stream-ev-badge ${esc(event)}">${label}</span>
+  <div class="stream-ev-body">
+    ${durHtml}
+    ${barHtml}
+    ${stallChip}
+    ${srcLabel ? `<span class="stream-ev-source">${esc(srcLabel)}</span>` : ""}
+  </div>
+</div>`;
 }
 
 // ── Render ────────────────────────────────────────────────────────────────
@@ -787,7 +1267,7 @@ async function setRating(id, rating) {
   }
 }
 
-// ── Filter buttons ────────────────────────────────────────────────────────
+// ── Filter buttons (voice tab) ────────────────────────────────────────────
 document.querySelectorAll(".filter-btn").forEach(btn => {
   btn.addEventListener("click", () => {
     document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
@@ -798,6 +1278,16 @@ document.querySelectorAll(".filter-btn").forEach(btn => {
 });
 
 // ── Utilities ─────────────────────────────────────────────────────────────
+function fmtDur(totalSeconds) {
+  if (!totalSeconds || totalSeconds <= 0) return "0s";
+  const h = Math.floor(totalSeconds / 3600);
+  const m = Math.floor((totalSeconds % 3600) / 60);
+  const s = totalSeconds % 60;
+  if (h > 0) return `${h}h ${m}m`;
+  if (m > 0) return `${m}m ${s}s`;
+  return `${s}s`;
+}
+
 function fmtMs(ms) {
   if (!ms || ms <= 0) return "—";
   if (ms < 1000) return ms + "ms";
@@ -824,6 +1314,14 @@ function esc(str) {
 fetchConfig();
 fetchEntries();
 setInterval(fetchEntries, 10_000);
+
+// Stream health polls — status every 5s, events every 15s (when on that tab)
+setInterval(() => {
+  if (currentTab === "stream") fetchStreamStatus();
+}, 5_000);
+setInterval(() => {
+  if (currentTab === "stream") fetchStreamEvents();
+}, 15_000);
 </script>
 </body>
 </html>
