@@ -48,9 +48,11 @@ fi
 
 # ── Check 2: serve_http.py port is listening ─────────────────────────────────
 # serve_http.py binds port 8765 on startup and holds it open permanently.
-# nc -z connects and immediately closes — serve_http accepts but doesn't
-# send anything until it has audio data, so the probe is harmless.
-if ! nc -z -w 2 127.0.0.1 "${STREAM_PORT}" 2>/dev/null; then
+# Use lsof to check the bound socket WITHOUT making a TCP connection.
+# Previously used nc -z, but serve_http.py is single-client: it accepts the
+# nc connection, sends the HTTP header immediately, and kicks ESPHome off every
+# 5 minutes. That was the primary cause of Spotify Connect dropouts.
+if ! lsof -i "TCP:${STREAM_PORT}" -sTCP:LISTEN -t > /dev/null 2>&1; then
   restart_librespot "serve_http.py port ${STREAM_PORT} not listening"
   exit 0
 fi
