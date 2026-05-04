@@ -798,6 +798,9 @@ class VoiceBench:
     async def tail_whisper_log(self):
         log_path = Path(self.config["whisper_log"]).expanduser()
         pending_text: Optional[str] = None
+        # wyoming-whisperkit writes timing BEFORE text (opposite of mlx-whisper).
+        # Buffer the timing here; emit the entry once we see the text line.
+        pending_whisperkit_ms: Optional[int] = None
 
         # Start at the current end of file (don't replay history)
         last_pos = log_path.stat().st_size if log_path.exists() else 0
@@ -827,27 +830,49 @@ class VoiceBench:
                     if not line:
                         continue
 
-                    # Transcribed text line
-                    # Matches both wyoming_mlx_whisper and wyoming_whisperkit handler loggers.
-                    # Exclude VAD status lines (e.g. "VAD early trigger — ...") which are also
-                    # emitted as INFO from the same logger but are not transcription output.
-                    # When VAD fires early, the handler transcribes twice: once for the VAD
-                    # clip (real text) and once for the trailing AudioStop audio (empty).
-                    # The empty INFO line resets pending_text so the stale real text can't be
-                    # re-used by the second timing line.
+                    # Transcribed text line — both backends emit INFO from their handler logger.
+                    # Log ordering differs by backend:
+                    #   mlx-whisper:  INFO(text) → WARNING(timing)  — pending_text design
+                    #   whisperkit:   DEBUG(timing) → INFO(text)    — pending_whisperkit_ms design
+                    # When VAD fires early the handler transcribes twice: once for the VAD clip
+                    # (real speech) and once for the trailing AudioStop audio (noise/blank).
                     m = re.match(r"INFO:wyoming_(?:mlx_whisper|whisperkit)\.handler:(.*)", line)
                     if m:
                         text = m.group(1).strip()
-                        # Reject: empty, VAD status lines, or WhisperKit blank-audio sentinel
-                        if text and not text.startswith("VAD ") and text != "[BLANK_AUDIO]":
-                            pending_text = text
-                        else:
-                            # Empty, VAD status, or [BLANK_AUDIO] — reset so the next timing
-                            # line doesn't re-use a stale pending_text from a prior transcription
+                        # Noise tokens: empty, VAD status lines, [BLANK_AUDIO], or any
+                        # bracket-enclosed WhisperKit noise label ([water running], [music], etc.)
+                        is_noise = (
+                            not text
+                            or text.startswith("VAD ")
+                            or bool(re.match(r'^\[.*\]$', text))
+                        )
+                        if is_noise:
+                            if pending_whisperkit_ms is not None:
+                                # Timing already buffered — emit null entry so timing is consumed
+                                ts_now = datetime.now().astimezone()
+                                self.recent_stt.append((ts_now, None, pending_whisperkit_ms))
+                                if len(self.recent_stt) > 20:
+                                    self.recent_stt = self.recent_stt[-20:]
+                                print(f"[voice-bench] STT  ''  {pending_whisperkit_ms}ms  (noise: {text})")
+                                pending_whisperkit_ms = None
+                            # Reset mlx pending text so it can't be re-used by a later timing line
                             pending_text = None
+                        else:
+                            if pending_whisperkit_ms is not None:
+                                # whisperkit path: timing already buffered — emit now with real text
+                                ts_now = datetime.now().astimezone()
+                                self.recent_stt.append((ts_now, text, pending_whisperkit_ms))
+                                if len(self.recent_stt) > 20:
+                                    self.recent_stt = self.recent_stt[-20:]
+                                print(f"[voice-bench] STT  '{text[:45]}'  {pending_whisperkit_ms}ms")
+                                pending_whisperkit_ms = None
+                            else:
+                                # mlx-whisper path: text comes first, timing follows
+                                pending_text = text
                         continue
 
-                    # Timing line — wyoming_mlx_whisper emits a WARNING:asyncio slow-callback line
+                    # Timing line — wyoming_mlx_whisper emits a WARNING:asyncio slow-callback line.
+                    # Text was already set in pending_text before this line arrived.
                     m = re.match(r"WARNING:asyncio:Executing .+? took ([\d.]+) seconds", line)
                     if m:
                         duration_ms = int(float(m.group(1)) * 1000)
@@ -860,17 +885,13 @@ class VoiceBench:
                         continue
 
                     # Timing line — wyoming_whisperkit logs "WhisperKit internal time: Xms  wall: Yms"
-                    # We use the wall time so it matches the same real-world latency concept as the
+                    # Text has NOT been logged yet — buffer the timing and wait for the INFO line.
+                    # We use wall time to match the real-world latency concept from mlx-whisper's
                     # asyncio slow-callback figure (subprocess spawn + CoreML inference).
                     m = re.match(r"DEBUG:wyoming_whisperkit\.handler:WhisperKit internal time: [\d.]+ ms\s+wall: ([\d.]+) ms", line)
                     if m:
-                        duration_ms = int(float(m.group(1)))
-                        ts_now = datetime.now().astimezone()
-                        self.recent_stt.append((ts_now, pending_text, duration_ms))
-                        if len(self.recent_stt) > 20:
-                            self.recent_stt = self.recent_stt[-20:]
-                        print(f"[voice-bench] STT  '{(pending_text or '')[:45]}'  {duration_ms}ms")
-                        pending_text = None
+                        pending_whisperkit_ms = int(float(m.group(1)))
+                        # Do NOT append to recent_stt yet — wait for the text INFO line
 
             except Exception as e:
                 print(f"[voice-bench] Log tail error: {e!r}")
