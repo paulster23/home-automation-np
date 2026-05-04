@@ -440,7 +440,7 @@ intent_script:
 
   # Broadcast radio by call sign ("play KEXP", "play K-E-X-P radio").
   # Normalises whatever Whisper heard into an uppercase callsign by stripping
-  # spaces and hyphens, then passes it to RadioBrowser via Music Assistant.
+  # spaces and hyphens, then delegates to script.radio_play_station (direct MP3 streams).
   PlayCallSign:
     speech:
       text: ""

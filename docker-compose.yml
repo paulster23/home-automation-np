@@ -167,48 +167,10 @@ services:
   # ──────────────────────────────────────────────
   # Music Assistant — Spotify, radio, media playback
   # Web UI: http://localhost:8095
-  # Connects to HA as an integration for voice control
-  # Spotify provider handles search/playback via API.
-  # Spotify Connect (mDNS) not possible on macOS Docker Desktop.
-  # NOTE: MASS_BASE_URL uses a static IP (192.168.1.70).
-  # If the Mac Mini's IP changes, update this + music-assistant/settings.json
-  # ──────────────────────────────────────────────
-  music-assistant:
-    container_name: music-assistant
-    image: ghcr.io/music-assistant/server:latest
-    platform: linux/arm64
-    restart: unless-stopped
-    # cap_drop: ALL removed — Music Assistant uses s6-overlay init system
-    security_opt:
-      - no-new-privileges:true
-    ports:
-      - "8095:8095"   # Web UI
-      - "8097:8097"   # Stream server (audio delivery to players)
-    networks:
-      - home-automation
-    volumes:
-      - ./music-assistant:/data
-    environment:
-      TZ: America/New_York
-      MASS_BASE_URL: http://192.168.1.70:8095
-    healthcheck:
-      test: ["CMD", "wget", "-qO", "/dev/null", "http://localhost:8095/"]
-      interval: 30s
-      timeout: 5s
-      retries: 3
-      start_period: 120s  # MA takes ~2 min to register players + providers
-    deploy:
-      resources:
-        limits:
-          memory: 640m    # raised from 512m (2026-04-25) — avg 72%, peak 99.5% of 512m; flagged 3 consecutive weekly reports
-          cpus: "1.0"
-        reservations:
-          memory: 64m
-    logging:
-      driver: "json-file"
-      options:
-        max-size: "10m"
-        max-file: "3"
+  # music-assistant removed 2026-05-03 — was radio-only (RadioBrowser/TuneIn) after
+  # Spotify removed 2026-03-28. Radio now uses direct MP3 streams; Spotify via
+  # librespot → ESPHome direct path. MA was consuming ~460m RAM doing nothing.
+  # To restore: git show HEAD~1:home-automation/docker-compose.yml | grep -A40 'music-assistant:'
 
   # ──────────────────────────────────────────────
   # Whisper — general-purpose local speech-to-text
