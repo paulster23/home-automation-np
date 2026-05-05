@@ -127,12 +127,13 @@ Per-object keys under `stationary.max_frames` ARE supported in Frigate 0.17.x �
 - [ ] **Remove Music Assistant from stack** — MA is fully out of the Spotify/radio audio chain (all automations target `home_assistant_voice_0a3a76_media_player` directly; radio uses hardcoded MP3 streams). Safe to remove. Steps: (1) HA → Settings → Devices & Services → Music Assistant → Delete; (2) remove `music-assistant` service from `docker-compose.yml`; (3) `docker compose up -d`; (4) optionally `rm -rf ~/containers/home-automation/music-assistant/`. Radio playback unaffected.
 
 
+- [ ] **Check router port forwarding for port 8971** — Internet scanners hit Frigate within seconds of startup on 2026-05-04, suggesting port 8971 may be internet-accessible via router port forward or UPnP. Frigate is HTTP-only and rejects TLS probes, but camera feeds shouldn't be internet-accessible. Log into router and check for any port forwarding rules on 8971; also check UPnP settings.
 - [ ] Reverse proxy (Caddy/Nginx) — HTTPS + friendly names (e.g. `emby.local`) for all UIs
 - [ ] Centralized logging (Loki/Promtail) — only if log-tailer + direct file reads aren't enough
 - [ ] HA System Monitor integration — CPU/memory dashboard in HA
 - [ ] Network isolation for media stack — separate `download-net` and `media-net` bridge networks
 - [x] ~~Move speedtest-tracker APP_KEY to secrets file~~ — **Done 2026-03-28** (tracked in infra/TODO.md completed section)
-- [ ] Tailscale for remote access — access services away from home without port forwarding
+- [x] ~~Tailscale for remote access~~ — **Done 2026-05-04.** All services exposed via `tailscale serve --https=PORT`. No Caddy. Caddy removed entirely.
 - [ ] Frigate CoreML detection — Apple Neural Engine path (currently using ZMQ via FrigateDetector.app)
 - [x] ~~Tune Silero-VAD silence threshold from 900ms → 700ms~~ — **Done 2026-04-29.** Edited `VAD_SILENCE_MS` in `wyoming_whisperkit/handler.py` (line 38). LaunchAgent reloaded via `launchctl kickstart`. Monitor voice-bench for clipped transcripts on short commands ("Stop", "Off") — if seen, raise to 800ms.
 - [x] ~~Add WFMU mishearing corrections~~ — ✅ Done 2026-05-02. Added `wsmu`, `wsnu`, `wbmu`, `wfmyou` to `callsign` list in `custom_sentences/en/music.yaml`; added `please` alongside `play` in PlayCallSign sentence pattern; added correction map in all three intent script templates.

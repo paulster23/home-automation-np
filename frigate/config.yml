@@ -4,7 +4,7 @@
 # ─────────────────────────────────────────────────────────────
 
 # Authentication — default mode prompts you to create an admin
-# account on first visit to https://localhost:8971
+# account on first visit to http://localhost:8971
 # DO NOT set "auth: none" — that locks you out of admin settings
 auth:
   session_length: 2592000   # 30 days (default is 86400 = 1 day)
@@ -158,6 +158,13 @@ motion:
 
 # ── Birdseye (disabled — single camera, not needed) ──────────
 birdseye:
+  enabled: false
+
+# ── TLS ───────────────────────────────────────────────────────
+# Disabled — Frigate is published directly on host port 8971 (HTTP).
+# LAN access: http://media.local:8971
+# Tailscale access: https://media.tail317990.ts.net:8971 (via tailscale serve)
+tls:
   enabled: false
 
 version: 0.17-0

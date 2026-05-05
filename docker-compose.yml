@@ -44,7 +44,9 @@ services:
 
   # ──────────────────────────────────────────────
   # Frigate NVR — motion detection + recording
-  # Web UI: https://localhost:8971
+  # Web UI: http://localhost:8971 (HTTP — TLS disabled, served directly)
+  # LAN access: http://media.local:8971
+  # Tailscale: https://media.tail317990.ts.net:8971 (via tailscale serve on host)
   # Publishes camera events to MQTT for Home Assistant
   # Camera credentials loaded from secrets via env vars
   # ──────────────────────────────────────────────
@@ -68,17 +70,13 @@ services:
     # Shared memory — increase if you add more cameras
     shm_size: "256mb"
     ports:
-      # 8971 removed — Frigate web UI served exclusively via Caddy reverse proxy
-      # (infra stack). Direct host exposure caused a port binding conflict with
-      # Caddy's 100.101.158.73:8971 binding on macOS Docker Desktop.
+      - "8971:8971"   # Frigate web UI — direct host port (no proxy)
       - "8554:8554"   # RTSP re-stream (optional)
     volumes:
       # Config directory — frigate.db lives here
       - ./frigate:/config
       # All recordings and snapshots
       - ./frigate/storage:/media/frigate
-      # SSL Certificate (mkcert)
-      - ./certs:/etc/letsencrypt/live/frigate:ro
       # Tmpfs cache reduces SSD wear (1 GB in RAM)
       - type: tmpfs
         target: /tmp/cache
