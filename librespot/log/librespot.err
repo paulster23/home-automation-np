@@ -9410,3 +9410,1420 @@
 [2026-05-02T03:54:24Z INFO  librespot_connect::spirc] device became inactive
 [2026-05-02T03:54:24Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
 [2026-05-02T03:54:24Z WARN  librespot_connect::spirc] failed filling up next_track during stopping: Invalid state { context is not available. type: Default }
+[2026-05-02T05:20:05Z WARN  librespot_core::dealer] Websocket peer does not respond.
+[2026-05-02T05:20:07Z INFO  librespot_connect::spirc] active device is <> with session <5IxK0ieufu7De9Apr9RBE5>
+[2026-05-02T06:54:01Z ERROR librespot_core::session] Connection to server closed.
+[2026-05-02T07:18:51Z WARN  librespot_core::dealer] Websocket connection failed: IO error: peer closed connection without sending TLS close_notify: https://docs.rs/rustls/latest/rustls/manual/_03_howto/index.html#unexpected-eof
+[2026-05-02T07:18:51Z WARN  librespot] Spirc shut down unexpectedly
+[2026-05-02T07:18:52Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-05-02T07:18:52Z INFO  librespot_core::session] Authenticated as 'paulster23' !
+[2026-05-02T07:18:52Z INFO  librespot_core::session] Country: "US"
+[2026-05-02T07:18:53Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-05-02T07:18:53Z INFO  librespot_connect::spirc] active device is <> with session <5IxK0ieufu7De9Apr9RBE5>
+[2026-05-02T08:06:52Z ERROR librespot_core::session] Connection to server closed.
+[2026-05-02T08:16:04Z WARN  librespot_core::dealer] Websocket connection failed: IO error: peer closed connection without sending TLS close_notify: https://docs.rs/rustls/latest/rustls/manual/_03_howto/index.html#unexpected-eof
+[2026-05-02T08:16:04Z WARN  librespot] Spirc shut down unexpectedly
+[2026-05-02T08:16:05Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-05-02T08:16:05Z INFO  librespot_core::session] Authenticated as 'paulster23' !
+[2026-05-02T08:16:05Z INFO  librespot_core::session] Country: "US"
+[2026-05-02T08:16:06Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-05-02T08:16:06Z INFO  librespot_connect::spirc] active device is <> with session <5IxK0ieufu7De9Apr9RBE5>
+[2026-05-02T09:25:09Z WARN  librespot_core::dealer] Websocket peer does not respond.
+[2026-05-02T09:25:10Z INFO  librespot_connect::spirc] active device is <> with session <5IxK0ieufu7De9Apr9RBE5>
+[2026-05-02T16:51:42Z WARN  librespot_core::dealer] Websocket peer does not respond.
+[2026-05-02T16:51:44Z INFO  librespot_connect::spirc] active device is <> with session <5IxK0ieufu7De9Apr9RBE5>
+[2026-05-02T17:31:16Z WARN  librespot_core::dealer] Websocket peer does not respond.
+[2026-05-02T17:31:17Z INFO  librespot_connect::spirc] active device is <> with session <5IxK0ieufu7De9Apr9RBE5>
+[2026-05-02T19:34:20Z WARN  librespot_core::dealer] Websocket peer does not respond.
+[2026-05-02T19:34:21Z INFO  librespot_connect::spirc] active device is <> with session <5IxK0ieufu7De9Apr9RBE5>
+[2026-05-02T21:19:35Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-02T21:19:36Z INFO  librespot_playback::player] Loading <’Said Soul> with Spotify URI <spotify:track:3nereh8fbNjDflNF7f1CLK>
+[2026-05-02T21:19:37Z INFO  librespot_playback::player] <’Said Soul> (164389 ms) loaded
+[2026-05-02T21:19:38Z INFO  librespot_playback::player] Loading <Shere's Theme> with Spotify URI <spotify:track:5YFU1x1snObWT4lLY4pkvm>
+[2026-05-02T21:19:39Z INFO  librespot_playback::player] <Shere's Theme> (138846 ms) loaded
+[2026-05-02T21:19:45Z INFO  librespot_playback::player] Loading <’Said Soul> with Spotify URI <spotify:track:3nereh8fbNjDflNF7f1CLK>
+[2026-05-02T21:19:46Z INFO  librespot_playback::player] <’Said Soul> (164389 ms) loaded
+[2026-05-02T21:19:58Z INFO  librespot_connect::spirc] device became inactive
+[2026-05-02T21:19:58Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-02T21:19:58Z WARN  librespot_connect::spirc] failed filling up next_track during stopping: Invalid state { context is not available. type: Default }
+[2026-05-02T21:20:13Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-02T21:20:14Z INFO  librespot_playback::player] Loading <’Said Soul> with Spotify URI <spotify:track:3nereh8fbNjDflNF7f1CLK>
+[2026-05-02T21:20:14Z INFO  librespot_playback::player] <’Said Soul> (164389 ms) loaded
+[2026-05-02T21:21:39Z INFO  librespot_playback::player] Loading <Shere's Theme> with Spotify URI <spotify:track:5YFU1x1snObWT4lLY4pkvm>
+[2026-05-02T21:21:41Z INFO  librespot_playback::player] <Shere's Theme> (138846 ms) loaded
+[2026-05-02T21:23:52Z INFO  librespot_playback::player] Loading <Colours & Light> with Spotify URI <spotify:track:7fbGwtFrVZGq2dMaFJy8Z9>
+[2026-05-02T21:23:53Z INFO  librespot_playback::player] <Colours & Light> (263304 ms) loaded
+[2026-05-02T21:28:03Z INFO  librespot_playback::player] Loading <Jolene> with Spotify URI <spotify:track:4u6uXWRZBF5FNblo8N2HAL>
+[2026-05-02T21:28:04Z INFO  librespot_playback::player] <Jolene> (194053 ms) loaded
+[2026-05-02T21:31:08Z INFO  librespot_playback::player] Loading <Rock 'N' Roll Man> with Spotify URI <spotify:track:5Xt5TsLkc8mfIsENGvmbuG>
+[2026-05-02T21:31:09Z INFO  librespot_playback::player] <Rock 'N' Roll Man> (185830 ms) loaded
+[2026-05-02T21:32:27Z INFO  librespot] librespot 0.8.0 VERGEN_IDEMPOTENT_OUTPUT (Built on 2025-11-10, Build ID: 1762793321, Profile: release)
+[2026-05-02T21:32:27Z INFO  librespot_playback::mixer::softmixer] Mixing with softvol and volume control: Log(60.0)
+[2026-05-02T21:32:27Z INFO  librespot_playback::convert] Converting with ditherer: tpdf
+[2026-05-02T21:32:27Z INFO  librespot_playback::audio_backend::pipe] Using StdoutSink (pipe) with format: S16
+[2026-05-02T21:32:27Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-05-02T21:32:28Z INFO  librespot_core::session] Authenticated as 'paulster23' !
+[2026-05-02T21:32:28Z INFO  librespot_core::session] Country: "US"
+[2026-05-02T21:32:28Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-05-02T21:32:29Z INFO  librespot_connect::spirc] active device is <> with session <69b894fed5c84474ae531b98e2574fdd>
+[2026-05-02T22:01:30Z INFO  librespot_connect::spirc] session update: <Ok(SESSION_DELETED)> for self, current session_id 5e42b103e74045ac81613ac2df7f974a, new session_id b606fc5ef2eb72a20b857bac8451b8c1
+[2026-05-02T22:06:23Z INFO  librespot] librespot 0.8.0 VERGEN_IDEMPOTENT_OUTPUT (Built on 2025-11-10, Build ID: 1762793321, Profile: release)
+[2026-05-02T22:06:23Z INFO  librespot_playback::mixer::softmixer] Mixing with softvol and volume control: Log(60.0)
+[2026-05-02T22:06:23Z INFO  librespot_playback::convert] Converting with ditherer: tpdf
+[2026-05-02T22:06:23Z INFO  librespot_playback::audio_backend::pipe] Using StdoutSink (pipe) with format: S16
+[2026-05-02T22:06:24Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-05-02T22:06:24Z INFO  librespot_core::session] Authenticated as 'paulster23' !
+[2026-05-02T22:06:24Z INFO  librespot_core::session] Country: "US"
+[2026-05-02T22:06:25Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-05-02T22:06:25Z INFO  librespot_connect::spirc] active device is <> with session <69b894fed5c84474ae531b98e2574fdd>
+[2026-05-02T22:10:03Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-02T22:10:03Z INFO  librespot_playback::player] Loading <My Now> with Spotify URI <spotify:track:5t4zQCOjSL3BmJhPlg62Ok>
+[2026-05-02T22:10:03Z INFO  librespot_connect::spirc] session update: <Ok(NEW_SESSION)> for self, current session_id 84272a37ddbd4c218859e3b34217f788, new session_id 5bb84ff3b3192ae2541b95425703bee3
+[2026-05-02T22:10:03Z INFO  librespot_playback::player] <My Now> (350127 ms) loaded
+[2026-05-02T22:18:18Z INFO  librespot_playback::player] Loading <Count Of Four> with Spotify URI <spotify:track:5w3vHCHkitUnqAOPB3YMlV>
+[2026-05-02T22:18:19Z INFO  librespot_playback::player] <Count Of Four> (365738 ms) loaded
+[2026-05-02T22:24:35Z INFO  librespot_playback::player] Loading <It Isn't Soul> with Spotify URI <spotify:track:7a62ldfxvUALHcb1QutZet>
+[2026-05-02T22:24:36Z INFO  librespot_playback::player] <It Isn't Soul> (168913 ms) loaded
+[2026-05-02T22:26:48Z INFO  librespot_playback::player] Loading <Steppin' / Tell Me About The Rabbit> with Spotify URI <spotify:track:40ZiEuhMRh83sW6WX7a5qX>
+[2026-05-02T22:26:49Z INFO  librespot_playback::player] <Steppin' / Tell Me About The Rabbit> (479360 ms) loaded
+[2026-05-02T22:34:02Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-02T22:34:02Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-02T22:34:03Z INFO  librespot_playback::player] Loading <Keep Your Nose Clean> with Spotify URI <spotify:track:4WPEKnrSgh7N2fv1qOAxPn>
+[2026-05-02T22:34:04Z INFO  librespot_playback::player] <Keep Your Nose Clean> (232426 ms) loaded
+[2026-05-02T22:38:02Z INFO  librespot_playback::player] Loading <Zero Sun> with Spotify URI <spotify:track:15nhbSCU39RlG32KqkneOu>
+[2026-05-02T22:38:03Z INFO  librespot_playback::player] <Zero Sun> (207805 ms) loaded
+[2026-05-02T22:38:03Z WARN  librespot_audio::fetch::receive] Throughput 3 kbps lower than minimum 8, setting to minimum
+[2026-05-02T22:40:40Z INFO  librespot_playback::player] Loading <I Stood Up> with Spotify URI <spotify:track:3FVHtQcZHjjcTrZ1eOGt0P>
+[2026-05-02T22:40:41Z INFO  librespot_playback::player] <I Stood Up> (215753 ms) loaded
+[2026-05-02T22:44:05Z INFO  librespot_playback::player] Loading <Black Gold> with Spotify URI <spotify:track:1lzLnp7x02HNeERgysrjao>
+[2026-05-02T22:44:06Z INFO  librespot_playback::player] <Black Gold> (228982 ms) loaded
+[2026-05-02T23:04:29Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-02T23:04:29Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-02T23:04:30Z INFO  librespot_playback::player] Loading <Vitamin C - 2004 Remastered Version> with Spotify URI <spotify:track:1tzXnPndBrd2G5GXrOBc1c>
+[2026-05-02T23:04:30Z INFO  librespot_connect::spirc] session update: <Ok(SESSION_DELETED)> for self, current session_id 5bb84ff3b3192ae2541b95425703bee3, new session_id 5bb84ff3b3192ae2541b95425703bee3
+[2026-05-02T23:04:31Z INFO  librespot_playback::player] <Vitamin C - 2004 Remastered Version> (214066 ms) loaded
+[2026-05-02T23:04:33Z INFO  librespot_playback::player] Loading <Flammende Herzen> with Spotify URI <spotify:track:0QtMgiXrOrWKFIYUgZ3Nav>
+[2026-05-02T23:04:34Z INFO  librespot_playback::player] <Flammende Herzen> (426862 ms) loaded
+[2026-05-02T23:04:59Z INFO  librespot_connect::spirc] device became inactive
+[2026-05-02T23:04:59Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-02T23:04:59Z WARN  librespot_connect::spirc] failed filling up next_track during stopping: Invalid state { context is not available. type: Default }
+[2026-05-02T23:05:03Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-02T23:05:04Z INFO  librespot_connect::spirc] session update: <Ok(NEW_SESSION)> for self, current session_id 5bb84ff3b3192ae2541b95425703bee3, new session_id 4ed474e6eef5105b580a3d0d62bfe35d
+[2026-05-02T23:05:04Z INFO  librespot_playback::player] Loading <Flammende Herzen> with Spotify URI <spotify:track:0QtMgiXrOrWKFIYUgZ3Nav>
+[2026-05-02T23:05:05Z INFO  librespot_playback::player] <Flammende Herzen> (426862 ms) loaded
+[2026-05-02T23:05:12Z INFO  librespot_playback::player] Loading <Vitamin C - 2004 Remastered Version> with Spotify URI <spotify:track:1tzXnPndBrd2G5GXrOBc1c>
+[2026-05-02T23:05:13Z INFO  librespot_playback::player] <Vitamin C - 2004 Remastered Version> (214066 ms) loaded
+[2026-05-02T23:05:14Z WARN  librespot_audio::fetch::receive] Throughput 8 kbps lower than minimum 8, setting to minimum
+[2026-05-02T23:08:07Z INFO  librespot_playback::player] Loading <Hymne der melancholischen Programmierer> with Spotify URI <spotify:track:6RxQioOkHXwmOWyqGIJm1u>
+[2026-05-02T23:08:08Z INFO  librespot_playback::player] <Hymne der melancholischen Programmierer> (264526 ms) loaded
+[2026-05-02T23:12:19Z INFO  librespot_playback::player] Loading <Sunrain> with Spotify URI <spotify:track:7xrtYFSpcy2fT6xuyVZzFV>
+[2026-05-02T23:12:20Z INFO  librespot_playback::player] <Sunrain> (452600 ms) loaded
+[2026-05-02T23:19:30Z INFO  librespot_playback::player] Loading <Sowiesoso> with Spotify URI <spotify:track:6h1dYEUDxd8lJ32MEGegh1>
+[2026-05-02T23:19:32Z INFO  librespot_playback::player] <Sowiesoso> (491400 ms) loaded
+[2026-05-02T23:24:31Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-02T23:24:31Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-02T23:24:32Z INFO  librespot_playback::player] Loading <From Blown Speakers> with Spotify URI <spotify:track:1gkhXnZAFfaHB78oV8pDXV>
+[2026-05-02T23:24:33Z INFO  librespot_playback::player] <From Blown Speakers> (169200 ms) loaded
+[2026-05-02T23:24:38Z INFO  librespot_connect::spirc] device became inactive
+[2026-05-02T23:24:38Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-02T23:24:38Z WARN  librespot_connect::spirc] failed filling up next_track during stopping: Invalid state { context is not available. type: Default }
+[2026-05-02T23:24:42Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-02T23:24:42Z INFO  librespot_playback::player] Loading <From Blown Speakers> with Spotify URI <spotify:track:1gkhXnZAFfaHB78oV8pDXV>
+[2026-05-02T23:24:42Z INFO  librespot_connect::spirc] session update: <Ok(NEW_SESSION)> for self, current session_id 4ed474e6eef5105b580a3d0d62bfe35d, new session_id 7fd35b725e25a0809c45eff5c6d38070
+[2026-05-02T23:24:42Z INFO  librespot_playback::player] <From Blown Speakers> (169200 ms) loaded
+[2026-05-02T23:27:01Z INFO  librespot_playback::player] Loading <I Might> with Spotify URI <spotify:track:1QqwpQAWYFIeGA8Lr8raCc>
+[2026-05-02T23:27:02Z INFO  librespot_playback::player] <I Might> (241413 ms) loaded
+[2026-05-02T23:27:52Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-02T23:27:52Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-02T23:27:52Z INFO  librespot_playback::player] Loading <Mock Turtle Song> with Spotify URI <spotify:track:6A9Itgp5QWQ8R1X4lctX2I>
+[2026-05-02T23:27:53Z INFO  librespot_playback::player] <Mock Turtle Song> (204320 ms) loaded
+[2026-05-02T23:37:00Z INFO  librespot_playback::player] Loading <Something About You - 7" Version> with Spotify URI <spotify:track:2uXewDKMktNkkMfotqSxN6>
+[2026-05-02T23:37:01Z INFO  librespot_playback::player] <Something About You - 7" Version> (223440 ms) loaded
+[2026-05-02T23:37:35Z INFO  librespot_playback::player] Loading <Perkiomen> with Spotify URI <spotify:track:7vUplXo71UDFOtlKocLvvQ>
+[2026-05-02T23:37:35Z INFO  librespot_playback::player] <Perkiomen> (157420 ms) loaded
+[2026-05-02T23:37:38Z INFO  librespot_playback::player] Loading <Green Flower Street> with Spotify URI <spotify:track:34fWcazka5WAgvsPg1ZKXU>
+[2026-05-02T23:37:38Z INFO  librespot_playback::player] <Green Flower Street> (222493 ms) loaded
+[2026-05-02T23:40:41Z INFO  librespot_playback::player] Loading <Lonely Boy - Re-Recorded> with Spotify URI <spotify:track:2cp9vditc6TLQlAPz5JB8i>
+[2026-05-02T23:40:42Z INFO  librespot_playback::player] <Lonely Boy - Re-Recorded> (272400 ms) loaded
+[2026-05-02T23:45:01Z INFO  librespot_playback::player] Loading <Wings Of Love> with Spotify URI <spotify:track:1fBAZtSDODM8AYVDIcaphQ>
+[2026-05-02T23:45:02Z INFO  librespot_playback::player] <Wings Of Love> (417040 ms) loaded
+[2026-05-02T23:51:38Z INFO  librespot_playback::player] Loading <Chameleon> with Spotify URI <spotify:track:4Ce66JznW8QbeyTdSzdGwR>
+[2026-05-02T23:51:39Z INFO  librespot_playback::player] <Chameleon> (944616 ms) loaded
+[2026-05-02T23:59:28Z WARN  librespot_core::dealer] Websocket peer does not respond.
+[2026-05-02T23:59:28Z INFO  librespot_connect::spirc] active device is <0596f720dd52a9e2e2d0020d00931a1b91014e64> with session <7fd35b725e25a0809c45eff5c6d38070>
+[2026-05-03T00:06:39Z INFO  librespot_playback::player] Loading <Kiss The Bride> with Spotify URI <spotify:track:5xQkkHYbgJ2VegCrRUCvcS>
+[2026-05-03T00:06:40Z INFO  librespot_playback::player] <Kiss The Bride> (262066 ms) loaded
+[2026-05-03T00:10:49Z INFO  librespot_playback::player] Loading <Wild Horses> with Spotify URI <spotify:track:0oLZz6CXQ698XSO3J9DddL>
+[2026-05-03T00:10:50Z INFO  librespot_playback::player] <Wild Horses> (278533 ms) loaded
+[2026-05-03T00:15:14Z INFO  librespot_playback::player] Loading <River Song> with Spotify URI <spotify:track:70Ao5L10SKV701DcOH68Jo>
+[2026-05-03T00:15:14Z INFO  librespot_playback::player] <River Song> (224306 ms) loaded
+[2026-05-03T00:18:48Z INFO  librespot_playback::player] Loading <It Is 'He' (Jai Sri Krishna)> with Spotify URI <spotify:track:06uk1zvC5MhmoONOzhhNzL>
+[2026-05-03T00:18:49Z INFO  librespot_playback::player] <It Is 'He' (Jai Sri Krishna)> (292015 ms) loaded
+[2026-05-03T00:23:26Z INFO  librespot_playback::player] Loading <I Know I'm Not Wrong - 2015 Remaster> with Spotify URI <spotify:track:2aJU5uNgTyV279Tm1eXUhm>
+[2026-05-03T00:23:27Z INFO  librespot_playback::player] <I Know I'm Not Wrong - 2015 Remaster> (181853 ms) loaded
+[2026-05-03T00:26:20Z INFO  librespot_playback::player] Loading <What Makes You Think You're The One (2/24/79)> with Spotify URI <spotify:track:1LziJNLGysl3Ex7WyZ0vxB>
+[2026-05-03T00:26:20Z INFO  librespot_playback::player] <What Makes You Think You're The One (2/24/79)> (207506 ms) loaded
+[2026-05-03T00:26:48Z WARN  librespot_audio::fetch::receive] Throughput 6 kbps lower than minimum 8, setting to minimum
+[2026-05-03T00:29:37Z INFO  librespot_playback::player] Loading <Jackie Wilson Said (I'm In Heaven When You Smile)> with Spotify URI <spotify:track:3o1AFukFi4OhiNW23wDbaj>
+[2026-05-03T00:29:38Z INFO  librespot_playback::player] <Jackie Wilson Said (I'm In Heaven When You Smile)> (184960 ms) loaded
+[2026-05-03T00:32:34Z INFO  librespot_playback::player] Loading <That's All for Everyone - Remix; 2015 Remaster> with Spotify URI <spotify:track:2IwmnKVJDBT7NrhcCt5mrW>
+[2026-05-03T00:32:35Z INFO  librespot_playback::player] <That's All for Everyone - Remix; 2015 Remaster> (171093 ms) loaded
+[2026-05-03T00:35:17Z INFO  librespot_playback::player] Loading <Dear Boy - Remastered 2012> with Spotify URI <spotify:track:4OKPaXNdYs8qwNAKBbTO9x>
+[2026-05-03T00:35:18Z INFO  librespot_playback::player] <Dear Boy - Remastered 2012> (133746 ms) loaded
+[2026-05-03T00:37:24Z INFO  librespot_playback::player] Loading <Ram On - Remastered 2012> with Spotify URI <spotify:track:6qZMXw0fs9qI8b4Nl9ntEQ>
+[2026-05-03T00:37:25Z INFO  librespot_playback::player] <Ram On - Remastered 2012> (149586 ms) loaded
+[2026-05-03T00:40:15Z INFO  librespot_playback::player] Loading <Uh-Oh, Love Comes to Town> with Spotify URI <spotify:track:06JKOTOoHXuuKkiSBDdU6n>
+[2026-05-03T00:40:16Z INFO  librespot_playback::player] <Uh-Oh, Love Comes to Town> (169160 ms) loaded
+[2026-05-03T00:42:28Z INFO  librespot_playback::player] Loading <Young Americans - 2016 Remaster> with Spotify URI <spotify:track:7uPmQttafLiJyju14JREY4>
+[2026-05-03T00:42:29Z INFO  librespot_playback::player] <Young Americans - 2016 Remaster> (313706 ms) loaded
+[2026-05-03T00:43:00Z INFO  librespot_connect::state::context] couldn't distinguish index from current or previous tracks in the updated context
+[2026-05-03T00:43:00Z INFO  librespot_connect::state::context] falling back to index 0
+[2026-05-03T00:44:24Z ERROR librespot_core::session] Connection to server closed.
+[2026-05-03T00:47:27Z WARN  librespot_connect::spirc] unexpected shutdown
+[2026-05-03T00:47:27Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T00:47:27Z WARN  librespot_core::dealer] Websocket connection failed: IO error: peer closed connection without sending TLS close_notify: https://docs.rs/rustls/latest/rustls/manual/_03_howto/index.html#unexpected-eof
+[2026-05-03T00:47:27Z WARN  librespot] Spirc shut down unexpectedly
+[2026-05-03T00:47:28Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-05-03T00:47:28Z INFO  librespot_core::session] Authenticated as 'paulster23' !
+[2026-05-03T00:47:28Z INFO  librespot_core::session] Country: "US"
+[2026-05-03T00:47:29Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-05-03T00:47:29Z INFO  librespot_connect::spirc] active device is <> with session <7fd35b725e25a0809c45eff5c6d38070>
+[2026-05-03T00:48:02Z WARN  librespot_core::dealer] Websocket peer does not respond.
+[2026-05-03T00:48:02Z INFO  librespot_connect::spirc] active device is <> with session <7fd35b725e25a0809c45eff5c6d38070>
+[2026-05-03T00:59:35Z WARN  librespot_core::dealer] Websocket peer does not respond.
+[2026-05-03T00:59:37Z INFO  librespot_connect::spirc] active device is <> with session <7fd35b725e25a0809c45eff5c6d38070>
+[2026-05-03T01:08:30Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T01:08:30Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T01:08:31Z INFO  librespot_playback::player] Loading <John, Take Me With You> with Spotify URI <spotify:track:1IbJOWFjQgHYwwwD4ScyqN>
+[2026-05-03T01:08:31Z INFO  librespot_connect::spirc] session update: <Ok(NEW_SESSION)> for self, current session_id aa9949a570a64a599b70a00a2931d4b0, new session_id 4a52806d7baba4f7ef6233539d896dec
+[2026-05-03T01:08:32Z INFO  librespot_playback::player] <John, Take Me With You> (210851 ms) loaded
+[2026-05-03T01:26:27Z INFO  librespot_connect::spirc] device became inactive
+[2026-05-03T01:26:27Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T01:26:27Z WARN  librespot_connect::spirc] failed filling up next_track during stopping: Invalid state { context is not available. type: Default }
+[2026-05-03T01:26:27Z INFO  librespot_connect::spirc] session update: <Ok(SESSION_DELETED)> for self, current session_id 4a52806d7baba4f7ef6233539d896dec, new session_id 4a52806d7baba4f7ef6233539d896dec
+[2026-05-03T01:32:40Z WARN  librespot_core::dealer] Websocket peer does not respond.
+[2026-05-03T01:32:41Z INFO  librespot_connect::spirc] trying to take over control automatically, session_id: 4a52806d7baba4f7ef6233539d896dec
+[2026-05-03T01:32:41Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T01:32:41Z INFO  librespot_playback::player] Loading <John, Take Me With You> with Spotify URI <spotify:track:1IbJOWFjQgHYwwwD4ScyqN>
+[2026-05-03T01:32:41Z WARN  librespot_playback::player] Invalid start position of 1097518 ms exceeds track's duration of 210851 ms, starting track from the beginning
+[2026-05-03T01:32:42Z INFO  librespot_playback::player] <John, Take Me With You> (210851 ms) loaded
+[2026-05-03T01:32:52Z INFO  librespot_connect::spirc] device became inactive
+[2026-05-03T01:32:52Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T01:32:52Z WARN  librespot_connect::spirc] failed filling up next_track during stopping: Invalid state { context is not available. type: Default }
+[2026-05-03T01:37:33Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T01:37:33Z INFO  librespot_playback::player] Loading <Never Anyone But You> with Spotify URI <spotify:track:54YBvFKbGjHBNl4HL5xmvf>
+[2026-05-03T01:37:33Z INFO  librespot_connect::spirc] session update: <Ok(NEW_SESSION)> for self, current session_id 4a52806d7baba4f7ef6233539d896dec, new session_id fae9e4af27ff68de19971ff27dad923d
+[2026-05-03T01:37:34Z INFO  librespot_playback::player] <Never Anyone But You> (330906 ms) loaded
+[2026-05-03T01:41:48Z INFO  librespot_playback::player] Loading <(David Bowie I Love You) Since I Was Six> with Spotify URI <spotify:track:6M9XfLtl9Q0fLEKnEJg9o1>
+[2026-05-03T01:41:49Z INFO  librespot_playback::player] <(David Bowie I Love You) Since I Was Six> (203933 ms) loaded
+[2026-05-03T01:45:02Z INFO  librespot_playback::player] Loading <Can You Get To That> with Spotify URI <spotify:track:5lc9L9FeLBwlJPgEbq9uEw>
+[2026-05-03T01:45:03Z INFO  librespot_playback::player] <Can You Get To That> (169856 ms) loaded
+[2026-05-03T01:47:44Z INFO  librespot_playback::player] Loading <Summer's Cauldron - Remastered 2001> with Spotify URI <spotify:track:5X5WJEY8b5Z052VvkzbF8W>
+[2026-05-03T01:47:45Z INFO  librespot_playback::player] <Summer's Cauldron - Remastered 2001> (199760 ms) loaded
+[2026-05-03T01:50:55Z INFO  librespot_playback::player] Loading <Come Together> with Spotify URI <spotify:track:5lI9y4ZbpBsNJp4qd3ewzc>
+[2026-05-03T01:50:56Z INFO  librespot_playback::player] <Come Together> (280573 ms) loaded
+[2026-05-03T01:55:22Z INFO  librespot_playback::player] Loading <Drivin' on 9> with Spotify URI <spotify:track:4gxKVUQyfkIbO6WuET4HlW>
+[2026-05-03T01:55:23Z INFO  librespot_playback::player] <Drivin' on 9> (202266 ms) loaded
+[2026-05-03T01:58:35Z INFO  librespot_playback::player] Loading <Plenty for All> with Spotify URI <spotify:track:1lYmkw2x3n0YFHd9ynIppB>
+[2026-05-03T01:58:36Z INFO  librespot_playback::player] <Plenty for All> (195546 ms) loaded
+[2026-05-03T02:00:07Z INFO  librespot_playback::player] Loading <Fine Young Cannibals> with Spotify URI <spotify:track:6aAhBncpJcB0gJCKobVsrI>
+[2026-05-03T02:00:08Z INFO  librespot_playback::player] <Fine Young Cannibals> (391880 ms) loaded
+[2026-05-03T02:05:52Z INFO  librespot_playback::player] Loading <He War> with Spotify URI <spotify:track:5JwfdqbIehHga0s4SNPhyk>
+[2026-05-03T02:05:53Z INFO  librespot_playback::player] <He War> (209706 ms) loaded
+[2026-05-03T02:09:12Z INFO  librespot_playback::player] Loading <Charlie Don't Surf - Remastered> with Spotify URI <spotify:track:5T4j3Uv33fQO7tsR2lMl4y>
+[2026-05-03T02:09:13Z INFO  librespot_playback::player] <Charlie Don't Surf - Remastered> (294015 ms) loaded
+[2026-05-03T02:13:52Z INFO  librespot_playback::player] Loading <Aquarius> with Spotify URI <spotify:track:08EgS4Nqe1jPkI9tx9Dq3S>
+[2026-05-03T02:13:53Z INFO  librespot_playback::player] <Aquarius> (358080 ms) loaded
+[2026-05-03T02:19:34Z INFO  librespot_playback::player] Loading <Now It's On> with Spotify URI <spotify:track:3uPTwA3OnS94uT2P5SbRDS>
+[2026-05-03T02:19:34Z INFO  librespot_playback::player] <Now It's On> (248173 ms) loaded
+[2026-05-03T02:23:30Z INFO  librespot_playback::player] Loading <Turtles Have Short Legs> with Spotify URI <spotify:track:7KjGBrZxramgcQfTgl63j9>
+[2026-05-03T02:23:30Z INFO  librespot_playback::player] <Turtles Have Short Legs> (205219 ms) loaded
+[2026-05-03T02:26:46Z INFO  librespot_playback::player] Loading <Cybele's Reverie> with Spotify URI <spotify:track:0atchYBOarx9klLwbqKeaR>
+[2026-05-03T02:26:46Z INFO  librespot_playback::player] <Cybele's Reverie> (282739 ms) loaded
+[2026-05-03T02:31:15Z INFO  librespot_playback::player] Loading <Sweetness - 2003 Remaster> with Spotify URI <spotify:track:5bCzyMvtNjYjUzLtrpvqYo>
+[2026-05-03T02:31:16Z INFO  librespot_playback::player] <Sweetness - 2003 Remaster> (273226 ms) loaded
+[2026-05-03T02:35:35Z INFO  librespot_playback::player] Loading <Respectable Street - 2001 Remaster> with Spotify URI <spotify:track:7DRVJs5vJtoWiRH5dHHBnk>
+[2026-05-03T02:35:36Z INFO  librespot_playback::player] <Respectable Street - 2001 Remaster> (217942 ms) loaded
+[2026-05-03T02:39:03Z INFO  librespot_playback::player] Loading <Blue> with Spotify URI <spotify:track:5cDfI3KOa64zbuUgD6a4hG>
+[2026-05-03T02:39:04Z INFO  librespot_playback::player] <Blue> (189506 ms) loaded
+[2026-05-03T02:42:04Z INFO  librespot_playback::player] Loading <Six Pack> with Spotify URI <spotify:track:0ftRuaehGfrQes3rLQ7Fdz>
+[2026-05-03T02:42:05Z INFO  librespot_playback::player] <Six Pack> (256493 ms) loaded
+[2026-05-03T02:46:08Z INFO  librespot_playback::player] Loading <Sivad - Live at the Cellar Door, Washington, DC - December 1970> with Spotify URI <spotify:track:17pDYuwdakHhG64f3CJSHX>
+[2026-05-03T02:46:09Z INFO  librespot_playback::player] <Sivad - Live at the Cellar Door, Washington, DC - December 1970> (916670 ms) loaded
+[2026-05-03T02:49:48Z INFO  librespot_playback::player] Loading <Enjoy> with Spotify URI <spotify:track:4agkxfY3cqn6hH51DMfaDV>
+[2026-05-03T02:49:49Z INFO  librespot_playback::player] <Enjoy> (188773 ms) loaded
+[2026-05-03T02:52:20Z INFO  librespot_playback::player] Loading <Strangers (2020 Stereo Remaster)> with Spotify URI <spotify:track:3hcU1qoBp7OEx1ZchiezDJ>
+[2026-05-03T02:52:20Z INFO  librespot_playback::player] <Strangers (2020 Stereo Remaster)> (201022 ms) loaded
+[2026-05-03T02:53:07Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T02:53:07Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T02:53:07Z INFO  librespot_playback::player] Loading <Scene Of The Lemon Queen> with Spotify URI <spotify:track:5v50iIQaSJiuTAjLfoP3my>
+[2026-05-03T02:53:08Z INFO  librespot_playback::player] <Scene Of The Lemon Queen> (353293 ms) loaded
+[2026-05-03T02:53:45Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T02:53:45Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T02:53:46Z INFO  librespot_playback::player] Loading <One Step Beyond> with Spotify URI <spotify:track:1G6eFFDRaLr9EbThnhzMBD>
+[2026-05-03T02:53:46Z INFO  librespot_playback::player] <One Step Beyond> (138360 ms) loaded
+[2026-05-03T02:55:32Z INFO  librespot_playback::player] Loading <My Girl> with Spotify URI <spotify:track:7fDzG8eOkIJ1HgVqebjelq>
+[2026-05-03T02:55:33Z INFO  librespot_playback::player] <My Girl> (164933 ms) loaded
+[2026-05-03T02:58:09Z INFO  librespot_playback::player] Loading <Night Boat to Cairo> with Spotify URI <spotify:track:2bspsdHJfZf4URZsTUMW8B>
+[2026-05-03T02:58:09Z INFO  librespot_playback::player] <Night Boat to Cairo> (211226 ms) loaded
+[2026-05-03T02:58:10Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T02:58:10Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T02:58:10Z INFO  librespot_playback::player] Loading <Rill Rill> with Spotify URI <spotify:track:0Z7b5GlC70FAES1YduhhqQ>
+[2026-05-03T02:58:11Z INFO  librespot_playback::player] <Rill Rill> (229893 ms) loaded
+[2026-05-03T03:01:35Z INFO  librespot_playback::player] Loading <Crown On the Ground> with Spotify URI <spotify:track:0euDcsQmWbjM0AtsckB8HU>
+[2026-05-03T03:01:35Z INFO  librespot_playback::player] <Crown On the Ground> (229373 ms) loaded
+[2026-05-03T03:03:01Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T03:03:01Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T03:03:01Z INFO  librespot_playback::player] Loading <Look At What the Light Did Now> with Spotify URI <spotify:track:1BM0adTLfSMDWb8PrD1rTO>
+[2026-05-03T03:03:02Z INFO  librespot_playback::player] <Look At What the Light Did Now> (201873 ms) loaded
+[2026-05-03T03:05:35Z INFO  librespot_playback::player] Loading <If I Ever Was a Child> with Spotify URI <spotify:track:1LYoxeji7NdE2tOcD30ReM>
+[2026-05-03T03:05:36Z INFO  librespot_playback::player] <If I Ever Was a Child> (175946 ms) loaded
+[2026-05-03T03:08:23Z INFO  librespot_playback::player] Loading <Town & Country> with Spotify URI <spotify:track:30zUKDkiApM2tP6iPjDxe5>
+[2026-05-03T03:08:24Z INFO  librespot_playback::player] <Town & Country> (243373 ms) loaded
+[2026-05-03T03:09:26Z INFO  librespot_playback::player] Loading <Kaleidoscope Eyes - Audiotree Live Version> with Spotify URI <spotify:track:6ZqYeKK1HrmzmbNc4ywGQq>
+[2026-05-03T03:09:26Z INFO  librespot_playback::player] <Kaleidoscope Eyes - Audiotree Live Version> (254539 ms) loaded
+[2026-05-03T03:09:29Z INFO  librespot_playback::player] Loading <Lady Luck> with Spotify URI <spotify:track:4zdSkZqBNo0fHmviHOtxGe>
+[2026-05-03T03:09:30Z INFO  librespot_playback::player] <Lady Luck> (258799 ms) loaded
+[2026-05-03T03:09:41Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T03:09:41Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T03:09:41Z INFO  librespot_playback::player] Loading <The Beat - 2021 Remaster> with Spotify URI <spotify:track:1bqlDsBlBPxjK0zuFQcSXq>
+[2026-05-03T03:09:41Z INFO  librespot_playback::player] <The Beat - 2021 Remaster> (228973 ms) loaded
+[2026-05-03T03:12:46Z INFO  librespot_playback::player] Loading <Give Me Back My Man> with Spotify URI <spotify:track:4vKLfj7YuS2yRKAJ9Nn0Id>
+[2026-05-03T03:12:48Z INFO  librespot_playback::player] <Give Me Back My Man> (240800 ms) loaded
+[2026-05-03T03:16:35Z INFO  librespot_playback::player] Loading <Rotating Head - 2012 Remaster> with Spotify URI <spotify:track:4apM75vs0YPPMrHF6raCR7>
+[2026-05-03T03:16:36Z INFO  librespot_playback::player] <Rotating Head - 2012 Remaster> (204293 ms) loaded
+[2026-05-03T03:19:49Z INFO  librespot_playback::player] Loading <Outdoor Miner - Single Version> with Spotify URI <spotify:track:6SXdN1xFZggsjckNLuAXXT>
+[2026-05-03T03:19:50Z INFO  librespot_playback::player] <Outdoor Miner - Single Version> (174320 ms) loaded
+[2026-05-03T03:22:36Z INFO  librespot_playback::player] Loading <Respectable Street - 2001 Remaster> with Spotify URI <spotify:track:7DRVJs5vJtoWiRH5dHHBnk>
+[2026-05-03T03:22:37Z INFO  librespot_playback::player] <Respectable Street - 2001 Remaster> (217942 ms) loaded
+[2026-05-03T03:24:14Z INFO  librespot_playback::player] Loading <Life During Wartime - 2005 Remaster> with Spotify URI <spotify:track:7CqleiaEqHVazV19P532X9>
+[2026-05-03T03:24:15Z INFO  librespot_playback::player] <Life During Wartime - 2005 Remaster> (221320 ms) loaded
+[2026-05-03T03:27:17Z INFO  librespot_playback::player] Loading <(I Don't Want To Go To) Chelsea - 2021 Remaster> with Spotify URI <spotify:track:7uYyLVNjKY49L8o3AouXZd>
+[2026-05-03T03:27:17Z INFO  librespot_playback::player] <(I Don't Want To Go To) Chelsea - 2021 Remaster> (190306 ms) loaded
+[2026-05-03T03:30:18Z INFO  librespot_playback::player] Loading <Uncontrollable Urge> with Spotify URI <spotify:track:1RG1Pz45nlYNHka7JioyOT>
+[2026-05-03T03:30:18Z INFO  librespot_playback::player] <Uncontrollable Urge> (191266 ms) loaded
+[2026-05-03T03:33:20Z INFO  librespot_playback::player] Loading <52 Girls> with Spotify URI <spotify:track:0hV8cbzJubHKLSFIsBnYUo>
+[2026-05-03T03:33:21Z INFO  librespot_playback::player] <52 Girls> (216333 ms) loaded
+[2026-05-03T03:36:46Z INFO  librespot_playback::player] Loading <When You're Near Me I Have Difficulty - 2001 Digital Remaster> with Spotify URI <spotify:track:0pG73CkloiWrsiQlSYJDj8>
+[2026-05-03T03:36:47Z INFO  librespot_playback::player] <When You're Near Me I Have Difficulty - 2001 Digital Remaster> (202240 ms) loaded
+[2026-05-03T03:39:59Z INFO  librespot_playback::player] Loading <Damaged Goods> with Spotify URI <spotify:track:0Nn4RrvVfwSSLDvkhdRc1n>
+[2026-05-03T03:40:00Z INFO  librespot_playback::player] <Damaged Goods> (206786 ms) loaded
+[2026-05-03T03:43:16Z INFO  librespot_playback::player] Loading <Crosseyed and Painless - 2005 Remaster> with Spotify URI <spotify:track:0yhwdmbgkKdE1plV8xWdrd>
+[2026-05-03T03:43:17Z INFO  librespot_playback::player] <Crosseyed and Painless - 2005 Remaster> (285613 ms) loaded
+[2026-05-03T03:47:48Z INFO  librespot_playback::player] Loading <Mannequin - 2006 Remastered Version> with Spotify URI <spotify:track:5LEwYNnwG1RSVseSmMZQpo>
+[2026-05-03T03:47:49Z INFO  librespot_playback::player] <Mannequin - 2006 Remastered Version> (157360 ms) loaded
+[2026-05-03T03:50:18Z INFO  librespot_playback::player] Loading <Radio, Radio - 2021 Remaster> with Spotify URI <spotify:track:0qvo5kciIqZJn1t8jdfqDn>
+[2026-05-03T03:50:19Z INFO  librespot_playback::player] <Radio, Radio - 2021 Remaster> (186213 ms) loaded
+[2026-05-03T03:51:15Z WARN  librespot_core::dealer] Websocket connection failed: IO error: peer closed connection without sending TLS close_notify: https://docs.rs/rustls/latest/rustls/manual/_03_howto/index.html#unexpected-eof
+[2026-05-03T03:51:16Z INFO  librespot_connect::spirc] active device is <0596f720dd52a9e2e2d0020d00931a1b91014e64> with session <fae9e4af27ff68de19971ff27dad923d>
+[2026-05-03T03:53:16Z INFO  librespot_playback::player] Loading <Statue Of Liberty - 2001 Remaster> with Spotify URI <spotify:track:3PvmHbVALfJk9rxsSOg0UT>
+[2026-05-03T03:53:17Z INFO  librespot_playback::player] <Statue Of Liberty - 2001 Remaster> (175496 ms) loaded
+[2026-05-03T03:56:03Z INFO  librespot_playback::player] Loading <Vanishing Girl - 2001 Mix> with Spotify URI <spotify:track:2y4B2qgihN59rMsJKKbdP2>
+[2026-05-03T03:56:03Z INFO  librespot_playback::player] <Vanishing Girl - 2001 Mix> (179800 ms) loaded
+[2026-05-03T03:58:54Z INFO  librespot_playback::player] Loading <Mirror in the Bathroom - 2012 Remaster> with Spotify URI <spotify:track:3XggELqP0NoiOxhMDhSWBp>
+[2026-05-03T03:58:55Z INFO  librespot_playback::player] <Mirror in the Bathroom - 2012 Remaster> (188586 ms) loaded
+[2026-05-03T03:59:57Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T03:59:57Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T03:59:57Z INFO  librespot_playback::player] Loading <Long Distance Runaround - 2024 Steven Wilson Remix> with Spotify URI <spotify:track:2zgRRcBuseLg2AJMPhvD7l>
+[2026-05-03T03:59:58Z INFO  librespot_playback::player] <Long Distance Runaround - 2024 Steven Wilson Remix> (210118 ms) loaded
+[2026-05-03T04:00:48Z INFO  librespot_connect::spirc] device became inactive
+[2026-05-03T04:00:48Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T04:00:49Z WARN  librespot_connect::spirc] failed filling up next_track during stopping: Invalid state { context is not available. type: Default }
+[2026-05-03T04:00:54Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T04:00:54Z INFO  librespot_connect::spirc] session update: <Ok(NEW_SESSION)> for self, current session_id fae9e4af27ff68de19971ff27dad923d, new session_id f2a26774dda683cc0695f9606ba84d77
+[2026-05-03T04:00:54Z INFO  librespot_playback::player] Loading <Long Distance Runaround - 2024 Steven Wilson Remix> with Spotify URI <spotify:track:2zgRRcBuseLg2AJMPhvD7l>
+[2026-05-03T04:00:55Z INFO  librespot_playback::player] <Long Distance Runaround - 2024 Steven Wilson Remix> (210118 ms) loaded
+[2026-05-03T04:03:42Z INFO  librespot_connect::spirc] device became inactive
+[2026-05-03T04:03:42Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T04:03:42Z WARN  librespot_connect::spirc] failed filling up next_track during stopping: Invalid state { context is not available. type: Default }
+[2026-05-03T04:03:45Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T04:03:45Z INFO  librespot_playback::player] Loading <Long Distance Runaround - 2024 Steven Wilson Remix> with Spotify URI <spotify:track:2zgRRcBuseLg2AJMPhvD7l>
+[2026-05-03T04:03:45Z INFO  librespot_connect::spirc] session update: <Ok(NEW_SESSION)> for self, current session_id f2a26774dda683cc0695f9606ba84d77, new session_id 05bfc0b4ec7badd4b10b682c11b4d63b
+[2026-05-03T04:03:46Z INFO  librespot_playback::player] <Long Distance Runaround - 2024 Steven Wilson Remix> (210118 ms) loaded
+[2026-05-03T04:06:19Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T04:06:19Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T04:06:20Z INFO  librespot_playback::player] Loading <The Mountain> with Spotify URI <spotify:track:4EHj5uISRYiQpZ77KjZbw2>
+[2026-05-03T04:06:32Z INFO  librespot_playback::player] <The Mountain> (319200 ms) loaded
+[2026-05-03T04:06:49Z WARN  librespot_core::dealer] Websocket peer does not respond.
+[2026-05-03T04:06:50Z INFO  librespot_connect::spirc] active device is <0596f720dd52a9e2e2d0020d00931a1b91014e64> with session <05bfc0b4ec7badd4b10b682c11b4d63b>
+[2026-05-03T04:07:52Z WARN  librespot_core::dealer] Websocket peer does not respond.
+[2026-05-03T04:07:53Z INFO  librespot_connect::spirc] active device is <e9b2419431c77ba3699cf2ec8eb476db1f66f1c5> with session <3ub1Q4JMBxU7bQz5LvoMjH>
+[2026-05-03T04:07:57Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T04:07:57Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-05-03T04:07:57Z INFO  librespot_core::session] Authenticated as 'paulster23' !
+[2026-05-03T04:07:57Z INFO  librespot_core::session] Country: "US"
+[2026-05-03T04:07:57Z WARN  librespot_core::dealer] Websocket connection failed: IO error: peer closed connection without sending TLS close_notify: https://docs.rs/rustls/latest/rustls/manual/_03_howto/index.html#unexpected-eof
+[2026-05-03T04:07:57Z WARN  librespot_core::dealer] Wasn't able to reply to dealer request: channel closed
+[2026-05-03T04:07:58Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-05-03T04:07:58Z INFO  librespot_connect::spirc] active device is <e9b2419431c77ba3699cf2ec8eb476db1f66f1c5> with session <3ub1Q4JMBxU7bQz5LvoMjH>
+[2026-05-03T04:08:04Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T04:08:04Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-05-03T04:08:04Z WARN  librespot_core::session] Try another access point...
+[2026-05-03T04:08:04Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:443"
+[2026-05-03T04:08:04Z WARN  librespot_core::dealer] Websocket connection failed: IO error: peer closed connection without sending TLS close_notify: https://docs.rs/rustls/latest/rustls/manual/_03_howto/index.html#unexpected-eof
+[2026-05-03T04:08:04Z WARN  librespot_core::dealer] Wasn't able to reply to dealer request: channel closed
+[2026-05-03T04:08:04Z INFO  librespot_core::session] Authenticated as 'paulster23' !
+[2026-05-03T04:08:04Z INFO  librespot_core::session] Country: "US"
+[2026-05-03T04:08:05Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-05-03T04:08:05Z INFO  librespot_connect::spirc] active device is <e9b2419431c77ba3699cf2ec8eb476db1f66f1c5> with session <3ub1Q4JMBxU7bQz5LvoMjH>
+[2026-05-03T04:08:10Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T04:08:11Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-05-03T04:08:11Z INFO  librespot_core::session] Authenticated as 'paulster23' !
+[2026-05-03T04:08:11Z INFO  librespot_core::session] Country: "US"
+[2026-05-03T04:08:11Z WARN  librespot_core::dealer] Websocket connection failed: IO error: peer closed connection without sending TLS close_notify: https://docs.rs/rustls/latest/rustls/manual/_03_howto/index.html#unexpected-eof
+[2026-05-03T04:08:11Z WARN  librespot_core::dealer] Wasn't able to reply to dealer request: channel closed
+[2026-05-03T04:08:11Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-05-03T04:08:12Z INFO  librespot_connect::spirc] active device is <e9b2419431c77ba3699cf2ec8eb476db1f66f1c5> with session <3ub1Q4JMBxU7bQz5LvoMjH>
+[2026-05-03T04:08:17Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T04:08:17Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-05-03T04:08:18Z WARN  librespot_core::dealer] Websocket connection failed: IO error: peer closed connection without sending TLS close_notify: https://docs.rs/rustls/latest/rustls/manual/_03_howto/index.html#unexpected-eof
+[2026-05-03T04:08:18Z WARN  librespot_core::dealer] Wasn't able to reply to dealer request: channel closed
+[2026-05-03T04:08:18Z INFO  librespot_core::session] Authenticated as 'paulster23' !
+[2026-05-03T04:08:18Z INFO  librespot_core::session] Country: "US"
+[2026-05-03T04:08:18Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-05-03T04:08:18Z INFO  librespot_connect::spirc] active device is <e9b2419431c77ba3699cf2ec8eb476db1f66f1c5> with session <3ub1Q4JMBxU7bQz5LvoMjH>
+[2026-05-03T04:08:24Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T04:08:24Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-05-03T04:08:24Z INFO  librespot_core::session] Authenticated as 'paulster23' !
+[2026-05-03T04:08:24Z INFO  librespot_core::session] Country: "US"
+[2026-05-03T04:08:24Z WARN  librespot_core::dealer] Websocket connection failed: IO error: peer closed connection without sending TLS close_notify: https://docs.rs/rustls/latest/rustls/manual/_03_howto/index.html#unexpected-eof
+[2026-05-03T04:08:24Z WARN  librespot_core::dealer] Wasn't able to reply to dealer request: channel closed
+[2026-05-03T04:08:25Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-05-03T04:08:25Z INFO  librespot_connect::spirc] active device is <e9b2419431c77ba3699cf2ec8eb476db1f66f1c5> with session <3ub1Q4JMBxU7bQz5LvoMjH>
+[2026-05-03T04:08:31Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T04:08:31Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-05-03T04:08:31Z WARN  librespot_core::dealer] Websocket connection failed: IO error: peer closed connection without sending TLS close_notify: https://docs.rs/rustls/latest/rustls/manual/_03_howto/index.html#unexpected-eof
+[2026-05-03T04:08:31Z WARN  librespot_core::dealer] Wasn't able to reply to dealer request: channel closed
+[2026-05-03T04:08:31Z INFO  librespot_core::session] Authenticated as 'paulster23' !
+[2026-05-03T04:08:31Z INFO  librespot_core::session] Country: "US"
+[2026-05-03T04:08:32Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-05-03T04:08:32Z INFO  librespot_connect::spirc] active device is <e9b2419431c77ba3699cf2ec8eb476db1f66f1c5> with session <3ub1Q4JMBxU7bQz5LvoMjH>
+[2026-05-03T04:08:38Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T04:08:38Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-05-03T04:08:38Z INFO  librespot_core::session] Authenticated as 'paulster23' !
+[2026-05-03T04:08:38Z INFO  librespot_core::session] Country: "US"
+[2026-05-03T04:08:38Z WARN  librespot_core::dealer] Websocket connection failed: IO error: peer closed connection without sending TLS close_notify: https://docs.rs/rustls/latest/rustls/manual/_03_howto/index.html#unexpected-eof
+[2026-05-03T04:08:38Z WARN  librespot_core::dealer] Wasn't able to reply to dealer request: channel closed
+[2026-05-03T04:08:39Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-05-03T04:08:39Z INFO  librespot_connect::spirc] active device is <e9b2419431c77ba3699cf2ec8eb476db1f66f1c5> with session <3ub1Q4JMBxU7bQz5LvoMjH>
+[2026-05-03T04:08:44Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T04:08:45Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-05-03T04:08:45Z INFO  librespot_core::session] Authenticated as 'paulster23' !
+[2026-05-03T04:08:45Z INFO  librespot_core::session] Country: "US"
+[2026-05-03T04:08:45Z WARN  librespot_core::dealer] Websocket connection failed: IO error: peer closed connection without sending TLS close_notify: https://docs.rs/rustls/latest/rustls/manual/_03_howto/index.html#unexpected-eof
+[2026-05-03T04:08:45Z WARN  librespot_core::dealer] Wasn't able to reply to dealer request: channel closed
+[2026-05-03T04:08:45Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-05-03T04:08:46Z INFO  librespot_connect::spirc] active device is <e9b2419431c77ba3699cf2ec8eb476db1f66f1c5> with session <3ub1Q4JMBxU7bQz5LvoMjH>
+[2026-05-03T04:08:51Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T04:08:51Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-05-03T04:08:51Z WARN  librespot_core::dealer] Websocket connection failed: IO error: peer closed connection without sending TLS close_notify: https://docs.rs/rustls/latest/rustls/manual/_03_howto/index.html#unexpected-eof
+[2026-05-03T04:08:51Z WARN  librespot_core::dealer] Wasn't able to reply to dealer request: channel closed
+[2026-05-03T04:08:52Z INFO  librespot_core::session] Authenticated as 'paulster23' !
+[2026-05-03T04:08:52Z INFO  librespot_core::session] Country: "US"
+[2026-05-03T04:08:52Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-05-03T04:08:52Z INFO  librespot_connect::spirc] active device is <e9b2419431c77ba3699cf2ec8eb476db1f66f1c5> with session <3ub1Q4JMBxU7bQz5LvoMjH>
+[2026-05-03T04:08:58Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T04:08:58Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-05-03T04:08:58Z INFO  librespot_core::session] Authenticated as 'paulster23' !
+[2026-05-03T04:08:58Z INFO  librespot_core::session] Country: "US"
+[2026-05-03T04:08:58Z WARN  librespot_core::dealer] Websocket connection failed: IO error: peer closed connection without sending TLS close_notify: https://docs.rs/rustls/latest/rustls/manual/_03_howto/index.html#unexpected-eof
+[2026-05-03T04:08:58Z WARN  librespot_core::dealer] Wasn't able to reply to dealer request: channel closed
+[2026-05-03T04:08:59Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-05-03T04:08:59Z INFO  librespot_connect::spirc] active device is <e9b2419431c77ba3699cf2ec8eb476db1f66f1c5> with session <3ub1Q4JMBxU7bQz5LvoMjH>
+[2026-05-03T04:09:05Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T04:09:05Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-05-03T04:09:05Z INFO  librespot_core::session] Authenticated as 'paulster23' !
+[2026-05-03T04:09:05Z INFO  librespot_core::session] Country: "US"
+[2026-05-03T04:09:05Z WARN  librespot_core::dealer] Websocket connection failed: IO error: peer closed connection without sending TLS close_notify: https://docs.rs/rustls/latest/rustls/manual/_03_howto/index.html#unexpected-eof
+[2026-05-03T04:09:05Z WARN  librespot_core::dealer] Wasn't able to reply to dealer request: channel closed
+[2026-05-03T04:09:05Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-05-03T04:09:06Z INFO  librespot_connect::spirc] active device is <e9b2419431c77ba3699cf2ec8eb476db1f66f1c5> with session <3ub1Q4JMBxU7bQz5LvoMjH>
+[2026-05-03T04:09:11Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T04:09:11Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-05-03T04:09:12Z INFO  librespot_core::session] Authenticated as 'paulster23' !
+[2026-05-03T04:09:12Z INFO  librespot_core::session] Country: "US"
+[2026-05-03T04:09:12Z WARN  librespot_core::dealer] Websocket connection failed: IO error: peer closed connection without sending TLS close_notify: https://docs.rs/rustls/latest/rustls/manual/_03_howto/index.html#unexpected-eof
+[2026-05-03T04:09:12Z WARN  librespot_core::dealer] Wasn't able to reply to dealer request: channel closed
+[2026-05-03T04:09:12Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-05-03T04:09:13Z INFO  librespot_connect::spirc] active device is <e9b2419431c77ba3699cf2ec8eb476db1f66f1c5> with session <3ub1Q4JMBxU7bQz5LvoMjH>
+[2026-05-03T04:09:18Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T04:09:18Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-05-03T04:09:18Z INFO  librespot_core::session] Authenticated as 'paulster23' !
+[2026-05-03T04:09:18Z INFO  librespot_core::session] Country: "US"
+[2026-05-03T04:09:19Z WARN  librespot_core::dealer] Websocket connection failed: IO error: peer closed connection without sending TLS close_notify: https://docs.rs/rustls/latest/rustls/manual/_03_howto/index.html#unexpected-eof
+[2026-05-03T04:09:19Z WARN  librespot_core::dealer] Wasn't able to reply to dealer request: channel closed
+[2026-05-03T04:09:19Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-05-03T04:09:19Z INFO  librespot_connect::spirc] active device is <e9b2419431c77ba3699cf2ec8eb476db1f66f1c5> with session <3ub1Q4JMBxU7bQz5LvoMjH>
+[2026-05-03T04:09:25Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T04:09:25Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-05-03T04:09:25Z WARN  librespot_core::session] Try another access point...
+[2026-05-03T04:09:25Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:443"
+[2026-05-03T04:09:25Z WARN  librespot_core::dealer] Websocket connection failed: IO error: peer closed connection without sending TLS close_notify: https://docs.rs/rustls/latest/rustls/manual/_03_howto/index.html#unexpected-eof
+[2026-05-03T04:09:25Z WARN  librespot_core::dealer] Wasn't able to reply to dealer request: channel closed
+[2026-05-03T04:09:25Z INFO  librespot_core::session] Authenticated as 'paulster23' !
+[2026-05-03T04:09:25Z INFO  librespot_core::session] Country: "US"
+[2026-05-03T04:09:26Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-05-03T04:09:26Z INFO  librespot_connect::spirc] active device is <e9b2419431c77ba3699cf2ec8eb476db1f66f1c5> with session <3ub1Q4JMBxU7bQz5LvoMjH>
+[2026-05-03T04:09:32Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T04:09:32Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-05-03T04:09:32Z INFO  librespot_core::session] Authenticated as 'paulster23' !
+[2026-05-03T04:09:32Z INFO  librespot_core::session] Country: "US"
+[2026-05-03T04:09:32Z WARN  librespot_core::dealer] Websocket connection failed: IO error: peer closed connection without sending TLS close_notify: https://docs.rs/rustls/latest/rustls/manual/_03_howto/index.html#unexpected-eof
+[2026-05-03T04:09:32Z WARN  librespot_core::dealer] Wasn't able to reply to dealer request: channel closed
+[2026-05-03T04:09:33Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-05-03T04:09:33Z INFO  librespot_connect::spirc] active device is <e9b2419431c77ba3699cf2ec8eb476db1f66f1c5> with session <3ub1Q4JMBxU7bQz5LvoMjH>
+[2026-05-03T04:09:38Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T04:09:39Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-05-03T04:09:39Z INFO  librespot_core::session] Authenticated as 'paulster23' !
+[2026-05-03T04:09:39Z INFO  librespot_core::session] Country: "US"
+[2026-05-03T04:09:39Z WARN  librespot_core::dealer] Websocket connection failed: IO error: peer closed connection without sending TLS close_notify: https://docs.rs/rustls/latest/rustls/manual/_03_howto/index.html#unexpected-eof
+[2026-05-03T04:09:39Z WARN  librespot_core::dealer] Wasn't able to reply to dealer request: channel closed
+[2026-05-03T04:09:39Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-05-03T04:09:40Z INFO  librespot_connect::spirc] active device is <e9b2419431c77ba3699cf2ec8eb476db1f66f1c5> with session <3ub1Q4JMBxU7bQz5LvoMjH>
+[2026-05-03T04:09:45Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T04:09:45Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-05-03T04:09:46Z INFO  librespot_core::session] Authenticated as 'paulster23' !
+[2026-05-03T04:09:46Z INFO  librespot_core::session] Country: "US"
+[2026-05-03T04:09:46Z WARN  librespot_core::dealer] Websocket connection failed: IO error: peer closed connection without sending TLS close_notify: https://docs.rs/rustls/latest/rustls/manual/_03_howto/index.html#unexpected-eof
+[2026-05-03T04:09:46Z WARN  librespot_core::dealer] Wasn't able to reply to dealer request: channel closed
+[2026-05-03T04:09:46Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-05-03T04:09:47Z INFO  librespot_connect::spirc] active device is <e9b2419431c77ba3699cf2ec8eb476db1f66f1c5> with session <3ub1Q4JMBxU7bQz5LvoMjH>
+[2026-05-03T04:09:52Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T04:09:52Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-05-03T04:09:52Z WARN  librespot_core::dealer] Websocket connection failed: IO error: peer closed connection without sending TLS close_notify: https://docs.rs/rustls/latest/rustls/manual/_03_howto/index.html#unexpected-eof
+[2026-05-03T04:09:52Z WARN  librespot_core::dealer] Wasn't able to reply to dealer request: channel closed
+[2026-05-03T04:09:53Z INFO  librespot_core::session] Authenticated as 'paulster23' !
+[2026-05-03T04:09:53Z INFO  librespot_core::session] Country: "US"
+[2026-05-03T04:09:53Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-05-03T04:09:53Z INFO  librespot_connect::spirc] active device is <e9b2419431c77ba3699cf2ec8eb476db1f66f1c5> with session <3ub1Q4JMBxU7bQz5LvoMjH>
+[2026-05-03T04:09:59Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T04:09:59Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-05-03T04:09:59Z INFO  librespot_core::session] Authenticated as 'paulster23' !
+[2026-05-03T04:09:59Z WARN  librespot_core::dealer] Websocket connection failed: IO error: peer closed connection without sending TLS close_notify: https://docs.rs/rustls/latest/rustls/manual/_03_howto/index.html#unexpected-eof
+[2026-05-03T04:09:59Z INFO  librespot_core::session] Country: "US"
+[2026-05-03T04:09:59Z WARN  librespot_core::dealer] Wasn't able to reply to dealer request: channel closed
+[2026-05-03T04:10:00Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-05-03T04:10:00Z INFO  librespot_connect::spirc] active device is <e9b2419431c77ba3699cf2ec8eb476db1f66f1c5> with session <3ub1Q4JMBxU7bQz5LvoMjH>
+[2026-05-03T04:10:06Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T04:10:06Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-05-03T04:10:06Z WARN  librespot_core::session] Try another access point...
+[2026-05-03T04:10:06Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:443"
+[2026-05-03T04:10:06Z WARN  librespot_core::dealer] Websocket connection failed: IO error: peer closed connection without sending TLS close_notify: https://docs.rs/rustls/latest/rustls/manual/_03_howto/index.html#unexpected-eof
+[2026-05-03T04:10:06Z WARN  librespot_core::dealer] Wasn't able to reply to dealer request: channel closed
+[2026-05-03T04:10:06Z INFO  librespot_core::session] Authenticated as 'paulster23' !
+[2026-05-03T04:10:06Z INFO  librespot_core::session] Country: "US"
+[2026-05-03T04:10:07Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-05-03T04:10:07Z INFO  librespot_connect::spirc] active device is <e9b2419431c77ba3699cf2ec8eb476db1f66f1c5> with session <3ub1Q4JMBxU7bQz5LvoMjH>
+[2026-05-03T04:10:13Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T04:10:13Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-05-03T04:10:13Z WARN  librespot_core::dealer] Websocket connection failed: IO error: peer closed connection without sending TLS close_notify: https://docs.rs/rustls/latest/rustls/manual/_03_howto/index.html#unexpected-eof
+[2026-05-03T04:10:13Z WARN  librespot_core::dealer] Wasn't able to reply to dealer request: channel closed
+[2026-05-03T04:10:13Z INFO  librespot_core::session] Authenticated as 'paulster23' !
+[2026-05-03T04:10:13Z INFO  librespot_core::session] Country: "US"
+[2026-05-03T04:10:13Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-05-03T04:10:14Z INFO  librespot_connect::spirc] active device is <e9b2419431c77ba3699cf2ec8eb476db1f66f1c5> with session <3ub1Q4JMBxU7bQz5LvoMjH>
+[2026-05-03T04:10:19Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T04:10:20Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-05-03T04:10:20Z INFO  librespot_core::session] Authenticated as 'paulster23' !
+[2026-05-03T04:10:20Z INFO  librespot_core::session] Country: "US"
+[2026-05-03T04:10:20Z WARN  librespot_core::dealer] Websocket connection failed: IO error: peer closed connection without sending TLS close_notify: https://docs.rs/rustls/latest/rustls/manual/_03_howto/index.html#unexpected-eof
+[2026-05-03T04:10:20Z WARN  librespot_core::dealer] Wasn't able to reply to dealer request: channel closed
+[2026-05-03T04:10:20Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-05-03T04:10:21Z INFO  librespot_connect::spirc] active device is <e9b2419431c77ba3699cf2ec8eb476db1f66f1c5> with session <3ub1Q4JMBxU7bQz5LvoMjH>
+[2026-05-03T04:10:26Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T04:10:26Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-05-03T04:10:26Z INFO  librespot_core::session] Authenticated as 'paulster23' !
+[2026-05-03T04:10:26Z INFO  librespot_core::session] Country: "US"
+[2026-05-03T04:10:27Z WARN  librespot_core::dealer] Websocket connection failed: IO error: peer closed connection without sending TLS close_notify: https://docs.rs/rustls/latest/rustls/manual/_03_howto/index.html#unexpected-eof
+[2026-05-03T04:10:27Z WARN  librespot_core::dealer] Wasn't able to reply to dealer request: channel closed
+[2026-05-03T04:10:27Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-05-03T04:10:27Z INFO  librespot_connect::spirc] active device is <e9b2419431c77ba3699cf2ec8eb476db1f66f1c5> with session <3ub1Q4JMBxU7bQz5LvoMjH>
+[2026-05-03T04:10:33Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T04:10:33Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-05-03T04:10:33Z INFO  librespot_core::session] Authenticated as 'paulster23' !
+[2026-05-03T04:10:33Z INFO  librespot_core::session] Country: "US"
+[2026-05-03T04:10:33Z WARN  librespot_core::dealer] Websocket connection failed: IO error: peer closed connection without sending TLS close_notify: https://docs.rs/rustls/latest/rustls/manual/_03_howto/index.html#unexpected-eof
+[2026-05-03T04:10:33Z WARN  librespot_core::dealer] Wasn't able to reply to dealer request: channel closed
+[2026-05-03T04:10:34Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-05-03T04:10:34Z INFO  librespot_connect::spirc] active device is <e9b2419431c77ba3699cf2ec8eb476db1f66f1c5> with session <3ub1Q4JMBxU7bQz5LvoMjH>
+[2026-05-03T04:10:40Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T04:10:40Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-05-03T04:10:40Z WARN  librespot_core::dealer] Websocket connection failed: IO error: peer closed connection without sending TLS close_notify: https://docs.rs/rustls/latest/rustls/manual/_03_howto/index.html#unexpected-eof
+[2026-05-03T04:10:40Z WARN  librespot_core::dealer] Wasn't able to reply to dealer request: channel closed
+[2026-05-03T04:10:40Z INFO  librespot_core::session] Authenticated as 'paulster23' !
+[2026-05-03T04:10:40Z INFO  librespot_core::session] Country: "US"
+[2026-05-03T04:10:41Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-05-03T04:10:41Z INFO  librespot_connect::spirc] active device is <e9b2419431c77ba3699cf2ec8eb476db1f66f1c5> with session <3ub1Q4JMBxU7bQz5LvoMjH>
+[2026-05-03T04:10:46Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T04:10:47Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-05-03T04:10:47Z INFO  librespot_core::session] Authenticated as 'paulster23' !
+[2026-05-03T04:10:47Z INFO  librespot_core::session] Country: "US"
+[2026-05-03T04:10:47Z WARN  librespot_core::dealer] Websocket connection failed: IO error: peer closed connection without sending TLS close_notify: https://docs.rs/rustls/latest/rustls/manual/_03_howto/index.html#unexpected-eof
+[2026-05-03T04:10:47Z WARN  librespot_core::dealer] Wasn't able to reply to dealer request: channel closed
+[2026-05-03T04:10:47Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-05-03T04:10:48Z INFO  librespot_connect::spirc] active device is <e9b2419431c77ba3699cf2ec8eb476db1f66f1c5> with session <3ub1Q4JMBxU7bQz5LvoMjH>
+[2026-05-03T04:10:53Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T04:10:53Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-05-03T04:10:53Z INFO  librespot_core::session] Authenticated as 'paulster23' !
+[2026-05-03T04:10:53Z INFO  librespot_core::session] Country: "US"
+[2026-05-03T04:10:53Z WARN  librespot_core::dealer] Websocket connection failed: IO error: peer closed connection without sending TLS close_notify: https://docs.rs/rustls/latest/rustls/manual/_03_howto/index.html#unexpected-eof
+[2026-05-03T04:10:53Z WARN  librespot_core::dealer] Wasn't able to reply to dealer request: channel closed
+[2026-05-03T04:10:54Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-05-03T04:10:54Z INFO  librespot_connect::spirc] active device is <e9b2419431c77ba3699cf2ec8eb476db1f66f1c5> with session <3ub1Q4JMBxU7bQz5LvoMjH>
+[2026-05-03T04:11:00Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T04:11:00Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-05-03T04:11:00Z INFO  librespot_core::session] Authenticated as 'paulster23' !
+[2026-05-03T04:11:00Z INFO  librespot_core::session] Country: "US"
+[2026-05-03T04:11:00Z WARN  librespot_core::dealer] Websocket connection failed: IO error: peer closed connection without sending TLS close_notify: https://docs.rs/rustls/latest/rustls/manual/_03_howto/index.html#unexpected-eof
+[2026-05-03T04:11:00Z WARN  librespot_core::dealer] Wasn't able to reply to dealer request: channel closed
+[2026-05-03T04:11:01Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-05-03T04:11:01Z INFO  librespot_connect::spirc] active device is <e9b2419431c77ba3699cf2ec8eb476db1f66f1c5> with session <3ub1Q4JMBxU7bQz5LvoMjH>
+[2026-05-03T04:11:07Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T04:11:07Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-05-03T04:11:07Z WARN  librespot_core::dealer] Websocket connection failed: IO error: peer closed connection without sending TLS close_notify: https://docs.rs/rustls/latest/rustls/manual/_03_howto/index.html#unexpected-eof
+[2026-05-03T04:11:07Z WARN  librespot_core::dealer] Wasn't able to reply to dealer request: channel closed
+[2026-05-03T04:11:07Z INFO  librespot_core::session] Authenticated as 'paulster23' !
+[2026-05-03T04:11:07Z INFO  librespot_core::session] Country: "US"
+[2026-05-03T04:11:08Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-05-03T04:11:08Z INFO  librespot_connect::spirc] active device is <e9b2419431c77ba3699cf2ec8eb476db1f66f1c5> with session <3ub1Q4JMBxU7bQz5LvoMjH>
+[2026-05-03T04:11:13Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T04:11:14Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-05-03T04:11:14Z WARN  librespot_core::dealer] Websocket connection failed: IO error: peer closed connection without sending TLS close_notify: https://docs.rs/rustls/latest/rustls/manual/_03_howto/index.html#unexpected-eof
+[2026-05-03T04:11:14Z WARN  librespot_core::dealer] Wasn't able to reply to dealer request: channel closed
+[2026-05-03T04:11:14Z INFO  librespot_core::session] Authenticated as 'paulster23' !
+[2026-05-03T04:11:14Z INFO  librespot_core::session] Country: "US"
+[2026-05-03T04:11:14Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-05-03T04:11:15Z INFO  librespot_connect::spirc] active device is <e9b2419431c77ba3699cf2ec8eb476db1f66f1c5> with session <3ub1Q4JMBxU7bQz5LvoMjH>
+[2026-05-03T04:11:20Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T04:11:20Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-05-03T04:11:21Z INFO  librespot_core::session] Authenticated as 'paulster23' !
+[2026-05-03T04:11:21Z INFO  librespot_core::session] Country: "US"
+[2026-05-03T04:11:21Z WARN  librespot_core::dealer] Websocket connection failed: IO error: peer closed connection without sending TLS close_notify: https://docs.rs/rustls/latest/rustls/manual/_03_howto/index.html#unexpected-eof
+[2026-05-03T04:11:21Z WARN  librespot_core::dealer] Wasn't able to reply to dealer request: channel closed
+[2026-05-03T04:11:21Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-05-03T04:11:22Z INFO  librespot_connect::spirc] active device is <e9b2419431c77ba3699cf2ec8eb476db1f66f1c5> with session <3ub1Q4JMBxU7bQz5LvoMjH>
+[2026-05-03T04:11:27Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T04:11:27Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-05-03T04:11:27Z INFO  librespot_core::session] Authenticated as 'paulster23' !
+[2026-05-03T04:11:27Z INFO  librespot_core::session] Country: "US"
+[2026-05-03T04:11:27Z WARN  librespot_core::dealer] Websocket connection failed: IO error: peer closed connection without sending TLS close_notify: https://docs.rs/rustls/latest/rustls/manual/_03_howto/index.html#unexpected-eof
+[2026-05-03T04:11:27Z WARN  librespot_core::dealer] Wasn't able to reply to dealer request: channel closed
+[2026-05-03T04:11:28Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-05-03T04:11:28Z INFO  librespot_connect::spirc] active device is <e9b2419431c77ba3699cf2ec8eb476db1f66f1c5> with session <3ub1Q4JMBxU7bQz5LvoMjH>
+[2026-05-03T04:11:34Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T04:11:34Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-05-03T04:11:34Z WARN  librespot_core::dealer] Websocket connection failed: IO error: peer closed connection without sending TLS close_notify: https://docs.rs/rustls/latest/rustls/manual/_03_howto/index.html#unexpected-eof
+[2026-05-03T04:11:34Z WARN  librespot_core::dealer] Wasn't able to reply to dealer request: channel closed
+[2026-05-03T04:11:34Z INFO  librespot_core::session] Authenticated as 'paulster23' !
+[2026-05-03T04:11:34Z INFO  librespot_core::session] Country: "US"
+[2026-05-03T04:11:35Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-05-03T04:11:35Z INFO  librespot_connect::spirc] active device is <e9b2419431c77ba3699cf2ec8eb476db1f66f1c5> with session <3ub1Q4JMBxU7bQz5LvoMjH>
+[2026-05-03T04:11:41Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T04:11:41Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-05-03T04:11:41Z INFO  librespot_core::session] Authenticated as 'paulster23' !
+[2026-05-03T04:11:41Z INFO  librespot_core::session] Country: "US"
+[2026-05-03T04:11:41Z WARN  librespot_core::dealer] Websocket connection failed: IO error: peer closed connection without sending TLS close_notify: https://docs.rs/rustls/latest/rustls/manual/_03_howto/index.html#unexpected-eof
+[2026-05-03T04:11:41Z WARN  librespot_core::dealer] Wasn't able to reply to dealer request: channel closed
+[2026-05-03T04:11:42Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-05-03T04:11:42Z INFO  librespot_connect::spirc] active device is <e9b2419431c77ba3699cf2ec8eb476db1f66f1c5> with session <3ub1Q4JMBxU7bQz5LvoMjH>
+[2026-05-03T04:11:47Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T04:11:48Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-05-03T04:11:48Z INFO  librespot_core::session] Authenticated as 'paulster23' !
+[2026-05-03T04:11:48Z INFO  librespot_core::session] Country: "US"
+[2026-05-03T04:11:48Z WARN  librespot_core::dealer] Websocket connection failed: IO error: peer closed connection without sending TLS close_notify: https://docs.rs/rustls/latest/rustls/manual/_03_howto/index.html#unexpected-eof
+[2026-05-03T04:11:48Z WARN  librespot_core::dealer] Wasn't able to reply to dealer request: channel closed
+[2026-05-03T04:11:48Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-05-03T04:11:49Z INFO  librespot_connect::spirc] active device is <e9b2419431c77ba3699cf2ec8eb476db1f66f1c5> with session <3ub1Q4JMBxU7bQz5LvoMjH>
+[2026-05-03T04:11:54Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T04:11:54Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-05-03T04:11:55Z INFO  librespot_core::session] Authenticated as 'paulster23' !
+[2026-05-03T04:11:55Z INFO  librespot_core::session] Country: "US"
+[2026-05-03T04:11:55Z WARN  librespot_core::dealer] Websocket connection failed: IO error: peer closed connection without sending TLS close_notify: https://docs.rs/rustls/latest/rustls/manual/_03_howto/index.html#unexpected-eof
+[2026-05-03T04:11:55Z WARN  librespot_core::dealer] Wasn't able to reply to dealer request: channel closed
+[2026-05-03T04:11:55Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-05-03T04:11:55Z INFO  librespot_connect::spirc] active device is <e9b2419431c77ba3699cf2ec8eb476db1f66f1c5> with session <3ub1Q4JMBxU7bQz5LvoMjH>
+[2026-05-03T04:12:01Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T04:12:01Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-05-03T04:12:01Z INFO  librespot_core::session] Authenticated as 'paulster23' !
+[2026-05-03T04:12:01Z INFO  librespot_core::session] Country: "US"
+[2026-05-03T04:12:01Z WARN  librespot_core::dealer] Websocket connection failed: IO error: peer closed connection without sending TLS close_notify: https://docs.rs/rustls/latest/rustls/manual/_03_howto/index.html#unexpected-eof
+[2026-05-03T04:12:02Z WARN  librespot_core::dealer] Wasn't able to reply to dealer request: channel closed
+[2026-05-03T04:12:02Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-05-03T04:12:02Z INFO  librespot_connect::spirc] active device is <e9b2419431c77ba3699cf2ec8eb476db1f66f1c5> with session <3ub1Q4JMBxU7bQz5LvoMjH>
+[2026-05-03T04:12:08Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T04:12:08Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-05-03T04:12:08Z INFO  librespot_core::session] Authenticated as 'paulster23' !
+[2026-05-03T04:12:08Z INFO  librespot_core::session] Country: "US"
+[2026-05-03T04:12:08Z WARN  librespot_core::dealer] Websocket connection failed: IO error: peer closed connection without sending TLS close_notify: https://docs.rs/rustls/latest/rustls/manual/_03_howto/index.html#unexpected-eof
+[2026-05-03T04:12:08Z WARN  librespot_core::dealer] Wasn't able to reply to dealer request: channel closed
+[2026-05-03T04:12:09Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-05-03T04:12:09Z INFO  librespot_connect::spirc] active device is <e9b2419431c77ba3699cf2ec8eb476db1f66f1c5> with session <3ub1Q4JMBxU7bQz5LvoMjH>
+[2026-05-03T04:12:15Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T04:12:15Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-05-03T04:12:15Z INFO  librespot_core::session] Authenticated as 'paulster23' !
+[2026-05-03T04:12:15Z INFO  librespot_core::session] Country: "US"
+[2026-05-03T04:12:15Z WARN  librespot_core::dealer] Websocket connection failed: IO error: peer closed connection without sending TLS close_notify: https://docs.rs/rustls/latest/rustls/manual/_03_howto/index.html#unexpected-eof
+[2026-05-03T04:12:15Z WARN  librespot_core::dealer] Wasn't able to reply to dealer request: channel closed
+[2026-05-03T04:12:16Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-05-03T04:12:16Z INFO  librespot_connect::spirc] active device is <e9b2419431c77ba3699cf2ec8eb476db1f66f1c5> with session <3ub1Q4JMBxU7bQz5LvoMjH>
+[2026-05-03T04:12:21Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T04:12:22Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-05-03T04:12:22Z WARN  librespot_core::dealer] Websocket connection failed: IO error: peer closed connection without sending TLS close_notify: https://docs.rs/rustls/latest/rustls/manual/_03_howto/index.html#unexpected-eof
+[2026-05-03T04:12:22Z WARN  librespot_core::dealer] Wasn't able to reply to dealer request: channel closed
+[2026-05-03T04:12:23Z INFO  librespot_core::session] Authenticated as 'paulster23' !
+[2026-05-03T04:12:23Z INFO  librespot_core::session] Country: "US"
+[2026-05-03T04:12:23Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-05-03T04:12:23Z INFO  librespot_connect::spirc] active device is <e9b2419431c77ba3699cf2ec8eb476db1f66f1c5> with session <3ub1Q4JMBxU7bQz5LvoMjH>
+[2026-05-03T04:12:28Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T04:12:28Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-05-03T04:12:29Z WARN  librespot_core::dealer] Websocket connection failed: IO error: peer closed connection without sending TLS close_notify: https://docs.rs/rustls/latest/rustls/manual/_03_howto/index.html#unexpected-eof
+[2026-05-03T04:12:29Z WARN  librespot_core::dealer] Wasn't able to reply to dealer request: channel closed
+[2026-05-03T04:12:29Z INFO  librespot_core::session] Authenticated as 'paulster23' !
+[2026-05-03T04:12:29Z INFO  librespot_core::session] Country: "US"
+[2026-05-03T04:12:29Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-05-03T04:12:30Z INFO  librespot_connect::spirc] active device is <e9b2419431c77ba3699cf2ec8eb476db1f66f1c5> with session <3ub1Q4JMBxU7bQz5LvoMjH>
+[2026-05-03T04:12:35Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T04:12:35Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-05-03T04:12:35Z INFO  librespot_core::session] Authenticated as 'paulster23' !
+[2026-05-03T04:12:35Z INFO  librespot_core::session] Country: "US"
+[2026-05-03T04:12:35Z WARN  librespot_core::dealer] Websocket connection failed: IO error: peer closed connection without sending TLS close_notify: https://docs.rs/rustls/latest/rustls/manual/_03_howto/index.html#unexpected-eof
+[2026-05-03T04:12:35Z WARN  librespot_core::dealer] Wasn't able to reply to dealer request: channel closed
+[2026-05-03T04:12:36Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-05-03T04:12:36Z INFO  librespot_connect::spirc] active device is <e9b2419431c77ba3699cf2ec8eb476db1f66f1c5> with session <3ub1Q4JMBxU7bQz5LvoMjH>
+[2026-05-03T04:12:42Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T04:12:42Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-05-03T04:12:42Z INFO  librespot_core::session] Authenticated as 'paulster23' !
+[2026-05-03T04:12:42Z INFO  librespot_core::session] Country: "US"
+[2026-05-03T04:12:42Z WARN  librespot_core::dealer] Websocket connection failed: IO error: peer closed connection without sending TLS close_notify: https://docs.rs/rustls/latest/rustls/manual/_03_howto/index.html#unexpected-eof
+[2026-05-03T04:12:42Z WARN  librespot_core::dealer] Wasn't able to reply to dealer request: channel closed
+[2026-05-03T04:12:42Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-05-03T04:12:43Z INFO  librespot_connect::spirc] active device is <e9b2419431c77ba3699cf2ec8eb476db1f66f1c5> with session <3ub1Q4JMBxU7bQz5LvoMjH>
+[2026-05-03T04:12:48Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T04:12:48Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-05-03T04:12:49Z INFO  librespot_core::session] Authenticated as 'paulster23' !
+[2026-05-03T04:12:49Z INFO  librespot_core::session] Country: "US"
+[2026-05-03T04:12:49Z WARN  librespot_core::dealer] Websocket connection failed: IO error: peer closed connection without sending TLS close_notify: https://docs.rs/rustls/latest/rustls/manual/_03_howto/index.html#unexpected-eof
+[2026-05-03T04:12:49Z WARN  librespot_core::dealer] Wasn't able to reply to dealer request: channel closed
+[2026-05-03T04:12:49Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-05-03T04:12:50Z INFO  librespot_connect::spirc] active device is <e9b2419431c77ba3699cf2ec8eb476db1f66f1c5> with session <3ub1Q4JMBxU7bQz5LvoMjH>
+[2026-05-03T04:12:55Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T04:12:55Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-05-03T04:12:55Z INFO  librespot_core::session] Authenticated as 'paulster23' !
+[2026-05-03T04:12:55Z INFO  librespot_core::session] Country: "US"
+[2026-05-03T04:12:56Z WARN  librespot_core::dealer] Websocket connection failed: IO error: peer closed connection without sending TLS close_notify: https://docs.rs/rustls/latest/rustls/manual/_03_howto/index.html#unexpected-eof
+[2026-05-03T04:12:56Z WARN  librespot_core::dealer] Wasn't able to reply to dealer request: channel closed
+[2026-05-03T04:12:56Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-05-03T04:12:56Z INFO  librespot_connect::spirc] active device is <e9b2419431c77ba3699cf2ec8eb476db1f66f1c5> with session <3ub1Q4JMBxU7bQz5LvoMjH>
+[2026-05-03T04:13:02Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T04:13:02Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-05-03T04:13:02Z INFO  librespot_core::session] Authenticated as 'paulster23' !
+[2026-05-03T04:13:02Z INFO  librespot_core::session] Country: "US"
+[2026-05-03T04:13:02Z WARN  librespot_core::dealer] Websocket connection failed: IO error: peer closed connection without sending TLS close_notify: https://docs.rs/rustls/latest/rustls/manual/_03_howto/index.html#unexpected-eof
+[2026-05-03T04:13:02Z WARN  librespot_core::dealer] Wasn't able to reply to dealer request: channel closed
+[2026-05-03T04:13:03Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-05-03T04:13:03Z INFO  librespot_connect::spirc] active device is <e9b2419431c77ba3699cf2ec8eb476db1f66f1c5> with session <3ub1Q4JMBxU7bQz5LvoMjH>
+[2026-05-03T04:13:08Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T04:13:09Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-05-03T04:13:09Z INFO  librespot_core::session] Authenticated as 'paulster23' !
+[2026-05-03T04:13:09Z INFO  librespot_core::session] Country: "US"
+[2026-05-03T04:13:09Z WARN  librespot_core::dealer] Websocket connection failed: IO error: peer closed connection without sending TLS close_notify: https://docs.rs/rustls/latest/rustls/manual/_03_howto/index.html#unexpected-eof
+[2026-05-03T04:13:09Z WARN  librespot_core::dealer] Wasn't able to reply to dealer request: channel closed
+[2026-05-03T04:13:09Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-05-03T04:13:10Z INFO  librespot_connect::spirc] active device is <e9b2419431c77ba3699cf2ec8eb476db1f66f1c5> with session <3ub1Q4JMBxU7bQz5LvoMjH>
+[2026-05-03T04:13:15Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T04:13:15Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-05-03T04:13:15Z INFO  librespot_core::session] Authenticated as 'paulster23' !
+[2026-05-03T04:13:15Z INFO  librespot_core::session] Country: "US"
+[2026-05-03T04:13:15Z WARN  librespot_core::dealer] Websocket connection failed: IO error: peer closed connection without sending TLS close_notify: https://docs.rs/rustls/latest/rustls/manual/_03_howto/index.html#unexpected-eof
+[2026-05-03T04:13:15Z WARN  librespot_core::dealer] Wasn't able to reply to dealer request: channel closed
+[2026-05-03T04:13:16Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-05-03T04:13:16Z INFO  librespot_connect::spirc] active device is <e9b2419431c77ba3699cf2ec8eb476db1f66f1c5> with session <3ub1Q4JMBxU7bQz5LvoMjH>
+[2026-05-03T04:13:22Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T04:13:22Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-05-03T04:13:22Z WARN  librespot_core::dealer] Websocket connection failed: IO error: peer closed connection without sending TLS close_notify: https://docs.rs/rustls/latest/rustls/manual/_03_howto/index.html#unexpected-eof
+[2026-05-03T04:13:22Z WARN  librespot_core::dealer] Wasn't able to reply to dealer request: channel closed
+[2026-05-03T04:13:22Z INFO  librespot_core::session] Authenticated as 'paulster23' !
+[2026-05-03T04:13:22Z INFO  librespot_core::session] Country: "US"
+[2026-05-03T04:13:23Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-05-03T04:13:23Z INFO  librespot_connect::spirc] active device is <e9b2419431c77ba3699cf2ec8eb476db1f66f1c5> with session <3ub1Q4JMBxU7bQz5LvoMjH>
+[2026-05-03T04:13:29Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T04:13:29Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-05-03T04:13:29Z WARN  librespot_core::dealer] Websocket connection failed: IO error: peer closed connection without sending TLS close_notify: https://docs.rs/rustls/latest/rustls/manual/_03_howto/index.html#unexpected-eof
+[2026-05-03T04:13:29Z WARN  librespot_core::dealer] Wasn't able to reply to dealer request: channel closed
+[2026-05-03T04:13:29Z INFO  librespot_core::session] Authenticated as 'paulster23' !
+[2026-05-03T04:13:29Z INFO  librespot_core::session] Country: "US"
+[2026-05-03T04:13:30Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-05-03T04:13:30Z INFO  librespot_connect::spirc] active device is <e9b2419431c77ba3699cf2ec8eb476db1f66f1c5> with session <3ub1Q4JMBxU7bQz5LvoMjH>
+[2026-05-03T04:13:35Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T04:13:36Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-05-03T04:13:36Z INFO  librespot_core::session] Authenticated as 'paulster23' !
+[2026-05-03T04:13:36Z INFO  librespot_core::session] Country: "US"
+[2026-05-03T04:13:36Z WARN  librespot_core::dealer] Websocket connection failed: IO error: peer closed connection without sending TLS close_notify: https://docs.rs/rustls/latest/rustls/manual/_03_howto/index.html#unexpected-eof
+[2026-05-03T04:13:36Z WARN  librespot_core::dealer] Wasn't able to reply to dealer request: channel closed
+[2026-05-03T04:13:37Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-05-03T04:13:37Z INFO  librespot_connect::spirc] active device is <e9b2419431c77ba3699cf2ec8eb476db1f66f1c5> with session <3ub1Q4JMBxU7bQz5LvoMjH>
+[2026-05-03T04:13:42Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T04:13:42Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-05-03T04:13:43Z INFO  librespot_core::session] Authenticated as 'paulster23' !
+[2026-05-03T04:13:43Z INFO  librespot_core::session] Country: "US"
+[2026-05-03T04:13:43Z WARN  librespot_core::dealer] Websocket connection failed: IO error: peer closed connection without sending TLS close_notify: https://docs.rs/rustls/latest/rustls/manual/_03_howto/index.html#unexpected-eof
+[2026-05-03T04:13:43Z WARN  librespot_core::dealer] Wasn't able to reply to dealer request: channel closed
+[2026-05-03T04:13:43Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-05-03T04:13:43Z INFO  librespot_connect::spirc] active device is <e9b2419431c77ba3699cf2ec8eb476db1f66f1c5> with session <3ub1Q4JMBxU7bQz5LvoMjH>
+[2026-05-03T04:13:49Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T04:13:49Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-05-03T04:13:49Z INFO  librespot_core::session] Authenticated as 'paulster23' !
+[2026-05-03T04:13:49Z INFO  librespot_core::session] Country: "US"
+[2026-05-03T04:13:49Z WARN  librespot_core::dealer] Websocket connection failed: IO error: peer closed connection without sending TLS close_notify: https://docs.rs/rustls/latest/rustls/manual/_03_howto/index.html#unexpected-eof
+[2026-05-03T04:13:49Z WARN  librespot_core::dealer] Wasn't able to reply to dealer request: channel closed
+[2026-05-03T04:13:50Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-05-03T04:13:50Z INFO  librespot_connect::spirc] active device is <e9b2419431c77ba3699cf2ec8eb476db1f66f1c5> with session <3ub1Q4JMBxU7bQz5LvoMjH>
+[2026-05-03T04:13:56Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T04:13:56Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-05-03T04:13:56Z WARN  librespot_core::dealer] Websocket connection failed: IO error: peer closed connection without sending TLS close_notify: https://docs.rs/rustls/latest/rustls/manual/_03_howto/index.html#unexpected-eof
+[2026-05-03T04:13:56Z WARN  librespot_core::dealer] Wasn't able to reply to dealer request: channel closed
+[2026-05-03T04:13:56Z INFO  librespot_core::session] Authenticated as 'paulster23' !
+[2026-05-03T04:13:56Z INFO  librespot_core::session] Country: "US"
+[2026-05-03T04:13:56Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-05-03T04:13:57Z INFO  librespot_connect::spirc] active device is <e9b2419431c77ba3699cf2ec8eb476db1f66f1c5> with session <3ub1Q4JMBxU7bQz5LvoMjH>
+[2026-05-03T04:14:02Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T04:14:03Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-05-03T04:14:03Z WARN  librespot_core::dealer] Websocket connection failed: IO error: peer closed connection without sending TLS close_notify: https://docs.rs/rustls/latest/rustls/manual/_03_howto/index.html#unexpected-eof
+[2026-05-03T04:14:03Z WARN  librespot_core::dealer] Wasn't able to reply to dealer request: channel closed
+[2026-05-03T04:14:03Z INFO  librespot_core::session] Authenticated as 'paulster23' !
+[2026-05-03T04:14:03Z INFO  librespot_core::session] Country: "US"
+[2026-05-03T04:14:03Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-05-03T04:14:04Z INFO  librespot_connect::spirc] active device is <e9b2419431c77ba3699cf2ec8eb476db1f66f1c5> with session <3ub1Q4JMBxU7bQz5LvoMjH>
+[2026-05-03T04:14:09Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T04:14:09Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-05-03T04:14:09Z WARN  librespot_core::dealer] Websocket connection failed: IO error: peer closed connection without sending TLS close_notify: https://docs.rs/rustls/latest/rustls/manual/_03_howto/index.html#unexpected-eof
+[2026-05-03T04:14:09Z WARN  librespot_core::dealer] Wasn't able to reply to dealer request: channel closed
+[2026-05-03T04:14:09Z INFO  librespot_core::session] Authenticated as 'paulster23' !
+[2026-05-03T04:14:09Z INFO  librespot_core::session] Country: "US"
+[2026-05-03T04:14:10Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-05-03T04:14:10Z INFO  librespot_connect::spirc] active device is <e9b2419431c77ba3699cf2ec8eb476db1f66f1c5> with session <2wE7E9pXOKiUXQHArIFvLH>
+[2026-05-03T04:14:11Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T04:14:11Z INFO  librespot_playback::player] Loading <Right Down the Line> with Spotify URI <spotify:track:2Xb6wJYGi0QXwURw5WWvI5>
+[2026-05-03T04:14:11Z INFO  librespot_connect::spirc] session update: <Ok(NEW_SESSION)> for self, current session_id 011f4b75a5a24d6cac0d3d5c4997433e, new session_id 89ce24f870390c54ee35e8e68bd76c0c
+[2026-05-03T04:14:12Z INFO  librespot_playback::player] <Right Down the Line> (267773 ms) loaded
+[2026-05-03T04:14:23Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T04:14:23Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-05-03T04:14:24Z INFO  librespot_core::session] Authenticated as 'paulster23' !
+[2026-05-03T04:14:24Z INFO  librespot_core::session] Country: "US"
+[2026-05-03T04:14:24Z WARN  librespot_core::dealer] Websocket connection failed: IO error: peer closed connection without sending TLS close_notify: https://docs.rs/rustls/latest/rustls/manual/_03_howto/index.html#unexpected-eof
+[2026-05-03T04:14:24Z WARN  librespot_core::dealer] Wasn't able to reply to dealer request: channel closed
+[2026-05-03T04:14:24Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-05-03T04:14:24Z INFO  librespot_connect::spirc] active device is <e9b2419431c77ba3699cf2ec8eb476db1f66f1c5> with session <48V6vTTLnX3kOotk2CFTXb>
+[2026-05-03T04:14:26Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T04:14:26Z INFO  librespot_connect::spirc] session update: <Ok(NEW_SESSION)> for self, current session_id d3932588c0004334884a0c8bbcc71ad8, new session_id 6c1d2d52de7f113221a0abde795e6b6c
+[2026-05-03T04:15:55Z INFO  librespot_connect::spirc] device became inactive
+[2026-05-03T04:15:55Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T04:15:55Z WARN  librespot_connect::spirc] failed filling up next_track during stopping: Invalid state { context is not available. type: Default }
+[2026-05-03T04:15:55Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T04:15:55Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T04:15:55Z INFO  librespot_playback::player] Loading <Right Down the Line> with Spotify URI <spotify:track:2Xb6wJYGi0QXwURw5WWvI5>
+[2026-05-03T04:15:55Z INFO  librespot_playback::player] Loading <Right Down the Line> with Spotify URI <spotify:track:2Xb6wJYGi0QXwURw5WWvI5>
+[2026-05-03T04:15:55Z INFO  librespot_connect::spirc] session update: <Ok(NEW_SESSION)> for self, current session_id 6c1d2d52de7f113221a0abde795e6b6c, new session_id 02866ba2cdc0f35722a2f00ce808a2c0
+[2026-05-03T04:15:55Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T04:15:56Z INFO  librespot_playback::player] Loading <Right Down the Line> with Spotify URI <spotify:track:2Xb6wJYGi0QXwURw5WWvI5>
+[2026-05-03T04:15:56Z INFO  librespot_playback::player] <Right Down the Line> (267773 ms) loaded
+[2026-05-03T04:15:56Z INFO  librespot_playback::player] <Right Down the Line> (267773 ms) loaded
+[2026-05-03T04:15:56Z INFO  librespot_playback::player] <Right Down the Line> (267773 ms) loaded
+[2026-05-03T04:18:18Z INFO  librespot_connect::spirc] device became inactive
+[2026-05-03T04:18:19Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T04:18:19Z WARN  librespot_connect::spirc] failed filling up next_track during stopping: Invalid state { context is not available. type: Default }
+[2026-05-03T04:18:27Z WARN  librespot_core::dealer] Websocket peer does not respond.
+[2026-05-03T04:18:28Z INFO  librespot_connect::spirc] active device is <e9912ea7d306062891be9d4514485cfccfc5a2d7> with session <1z3D2Vb7n0Y91d7oG2C12E>
+[2026-05-03T04:18:47Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T04:18:48Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-05-03T04:18:48Z INFO  librespot_core::session] Authenticated as 'paulster23' !
+[2026-05-03T04:18:48Z INFO  librespot_core::session] Country: "US"
+[2026-05-03T04:18:49Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-05-03T04:18:49Z INFO  librespot_connect::spirc] active device is <e9b2419431c77ba3699cf2ec8eb476db1f66f1c5> with session <6RQmIINiuyDq6z96SH7rMx>
+[2026-05-03T04:18:54Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T04:18:54Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-05-03T04:18:54Z INFO  librespot_core::session] Authenticated as 'paulster23' !
+[2026-05-03T04:18:54Z INFO  librespot_core::session] Country: "US"
+[2026-05-03T04:18:55Z WARN  librespot_core::dealer] Websocket connection failed: IO error: peer closed connection without sending TLS close_notify: https://docs.rs/rustls/latest/rustls/manual/_03_howto/index.html#unexpected-eof
+[2026-05-03T04:18:55Z WARN  librespot_core::dealer] Wasn't able to reply to dealer request: channel closed
+[2026-05-03T04:18:55Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-05-03T04:18:55Z INFO  librespot_connect::spirc] active device is <e9b2419431c77ba3699cf2ec8eb476db1f66f1c5> with session <6RQmIINiuyDq6z96SH7rMx>
+[2026-05-03T04:19:01Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T04:19:01Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-05-03T04:19:01Z WARN  librespot_core::dealer] Websocket connection failed: IO error: peer closed connection without sending TLS close_notify: https://docs.rs/rustls/latest/rustls/manual/_03_howto/index.html#unexpected-eof
+[2026-05-03T04:19:01Z WARN  librespot_core::dealer] Wasn't able to reply to dealer request: channel closed
+[2026-05-03T04:19:01Z INFO  librespot_core::session] Authenticated as 'paulster23' !
+[2026-05-03T04:19:01Z INFO  librespot_core::session] Country: "US"
+[2026-05-03T04:19:02Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-05-03T04:19:02Z INFO  librespot_connect::spirc] active device is <e9b2419431c77ba3699cf2ec8eb476db1f66f1c5> with session <6RQmIINiuyDq6z96SH7rMx>
+[2026-05-03T04:19:07Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T04:19:08Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-05-03T04:19:08Z INFO  librespot_core::session] Authenticated as 'paulster23' !
+[2026-05-03T04:19:08Z INFO  librespot_core::session] Country: "US"
+[2026-05-03T04:19:08Z WARN  librespot_core::dealer] Websocket connection failed: IO error: peer closed connection without sending TLS close_notify: https://docs.rs/rustls/latest/rustls/manual/_03_howto/index.html#unexpected-eof
+[2026-05-03T04:19:08Z WARN  librespot_core::dealer] Wasn't able to reply to dealer request: channel closed
+[2026-05-03T04:19:08Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-05-03T04:19:09Z INFO  librespot_connect::spirc] active device is <e9b2419431c77ba3699cf2ec8eb476db1f66f1c5> with session <6RQmIINiuyDq6z96SH7rMx>
+[2026-05-03T04:19:15Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T04:19:15Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-05-03T04:19:15Z INFO  librespot_core::session] Authenticated as 'paulster23' !
+[2026-05-03T04:19:15Z INFO  librespot_core::session] Country: "US"
+[2026-05-03T04:19:15Z WARN  librespot_core::dealer] Websocket connection failed: IO error: peer closed connection without sending TLS close_notify: https://docs.rs/rustls/latest/rustls/manual/_03_howto/index.html#unexpected-eof
+[2026-05-03T04:19:15Z WARN  librespot_core::dealer] Wasn't able to reply to dealer request: channel closed
+[2026-05-03T04:19:15Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-05-03T04:19:16Z INFO  librespot_connect::spirc] active device is <e9b2419431c77ba3699cf2ec8eb476db1f66f1c5> with session <6RQmIINiuyDq6z96SH7rMx>
+[2026-05-03T04:19:21Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T04:19:22Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-05-03T04:19:22Z WARN  librespot_core::dealer] Websocket connection failed: IO error: peer closed connection without sending TLS close_notify: https://docs.rs/rustls/latest/rustls/manual/_03_howto/index.html#unexpected-eof
+[2026-05-03T04:19:22Z WARN  librespot_core::dealer] Wasn't able to reply to dealer request: channel closed
+[2026-05-03T04:19:22Z INFO  librespot_core::session] Authenticated as 'paulster23' !
+[2026-05-03T04:19:22Z INFO  librespot_core::session] Country: "US"
+[2026-05-03T04:19:23Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-05-03T04:19:23Z INFO  librespot_connect::spirc] active device is <e9b2419431c77ba3699cf2ec8eb476db1f66f1c5> with session <6RQmIINiuyDq6z96SH7rMx>
+[2026-05-03T04:19:28Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T04:19:28Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-05-03T04:19:28Z INFO  librespot_core::session] Authenticated as 'paulster23' !
+[2026-05-03T04:19:28Z INFO  librespot_core::session] Country: "US"
+[2026-05-03T04:19:28Z WARN  librespot_core::dealer] Websocket connection failed: IO error: peer closed connection without sending TLS close_notify: https://docs.rs/rustls/latest/rustls/manual/_03_howto/index.html#unexpected-eof
+[2026-05-03T04:19:28Z WARN  librespot_core::dealer] Wasn't able to reply to dealer request: channel closed
+[2026-05-03T04:19:29Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-05-03T04:19:29Z INFO  librespot_connect::spirc] active device is <e9b2419431c77ba3699cf2ec8eb476db1f66f1c5> with session <6RQmIINiuyDq6z96SH7rMx>
+[2026-05-03T04:19:33Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T04:19:33Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-05-03T04:19:33Z WARN  librespot_core::dealer] Websocket connection failed: IO error: peer closed connection without sending TLS close_notify: https://docs.rs/rustls/latest/rustls/manual/_03_howto/index.html#unexpected-eof
+[2026-05-03T04:19:33Z WARN  librespot_core::dealer] Wasn't able to reply to dealer request: channel closed
+[2026-05-03T04:19:33Z INFO  librespot_core::session] Authenticated as 'paulster23' !
+[2026-05-03T04:19:33Z INFO  librespot_core::session] Country: "US"
+[2026-05-03T04:19:34Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-05-03T04:19:34Z INFO  librespot_connect::spirc] active device is <e9b2419431c77ba3699cf2ec8eb476db1f66f1c5> with session <6RQmIINiuyDq6z96SH7rMx>
+[2026-05-03T04:19:40Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T04:19:40Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-05-03T04:19:40Z INFO  librespot_core::session] Authenticated as 'paulster23' !
+[2026-05-03T04:19:40Z INFO  librespot_core::session] Country: "US"
+[2026-05-03T04:19:40Z WARN  librespot_core::dealer] Websocket connection failed: IO error: peer closed connection without sending TLS close_notify: https://docs.rs/rustls/latest/rustls/manual/_03_howto/index.html#unexpected-eof
+[2026-05-03T04:19:40Z WARN  librespot_core::dealer] Wasn't able to reply to dealer request: channel closed
+[2026-05-03T04:19:41Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-05-03T04:19:41Z INFO  librespot_connect::spirc] active device is <e9b2419431c77ba3699cf2ec8eb476db1f66f1c5> with session <6RQmIINiuyDq6z96SH7rMx>
+[2026-05-03T04:19:47Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T04:19:47Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-05-03T04:19:47Z INFO  librespot_core::session] Authenticated as 'paulster23' !
+[2026-05-03T04:19:47Z INFO  librespot_core::session] Country: "US"
+[2026-05-03T04:19:47Z WARN  librespot_core::dealer] Websocket connection failed: IO error: peer closed connection without sending TLS close_notify: https://docs.rs/rustls/latest/rustls/manual/_03_howto/index.html#unexpected-eof
+[2026-05-03T04:19:47Z WARN  librespot_core::dealer] Wasn't able to reply to dealer request: channel closed
+[2026-05-03T04:19:47Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-05-03T04:19:48Z INFO  librespot_connect::spirc] active device is <e9b2419431c77ba3699cf2ec8eb476db1f66f1c5> with session <6RQmIINiuyDq6z96SH7rMx>
+[2026-05-03T04:19:58Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T04:19:58Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-05-03T04:19:59Z INFO  librespot_core::session] Authenticated as 'paulster23' !
+[2026-05-03T04:19:59Z INFO  librespot_core::session] Country: "US"
+[2026-05-03T04:19:59Z WARN  librespot_core::dealer] Websocket connection failed: IO error: peer closed connection without sending TLS close_notify: https://docs.rs/rustls/latest/rustls/manual/_03_howto/index.html#unexpected-eof
+[2026-05-03T04:19:59Z WARN  librespot_core::dealer] Wasn't able to reply to dealer request: channel closed
+[2026-05-03T04:19:59Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-05-03T04:19:59Z INFO  librespot_connect::spirc] active device is <> with session <6RQmIINiuyDq6z96SH7rMx>
+[2026-05-03T04:20:05Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T04:20:05Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-05-03T04:20:05Z INFO  librespot_core::session] Authenticated as 'paulster23' !
+[2026-05-03T04:20:05Z INFO  librespot_core::session] Country: "US"
+[2026-05-03T04:20:05Z WARN  librespot_core::dealer] Websocket connection failed: IO error: peer closed connection without sending TLS close_notify: https://docs.rs/rustls/latest/rustls/manual/_03_howto/index.html#unexpected-eof
+[2026-05-03T04:20:05Z WARN  librespot_core::dealer] Wasn't able to reply to dealer request: channel closed
+[2026-05-03T04:20:06Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-05-03T04:20:06Z INFO  librespot_connect::spirc] active device is <> with session <6RQmIINiuyDq6z96SH7rMx>
+[2026-05-03T04:20:13Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T04:20:13Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-05-03T04:20:13Z INFO  librespot_core::session] Authenticated as 'paulster23' !
+[2026-05-03T04:20:13Z INFO  librespot_core::session] Country: "US"
+[2026-05-03T04:20:13Z WARN  librespot_core::dealer] Websocket connection failed: IO error: peer closed connection without sending TLS close_notify: https://docs.rs/rustls/latest/rustls/manual/_03_howto/index.html#unexpected-eof
+[2026-05-03T04:20:13Z WARN  librespot_core::dealer] Wasn't able to reply to dealer request: channel closed
+[2026-05-03T04:20:14Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-05-03T04:20:14Z INFO  librespot_connect::spirc] active device is <> with session <6RQmIINiuyDq6z96SH7rMx>
+[2026-05-03T04:20:20Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T04:20:20Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-05-03T04:20:20Z INFO  librespot_core::session] Authenticated as 'paulster23' !
+[2026-05-03T04:20:20Z INFO  librespot_core::session] Country: "US"
+[2026-05-03T04:20:20Z WARN  librespot_core::dealer] Websocket connection failed: IO error: peer closed connection without sending TLS close_notify: https://docs.rs/rustls/latest/rustls/manual/_03_howto/index.html#unexpected-eof
+[2026-05-03T04:20:20Z WARN  librespot_core::dealer] Wasn't able to reply to dealer request: channel closed
+[2026-05-03T04:20:21Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-05-03T04:20:21Z INFO  librespot_connect::spirc] active device is <> with session <6RQmIINiuyDq6z96SH7rMx>
+[2026-05-03T04:20:27Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T04:20:27Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-05-03T04:20:27Z INFO  librespot_core::session] Authenticated as 'paulster23' !
+[2026-05-03T04:20:27Z INFO  librespot_core::session] Country: "US"
+[2026-05-03T04:20:27Z WARN  librespot_core::dealer] Websocket connection failed: IO error: peer closed connection without sending TLS close_notify: https://docs.rs/rustls/latest/rustls/manual/_03_howto/index.html#unexpected-eof
+[2026-05-03T04:20:27Z WARN  librespot_core::dealer] Wasn't able to reply to dealer request: channel closed
+[2026-05-03T04:20:28Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-05-03T04:20:28Z INFO  librespot_connect::spirc] active device is <> with session <6RQmIINiuyDq6z96SH7rMx>
+[2026-05-03T04:20:33Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T04:20:34Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-05-03T04:20:34Z INFO  librespot_core::session] Authenticated as 'paulster23' !
+[2026-05-03T04:20:34Z INFO  librespot_core::session] Country: "US"
+[2026-05-03T04:20:34Z WARN  librespot_core::dealer] Websocket connection failed: IO error: peer closed connection without sending TLS close_notify: https://docs.rs/rustls/latest/rustls/manual/_03_howto/index.html#unexpected-eof
+[2026-05-03T04:20:34Z WARN  librespot_core::dealer] Wasn't able to reply to dealer request: channel closed
+[2026-05-03T04:20:34Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-05-03T04:20:35Z INFO  librespot_connect::spirc] active device is <e9b2419431c77ba3699cf2ec8eb476db1f66f1c5> with session <6RQmIINiuyDq6z96SH7rMx>
+[2026-05-03T04:20:40Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T04:20:40Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-05-03T04:20:40Z INFO  librespot_core::session] Authenticated as 'paulster23' !
+[2026-05-03T04:20:40Z INFO  librespot_core::session] Country: "US"
+[2026-05-03T04:20:41Z WARN  librespot_core::dealer] Websocket connection failed: IO error: peer closed connection without sending TLS close_notify: https://docs.rs/rustls/latest/rustls/manual/_03_howto/index.html#unexpected-eof
+[2026-05-03T04:20:41Z WARN  librespot_core::dealer] Wasn't able to reply to dealer request: channel closed
+[2026-05-03T04:20:41Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-05-03T04:20:41Z INFO  librespot_connect::spirc] active device is <e9b2419431c77ba3699cf2ec8eb476db1f66f1c5> with session <6RQmIINiuyDq6z96SH7rMx>
+[2026-05-03T04:20:47Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T04:20:47Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-05-03T04:20:47Z INFO  librespot_core::session] Authenticated as 'paulster23' !
+[2026-05-03T04:20:47Z INFO  librespot_core::session] Country: "US"
+[2026-05-03T04:20:47Z WARN  librespot_core::dealer] Websocket connection failed: IO error: peer closed connection without sending TLS close_notify: https://docs.rs/rustls/latest/rustls/manual/_03_howto/index.html#unexpected-eof
+[2026-05-03T04:20:47Z WARN  librespot_core::dealer] Wasn't able to reply to dealer request: channel closed
+[2026-05-03T04:20:48Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-05-03T04:20:48Z INFO  librespot_connect::spirc] active device is <e9b2419431c77ba3699cf2ec8eb476db1f66f1c5> with session <6RQmIINiuyDq6z96SH7rMx>
+[2026-05-03T04:20:54Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T04:20:54Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-05-03T04:20:54Z INFO  librespot_core::session] Authenticated as 'paulster23' !
+[2026-05-03T04:20:54Z INFO  librespot_core::session] Country: "US"
+[2026-05-03T04:20:54Z WARN  librespot_core::dealer] Websocket connection failed: IO error: peer closed connection without sending TLS close_notify: https://docs.rs/rustls/latest/rustls/manual/_03_howto/index.html#unexpected-eof
+[2026-05-03T04:20:54Z WARN  librespot_core::dealer] Wasn't able to reply to dealer request: channel closed
+[2026-05-03T04:20:55Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-05-03T04:20:55Z INFO  librespot_connect::spirc] active device is <e9b2419431c77ba3699cf2ec8eb476db1f66f1c5> with session <6RQmIINiuyDq6z96SH7rMx>
+[2026-05-03T04:21:01Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T04:21:01Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-05-03T04:21:01Z INFO  librespot_core::session] Authenticated as 'paulster23' !
+[2026-05-03T04:21:01Z INFO  librespot_core::session] Country: "US"
+[2026-05-03T04:21:01Z WARN  librespot_core::dealer] Websocket connection failed: IO error: peer closed connection without sending TLS close_notify: https://docs.rs/rustls/latest/rustls/manual/_03_howto/index.html#unexpected-eof
+[2026-05-03T04:21:01Z WARN  librespot_core::dealer] Wasn't able to reply to dealer request: channel closed
+[2026-05-03T04:21:01Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-05-03T04:21:02Z INFO  librespot_connect::spirc] active device is <e9b2419431c77ba3699cf2ec8eb476db1f66f1c5> with session <6RQmIINiuyDq6z96SH7rMx>
+[2026-05-03T04:21:07Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T04:21:08Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-05-03T04:21:08Z INFO  librespot_core::session] Authenticated as 'paulster23' !
+[2026-05-03T04:21:08Z INFO  librespot_core::session] Country: "US"
+[2026-05-03T04:21:08Z WARN  librespot_core::dealer] Websocket connection failed: IO error: peer closed connection without sending TLS close_notify: https://docs.rs/rustls/latest/rustls/manual/_03_howto/index.html#unexpected-eof
+[2026-05-03T04:21:08Z WARN  librespot_core::dealer] Wasn't able to reply to dealer request: channel closed
+[2026-05-03T04:21:08Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-05-03T04:21:09Z INFO  librespot_connect::spirc] active device is <e9b2419431c77ba3699cf2ec8eb476db1f66f1c5> with session <6RQmIINiuyDq6z96SH7rMx>
+[2026-05-03T04:21:10Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T04:21:10Z INFO  librespot_playback::player] Loading <Right Down the Line> with Spotify URI <spotify:track:2Xb6wJYGi0QXwURw5WWvI5>
+[2026-05-03T04:21:10Z INFO  librespot_connect::spirc] session update: <Ok(NEW_SESSION)> for self, current session_id 3998c805e033474d97d42da7e6fb8464, new session_id e1171b8f5b84469eafe28643be020961
+[2026-05-03T04:21:11Z INFO  librespot_playback::player] <Right Down the Line> (267773 ms) loaded
+[2026-05-03T04:26:26Z INFO  librespot_playback::player] Loading <Walking In The Rain> with Spotify URI <spotify:track:6eQ40FpOWggK5iKl3khLyp>
+[2026-05-03T04:26:27Z INFO  librespot_playback::player] <Walking In The Rain> (258786 ms) loaded
+[2026-05-03T04:30:32Z INFO  librespot_playback::player] Loading <Booming and Zooming> with Spotify URI <spotify:track:1jmAayA8bm9QCsCofOaotQ>
+[2026-05-03T04:30:33Z INFO  librespot_playback::player] <Booming and Zooming> (275226 ms) loaded
+[2026-05-03T04:30:54Z INFO  librespot_connect::spirc] device became inactive
+[2026-05-03T04:30:54Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T04:30:54Z WARN  librespot_connect::spirc] failed filling up next_track during stopping: Invalid state { context is not available. type: Default }
+[2026-05-03T04:31:05Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T04:31:05Z INFO  librespot_playback::player] Loading <Booming and Zooming> with Spotify URI <spotify:track:1jmAayA8bm9QCsCofOaotQ>
+[2026-05-03T04:31:05Z INFO  librespot_connect::spirc] device became inactive
+[2026-05-03T04:31:05Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T04:31:05Z WARN  librespot_connect::spirc] failed filling up next_track during stopping: Invalid state { context is not available. type: Default }
+[2026-05-03T04:31:05Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T04:31:05Z INFO  librespot_connect::spirc] session update: <Ok(NEW_SESSION)> for self, current session_id e1171b8f5b84469eafe28643be020961, new session_id 5ab944646c59074b714c1eca8511b031
+[2026-05-03T04:31:05Z INFO  librespot_playback::player] Loading <Booming and Zooming> with Spotify URI <spotify:track:1jmAayA8bm9QCsCofOaotQ>
+[2026-05-03T04:31:06Z INFO  librespot_playback::player] <Booming and Zooming> (275226 ms) loaded
+[2026-05-03T04:31:06Z INFO  librespot_playback::player] <Booming and Zooming> (275226 ms) loaded
+[2026-05-03T04:31:39Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T04:31:39Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T04:31:40Z INFO  librespot_playback::player] Loading <Faraway Skies> with Spotify URI <spotify:track:2S6P16De0iOxubgWSeeKHV>
+[2026-05-03T04:31:40Z INFO  librespot_playback::player] Loading <Faraway Skies> with Spotify URI <spotify:track:2S6P16De0iOxubgWSeeKHV>
+[2026-05-03T04:31:40Z ERROR librespot_audio::fetch::receive] Streamer error requesting range 65536 +31366: Error { kind: Unknown, error: hyper_util::client::legacy::Error(SendRequest, hyper::Error(Io, Os { code: 54, kind: ConnectionReset, message: "Connection reset by peer" })) }
+[2026-05-03T04:31:40Z INFO  librespot_playback::player] <Faraway Skies> (214386 ms) loaded
+[2026-05-03T04:31:40Z INFO  librespot_playback::player] <Faraway Skies> (214386 ms) loaded
+[2026-05-03T04:34:31Z INFO  librespot_playback::player] Loading <Acting School> with Spotify URI <spotify:track:1aohqa0DNsvnNQo1vr3s0f>
+[2026-05-03T04:34:32Z INFO  librespot_playback::player] <Acting School> (205440 ms) loaded
+[2026-05-03T04:37:47Z INFO  librespot_playback::player] Loading <Old Tv> with Spotify URI <spotify:track:2ZqoUsmjKYAYdUMhO0HCdy>
+[2026-05-03T04:37:48Z INFO  librespot_playback::player] <Old Tv> (209560 ms) loaded
+[2026-05-03T04:41:07Z INFO  librespot_playback::player] Loading <Shouldn't Say Mine> with Spotify URI <spotify:track:4WznYprer9KENt5kwCUgcm>
+[2026-05-03T04:41:07Z INFO  librespot_playback::player] <Shouldn't Say Mine> (222240 ms) loaded
+[2026-05-03T04:44:39Z INFO  librespot_playback::player] Loading <True Love> with Spotify URI <spotify:track:2UNzwVp6F1W1UZYN64KmJv>
+[2026-05-03T04:44:39Z INFO  librespot_playback::player] <True Love> (189586 ms) loaded
+[2026-05-03T04:47:39Z INFO  librespot_playback::player] Loading <Possession> with Spotify URI <spotify:track:74Cn9HGwELSPIuHgnT1fLh>
+[2026-05-03T04:47:40Z INFO  librespot_playback::player] <Possession> (211840 ms) loaded
+[2026-05-03T04:51:01Z INFO  librespot_playback::player] Loading <Your Shadow> with Spotify URI <spotify:track:5ioVu27JX2MT8b9F2pCrnY>
+[2026-05-03T04:51:02Z INFO  librespot_playback::player] <Your Shadow> (145106 ms) loaded
+[2026-05-03T04:53:20Z INFO  librespot_playback::player] Loading <Annabelle Goodbye> with Spotify URI <spotify:track:0CaectaOzOJprjtoFoBRTy>
+[2026-05-03T04:53:20Z INFO  librespot_playback::player] <Annabelle Goodbye> (161800 ms) loaded
+[2026-05-03T04:55:02Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T04:55:02Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T04:55:02Z INFO  librespot_playback::player] Loading <Boys Don't Cry - Single Version> with Spotify URI <spotify:track:4dneV7C1yDt9UtyxrQY375>
+[2026-05-03T04:55:03Z INFO  librespot_playback::player] <Boys Don't Cry - Single Version> (157533 ms) loaded
+[2026-05-03T04:55:33Z INFO  librespot_connect::spirc] device became inactive
+[2026-05-03T04:55:34Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T04:55:34Z WARN  librespot_connect::spirc] failed filling up next_track during stopping: Invalid state { context is not available. type: Default }
+[2026-05-03T04:55:40Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T04:55:40Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T04:55:40Z INFO  librespot_playback::player] Loading <Boys Don't Cry - Single Version> with Spotify URI <spotify:track:4dneV7C1yDt9UtyxrQY375>
+[2026-05-03T04:55:40Z INFO  librespot_connect::spirc] session update: <Ok(NEW_SESSION)> for self, current session_id 5ab944646c59074b714c1eca8511b031, new session_id e265c9d84ffbd9875ebb0f683ebc7ac3
+[2026-05-03T04:55:41Z INFO  librespot_playback::player] <Boys Don't Cry - Single Version> (157533 ms) loaded
+[2026-05-03T04:57:36Z INFO  librespot_playback::player] Loading <Friday I'm in Love> with Spotify URI <spotify:track:263aNAQCeFSWipk896byo6>
+[2026-05-03T04:57:36Z INFO  librespot_playback::player] <Friday I'm in Love> (214400 ms) loaded
+[2026-05-03T04:58:20Z INFO  librespot_playback::player] Loading <Just like Heaven> with Spotify URI <spotify:track:76GlO5H5RT6g7y0gev86Nk>
+[2026-05-03T04:58:21Z INFO  librespot_playback::player] <Just like Heaven> (212000 ms) loaded
+[2026-05-03T05:01:14Z INFO  librespot_playback::player] Loading <In Between Days - 2006 Remaster> with Spotify URI <spotify:track:07CyrZF9eVd02zzIse7tZA>
+[2026-05-03T05:01:14Z INFO  librespot_playback::player] <In Between Days - 2006 Remaster> (177986 ms) loaded
+[2026-05-03T05:01:53Z INFO  librespot_playback::player] Loading <Killing An Arab - Live> with Spotify URI <spotify:track:5skItcOulvNhsjoJ3kUYoS>
+[2026-05-03T05:01:54Z INFO  librespot_playback::player] <Killing An Arab - Live> (265293 ms) loaded
+[2026-05-03T05:02:05Z INFO  librespot_playback::player] Loading <Lovesong - 2010 Remaster> with Spotify URI <spotify:track:0X5C4WjQNubRysTkHOubz3>
+[2026-05-03T05:02:06Z INFO  librespot_playback::player] <Lovesong - 2010 Remaster> (209573 ms) loaded
+[2026-05-03T05:02:24Z INFO  librespot_playback::player] Loading <Just like Heaven> with Spotify URI <spotify:track:76GlO5H5RT6g7y0gev86Nk>
+[2026-05-03T05:02:25Z INFO  librespot_playback::player] <Just like Heaven> (212000 ms) loaded
+[2026-05-03T05:02:26Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T05:02:26Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T05:02:27Z INFO  librespot_playback::player] Loading <Killing An Arab - Live> with Spotify URI <spotify:track:5skItcOulvNhsjoJ3kUYoS>
+[2026-05-03T05:02:28Z INFO  librespot_playback::player] <Killing An Arab - Live> (265293 ms) loaded
+[2026-05-03T05:05:41Z WARN  librespot_core::dealer] Websocket peer does not respond.
+[2026-05-03T05:05:42Z INFO  librespot_connect::spirc] active device is <0596f720dd52a9e2e2d0020d00931a1b91014e64> with session <e265c9d84ffbd9875ebb0f683ebc7ac3>
+[2026-05-03T05:16:24Z INFO  librespot_connect::spirc] session update: <Ok(SESSION_DELETED)> for self, current session_id e265c9d84ffbd9875ebb0f683ebc7ac3, new session_id e265c9d84ffbd9875ebb0f683ebc7ac3
+[2026-05-03T05:16:31Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-05-03T05:16:32Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T05:16:32Z INFO  librespot_core::session] Authenticated as 'paulster23' !
+[2026-05-03T05:16:32Z INFO  librespot_core::session] Country: "US"
+[2026-05-03T05:16:32Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-05-03T05:16:33Z WARN  librespot_core::dealer] Websocket connection failed: IO error: peer closed connection without sending TLS close_notify: https://docs.rs/rustls/latest/rustls/manual/_03_howto/index.html#unexpected-eof
+[2026-05-03T05:16:33Z WARN  librespot_core::dealer] Wasn't able to reply to dealer request: channel closed
+[2026-05-03T05:16:33Z INFO  librespot_connect::spirc] active device is <e9b2419431c77ba3699cf2ec8eb476db1f66f1c5> with session <5b0hfuPzvG9GhNWT15H9X8>
+[2026-05-03T05:16:39Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-05-03T05:16:39Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T05:16:39Z INFO  librespot_core::session] Authenticated as 'paulster23' !
+[2026-05-03T05:16:39Z INFO  librespot_core::session] Country: "US"
+[2026-05-03T05:16:40Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-05-03T05:16:40Z WARN  librespot_core::dealer] Websocket connection failed: IO error: peer closed connection without sending TLS close_notify: https://docs.rs/rustls/latest/rustls/manual/_03_howto/index.html#unexpected-eof
+[2026-05-03T05:16:40Z WARN  librespot_core::dealer] Wasn't able to reply to dealer request: channel closed
+[2026-05-03T05:16:40Z INFO  librespot_connect::spirc] active device is <e9b2419431c77ba3699cf2ec8eb476db1f66f1c5> with session <5b0hfuPzvG9GhNWT15H9X8>
+[2026-05-03T05:16:46Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-05-03T05:16:46Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T05:16:46Z INFO  librespot_core::session] Authenticated as 'paulster23' !
+[2026-05-03T05:16:46Z INFO  librespot_core::session] Country: "US"
+[2026-05-03T05:16:47Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-05-03T05:16:47Z WARN  librespot_core::dealer] Websocket connection failed: IO error: peer closed connection without sending TLS close_notify: https://docs.rs/rustls/latest/rustls/manual/_03_howto/index.html#unexpected-eof
+[2026-05-03T05:16:47Z WARN  librespot_core::dealer] Wasn't able to reply to dealer request: channel closed
+[2026-05-03T05:16:47Z INFO  librespot_connect::spirc] active device is <e9b2419431c77ba3699cf2ec8eb476db1f66f1c5> with session <5b0hfuPzvG9GhNWT15H9X8>
+[2026-05-03T05:16:53Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-05-03T05:16:53Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T05:16:53Z INFO  librespot_core::session] Authenticated as 'paulster23' !
+[2026-05-03T05:16:53Z INFO  librespot_core::session] Country: "US"
+[2026-05-03T05:16:54Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-05-03T05:16:54Z WARN  librespot_core::dealer] Websocket connection failed: IO error: peer closed connection without sending TLS close_notify: https://docs.rs/rustls/latest/rustls/manual/_03_howto/index.html#unexpected-eof
+[2026-05-03T05:16:54Z WARN  librespot_core::dealer] Wasn't able to reply to dealer request: channel closed
+[2026-05-03T05:16:54Z INFO  librespot_connect::spirc] active device is <e9b2419431c77ba3699cf2ec8eb476db1f66f1c5> with session <5b0hfuPzvG9GhNWT15H9X8>
+[2026-05-03T05:17:00Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-05-03T05:17:00Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T05:17:00Z INFO  librespot_core::session] Authenticated as 'paulster23' !
+[2026-05-03T05:17:00Z INFO  librespot_core::session] Country: "US"
+[2026-05-03T05:17:01Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-05-03T05:17:01Z WARN  librespot_core::dealer] Websocket connection failed: IO error: peer closed connection without sending TLS close_notify: https://docs.rs/rustls/latest/rustls/manual/_03_howto/index.html#unexpected-eof
+[2026-05-03T05:17:01Z WARN  librespot_core::dealer] Wasn't able to reply to dealer request: channel closed
+[2026-05-03T05:17:02Z INFO  librespot_connect::spirc] active device is <e9b2419431c77ba3699cf2ec8eb476db1f66f1c5> with session <5b0hfuPzvG9GhNWT15H9X8>
+[2026-05-03T05:17:07Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-05-03T05:17:08Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T05:17:08Z INFO  librespot_core::session] Authenticated as 'paulster23' !
+[2026-05-03T05:17:08Z INFO  librespot_core::session] Country: "US"
+[2026-05-03T05:17:08Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-05-03T05:17:08Z WARN  librespot_core::dealer] Websocket connection failed: IO error: peer closed connection without sending TLS close_notify: https://docs.rs/rustls/latest/rustls/manual/_03_howto/index.html#unexpected-eof
+[2026-05-03T05:17:08Z WARN  librespot_core::dealer] Wasn't able to reply to dealer request: channel closed
+[2026-05-03T05:17:09Z INFO  librespot_connect::spirc] active device is <e9b2419431c77ba3699cf2ec8eb476db1f66f1c5> with session <5b0hfuPzvG9GhNWT15H9X8>
+[2026-05-03T05:17:14Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-05-03T05:17:14Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T05:17:14Z INFO  librespot_core::session] Authenticated as 'paulster23' !
+[2026-05-03T05:17:14Z INFO  librespot_core::session] Country: "US"
+[2026-05-03T05:17:14Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-05-03T05:17:14Z WARN  librespot_core::dealer] Websocket connection failed: IO error: peer closed connection without sending TLS close_notify: https://docs.rs/rustls/latest/rustls/manual/_03_howto/index.html#unexpected-eof
+[2026-05-03T05:17:14Z WARN  librespot_core::dealer] Wasn't able to reply to dealer request: channel closed
+[2026-05-03T05:17:15Z INFO  librespot_connect::spirc] active device is <e9b2419431c77ba3699cf2ec8eb476db1f66f1c5> with session <5b0hfuPzvG9GhNWT15H9X8>
+[2026-05-03T05:17:21Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-05-03T05:17:21Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T05:17:21Z INFO  librespot_core::session] Authenticated as 'paulster23' !
+[2026-05-03T05:17:21Z INFO  librespot_core::session] Country: "US"
+[2026-05-03T05:17:22Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-05-03T05:17:22Z WARN  librespot_core::dealer] Websocket connection failed: IO error: peer closed connection without sending TLS close_notify: https://docs.rs/rustls/latest/rustls/manual/_03_howto/index.html#unexpected-eof
+[2026-05-03T05:17:22Z WARN  librespot_core::dealer] Wasn't able to reply to dealer request: channel closed
+[2026-05-03T05:17:22Z INFO  librespot_connect::spirc] active device is <e9b2419431c77ba3699cf2ec8eb476db1f66f1c5> with session <5b0hfuPzvG9GhNWT15H9X8>
+[2026-05-03T05:17:28Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-05-03T05:17:28Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T05:17:28Z INFO  librespot_core::session] Authenticated as 'paulster23' !
+[2026-05-03T05:17:28Z INFO  librespot_core::session] Country: "US"
+[2026-05-03T05:17:29Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-05-03T05:17:29Z WARN  librespot_core::dealer] Websocket connection failed: IO error: peer closed connection without sending TLS close_notify: https://docs.rs/rustls/latest/rustls/manual/_03_howto/index.html#unexpected-eof
+[2026-05-03T05:17:29Z WARN  librespot_core::dealer] Wasn't able to reply to dealer request: channel closed
+[2026-05-03T05:17:30Z INFO  librespot_connect::spirc] active device is <e9b2419431c77ba3699cf2ec8eb476db1f66f1c5> with session <5b0hfuPzvG9GhNWT15H9X8>
+[2026-05-03T05:17:35Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-05-03T05:17:35Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T05:17:36Z INFO  librespot_core::session] Authenticated as 'paulster23' !
+[2026-05-03T05:17:36Z INFO  librespot_core::session] Country: "US"
+[2026-05-03T05:17:36Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-05-03T05:17:36Z WARN  librespot_core::dealer] Websocket connection failed: IO error: peer closed connection without sending TLS close_notify: https://docs.rs/rustls/latest/rustls/manual/_03_howto/index.html#unexpected-eof
+[2026-05-03T05:17:36Z WARN  librespot_core::dealer] Wasn't able to reply to dealer request: channel closed
+[2026-05-03T05:17:37Z INFO  librespot_connect::spirc] active device is <e9b2419431c77ba3699cf2ec8eb476db1f66f1c5> with session <5b0hfuPzvG9GhNWT15H9X8>
+[2026-05-03T05:17:42Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-05-03T05:17:42Z INFO  librespot_core::session] Authenticated as 'paulster23' !
+[2026-05-03T05:17:42Z INFO  librespot_core::session] Country: "US"
+[2026-05-03T05:17:42Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T05:17:43Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-05-03T05:17:43Z WARN  librespot_core::dealer] Websocket connection failed: IO error: peer closed connection without sending TLS close_notify: https://docs.rs/rustls/latest/rustls/manual/_03_howto/index.html#unexpected-eof
+[2026-05-03T05:17:43Z WARN  librespot_core::dealer] Wasn't able to reply to dealer request: channel closed
+[2026-05-03T05:17:43Z INFO  librespot_connect::spirc] active device is <e9b2419431c77ba3699cf2ec8eb476db1f66f1c5> with session <5b0hfuPzvG9GhNWT15H9X8>
+[2026-05-03T05:17:49Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-05-03T05:17:49Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T05:17:49Z INFO  librespot_core::session] Authenticated as 'paulster23' !
+[2026-05-03T05:17:49Z INFO  librespot_core::session] Country: "US"
+[2026-05-03T05:17:50Z WARN  librespot_core::dealer] Websocket connection failed: IO error: peer closed connection without sending TLS close_notify: https://docs.rs/rustls/latest/rustls/manual/_03_howto/index.html#unexpected-eof
+[2026-05-03T05:17:50Z WARN  librespot_core::dealer] Wasn't able to reply to dealer request: channel closed
+[2026-05-03T05:17:50Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-05-03T05:17:51Z INFO  librespot_connect::spirc] active device is <e9b2419431c77ba3699cf2ec8eb476db1f66f1c5> with session <5b0hfuPzvG9GhNWT15H9X8>
+[2026-05-03T05:17:56Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-05-03T05:17:57Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T05:17:58Z WARN  librespot_core::dealer] Websocket connection failed: IO error: peer closed connection without sending TLS close_notify: https://docs.rs/rustls/latest/rustls/manual/_03_howto/index.html#unexpected-eof
+[2026-05-03T05:17:58Z WARN  librespot_core::dealer] Wasn't able to reply to dealer request: channel closed
+[2026-05-03T05:18:02Z INFO  librespot_core::session] Authenticated as 'paulster23' !
+[2026-05-03T05:18:02Z INFO  librespot_core::session] Country: "US"
+[2026-05-03T05:18:03Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-05-03T05:18:03Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-05-03T05:18:03Z WARN  librespot_core::dealer] Websocket connection failed: IO error: peer closed connection without sending TLS close_notify: https://docs.rs/rustls/latest/rustls/manual/_03_howto/index.html#unexpected-eof
+[2026-05-03T05:18:03Z INFO  librespot_core::session] Authenticated as 'paulster23' !
+[2026-05-03T05:18:03Z INFO  librespot_core::session] Country: "US"
+[2026-05-03T05:18:03Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-05-03T05:18:04Z INFO  librespot_connect::spirc] active device is <e9b2419431c77ba3699cf2ec8eb476db1f66f1c5> with session <5b0hfuPzvG9GhNWT15H9X8>
+[2026-05-03T05:18:04Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T05:18:04Z INFO  librespot_playback::player] Loading <Court and Spark> with Spotify URI <spotify:track:2l8kERLPqgP7p94Duj9nqH>
+[2026-05-03T05:18:05Z INFO  librespot_connect::spirc] session update: <Ok(NEW_SESSION)> for self, current session_id 839e78c4c948482bb05c094c007b36e7, new session_id e7f14130381945b4be2be8f1090ff56d
+[2026-05-03T05:18:05Z INFO  librespot_playback::player] <Court and Spark> (166160 ms) loaded
+[2026-05-03T05:20:20Z INFO  librespot_playback::player] Loading <Right Down the Line> with Spotify URI <spotify:track:2Xb6wJYGi0QXwURw5WWvI5>
+[2026-05-03T05:20:21Z INFO  librespot_playback::player] <Right Down the Line> (267773 ms) loaded
+[2026-05-03T05:23:36Z WARN  librespot_core::dealer] Websocket peer does not respond.
+[2026-05-03T05:23:37Z INFO  librespot_connect::spirc] active device is <0596f720dd52a9e2e2d0020d00931a1b91014e64> with session <e7f14130381945b4be2be8f1090ff56d>
+[2026-05-03T05:23:44Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T05:23:44Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T05:23:45Z INFO  librespot_playback::player] Loading <Get It Right Next Time> with Spotify URI <spotify:track:0o3HJmXnQPRX4jymsmk3sS>
+[2026-05-03T05:23:46Z INFO  librespot_playback::player] <Get It Right Next Time> (282040 ms) loaded
+[2026-05-03T05:24:17Z INFO  librespot_connect::spirc] device became inactive
+[2026-05-03T05:24:17Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T05:24:17Z WARN  librespot_connect::spirc] failed filling up next_track during stopping: Invalid state { context is not available. type: Default }
+[2026-05-03T05:24:29Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T05:24:29Z INFO  librespot_playback::player] Loading <Get It Right Next Time> with Spotify URI <spotify:track:0o3HJmXnQPRX4jymsmk3sS>
+[2026-05-03T05:24:29Z INFO  librespot_connect::spirc] session update: <Ok(NEW_SESSION)> for self, current session_id e7f14130381945b4be2be8f1090ff56d, new session_id eb3116cc0d22f2538fb2dbf549753780
+[2026-05-03T05:24:29Z INFO  librespot_playback::player] <Get It Right Next Time> (282040 ms) loaded
+[2026-05-03T05:28:24Z INFO  librespot_playback::player] Loading <Baker Street> with Spotify URI <spotify:track:5gOd6zDC8vhlYjqbQdJVWP>
+[2026-05-03T05:28:25Z INFO  librespot_playback::player] <Baker Street> (365626 ms) loaded
+[2026-05-03T05:31:40Z INFO  librespot_playback::player] Loading <Owner of a Lonely Heart> with Spotify URI <spotify:track:0GTK6TesV108Jj5D3MHsYb>
+[2026-05-03T05:31:41Z INFO  librespot_playback::player] <Owner of a Lonely Heart> (268506 ms) loaded
+[2026-05-03T05:35:27Z INFO  librespot_playback::player] Loading <Baker Street - Radio Edit> with Spotify URI <spotify:track:09dfUrdffX5q6GQfqIRmf6>
+[2026-05-03T05:35:28Z INFO  librespot_playback::player] <Baker Street - Radio Edit> (248826 ms) loaded
+[2026-05-03T05:36:57Z INFO  librespot_connect::spirc] device became inactive
+[2026-05-03T05:36:57Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T05:36:57Z WARN  librespot_connect::spirc] failed filling up next_track during stopping: Invalid state { context is not available. type: Default }
+[2026-05-03T05:37:01Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T05:37:01Z INFO  librespot_playback::player] Loading <Owner of a Lonely Heart> with Spotify URI <spotify:track:0GTK6TesV108Jj5D3MHsYb>
+[2026-05-03T05:37:02Z INFO  librespot_connect::spirc] session update: <Ok(NEW_SESSION)> for self, current session_id eb3116cc0d22f2538fb2dbf549753780, new session_id 956799883dc59afca0979f6121a2581c
+[2026-05-03T05:37:02Z INFO  librespot_playback::player] <Owner of a Lonely Heart> (268506 ms) loaded
+[2026-05-03T05:37:16Z INFO  librespot_playback::player] Loading <Baker Street - Radio Edit> with Spotify URI <spotify:track:09dfUrdffX5q6GQfqIRmf6>
+[2026-05-03T05:37:16Z INFO  librespot_playback::player] <Baker Street - Radio Edit> (248826 ms) loaded
+[2026-05-03T05:39:47Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T05:39:47Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T05:39:47Z INFO  librespot_playback::player] Loading <Drivin' on 9> with Spotify URI <spotify:track:4gxKVUQyfkIbO6WuET4HlW>
+[2026-05-03T05:39:48Z INFO  librespot_playback::player] <Drivin' on 9> (202266 ms) loaded
+[2026-05-03T05:42:03Z ERROR librespot_core::session] Connection to server closed.
+[2026-05-03T05:42:17Z WARN  librespot_connect::spirc] unexpected shutdown
+[2026-05-03T05:42:17Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T05:42:17Z INFO  librespot_playback::player] Loading <Fine Young Cannibals> with Spotify URI <spotify:track:6aAhBncpJcB0gJCKobVsrI>
+[2026-05-03T05:42:17Z WARN  librespot_core::dealer] Websocket connection failed: IO error: peer closed connection without sending TLS close_notify: https://docs.rs/rustls/latest/rustls/manual/_03_howto/index.html#unexpected-eof
+[2026-05-03T05:42:17Z WARN  librespot] Spirc shut down unexpectedly
+[2026-05-03T05:42:18Z ERROR librespot_core::session] Broken pipe (os error 32)
+[2026-05-03T05:42:18Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-05-03T05:42:18Z INFO  librespot_core::session] Authenticated as 'paulster23' !
+[2026-05-03T05:42:18Z INFO  librespot_core::session] Country: "US"
+[2026-05-03T05:42:19Z ERROR librespot_core::audio_key] Audio key response timeout
+[2026-05-03T05:42:19Z WARN  librespot_playback::player] Unable to load key, continuing without decryption: Operation aborted { audio key response timeout }
+[2026-05-03T05:42:19Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-05-03T05:42:19Z INFO  librespot_connect::spirc] active device is <> with session <956799883dc59afca0979f6121a2581c>
+[2026-05-03T05:42:31Z ERROR librespot_playback::player] Unable to read audio file: Symphonia Decoder Error: end of stream
+[2026-05-03T05:57:14Z INFO  librespot_connect::spirc] session update: <Ok(SESSION_DELETED)> for self, current session_id 723b444a91434379847411593dc5efe2, new session_id 956799883dc59afca0979f6121a2581c
+[2026-05-03T06:37:22Z WARN  librespot_core::dealer] Websocket peer does not respond.
+[2026-05-03T06:37:23Z INFO  librespot_connect::spirc] trying to take over control automatically, session_id: 956799883dc59afca0979f6121a2581c
+[2026-05-03T06:37:23Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T06:38:14Z ERROR librespot_core::session] Connection to server closed.
+[2026-05-03T06:51:57Z INFO  librespot_connect::spirc] device became inactive
+[2026-05-03T06:51:58Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T06:51:58Z WARN  librespot_connect::spirc] failed filling up next_track during stopping: Invalid state { context is not available. type: Default }
+[2026-05-03T06:51:58Z WARN  librespot_core::dealer] Websocket connection failed: IO error: peer closed connection without sending TLS close_notify: https://docs.rs/rustls/latest/rustls/manual/_03_howto/index.html#unexpected-eof
+[2026-05-03T06:51:58Z WARN  librespot] Spirc shut down unexpectedly
+[2026-05-03T06:51:58Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-05-03T06:51:59Z INFO  librespot_core::session] Authenticated as 'paulster23' !
+[2026-05-03T06:51:59Z INFO  librespot_core::session] Country: "US"
+[2026-05-03T06:51:59Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-05-03T06:52:00Z INFO  librespot_connect::spirc] active device is <> with session <956799883dc59afca0979f6121a2581c>
+[2026-05-03T12:02:02Z WARN  librespot_core::dealer] Websocket peer does not respond.
+[2026-05-03T12:02:03Z INFO  librespot_connect::spirc] active device is <> with session <1z3D2Vb7n0Y91d7oG2C12E>
+[2026-05-03T13:06:06Z WARN  librespot_core::dealer] Websocket peer does not respond.
+[2026-05-03T13:06:08Z INFO  librespot_connect::spirc] active device is <> with session <1z3D2Vb7n0Y91d7oG2C12E>
+[2026-05-03T13:45:33Z WARN  librespot_core::dealer] Websocket connection failed: IO error: peer closed connection without sending TLS close_notify: https://docs.rs/rustls/latest/rustls/manual/_03_howto/index.html#unexpected-eof
+[2026-05-03T13:45:34Z INFO  librespot_connect::spirc] active device is <> with session <1z3D2Vb7n0Y91d7oG2C12E>
+[2026-05-03T14:04:37Z WARN  librespot_core::dealer] Websocket peer does not respond.
+[2026-05-03T14:04:38Z INFO  librespot_connect::spirc] active device is <> with session <1z3D2Vb7n0Y91d7oG2C12E>
+[2026-05-03T19:42:59Z INFO  librespot] librespot 0.8.0 VERGEN_IDEMPOTENT_OUTPUT (Built on 2025-11-10, Build ID: 1762793321, Profile: release)
+[2026-05-03T19:42:59Z INFO  librespot_playback::mixer::softmixer] Mixing with softvol and volume control: Log(60.0)
+[2026-05-03T19:42:59Z INFO  librespot_playback::convert] Converting with ditherer: tpdf
+[2026-05-03T19:42:59Z INFO  librespot_playback::audio_backend::pipe] Using StdoutSink (pipe) with format: S16
+[2026-05-03T19:43:00Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-05-03T19:43:00Z INFO  librespot_core::session] Authenticated as 'paulster23' !
+[2026-05-03T19:43:00Z INFO  librespot_core::session] Country: "US"
+[2026-05-03T19:43:01Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-05-03T19:43:01Z INFO  librespot_connect::spirc] active device is <> with session <1z3D2Vb7n0Y91d7oG2C12E>
+[2026-05-03T19:43:30Z INFO  librespot] librespot 0.8.0 VERGEN_IDEMPOTENT_OUTPUT (Built on 2025-11-10, Build ID: 1762793321, Profile: release)
+[2026-05-03T19:43:30Z INFO  librespot_playback::mixer::softmixer] Mixing with softvol and volume control: Log(60.0)
+[2026-05-03T19:43:30Z INFO  librespot_playback::convert] Converting with ditherer: tpdf
+[2026-05-03T19:43:30Z INFO  librespot_playback::audio_backend::pipe] Using StdoutSink (pipe) with format: S16
+[2026-05-03T19:43:30Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-05-03T19:43:31Z INFO  librespot_core::session] Authenticated as 'paulster23' !
+[2026-05-03T19:43:31Z INFO  librespot_core::session] Country: "US"
+[2026-05-03T19:43:31Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-05-03T19:43:32Z INFO  librespot_connect::spirc] active device is <> with session <1z3D2Vb7n0Y91d7oG2C12E>
+[2026-05-03T19:49:11Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T19:49:11Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T19:49:11Z INFO  librespot_playback::player] Loading <The Boy with the Arab Strap> with Spotify URI <spotify:track:2PV8oZJo3K3bXENO7FRRtp>
+[2026-05-03T19:49:12Z INFO  librespot_connect::spirc] session update: <Ok(NEW_SESSION)> for self, current session_id 6c6c89c851474072969ad7817d708605, new session_id 1a7425ff4bc510b1a9c3037fce3fdeae
+[2026-05-03T19:49:12Z INFO  librespot_playback::player] <The Boy with the Arab Strap> (314173 ms) loaded
+[2026-05-03T19:53:24Z INFO  librespot_playback::player] Loading <Get Me Away from Here, I'm Dying> with Spotify URI <spotify:track:0T3j1KHC2U00Gw4gaLQBh9>
+[2026-05-03T19:53:25Z INFO  librespot_playback::player] <Get Me Away from Here, I'm Dying> (205360 ms) loaded
+[2026-05-03T19:56:40Z INFO  librespot_playback::player] Loading <Piazza, New York Catcher> with Spotify URI <spotify:track:12eefUObewFbvXYQ3bN7E4>
+[2026-05-03T19:56:40Z INFO  librespot_playback::player] <Piazza, New York Catcher> (183493 ms) loaded
+[2026-05-03T19:58:31Z ERROR librespot_core::session] Connection to server closed.
+[2026-05-03T19:59:34Z WARN  librespot_connect::spirc] unexpected shutdown
+[2026-05-03T19:59:35Z INFO  librespot_playback::player] Loading <Sleep the Clock Around> with Spotify URI <spotify:track:2Z5kQTijIo3yVIL0EPrq9T>
+[2026-05-03T19:59:35Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T19:59:35Z ERROR librespot_core::session] Broken pipe (os error 32)
+[2026-05-03T19:59:35Z WARN  librespot_core::dealer] Websocket connection failed: IO error: peer closed connection without sending TLS close_notify: https://docs.rs/rustls/latest/rustls/manual/_03_howto/index.html#unexpected-eof
+[2026-05-03T19:59:35Z WARN  librespot] Spirc shut down unexpectedly
+[2026-05-03T19:59:36Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-05-03T19:59:36Z INFO  librespot_core::session] Authenticated as 'paulster23' !
+[2026-05-03T19:59:36Z INFO  librespot_core::session] Country: "US"
+[2026-05-03T19:59:36Z ERROR librespot_core::audio_key] Audio key response timeout
+[2026-05-03T19:59:36Z WARN  librespot_playback::player] Unable to load key, continuing without decryption: Operation aborted { audio key response timeout }
+[2026-05-03T19:59:37Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-05-03T19:59:37Z INFO  librespot_connect::spirc] active device is <> with session <1a7425ff4bc510b1a9c3037fce3fdeae>
+[2026-05-03T19:59:48Z ERROR librespot_playback::player] Unable to read audio file: Symphonia Decoder Error: end of stream
+[2026-05-03T20:02:50Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T20:02:50Z INFO  librespot_playback::player] Loading <’Said Soul> with Spotify URI <spotify:track:3nereh8fbNjDflNF7f1CLK>
+[2026-05-03T20:02:51Z INFO  librespot_playback::player] <’Said Soul> (164389 ms) loaded
+[2026-05-03T20:04:33Z INFO  librespot_playback::player] Loading <Shere's Theme> with Spotify URI <spotify:track:5YFU1x1snObWT4lLY4pkvm>
+[2026-05-03T20:04:34Z INFO  librespot_playback::player] <Shere's Theme> (138846 ms) loaded
+[2026-05-03T20:06:45Z INFO  librespot_playback::player] Loading <Lost In The Woods (Bacchanal)> with Spotify URI <spotify:track:0vkyg6hZbe6PRokb3UCnjT>
+[2026-05-03T20:06:46Z INFO  librespot_playback::player] <Lost In The Woods (Bacchanal)> (233291 ms) loaded
+[2026-05-03T20:10:27Z INFO  librespot_playback::player] Loading <Jolene> with Spotify URI <spotify:track:4u6uXWRZBF5FNblo8N2HAL>
+[2026-05-03T20:10:28Z INFO  librespot_playback::player] <Jolene> (194053 ms) loaded
+[2026-05-03T20:13:32Z INFO  librespot_playback::player] Loading <Geneva Strangemod> with Spotify URI <spotify:track:6x0k9peOIj7P9vbkFguvMO>
+[2026-05-03T20:13:33Z INFO  librespot_playback::player] <Geneva Strangemod> (160615 ms) loaded
+[2026-05-03T20:16:05Z INFO  librespot_playback::player] Loading <Luggin' Hurt> with Spotify URI <spotify:track:6JhNU7kYOAwRSWnoGR9hdQ>
+[2026-05-03T20:16:06Z INFO  librespot_playback::player] <Luggin' Hurt> (427800 ms) loaded
+[2026-05-03T20:22:52Z INFO  librespot_playback::player] Loading <Do You> with Spotify URI <spotify:track:3nAutiQVVtS5DRYX3WEg4B>
+[2026-05-03T20:22:53Z INFO  librespot_playback::player] <Do You> (184760 ms) loaded
+[2026-05-03T20:25:48Z INFO  librespot_playback::player] Loading <Tunnel Vision> with Spotify URI <spotify:track:2R7Wumo88hIIQlVMsoZAsR>
+[2026-05-03T20:25:49Z INFO  librespot_playback::player] <Tunnel Vision> (236109 ms) loaded
+[2026-05-03T20:28:40Z WARN  librespot_core::dealer] Websocket peer does not respond.
+[2026-05-03T20:28:40Z INFO  librespot_connect::spirc] active device is <0596f720dd52a9e2e2d0020d00931a1b91014e64> with session <0d35e72f3188446491e653ecdff99c11>
+[2026-05-03T20:29:33Z INFO  librespot_playback::player] Loading <The Road To The Hills> with Spotify URI <spotify:track:3ZFlt4fi5uI6D1oH2dbhaf>
+[2026-05-03T20:29:34Z INFO  librespot_playback::player] <The Road To The Hills> (187209 ms) loaded
+[2026-05-03T20:32:31Z INFO  librespot_playback::player] Loading <Misty Woman> with Spotify URI <spotify:track:6nUbqnk5OIftan8BVx7sDt>
+[2026-05-03T20:32:32Z INFO  librespot_playback::player] <Misty Woman> (271600 ms) loaded
+[2026-05-03T20:36:51Z INFO  librespot_playback::player] Loading <Zero Sun> with Spotify URI <spotify:track:15nhbSCU39RlG32KqkneOu>
+[2026-05-03T20:36:51Z INFO  librespot_playback::player] <Zero Sun> (207805 ms) loaded
+[2026-05-03T20:37:19Z WARN  librespot_audio::fetch::receive] Throughput 3 kbps lower than minimum 8, setting to minimum
+[2026-05-03T20:40:08Z INFO  librespot_playback::player] Loading <Measure Of Joy> with Spotify URI <spotify:track:7m24AgloJzGCG4GRgDuf2i>
+[2026-05-03T20:40:09Z INFO  librespot_playback::player] <Measure Of Joy> (210226 ms) loaded
+[2026-05-03T20:43:28Z INFO  librespot_playback::player] Loading <mq9> with Spotify URI <spotify:track:3mFCJSMSm7J9B62nvHaJKs>
+[2026-05-03T20:43:29Z INFO  librespot_playback::player] <mq9> (220415 ms) loaded
+[2026-05-03T20:46:58Z INFO  librespot_playback::player] Loading <Çiçek Açıyor (Instrumental)> with Spotify URI <spotify:track:2uXXsIOVk7ndOYfksMuHvy>
+[2026-05-03T20:46:59Z INFO  librespot_playback::player] <Çiçek Açıyor (Instrumental)> (214039 ms) loaded
+[2026-05-03T20:50:22Z INFO  librespot_playback::player] Loading <Colours & Light> with Spotify URI <spotify:track:7fbGwtFrVZGq2dMaFJy8Z9>
+[2026-05-03T20:50:23Z INFO  librespot_playback::player] <Colours & Light> (263304 ms) loaded
+[2026-05-03T20:54:33Z INFO  librespot_playback::player] Loading <Be the One> with Spotify URI <spotify:track:4Xyr43u3VdgSjmq0FyTQEe>
+[2026-05-03T20:54:34Z INFO  librespot_playback::player] <Be the One> (230226 ms) loaded
+[2026-05-03T20:58:12Z INFO  librespot_playback::player] Loading <Which One Is the Jellyfish?> with Spotify URI <spotify:track:13Ym4BnHYalKDX53zwo0b6>
+[2026-05-03T20:58:13Z INFO  librespot_playback::player] <Which One Is the Jellyfish?> (264466 ms) loaded
+[2026-05-03T21:01:14Z INFO  librespot_playback::player] Loading <Won't Back Down> with Spotify URI <spotify:track:0c1YSOV1hcfu5LFGuXaeG6>
+[2026-05-03T21:01:15Z INFO  librespot_playback::player] Loading <Ethereal Dance> with Spotify URI <spotify:track:3CbKxtz6AUwUPR0aBvbjsk>
+[2026-05-03T21:01:15Z INFO  librespot_playback::player] <Won't Back Down> (202666 ms) loaded
+[2026-05-03T21:01:15Z INFO  librespot_playback::player] <Ethereal Dance> (216000 ms) loaded
+[2026-05-03T21:04:11Z INFO  librespot_playback::player] Loading <Higher> with Spotify URI <spotify:track:1gChbCgtcUKeAgsJx3Uza0>
+[2026-05-03T21:04:12Z INFO  librespot_playback::player] <Higher> (149544 ms) loaded
+[2026-05-03T21:06:33Z INFO  librespot_playback::player] Loading <I.5.C.A. - Tommy Forrest Mix> with Spotify URI <spotify:track:4SFh8zZtCrZIgyJ4E9l2o8>
+[2026-05-03T21:06:34Z INFO  librespot_playback::player] <I.5.C.A. - Tommy Forrest Mix> (231708 ms) loaded
+[2026-05-03T21:10:14Z INFO  librespot_playback::player] Loading <After The Dawn> with Spotify URI <spotify:track:22XVmWaSYUb0fsFdWiGyRB>
+[2026-05-03T21:10:15Z INFO  librespot_playback::player] <After The Dawn> (224000 ms) loaded
+[2026-05-03T21:13:47Z INFO  librespot_playback::player] Loading <Moon Dust> with Spotify URI <spotify:track:5rjjZsgYH5pQ5wbt93dhQA>
+[2026-05-03T21:13:48Z INFO  librespot_playback::player] <Moon Dust> (251400 ms) loaded
+[2026-05-03T21:17:47Z INFO  librespot_playback::player] Loading <Walk Like a Motherfucker> with Spotify URI <spotify:track:7n95VDdVQgVOg4U80TlSTI>
+[2026-05-03T21:17:47Z INFO  librespot_playback::player] <Walk Like a Motherfucker> (185160 ms) loaded
+[2026-05-03T21:20:43Z INFO  librespot_playback::player] Loading <VU> with Spotify URI <spotify:track:31Fvcd339iRTgdXyV7RmYo>
+[2026-05-03T21:20:44Z INFO  librespot_playback::player] <VU> (226785 ms) loaded
+[2026-05-03T21:24:19Z INFO  librespot_playback::player] Loading <It Isn't Soul> with Spotify URI <spotify:track:7a62ldfxvUALHcb1QutZet>
+[2026-05-03T21:24:20Z INFO  librespot_playback::player] <It Isn't Soul> (168913 ms) loaded
+[2026-05-03T21:27:00Z INFO  librespot_playback::player] Loading <Maria's Hunt> with Spotify URI <spotify:track:3n8UB5MYRg6jZg2rpOcHa1>
+[2026-05-03T21:27:01Z INFO  librespot_playback::player] <Maria's Hunt> (220509 ms) loaded
+[2026-05-03T21:30:30Z INFO  librespot_playback::player] Loading <Crawler> with Spotify URI <spotify:track:31tcZRJ7W9ERhTfizErQ0A>
+[2026-05-03T21:30:31Z INFO  librespot_playback::player] <Crawler> (119030 ms) loaded
+[2026-05-03T21:32:23Z INFO  librespot_playback::player] Loading <Head Down For The Conversation> with Spotify URI <spotify:track:3NRN6VLMr08gZOghJGKEKz>
+[2026-05-03T21:32:24Z INFO  librespot_playback::player] <Head Down For The Conversation> (238221 ms) loaded
+[2026-05-03T21:36:10Z INFO  librespot_playback::player] Loading <Tanto Adios> with Spotify URI <spotify:track:3GanuNAXtYu4G4GzKLVaSX>
+[2026-05-03T21:36:11Z INFO  librespot_playback::player] <Tanto Adios> (227160 ms) loaded
+[2026-05-03T21:39:47Z INFO  librespot_playback::player] Loading <T.R.A.B.S.> with Spotify URI <spotify:track:113AA8QhbPB1X61GR2DsUT>
+[2026-05-03T21:39:48Z INFO  librespot_playback::player] <T.R.A.B.S.> (236693 ms) loaded
+[2026-05-03T21:43:32Z INFO  librespot_playback::player] Loading <Shades Of Red> with Spotify URI <spotify:track:2kwjan8EIim7FBW3UQJq43>
+[2026-05-03T21:43:33Z INFO  librespot_playback::player] <Shades Of Red> (220056 ms) loaded
+[2026-05-03T21:47:01Z INFO  librespot_playback::player] Loading <Triple Denim> with Spotify URI <spotify:track:1dNfXoZFeyJqtsvfO4aWJj>
+[2026-05-03T21:47:02Z INFO  librespot_playback::player] <Triple Denim> (210501 ms) loaded
+[2026-05-03T21:52:01Z INFO  librespot_playback::player] Loading <Lucifer> with Spotify URI <spotify:track:4ZOHYyNShig5T8MzqwcrbN>
+[2026-05-03T21:52:02Z INFO  librespot_playback::player] <Lucifer> (197142 ms) loaded
+[2026-05-03T21:54:23Z INFO  librespot_playback::player] Loading <Mágica> with Spotify URI <spotify:track:6YeREUsdPr4u4wmZ7cuGE6>
+[2026-05-03T21:54:24Z INFO  librespot_playback::player] <Mágica> (155150 ms) loaded
+[2026-05-03T21:56:41Z INFO  librespot_playback::player] Loading <Yeah We Know You> with Spotify URI <spotify:track:5LeOUptaaLeEyRX7jWeChR>
+[2026-05-03T21:56:42Z INFO  librespot_playback::player] <Yeah We Know You> (171226 ms) loaded
+[2026-05-03T21:59:06Z INFO  librespot_playback::player] Loading <Reflections> with Spotify URI <spotify:track:6thgnwpH3YsaA8MCPMGPYp>
+[2026-05-03T21:59:06Z INFO  librespot_playback::player] <Reflections> (182800 ms) loaded
+[2026-05-03T22:02:01Z INFO  librespot_playback::player] Loading <Projections> with Spotify URI <spotify:track:3YG4jYyHODDmz8mkQDzw74>
+[2026-05-03T22:02:01Z INFO  librespot_playback::player] <Projections> (211412 ms) loaded
+[2026-05-03T22:06:09Z INFO  librespot_playback::player] Loading <Love Is A Wish Away> with Spotify URI <spotify:track:79GN2GXYTB6WBNKiY0P5YA>
+[2026-05-03T22:06:10Z INFO  librespot_playback::player] <Love Is A Wish Away> (222828 ms) loaded
+[2026-05-03T22:10:34Z INFO  librespot_playback::player] Loading <The Way I Feel> with Spotify URI <spotify:track:7sP9IEoeAsaDGRzUKMjhVy>
+[2026-05-03T22:10:35Z INFO  librespot_playback::player] <The Way I Feel> (247520 ms) loaded
+[2026-05-03T22:15:11Z INFO  librespot_playback::player] Loading <More Bad Miles Of Road> with Spotify URI <spotify:track:1AA516QeuI12Y8HdZQ9kAg>
+[2026-05-03T22:15:12Z INFO  librespot_playback::player] <More Bad Miles Of Road> (228249 ms) loaded
+[2026-05-03T22:18:13Z INFO  librespot_playback::player] Loading <Reaper> with Spotify URI <spotify:track:1VstXAFhapLhAuM8K61oNJ>
+[2026-05-03T22:18:14Z INFO  librespot_playback::player] <Reaper> (226528 ms) loaded
+[2026-05-03T22:22:15Z INFO  librespot_playback::player] Loading <Black Box> with Spotify URI <spotify:track:45c2puZgmaC23MaKgeHda2>
+[2026-05-03T22:22:15Z INFO  librespot_playback::player] <Black Box> (245321 ms) loaded
+[2026-05-03T22:26:03Z INFO  librespot_playback::player] Loading <Under a Rainbow> with Spotify URI <spotify:track:0DGDx5S2NxS4Cn9jgNC5Fa>
+[2026-05-03T22:26:03Z INFO  librespot_playback::player] <Under a Rainbow> (249973 ms) loaded
+[2026-05-03T22:29:54Z INFO  librespot_playback::player] Loading <Rock 'N' Roll Man> with Spotify URI <spotify:track:5Xt5TsLkc8mfIsENGvmbuG>
+[2026-05-03T22:29:54Z INFO  librespot_playback::player] <Rock 'N' Roll Man> (185830 ms) loaded
+[2026-05-03T22:34:07Z INFO  librespot_playback::player] Loading <Rest In Blue> with Spotify URI <spotify:track:3dHHhmghmAy4iQQ4hEnu6U>
+[2026-05-03T22:34:08Z INFO  librespot_playback::player] <Rest In Blue> (260613 ms) loaded
+[2026-05-03T22:36:28Z INFO  librespot_playback::player] Loading <I Stood Up> with Spotify URI <spotify:track:3FVHtQcZHjjcTrZ1eOGt0P>
+[2026-05-03T22:36:29Z INFO  librespot_playback::player] <I Stood Up> (215753 ms) loaded
+[2026-05-03T22:40:18Z INFO  librespot_playback::player] Loading <Bby, You're the Sound> with Spotify URI <spotify:track:09gOOKiGal92sz0OUi6cDy>
+[2026-05-03T22:40:19Z INFO  librespot_playback::player] <Bby, You're the Sound> (262545 ms) loaded
+[2026-05-03T22:44:17Z INFO  librespot_playback::player] Loading <Dust> with Spotify URI <spotify:track:0GJugBOfGG3bMQrKwOvaSF>
+[2026-05-03T22:44:18Z INFO  librespot_playback::player] <Dust> (163506 ms) loaded
+[2026-05-03T22:47:12Z INFO  librespot_playback::player] Loading <Outside Again> with Spotify URI <spotify:track:66zJJHQFVcFRzujfhPmse2>
+[2026-05-03T22:47:12Z INFO  librespot_playback::player] <Outside Again> (173586 ms) loaded
+[2026-05-03T22:50:41Z INFO  librespot_playback::player] Loading <It Isn't Soul> with Spotify URI <spotify:track:7a62ldfxvUALHcb1QutZet>
+[2026-05-03T22:50:42Z INFO  librespot_playback::player] <It Isn't Soul> (168913 ms) loaded
+[2026-05-03T23:36:57Z INFO  librespot_connect::spirc] session update: <Ok(SESSION_DELETED)> for self, current session_id 0d35e72f3188446491e653ecdff99c11, new session_id 1a7425ff4bc510b1a9c3037fce3fdeae
+[2026-05-03T23:36:57Z INFO  librespot_connect::spirc] device became inactive
+[2026-05-03T23:36:57Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-03T23:36:57Z WARN  librespot_connect::spirc] failed filling up next_track during stopping: Invalid state { context is not available. type: Default }
+[2026-05-04T04:00:43Z WARN  librespot_core::dealer] Websocket peer does not respond.
+[2026-05-04T04:00:45Z INFO  librespot_connect::spirc] active device is <> with session <49M19eDnCJ571XkIBi2Yfa>
+[2026-05-04T05:56:18Z WARN  librespot_core::dealer] Websocket peer does not respond.
+[2026-05-04T05:56:20Z INFO  librespot_connect::spirc] active device is <> with session <49M19eDnCJ571XkIBi2Yfa>
+[2026-05-04T07:33:22Z WARN  librespot_core::dealer] Websocket peer does not respond.
+[2026-05-04T07:33:23Z INFO  librespot_connect::spirc] active device is <> with session <49M19eDnCJ571XkIBi2Yfa>
+[2026-05-04T10:08:56Z WARN  librespot_core::dealer] Websocket peer does not respond.
+[2026-05-04T10:08:58Z INFO  librespot_connect::spirc] active device is <> with session <49M19eDnCJ571XkIBi2Yfa>
+[2026-05-04T11:36:01Z WARN  librespot_core::dealer] Websocket peer does not respond.
+[2026-05-04T11:36:02Z INFO  librespot_connect::spirc] active device is <> with session <49M19eDnCJ571XkIBi2Yfa>
+[2026-05-05T00:51:18Z INFO  librespot] librespot 0.8.0 VERGEN_IDEMPOTENT_OUTPUT (Built on 2025-11-10, Build ID: 1762793321, Profile: release)
+[2026-05-05T00:51:18Z INFO  librespot_playback::mixer::softmixer] Mixing with softvol and volume control: Log(60.0)
+[2026-05-05T00:51:18Z INFO  librespot_playback::convert] Converting with ditherer: tpdf
+[2026-05-05T00:51:18Z INFO  librespot_playback::audio_backend::pipe] Using StdoutSink (pipe) with format: S16
+[2026-05-05T00:51:19Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-05-05T00:51:19Z INFO  librespot_core::session] Authenticated as 'paulster23' !
+[2026-05-05T00:51:19Z INFO  librespot_core::session] Country: "US"

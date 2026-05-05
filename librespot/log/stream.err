@@ -1244,3 +1244,30 @@ Error opening output file http://0.0.0.0:8765.
 [out#0/mp3 @ 0xa7ec1c180] Terminating thread with return code -32 (Broken pipe)
 [out#0/mp3 @ 0xa7ec1c180] Error writing trailer: Broken pipe
 [out#0/mp3 @ 0xa7ec1c180] Error closing file: Broken pipe
+[aost#0:0/libmp3lame @ 0x93cc28000] Error submitting a packet to the muxer: Broken pipe
+    Last message repeated 1 times
+[out#0/mp3 @ 0x93d010600] Error muxing a packet
+[out#0/mp3 @ 0x93d010600] Task finished with error code: -32 (Broken pipe)
+[out#0/mp3 @ 0x93d010600] Terminating thread with return code -32 (Broken pipe)
+[out#0/mp3 @ 0x93d010600] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x93d010600] Error closing file: Broken pipe
+[out#0/mp3 @ 0x76ac1c180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x76ac1c180] Error closing file: Broken pipe
+[aost#0:0/libmp3lame @ 0x75ac28000] Error submitting a packet to the muxer: Broken pipe
+    Last message repeated 1 times
+[out#0/mp3 @ 0x75b010600] Error muxing a packet
+[out#0/mp3 @ 0x75b010600] Task finished with error code: -32 (Broken pipe)
+[out#0/mp3 @ 0x75b010600] Terminating thread with return code -32 (Broken pipe)
+[out#0/mp3 @ 0x75b010600] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x75b010600] Error closing file: Broken pipe
+[out#0/mp3 @ 0x972c1c180] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x972c1c180] Error closing file: Broken pipe
+[aost#0:0/libmp3lame @ 0x76ac28000] Error submitting a packet to the muxer: Broken pipe
+    Last message repeated 1 times
+[out#0/mp3 @ 0x76b010600] Error muxing a packet
+[out#0/mp3 @ 0x76b010600] Task finished with error code: -32 (Broken pipe)
+[out#0/mp3 @ 0x76b010600] Terminating thread with return code -32 (Broken pipe)
+[out#0/mp3 @ 0x76b010600] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0x76b010600] Error closing file: Broken pipe
+[out#0/mp3 @ 0xc3740c600] Error writing trailer: Broken pipe
+[out#0/mp3 @ 0xc3740c600] Error closing file: Broken pipe

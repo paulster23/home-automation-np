@@ -9768,3 +9768,1618 @@ Could not find service "com.librespot.naboo" in domain for user gui: 501
 2026-05-02T03:45:28Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
 2026-05-02T03:50:28Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
 2026-05-02T03:55:28Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T04:00:28Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T04:05:28Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T04:10:28Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T04:15:28Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T04:20:28Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T04:25:28Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T04:30:29Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T04:35:29Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T04:40:29Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T04:45:29Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T04:50:29Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T04:55:29Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T05:00:29Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T05:05:29Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T05:10:29Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T05:15:30Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T05:20:30Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T05:25:30Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T05:30:30Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T05:35:30Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T05:40:30Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T05:45:30Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T05:50:30Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T05:55:30Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T06:00:30Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T06:05:31Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T06:10:31Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T06:15:31Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T06:20:31Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T06:25:31Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T06:30:31Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T06:35:31Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T06:40:31Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T06:45:31Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T06:50:32Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T06:55:32Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T07:00:32Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T07:05:32Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T07:10:32Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T07:15:32Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T07:20:32Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T07:25:32Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T07:30:33Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T07:35:33Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T07:40:33Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T07:45:33Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T07:50:33Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T07:55:33Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T08:00:33Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T08:05:33Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T08:10:33Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T08:15:34Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T08:20:34Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T08:25:34Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T08:30:34Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T08:35:34Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T08:40:34Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T08:45:34Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T08:50:34Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T08:55:34Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T09:00:35Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T09:05:35Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T09:10:35Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T09:15:35Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T09:20:35Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T09:25:35Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T09:30:35Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T09:35:35Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T09:40:35Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T09:45:36Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T09:50:36Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T09:55:36Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T10:00:36Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T10:05:36Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T10:10:36Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T10:15:36Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T10:20:36Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T10:25:36Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T10:30:37Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T10:35:37Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T10:40:37Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T10:45:37Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T10:50:37Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T10:55:37Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T11:00:37Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T11:05:37Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T11:10:38Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T11:15:38Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T11:20:38Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T11:25:38Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T11:30:38Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T11:35:38Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T11:40:38Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T11:45:38Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T11:50:38Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T11:55:39Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T12:00:39Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T12:05:39Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T12:10:39Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T12:15:39Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T12:20:39Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T12:25:39Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T12:30:39Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T12:35:39Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T12:40:40Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T12:45:40Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T12:50:40Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T12:55:40Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T13:00:40Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T13:05:40Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T13:10:40Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T13:15:40Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T13:20:41Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T13:25:41Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T13:30:41Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T13:35:41Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T13:40:41Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T13:45:41Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T13:50:41Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T13:55:41Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T14:00:42Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T14:05:42Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T14:10:42Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T14:15:42Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T14:20:42Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T14:25:42Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T14:30:42Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T14:35:42Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T14:40:42Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T14:45:43Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T14:50:43Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T14:55:43Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T15:00:43Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T15:05:43Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T15:10:43Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T15:15:43Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T15:20:43Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T15:25:43Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T15:30:44Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T15:35:44Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T15:40:44Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T15:45:44Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T15:50:44Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T15:55:44Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T16:00:44Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T16:05:44Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T16:10:44Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T16:15:45Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T16:20:45Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T16:25:45Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T16:30:45Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T16:35:45Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T16:40:45Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T16:45:45Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T16:50:45Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T16:55:45Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T17:00:45Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T17:05:46Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T17:10:46Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T17:15:46Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T17:20:46Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T17:25:46Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T17:30:46Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T17:35:46Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T17:40:46Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T17:45:47Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T17:50:47Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T17:55:47Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T18:00:47Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T18:05:47Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T18:10:47Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T18:15:47Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T18:20:47Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T18:25:47Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T18:30:47Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T18:35:47Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T18:40:48Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T18:45:48Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T18:50:48Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T18:55:48Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T19:00:48Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T19:05:48Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T19:10:48Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T19:15:48Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T19:20:48Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T19:25:49Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T19:30:49Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T19:35:49Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T19:40:49Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T19:45:49Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T19:50:49Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T19:55:49Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T20:00:49Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T20:05:49Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T20:10:50Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T20:15:50Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T20:20:50Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T20:25:50Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T20:30:50Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T20:35:50Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T20:40:50Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T20:45:50Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T20:50:50Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T20:55:51Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T21:00:51Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T21:05:51Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T21:10:51Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T21:15:51Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T21:20:51Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T21:25:51Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T21:30:51Z [watchdog] OK — librespot running (pids=54709) port 8765 open ffmpeg running (pids=54710)
+2026-05-02T21:35:51Z [watchdog] OK — librespot running (pids=80244) port 8765 open ffmpeg running (pids=80245)
+2026-05-02T21:40:52Z [watchdog] OK — librespot running (pids=80244) port 8765 open ffmpeg running (pids=80245)
+2026-05-02T21:45:52Z [watchdog] OK — librespot running (pids=80244) port 8765 open ffmpeg running (pids=80245)
+2026-05-02T21:50:52Z [watchdog] OK — librespot running (pids=80244) port 8765 open ffmpeg running (pids=80245)
+2026-05-02T21:55:52Z [watchdog] OK — librespot running (pids=80244) port 8765 open ffmpeg running (pids=80245)
+2026-05-02T22:00:52Z [watchdog] OK — librespot running (pids=80244) port 8765 open ffmpeg running (pids=80245)
+2026-05-02T22:05:52Z [watchdog] OK — librespot running (pids=80244) port 8765 open ffmpeg running (pids=80245)
+2026-05-02T22:10:52Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-02T22:15:52Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-02T22:20:52Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-02T22:25:52Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-02T22:30:53Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-02T22:35:53Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-02T22:40:53Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-02T22:45:53Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-02T22:50:53Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-02T22:55:53Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-02T23:00:53Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-02T23:05:53Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-02T23:10:53Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-02T23:15:53Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-02T23:20:54Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-02T23:25:54Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-02T23:30:54Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-02T23:35:54Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-02T23:40:54Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-02T23:45:54Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-02T23:50:54Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-02T23:55:54Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T00:00:55Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T00:05:55Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T00:10:55Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T00:15:55Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T00:20:55Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T00:25:55Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T00:30:55Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T00:35:55Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T00:40:55Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T00:45:56Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T00:50:56Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T00:55:56Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T01:00:56Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T01:05:56Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T01:10:56Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T01:15:56Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T01:20:56Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T01:25:56Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T01:30:57Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T01:35:57Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T01:40:57Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T01:45:57Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T01:50:57Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T01:55:57Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T02:00:57Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T02:05:57Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T02:10:57Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T02:15:58Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T02:20:58Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T02:25:58Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T02:30:58Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T02:35:58Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T02:40:58Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T02:45:58Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T02:50:58Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T02:55:58Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T03:00:58Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T03:05:59Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T03:10:59Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T03:15:59Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T03:20:59Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T03:25:59Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T03:30:59Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T03:35:59Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T03:40:59Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T03:45:59Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T03:51:00Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T03:56:00Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T04:01:00Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T04:06:00Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T04:11:00Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T04:16:00Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T04:21:01Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T04:26:01Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T04:31:01Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T04:36:01Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T04:41:01Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T04:46:01Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T04:51:01Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T04:56:01Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T05:01:01Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T05:06:01Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T05:11:02Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T05:16:02Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T05:21:02Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T05:26:02Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T05:31:02Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T05:36:02Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T05:41:02Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T05:46:02Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T05:51:03Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T05:56:03Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T06:01:03Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T06:06:03Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T06:11:03Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T06:16:03Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T06:21:03Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T06:26:03Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T06:31:03Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T06:36:04Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T06:41:04Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T06:46:04Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T06:51:04Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T06:56:04Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T07:01:04Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T07:06:04Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T07:11:04Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T07:16:04Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T07:21:04Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T07:26:05Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T07:31:05Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T07:36:05Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T07:41:05Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T07:46:05Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T07:51:05Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T07:56:05Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T08:01:05Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T08:06:05Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T08:11:06Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T08:16:06Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T08:21:06Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T08:26:06Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T08:31:06Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T08:36:06Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T08:41:06Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T08:46:06Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T08:51:06Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T08:56:06Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T09:01:07Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T09:06:07Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T09:11:07Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T09:16:07Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T09:21:07Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T09:26:07Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T09:31:07Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T09:36:07Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T09:41:07Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T09:46:08Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T09:51:08Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T09:56:08Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T10:01:08Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T10:06:08Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T10:11:08Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T10:16:08Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T10:21:08Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T10:26:08Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T10:31:08Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T10:36:09Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T10:41:09Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T10:46:09Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T10:51:09Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T10:56:09Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T11:01:09Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T11:06:09Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T11:11:09Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T11:16:10Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T11:21:10Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T11:26:10Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T11:31:10Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T11:36:10Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T11:41:10Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T11:46:10Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T11:51:10Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T11:56:10Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T12:01:11Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T12:06:11Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T12:11:11Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T12:16:11Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T12:21:11Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T12:26:11Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T12:31:11Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T12:36:11Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T12:41:11Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T12:46:12Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T12:51:12Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T12:56:12Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T13:01:12Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T13:06:12Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T13:11:12Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T13:16:12Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T13:21:12Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T13:26:13Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T13:31:13Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T13:36:13Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T13:41:13Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T13:46:13Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T13:51:13Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T13:56:13Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T14:01:13Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T14:06:13Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T14:11:13Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T14:16:14Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T14:21:14Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T14:26:14Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T14:31:14Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T14:36:14Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T14:41:14Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T14:46:14Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T14:51:14Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T14:56:14Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T15:01:14Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T15:06:15Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T15:11:15Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T15:16:15Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T15:21:15Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T15:26:15Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T15:31:15Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T15:36:15Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T15:41:15Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T15:46:15Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T15:51:15Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T15:56:16Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T16:01:16Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T16:06:16Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T16:11:16Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T16:16:16Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T16:21:16Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T16:26:16Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T16:31:16Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T16:36:16Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T16:41:16Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T16:46:17Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T16:51:17Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T16:56:17Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T17:01:17Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T17:06:17Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T17:11:17Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T17:16:17Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T17:21:17Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T17:26:17Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T17:31:18Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T17:36:18Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T17:41:18Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T17:46:18Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T17:51:18Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T17:56:18Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T18:01:18Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T18:06:18Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T18:11:18Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T18:16:18Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T18:21:19Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T18:26:19Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T18:31:19Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T18:36:19Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T18:41:19Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T18:46:19Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T18:51:19Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T18:56:19Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T19:01:19Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T19:06:20Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T19:11:20Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T19:16:20Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T19:21:20Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T19:26:20Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T19:31:20Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T19:36:20Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T19:41:20Z [watchdog] OK — librespot running (pids=84268) port 8765 open ffmpeg running (pids=84269)
+2026-05-03T19:46:21Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-03T19:51:21Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-03T19:56:21Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-03T20:01:22Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-03T20:06:22Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-03T20:11:23Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-03T20:16:23Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-03T20:21:23Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-03T20:26:23Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-03T20:31:23Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-03T20:36:23Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-03T20:41:23Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-03T20:46:24Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-03T20:51:24Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-03T20:56:24Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-03T21:01:24Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-03T21:06:24Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-03T21:11:24Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-03T21:16:24Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-03T21:21:25Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-03T21:26:25Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-03T21:31:25Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-03T21:36:25Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-03T21:41:25Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-03T21:46:25Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-03T21:51:25Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-03T21:56:26Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-03T22:01:26Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-03T22:06:26Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-03T22:11:26Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-03T22:16:26Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-03T22:21:26Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-03T22:26:27Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-03T22:31:27Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-03T22:36:27Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-03T22:41:27Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-03T22:46:27Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-03T22:51:27Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-03T22:56:27Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-03T23:01:28Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-03T23:06:28Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-03T23:11:28Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-03T23:16:28Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-03T23:21:28Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-03T23:26:28Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-03T23:31:28Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-03T23:36:29Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-03T23:41:29Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-03T23:46:29Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-03T23:51:29Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-03T23:56:29Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T00:01:29Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T00:06:29Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T00:11:30Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T00:16:30Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T00:21:30Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T00:26:30Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T00:31:30Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T00:36:30Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T00:41:31Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T00:46:31Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T00:51:31Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T00:56:31Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T01:01:31Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T01:06:31Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T01:11:31Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T01:16:32Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T01:21:32Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T01:26:32Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T01:31:32Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T01:36:32Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T01:41:32Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T01:46:33Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T01:51:33Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T01:56:33Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T02:01:33Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T02:06:33Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T02:11:33Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T02:16:34Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T02:21:34Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T02:26:34Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T02:31:34Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T02:36:34Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T02:41:35Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T02:46:35Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T02:51:35Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T02:56:35Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T03:01:35Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T03:06:35Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T03:11:35Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T03:16:36Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T03:21:36Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T03:26:36Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T03:31:37Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T03:36:37Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T03:41:37Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T03:46:37Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T03:51:38Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T03:56:38Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T04:01:38Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T04:06:38Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T04:11:38Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T04:16:39Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T04:21:39Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T04:26:39Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T04:31:39Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T04:36:39Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T04:41:39Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T04:46:40Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T04:51:40Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T04:56:40Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T05:01:40Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T05:06:40Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T05:11:40Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T05:16:40Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T05:21:41Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T05:26:41Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T05:31:41Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T05:36:41Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T05:41:41Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T05:46:41Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T05:51:41Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T05:56:42Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T06:01:42Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T06:06:42Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T06:11:42Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T06:16:42Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T06:21:42Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T06:26:43Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T06:31:43Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T06:36:43Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T06:41:43Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T06:46:43Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T06:51:43Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T06:56:43Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T07:01:44Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T07:06:44Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T07:11:44Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T07:16:44Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T07:21:44Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T07:26:44Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T07:31:44Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T07:36:45Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T07:41:45Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T07:46:45Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T07:51:45Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T07:56:45Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T08:01:45Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T08:06:45Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T08:11:46Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T08:16:46Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T08:21:46Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T08:26:46Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T08:31:46Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T08:36:46Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T08:41:46Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T08:46:47Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T08:51:47Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T08:56:47Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T09:01:47Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T09:06:47Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T09:11:47Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T09:16:47Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T09:21:47Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T09:26:48Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T09:31:48Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T09:36:48Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T09:41:48Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T09:46:48Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T09:51:48Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T09:56:49Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T10:01:49Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T10:06:49Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T10:11:49Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T10:16:49Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T10:21:50Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T10:26:50Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T10:31:50Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T10:36:50Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T10:41:50Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T10:46:50Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T10:51:51Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T10:56:51Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T11:01:51Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T11:06:51Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T11:11:51Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T11:16:52Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T11:21:52Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T11:26:52Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T11:31:52Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T11:36:52Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T11:41:52Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T11:46:52Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T11:51:53Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T11:56:53Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T12:01:53Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T12:06:53Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T12:11:53Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T12:16:54Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T12:21:54Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T12:26:54Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T12:31:54Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T12:36:54Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T12:41:54Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T12:46:54Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T12:51:55Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T12:56:55Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T13:01:55Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T13:06:55Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T13:11:55Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T13:16:56Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T13:21:56Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T13:26:56Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T13:31:56Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T13:36:56Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T13:41:56Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T13:46:56Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T13:51:57Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T13:56:57Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T14:01:57Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T14:06:57Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T14:11:57Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T14:16:57Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T14:21:57Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T14:26:58Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T14:31:58Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T14:36:58Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T14:41:58Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T14:46:58Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T14:51:58Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T14:56:58Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T15:01:59Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T15:06:59Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T15:11:59Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T15:16:59Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T15:21:59Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T15:26:59Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T15:31:59Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T15:37:00Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T15:42:00Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T15:47:00Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T15:52:00Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T15:57:00Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T16:02:00Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T16:07:00Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T16:12:01Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T16:17:01Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T16:22:01Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T16:27:01Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T16:32:01Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T16:37:01Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T16:42:01Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T16:47:02Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T16:52:02Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T16:57:02Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T17:02:02Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T17:07:02Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T17:12:02Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T17:17:02Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T17:22:03Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T17:27:03Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T17:32:03Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T17:37:03Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T17:42:03Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T17:47:03Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T17:52:03Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T17:57:04Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T18:02:04Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T18:07:04Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T18:12:04Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T18:17:04Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T18:22:04Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T18:27:05Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T18:32:05Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T18:37:05Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T18:42:05Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T18:47:05Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T18:52:05Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T18:57:05Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T19:02:06Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T19:07:06Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T19:12:06Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T19:17:07Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T19:22:07Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T19:27:07Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T19:32:07Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T19:37:07Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T19:42:08Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T19:47:08Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T19:52:08Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T19:57:08Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T20:02:08Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T20:07:08Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T20:12:09Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T20:17:09Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T20:22:09Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T20:27:09Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T20:32:09Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T20:37:09Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T20:42:10Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T20:47:10Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T20:52:10Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T20:57:10Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T21:02:10Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T21:07:10Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T21:12:11Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T21:17:11Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T21:22:11Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T21:27:11Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T21:32:11Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T21:37:11Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T21:42:11Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T21:47:12Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T21:52:12Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T21:57:12Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T22:02:12Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T22:07:12Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T22:12:12Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T22:17:12Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T22:22:13Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T22:27:13Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T22:32:13Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T22:37:13Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T22:42:13Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T22:47:13Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T22:52:13Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T22:57:13Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T23:02:14Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T23:07:14Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T23:12:14Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T23:17:14Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T23:22:14Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T23:27:14Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T23:32:15Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T23:37:15Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T23:42:15Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T23:47:15Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T23:52:15Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-04T23:57:15Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-05T00:02:15Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-05T00:07:15Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-05T00:12:16Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-05T00:17:16Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-05T00:22:16Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-05T00:27:16Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-05T00:32:16Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-05T00:37:16Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-05T00:42:16Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-05T00:47:17Z [watchdog] OK — librespot running (pids=46137) port 8765 open ffmpeg running (pids=46138)
+2026-05-05T00:52:17Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T00:52:17Z [watchdog] kickstart issued
+2026-05-05T00:57:17Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T00:57:17Z [watchdog] kickstart issued
+2026-05-05T01:02:17Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T01:02:17Z [watchdog] kickstart issued
+2026-05-05T01:07:17Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T01:07:17Z [watchdog] kickstart issued
+2026-05-05T01:12:17Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T01:12:17Z [watchdog] kickstart issued
+2026-05-05T01:17:17Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T01:17:17Z [watchdog] kickstart issued
+2026-05-05T01:22:17Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T01:22:17Z [watchdog] kickstart issued
+2026-05-05T01:27:17Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T01:27:17Z [watchdog] kickstart issued
+2026-05-05T01:32:17Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T01:32:17Z [watchdog] kickstart issued
+2026-05-05T01:37:18Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T01:37:18Z [watchdog] kickstart issued
+2026-05-05T01:42:18Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T01:42:18Z [watchdog] kickstart issued
+2026-05-05T01:47:18Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T01:47:18Z [watchdog] kickstart issued
+2026-05-05T02:19:37Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T02:19:37Z [watchdog] kickstart issued
+2026-05-05T02:24:37Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T02:24:37Z [watchdog] kickstart issued
+2026-05-05T02:29:37Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T02:29:37Z [watchdog] kickstart issued
+2026-05-05T02:34:37Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T02:34:37Z [watchdog] kickstart issued
+2026-05-05T02:39:37Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T02:39:37Z [watchdog] kickstart issued
+2026-05-05T02:44:38Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T02:44:38Z [watchdog] kickstart issued
+2026-05-05T02:49:38Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T02:49:38Z [watchdog] kickstart issued
+2026-05-05T02:54:38Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T02:54:38Z [watchdog] kickstart issued
+2026-05-05T02:59:38Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T02:59:38Z [watchdog] kickstart issued
+2026-05-05T03:04:38Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T03:04:38Z [watchdog] kickstart issued
+2026-05-05T03:09:38Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T03:09:38Z [watchdog] kickstart issued
+2026-05-05T03:14:38Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T03:14:38Z [watchdog] kickstart issued
+2026-05-05T03:19:38Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T03:19:38Z [watchdog] kickstart issued
+2026-05-05T03:24:38Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T03:24:38Z [watchdog] kickstart issued
+2026-05-05T03:29:38Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T03:29:38Z [watchdog] kickstart issued
+2026-05-05T03:34:38Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T03:34:38Z [watchdog] kickstart issued
+2026-05-05T03:39:39Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T03:39:39Z [watchdog] kickstart issued
+2026-05-05T03:44:39Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T03:44:39Z [watchdog] kickstart issued
+2026-05-05T03:49:39Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T03:49:39Z [watchdog] kickstart issued
+2026-05-05T03:54:39Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T03:54:39Z [watchdog] kickstart issued
+2026-05-05T03:59:39Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T03:59:39Z [watchdog] kickstart issued
+2026-05-05T04:04:39Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T04:04:39Z [watchdog] kickstart issued
+2026-05-05T04:09:39Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T04:09:39Z [watchdog] kickstart issued
+2026-05-05T04:14:39Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T04:14:39Z [watchdog] kickstart issued
+2026-05-05T04:19:39Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T04:19:39Z [watchdog] kickstart issued
+2026-05-05T04:24:39Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T04:24:40Z [watchdog] kickstart issued
+2026-05-05T04:29:40Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T04:29:40Z [watchdog] kickstart issued
+2026-05-05T04:34:40Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T04:34:40Z [watchdog] kickstart issued
+2026-05-05T04:39:40Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T04:39:40Z [watchdog] kickstart issued
+2026-05-05T04:44:40Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T04:44:40Z [watchdog] kickstart issued
+2026-05-05T04:49:40Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T04:49:40Z [watchdog] kickstart issued
+2026-05-05T04:54:40Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T04:54:40Z [watchdog] kickstart issued
+2026-05-05T04:59:40Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T04:59:40Z [watchdog] kickstart issued
+2026-05-05T05:04:40Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T05:04:40Z [watchdog] kickstart issued
+2026-05-05T05:09:40Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T05:09:40Z [watchdog] kickstart issued
+2026-05-05T05:14:40Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T05:14:40Z [watchdog] kickstart issued
+2026-05-05T05:19:41Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T05:19:41Z [watchdog] kickstart issued
+2026-05-05T05:24:41Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T05:24:41Z [watchdog] kickstart issued
+2026-05-05T05:29:41Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T05:29:41Z [watchdog] kickstart issued
+2026-05-05T05:34:41Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T05:34:41Z [watchdog] kickstart issued
+2026-05-05T05:39:41Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T05:39:41Z [watchdog] kickstart issued
+2026-05-05T05:44:41Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T05:44:41Z [watchdog] kickstart issued
+2026-05-05T05:49:41Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T05:49:41Z [watchdog] kickstart issued
+2026-05-05T05:54:41Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T05:54:41Z [watchdog] kickstart issued
+2026-05-05T05:59:41Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T05:59:41Z [watchdog] kickstart issued
+2026-05-05T06:04:41Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T06:04:41Z [watchdog] kickstart issued
+2026-05-05T06:09:41Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T06:09:41Z [watchdog] kickstart issued
+2026-05-05T06:14:42Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T06:14:42Z [watchdog] kickstart issued
+2026-05-05T06:19:42Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T06:19:42Z [watchdog] kickstart issued
+2026-05-05T06:24:42Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T06:24:42Z [watchdog] kickstart issued
+2026-05-05T06:29:42Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T06:29:42Z [watchdog] kickstart issued
+2026-05-05T06:34:42Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T06:34:42Z [watchdog] kickstart issued
+2026-05-05T06:39:42Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T06:39:42Z [watchdog] kickstart issued
+2026-05-05T06:44:42Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T06:44:42Z [watchdog] kickstart issued
+2026-05-05T06:49:42Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T06:49:42Z [watchdog] kickstart issued
+2026-05-05T06:54:42Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T06:54:42Z [watchdog] kickstart issued
+2026-05-05T06:59:42Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T06:59:42Z [watchdog] kickstart issued
+2026-05-05T07:04:43Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T07:04:43Z [watchdog] kickstart issued
+2026-05-05T07:09:43Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T07:09:43Z [watchdog] kickstart issued
+2026-05-05T07:14:43Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T07:14:43Z [watchdog] kickstart issued
+2026-05-05T07:19:43Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T07:19:43Z [watchdog] kickstart issued
+2026-05-05T07:24:43Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T07:24:43Z [watchdog] kickstart issued
+2026-05-05T07:29:43Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T07:29:43Z [watchdog] kickstart issued
+2026-05-05T07:34:43Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T07:34:43Z [watchdog] kickstart issued
+2026-05-05T07:39:43Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T07:39:43Z [watchdog] kickstart issued
+2026-05-05T07:44:43Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T07:44:43Z [watchdog] kickstart issued
+2026-05-05T07:49:43Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T07:49:43Z [watchdog] kickstart issued
+2026-05-05T07:54:44Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T07:54:44Z [watchdog] kickstart issued
+2026-05-05T07:59:44Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T07:59:44Z [watchdog] kickstart issued
+2026-05-05T08:04:44Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T08:04:44Z [watchdog] kickstart issued
+2026-05-05T08:09:44Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T08:09:44Z [watchdog] kickstart issued
+2026-05-05T08:14:44Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T08:14:44Z [watchdog] kickstart issued
+2026-05-05T08:19:44Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T08:19:44Z [watchdog] kickstart issued
+2026-05-05T08:24:44Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T08:24:44Z [watchdog] kickstart issued
+2026-05-05T08:29:44Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T08:29:44Z [watchdog] kickstart issued
+2026-05-05T08:34:44Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T08:34:44Z [watchdog] kickstart issued
+2026-05-05T08:39:44Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T08:39:44Z [watchdog] kickstart issued
+2026-05-05T08:44:45Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T08:44:45Z [watchdog] kickstart issued
+2026-05-05T08:49:45Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T08:49:45Z [watchdog] kickstart issued
+2026-05-05T08:54:45Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T08:54:45Z [watchdog] kickstart issued
+2026-05-05T08:59:45Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T08:59:45Z [watchdog] kickstart issued
+2026-05-05T09:04:45Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T09:04:45Z [watchdog] kickstart issued
+2026-05-05T09:09:45Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T09:09:45Z [watchdog] kickstart issued
+2026-05-05T09:14:45Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T09:14:45Z [watchdog] kickstart issued
+2026-05-05T09:19:45Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T09:19:45Z [watchdog] kickstart issued
+2026-05-05T09:24:45Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T09:24:45Z [watchdog] kickstart issued
+2026-05-05T09:29:45Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T09:29:45Z [watchdog] kickstart issued
+2026-05-05T09:34:45Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T09:34:45Z [watchdog] kickstart issued
+2026-05-05T09:39:46Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T09:39:46Z [watchdog] kickstart issued
+2026-05-05T09:44:46Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T09:44:46Z [watchdog] kickstart issued
+2026-05-05T09:49:46Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T09:49:46Z [watchdog] kickstart issued
+2026-05-05T09:54:46Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T09:54:46Z [watchdog] kickstart issued
+2026-05-05T09:59:46Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T09:59:46Z [watchdog] kickstart issued
+2026-05-05T10:04:46Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T10:04:46Z [watchdog] kickstart issued
+2026-05-05T10:09:46Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T10:09:46Z [watchdog] kickstart issued
+2026-05-05T10:14:46Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T10:14:46Z [watchdog] kickstart issued
+2026-05-05T10:19:46Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T10:19:46Z [watchdog] kickstart issued
+2026-05-05T10:24:46Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T10:24:46Z [watchdog] kickstart issued
+2026-05-05T10:29:46Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T10:29:46Z [watchdog] kickstart issued
+2026-05-05T10:34:46Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T10:34:46Z [watchdog] kickstart issued
+2026-05-05T10:39:47Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T10:39:47Z [watchdog] kickstart issued
+2026-05-05T10:44:47Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T10:44:47Z [watchdog] kickstart issued
+2026-05-05T10:49:47Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T10:49:47Z [watchdog] kickstart issued
+2026-05-05T10:54:47Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T10:54:47Z [watchdog] kickstart issued
+2026-05-05T10:59:47Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T10:59:47Z [watchdog] kickstart issued
+2026-05-05T11:04:47Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T11:04:47Z [watchdog] kickstart issued
+2026-05-05T11:09:47Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T11:09:47Z [watchdog] kickstart issued
+2026-05-05T11:14:47Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T11:14:47Z [watchdog] kickstart issued
+2026-05-05T11:19:47Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T11:19:47Z [watchdog] kickstart issued
+2026-05-05T11:24:47Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T11:24:47Z [watchdog] kickstart issued
+2026-05-05T11:29:47Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T11:29:47Z [watchdog] kickstart issued
+2026-05-05T11:34:48Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T11:34:48Z [watchdog] kickstart issued
+2026-05-05T11:39:48Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T11:39:48Z [watchdog] kickstart issued
+2026-05-05T11:44:48Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T11:44:48Z [watchdog] kickstart issued
+2026-05-05T11:49:48Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T11:49:48Z [watchdog] kickstart issued
+2026-05-05T11:54:48Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T11:54:48Z [watchdog] kickstart issued
+2026-05-05T11:59:48Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T11:59:48Z [watchdog] kickstart issued
+2026-05-05T12:04:48Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T12:04:48Z [watchdog] kickstart issued
+2026-05-05T12:09:48Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T12:09:48Z [watchdog] kickstart issued
+2026-05-05T12:14:48Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T12:14:48Z [watchdog] kickstart issued
+2026-05-05T12:19:48Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T12:19:48Z [watchdog] kickstart issued
+2026-05-05T12:24:48Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T12:24:48Z [watchdog] kickstart issued
+2026-05-05T12:29:49Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T12:29:49Z [watchdog] kickstart issued
+2026-05-05T12:34:49Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T12:34:49Z [watchdog] kickstart issued
+2026-05-05T12:39:49Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T12:39:49Z [watchdog] kickstart issued
+2026-05-05T12:44:49Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T12:44:49Z [watchdog] kickstart issued
+2026-05-05T12:49:49Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T12:49:49Z [watchdog] kickstart issued
+2026-05-05T12:54:49Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T12:54:49Z [watchdog] kickstart issued
+2026-05-05T12:59:49Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T12:59:49Z [watchdog] kickstart issued
+2026-05-05T13:04:49Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T13:04:49Z [watchdog] kickstart issued
+2026-05-05T13:09:49Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T13:09:49Z [watchdog] kickstart issued
+2026-05-05T13:14:49Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T13:14:49Z [watchdog] kickstart issued
+2026-05-05T13:19:50Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T13:19:50Z [watchdog] kickstart issued
+2026-05-05T13:24:50Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T13:24:50Z [watchdog] kickstart issued
+2026-05-05T13:29:50Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T13:29:50Z [watchdog] kickstart issued
+2026-05-05T13:34:50Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T13:34:50Z [watchdog] kickstart issued
+2026-05-05T13:39:50Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T13:39:50Z [watchdog] kickstart issued
+2026-05-05T13:44:50Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T13:44:50Z [watchdog] kickstart issued
+2026-05-05T13:49:50Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T13:49:50Z [watchdog] kickstart issued
+2026-05-05T13:54:50Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T13:54:50Z [watchdog] kickstart issued
+2026-05-05T13:59:50Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T13:59:50Z [watchdog] kickstart issued
+2026-05-05T14:04:50Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T14:04:50Z [watchdog] kickstart issued
+2026-05-05T14:09:50Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T14:09:50Z [watchdog] kickstart issued
+2026-05-05T14:14:50Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T14:14:51Z [watchdog] kickstart issued
+2026-05-05T14:19:51Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T14:19:51Z [watchdog] kickstart issued
+2026-05-05T14:24:51Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T14:24:51Z [watchdog] kickstart issued
+2026-05-05T14:29:51Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T14:29:51Z [watchdog] kickstart issued
+2026-05-05T14:34:51Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T14:34:51Z [watchdog] kickstart issued
+2026-05-05T14:39:51Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T14:39:51Z [watchdog] kickstart issued
+2026-05-05T14:44:51Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T14:44:51Z [watchdog] kickstart issued
+2026-05-05T14:49:51Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T14:49:51Z [watchdog] kickstart issued
+2026-05-05T14:54:51Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T14:54:51Z [watchdog] kickstart issued
+2026-05-05T14:59:51Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T14:59:51Z [watchdog] kickstart issued
+2026-05-05T15:04:51Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T15:04:51Z [watchdog] kickstart issued
+2026-05-05T15:09:51Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T15:09:51Z [watchdog] kickstart issued
+2026-05-05T15:14:52Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T15:14:52Z [watchdog] kickstart issued
+2026-05-05T15:19:52Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T15:19:52Z [watchdog] kickstart issued
+2026-05-05T15:24:52Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T15:24:52Z [watchdog] kickstart issued
+2026-05-05T15:29:52Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T15:29:52Z [watchdog] kickstart issued
+2026-05-05T15:34:52Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T15:34:52Z [watchdog] kickstart issued
+2026-05-05T15:39:52Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T15:39:52Z [watchdog] kickstart issued
+2026-05-05T15:44:52Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T15:44:52Z [watchdog] kickstart issued
+2026-05-05T15:49:52Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T15:49:52Z [watchdog] kickstart issued
+2026-05-05T15:54:52Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T15:54:52Z [watchdog] kickstart issued
+2026-05-05T15:59:52Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T15:59:52Z [watchdog] kickstart issued
+2026-05-05T16:04:53Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T16:04:53Z [watchdog] kickstart issued
+2026-05-05T16:09:53Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T16:09:53Z [watchdog] kickstart issued
+2026-05-05T16:14:53Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T16:14:53Z [watchdog] kickstart issued
+2026-05-05T16:19:53Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T16:19:53Z [watchdog] kickstart issued
+2026-05-05T16:24:53Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T16:24:53Z [watchdog] kickstart issued
+2026-05-05T16:29:53Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T16:29:53Z [watchdog] kickstart issued
+2026-05-05T16:34:53Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T16:34:53Z [watchdog] kickstart issued
+2026-05-05T16:39:53Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T16:39:53Z [watchdog] kickstart issued
+2026-05-05T16:44:53Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T16:44:53Z [watchdog] kickstart issued
+2026-05-05T16:49:53Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T16:49:53Z [watchdog] kickstart issued
+2026-05-05T16:54:53Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T16:54:53Z [watchdog] kickstart issued
+2026-05-05T16:59:53Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T16:59:53Z [watchdog] kickstart issued
+2026-05-05T17:04:54Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T17:04:54Z [watchdog] kickstart issued
+2026-05-05T17:09:54Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T17:09:54Z [watchdog] kickstart issued
+2026-05-05T17:14:54Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T17:14:54Z [watchdog] kickstart issued
+2026-05-05T17:19:54Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T17:19:54Z [watchdog] kickstart issued
+2026-05-05T17:24:54Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T17:24:54Z [watchdog] kickstart issued
+2026-05-05T17:29:54Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T17:29:54Z [watchdog] kickstart issued
+2026-05-05T17:34:54Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T17:34:54Z [watchdog] kickstart issued
+2026-05-05T17:39:54Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T17:39:54Z [watchdog] kickstart issued
+2026-05-05T17:44:54Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T17:44:54Z [watchdog] kickstart issued
+2026-05-05T17:49:54Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T17:49:54Z [watchdog] kickstart issued
+2026-05-05T17:54:54Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T17:54:55Z [watchdog] kickstart issued
+2026-05-05T17:59:55Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T17:59:55Z [watchdog] kickstart issued
+2026-05-05T18:04:55Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T18:04:55Z [watchdog] kickstart issued
+2026-05-05T18:09:55Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T18:09:55Z [watchdog] kickstart issued
+2026-05-05T18:14:55Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T18:14:55Z [watchdog] kickstart issued
+2026-05-05T18:19:55Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T18:19:55Z [watchdog] kickstart issued
+2026-05-05T18:24:55Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T18:24:55Z [watchdog] kickstart issued
+2026-05-05T18:29:55Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T18:29:55Z [watchdog] kickstart issued
+2026-05-05T18:34:55Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T18:34:55Z [watchdog] kickstart issued
+2026-05-05T18:39:55Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T18:39:55Z [watchdog] kickstart issued
+2026-05-05T18:44:55Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T18:44:55Z [watchdog] kickstart issued
+2026-05-05T18:49:55Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T18:49:55Z [watchdog] kickstart issued
+2026-05-05T18:54:56Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T18:54:56Z [watchdog] kickstart issued
+2026-05-05T18:59:56Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T18:59:56Z [watchdog] kickstart issued
+2026-05-05T19:04:56Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T19:04:56Z [watchdog] kickstart issued
+2026-05-05T19:09:56Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T19:09:56Z [watchdog] kickstart issued
+2026-05-05T19:14:56Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T19:14:56Z [watchdog] kickstart issued
+2026-05-05T19:19:56Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T19:19:56Z [watchdog] kickstart issued
+2026-05-05T19:24:56Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T19:24:56Z [watchdog] kickstart issued
+2026-05-05T19:29:56Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T19:29:56Z [watchdog] kickstart issued
+2026-05-05T19:34:56Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T19:34:56Z [watchdog] kickstart issued
+2026-05-05T19:39:56Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T19:39:56Z [watchdog] kickstart issued
+2026-05-05T19:44:56Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T19:44:57Z [watchdog] kickstart issued
+2026-05-05T19:49:57Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T19:49:57Z [watchdog] kickstart issued
+2026-05-05T19:54:57Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T19:54:57Z [watchdog] kickstart issued
+2026-05-05T19:59:57Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T19:59:57Z [watchdog] kickstart issued
+2026-05-05T20:04:57Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T20:04:57Z [watchdog] kickstart issued
+2026-05-05T20:09:57Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T20:09:57Z [watchdog] kickstart issued
+2026-05-05T20:14:57Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T20:14:57Z [watchdog] kickstart issued
+2026-05-05T20:19:57Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T20:19:57Z [watchdog] kickstart issued
+2026-05-05T20:24:57Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T20:24:57Z [watchdog] kickstart issued
+2026-05-05T20:29:57Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T20:29:57Z [watchdog] kickstart issued
+2026-05-05T20:34:57Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T20:34:57Z [watchdog] kickstart issued
+2026-05-05T20:39:58Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T20:39:58Z [watchdog] kickstart issued
+2026-05-05T20:44:58Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T20:44:58Z [watchdog] kickstart issued
+2026-05-05T20:49:58Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T20:49:58Z [watchdog] kickstart issued
+2026-05-05T20:54:58Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T20:54:58Z [watchdog] kickstart issued
+2026-05-05T20:59:58Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T20:59:58Z [watchdog] kickstart issued
+2026-05-05T21:04:58Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T21:04:58Z [watchdog] kickstart issued
+2026-05-05T21:09:58Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T21:09:58Z [watchdog] kickstart issued
+2026-05-05T21:14:58Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T21:14:58Z [watchdog] kickstart issued
+2026-05-05T21:19:58Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T21:19:58Z [watchdog] kickstart issued
+2026-05-05T21:24:58Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T21:24:58Z [watchdog] kickstart issued
+2026-05-05T21:29:59Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T21:29:59Z [watchdog] kickstart issued
+2026-05-05T21:34:59Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T21:34:59Z [watchdog] kickstart issued
+2026-05-05T21:39:59Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T21:39:59Z [watchdog] kickstart issued
+2026-05-05T21:44:59Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T21:44:59Z [watchdog] kickstart issued
+2026-05-05T21:49:59Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T21:49:59Z [watchdog] kickstart issued
+2026-05-05T21:54:59Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T21:54:59Z [watchdog] kickstart issued
+2026-05-05T21:59:59Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T21:59:59Z [watchdog] kickstart issued
+2026-05-05T22:04:59Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T22:04:59Z [watchdog] kickstart issued
+2026-05-05T22:09:59Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T22:09:59Z [watchdog] kickstart issued
+2026-05-05T22:14:59Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T22:14:59Z [watchdog] kickstart issued
+2026-05-05T22:19:59Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T22:19:59Z [watchdog] kickstart issued
+2026-05-05T22:25:00Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T22:25:00Z [watchdog] kickstart issued
+2026-05-05T22:30:00Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T22:30:00Z [watchdog] kickstart issued
+2026-05-05T22:35:00Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T22:35:00Z [watchdog] kickstart issued
+2026-05-05T22:40:00Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T22:40:00Z [watchdog] kickstart issued
+2026-05-05T22:45:00Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T22:45:00Z [watchdog] kickstart issued
+2026-05-05T22:50:00Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T22:50:00Z [watchdog] kickstart issued
+2026-05-05T22:55:00Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T22:55:00Z [watchdog] kickstart issued
+2026-05-05T23:00:00Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T23:00:00Z [watchdog] kickstart issued
+2026-05-05T23:05:00Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T23:05:00Z [watchdog] kickstart issued
+2026-05-05T23:10:00Z [watchdog] RESTARTING librespot — librespot process not found
+Could not find service "com.librespot.naboo" in domain for user gui: 501
+2026-05-05T23:10:00Z [watchdog] kickstart issued
