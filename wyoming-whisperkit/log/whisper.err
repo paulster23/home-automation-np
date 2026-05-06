@@ -5776,3 +5776,61 @@ DEBUG:wyoming_whisperkit.handler:Transcribing 1.0 s of audio via WhisperKit (tri
 DEBUG:wyoming_whisperkit.handler:WhisperKit internal time: 4 ms  wall: 868 ms
 INFO:wyoming_whisperkit.handler:
 DEBUG:wyoming_whisperkit.handler:Completed request
+DEBUG:wyoming_whisperkit.handler:Sent info
+DEBUG:wyoming_whisperkit.handler:Sent info
+DEBUG:wyoming_whisperkit.handler:Transcribe event
+DEBUG:wyoming_whisperkit.handler:Receiving audio
+DEBUG:wyoming_whisperkit.handler:VAD armed (608 ms speech)
+INFO:wyoming_whisperkit.handler:VAD early trigger — 2.4 s audio collected (speech=1248 ms, silence=704 ms)
+DEBUG:wyoming_whisperkit.handler:Transcribing 2.4 s of audio via WhisperKit (trigger=vad)
+DEBUG:wyoming_whisperkit.handler:WhisperKit internal time: 341 ms  wall: 2152 ms
+INFO:wyoming_whisperkit.handler:I WBGO
+DEBUG:wyoming_whisperkit.handler:Completed request
+DEBUG:wyoming_whisperkit.handler:Receiving audio
+DEBUG:wyoming_whisperkit.handler:AudioStop received (vad_triggered=False)
+DEBUG:wyoming_whisperkit.handler:Transcribing 1.3 s of audio via WhisperKit (trigger=audio_stop)
+DEBUG:wyoming_whisperkit.handler:WhisperKit internal time: 259 ms  wall: 1061 ms
+INFO:wyoming_whisperkit.handler:[water splashing]
+DEBUG:wyoming_whisperkit.handler:Completed request
+DEBUG:wyoming_whisperkit.handler:Transcribe event
+DEBUG:wyoming_whisperkit.handler:Receiving audio
+DEBUG:wyoming_whisperkit.handler:VAD armed (608 ms speech)
+INFO:wyoming_whisperkit.handler:VAD early trigger — 3.2 s audio collected (speech=2144 ms, silence=704 ms)
+DEBUG:wyoming_whisperkit.handler:Transcribing 3.2 s of audio via WhisperKit (trigger=vad)
+DEBUG:wyoming_whisperkit.handler:WhisperKit internal time: 326 ms  wall: 1361 ms
+INFO:wyoming_whisperkit.handler:Play WBGO Jazz
+DEBUG:wyoming_whisperkit.handler:Completed request
+DEBUG:wyoming_whisperkit.handler:Receiving audio
+DEBUG:wyoming_whisperkit.handler:AudioStop received (vad_triggered=False)
+DEBUG:wyoming_whisperkit.handler:Transcribing 1.1 s of audio via WhisperKit (trigger=audio_stop)
+DEBUG:wyoming_whisperkit.handler:WhisperKit internal time: 290 ms  wall: 1282 ms
+INFO:wyoming_whisperkit.handler:[BLANK_AUDIO]
+DEBUG:wyoming_whisperkit.handler:Completed request
+DEBUG:wyoming_whisperkit.handler:Transcribe event
+DEBUG:wyoming_whisperkit.handler:Receiving audio
+DEBUG:wyoming_whisperkit.handler:VAD armed (608 ms speech)
+INFO:wyoming_whisperkit.handler:VAD early trigger — 3.7 s audio collected (speech=1728 ms, silence=704 ms)
+DEBUG:wyoming_whisperkit.handler:Transcribing 3.7 s of audio via WhisperKit (trigger=vad)
+DEBUG:wyoming_whisperkit.handler:WhisperKit internal time: 309 ms  wall: 1464 ms
+INFO:wyoming_whisperkit.handler:Plague KEXP
+DEBUG:wyoming_whisperkit.handler:Completed request
+DEBUG:wyoming_whisperkit.handler:Receiving audio
+DEBUG:wyoming_whisperkit.handler:AudioStop received (vad_triggered=False)
+DEBUG:wyoming_whisperkit.handler:Transcribing 0.6 s of audio via WhisperKit (trigger=audio_stop)
+DEBUG:wyoming_whisperkit.handler:WhisperKit internal time: 4 ms  wall: 925 ms
+INFO:wyoming_whisperkit.handler:
+DEBUG:wyoming_whisperkit.handler:Completed request
+DEBUG:wyoming_whisperkit.handler:Transcribe event
+DEBUG:wyoming_whisperkit.handler:Receiving audio
+DEBUG:wyoming_whisperkit.handler:VAD armed (608 ms speech)
+INFO:wyoming_whisperkit.handler:VAD early trigger — 3.1 s audio collected (speech=1888 ms, silence=704 ms)
+DEBUG:wyoming_whisperkit.handler:Transcribing 3.1 s of audio via WhisperKit (trigger=vad)
+DEBUG:wyoming_whisperkit.handler:WhisperKit internal time: 298 ms  wall: 1617 ms
+INFO:wyoming_whisperkit.handler:Play WBGO Jazz
+DEBUG:wyoming_whisperkit.handler:Completed request
+DEBUG:wyoming_whisperkit.handler:Receiving audio
+DEBUG:wyoming_whisperkit.handler:AudioStop received (vad_triggered=False)
+DEBUG:wyoming_whisperkit.handler:Transcribing 0.9 s of audio via WhisperKit (trigger=audio_stop)
+DEBUG:wyoming_whisperkit.handler:WhisperKit internal time: 4 ms  wall: 951 ms
+INFO:wyoming_whisperkit.handler:
+DEBUG:wyoming_whisperkit.handler:Completed request
