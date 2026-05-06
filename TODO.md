@@ -73,6 +73,12 @@ Per-object keys under `stationary.max_frames` ARE supported in Frigate 0.17.x �
 ### ~~Spotify voice: optional SpotifyPlus~~
 ~~SpotifyPlus via HACS would unlock advanced queue management and richer search.~~ **Superseded** — MA Spotify removed entirely 2026-03-28. Spotify now runs via librespot + official HA Spotify integration. spotcast removed (v4 broken). SpotifyPlus is no longer applicable.
 
+### ~~Fix HA Frigate integration URL~~ — ✅ Done (2026-05-05)
+
+HA's Frigate custom integration was configured with `url: https://frigate:8971` since setup day, but Frigate's nginx serves HTTP-only on port 8971. Caused `SSL: RECORD_LAYER_FAILURE` every ~80s. Fixed by editing `url` to `http://frigate:8971` directly in `.storage/core.config_entries` and restarting HA. Confirmed clean — no Frigate errors in new HA instance.
+
+---
+
 ### Voice pipeline latency optimization — ✅ Complete (ongoing monitoring via voice-bench)
 
 **Root cause identified:** Whisper VAD waits for silence to detect end-of-speech. Any ambient room audio (TV, speaker bleed) extends the recording window to 15–60s. Solution: always mute the amp on wake word so Whisper hears silence within ~1s of the user stopping speaking.
@@ -127,7 +133,7 @@ Per-object keys under `stationary.max_frames` ARE supported in Frigate 0.17.x �
 - [ ] **Remove Music Assistant from stack** — MA is fully out of the Spotify/radio audio chain (all automations target `home_assistant_voice_0a3a76_media_player` directly; radio uses hardcoded MP3 streams). Safe to remove. Steps: (1) HA → Settings → Devices & Services → Music Assistant → Delete; (2) remove `music-assistant` service from `docker-compose.yml`; (3) `docker compose up -d`; (4) optionally `rm -rf ~/containers/home-automation/music-assistant/`. Radio playback unaffected.
 
 
-- [ ] **Check router port forwarding for port 8971** — Internet scanners hit Frigate within seconds of startup on 2026-05-04, suggesting port 8971 may be internet-accessible via router port forward or UPnP. Frigate is HTTP-only and rejects TLS probes, but camera feeds shouldn't be internet-accessible. Log into router and check for any port forwarding rules on 8971; also check UPnP settings.
+- [x] ~~**Check router port forwarding for port 8971**~~ — **Closed 2026-05-05.** Port confirmed not internet-accessible (canyouseeme.org test clean, no port forward rules in Linksys Velop router). The "scanner" traffic in the 2026-05-04 log was `172.18.0.4` (HA container) — the broken HA Frigate integration hammering `https://frigate:8971` every ~10s. See the HA Frigate integration URL fix TODO above.
 - [ ] Reverse proxy (Caddy/Nginx) — HTTPS + friendly names (e.g. `emby.local`) for all UIs
 - [ ] Centralized logging (Loki/Promtail) — only if log-tailer + direct file reads aren't enough
 - [ ] HA System Monitor integration — CPU/memory dashboard in HA
