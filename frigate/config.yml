@@ -36,14 +36,14 @@ cameras:
       inputs:
         # Sub-stream (Fluent 896x512): used for object detection
         # Credentials loaded from environment variables (see docker-compose.yml secrets)
-        - path:
+        - path: 
             rtsp://{FRIGATE_RTSP_USER}:{FRIGATE_RTSP_PASSWORD}@192.168.1.33:554/h264Preview_01_sub
           input_args: -rtsp_transport tcp
           roles:
             - detect
 
         # Main stream (Clear 2880x1616): used for recording full quality
-        - path:
+        - path: 
             rtsp://{FRIGATE_RTSP_USER}:{FRIGATE_RTSP_PASSWORD}@192.168.1.33:554/h264Preview_01_main
           input_args: -rtsp_transport tcp
           roles:
@@ -69,21 +69,25 @@ cameras:
     #   y=0-180:   far side (buildings, far parked cars) — NO ZONE (ignored)
     zones:
       entrance:
-        coordinates: 
-          0,0.31,0.136,0.315,0.306,0.37,0.363,0.578,1,0.739,1,1,0,1,0,0.382
+        coordinates: 0,0,0.139,0,0.306,0.37,0.403,0.494,1,0.542,1,1,0,1,0,0.382
         objects: person
         inertia: 3
         loitering_time: 0
       sidewalk:
-        coordinates: 0,0.434,1,0.683,1,1,0,0.678
+        coordinates: 0,0.215,1,0.318,1,0.862,0,0.782
         objects: person
         inertia: 3
         loitering_time: 0
       active_street:
-        coordinates: 0,0.166,1,0.297,1,0.685,0,0.436
+        coordinates: 0,0.096,1,0.142,1,0.531,0,0.436
         objects: car
         inertia: 3
         loitering_time: 0
+      northside:
+        coordinates: 0,0,1,0,1,0.219,0,0.154
+        loitering_time: 0
+        objects: person
+        inertia: 3
     review:
       alerts:
         required_zones:
@@ -94,8 +98,7 @@ cameras:
           - entrance
           - sidewalk
           - active_street
-    motion:
-      mask: 1,0,1,0.352,0,0.144,0,0
+    motion: {}
 objects:
   track:
     - person
