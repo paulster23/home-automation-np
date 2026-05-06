@@ -232,6 +232,18 @@ class StreamMonitor:
                 return name
         return ""
 
+    def on_radio_active_changed(self, new_state: str) -> None:
+        """Re-evaluate stream type if radio_active flips while a session is live."""
+        if self._play_start is None:
+            return  # no active session — nothing to correct
+        old_type   = self._stream_type
+        old_detail = self._source_detail
+        self._refresh_stream_type()
+        if self._stream_type != old_type:
+            print(f"[stream-monitor] stream_type corrected mid-session:"
+                  f" {old_type}/{old_detail} → {self._stream_type}/{self._source_detail}"
+                  f"  (radio_active={new_state})")
+
     # ── HA amp state handler (called from VoiceBench.watch_ha) ───────────────
 
     async def on_amp_state(self, old_state: str, new_state: str,
@@ -588,6 +600,7 @@ class VoiceBench:
         satellite_id = self.config["satellite_entity"]
         amp_id       = self.config.get("amp_entity", "")
         music_id     = self.config.get("music_entity", "")
+        radio_id     = self.config.get("radio_active_entity", "")
 
         while True:
             try:
@@ -612,6 +625,22 @@ class VoiceBench:
                         "event_type": "state_changed"
                     }))
                     await ws.recv()  # subscription ack
+
+                    # ── Seed entity cache with current states ───────────────
+                    await ws.send(json.dumps({"id": 2, "type": "get_states"}))
+                    seed_msg = json.loads(await ws.recv())
+                    if seed_msg.get("success"):
+                        for s in seed_msg.get("result", []):
+                            eid = s.get("entity_id", "")
+                            self.entity_states[eid] = s.get("state", "")
+                            self.entity_attrs[eid]  = s.get("attributes", {})
+                        radio_seed = self.entity_states.get(
+                            self.config.get("radio_active_entity", ""), "unknown"
+                        )
+                        print(f"[voice-bench] Seeded {len(seed_msg['result'])} entity states"
+                              f"  (radio_active={radio_seed})")
+                    else:
+                        print(f"[voice-bench] get_states failed: {seed_msg}")
 
                     print(f"[voice-bench] Connected to HA ✓  watching: {satellite_id}")
 
@@ -643,6 +672,10 @@ class VoiceBench:
                             except Exception:
                                 ts = datetime.now().astimezone()
                             await self._on_satellite(old_state, new_state, ts, amp_id, music_id)
+
+                        # ── radio_active flip → correct stream type live ────
+                        elif self.stream_monitor and radio_id and entity_id == radio_id:
+                            self.stream_monitor.on_radio_active_changed(new_state)
 
                         # ── Feed amp state changes to stream monitor ────────
                         elif self.stream_monitor and entity_id == amp_id and amp_id:

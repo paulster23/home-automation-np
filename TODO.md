@@ -1,6 +1,6 @@
 # Home Automation — To-Do List
 
-*Last updated: 2026-05-02*
+*Last updated: 2026-05-06*
 
 ---
 
@@ -128,9 +128,19 @@ HA's Frigate custom integration was configured with `url: https://frigate:8971` 
 
 ---
 
+## 🔲 Pending
+
+- [x] **voice-bench entity state seeding on connect** — ✅ Fixed 2026-05-06. Added `get_states` API call in `watch_ha()` immediately after subscription ack. Seeds `entity_states`/`entity_attrs` with all current HA states before any events arrive. Prevents `radio_active` defaulting to "off" on a fresh WebSocket connection. Logs `Seeded N entity states (radio_active=<value>)` on connect.
+
+- [x] **voice-bench stream type mid-session correction** — ✅ Fixed 2026-05-06. Added `StreamMonitor.on_radio_active_changed()` method. If a session is live, re-calls `_refresh_stream_type()` and logs the correction. Wired into `watch_ha()` event loop: any `state_changed` on `input_boolean.radio_active` triggers it immediately. Closes the race where `radio_active=on` arrives after `amp→playing` was already classified as spotify.
+
+- [ ] **Fix Tailscale remote HA access** — `tailscale serve` proxies `https://media.tail317990.ts.net:8123 → http://localhost:8123`. HA's Docker port is now bound to `192.168.1.70:8123` (not localhost), so the Tailscale proxy target is broken. Fix options: (1) update `tailscale serve` to point at `http://192.168.1.70:8123` instead of `localhost`, or (2) add a second `0.0.0.0:8123` binding alongside the LAN one (but verify no Tailscale port conflict first). Triggered by 2026-05-06 force-recreate of HA container that first applied the `192.168.1.70` binding from `docker-compose.yml`.
+
+---
+
 ## 🔮 Future / Lower Priority
 
-- [ ] **Remove Music Assistant from stack** — MA is fully out of the Spotify/radio audio chain (all automations target `home_assistant_voice_0a3a76_media_player` directly; radio uses hardcoded MP3 streams). Safe to remove. Steps: (1) HA → Settings → Devices & Services → Music Assistant → Delete; (2) remove `music-assistant` service from `docker-compose.yml`; (3) `docker compose up -d`; (4) optionally `rm -rf ~/containers/home-automation/music-assistant/`. Radio playback unaffected.
+- [x] ~~**Remove Music Assistant from stack**~~ — ✅ Done 2026-05-03. Service removed from `docker-compose.yml`. Frees 640 MiB RAM. Radio playback unaffected.
 
 
 - [x] ~~**Check router port forwarding for port 8971**~~ — **Closed 2026-05-05.** Port confirmed not internet-accessible (canyouseeme.org test clean, no port forward rules in Linksys Velop router). The "scanner" traffic in the 2026-05-04 log was `172.18.0.4` (HA container) — the broken HA Frigate integration hammering `https://frigate:8971` every ~10s. See the HA Frigate integration URL fix TODO above.
