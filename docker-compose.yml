@@ -70,8 +70,8 @@ services:
     # Shared memory — increase if you add more cameras
     shm_size: "256mb"
     ports:
-      - "192.168.1.70:8971:8971"   # Frigate web UI — direct host port (no proxy)
-      - "192.168.1.70:8554:8554"   # RTSP re-stream (optional)
+      - "0.0.0.0:8971:8971"   # Frigate web UI — direct host port (no proxy)
+      - "0.0.0.0:8554:8554"   # RTSP re-stream (optional)
     volumes:
       # Config directory — frigate.db lives here
       - ./frigate:/config
