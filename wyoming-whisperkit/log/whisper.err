@@ -5834,3 +5834,153 @@ DEBUG:wyoming_whisperkit.handler:Transcribing 0.9 s of audio via WhisperKit (tri
 DEBUG:wyoming_whisperkit.handler:WhisperKit internal time: 4 ms  wall: 951 ms
 INFO:wyoming_whisperkit.handler:
 DEBUG:wyoming_whisperkit.handler:Completed request
+DEBUG:wyoming_whisperkit.handler:Transcribe event
+DEBUG:wyoming_whisperkit.handler:Receiving audio
+DEBUG:wyoming_whisperkit.handler:VAD armed (608 ms speech)
+INFO:wyoming_whisperkit.handler:VAD early trigger — 2.5 s audio collected (speech=1280 ms, silence=704 ms)
+DEBUG:wyoming_whisperkit.handler:Transcribing 2.5 s of audio via WhisperKit (trigger=vad)
+DEBUG:wyoming_whisperkit.handler:WhisperKit internal time: 368 ms  wall: 1894 ms
+INFO:wyoming_whisperkit.handler:Play KEXP
+DEBUG:wyoming_whisperkit.handler:Completed request
+DEBUG:wyoming_whisperkit.handler:Receiving audio
+DEBUG:wyoming_whisperkit.handler:AudioStop received (vad_triggered=False)
+DEBUG:wyoming_whisperkit.handler:Transcribing 1.1 s of audio via WhisperKit (trigger=audio_stop)
+DEBUG:wyoming_whisperkit.handler:WhisperKit internal time: 321 ms  wall: 1245 ms
+INFO:wyoming_whisperkit.handler:[BLANK_AUDIO]
+DEBUG:wyoming_whisperkit.handler:Completed request
+DEBUG:wyoming_whisperkit.handler:Sent info
+DEBUG:wyoming_whisperkit.handler:Transcribe event
+DEBUG:wyoming_whisperkit.handler:Receiving audio
+DEBUG:wyoming_whisperkit.handler:VAD armed (608 ms speech)
+INFO:wyoming_whisperkit.handler:VAD early trigger — 2.4 s audio collected (speech=1312 ms, silence=704 ms)
+DEBUG:wyoming_whisperkit.handler:Transcribing 2.4 s of audio via WhisperKit (trigger=vad)
+DEBUG:wyoming_whisperkit.handler:WhisperKit internal time: 380 ms  wall: 1843 ms
+INFO:wyoming_whisperkit.handler:Play WFMU
+DEBUG:wyoming_whisperkit.handler:Completed request
+DEBUG:wyoming_whisperkit.handler:Receiving audio
+DEBUG:wyoming_whisperkit.handler:AudioStop received (vad_triggered=False)
+DEBUG:wyoming_whisperkit.handler:Transcribing 1.1 s of audio via WhisperKit (trigger=audio_stop)
+DEBUG:wyoming_whisperkit.handler:WhisperKit internal time: 295 ms  wall: 1100 ms
+INFO:wyoming_whisperkit.handler:[water running]
+DEBUG:wyoming_whisperkit.handler:Completed request
+DEBUG:wyoming_whisperkit.handler:Transcribe event
+DEBUG:wyoming_whisperkit.handler:Receiving audio
+DEBUG:wyoming_whisperkit.handler:AudioStop received (vad_triggered=False)
+DEBUG:wyoming_whisperkit.handler:Transcribing 2.6 s of audio via WhisperKit (trigger=audio_stop)
+DEBUG:wyoming_whisperkit.handler:WhisperKit internal time: 326 ms  wall: 1752 ms
+INFO:wyoming_whisperkit.handler:Stop.
+DEBUG:wyoming_whisperkit.handler:Completed request
+DEBUG:wyoming_whisperkit.handler:Transcribe event
+DEBUG:wyoming_whisperkit.handler:Receiving audio
+DEBUG:wyoming_whisperkit.handler:VAD armed (608 ms speech)
+INFO:wyoming_whisperkit.handler:VAD early trigger — 3.8 s audio collected (speech=1344 ms, silence=704 ms)
+DEBUG:wyoming_whisperkit.handler:Transcribing 3.8 s of audio via WhisperKit (trigger=vad)
+DEBUG:wyoming_whisperkit.handler:WhisperKit internal time: 342 ms  wall: 1755 ms
+INFO:wyoming_whisperkit.handler:Play KEXP
+DEBUG:wyoming_whisperkit.handler:Completed request
+DEBUG:wyoming_whisperkit.handler:Receiving audio
+DEBUG:wyoming_whisperkit.handler:AudioStop received (vad_triggered=False)
+DEBUG:wyoming_whisperkit.handler:Transcribing 1.1 s of audio via WhisperKit (trigger=audio_stop)
+DEBUG:wyoming_whisperkit.handler:WhisperKit internal time: 364 ms  wall: 1521 ms
+INFO:wyoming_whisperkit.handler:[water splashing]
+DEBUG:wyoming_whisperkit.handler:Completed request
+DEBUG:wyoming_whisperkit.handler:Transcribe event
+DEBUG:wyoming_whisperkit.handler:Receiving audio
+DEBUG:wyoming_whisperkit.handler:AudioStop received (vad_triggered=False)
+DEBUG:wyoming_whisperkit.handler:Transcribing 2.7 s of audio via WhisperKit (trigger=audio_stop)
+DEBUG:wyoming_whisperkit.handler:WhisperKit internal time: 278 ms  wall: 1723 ms
+INFO:wyoming_whisperkit.handler:Stop.
+DEBUG:wyoming_whisperkit.handler:Completed request
+DEBUG:wyoming_whisperkit.handler:Sent info
+DEBUG:wyoming_whisperkit.handler:Transcribe event
+DEBUG:wyoming_whisperkit.handler:Receiving audio
+DEBUG:wyoming_whisperkit.handler:VAD armed (608 ms speech)
+INFO:wyoming_whisperkit.handler:VAD early trigger — 2.2 s audio collected (speech=896 ms, silence=704 ms)
+DEBUG:wyoming_whisperkit.handler:Transcribing 2.2 s of audio via WhisperKit (trigger=vad)
+DEBUG:wyoming_whisperkit.handler:WhisperKit internal time: 531 ms  wall: 2435 ms
+INFO:wyoming_whisperkit.handler:Turn on the speaker.
+DEBUG:wyoming_whisperkit.handler:Completed request
+DEBUG:wyoming_whisperkit.handler:Receiving audio
+DEBUG:wyoming_whisperkit.handler:AudioStop received (vad_triggered=False)
+DEBUG:wyoming_whisperkit.handler:Transcribing 1.1 s of audio via WhisperKit (trigger=audio_stop)
+DEBUG:wyoming_whisperkit.handler:WhisperKit internal time: 265 ms  wall: 1379 ms
+INFO:wyoming_whisperkit.handler:[water splashing]
+DEBUG:wyoming_whisperkit.handler:Completed request
+DEBUG:wyoming_whisperkit.handler:Transcribe event
+DEBUG:wyoming_whisperkit.handler:Receiving audio
+DEBUG:wyoming_whisperkit.handler:VAD armed (608 ms speech)
+INFO:wyoming_whisperkit.handler:VAD early trigger — 2.4 s audio collected (speech=1184 ms, silence=704 ms)
+DEBUG:wyoming_whisperkit.handler:Transcribing 2.4 s of audio via WhisperKit (trigger=vad)
+DEBUG:wyoming_whisperkit.handler:WhisperKit internal time: 308 ms  wall: 1413 ms
+INFO:wyoming_whisperkit.handler:Play WNYC.
+DEBUG:wyoming_whisperkit.handler:Completed request
+DEBUG:wyoming_whisperkit.handler:Receiving audio
+DEBUG:wyoming_whisperkit.handler:AudioStop received (vad_triggered=False)
+DEBUG:wyoming_whisperkit.handler:Transcribing 1.1 s of audio via WhisperKit (trigger=audio_stop)
+DEBUG:wyoming_whisperkit.handler:WhisperKit internal time: 283 ms  wall: 1390 ms
+INFO:wyoming_whisperkit.handler:[water splashing]
+DEBUG:wyoming_whisperkit.handler:Completed request
+DEBUG:wyoming_whisperkit.handler:Transcribe event
+DEBUG:wyoming_whisperkit.handler:Receiving audio
+DEBUG:wyoming_whisperkit.handler:VAD armed (608 ms speech)
+INFO:wyoming_whisperkit.handler:VAD early trigger — 2.9 s audio collected (speech=1280 ms, silence=704 ms)
+DEBUG:wyoming_whisperkit.handler:Transcribing 2.9 s of audio via WhisperKit (trigger=vad)
+DEBUG:wyoming_whisperkit.handler:WhisperKit internal time: 359 ms  wall: 2667 ms
+INFO:wyoming_whisperkit.handler:Play WNYC
+DEBUG:wyoming_whisperkit.handler:Completed request
+DEBUG:wyoming_whisperkit.handler:Receiving audio
+DEBUG:wyoming_whisperkit.handler:AudioStop received (vad_triggered=False)
+DEBUG:wyoming_whisperkit.handler:Transcribing 1.1 s of audio via WhisperKit (trigger=audio_stop)
+DEBUG:wyoming_whisperkit.handler:WhisperKit internal time: 275 ms  wall: 1585 ms
+INFO:wyoming_whisperkit.handler:[water running]
+DEBUG:wyoming_whisperkit.handler:Completed request
+DEBUG:wyoming_whisperkit.handler:Sent info
+DEBUG:wyoming_whisperkit.handler:Transcribe event
+DEBUG:wyoming_whisperkit.handler:Receiving audio
+DEBUG:wyoming_whisperkit.handler:VAD armed (608 ms speech)
+INFO:wyoming_whisperkit.handler:VAD early trigger — 3.3 s audio collected (speech=1280 ms, silence=704 ms)
+DEBUG:wyoming_whisperkit.handler:Transcribing 3.3 s of audio via WhisperKit (trigger=vad)
+DEBUG:wyoming_whisperkit.handler:WhisperKit internal time: 395 ms  wall: 2076 ms
+INFO:wyoming_whisperkit.handler:Play W.
+DEBUG:wyoming_whisperkit.handler:Completed request
+DEBUG:wyoming_whisperkit.handler:Receiving audio
+DEBUG:wyoming_whisperkit.handler:VAD armed (608 ms speech)
+INFO:wyoming_whisperkit.handler:VAD early trigger — 1.7 s audio collected (speech=896 ms, silence=704 ms)
+DEBUG:wyoming_whisperkit.handler:Transcribing 1.7 s of audio via WhisperKit (trigger=vad)
+DEBUG:wyoming_whisperkit.handler:WhisperKit internal time: 362 ms  wall: 1746 ms
+INFO:wyoming_whisperkit.handler:Cubics are.
+DEBUG:wyoming_whisperkit.handler:Completed request
+DEBUG:wyoming_whisperkit.handler:Receiving audio
+DEBUG:wyoming_whisperkit.handler:AudioStop received (vad_triggered=False)
+DEBUG:wyoming_whisperkit.handler:Transcribing 1.5 s of audio via WhisperKit (trigger=audio_stop)
+DEBUG:wyoming_whisperkit.handler:WhisperKit internal time: 350 ms  wall: 1231 ms
+INFO:wyoming_whisperkit.handler:[BLANK_AUDIO]
+DEBUG:wyoming_whisperkit.handler:Completed request
+DEBUG:wyoming_whisperkit.handler:Transcribe event
+DEBUG:wyoming_whisperkit.handler:Receiving audio
+DEBUG:wyoming_whisperkit.handler:VAD armed (608 ms speech)
+INFO:wyoming_whisperkit.handler:VAD early trigger — 3.5 s audio collected (speech=1696 ms, silence=704 ms)
+DEBUG:wyoming_whisperkit.handler:Transcribing 3.5 s of audio via WhisperKit (trigger=vad)
+DEBUG:wyoming_whisperkit.handler:WhisperKit internal time: 313 ms  wall: 1430 ms
+INFO:wyoming_whisperkit.handler:Play WBGO.
+DEBUG:wyoming_whisperkit.handler:Completed request
+DEBUG:wyoming_whisperkit.handler:Receiving audio
+DEBUG:wyoming_whisperkit.handler:AudioStop received (vad_triggered=False)
+DEBUG:wyoming_whisperkit.handler:Transcribing 1.1 s of audio via WhisperKit (trigger=audio_stop)
+DEBUG:wyoming_whisperkit.handler:WhisperKit internal time: 297 ms  wall: 1148 ms
+INFO:wyoming_whisperkit.handler:[water splashing]
+DEBUG:wyoming_whisperkit.handler:Completed request
+DEBUG:wyoming_whisperkit.handler:Transcribe event
+DEBUG:wyoming_whisperkit.handler:Receiving audio
+DEBUG:wyoming_whisperkit.handler:VAD armed (608 ms speech)
+INFO:wyoming_whisperkit.handler:VAD early trigger — 2.8 s audio collected (speech=1216 ms, silence=704 ms)
+DEBUG:wyoming_whisperkit.handler:Transcribing 2.8 s of audio via WhisperKit (trigger=vad)
+DEBUG:wyoming_whisperkit.handler:WhisperKit internal time: 383 ms  wall: 1789 ms
+INFO:wyoming_whisperkit.handler:Play WBGO
+DEBUG:wyoming_whisperkit.handler:Completed request
+DEBUG:wyoming_whisperkit.handler:Receiving audio
+DEBUG:wyoming_whisperkit.handler:AudioStop received (vad_triggered=False)
+DEBUG:wyoming_whisperkit.handler:Transcribing 0.6 s of audio via WhisperKit (trigger=audio_stop)
+DEBUG:wyoming_whisperkit.handler:WhisperKit internal time: 7 ms  wall: 1005 ms
+INFO:wyoming_whisperkit.handler:
+DEBUG:wyoming_whisperkit.handler:Completed request

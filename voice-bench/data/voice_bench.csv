@@ -623,3 +623,13 @@ seed_0129,,Stop.,other,,13191,,,13191,,,pre-bench-history,distil-whisper-large-v
 20260505_115407_908,2026-05-05T11:54:07.908972-04:00,Turn the speaker on.,other,4309,1957,348,1769,6427,false,false,whisperkit-small-esphome-direct,whisperkit-small
 20260505_120308_149,2026-05-05T12:03:08.149940-04:00,you when I see you,other,3267,1575,500,2470,6239,false,false,whisperkit-small-esphome-direct,whisperkit-small
 20260505_121438_923,2026-05-05T12:14:38.923477-04:00,Play WNYC.,radio,4669,1764,,,5013,false,false,whisperkit-small-esphome-direct,whisperkit-small
+20260505_213907_042,2026-05-05T21:39:07.042326-04:00,Play WFMU,radio,4212,1843,,,4743,false,false,whisperkit-small-esphome-direct,whisperkit-small
+20260505_214101_081,2026-05-05T21:41:01.081734-04:00,Stop.,other,4370,1752,,,4618,false,false,whisperkit-small-esphome-direct,whisperkit-small
+20260505_214125_557,2026-05-05T21:41:25.557345-04:00,Play KEXP,radio,5559,1755,,,5894,true,false,whisperkit-small-esphome-direct,whisperkit-small
+20260505_214301_029,2026-05-05T21:43:01.029795-04:00,Stop.,other,4378,1723,,,4588,false,false,whisperkit-small-esphome-direct,whisperkit-small
+20260506_111206_414,2026-05-06T11:12:06.414371-04:00,Turn on the speaker.,home,4631,2435,523,1775,6929,false,false,whisperkit-small-esphome-direct,whisperkit-small
+20260506_111216_550,2026-05-06T11:12:16.550499-04:00,Play WNYC.,radio,3804,1413,,,4142,false,false,whisperkit-small-esphome-direct,whisperkit-small
+20260506_135045_954,2026-05-06T13:50:45.954137-04:00,Play WNYC,radio,5606,2667,,,6504,true,false,whisperkit-small-esphome-direct,whisperkit-small
+20260506_191422_694,2026-05-06T19:14:22.694750-04:00,Cubics are.,other,6563,1746,,,8326,false,false,whisperkit-small-esphome-direct,whisperkit-small
+20260506_191451_946,2026-05-06T19:14:51.946606-04:00,Play WBGO.,music,4961,1430,,,5310,false,false,whisperkit-small-esphome-direct,whisperkit-small
+20260506_191817_316,2026-05-06T19:18:17.316447-04:00,Play WBGO,music,4559,1789,,,5021,false,false,whisperkit-small-esphome-direct,whisperkit-small

@@ -10827,3 +10827,71 @@
 [2026-05-05T00:51:19Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
 [2026-05-05T00:51:19Z INFO  librespot_core::session] Authenticated as 'paulster23' !
 [2026-05-05T00:51:19Z INFO  librespot_core::session] Country: "US"
+[2026-05-06T01:03:23Z INFO  librespot] librespot 0.8.0 VERGEN_IDEMPOTENT_OUTPUT (Built on 2025-11-10, Build ID: 1762793321, Profile: release)
+[2026-05-06T01:03:23Z INFO  librespot_playback::mixer::softmixer] Mixing with softvol and volume control: Log(60.0)
+[2026-05-06T01:03:23Z INFO  librespot_playback::convert] Converting with ditherer: tpdf
+[2026-05-06T01:03:23Z INFO  librespot_playback::audio_backend::pipe] Using StdoutSink (pipe) with format: S16
+[2026-05-06T01:03:24Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-05-06T01:03:25Z INFO  librespot_core::session] Authenticated as 'paulster23' !
+[2026-05-06T01:03:25Z INFO  librespot_core::session] Country: "US"
+[2026-05-06T01:03:25Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-05-06T01:03:26Z INFO  librespot_connect::spirc] active device is <> with session <49M19eDnCJ571XkIBi2Yfa>
+[2026-05-06T02:14:25Z ERROR librespot_core::session] Connection to server closed.
+[2026-05-06T02:43:01Z WARN  librespot_core::dealer] Websocket connection failed: IO error: peer closed connection without sending TLS close_notify: https://docs.rs/rustls/latest/rustls/manual/_03_howto/index.html#unexpected-eof
+[2026-05-06T02:43:02Z WARN  librespot] Spirc shut down unexpectedly
+[2026-05-06T02:43:02Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-05-06T02:43:03Z INFO  librespot_core::session] Authenticated as 'paulster23' !
+[2026-05-06T02:43:03Z INFO  librespot_core::session] Country: "US"
+[2026-05-06T02:43:03Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-05-06T02:43:03Z INFO  librespot_connect::spirc] active device is <> with session <49M19eDnCJ571XkIBi2Yfa>
+[2026-05-06T14:17:41Z WARN  librespot_core::session] Connection to server closed.
+[2026-05-06T14:21:46Z WARN  librespot_core::dealer] Websocket connection failed: IO error: peer closed connection without sending TLS close_notify: https://docs.rs/rustls/latest/rustls/manual/_03_howto/index.html#unexpected-eof
+[2026-05-06T14:21:46Z WARN  librespot] Spirc shut down unexpectedly
+[2026-05-06T14:21:47Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-05-06T14:21:47Z INFO  librespot_core::session] Authenticated as 'paulster23' !
+[2026-05-06T14:21:47Z INFO  librespot_core::session] Country: "US"
+[2026-05-06T14:21:48Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-05-06T14:21:48Z INFO  librespot_connect::spirc] active device is <> with session <49M19eDnCJ571XkIBi2Yfa>
+[2026-05-06T16:13:51Z WARN  librespot_core::dealer] Websocket peer does not respond.
+[2026-05-06T16:13:55Z INFO  librespot_connect::spirc] active device is <> with session <49M19eDnCJ571XkIBi2Yfa>
+[2026-05-06T16:49:58Z WARN  librespot_core::dealer] Websocket peer does not respond.
+[2026-05-06T16:50:00Z INFO  librespot_connect::spirc] active device is <> with session <49M19eDnCJ571XkIBi2Yfa>
+[2026-05-06T16:52:02Z WARN  librespot_core::dealer] Websocket peer does not respond.
+[2026-05-06T16:52:32Z ERROR librespot_core::dealer] Error while connecting: Unknown error { failed to lookup address information: nodename nor servname provided, or not known }
+[2026-05-06T16:53:12Z WARN  librespot_core::apresolve] Failed to resolve all access points, using fallbacks
+[2026-05-06T16:53:12Z WARN  librespot_core::apresolve] Resolve access points error: Service unavailable { client error (Connect) }
+[2026-05-06T16:53:42Z ERROR librespot_core::dealer] Error while connecting: Unknown error { failed to lookup address information: nodename nor servname provided, or not known }
+[2026-05-06T16:54:22Z WARN  librespot_core::apresolve] Failed to resolve all access points, using fallbacks
+[2026-05-06T16:54:22Z WARN  librespot_core::apresolve] Resolve access points error: Service unavailable { client error (Connect) }
+[2026-05-06T16:54:52Z ERROR librespot_core::dealer] Error while connecting: Unknown error { failed to lookup address information: nodename nor servname provided, or not known }
+[2026-05-06T16:55:03Z INFO  librespot_connect::spirc] active device is <> with session <49M19eDnCJ571XkIBi2Yfa>
+[2026-05-06T16:55:03Z WARN  librespot_core::dealer] Websocket connection failed: IO error: peer closed connection without sending TLS close_notify: https://docs.rs/rustls/latest/rustls/manual/_03_howto/index.html#unexpected-eof
+[2026-05-06T16:55:03Z WARN  librespot] Spirc shut down unexpectedly
+[2026-05-06T16:55:04Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-05-06T16:55:05Z INFO  librespot_core::session] Authenticated as 'paulster23' !
+[2026-05-06T16:55:05Z INFO  librespot_core::session] Country: "US"
+[2026-05-06T16:55:05Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-05-06T16:55:06Z INFO  librespot_connect::spirc] active device is <> with session <49M19eDnCJ571XkIBi2Yfa>
+[2026-05-06T19:33:13Z WARN  librespot_core::dealer] Websocket connection failed: IO error: peer closed connection without sending TLS close_notify: https://docs.rs/rustls/latest/rustls/manual/_03_howto/index.html#unexpected-eof
+[2026-05-06T19:33:16Z INFO  librespot_connect::spirc] active device is <> with session <49M19eDnCJ571XkIBi2Yfa>
+[2026-05-06T19:38:27Z WARN  librespot_core::dealer] Websocket connection failed: IO error: peer closed connection without sending TLS close_notify: https://docs.rs/rustls/latest/rustls/manual/_03_howto/index.html#unexpected-eof
+[2026-05-06T19:38:30Z INFO  librespot_connect::spirc] active device is <> with session <49M19eDnCJ571XkIBi2Yfa>
+[2026-05-06T19:59:05Z ERROR librespot_core::session] Connection to server closed.
+[2026-05-06T20:28:20Z WARN  librespot_core::dealer] Websocket connection failed: IO error: peer closed connection without sending TLS close_notify: https://docs.rs/rustls/latest/rustls/manual/_03_howto/index.html#unexpected-eof
+[2026-05-06T20:28:20Z WARN  librespot] Spirc shut down unexpectedly
+[2026-05-06T20:28:21Z INFO  librespot_core::session] Connecting to AP "ap-gue1.spotify.com:4070"
+[2026-05-06T20:28:21Z INFO  librespot_core::session] Authenticated as 'paulster23' !
+[2026-05-06T20:28:21Z INFO  librespot_core::session] Country: "US"
+[2026-05-06T20:28:22Z INFO  librespot_core::spclient] Resolved "gue1-spclient.spotify.com:443" as spclient access point
+[2026-05-06T20:28:22Z INFO  librespot_connect::spirc] active device is <> with session <49M19eDnCJ571XkIBi2Yfa>
+[2026-05-06T23:14:30Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-06T23:14:30Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-06T23:14:31Z INFO  librespot_playback::player] Loading <Right Back to It> with Spotify URI <spotify:track:17Zzi8qsn8mdm0t0JTGeQo>
+[2026-05-06T23:14:31Z INFO  librespot_connect::spirc] session update: <Ok(NEW_SESSION)> for self, current session_id 6ff462e8165046e7be485d0c9004ed4c, new session_id ddd57930b7d6893f39988ccd9f369b21
+[2026-05-06T23:14:32Z INFO  librespot_playback::player] <Right Back to It> (273026 ms) loaded
+[2026-05-06T23:14:35Z INFO  librespot_playback::player] Loading <Where’s Your Love Now - Waxahatchee Version> with Spotify URI <spotify:track:7r7lUdoSHFIUO49FKZpt0M>
+[2026-05-06T23:14:36Z INFO  librespot_playback::player] <Where’s Your Love Now - Waxahatchee Version> (321140 ms) loaded
+[2026-05-06T23:58:13Z INFO  librespot_connect::spirc] device became inactive
+[2026-05-06T23:58:13Z WARN  librespot_connect::state::context] couldn't load context info because: context is not available. type: Default
+[2026-05-06T23:58:13Z WARN  librespot_connect::spirc] failed filling up next_track during stopping: Invalid state { context is not available. type: Default }
+[2026-05-06T23:58:13Z INFO  librespot_connect::spirc] session update: <Ok(SESSION_DELETED)> for self, current session_id ddd57930b7d6893f39988ccd9f369b21, new session_id ddd57930b7d6893f39988ccd9f369b21
