@@ -1,6 +1,6 @@
 # Home Automation — To-Do List
 
-*Last updated: 2026-05-06*
+*Last updated: 2026-05-07*
 
 ---
 
@@ -64,6 +64,8 @@ Five HA crashes on Apr 29–30 traced to two root causes: (1) ESPHome HA Voice d
 ### ~~Wyze DNS timeouts still occurring post-fix~~ — ✅ Root cause fixed 2026-04-30
 Wyze `api.wyzecam.com` DNS timeouts on 2026-04-29 traced to HA crash/restart cycles from HACS blocking (patched 2026-04-30). The Apr 19 correlation (12 min post-gluetun reconnect) was caused by gluetun's in-process VPN restart leaving its internal DNS proxy stuck — confirmed in 2026-04-30 logs. Root cause fixed: (1) gluetun Docker healthcheck now tests `nslookup cloudflare.com` in addition to port 9999 — DNS failure → unhealthy; (2) scheduler watchdog cron restarts gluetun within ~7 min of DNS failure. Also applied: unpinned SERVER_HOSTNAMES + DOT_PROVIDERS=cloudflare,quad9. See TROUBLESHOOTING.md 2026-04-30. Monitor for recurrence — if Wyze bursts continue clustering post-reconnect despite clean gluetun restarts, Docker bridge reconfiguration theory needs investigation.
 
+**2026-05-06 burst investigated — self-healed as expected.** 25 Wyze DNS errors at 12:52–12:54 ET, caused by gluetun tunnel down. Gluetun entered `AUTH_FAILED` loop against `us10258.nordvpn.com` (server-side NordVPN issue) — `Preserving recently used remote address` kept it retrying the same broken server despite `SERVER_HOSTNAMES` being unpinned. Healthcheck caught it (nslookup fail → unhealthy) → full container restart at 13:00 ET, came back clean on a different server. Total recovery: ~8 min. System working as designed; no action needed.
+
 ### ~~Stop/remove idle Docker whisper container~~ — ✅ Done 2026-04-22
 Service definition removed from `docker-compose.yml`. WhisperKit stable since 2026-03-29 (nearly a month). `whisper-data` volume declaration also removed. Run `docker volume rm home-automation_whisper-data` to reclaim the ~150MB disk space the model data occupies. Fallback path restored in a comment in compose.
 
@@ -113,7 +115,7 @@ HA's Frigate custom integration was configured with `url: https://frigate:8971` 
 - [ ] **Monitor small model accuracy** — `whisper-small-mlx-4bit` benchmarked perfectly on test commands but needs real-world validation across voice diversity, proper nouns (WFMU, KEXP), and noisy conditions. Watch `voice-bench` dashboard for transcription errors.
 - [x] **Fix voice-bench port 7700 binding** — ✅ Fixed 2026-04-10. LaunchAgent was in a broken launchd domain state (bootout/unload both returned I/O error 5). Port was already free by the time we diagnosed — previous crash loop had died. `launchctl bootstrap gui/501` brought it back up cleanly. Also fixed a related bug: VAD early-trigger log lines (INFO level, same logger as transcription) were being captured as the transcript text in the CSV. Fixed by adding `not m.group(1).startswith("VAD ")` guard in `voice_bench.py` tail_whisper_log().
 - [ ] **voice-bench (no transcription) for radio commands** — P8/low. VAD early-trigger path produces two WhisperKit transcriptions per command (real text ~2s wall, blank ~1s wall). Session finalizer races the slower result. Multiple fix attempts broke MA muting. Decided to defer — latency and hang tracking still work, transcription text field unreliable for radio commands. Candidate for deprecation.
-- [ ] **Investigate Apr 8 listening-phase hangs** — Discovered 2026-04-10. Four listening hangs of 120-168s clustered between 14:07-19:21 on Apr 8. Main blocker to <7s voice KPI. Possible causes: ESPHome Voice PE firmware issue, WiFi micro-disconnect, or mic driver stuck state. Check HA ESPHome logs for that timeframe.
+- [x] ~~**Investigate Apr 8 listening-phase hangs**~~ — ✅ Closed 2026-05-07. Hangs were not isolated to Apr 8 — recurred on Apr 9 (461s), Apr 10 (164s), Apr 25 (325s), Apr 30 (1076s). Then stopped completely. All 50+ commands since May 1 have clean listening times (<20s, most under 10s). Config tag changed from `whisperkit-small-silero-vad` → `whisperkit-small-esphome-direct` around the same time the hangs stopped — likely architectural change to the WhisperKit pipeline. No further investigation needed; monitor voice-bench if hangs recur.
 - [x] **Add listening-phase timeout** — ✅ Fixed 2026-04-10, rewritten 2026-04-15. `voice_listening_timeout` automation fires `persistent_notification` at 15s (warn) and 60s (urgent + manual intervention instructions). Original used `assist_satellite.abort` which never existed — replaced. Hard restart not possible without ESPHome firmware exposing a restart action. Covers ambient noise hangs (worst observed: 461s).
 - [x] **Switch STT backend to WhisperKit** — ✅ Complete (2026-03-29). Wyoming wrapper at `home-automation/wyoming-whisperkit/`, port 7892, Silero-VAD enabled. Active as of 2026-03-29 — voice-bench config tag `whisperkit-small-silero-vad` confirms. Benchmarked at 0.85s; real-world STT averaging ~1.1s on radio commands (vs 3–5s with mlx-whisper). Fallback: Wyoming → port 7891 (mlx-whisper still installed).
 - [x] **Librespot "Naboo" watchdog + serve_http.py crash loop fix** — ✅ Complete (2026-03-30/31). Two fixes:
@@ -124,7 +126,7 @@ HA's Frigate custom integration was configured with `url: https://frigate:8971` 
 
 ## 🔲 Open Bugs (waiting on upstream)
 
-- [ ] **Spotify coordinator MissingField crash loop** — HA's `spotifyaio` library fails to parse Spotify API responses since Spotify removed `GET /playlists/{id}/tracks` in Feb 2026. Error: `MissingField: Field "items" of type PlaylistTracks is missing in Playlist instance`. Fires every ~10–20s during playback, causes lag. Persists in HA 2026.4.4. Tracked at [GitHub #166884](https://github.com/home-assistant/core/issues/166884). **Workaround:** avoid Spotify algorithmic/radio playlists (Daily Mix, Discover Weekly). Watch HA 2026.5 for a fix.
+- [ ] **Spotify coordinator MissingField crash loop** — HA's `spotifyaio` library fails to parse Spotify API responses since Spotify removed `GET /playlists/{id}/tracks` in Feb 2026. Error: `MissingField: Field "items" of type PlaylistTracks is missing in Playlist instance`. Tracked at [GitHub #166884](https://github.com/home-assistant/core/issues/166884). **2026.5 shipped 2026-05-06 with no fix** — issue still open, no PR merged. Not actively firing in logs (only triggers when browsing media via HA UI). **Workaround:** avoid Spotify algorithmic/radio playlists (Daily Mix, Discover Weekly). Watch HA 2026.6.
 
 ---
 
