@@ -1,6 +1,6 @@
 # Home Automation — To-Do List
 
-*Last updated: 2026-05-07*
+*Last updated: 2026-05-09*
 
 ---
 
@@ -139,6 +139,8 @@ HA's Frigate custom integration was configured with `url: https://frigate:8971` 
 - [x] ~~**Fix Tailscale remote HA access**~~ — ✅ Fixed 2026-05-06. Root cause: nightly cron was shutting down Docker Desktop; HA came back with `192.168.1.70:8123` binding (from May 5 port-migration) but `tailscale serve` still pointed at `localhost:8123`. Also: running `tailscale serve --https=PORT ...` without `--bg` wiped the entire 10-endpoint config on Ctrl+C. Fixed by re-running all 10 endpoints with `--bg` and `192.168.1.70` backends. OPS_RUNBOOK updated: dedicated recovery section, `--bg` warning, removed stale `localhost` references and the now-unnecessary `tailscale serve reset` step.
 
 ---
+
+- [ ] **Verify librespot survives next Tuesday reboot (2026-05-12)** — After the May 6 reboot, `com.librespot.naboo` LaunchAgent wasn't registered with launchd (watchdog's `kickstart` failed with "Could not find service"). Manually bootstrapped 2026-05-09. Check `run.log` after Tuesday's reboot for a new `Starting librespot pipeline` entry. If missing: `launchctl enable gui/$(id -u)/com.librespot.naboo` then re-bootstrap.
 
 ## 🔮 Future / Lower Priority
 
