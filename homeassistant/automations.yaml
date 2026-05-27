@@ -185,9 +185,12 @@
               Naboo has been in "listening" for 15+ seconds
               ({{ now().strftime('%H:%M:%S') }}). Pipeline may be stuck.
               Will restart device if still listening at 60s.
-    # At 60s: device is genuinely stuck and ESPHome's own timeout hasn't fired.
-    # No remote restart is available on this firmware. Update the notification
-    # to urgent so it's visible, and log it. Manual intervention required.
+    # At 60s: device is genuinely stuck and ESPHome's own VAD timeout hasn't fired.
+    # Recovery: toggle mic mute on then off. Muting forces silence into the VAD
+    # pipeline → 700ms silence threshold fires → listening session ends naturally.
+    # switch.home_assistant_voice_0a3a76_mute is enabled and accessible.
+    # We do NOT use button.home_assistant_voice_0a3a76_restart — it's disabled_by
+    # integration and would cause a ~30s firmware reboot (too heavy).
     - if:
         - condition: trigger
           id: restart
@@ -195,13 +198,37 @@
         - action: persistent_notification.create
           data:
             notification_id: naboo_listening_hang
-            title: "⚠️ Naboo stuck in listening for 60s — manual fix needed"
+            title: "⚠️ Naboo stuck listening 60s — attempting recovery"
             message: >
-              Naboo has been in "listening" for 60+ seconds
-              ({{ now().strftime('%H:%M:%S') }}). ESPHome firmware timeout
-              has not fired. Say the wake word again, or power-cycle the device.
-              Consider enabling a restart button entity or upgrading firmware
-              to expose esphome.home_assistant_voice_0a3a76_restart.
+              Naboo stuck in "listening" for 60s ({{ now().strftime('%H:%M:%S') }}).
+              Toggling mic mute to force VAD end-of-speech.
+        - action: switch.turn_on
+          target:
+            entity_id: switch.home_assistant_voice_0a3a76_mute
+        - delay:
+            seconds: 2
+        - action: switch.turn_off
+          target:
+            entity_id: switch.home_assistant_voice_0a3a76_mute
+        - delay:
+            seconds: 3
+        - if:
+            - condition: state
+              entity_id: assist_satellite.home_assistant_voice_0a3a76_assist_satellite
+              state: "listening"
+          then:
+            - action: persistent_notification.create
+              data:
+                notification_id: naboo_listening_hang
+                title: "⚠️ Naboo still stuck — mute toggle failed"
+                message: >
+                  Recovery attempt failed at {{ now().strftime('%H:%M:%S') }}.
+                  Device still in listening state. Manual intervention required
+                  (say the wake word again, or power-cycle).
+          else:
+            - action: persistent_notification.dismiss
+              data:
+                notification_id: naboo_listening_hang
 
 # 6. VAD SENSITIVITY: set Naboo's "Finished speaking detection" to "relaxed"
 #    on every HA startup and every time the device reconnects.

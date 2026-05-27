@@ -55,6 +55,7 @@
 
 ## 🔮 Future / Lower Priority
 
+- [ ] **Investigate go-librespot as librespot replacement** — Go rewrite of the Spotify Connect protocol; ARM64 binary available; built-in HTTP control API (could replace serve_http.py); reports better long-term stability than C++ librespot. Goal: eliminate the heal loop, watchdog, and retry logic in spotify_resume.py.
 - [ ] **Monitor small model accuracy (ongoing)** — `whisper-small-mlx-4bit` / WhisperKit small benchmarked well but needs real-world validation across voice diversity, proper nouns (WFMU, KEXP), and noisy conditions. Watch voice-bench dashboard for transcription errors.
 - [ ] **voice-bench (no transcription) for radio commands** — P8/low. VAD early-trigger path produces two WhisperKit transcriptions per command; session finalizer races the slower result. Deferred — latency and hang tracking still work, transcription text unreliable for radio commands. Candidate for deprecation.
 - [ ] **Frigate CoreML detection** — Apple Neural Engine path (currently using ZMQ via FrigateDetector.app)
