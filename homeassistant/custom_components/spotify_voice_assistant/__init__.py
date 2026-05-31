@@ -471,6 +471,28 @@ async def async_setup(hass: HomeAssistant, config: ConfigType) -> bool:
             _LOGGER.warning("Could not pause Spotify: %s", err)
             return {"error": f"Pause failed: {err}"}
 
+    async def resume_playback(call: ServiceCall):
+        """Resume Spotify playback on the active device (no URI — continues current context).
+
+        Calls start_playback() with no arguments, which is the Spotify Web API
+        equivalent of pressing Play on a paused session. librespot will fire a
+        'playing' event → on_event.sh → librespot_playing webhook → ESPHome plays
+        the HTTP stream on Naboo — same chain as a fresh spotify_voice_assistant.play.
+        """
+        try:
+            client = await get_spotify_client()
+        except (LookupError, AttributeError) as err:
+            _LOGGER.warning("Cannot resume Spotify — no client: %s", err)
+            return {"error": str(err)}
+
+        try:
+            await client.playback_resume()
+            _LOGGER.info("▶ Resumed Spotify playback")
+            return {"success": True}
+        except Exception as err:
+            _LOGGER.warning("Could not resume Spotify: %s", err)
+            return {"error": f"Resume failed: {err}"}
+
     async def clear_cache(call: ServiceCall):
         """Clear Spotify client and user playlists cache."""
         if _spotify_cache["client"] is not None or _spotify_cache["user_playlists"] is not None:
@@ -635,6 +657,9 @@ async def async_setup(hass: HomeAssistant, config: ConfigType) -> bool:
     )
     hass.services.async_register(
         DOMAIN, "pause", pause_playback, supports_response="optional"
+    )
+    hass.services.async_register(
+        DOMAIN, "resume", resume_playback, supports_response="optional"
     )
     hass.services.async_register(
         DOMAIN, "clear_cache", clear_cache, supports_response="only"
