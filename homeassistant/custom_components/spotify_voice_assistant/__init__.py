@@ -472,13 +472,15 @@ async def async_setup(hass: HomeAssistant, config: ConfigType) -> bool:
             return {"error": f"Pause failed: {err}"}
 
     async def resume_playback(call: ServiceCall):
-        """Resume Spotify playback on the active device (no URI — continues current context).
+        """Resume Spotify playback on Naboo (no URI — continues current context).
 
-        Calls start_playback() with no arguments, which is the Spotify Web API
-        equivalent of pressing Play on a paused session. librespot will fire a
-        'playing' event → on_event.sh → librespot_playing webhook → ESPHome plays
-        the HTTP stream on Naboo — same chain as a fresh spotify_voice_assistant.play.
+        Finds the Naboo/librespot device by name (same logic as play_on_device)
+        and calls start_playback(device_id=...) with no URI, which resumes the
+        current context on that specific device. librespot fires a 'playing' event
+        → on_event.sh → librespot_playing webhook → ESPHome plays the HTTP stream.
         """
+        device_name = call.data.get("device_name", "Naboo")
+
         try:
             client = await get_spotify_client()
         except (LookupError, AttributeError) as err:
@@ -486,8 +488,20 @@ async def async_setup(hass: HomeAssistant, config: ConfigType) -> bool:
             return {"error": str(err)}
 
         try:
-            await client.start_playback()
-            _LOGGER.info("▶ Resumed Spotify playback")
+            devices = await client.get_devices()
+            device_id = None
+            for device in devices:
+                if hasattr(device, "name") and device.name == device_name:
+                    device_id = getattr(device, "device_id", None) or getattr(device, "id", None)
+                    break
+
+            if device_id:
+                _LOGGER.info("▶ Resuming Spotify on '%s' (id=%s)", device_name, device_id)
+                await client.start_playback(device_id=device_id)
+            else:
+                _LOGGER.warning("Device '%s' not found via get_devices(), resuming on active device", device_name)
+                await client.start_playback()
+
             return {"success": True}
         except Exception as err:
             _LOGGER.warning("Could not resume Spotify: %s", err)

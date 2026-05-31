@@ -508,15 +508,8 @@
                           state: "unavailable"
                   sequence:
                     - action: spotify_voice_assistant.resume
-                    # Always explicitly start the HTTP stream on ESPHome too.
-                    # librespot's state file can be stale ("playing") and skip the
-                    # librespot_playing webhook, so we can't rely on the event chain.
-                    - action: media_player.play_media
-                      target:
-                        entity_id: media_player.home_assistant_voice_0a3a76_media_player
                       data:
-                        media_content_id: "http://192.168.1.70:8765"
-                        media_content_type: music
+                        device_name: "Naboo"
               # Fallback: Spotify has nothing to resume — search first user playlist.
               default:
                 - action: spotify_voice_assistant.search
