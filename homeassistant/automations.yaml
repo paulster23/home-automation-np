@@ -499,18 +499,25 @@
               value_template: "{{ trigger.json.action == 'start' }}"
           sequence:
             - choose:
-                # Happy path: Spotify is paused — resume via Web API so librespot
-                # fires the playing event → on_event.sh → ESPHome plays the stream.
+                # Happy path: Spotify has an active session — resume via Web API.
                 - conditions:
-                    - condition: state
-                      entity_id: media_player.home_assistant_voice_0a3a76_media_player
-                      state: "paused"
+                    - condition: not
+                      conditions:
+                        - condition: state
+                          entity_id: media_player.home_assistant_voice_0a3a76_media_player
+                          state: "unavailable"
                   sequence:
                     - action: spotify_voice_assistant.resume
-              # Fallback: nothing was paused (first ad break of the session or cold
-              # start). Search the user's saved playlists — query "playlist" strips
-              # the word and returns the first entry from get_playlists_for_current_user(),
-              # which is typically a recently-used or top playlist.
+                    # Always explicitly start the HTTP stream on ESPHome too.
+                    # librespot's state file can be stale ("playing") and skip the
+                    # librespot_playing webhook, so we can't rely on the event chain.
+                    - action: media_player.play_media
+                      target:
+                        entity_id: media_player.home_assistant_voice_0a3a76_media_player
+                      data:
+                        media_content_id: "http://192.168.1.70:8765"
+                        media_content_type: music
+              # Fallback: Spotify has nothing to resume — search first user playlist.
               default:
                 - action: spotify_voice_assistant.search
                   data:
