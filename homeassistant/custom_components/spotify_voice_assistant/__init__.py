@@ -486,7 +486,7 @@ async def async_setup(hass: HomeAssistant, config: ConfigType) -> bool:
             return {"error": str(err)}
 
         try:
-            await client.playback_resume()
+            await client.start_playback()
             _LOGGER.info("▶ Resumed Spotify playback")
             return {"success": True}
         except Exception as err:
