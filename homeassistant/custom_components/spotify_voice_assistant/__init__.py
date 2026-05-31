@@ -498,14 +498,36 @@ async def async_setup(hass: HomeAssistant, config: ConfigType) -> bool:
             if device_id:
                 _LOGGER.info("▶ Resuming Spotify on '%s' (id=%s)", device_name, device_id)
                 await client.start_playback(device_id=device_id)
+                return {"success": True, "method": "resume"}
             else:
-                _LOGGER.warning("Device '%s' not found via get_devices(), resuming on active device", device_name)
-                await client.start_playback()
-
-            return {"success": True}
+                _LOGGER.warning("Device '%s' not in get_devices() — falling back to first user playlist", device_name)
         except Exception as err:
-            _LOGGER.warning("Could not resume Spotify: %s", err)
-            return {"error": f"Resume failed: {err}"}
+            _LOGGER.warning("Could not resume Spotify (%s) — falling back to playlist search", err)
+
+        # Fallback: nothing to resume on Naboo — play first saved playlist
+        try:
+            if _spotify_cache["user_playlists"] is None:
+                resp = await client.get_playlists_for_current_user()
+                _spotify_cache["user_playlists"] = resp.items if resp and hasattr(resp, "items") else []
+            playlists = _spotify_cache["user_playlists"]
+            if playlists:
+                uri = getattr(playlists[0], "uri", None)
+                name = getattr(playlists[0], "name", "unknown")
+                _LOGGER.info("▶ No active session — playing first playlist: %s (%s)", name, uri)
+                # Reuse play_on_device logic via a synthetic call
+                fake_call_data = {"uri": uri, "device_name": device_name}
+
+                class _FakeCall:
+                    data = fake_call_data
+
+                await play_on_device(_FakeCall())
+                return {"success": True, "method": "playlist_fallback", "playlist": name}
+            else:
+                _LOGGER.warning("No user playlists found for fallback")
+                return {"error": "No playlists available for fallback"}
+        except Exception as err:
+            _LOGGER.warning("Playlist fallback failed: %s", err)
+            return {"error": f"Fallback failed: {err}"}
 
     async def clear_cache(call: ServiceCall):
         """Clear Spotify client and user playlists cache."""
