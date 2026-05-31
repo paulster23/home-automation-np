@@ -317,12 +317,20 @@
   action:
     # HA restart orphan fix: librespot keeps streaming through an HA restart,
     # so no session_connected event fires to reset the state file. On startup,
-    # wait for HA integrations (ESPHome, MA) to fully reconnect (~2 min), clear
-    # any stuck radio lock, then re-attach naboo to the HTTP stream directly.
+    # wait for HA integrations (ESPHome, Spotify) to fully reconnect (~2 min),
+    # clear any stuck radio lock, then conditionally re-attach naboo.
     - delay: "00:02:00"
     - action: input_boolean.turn_off
       target:
         entity_id: input_boolean.radio_active
+    # Only reconnect the HTTP stream if Spotify is actively playing to Naboo
+    # right now. If Spotify was paused/stopped when HA restarted, serve_http.py
+    # is idle — a blind play_media call would hang the ESPHome player with
+    # HTTPRead: Reader timed out for 3+ minutes. Skip it; user just hits play.
+    - condition: template
+      value_template: >
+        {{ is_state('media_player.spotify_paulster23', 'playing')
+           and state_attr('media_player.spotify_paulster23', 'source') == 'Naboo' }}
     - action: media_player.play_media
       target:
         entity_id: media_player.home_assistant_voice_0a3a76_media_player
@@ -468,3 +476,36 @@
     - action: media_player.media_stop
       target:
         entity_id: media_player.home_assistant_voice_0a3a76_media_player
+
+# ── Ad-mute Spotify swap ──────────────────────────────────────────────────────
+# Triggered by the admute-controller daemon on the Mac host (port 8767).
+# action=start → play fixed Spotify playlist on Naboo speakers.
+# action=stop  → stop Naboo playback.
+# Uses a fixed, saved playlist URI to avoid the HA 2026.4.4 MissingField bug
+# that affects algorithmic playlists (Daily Mix / Radio / Discover Weekly).
+- id: admute_spotify
+  alias: "Ad-mute – Swap game audio for Spotify on Naboo during commercials"
+  mode: restart
+  trigger:
+    - platform: webhook
+      webhook_id: admute_spotify
+      allowed_methods:
+        - POST
+      local_only: false
+  action:
+    - choose:
+        - conditions:
+            - condition: template
+              value_template: "{{ trigger.json.action == 'start' }}"
+          sequence:
+            - action: spotify_voice_assistant.play
+              data:
+                device_name: "Naboo"
+                uri: "{{ trigger.json.uri | default('spotify:playlist:REPLACE_WITH_FIXED_URI') }}"
+        - conditions:
+            - condition: template
+              value_template: "{{ trigger.json.action == 'stop' }}"
+          sequence:
+            - action: media_player.media_stop
+              target:
+                entity_id: media_player.home_assistant_voice_0a3a76_media_player
