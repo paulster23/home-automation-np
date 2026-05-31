@@ -479,9 +479,10 @@
 
 # ── Ad-mute Spotify swap ──────────────────────────────────────────────────────
 # Triggered by the admute-controller daemon on the Mac host (port 8767).
-# action=start → resume whatever was last playing on Spotify/Naboo (play, not start-new).
-# action=stop  → pause Naboo so Spotify remembers position for the next ad break.
-# No URI needed — media_player.media_play resumes the active Spotify Connect session.
+# action=start:
+#   • If Naboo is paused → media_play (resumes mid-song exactly where it left off)
+#   • Otherwise (idle/off) → search user's first saved playlist and play it on Naboo
+# action=stop → media_pause so Spotify holds position for the next ad break.
 - id: admute_spotify
   alias: "Ad-mute – Resume/pause Spotify on Naboo during commercial breaks"
   mode: restart
@@ -497,9 +498,34 @@
             - condition: template
               value_template: "{{ trigger.json.action == 'start' }}"
           sequence:
-            - action: media_player.media_play
-              target:
-                entity_id: media_player.home_assistant_voice_0a3a76_media_player
+            - choose:
+                # Happy path: Naboo is paused — resume exactly where it left off.
+                - conditions:
+                    - condition: state
+                      entity_id: media_player.home_assistant_voice_0a3a76_media_player
+                      state: "paused"
+                  sequence:
+                    - action: media_player.media_play
+                      target:
+                        entity_id: media_player.home_assistant_voice_0a3a76_media_player
+              # Fallback: nothing was paused (first ad break of the session or cold
+              # start). Search the user's saved playlists — query "playlist" strips
+              # the word and returns the first entry from get_playlists_for_current_user(),
+              # which is typically a recently-used or top playlist.
+              default:
+                - action: spotify_voice_assistant.search
+                  data:
+                    query: "playlist"
+                    type: "playlist"
+                  response_variable: search_result
+                - if:
+                    - condition: template
+                      value_template: "{{ 'uri' in search_result }}"
+                  then:
+                    - action: spotify_voice_assistant.play
+                      data:
+                        uri: "{{ search_result.uri }}"
+                        device_name: "Naboo"
         - conditions:
             - condition: template
               value_template: "{{ trigger.json.action == 'stop' }}"
