@@ -156,6 +156,7 @@ while True:
                 except OSError:
                     pass
                 client = None
+                _stall_start_mono = None  # clear any active stall — session is over
 
         # ── Audio data from ffmpeg via stdin ──────────────────────────────────
         elif fd == stdin_fd:
@@ -187,6 +188,7 @@ while True:
                     except OSError:
                         pass
                     client = None
+                    _stall_start_mono = None  # clear any active stall — session is over
 
             # Throughput tracking — cumulative bytes and rate for this session.
             _tp_bytes += len(data)

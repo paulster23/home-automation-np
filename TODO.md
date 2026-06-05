@@ -1,6 +1,6 @@
 # Home Automation — To-Do List
 
-*Last updated: 2026-05-10*
+*Last updated: 2026-06-02*
 
 ---
 
@@ -38,12 +38,14 @@
 - **Fix Tailscale remote HA access (2026-05-06)** — `tailscale serve` endpoints had `localhost:PORT` backends after May 5 Docker port migration. Re-ran all 10 endpoints with `--bg` + `192.168.1.70` backends. OPS_RUNBOOK updated with `--bg` warning.
 - **Fix spotify_voice_assistant stale entity (2026-05-09)** — `play` and `podcast_play` in `spotify_voice_assistant/__init__.py` were hardcoded to removed MA entity. Fixed to `media_player.home_assistant_voice_0a3a76_media_player`. Committed `404cfc0`.
 - **Librespot LaunchAgent enable fix (2026-05-09)** — After May 6 reboot, `com.librespot.naboo` wasn't registered with launchd. Applied `launchctl enable gui/$(id -u)/com.librespot.naboo`. Verify on next reboot.
+- **wyoming-mlx-whisper STT fallback retired (2026-06-02)** — The only voice pipeline ("Home Assistant") uses `stt.whisperkit` (7892); nothing routed to the 7891 mlx fallback in normal use, and it was crash-looping while idle (model drift to heavy `distil-whisper-large-v3` + a since-fixed `NameError` in `__main__.py`). Surfaced by the 2026-06-02 HA restart ("whisper-cpp not ready, Unable to connect"). LaunchAgent `com.wyoming.mlx-whisper` booted out + `launchctl disable`d (PID 659 gone). HA Wyoming entry `whisper-cpp` (host.docker.internal:7891) deleted — retry loop confirmed stopped (last line 00:25:38, no restart needed). Frees RAM on the 8 GB box. CONTEXT.md marked RETIRED; repo files kept for restore.
+- **WindmillAC integration added (2026-06-02)** — HACS custom integration (bzellman/WindmillAC, v1.0.6) for the Windmill AC unit → climate entity. Runs in HA process (no container). `iot_class: cloud_polling` via Windmill's Blynk cloud (auth token from dashboard.windmillair.com); deps `requests` + `blynklib` (both synchronous). **Logger quieted (2026-06-02):** Added `logger:` block in `configuration.yaml` (`custom_components.windmillac: warning`) — but that alone did NOT work: all three modules (`blynk_service.py`, `entity.py`, `climate.py`) hardcode `_LOGGER.setLevel(logging.DEBUG)`, which overrides HA's logger hierarchy. Commented out the setLevel line in all three. **Security:** the DEBUG output was logging the Windmill auth token in plaintext on every poll (`blynk_service.py` request URL) — disabling DEBUG also closes that exposure. **Note:** all three edits get overwritten on the next HACS update — recheck after updating. Watch for blocking-call warnings from `requests`/`blynklib` in the event loop, and brittleness if Windmill changes their Blynk API.
 
 ---
 
 ## 🔲 Pending
 
-- [ ] **Verify librespot survives Tuesday reboot (2026-05-12)** — `launchctl enable` applied 2026-05-09. After reboot: check `run.log` for a new `Starting librespot pipeline` entry. If missing, check `launchctl print gui/$(id -u)/com.librespot.naboo`.
+- [x] **Verify librespot survives Tuesday reboot (2026-05-12)** — ✅ Confirmed 2026-05-27. Stream sessions observed on May 20, 25, 27 — `launchctl enable` fix is working across reboots.
 
 ---
 

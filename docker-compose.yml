@@ -102,7 +102,7 @@ services:
     deploy:
       resources:
         limits:
-          memory: 1310m   # raised from 1024m (2026-04-14) — persistent 96% peak; 1.28GiB = 1310m to stay within budget
+          memory: 1536m   # raised from 1310m (2026-05-27) — post-restart drift +247 MiB/week trend; 1536m gives ~4 weeks runway
           cpus: "2.0"     # reduced from 4.0 — no CPU detection workload
         reservations:
           memory: 512m
@@ -157,7 +157,7 @@ services:
     deploy:
       resources:
         limits:
-          memory: 768m    # raised from 640m (2026-04-08) — Apr 2 report showed 501–512m usage (78–80% of 640m, HIGH risk). 640m headroom exhausted.
+          memory: 896m    # raised from 768m (2026-05-27) — recurring 80%+ peaks; +48 MiB/week trend; preemptive raise
           cpus: "1.5"
         reservations:
           memory: 192m

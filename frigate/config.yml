@@ -38,17 +38,18 @@ cameras:
         # Credentials loaded from environment variables (see docker-compose.yml secrets)
         - path:
             rtsp://{FRIGATE_RTSP_USER}:{FRIGATE_RTSP_PASSWORD}@192.168.1.33:554/h264Preview_01_sub
-          input_args: -rtsp_transport tcp -stimeout 5000000
+          input_args: -rtsp_transport tcp -timeout 5000000
           roles:
             - detect
 
         # Main stream (Clear 2880x1616): used for recording full quality
-        # -stimeout 5000000: socket-level read timeout (5s). Makes ffmpeg self-exit when the
+        # -timeout 5000000: socket-level read timeout (5s). Makes ffmpeg self-exit when the
         # camera stream stalls, so the watchdog can restart it immediately (~5s downtime)
         # rather than waiting 120s for the watchdog + 30s force-kill (~150s downtime).
+        # Note: was -stimeout prior to 2026-05-28; renamed in newer ffmpeg builds.
         - path:
             rtsp://{FRIGATE_RTSP_USER}:{FRIGATE_RTSP_PASSWORD}@192.168.1.33:554/h264Preview_01_main
-          input_args: -rtsp_transport tcp -stimeout 5000000
+          input_args: -rtsp_transport tcp -timeout 5000000
           roles:
             - record
 

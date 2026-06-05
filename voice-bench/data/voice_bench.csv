@@ -633,3 +633,82 @@ seed_0129,,Stop.,other,,13191,,,13191,,,pre-bench-history,distil-whisper-large-v
 20260506_191422_694,2026-05-06T19:14:22.694750-04:00,Cubics are.,other,6563,1746,,,8326,false,false,whisperkit-small-esphome-direct,whisperkit-small
 20260506_191451_946,2026-05-06T19:14:51.946606-04:00,Play WBGO.,music,4961,1430,,,5310,false,false,whisperkit-small-esphome-direct,whisperkit-small
 20260506_191817_316,2026-05-06T19:18:17.316447-04:00,Play WBGO,music,4559,1789,,,5021,false,false,whisperkit-small-esphome-direct,whisperkit-small
+20260506_235557_729,2026-05-06T23:55:57.729506-04:00,Good day.,other,4170,1643,314,2416,6901,false,false,whisperkit-small-esphome-direct,whisperkit-small
+20260506_235610_363,2026-05-06T23:56:10.363795-04:00,Good night.,home,4268,1396,,,4896,false,false,whisperkit-small-esphome-direct,whisperkit-small
+20260506_235625_703,2026-05-06T23:56:25.703542-04:00,What time is it?,time,4490,1057,32,2495,7018,false,false,whisperkit-small-esphome-direct,whisperkit-small
+20260507_074018_050,2026-05-07T07:40:18.050962-04:00,Turn on the light.,home,3585,1610,252,1800,5637,false,false,whisperkit-small-esphome-direct,whisperkit-small
+20260507_121034_748,2026-05-07T12:10:34.748294-04:00,Turn this be gron.,other,4199,1618,85,4920,9206,false,false,whisperkit-small-esphome-direct,whisperkit-small
+20260507_121046_586,2026-05-07T12:10:46.586885-04:00,Turn the speaker on.,other,4201,1270,242,1526,5970,false,false,whisperkit-small-esphome-direct,whisperkit-small
+20260507_121056_182,2026-05-07T12:10:56.182484-04:00,Play WNYC.,radio,5098,1259,,,5388,false,false,whisperkit-small-esphome-direct,whisperkit-small
+20260507_151319_438,2026-05-07T15:13:19.438294-04:00,Turn the speaker off.,other,4284,1390,337,1721,6343,false,false,whisperkit-small-esphome-direct,whisperkit-small
+20260507_172245_757,2026-05-07T17:22:45.757392-04:00,Turn the speaker on.,other,4977,1465,233,1803,7014,false,false,whisperkit-small-esphome-direct,whisperkit-small
+20260507_172301_677,2026-05-07T17:23:01.677306-04:00,Play WNYC radio.,radio,5298,1213,,,5853,false,false,whisperkit-small-esphome-direct,whisperkit-small
+20260507_192925_893,2026-05-07T19:29:25.893680-04:00,,other,1064755,1178,,,1064755,false,false,whisperkit-small-esphome-direct,whisperkit-small
+20260507_195704_325,2026-05-07T19:57:04.325132-04:00,Play WBGO.,music,6142,1454,,,6519,false,false,whisperkit-small-esphome-direct,whisperkit-small
+20260508_005829_001,2026-05-08T00:58:29.001901-04:00,Good night.,home,6286,2028,,,7163,false,false,whisperkit-small-esphome-direct,whisperkit-small
+20260508_083539_563,2026-05-08T08:35:39.563224-04:00,Turn on the light.,home,3452,1645,245,1661,5359,false,false,whisperkit-small-esphome-direct,whisperkit-small
+20260508_131210_111,2026-05-08T13:12:10.111161-04:00,Play. Turn the speaker on.,other,5267,1684,,,6230,false,false,whisperkit-small-esphome-direct,whisperkit-small
+20260508_131223_916,2026-05-08T13:12:23.916485-04:00,Turn the speaker on.,other,3921,1270,224,1760,5906,false,false,whisperkit-small-esphome-direct,whisperkit-small
+20260508_162911_772,2026-05-08T16:29:11.772384-04:00,Turn the speaker on.,other,4240,1527,221,1562,6024,false,false,whisperkit-small-esphome-direct,whisperkit-small
+20260508_184107_040,2026-05-08T18:41:07.040252-04:00,Play WNYC.,radio,5355,1905,,,6153,true,false,whisperkit-small-esphome-direct,whisperkit-small
+20260508_194125_088,2026-05-08T19:41:25.088508-04:00,Play WBGO.,music,4429,2118,,,4872,false,false,whisperkit-small-esphome-direct,whisperkit-small
+20260509_001938_630,2026-05-09T00:19:38.630413-04:00,Please Spotify.,music,4243,1926,,,4383,false,false,whisperkit-small-esphome-direct,whisperkit-small
+20260509_001957_681,2026-05-09T00:19:57.681962-04:00,Play the song Rip Torn by MJ Letterman.,music,7423,1510,,,11352,false,false,whisperkit-small-esphome-direct,whisperkit-small
+20260509_003050_733,2026-05-09T00:30:50.733293-04:00,Play MJ Lenderman.,music,4905,2119,,,6108,false,false,whisperkit-small-esphome-direct,whisperkit-small
+20260509_004431_615,2026-05-09T00:44:31.615751-04:00,Good night.,home,4654,1994,,,5184,false,false,whisperkit-small-esphome-direct,whisperkit-small
+20260509_210854_054,2026-05-09T21:08:54.054466-04:00,Turn on the speaker.,home,4253,2035,428,1621,6303,false,false,whisperkit-small-esphome-direct,whisperkit-small
+20260509_210904_281,2026-05-09T21:09:04.281349-04:00,Play KEXP,radio,4273,1466,,,4645,false,false,whisperkit-small-esphome-direct,whisperkit-small
+20260509_225724_789,2026-05-09T22:57:24.789912-04:00,,other,41263,5109,213,15103,56580,false,false,whisperkit-small-esphome-direct,whisperkit-small
+20260510_005208_248,2026-05-10T00:52:08.248842-04:00,Goodnight.,home,3946,1524,,,4491,false,false,whisperkit-small-esphome-direct,whisperkit-small
+20260510_191229_660,2026-05-10T19:12:29.660701-04:00,(camera clicks),other,4941,1661,458,1701,7101,true,false,whisperkit-small-esphome-direct,whisperkit-small
+20260510_191240_145,2026-05-10T19:12:40.145727-04:00,Play WQXR.,radio,6687,1524,,,7210,false,false,whisperkit-small-esphome-direct,whisperkit-small
+20260510_210750_566,2026-05-10T21:07:50.566303-04:00,Stop.,other,1076515,1907,,,1076515,false,false,whisperkit-small-esphome-direct,whisperkit-small
+20260511_001910_869,2026-05-11T00:19:10.869194-04:00,Good night.,home,4316,1773,,,4871,false,false,whisperkit-small-esphome-direct,whisperkit-small
+20260511_190549_765,2026-05-11T19:05:49.765534-04:00,Turn the speaker on.,other,6061,2845,584,2143,8789,true,false,whisperkit-small-esphome-direct,whisperkit-small
+20260511_190606_992,2026-05-11T19:06:06.992337-04:00,Play WBGO.,music,4873,1759,,,5618,false,false,whisperkit-small-esphome-direct,whisperkit-small
+20260511_210554_460,2026-05-11T21:05:54.460872-04:00,,other,559098,2073,,,559098,false,false,whisperkit-small-esphome-direct,whisperkit-small
+20260511_235314_455,2026-05-11T23:53:14.455575-04:00,Good night.,home,4688,1749,,,5238,true,false,whisperkit-small-esphome-direct,whisperkit-small
+20260512_065921_164,2026-05-12T06:59:21.164513-04:00,Turn on the light.,home,3518,1686,325,1737,5581,true,false,whisperkit-small-esphome-direct,whisperkit-small
+20260512_195954_040,2026-05-12T19:59:54.040329-04:00,Turn on the speaker.,home,4400,2237,351,1905,6657,true,false,whisperkit-small-esphome-direct,whisperkit-small
+20260512_200432_583,2026-05-12T20:04:32.583571-04:00,Play WQXR.,radio,5952,2027,,,6476,false,false,whisperkit-small-esphome-direct,whisperkit-small
+20260512_210557_891,2026-05-12T21:05:57.891170-04:00,Stop!,other,5085,2829,,,6180,false,false,whisperkit-small-esphome-direct,whisperkit-small
+20260513_002353_356,2026-05-13T00:23:53.356808-04:00,Goodnight.,home,5059,2241,,,5562,false,false,whisperkit-small-esphome-direct,whisperkit-small
+20260513_010648_032,2026-05-13T01:06:48.032136-04:00,(bubble popping) Good night. [water running],home,8349,2741,158,2538,11046,false,false,whisperkit-small-esphome-direct,whisperkit-small
+20260513_195919_450,2026-05-13T19:59:19.450469-04:00,Turn on the speaker.,home,4453,2060,347,2176,6977,false,false,whisperkit-small-esphome-direct,whisperkit-small
+20260513_195932_966,2026-05-13T19:59:32.966027-04:00,Play KEXP,radio,5573,1706,,,5940,false,false,whisperkit-small-esphome-direct,whisperkit-small
+20260513_200513_575,2026-05-13T20:05:13.575219-04:00,Play KCRW.,radio,5602,1809,,,6047,false,false,whisperkit-small-esphome-direct,whisperkit-small
+20260513_200621_892,2026-05-13T20:06:21.892892-04:00,Play WQBR.,music,4713,1603,,,5148,false,false,whisperkit-small-esphome-direct,whisperkit-small
+20260513_200634_941,2026-05-13T20:06:34.941768-04:00,Play WQBR.,music,4167,1350,,,4476,false,false,whisperkit-small-esphome-direct,whisperkit-small
+20260513_200648_138,2026-05-13T20:06:48.138866-04:00,Play WFMU,radio,4131,1542,,,4532,false,false,whisperkit-small-esphome-direct,whisperkit-small
+20260514_000217_927,2026-05-14T00:02:17.927482-04:00,Stop.,other,5888,2366,,,6221,false,false,whisperkit-small-esphome-direct,whisperkit-small
+20260514_005120_303,2026-05-14T00:51:20.303867-04:00,Goodnight.,home,4660,2029,,,5178,false,false,whisperkit-small-esphome-direct,whisperkit-small
+20260514_183429_322,2026-05-14T18:34:29.322415-04:00,(kissing),other,4415,2205,574,2040,7031,true,false,whisperkit-small-esphome-direct,whisperkit-small
+20260514_204025_099,2026-05-14T20:40:25.099209-04:00,Stop!,other,17455,2451,,,17819,false,false,whisperkit-small-esphome-direct,whisperkit-small
+20260515_212449_447,2026-05-15T21:24:49.447697-04:00,Turn the speaker off.,other,4174,1881,401,1549,6125,false,false,whisperkit-small-esphome-direct,whisperkit-small
+20260515_232252_303,2026-05-15T23:22:52.303484-04:00,Good night,home,7106,1593,,,7714,false,false,whisperkit-small-esphome-direct,whisperkit-small
+20260515_232312_984,2026-05-15T23:23:12.984055-04:00,Stop. Good night.,home,3867,1575,2713,4593,11174,false,false,whisperkit-small-esphome-direct,whisperkit-small
+20260515_232326_225,2026-05-15T23:23:26.225808-04:00,Goodnight.,home,4207,1345,,,4727,false,false,whisperkit-small-esphome-direct,whisperkit-small
+20260516_122611_365,2026-05-16T12:26:11.365362-04:00,Play a Spotify radio station based on Wednesday.,radio,7304,2524,,,9209,false,false,whisperkit-small-esphome-direct,whisperkit-small
+20260516_122704_425,2026-05-16T12:27:04.425263-04:00,Play a radio station based on MJ Lunderman.,radio,5504,1779,,,6779,false,false,whisperkit-small-esphome-direct,whisperkit-small
+20260517_010443_588,2026-05-17T01:04:43.588770-04:00,Good night.,home,4474,1678,,,5378,true,false,whisperkit-small-esphome-direct,whisperkit-small
+20260517_194608_452,2026-05-17T19:46:08.452480-04:00,Stop.,other,4449,1798,,,4548,false,false,whisperkit-small-esphome-direct,whisperkit-small
+20260517_232550_824,2026-05-17T23:25:50.824996-04:00,Good night,home,17060,2098,,,17593,false,false,whisperkit-small-esphome-direct,whisperkit-small
+20260518_190731_122,2026-05-18T19:07:31.122612-04:00,,other,1148753,2545,,,1148753,false,false,whisperkit-small-esphome-direct,whisperkit-small
+20260518_230422_417,2026-05-18T23:04:22.417492-04:00,Good night.,home,4095,1687,,,4669,false,false,whisperkit-small-esphome-direct,whisperkit-small
+20260519_155626_976,2026-05-19T15:56:26.976572-04:00,Turn this speaker off.,other,5892,2003,294,1709,7895,false,false,whisperkit-small-esphome-direct,whisperkit-small
+20260520_005421_178,2026-05-20T00:54:21.178359-04:00,Good night.,home,4196,1744,,,4739,false,false,whisperkit-small-esphome-direct,whisperkit-small
+20260520_192324_721,2026-05-20T19:23:24.721800-04:00,Stop.,other,4657,2180,,,4834,false,false,whisperkit-small-esphome-direct,whisperkit-small
+20260521_002133_920,2026-05-21T00:21:33.920377-04:00,Goodnight.,home,4200,1689,,,4743,false,false,whisperkit-small-esphome-direct,whisperkit-small
+20260525_211520_277,2026-05-25T21:15:20.277281-04:00,Stop.,other,4758,2364,,,5133,false,false,whisperkit-small-esphome-direct,whisperkit-small
+20260527_011451_470,2026-05-27T01:14:51.470885-04:00,Good night.,home,4328,1751,,,5135,false,false,whisperkit-small-esphome-direct,whisperkit-small
+20260527_201114_316,2026-05-27T20:11:14.316337-04:00,(glass clattering),other,7115,1285,178,2565,9858,false,false,whisperkit-small-esphome-direct,whisperkit-small
+20260527_222537_823,2026-05-27T22:25:37.823468-04:00,Good night.,home,7539,1999,,,8078,false,false,whisperkit-small-esphome-direct,whisperkit-small
+20260529_002915_254,2026-05-29T00:29:15.254707-04:00,point transfer shovel or as they say in the comments when they've written a shovel.,other,8372,2149,602,6390,15365,false,false,whisperkit-small-esphome-direct,whisperkit-small
+20260529_011004_580,2026-05-29T01:10:04.580091-04:00,Goodnight.,home,4146,1802,,,4734,false,false,whisperkit-small-esphome-direct,whisperkit-small
+20260531_005804_631,2026-05-31T00:58:04.631473-04:00,a ship's top speed is ultimately limited by its,other,17451,2379,375,4923,22750,false,false,whisperkit-small-esphome-direct,whisperkit-small
+20260601_010629_359,2026-06-01T01:06:29.359578-04:00,Goodnight.,home,4190,1692,,,4937,false,false,whisperkit-small-esphome-direct,whisperkit-small
+20260601_195729_733,2026-06-01T19:57:29.733780-04:00,(radio chatter),radio,4944,2287,237,2342,7524,false,false,whisperkit-small-esphome-direct,whisperkit-small
+20260602_012851_581,2026-06-02T01:28:51.581229-04:00,Good night.,home,4666,2207,,,5421,false,false,whisperkit-small-esphome-direct,whisperkit-small
+20260603_183236_512,2026-06-03T18:32:36.512379-04:00,(water splashing),other,5896,2117,301,2424,8621,false,false,whisperkit-small-esphome-direct,whisperkit-small
+20260604_002653_248,2026-06-04T00:26:53.248622-04:00,Good night.,home,3884,2047,,,4474,true,false,whisperkit-small-esphome-direct,whisperkit-small
+20260604_194355_444,2026-06-04T19:43:55.444190-04:00,pause,other,6534,3603,,,6782,false,false,whisperkit-small-esphome-direct,whisperkit-small

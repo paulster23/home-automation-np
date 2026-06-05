@@ -53,7 +53,12 @@ class BlynkService:
                     else:
                         return response.json()[0]
                 except (ValueError, IndexError) as e:
-                    _LOGGER.warning(f"Failed to parse response for {pin} (body={repr(response.text)}): {e}, returning None")
+                    if response.text.strip() == "--":
+                        # Blynk returns "--" when the device is offline or the pin has no data yet.
+                        # This is expected and not actionable — log at debug only.
+                        _LOGGER.debug(f"No data from Blynk for {pin} (device offline or pin uninitialised), returning None")
+                    else:
+                        _LOGGER.warning(f"Failed to parse response for {pin} (body={repr(response.text)}): {e}, returning None")
                     return None
             else:
                 raise Exception(f"Failed to get pin value for {pin}")

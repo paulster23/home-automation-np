@@ -81,3 +81,31 @@ radio_play_station:
                       entity_id: assist_satellite.home_assistant_voice_0a3a76_assist_satellite
                     data:
                       message: "{{ station | upper }} is not available right now."
+
+windmill_temp_up:
+  alias: "Windmill AC Temp Up"
+  icon: mdi:thermometer-plus
+  mode: queued
+  max: 5
+  sequence:
+    - action: climate.set_temperature
+      target:
+        entity_id: climate.windmill_ac
+      data:
+        temperature: >
+          {{ [ (state_attr('climate.windmill_ac','temperature') | float(72)) + 1,
+               state_attr('climate.windmill_ac','max_temp') | float(95) ] | min }}
+
+windmill_temp_down:
+  alias: "Windmill AC Temp Down"
+  icon: mdi:thermometer-minus
+  mode: queued
+  max: 5
+  sequence:
+    - action: climate.set_temperature
+      target:
+        entity_id: climate.windmill_ac
+      data:
+        temperature: >
+          {{ [ (state_attr('climate.windmill_ac','temperature') | float(72)) - 1,
+               state_attr('climate.windmill_ac','min_temp') | float(45) ] | max }}

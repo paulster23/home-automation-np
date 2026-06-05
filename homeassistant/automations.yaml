@@ -1,508 +1,399 @@
-# ── Auto-pause music during voice commands ───────────────────────────────────
-# Root cause (from wyoming logs): "What time is it?" = 15-16s STT every time.
-# "Play Rolling Stones radio" = 3s. Difference: music commands trigger the
-# auto-pause (mutes amp → clean silence for VAD → short recording). Non-music
-# commands don't, so the mic picks up ambient room noise → VAD waits → long
-# recording → slow Whisper.
-#
-# Fix: ALWAYS mute the amp when wake word fires (satellite: idle → listening).
-# This gives clean audio on every command regardless of whether music is on.
-#
-# But: the amp must be unmuted BEFORE the TTS response plays back. TTS plays
-# during the "responding" phase; `to: "idle"` fires after that's done — too
-# late. So we unmute the moment speech capture ends: satellite leaves
-# "listening" (→ processing/responding/idle). This is the safe window:
-# the mic is done recording, HA is still processing, TTS hasn't started yet.
-#
-# Music pause/resume logic is unchanged — only happens if MA was playing.
-# ─────────────────────────────────────────────────────────────────────────────
-
-# 1. MUTE: fires every time wake word is detected.
-#    Always mutes amp (cleans up mic input).
-#    Only pauses MA + sets flag if music was actually playing.
 - id: voice_pause_media_on_wake
-  alias: "Voice – Mute amp (and pause media if playing) when wake word detected"
+  alias: Voice – Mute amp (and pause media if playing) when wake word detected
   trigger:
-    - platform: state
-      entity_id: assist_satellite.home_assistant_voice_0a3a76_assist_satellite
-      from: "idle"
-      to: "listening"
+  - platform: state
+    entity_id: assist_satellite.home_assistant_voice_0a3a76_assist_satellite
+    from: idle
+    to: listening
   action:
-    # Always mute immediately — gives Whisper clean silence
-    - action: media_player.volume_mute
-      target:
-        entity_id: media_player.home_assistant_voice_0a3a76_media_player
-      data:
-        is_volume_muted: true
-    # Only pause MA and set the resume flag if music was actually playing
-    - condition: state
+  - action: media_player.volume_mute
+    target:
       entity_id: media_player.home_assistant_voice_0a3a76_media_player
-      state: "playing"
-    - action: input_boolean.turn_on
-      target:
-        entity_id: input_boolean.voice_paused_music
-    - action: media_player.media_pause
-      target:
-        entity_id: media_player.home_assistant_voice_0a3a76_media_player
-
-# 2. UNMUTE EARLY: fires the instant speech recording ends (satellite leaves
-#    "listening"). At this point the mic is done but TTS hasn't started yet —
-#    so the amp is unmuted before the response is spoken.
-- id: voice_unmute_after_listening
-  alias: "Voice – Unmute amp when speech recording ends"
-  trigger:
-    - platform: state
-      entity_id: assist_satellite.home_assistant_voice_0a3a76_assist_satellite
-      from: "listening"
-  action:
-    - action: media_player.volume_mute
-      target:
-        entity_id: media_player.home_assistant_voice_0a3a76_media_player
-      data:
-        is_volume_muted: false
-
-# 3. RESUME: fires when the full pipeline completes (satellite → idle).
-#    Resumes MA only if we auto-paused it and it's still paused.
-#    Also unmutes the amp as a safety net (it's already unmuted from step 2,
-#    but this handles edge cases like stop commands or new-station commands).
-- id: voice_resume_media_on_done
-  alias: "Voice – Resume media after pipeline completes"
-  trigger:
-    - platform: state
-      entity_id: assist_satellite.home_assistant_voice_0a3a76_assist_satellite
-      to: "idle"
-  action:
-    # Belt-and-suspenders unmute in case step 2 didn't fire
-    - action: media_player.volume_mute
-      target:
-        entity_id: media_player.home_assistant_voice_0a3a76_media_player
-      data:
-        is_volume_muted: false
-    # Only resume MA if we paused it AND it's still paused
-    - condition: state
+    data:
+      is_volume_muted: true
+  - condition: state
+    entity_id: media_player.home_assistant_voice_0a3a76_media_player
+    state: playing
+  - action: input_boolean.turn_on
+    target:
       entity_id: input_boolean.voice_paused_music
-      state: "on"
-    - condition: state
+  - action: media_player.media_pause
+    target:
       entity_id: media_player.home_assistant_voice_0a3a76_media_player
-      state: "paused"
-    - action: input_boolean.turn_off
-      target:
-        entity_id: input_boolean.voice_paused_music
-    # Wait for TTS to finish before music resumes
-    - delay:
-        seconds: 1
-    - action: media_player.media_play
-      target:
-        entity_id: media_player.home_assistant_voice_0a3a76_media_player
-
-# 4. PRE-MUTE: keeps the amp muted whenever no music is playing.
-#    This eliminates the "first command" slow path — the amp is already
-#    muted when the wake word fires, so there's no ambient noise window
-#    even before automation #1 executes.
-#    Triggers when MA's player goes to any non-playing state (idle, paused,
-#    stopped, unavailable), AND also on HA start so the amp is muted
-#    immediately after every reload/restart (without this, the amp stays
-#    unmuted until the next MA state transition, making the first cold
-#    command slow every time automations are reloaded).
-- id: voice_premute_when_idle
-  alias: "Voice – Pre-mute amp when music stops"
+- id: voice_unmute_after_listening
+  alias: Voice – Unmute amp when speech recording ends
   trigger:
-    # Idle/off → wait 15s before muting. This prevents racing with radio voice
-    # commands where the pipeline completes (satellite → idle, naboo still idle)
-    # but MA's RadioBrowser lookup takes 2-15s before the stream starts.
-    # Previous "immediate" mute on idle was the root cause of the stuck-mute bug.
-    - platform: state
-      entity_id: media_player.home_assistant_voice_0a3a76_media_player
-      to:
-        - "idle"
-        - "off"
-      for:
-        seconds: 15
-    # Paused → wait 15s before muting (same reason, plus allows for
-    # voice_resume_media_on_done and librespot_stream_resilience to settle).
-    - platform: state
-      entity_id: media_player.home_assistant_voice_0a3a76_media_player
-      to: "paused"
-      for:
-        seconds: 15
-  condition:
-    # Don't fire if a voice command is in progress
-    - condition: state
-      entity_id: assist_satellite.home_assistant_voice_0a3a76_assist_satellite
-      state: "idle"
-    # Don't mute if naboo is actively playing
-    - condition: template
-      value_template: "{{ not is_state('media_player.home_assistant_voice_0a3a76_media_player', 'playing') }}"
-    # Don't mute if Spotify is actively playing — naboo may be mid-reconnect
-    - condition: template
-      value_template: "{{ not is_state('media_player.spotify_paulster23', 'playing') }}"
+  - platform: state
+    entity_id: assist_satellite.home_assistant_voice_0a3a76_assist_satellite
+    from: listening
   action:
-    - action: media_player.volume_mute
-      target:
-        entity_id: media_player.home_assistant_voice_0a3a76_media_player
-      data:
-        is_volume_muted: true
-
-# 5. LISTENING TIMEOUT: abort the pipeline if the satellite stays in
-#    "listening" for more than 15 seconds. Without this, ambient noise
-#    (water, TV, etc.) can cause the VAD to never trigger end-of-speech,
-#    hanging the satellite for minutes. Observed worst case: 461 seconds.
-#
-#    15s gives ample room for longer commands ("play an episode of Radiolab")
-#    while catching genuine hangs well before they become noticeable.
-#    On abort, the satellite returns to idle and the mute automations clean up
-#    normally (voice_unmute_after_listening fires on listening → idle transition).
+  - action: media_player.volume_mute
+    target:
+      entity_id: media_player.home_assistant_voice_0a3a76_media_player
+    data:
+      is_volume_muted: false
+- id: voice_resume_media_on_done
+  alias: Voice – Resume media after pipeline completes
+  trigger:
+  - platform: state
+    entity_id: assist_satellite.home_assistant_voice_0a3a76_assist_satellite
+    to: idle
+  action:
+  - action: media_player.volume_mute
+    target:
+      entity_id: media_player.home_assistant_voice_0a3a76_media_player
+    data:
+      is_volume_muted: false
+  - condition: state
+    entity_id: input_boolean.voice_paused_music
+    state: 'on'
+  - condition: state
+    entity_id: media_player.home_assistant_voice_0a3a76_media_player
+    state: paused
+  - action: input_boolean.turn_off
+    target:
+      entity_id: input_boolean.voice_paused_music
+  - delay:
+      seconds: 1
+  - action: media_player.media_play
+    target:
+      entity_id: media_player.home_assistant_voice_0a3a76_media_player
+- id: voice_premute_when_idle
+  alias: Voice – Pre-mute amp when music stops
+  trigger:
+  - platform: state
+    entity_id: media_player.home_assistant_voice_0a3a76_media_player
+    to:
+    - idle
+    - 'off'
+    for:
+      seconds: 15
+  - platform: state
+    entity_id: media_player.home_assistant_voice_0a3a76_media_player
+    to: paused
+    for:
+      seconds: 15
+  condition:
+  - condition: state
+    entity_id: assist_satellite.home_assistant_voice_0a3a76_assist_satellite
+    state: idle
+  - condition: template
+    value_template: '{{ not is_state(''media_player.home_assistant_voice_0a3a76_media_player'',
+      ''playing'') }}'
+  - condition: template
+    value_template: '{{ not is_state(''media_player.spotify_paulster23'', ''playing'')
+      }}'
+  action:
+  - action: media_player.volume_mute
+    target:
+      entity_id: media_player.home_assistant_voice_0a3a76_media_player
+    data:
+      is_volume_muted: true
 - id: voice_listening_timeout
-  alias: "Voice – Recover Naboo if stuck in listening for too long"
+  alias: Voice – Recover Naboo if stuck in listening for too long
   mode: single
   max_exceeded: silent
   trigger:
-    - platform: state
-      entity_id: assist_satellite.home_assistant_voice_0a3a76_assist_satellite
-      to: "listening"
-      for:
-        seconds: 15
+  - platform: state
+    entity_id: assist_satellite.home_assistant_voice_0a3a76_assist_satellite
+    to: listening
+    for:
+      seconds: 15
+    id: warn
+  - platform: state
+    entity_id: assist_satellite.home_assistant_voice_0a3a76_assist_satellite
+    to: listening
+    for:
+      seconds: 60
+    id: restart
+  action:
+  - if:
+    - condition: trigger
       id: warn
-    - platform: state
-      entity_id: assist_satellite.home_assistant_voice_0a3a76_assist_satellite
-      to: "listening"
-      for:
-        seconds: 60
+    then:
+    - action: persistent_notification.create
+      data:
+        notification_id: naboo_listening_hang
+        title: Naboo listening hang
+        message: 'Naboo has been in "listening" for 15+ seconds ({{ now().strftime(''%H:%M:%S'')
+          }}). Pipeline may be stuck. Will restart device if still listening at 60s.
+
+          '
+  - if:
+    - condition: trigger
       id: restart
-  action:
-    # At 15s: create a persistent notification so the hang is visible in HA.
-    # The pipeline will usually self-recover when ESPHome's own VAD timeout
-    # fires (~30s). If not, the 60s trigger below restarts the device.
-    - if:
-        - condition: trigger
-          id: warn
-      then:
-        - action: persistent_notification.create
-          data:
-            notification_id: naboo_listening_hang
-            title: "Naboo listening hang"
-            message: >
-              Naboo has been in "listening" for 15+ seconds
-              ({{ now().strftime('%H:%M:%S') }}). Pipeline may be stuck.
-              Will restart device if still listening at 60s.
-    # At 60s: device is genuinely stuck and ESPHome's own VAD timeout hasn't fired.
-    # Recovery: toggle mic mute on then off. Muting forces silence into the VAD
-    # pipeline → 700ms silence threshold fires → listening session ends naturally.
-    # switch.home_assistant_voice_0a3a76_mute is enabled and accessible.
-    # We do NOT use button.home_assistant_voice_0a3a76_restart — it's disabled_by
-    # integration and would cause a ~30s firmware reboot (too heavy).
-    - if:
-        - condition: trigger
-          id: restart
-      then:
-        - action: persistent_notification.create
-          data:
-            notification_id: naboo_listening_hang
-            title: "⚠️ Naboo stuck listening 60s — attempting recovery"
-            message: >
-              Naboo stuck in "listening" for 60s ({{ now().strftime('%H:%M:%S') }}).
-              Toggling mic mute to force VAD end-of-speech.
-        - action: switch.turn_on
-          target:
-            entity_id: switch.home_assistant_voice_0a3a76_mute
-        - delay:
-            seconds: 2
-        - action: switch.turn_off
-          target:
-            entity_id: switch.home_assistant_voice_0a3a76_mute
-        - delay:
-            seconds: 3
-        - if:
-            - condition: state
-              entity_id: assist_satellite.home_assistant_voice_0a3a76_assist_satellite
-              state: "listening"
-          then:
-            - action: persistent_notification.create
-              data:
-                notification_id: naboo_listening_hang
-                title: "⚠️ Naboo still stuck — mute toggle failed"
-                message: >
-                  Recovery attempt failed at {{ now().strftime('%H:%M:%S') }}.
-                  Device still in listening state. Manual intervention required
-                  (say the wake word again, or power-cycle).
-          else:
-            - action: persistent_notification.dismiss
-              data:
-                notification_id: naboo_listening_hang
-
-# 6. VAD SENSITIVITY: set Naboo's "Finished speaking detection" to "relaxed"
-#    on every HA startup and every time the device reconnects.
-#    Default mode cuts off longer commands like "play the podcast the Daily"
-#    after ~450ms of silence. Relaxed adds more tolerance.
-- id: naboo_vad_relaxed
-  alias: "Voice – Set Naboo finished-speaking detection to relaxed"
-  mode: single
-  trigger:
-    - platform: homeassistant
-      event: start
-    - platform: state
-      entity_id: select.home_assistant_voice_0a3a76_finished_speaking_detection
-      to: "default"
-    - platform: state
-      entity_id: select.home_assistant_voice_0a3a76_finished_speaking_detection
-      to: "aggressive"
-  action:
-    - delay:
-        seconds: 10
-    - action: select.select_option
-      target:
-        entity_id: select.home_assistant_voice_0a3a76_finished_speaking_detection
+    then:
+    - action: persistent_notification.create
       data:
-        option: "relaxed"
+        notification_id: naboo_listening_hang
+        title: ⚠️ Naboo stuck listening 60s — attempting recovery
+        message: 'Naboo stuck in "listening" for 60s ({{ now().strftime(''%H:%M:%S'')
+          }}). Toggling mic mute to force VAD end-of-speech.
 
-# ── Librespot (Spotify Connect) ───────────────────────────────────────────────
-# librespot fires webhooks via on_event.sh when playback starts/stops.
-# We play the HTTP stream directly on the ESPHome entity to bypass MA's
-# streaming proxy (which adds ~10s buffer lag). Voice-pause automations
-# still work — MA syncs state from the ESPHome entity to naboo_media_player,
-# so all state watches below remain valid.
-#
-# Stream: http://192.168.1.70:8765 (ffmpeg MP3, served by run.sh)
-# ─────────────────────────────────────────────────────────────────────────────
-
-# 5. LIBRESPOT PLAYING: librespot started streaming → play HTTP stream on naboo
-# local_only: false required — HA >= 2023.3 defaults local_only to true.
-# on_event.sh runs on the macOS host; Docker NAT makes requests appear to come
-# from the bridge IP (e.g. 172.17.0.1), which HA rejects as "remote" unless
-# local_only is explicitly false. Not internet-exposed so this is safe.
-- id: librespot_playing
-  alias: "Librespot – Play HTTP stream on naboo when Spotify Connect starts"
-  mode: restart
-  trigger:
-    - platform: webhook
-      webhook_id: librespot_playing
-      allowed_methods:
-        - POST
-      local_only: false
-  action:
-    # on_event.sh only fires this webhook on FIRST play or resume-after-pause
-    # (not on track changes — the HTTP stream stays connected across tracks).
-    # Guard: if radio is active, don't let Spotify stomp it.
-    - condition: state
-      entity_id: input_boolean.radio_active
-      state: "off"
-    # Start the stream directly on the ESPHome entity — bypasses MA's streaming
-    # proxy and its ~10s buffer. MA syncs state from ESPHome, so wait_template
-    # below on naboo_media_player still resolves correctly.
-    - action: media_player.play_media
+          '
+    - action: switch.turn_on
       target:
-        entity_id: media_player.home_assistant_voice_0a3a76_media_player
-      data:
-        media_content_id: "http://192.168.1.70:8765"
-        media_content_type: music
-    - wait_template: "{{ is_state('media_player.home_assistant_voice_0a3a76_media_player', 'playing') }}"
-      timeout: "00:00:20"
-    # Short delay so voice_premute_when_idle (triggered by the idle→playing
-    # transition) fires and settles before we unmute — ensures we unmute last.
+        entity_id: switch.home_assistant_voice_0a3a76_mute
     - delay:
         seconds: 2
-    - action: media_player.volume_mute
+    - action: switch.turn_off
       target:
-        entity_id: media_player.home_assistant_voice_0a3a76_media_player
-      data:
-        is_volume_muted: false
-
-# 6. LIBRESPOT STOPPED: librespot paused or stopped → stop the stream on naboo
-- id: librespot_reconnect_on_ha_start
-  alias: "Librespot – Reconnect naboo stream on HA startup"
-  mode: single
-  trigger:
-    - platform: homeassistant
-      event: start
-  action:
-    # HA restart orphan fix: librespot keeps streaming through an HA restart,
-    # so no session_connected event fires to reset the state file. On startup,
-    # wait for HA integrations (ESPHome, Spotify) to fully reconnect (~2 min),
-    # clear any stuck radio lock, then conditionally re-attach naboo.
-    - delay: "00:02:00"
-    - action: input_boolean.turn_off
-      target:
-        entity_id: input_boolean.radio_active
-    # Only reconnect the HTTP stream if Spotify is actively playing to Naboo
-    # right now. If Spotify was paused/stopped when HA restarted, serve_http.py
-    # is idle — a blind play_media call would hang the ESPHome player with
-    # HTTPRead: Reader timed out for 3+ minutes. Skip it; user just hits play.
-    - condition: template
-      value_template: >
-        {{ is_state('media_player.spotify_paulster23', 'playing')
-           and state_attr('media_player.spotify_paulster23', 'source') == 'Naboo' }}
-    - action: media_player.play_media
-      target:
-        entity_id: media_player.home_assistant_voice_0a3a76_media_player
-      data:
-        media_content_id: "http://192.168.1.70:8765"
-        media_content_type: music
-
-- id: timer_finished_announce
-  alias: "Timer – Announce when timer.general finishes"
-  trigger:
-    - platform: event
-      event_type: timer.finished
-      event_data:
-        entity_id: timer.general
-  action:
-    # Pause music (if playing) so the announcement is heard clearly
-    - if:
-        - condition: state
-          entity_id: media_player.home_assistant_voice_0a3a76_media_player
-          state: playing
-      then:
-        - action: media_player.media_pause
-          target:
-            entity_id: media_player.home_assistant_voice_0a3a76_media_player
-        - action: input_boolean.turn_on
-          target:
-            entity_id: input_boolean.voice_paused_music
-    - action: media_player.volume_mute
-      target:
-        entity_id: media_player.home_assistant_voice_0a3a76_media_player
-      data:
-        is_volume_muted: false
-    - action: tts.speak
-      target:
-        entity_id: tts.google_translate_en_com
-      data:
-        cache: false
-        media_player_entity_id: media_player.home_assistant_voice_0a3a76_media_player
-        message: "Timer's up."
-    # Resume music after TTS if it was auto-paused
+        entity_id: switch.home_assistant_voice_0a3a76_mute
     - delay:
         seconds: 3
     - if:
-        - condition: state
-          entity_id: input_boolean.voice_paused_music
-          state: "on"
+      - condition: state
+        entity_id: assist_satellite.home_assistant_voice_0a3a76_assist_satellite
+        state: listening
       then:
-        - action: media_player.media_play
-          target:
-            entity_id: media_player.home_assistant_voice_0a3a76_media_player
-        - action: input_boolean.turn_off
-          target:
-            entity_id: input_boolean.voice_paused_music
+      - action: persistent_notification.create
+        data:
+          notification_id: naboo_listening_hang
+          title: ⚠️ Naboo still stuck — mute toggle failed
+          message: 'Recovery attempt failed at {{ now().strftime(''%H:%M:%S'') }}.
+            Device still in listening state. Manual intervention required (say the
+            wake word again, or power-cycle).
 
-# 7. STREAM RESILIENCE: naboo dropped the librespot HTTP stream (idle/paused/off)
-#    but Spotify is still playing → reconnect automatically.
-#    Covers: UI pause/stop, ESPHome HTTP reader timeout, MA stream error.
-#    Guards:
-#      - radio_active off (radio uses a different stream, don't stomp it)
-#      - spotify_paulster23 is "playing" (librespot has active audio to serve)
-#      - satellite is idle (don't interrupt a voice command in progress)
-#    5-second delay before reconnecting: avoids thrashing during voice pause/resume
-#    cycles (voice_pause_media_on_wake briefly sets naboo to paused, then
-#    voice_resume_media_on_done resumes it — we don't want to race that).
+            '
+      else:
+      - action: persistent_notification.dismiss
+        data:
+          notification_id: naboo_listening_hang
+- id: naboo_vad_relaxed
+  alias: Voice – Set Naboo finished-speaking detection to relaxed
+  mode: single
+  trigger:
+  - platform: homeassistant
+    event: start
+  - platform: state
+    entity_id: select.home_assistant_voice_0a3a76_finished_speaking_detection
+    to: default
+  - platform: state
+    entity_id: select.home_assistant_voice_0a3a76_finished_speaking_detection
+    to: aggressive
+  action:
+  - delay:
+      seconds: 10
+  - action: select.select_option
+    target:
+      entity_id: select.home_assistant_voice_0a3a76_finished_speaking_detection
+    data:
+      option: relaxed
+- id: librespot_playing
+  alias: Librespot – Play HTTP stream on naboo when Spotify Connect starts
+  mode: restart
+  trigger:
+  - platform: webhook
+    webhook_id: librespot_playing
+    allowed_methods:
+    - POST
+    local_only: false
+  action:
+  - condition: state
+    entity_id: input_boolean.radio_active
+    state: 'off'
+  - action: media_player.play_media
+    target:
+      entity_id: media_player.home_assistant_voice_0a3a76_media_player
+    data:
+      media_content_id: http://192.168.1.70:8765
+      media_content_type: music
+  - wait_template: '{{ is_state(''media_player.home_assistant_voice_0a3a76_media_player'',
+      ''playing'') }}'
+    timeout: 00:00:20
+  - delay:
+      seconds: 2
+  - action: media_player.volume_mute
+    target:
+      entity_id: media_player.home_assistant_voice_0a3a76_media_player
+    data:
+      is_volume_muted: false
+- id: librespot_reconnect_on_ha_start
+  alias: Librespot – Reconnect naboo stream on HA startup
+  mode: single
+  trigger:
+  - platform: homeassistant
+    event: start
+  action:
+  - delay: 00:02:00
+  - action: input_boolean.turn_off
+    target:
+      entity_id: input_boolean.radio_active
+  - condition: template
+    value_template: "{{ is_state('media_player.spotify_paulster23', 'playing')\n   and
+      state_attr('media_player.spotify_paulster23', 'source') == 'Naboo' }}\n"
+  - action: media_player.play_media
+    target:
+      entity_id: media_player.home_assistant_voice_0a3a76_media_player
+    data:
+      media_content_id: http://192.168.1.70:8765
+      media_content_type: music
+- id: timer_finished_announce
+  alias: Timer – Announce when timer.general finishes
+  trigger:
+  - platform: event
+    event_type: timer.finished
+    event_data:
+      entity_id: timer.general
+  action:
+  - if:
+    - condition: state
+      entity_id: media_player.home_assistant_voice_0a3a76_media_player
+      state: playing
+    then:
+    - action: media_player.media_pause
+      target:
+        entity_id: media_player.home_assistant_voice_0a3a76_media_player
+    - action: input_boolean.turn_on
+      target:
+        entity_id: input_boolean.voice_paused_music
+  - action: media_player.volume_mute
+    target:
+      entity_id: media_player.home_assistant_voice_0a3a76_media_player
+    data:
+      is_volume_muted: false
+  - action: tts.speak
+    target:
+      entity_id: tts.google_translate_en_com
+    data:
+      cache: false
+      media_player_entity_id: media_player.home_assistant_voice_0a3a76_media_player
+      message: Timer's up.
+  - delay:
+      seconds: 3
+  - if:
+    - condition: state
+      entity_id: input_boolean.voice_paused_music
+      state: 'on'
+    then:
+    - action: media_player.media_play
+      target:
+        entity_id: media_player.home_assistant_voice_0a3a76_media_player
+    - action: input_boolean.turn_off
+      target:
+        entity_id: input_boolean.voice_paused_music
 - id: librespot_stream_resilience
-  alias: "Librespot – Reconnect naboo stream if it drops while Spotify is playing"
+  alias: Librespot – Reconnect naboo stream if it drops while Spotify is playing
   mode: single
   max_exceeded: silent
   trigger:
-    - platform: state
-      entity_id: media_player.home_assistant_voice_0a3a76_media_player
-      to:
-        - "idle"
-        - "paused"
-        - "off"
-      for:
-        seconds: 5
+  - platform: state
+    entity_id: media_player.home_assistant_voice_0a3a76_media_player
+    to:
+    - idle
+    - paused
+    - 'off'
+    for:
+      seconds: 5
   condition:
-    - condition: state
-      entity_id: input_boolean.radio_active
-      state: "off"
-    - condition: state
-      entity_id: media_player.spotify_paulster23
-      state: "playing"
-    - condition: state
-      entity_id: assist_satellite.home_assistant_voice_0a3a76_assist_satellite
-      state: "idle"
+  - condition: state
+    entity_id: input_boolean.radio_active
+    state: 'off'
+  - condition: state
+    entity_id: media_player.spotify_paulster23
+    state: playing
+  - condition: state
+    entity_id: assist_satellite.home_assistant_voice_0a3a76_assist_satellite
+    state: idle
   action:
-    # Play directly on ESPHome entity to bypass MA proxy (same as librespot_playing).
-    - action: media_player.play_media
-      target:
-        entity_id: media_player.home_assistant_voice_0a3a76_media_player
-      data:
-        media_content_id: "http://192.168.1.70:8765"
-        media_content_type: music
-    # Wait for naboo to reach playing, then unmute the amp.
-    # voice_premute_when_idle muted it when the stream dropped — we undo that here.
-    - wait_template: "{{ is_state('media_player.home_assistant_voice_0a3a76_media_player', 'playing') }}"
-      timeout: "00:00:20"
-    - condition: template
-      value_template: "{{ is_state('media_player.home_assistant_voice_0a3a76_media_player', 'playing') }}"
-    - action: media_player.volume_mute
-      target:
-        entity_id: media_player.home_assistant_voice_0a3a76_media_player
-      data:
-        is_volume_muted: false
-
-# 7. SAFETY UNMUTE: if naboo transitions to playing while the amp is muted,
-#    unmute unconditionally. This is the single authoritative "stream is live,
-#    make sure you can hear it" rule. Covers all play paths: voice radio command
-#    (where RadioBrowser lookup delays the stream start past the pipeline
-#    completion unmute), librespot reconnect, manual MA play, etc.
-#
-#    No condition on is_volume_muted — just always unmute on play. Sending
-#    volume_mute: false when already unmuted is a no-op, so this is safe.
-#    No delay — unmute immediately to minimize dead-air perception.
-- id: naboo_unmute_on_play
-  alias: "Voice – Unmute amp when naboo starts playing (safety net)"
-  mode: restart
-  trigger:
-    - platform: state
+  - action: media_player.play_media
+    target:
       entity_id: media_player.home_assistant_voice_0a3a76_media_player
-      to: "playing"
-  action:
-    - action: media_player.volume_mute
-      target:
-        entity_id: media_player.home_assistant_voice_0a3a76_media_player
-      data:
-        is_volume_muted: false
-
-- id: librespot_stopped
-  alias: "Librespot – Stop HTTP stream on naboo when Spotify Connect stops"
-  trigger:
-    - platform: webhook
-      webhook_id: librespot_stopped
-      allowed_methods:
-        - POST
-      local_only: false
-  action:
-    - action: input_boolean.turn_off
-      target:
-        entity_id: input_boolean.radio_active
-    - action: media_player.media_stop
-      target:
-        entity_id: media_player.home_assistant_voice_0a3a76_media_player
-
-# ── Ad-mute Spotify swap ──────────────────────────────────────────────────────
-# Triggered by the admute-controller daemon on the Mac host (port 8767).
-# action=start:
-#   • If Naboo is paused → media_play (resumes mid-song exactly where it left off)
-#   • Otherwise (idle/off) → search user's first saved playlist and play it on Naboo
-# action=stop → media_pause so Spotify holds position for the next ad break.
-- id: admute_spotify
-  alias: "Ad-mute – Resume/pause Spotify on Naboo during commercial breaks"
+    data:
+      media_content_id: http://192.168.1.70:8765
+      media_content_type: music
+  - wait_template: '{{ is_state(''media_player.home_assistant_voice_0a3a76_media_player'',
+      ''playing'') }}'
+    timeout: 00:00:20
+  - condition: template
+    value_template: '{{ is_state(''media_player.home_assistant_voice_0a3a76_media_player'',
+      ''playing'') }}'
+  - action: media_player.volume_mute
+    target:
+      entity_id: media_player.home_assistant_voice_0a3a76_media_player
+    data:
+      is_volume_muted: false
+- id: naboo_unmute_on_play
+  alias: Voice – Unmute amp when naboo starts playing (safety net)
   mode: restart
   trigger:
-    - platform: webhook
-      webhook_id: admute_spotify
-      allowed_methods:
-        - POST
-      local_only: false
+  - platform: state
+    entity_id: media_player.home_assistant_voice_0a3a76_media_player
+    to: playing
   action:
-    - choose:
-        - conditions:
-            - condition: template
-              value_template: "{{ trigger.json.action == 'start' }}"
-          sequence:
-            - action: spotify_voice_assistant.resume
-              data:
-                device_name: "Naboo"
-        - conditions:
-            - condition: template
-              value_template: "{{ trigger.json.action == 'stop' }}"
-          sequence:
-            - action: spotify_voice_assistant.pause
+  - action: media_player.volume_mute
+    target:
+      entity_id: media_player.home_assistant_voice_0a3a76_media_player
+    data:
+      is_volume_muted: false
+- id: librespot_stopped
+  alias: Librespot – Stop HTTP stream on naboo when Spotify Connect stops
+  trigger:
+  - platform: webhook
+    webhook_id: librespot_stopped
+    allowed_methods:
+    - POST
+    local_only: false
+  action:
+  - action: input_boolean.turn_off
+    target:
+      entity_id: input_boolean.radio_active
+  - action: media_player.media_stop
+    target:
+      entity_id: media_player.home_assistant_voice_0a3a76_media_player
+- id: admute_spotify
+  alias: Ad-mute – Resume/pause Spotify on Naboo during commercial breaks
+  mode: restart
+  trigger:
+  - platform: webhook
+    webhook_id: admute_spotify
+    allowed_methods:
+    - POST
+    local_only: false
+  action:
+  - choose:
+    - conditions:
+      - condition: template
+        value_template: '{{ trigger.json.action == ''start'' }}'
+      sequence:
+      - action: spotify_voice_assistant.resume
+        data:
+          device_name: Naboo
+    - conditions:
+      - condition: template
+        value_template: '{{ trigger.json.action == ''stop'' }}'
+      sequence:
+      - action: spotify_voice_assistant.pause
+- id: windmill_ac_daily_schedule
+  alias: Windmill AC – On 7am Eco @ 72°F, off 1am
+  triggers:
+  - at: 07:00:00
+    id: morning_on
+    trigger: time
+  - at: 01:00:00
+    id: night_off
+    trigger: time
+  actions:
+  - choose:
+    - conditions:
+      - condition: trigger
+        id: morning_on
+      sequence:
+      - action: climate.set_hvac_mode
+        target:
+          entity_id: climate.windmill_ac
+        data:
+          hvac_mode: auto
+      - action: climate.set_temperature
+        target:
+          entity_id: climate.windmill_ac
+        data:
+          temperature: 71
+    - conditions:
+      - condition: trigger
+        id: night_off
+      sequence:
+      - action: climate.turn_off
+        target:
+          entity_id: climate.windmill_ac
+  mode: single

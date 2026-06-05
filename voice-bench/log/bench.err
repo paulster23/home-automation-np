@@ -126,3 +126,48 @@ Traceback (most recent call last):
   File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/base_events.py", line 1494, in create_server
     raise OSError(err.errno, 'error while attempting '
 OSError: [Errno 48] error while attempting to bind on address ('0.0.0.0', 7700): address already in use
+keepalive ping failed
+asyncio.exceptions.TimeoutError: timed out while closing connection
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/media/containers/home-automation/voice-bench/.venv/lib/python3.9/site-packages/websockets/asyncio/connection.py", line 822, in keepalive
+    pong_waiter = await self.ping()
+  File "/Users/media/containers/home-automation/voice-bench/.venv/lib/python3.9/site-packages/websockets/asyncio/connection.py", line 695, in ping
+    async with self.send_context():
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/contextlib.py", line 175, in __aenter__
+    return await self.gen.__anext__()
+  File "/Users/media/containers/home-automation/voice-bench/.venv/lib/python3.9/site-packages/websockets/asyncio/connection.py", line 957, in send_context
+    raise self.protocol.close_exc from original_exc
+websockets.exceptions.ConnectionClosedOK: received 1000 (OK); then sent 1000 (OK)
+keepalive ping failed
+asyncio.exceptions.TimeoutError: timed out while closing connection
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/media/containers/home-automation/voice-bench/.venv/lib/python3.9/site-packages/websockets/asyncio/connection.py", line 822, in keepalive
+    pong_waiter = await self.ping()
+  File "/Users/media/containers/home-automation/voice-bench/.venv/lib/python3.9/site-packages/websockets/asyncio/connection.py", line 695, in ping
+    async with self.send_context():
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/contextlib.py", line 175, in __aenter__
+    return await self.gen.__anext__()
+  File "/Users/media/containers/home-automation/voice-bench/.venv/lib/python3.9/site-packages/websockets/asyncio/connection.py", line 957, in send_context
+    raise self.protocol.close_exc from original_exc
+websockets.exceptions.ConnectionClosedOK: received 1000 (OK); then sent 1000 (OK)
+keepalive ping failed
+asyncio.exceptions.TimeoutError: timed out while closing connection
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/media/containers/home-automation/voice-bench/.venv/lib/python3.9/site-packages/websockets/asyncio/connection.py", line 822, in keepalive
+    pong_waiter = await self.ping()
+  File "/Users/media/containers/home-automation/voice-bench/.venv/lib/python3.9/site-packages/websockets/asyncio/connection.py", line 695, in ping
+    async with self.send_context():
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/contextlib.py", line 175, in __aenter__
+    return await self.gen.__anext__()
+  File "/Users/media/containers/home-automation/voice-bench/.venv/lib/python3.9/site-packages/websockets/asyncio/connection.py", line 957, in send_context
+    raise self.protocol.close_exc from original_exc
+websockets.exceptions.ConnectionClosedOK: received 1000 (OK); then sent 1000 (OK)

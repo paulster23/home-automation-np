@@ -24,20 +24,22 @@ These run via LaunchAgents, not Docker. All logs tailed to `infra/log-reports/` 
 
 | Service | Port | Location |
 |---|---|---|
-| wyoming-mlx-whisper | 7891 | `home-automation/wyoming-mlx-whisper` |
+| ~~wyoming-mlx-whisper~~ | ~~7891~~ | **RETIRED 2026-06-02** (STT fallback, unused). Files kept at `home-automation/wyoming-mlx-whisper`. To restore: re-enable LaunchAgent + re-add Wyoming entry on 7891. |
 | wyoming-whisperkit | 7892 | `home-automation/wyoming-whisperkit` |
 | librespot | 8765 (HTTP out) | `home-automation/librespot` |
 | voice-bench | 7700 | `home-automation/voice-bench` |
 
-### wyoming-mlx-whisper
-LaunchAgent `~/Library/LaunchAgents/com.wyoming.mlx-whisper.plist` — model: `mlx-community/whisper-small-mlx-4bit` (M1 GPU/Neural Engine). ~1.3s transcription. Logs → `wyoming-mlx-whisper/log/whisper.log` + `whisper.err`.
+### wyoming-mlx-whisper — RETIRED 2026-06-02
+Was the STT fallback (port 7891). Retired because the active pipeline only ever used WhisperKit (7892); the fallback was never routed to in normal operation, and it was crash-looping (model drift to `distil-whisper-large-v3` + a since-fixed `NameError` in `__main__.py`) while idle. Freed RAM on the 8 GB box.
 
-Reload: `launchctl unload ~/Library/LaunchAgents/com.wyoming.mlx-whisper.plist && launchctl load ~/Library/LaunchAgents/com.wyoming.mlx-whisper.plist`
+LaunchAgent `~/Library/LaunchAgents/com.wyoming.mlx-whisper.plist` unloaded + disabled. HA Wyoming entry `whisper-cpp` (host.docker.internal:7891) removed. Repo files retained for reference.
+
+Restore: re-enable the LaunchAgent (`launchctl load -w ...`) and re-add a Wyoming integration pointing at port 7891.
 
 ### wyoming-whisperkit (Active STT backend)
 Switched 2026-03-29. LaunchAgent `~/Library/LaunchAgents/com.wyoming.whisperkit.plist` — WhisperKit Swift bridge (CoreML + Apple Neural Engine). Port **7892**. Model: small (benchmarked 0.85s avg / 0.52s warm; real-world ~1.1s). Calls `mac-whisper-speedtest/tools/whisperkit-bridge/.build/release/whisperkit-bridge` as subprocess. Silero-VAD enabled. VAD silence threshold: **700ms** (increased from 450ms on 2026-04-02; reduced from 900ms → 700ms on 2026-04-29 after tuning). If clipped transcripts appear on short commands ("Stop", "Off"), raise to 800ms.
 
-voice-bench config tag: `whisperkit-small-esphome-direct`. HA Wyoming integration → port 7892. Fallback: port 7891 (mlx-whisper still installed).
+voice-bench config tag: `whisperkit-small-esphome-direct`. HA Wyoming integration → port 7892. (mlx-whisper fallback on 7891 retired 2026-06-02 — see above.)
 
 Logs → `wyoming-whisperkit/log/whisper.log` + `whisper.err`.
 

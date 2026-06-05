@@ -40,6 +40,14 @@ spotify_voice_assistant:
 #   sp_dc: !secret spotcast_sp_dc
 #   sp_key: !secret spotcast_sp_key
 
+# ── Logging ────────────────────────────────────────────────────────────────────
+# WindmillAC (HACS) hardcodes _LOGGER.setLevel(DEBUG) in climate.py, which spams
+# the HA log (and the log-tailer). Pin it to warning to suppress the noise.
+logger:
+  default: info
+  logs:
+    custom_components.windmillac: error
+
 # ── Database housekeeping ──────────────────────────────────────────────────────
 # Auto-purge entity state history older than 30 days to prevent DB bloat.
 # Without this, home-assistant_v2.db grows ~1-2 MB/month and never shrinks.
