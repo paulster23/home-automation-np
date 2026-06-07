@@ -2,19 +2,19 @@
 # Loads default set of integrations. Do not remove.
 default_config:
 
-# ── Reverse proxy (Caddy) ──────────────────────────────────────────────────────
-# Allows HA to accept connections proxied through Caddy at /ha/.
-# use_x_forwarded_for: trust X-Forwarded-For headers from Caddy.
-# trusted_proxies: Caddy container IP + Docker bridge range.
-# use_x_frame_options: false allows HA frontend to load in iframes (e.g. dashboards).
+# ── URLs ──────────────────────────────────────────────────────────────────────
+# Same URL for internal and external — HA serves HTTPS directly via Tailscale cert.
+homeassistant:
+  external_url: "https://media.tail317990.ts.net:8123"
+  internal_url: "https://media.tail317990.ts.net:8123"
+
+# ── HTTPS (direct, no proxy) ──────────────────────────────────────────────────
+# HA terminates TLS directly using the Tailscale-issued cert (full chain).
+# No reverse proxy — clients connect directly, no trusted_proxies needed.
+# Cert renewed monthly via ~/containers/infra/caddy/renew-cert.sh — restarts HA on renewal.
 http:
-  use_x_forwarded_for: true
-  trusted_proxies:
-    - 172.17.0.0/16
-    - 172.18.0.0/16
-    - 172.19.0.0/16
-    - 172.20.0.0/16
-  use_x_frame_options: false
+  ssl_certificate: /certs/media.tail317990.ts.net.crt
+  ssl_key: /certs/media.tail317990.ts.net.key
   server_host: "0.0.0.0"
 
 
