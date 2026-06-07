@@ -137,11 +137,10 @@ services:
       mosquitto:
         condition: service_started  # Start after mosquitto, don't block on health
     ports:
-      - "0.0.0.0:8123:8123"        # Web UI — all interfaces (LAN + Tailscale direct)
+      - "192.168.1.70:8123:8123"   # Web UI
       - "192.168.1.70:6053:6053"   # ESPHome native API (Voice PE connects here)
     volumes:
       - ./homeassistant:/config
-      - ../certs:/certs:ro         # Tailscale TLS cert (full chain) for HA HTTPS
     environment:
       TZ: America/New_York
     dns:

@@ -55,11 +55,6 @@
 
 ---
 
-## 🔲 Open Bugs (waiting on upstream)
-
-- [ ] **HA iOS app times out on cellular despite correct TLS chain (2026-06-06)** — HA now terminates TLS directly with a verified full-chain Tailscale cert (`openssl s_client -showcerts` confirms 2 certs served). Browser access works perfectly on WiFi and cellular at `https://media.tail317990.ts.net:8123`. The native HA iOS app still times out on cellular only — Tailscale itself shows connected and sees the host, ruling out tunnel-level failure. Likely an app-specific connection-handling quirk, not a cert/config issue. **Workaround in place:** using browser + "Add to Home Screen" instead. Same native-app symptom observed with Emby (browser used there too).
-- [ ] **Find a better remote-access solution overall** — current setup (browser-only via Tailscale + "Add to Home Screen", `tailscale serve` for most services, HA terminating TLS directly as an exception) works but isn't satisfying — native iOS apps for HA/Emby don't connect over cellular and the split TLS approach adds complexity. Worth revisiting from scratch: e.g. a proper Tailscale Funnel/HTTPS setup that serves a complete cert chain to all services uniformly, MagicDNS + correct ACLs, or a lightweight reverse proxy alternative to Caddy that doesn't reintroduce the prior headaches. Goal: native-app support for HA, Emby, Frigate, Jellyseerr without the current workarounds.
-
 ## 🔮 Future / Lower Priority
 
 - [ ] **Investigate go-librespot as librespot replacement** — Go rewrite of the Spotify Connect protocol; ARM64 binary available; built-in HTTP control API (could replace serve_http.py); reports better long-term stability than C++ librespot. Goal: eliminate the heal loop, watchdog, and retry logic in spotify_resume.py.
