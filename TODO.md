@@ -46,6 +46,7 @@
 ## 🔲 Pending
 
 - [x] **Verify librespot survives Tuesday reboot (2026-05-12)** — ✅ Confirmed 2026-05-27. Stream sessions observed on May 20, 25, 27 — `launchctl enable` fix is working across reboots.
+- [ ] **Gitignore runtime log/data files (2026-06-08)** — `git status` keeps showing churn from files that get rewritten constantly and shouldn't be tracked: `homeassistant/automations.yaml` (verify first — may be a real config diff, not noise), `librespot/log/*.err`, `librespot/log/watchdog.log`, `voice-bench/data/*.csv`, `voice-bench/log/*.{err,log}`, `wyoming-whisperkit/log/*.{err,log}`. Add patterns to `.gitignore` (e.g. `*/log/*.log`, `*/log/*.err`, `voice-bench/data/*.csv`) and `git rm --cached` the already-tracked ones so they stop cluttering status/diffs and getting accidentally swept into commits.
 
 ---
 
