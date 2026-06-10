@@ -1,7 +1,0 @@
-Traceback (most recent call last):
-  File "/Users/media/containers/home-automation/librespot/serve_http.py", line 60, in <module>
-    client.setsockopt(socket.IPPROTO_TCP, socket.TCP_NODELAY, 1)
-OSError: [Errno 22] Invalid argument
-/Users/media/containers/home-automation/librespot/run.sh: line 51: 62622 Terminated: 15          exec "$LIBRESPOT" --name "Naboo" --device-type speaker --bitrate 320 --backend pipe --format S16 --onevent "$BASE_DIR/on_event.sh" --disable-audio-cache --cache "$HOME/.config/librespot" --initial-volume 100 2>> "$LOG_DIR/librespot.err"
-     62623 Exit 255                | "$FFMPEG" -re -hide_banner -loglevel error -f s16le -ar 44100 -ac 2 -i pipe:0 -f mp3 -b:a 192k pipe:1 2>> "$LOG_DIR/stream.err"
-     62624 Killed: 9               | "$PYTHON" "$BASE_DIR/serve_http.py" >> "$LOG_DIR/http.log" 2>&1

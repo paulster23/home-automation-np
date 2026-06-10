@@ -46,3 +46,9 @@ frigate/.fuse_hidden*
 **/.venv/
 **/venv/
 **/__pycache__/
+
+# ── Runtime logs & bench output (untracked in REORG Phase 0, 2026-06-09) ──
+librespot/log/
+voice-bench/log/
+voice-bench/data/
+wyoming-whisperkit/log/
