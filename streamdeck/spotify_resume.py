@@ -265,6 +265,8 @@ playlist_thread = threading.Thread(target=build_playlist, daemon=True)
 playlist_thread.start()
 
 # ── 5. Play as soon as device is ready; use full list if playlist already built ─
+play_started_mono = time.monotonic()  # updated when the play call actually succeeds
+
 def try_play_smart(retries=8, delay=2):
     """
     Each retry checks whether the playlist is ready.
@@ -280,6 +282,8 @@ def try_play_smart(retries=8, delay=2):
         try:
             spotify_put_play(uris, access_token, naboo_device_id)
             print(f"Playback started (attempt {attempt}, {label}).")
+            global play_started_mono
+            play_started_mono = time.monotonic()
             return uris
         except urllib.error.HTTPError as e:
             body = e.read().decode()
@@ -325,7 +329,13 @@ if played_uris == [seed_uri]:
         print("No tracks matched — seed track only.")
         sys.exit(0)
 
-    # Get current position to avoid restarting the seed
+    # Get current position to avoid restarting the seed.
+    # /me/player's progress_ms lags for several seconds right after playback
+    # starts (observed: 653ms reported when ~3s had actually played), which
+    # made the queue replace jump the song backward — heard as a restart.
+    # Use whichever is larger: the API's progress or wall-clock time since
+    # our play call succeeded. Overshooting slightly (skipping a few hundred
+    # ms forward) is inaudible; jumping backward is jarring.
     position_ms = 0
     try:
         req = urllib.request.Request(
@@ -334,8 +344,10 @@ if played_uris == [seed_uri]:
         )
         with urllib.request.urlopen(req, timeout=10) as r:
             state = json.loads(r.read())
-        position_ms = state.get("progress_ms", 0)
-        print(f"Resuming seed at {position_ms}ms.")
+        api_ms = state.get("progress_ms", 0) or 0
+        elapsed_ms = int((time.monotonic() - play_started_mono) * 1000)
+        position_ms = max(api_ms, elapsed_ms)
+        print(f"Resuming seed at {position_ms}ms (api={api_ms}, elapsed={elapsed_ms}).")
     except Exception:
         pass
 

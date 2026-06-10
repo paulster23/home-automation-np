@@ -65,6 +65,16 @@ try:
 except OSError:
     SILENCE = b""
 
+# Keepalive is for bridging TRANSIENT stalls (librespot heals, track changes,
+# queue replaces) — not for holding an idle system "playing" forever. The
+# stop/resilience automations can ping-pong the Voice PE onto a dead-idle
+# stream; without a cap it would sit playing silence indefinitely and the
+# amp premute automation (requires paused/idle) would never fire. After the
+# cap we stop filling: the client starves, drops to idle, and the normal
+# wind-down chain (premute etc.) takes over. A fresh play reconnects via the
+# librespot_playing webhook automation regardless.
+SILENCE_MAX_S = 45
+
 HTTP_HEADER = (
     b"HTTP/1.0 200 OK\r\n"
     b"Content-Type: audio/mpeg\r\n"
@@ -108,8 +118,9 @@ _last_data_mono  = time.monotonic()   # monotonic time of the last stdin read
 _stall_start_mono = None              # set when STALL_START is logged; None otherwise
 
 # Silence keepalive state
-_silence_off  = 0   # cycling read offset into SILENCE
-_silence_sent = 0   # bytes of silence filled during the current stall
+_silence_off  = 0      # cycling read offset into SILENCE
+_silence_sent = 0      # bytes of silence filled during the current stall
+_cap_logged   = False  # SILENCE_CAP logged for the current stall
 
 # Throughput tracking state (cumulative per client session)
 _tp_bytes        = 0
@@ -242,13 +253,18 @@ while True:
         if idle_ms > STALL_THRESHOLD_MS and _stall_start_mono is None:
             _stall_start_mono = _last_data_mono
             _silence_sent = 0
+            _cap_logged = False
             _stream_log(f"STALL_START idle={idle_ms:.0f}ms")
 
         # While stalled, keep the client fed with silent MP3 frames at the
         # real-time rate. Bytes count toward the rate limiter so real audio
         # resumes without a catch-up burst and pacing stays continuous.
         if _stall_start_mono is not None and SILENCE:
-            while client:
+            capped = (now - _stall_start_mono) > SILENCE_MAX_S
+            if capped and not _cap_logged:
+                _stream_log(f"SILENCE_CAP {SILENCE_MAX_S}s reached — letting client starve")
+                _cap_logged = True
+            while client and not capped:
                 deficit = (_rate_bytes / BYTES_PER_SEC) - (time.monotonic() - _rate_start)
                 if deficit > 0:
                     break  # at/ahead of real-time — fill more on a later pass
