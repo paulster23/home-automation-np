@@ -52,3 +52,6 @@ librespot/log/
 voice-bench/log/
 voice-bench/data/
 wyoming-whisperkit/log/
+
+# ── Stream Deck compiled launchers (rebuild with streamdeck/rebuild_apps.sh) ──
+streamdeck/*.app/
