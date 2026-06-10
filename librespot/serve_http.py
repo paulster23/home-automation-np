@@ -14,7 +14,17 @@ Writes timestamped events to log/stream.log (same dir as this script):
   CLIENT_CONNECT <ip>:<port>       — ESPHome opened the HTTP connection
   CLIENT_DISCONNECT <reason>       — ESPHome dropped, or replaced by new connect
   STALL_START idle=<ms>ms          — stdin from ffmpeg went dry (pipe stall)
-  STALL_END <ms>ms                 — audio resumed after a stall
+  STALL_END <ms>ms silence=<n>     — audio resumed; n = silence bytes filled
+
+Silence keepalive (2026-06-09, fixes "Naboo silent after heal")
+───────────────────────────────────────────────────────────────
+The Voice PE abandons HTTP streams that go dry for more than a few seconds;
+the close is only visible on our next write (CLIENT_DISCONNECT send_error
+right after STALL_END — see TODO.md / stream.log 2026-05-16, 05-19, 06-10).
+While stdin is stalled and a client is connected, we feed valid silent MP3
+frames (silence.mp3, generated with ffmpeg anullsrc) at the real-time rate,
+so the client never sees a dry stream. Counting silence toward the rate
+limiter also kills the unpaced catch-up burst that used to follow stalls.
   THROUGHPUT bytes=<n> rate=<bps>bps elapsed=<s>s  — every 10s while streaming
   STDIN_EOF                        — ffmpeg exited, pipeline is done
 voice-bench tails this file to correlate pipe stalls with dropout events.
@@ -46,6 +56,14 @@ STALL_THRESHOLD_MS = 100
 
 # Log a THROUGHPUT line every N seconds while a client is connected.
 THROUGHPUT_INTERVAL = 10.0
+
+# Silent MP3 payload for the stall keepalive (frame-stripped anullsrc output,
+# loops cleanly). If the asset is missing we run without keepalive (old
+# behavior) rather than failing the pipeline.
+try:
+    SILENCE = (Path(__file__).parent / "silence.mp3").read_bytes()
+except OSError:
+    SILENCE = b""
 
 HTTP_HEADER = (
     b"HTTP/1.0 200 OK\r\n"
@@ -88,6 +106,10 @@ _rate_bytes = 0
 # Stall detection state
 _last_data_mono  = time.monotonic()   # monotonic time of the last stdin read
 _stall_start_mono = None              # set when STALL_START is logged; None otherwise
+
+# Silence keepalive state
+_silence_off  = 0   # cycling read offset into SILENCE
+_silence_sent = 0   # bytes of silence filled during the current stall
 
 # Throughput tracking state (cumulative per client session)
 _tp_bytes        = 0
@@ -174,8 +196,9 @@ while True:
             # Stall recovery: log STALL_END if we were in a stall
             if _stall_start_mono is not None:
                 stall_ms = int((now - _stall_start_mono) * 1000)
-                _stream_log(f"STALL_END {stall_ms}ms")
+                _stream_log(f"STALL_END {stall_ms}ms silence={_silence_sent}")
                 _stall_start_mono = None
+                _silence_sent = 0
             _last_data_mono = now
 
             if client:
@@ -209,7 +232,7 @@ while True:
             if deficit > 0:
                 time.sleep(deficit)
 
-    # ── Stall detection ───────────────────────────────────────────────────────
+    # ── Stall detection + silence keepalive ───────────────────────────────────
     # Only meaningful when a client is connected — no point logging stalls when
     # nobody is listening. Check after processing all readable fds so we don't
     # fire if stdin was readable this iteration.
@@ -218,4 +241,32 @@ while True:
         idle_ms  = (now - _last_data_mono) * 1000
         if idle_ms > STALL_THRESHOLD_MS and _stall_start_mono is None:
             _stall_start_mono = _last_data_mono
+            _silence_sent = 0
             _stream_log(f"STALL_START idle={idle_ms:.0f}ms")
+
+        # While stalled, keep the client fed with silent MP3 frames at the
+        # real-time rate. Bytes count toward the rate limiter so real audio
+        # resumes without a catch-up burst and pacing stays continuous.
+        if _stall_start_mono is not None and SILENCE:
+            while client:
+                deficit = (_rate_bytes / BYTES_PER_SEC) - (time.monotonic() - _rate_start)
+                if deficit > 0:
+                    break  # at/ahead of real-time — fill more on a later pass
+                chunk = SILENCE[_silence_off:_silence_off + CHUNK]
+                if len(chunk) < CHUNK:
+                    chunk += SILENCE[:CHUNK - len(chunk)]
+                _silence_off = (_silence_off + CHUNK) % len(SILENCE)
+                try:
+                    client.sendall(chunk)
+                except OSError:
+                    _stream_log("CLIENT_DISCONNECT send_error_silence")
+                    try:
+                        client.close()
+                    except OSError:
+                        pass
+                    client = None
+                    _stall_start_mono = None
+                    break
+                _rate_bytes   += len(chunk)
+                _silence_sent += len(chunk)
+                _tp_bytes     += len(chunk)

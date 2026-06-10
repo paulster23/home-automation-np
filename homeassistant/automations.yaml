@@ -208,6 +208,28 @@
       entity_id: media_player.home_assistant_voice_0a3a76_media_player
     data:
       is_volume_muted: false
+  - delay:
+      seconds: 3
+  - choose:
+    - conditions:
+      - condition: template
+        value_template: '{{ not is_state(''media_player.home_assistant_voice_0a3a76_media_player'',
+          ''playing'') }}'
+      sequence:
+      - action: media_player.play_media
+        target:
+          entity_id: media_player.home_assistant_voice_0a3a76_media_player
+        data:
+          media_content_id: http://192.168.1.70:8765
+          media_content_type: music
+      - wait_template: '{{ is_state(''media_player.home_assistant_voice_0a3a76_media_player'',
+          ''playing'') }}'
+        timeout: 00:00:20
+      - action: media_player.volume_mute
+        target:
+          entity_id: media_player.home_assistant_voice_0a3a76_media_player
+        data:
+          is_volume_muted: false
 - id: librespot_reconnect_on_ha_start
   alias: Librespot – Reconnect naboo stream on HA startup
   mode: single
