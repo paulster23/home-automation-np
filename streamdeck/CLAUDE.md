@@ -1,5 +1,7 @@
 # Streamdeck Scripts
 
+> **Location (since 2026-06-09):** canonical path is `~/containers/home-automation/streamdeck/`, part of the home-automation repo. `~/streamdeck` is a symlink here — launchd plists, .app bundles, and Stream Deck button configs all reference the symlink path, so both paths below remain valid. Never delete the symlink.
+
 ## Rules
 
 - Each time a `.sh` file is updated, create a new corresponding `.app` file using `osacompile`.

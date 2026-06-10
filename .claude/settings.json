@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "deny": [
+      "Read(./frigate/storage/**)",
+      "Read(./frigate/*.db*)",
+      "Read(./frigate/backup.db)",
+      "Read(./frigate/model_cache/**)",
+      "Read(./mac-whisper-speedtest/models/**)",
+      "Read(./mac-whisper-speedtest/tools/**)",
+      "Read(./mac-whisper-speedtest/mlx_models/**)",
+      "Read(./wyoming-mlx-whisper/**)",
+      "Read(./wyoming-whisperkit/models/**)",
+      "Read(./voice-bench/node_modules/**)",
+      "Read(./voice-bench/data/**)",
+      "Read(./homeassistant/home-assistant_v2.db*)",
+      "Read(./homeassistant/.storage/**)"
+    ]
+  }
+}
