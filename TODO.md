@@ -1,6 +1,6 @@
 # Home Automation — To-Do List
 
-*Last updated: 2026-06-02*
+*Last updated: 2026-06-11*
 
 ---
 
@@ -54,7 +54,7 @@
 
 ## 🔲 Open Bugs (waiting on upstream)
 
-- [ ] **Spotify coordinator MissingField crash loop** — HA's `spotifyaio` library fails to parse Spotify API responses since Spotify removed `GET /playlists/{id}/tracks` in Feb 2026. Error: `MissingField: Field "items" of type PlaylistTracks is missing in Playlist instance`. [GitHub #166884](https://github.com/home-assistant/core/issues/166884). HA 2026.5 shipped with no fix. Only triggers when browsing Spotify media via HA UI — not actively firing during voice commands. Watch HA 2026.6.
+- [ ] **Spotify coordinator MissingField crash loop** — HA's `spotifyaio` library fails to parse Spotify API responses since Spotify removed `GET /playlists/{id}/tracks` in Feb 2026. Error: `MissingField: Field "items" of type PlaylistTracks is missing in Playlist instance`. [GitHub #166884](https://github.com/home-assistant/core/issues/166884). HA 2026.6 shipped (Paul upgraded 2026-06-10) with **no fix** — issue still open, no milestone. Only triggers when browsing Spotify media via HA UI — not actively firing during voice commands. Watch HA 2026.7.
 
 ---
 
