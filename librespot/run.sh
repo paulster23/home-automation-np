@@ -49,6 +49,7 @@ if [ -e /tmp/librespot.fifo ]; then
 fi
 
 echo "$(date -u +"%Y-%m-%dT%H:%M:%SZ") Starting librespot pipeline" >> "$LOG_DIR/run.log"
+touch "$LOG_DIR/.just_restarted"
 
 exec "$LIBRESPOT" \
   --name "Naboo" \

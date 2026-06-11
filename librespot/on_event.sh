@@ -97,11 +97,46 @@ case "$PLAYER_EVENT" in
     send_webhook "librespot_stopped"
     ;;
 
-  session_connected|session_disconnected)
-    # New Spotify session — reset state so the next "playing" event fires the
-    # webhook instead of assuming the stream is still alive from a prior session.
+  session_connected)
+    PREV_STATE=$(cat "$STATE_FILE" 2>/dev/null || echo "stopped")
     echo "stopped" > "$STATE_FILE"
-    log "→ reset state to stopped (new session)"
+    log "→ reset state to stopped (session_connected)"
+    # Auto-resume: only fires once per process restart (marker consumed on first use).
+    # Subsequent session_connected events from the PUT /me/player device transfer find
+    # no marker and skip, preventing a feedback loop.
+    if [ -f "$BASE_DIR/log/.just_restarted" ] && [ "$PREV_STATE" = "playing" ]; then
+      rm -f "$BASE_DIR/log/.just_restarted"
+      log "→ was playing before crash — scheduling auto-resume in 5s"
+      (
+        sleep 5
+        source "$HOME/containers/home-automation/secrets/spotify.env"
+        NABOO_ID="0596f720dd52a9e2e2d0020d00931a1b91014e64"
+        log "→ auto-resume: refreshing Spotify token"
+        CREDS=$(echo -n "${SPOTIFY_CLIENT_ID}:${SPOTIFY_CLIENT_SECRET}" | base64 | tr -d '\n')
+        TOKEN_RESP=$(curl -s -m 10 -X POST https://accounts.spotify.com/api/token \
+          -H "Authorization: Basic $CREDS" \
+          -H "Content-Type: application/x-www-form-urlencoded" \
+          -d "grant_type=refresh_token&refresh_token=${SPOTIFY_REFRESH_TOKEN}")
+        ACCESS_TOKEN=$(echo "$TOKEN_RESP" | python3 -c \
+          "import sys,json; print(json.load(sys.stdin).get('access_token',''))" 2>/dev/null)
+        if [ -z "$ACCESS_TOKEN" ]; then
+          log "→ auto-resume: token refresh failed: $TOKEN_RESP"
+        else
+          PLAY_RESP=$(curl -s -m 10 -o /dev/null -w "%{http_code}" -X PUT \
+            https://api.spotify.com/v1/me/player \
+            -H "Authorization: Bearer $ACCESS_TOKEN" \
+            -H "Content-Type: application/json" \
+            -d "{\"device_ids\": [\"$NABOO_ID\"], \"play\": true}")
+          log "→ auto-resume: PUT /me/player result HTTP $PLAY_RESP"
+        fi
+      ) &
+    fi
+    ;;
+
+  session_disconnected)
+    # Session ended cleanly — reset state so the next playing event reconnects naboo.
+    echo "stopped" > "$STATE_FILE"
+    log "→ reset state to stopped (session_disconnected)"
     ;;
 
   end_of_track)
