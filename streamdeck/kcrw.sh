@@ -1,6 +1,6 @@
 #!/bin/bash
 # KCRW — 89.9 FM Santa Monica
-source ~/.streamdeck_env
+source ~/containers/home-automation/secrets/ha.env
 
 SPEAKER=$(curl -s $HA_URL/api/states/switch.speaker \
   -H "Authorization: Bearer $HA_TOKEN" | python3 -c "

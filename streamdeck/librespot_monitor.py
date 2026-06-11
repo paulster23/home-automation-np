@@ -21,7 +21,7 @@ HEAL_SCRIPT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "librespo
 
 # ── Load env ──────────────────────────────────────────────────────────────────
 env = {}
-with open(os.path.expanduser("~/.streamdeck_env")) as f:
+with open(os.path.expanduser("~/containers/home-automation/secrets/spotify.env")) as f:
     for line in f:
         line = line.strip()
         if "=" in line and not line.startswith("#"):

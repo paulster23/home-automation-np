@@ -1,6 +1,6 @@
 #!/bin/bash
 # Turn speaker off
-source ~/.streamdeck_env
+source ~/containers/home-automation/secrets/ha.env
 curl -s -X POST $HA_URL/api/services/switch/turn_off \
   -H "Authorization: Bearer $HA_TOKEN" \
   -H "Content-Type: application/json" \

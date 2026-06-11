@@ -1,6 +1,6 @@
 #!/bin/bash
 # WBGO — Jazz 88.3 FM
-source ~/.streamdeck_env
+source ~/containers/home-automation/secrets/ha.env
 
 SPEAKER=$(curl -s $HA_URL/api/states/switch.speaker \
   -H "Authorization: Bearer $HA_TOKEN" | python3 -c "

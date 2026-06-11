@@ -1,7 +1,7 @@
 #!/bin/bash
 # Play a random podcast via spotify_voice_assistant
 # Edit the PODCASTS array to match your actual favorites
-source ~/.streamdeck_env
+source ~/containers/home-automation/secrets/ha.env
 
 PODCASTS=(
   "Radiolab"

@@ -1,7 +1,7 @@
 #!/bin/bash
 # True pause/resume toggle — works for both Spotify and radio streams.
 # Saves what was playing to ~/.streamdeck_pause_state and restores on next press.
-source ~/.streamdeck_env
+source ~/containers/home-automation/secrets/ha.env
 
 STATE_FILE=~/.streamdeck_pause_state
 HA_VOICE="media_player.home_assistant_voice_0a3a76_media_player"

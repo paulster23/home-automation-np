@@ -23,12 +23,16 @@ NABOO_NAME    = "Naboo"
 
 # ── Load env ──────────────────────────────────────────────────────────────────
 env = {}
-with open(os.path.expanduser("~/.streamdeck_env")) as f:
-    for line in f:
-        line = line.strip()
-        if "=" in line and not line.startswith("#"):
-            k, v = line.split("=", 1)
-            env[k.strip()] = v.strip()
+for _env_path in [
+    "~/containers/home-automation/secrets/ha.env",
+    "~/containers/home-automation/secrets/spotify.env",
+]:
+    with open(os.path.expanduser(_env_path)) as f:
+        for line in f:
+            line = line.strip()
+            if "=" in line and not line.startswith("#"):
+                k, v = line.split("=", 1)
+                env[k.strip()] = v.strip()
 
 HA_URL                = env["HA_URL"]
 HA_TOKEN              = env["HA_TOKEN"]

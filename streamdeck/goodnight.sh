@@ -1,7 +1,7 @@
 #!/bin/bash
 # Good Night — stop media, turn off speaker and plug_1
 # Mirrors the GoodNight voice intent in configuration.yaml
-source ~/.streamdeck_env
+source ~/containers/home-automation/secrets/ha.env
 
 curl -s -X POST $HA_URL/api/services/media_player/media_stop \
   -H "Authorization: Bearer $HA_TOKEN" \

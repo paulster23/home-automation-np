@@ -6,7 +6,7 @@ spotify_auth.py — One-time OAuth flow to get a Spotify refresh token.
 2. You authorize the app.
 3. You get redirected to https://localhost:8888/callback?code=XXXX
    (the page won't load — that's fine, just copy the full URL from the address bar)
-4. Paste the URL here and the script writes the refresh token to ~/.streamdeck_env
+4. Paste the URL here and the script writes the refresh token to secrets/spotify.env
 """
 
 import json
@@ -18,9 +18,9 @@ import webbrowser
 
 REDIRECT_URI  = "https://localhost:8888/callback"
 SCOPE         = "user-read-recently-played"
-ENV_FILE      = os.path.expanduser("~/.streamdeck_env")
+ENV_FILE      = os.path.expanduser("~/containers/home-automation/secrets/spotify.env")
 
-# Client credentials come from ~/.streamdeck_env — never hardcode them here.
+# Client credentials come from spotify.env — never hardcode them here.
 def _env(key):
     if os.path.exists(ENV_FILE):
         with open(ENV_FILE) as f:
@@ -83,7 +83,7 @@ if not refresh_token:
     print("ERROR: No refresh token in response:", tokens)
     raise SystemExit(1)
 
-# Write to ~/.streamdeck_env
+# Write to secrets/spotify.env
 lines = []
 if os.path.exists(ENV_FILE):
     with open(ENV_FILE) as f:
@@ -101,4 +101,4 @@ with open(ENV_FILE, "w") as f:
     f.writelines(lines)
 
 print()
-print("Done! Refresh token written to ~/.streamdeck_env")
+print(f"Done! Refresh token written to {ENV_FILE}")

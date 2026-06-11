@@ -1,6 +1,6 @@
 #!/bin/bash
 # Go back to previous track
-source ~/.streamdeck_env
+source ~/containers/home-automation/secrets/ha.env
 curl -s -X POST $HA_URL/api/services/media_player/media_previous_track \
   -H "Authorization: Bearer $HA_TOKEN" \
   -H "Content-Type: application/json" \
