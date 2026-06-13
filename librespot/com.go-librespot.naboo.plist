@@ -3,40 +3,47 @@
 <plist version="1.0">
 <dict>
     <!-- ──────────────────────────────────────────────────────────────────────
-         Librespot — Spotify Connect receiver ("Naboo")
-         Install: cp this file to ~/Library/LaunchAgents/ then:
-           chmod +x ~/containers/home-automation/librespot/run.sh
-           chmod +x ~/containers/home-automation/librespot/on_event.sh
-           launchctl load ~/Library/LaunchAgents/com.librespot.naboo.plist
-         Reload after changes:
-           launchctl unload ~/Library/LaunchAgents/com.librespot.naboo.plist
-           launchctl load  ~/Library/LaunchAgents/com.librespot.naboo.plist
+         go-librespot — production Spotify Connect receiver ("Naboo"). JOB 1 of 2.
+         Runs ONLY go-librespot (run-naboo.sh) → writes PCM to the FIFO. The
+         stream side (ffmpeg + serve_http :8765 + go-event) is a separate job:
+         com.naboo.stream. This split is the 2026-06-13 storm fix — see
+         run-naboo.sh and TROUBLESHOOTING.md 2026-06-13.
+
+         Install / reload:
+           cp ~/containers/home-automation/librespot/com.go-librespot.naboo.plist \
+              ~/Library/LaunchAgents/
+           launchctl bootout  gui/$(id -u)/com.go-librespot.naboo 2>/dev/null
+           launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/com.go-librespot.naboo.plist
+
+         ThrottleInterval=30 + the rate guard in run-naboo.sh cap respawns at
+         once / 30s so a failing start can never storm the host.
+
          Logs: ~/containers/home-automation/librespot/log/
     ────────────────────────────────────────────────────────────────────────── -->
 
     <key>Label</key>
-    <string>com.librespot.naboo</string>
+    <string>com.go-librespot.naboo</string>
 
     <key>ProgramArguments</key>
     <array>
         <string>/bin/bash</string>
-        <string>/Users/media/containers/home-automation/librespot/run.sh</string>
+        <string>/Users/media/containers/home-automation/librespot/run-naboo.sh</string>
     </array>
 
-    <!-- Start at login and restart automatically if it crashes -->
     <key>RunAtLoad</key>
     <true/>
     <key>KeepAlive</key>
     <true/>
 
-    <!-- stdout/stderr from the wrapper itself (librespot/ffmpeg log to their
-         own files inside run.sh via redirects) -->
+    <!-- Restart-storm safety net: never relaunch more than once per 30s. -->
+    <key>ThrottleInterval</key>
+    <integer>30</integer>
+
     <key>StandardOutPath</key>
     <string>/Users/media/containers/home-automation/librespot/log/launchd.out</string>
     <key>StandardErrorPath</key>
     <string>/Users/media/containers/home-automation/librespot/log/launchd.err</string>
 
-    <!-- Make Homebrew binaries and HOME available -->
     <key>EnvironmentVariables</key>
     <dict>
         <key>PATH</key>

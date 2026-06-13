@@ -1,0 +1,24 @@
+device_name: Naboo
+device_type: speaker
+bitrate: 320
+
+# Pipe backend — writes raw PCM to a named FIFO (NOT /dev/stdout).
+# The stream side (com.naboo.stream / serve_http.py) holds this FIFO open so
+# go-librespot can open/close its write end on every playback start/stop/transfer
+# without ever tearing down the consumer. go-librespot opens the pipe lazily
+# (only while a Spotify session is active), so the daemon + Connect registration
+# stay up regardless of whether anyone is consuming audio. See run-naboo.sh and
+# TROUBLESHOOTING.md 2026-06-13.
+audio_backend: pipe
+audio_output_pipe: /Users/media/containers/home-automation/librespot/log/naboo.pcm.fifo
+audio_output_pipe_format: s16le
+
+# Zeroconf: register as Spotify Connect device on the LAN.
+zeroconf_enabled: true
+zeroconf_port: 5354
+
+# HTTP API — used by go-event.py for state polling.
+server:
+  enabled: true
+  address: localhost
+  port: 3678

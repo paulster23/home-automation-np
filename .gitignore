@@ -53,6 +53,10 @@ voice-bench/log/
 voice-bench/data/
 wyoming-whisperkit/log/
 
+# ── go-librespot runtime state — state.json holds Spotify credentials, never commit ──
+librespot/go-config/state.json
+librespot/go-config/lockfile
+
 # ── Stream Deck compiled launchers (rebuild with streamdeck/rebuild_apps.sh) ──
 streamdeck/*.app/
 streamdeck/*.log

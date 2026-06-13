@@ -2,9 +2,21 @@
 """
 HTTP streaming server for librespot audio.
 
-Reads MP3 bytes from stdin (piped from ffmpeg) and serves them to a single
-HTTP client on port 8765. Stays bound to port 8765 while waiting for a client
-— naboo can connect at any time and immediately start receiving audio.
+Owns the long-lived :8765 listener AND the audio source. go-librespot (separate
+launchd job) writes PCM to a named FIFO; this process holds that FIFO open
+(keepalive writer) and supervises ffmpeg (PCM→MP3) internally, reading ffmpeg's
+MP3 output and serving it to a single HTTP client on port 8765. Stays bound to
+:8765 while waiting for a client — naboo can connect at any time and immediately
+start receiving audio.
+
+Decoupling (2026-06-13, fixes the Docker-killing pipeline storm)
+────────────────────────────────────────────────────────────────
+A dropped HTTP client, a Spotify playback transfer, or an idle/no-consumer
+period must NOT tear anything down. The FIFO holder means go-librespot's
+transient session writer can come and go without ffmpeg ever seeing EOF; a
+genuine ffmpeg crash is respawned in-process (throttled) without dropping the
+listener. go-librespot itself lives in its own job, so the Connect device stays
+registered through all of the above. See TROUBLESHOOTING.md 2026-06-13.
 
 Single-client: if a new client connects, the old one is closed.
 
@@ -26,17 +38,34 @@ frames (silence.mp3, generated with ffmpeg anullsrc) at the real-time rate,
 so the client never sees a dry stream. Counting silence toward the rate
 limiter also kills the unpaced catch-up burst that used to follow stalls.
   THROUGHPUT bytes=<n> rate=<bps>bps elapsed=<s>s  — every 10s while streaming
-  STDIN_EOF                        — ffmpeg exited, pipeline is done
+  FFMPEG_EOF respawning ffmpeg     — ffmpeg crashed; respawned in-process
 voice-bench tails this file to correlate pipe stalls with dropout events.
 """
+import atexit
+import os
 import select
+import signal
 import socket
+import stat
+import subprocess
 import sys
 import time
 from datetime import datetime, timezone
 from pathlib import Path
 
-PORT = 8765
+PORT = int(os.environ.get("SERVE_PORT", 8765))
+
+# Audio source: go-librespot (separate launchd job com.go-librespot.naboo) writes
+# PCM to this FIFO while a Spotify session is active. We hold it open and run
+# ffmpeg (PCM→MP3) ourselves so a playback transfer/stop never tears us down.
+FIFO_PATH = os.environ.get(
+    "PCM_FIFO", str(Path(__file__).parent / "log" / "naboo.pcm.fifo")
+)
+FFMPEG = os.environ.get("FFMPEG_BIN", "/opt/homebrew/bin/ffmpeg")
+# Minimum seconds between ffmpeg (re)spawns — throttle so a persistently failing
+# encoder can never spin. The FIFO holder means a normal playback transfer/stop
+# does NOT kill ffmpeg, so this only fires on a genuine ffmpeg crash.
+FFMPEG_MIN_RESPAWN_S = 10
 CHUNK = 2048  # smaller chunks → smoother pacing, faster select() loop
 # 192k MP3 = 24000 bytes/sec × 1.05 = 25200. The 5% headroom lets ESPHome
 # build a small safety buffer so pipeline stalls between tracks don't cause
@@ -97,6 +126,70 @@ def _stream_log(msg: str) -> None:
         pass
 
 
+# ── Audio source: go-librespot → FIFO → ffmpeg (MP3) → here ────────────────────
+# go-librespot writes PCM to FIFO_PATH only while a Spotify session is active. We
+# keep a writer reference on the FIFO open at all times ("holder") so the ffmpeg
+# reader never sees EOF when that transient writer closes on a playback
+# transfer/stop — the cascade that used to tear down the whole pipeline and storm
+# launchd. ffmpeg is supervised here: if it ever crashes we respawn it (throttled)
+# WITHOUT dropping the :8765 listener or any connected client.
+_stream_err = open(_LOG_DIR / "stream.err", "ab", buffering=0)
+_ff = None              # current ffmpeg Popen
+_ff_last_spawn = 0.0    # monotonic time of last spawn (for throttle)
+
+
+def _ensure_fifo() -> None:
+    try:
+        if not stat.S_ISFIFO(os.stat(FIFO_PATH).st_mode):
+            os.remove(FIFO_PATH)
+            os.mkfifo(FIFO_PATH)
+    except FileNotFoundError:
+        os.mkfifo(FIFO_PATH)
+
+
+def _spawn_ffmpeg():
+    global _ff, _ff_last_spawn
+    _ff_last_spawn = time.monotonic()
+    _ff = subprocess.Popen(
+        [FFMPEG, "-hide_banner", "-loglevel", "error",
+         "-f", "s16le", "-ar", "44100", "-ac", "2", "-i", FIFO_PATH,
+         "-f", "mp3", "-b:a", "192k", "pipe:1"],
+        stdout=subprocess.PIPE, stderr=_stream_err,
+    )
+    return _ff
+
+
+def _respawn_ffmpeg() -> int:
+    """Reap the dead ffmpeg, start a fresh one (throttled). Return its stdout fd."""
+    global _ff
+    if _ff is not None:
+        try:
+            _ff.wait(timeout=1)
+        except Exception:
+            try:
+                _ff.kill()
+            except Exception:
+                pass
+    dt = time.monotonic() - _ff_last_spawn
+    if dt < FFMPEG_MIN_RESPAWN_S:
+        time.sleep(FFMPEG_MIN_RESPAWN_S - dt)
+    _spawn_ffmpeg()
+    return _ff.stdout.fileno()
+
+
+def _cleanup() -> None:
+    if _ff is not None:
+        try:
+            _ff.terminate()
+        except Exception:
+            pass
+
+
+atexit.register(_cleanup)
+# Exit cleanly on launchd SIGTERM so atexit fires and ffmpeg is reaped.
+signal.signal(signal.SIGTERM, lambda *_: sys.exit(0))
+
+
 # ── Server setup ──────────────────────────────────────────────────────────────
 srv = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 srv.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
@@ -106,7 +199,16 @@ srv.listen(1)
 srv.setblocking(False)
 
 client = None
-stdin_fd = sys.stdin.buffer.fileno()
+
+_ensure_fifo()
+# Keepalive holder: hold a writer reference so ffmpeg never EOFs when the
+# transient go-librespot session writer closes. O_RDWR|O_NONBLOCK opens without
+# blocking and counts as a writer; we neither read nor write this fd (so it never
+# steals PCM from ffmpeg — verified on macOS).
+holder_fd = os.open(FIFO_PATH, os.O_RDWR | os.O_NONBLOCK)
+_spawn_ffmpeg()
+src = _ff.stdout
+src_fd = src.fileno()
 
 # Cumulative rate-limiter: tracks total bytes processed and wall-clock start
 # so we sleep only the deficit — no oversleep when sendall() itself takes time.
@@ -131,7 +233,7 @@ while True:
     # Select timeout 0.2s for responsive stall detection (was 1.0s).
     # At 192kbps each 2 KB chunk arrives every ~85ms, so 0.2s is one missed
     # chunk — fast enough to catch real stalls before ESPHome's buffer empties.
-    read_fds = [srv, stdin_fd]
+    read_fds = [srv, src_fd]
     try:
         readable, _, _ = select.select(read_fds, [], [], 0.2)
     except (OSError, ValueError):
@@ -191,16 +293,22 @@ while True:
                 client = None
                 _stall_start_mono = None  # clear any active stall — session is over
 
-        # ── Audio data from ffmpeg via stdin ──────────────────────────────────
-        elif fd == stdin_fd:
+        # ── Audio data from the supervised ffmpeg ─────────────────────────────
+        elif fd == src_fd:
             try:
-                data = sys.stdin.buffer.read1(CHUNK)
+                data = src.read1(CHUNK)
             except OSError:
                 data = b""
             if not data:
-                # stdin closed — ffmpeg exited, pipeline is done
-                _stream_log("STDIN_EOF pipeline_exited")
-                raise SystemExit(0)
+                # ffmpeg exited — a genuine encoder crash. The FIFO holder means a
+                # normal playback transfer/stop does NOT reach here. Do NOT exit:
+                # keep the :8765 listener and any connected client, respawn ffmpeg
+                # (throttled), and fall through so the stall/silence keepalive
+                # covers the gap until audio resumes.
+                _stream_log("FFMPEG_EOF respawning ffmpeg")
+                src_fd = _respawn_ffmpeg()
+                src = _ff.stdout
+                break  # rebuild read_fds with the new src_fd on the next loop
 
             now = time.monotonic()
 
@@ -247,7 +355,7 @@ while True:
     # Only meaningful when a client is connected — no point logging stalls when
     # nobody is listening. Check after processing all readable fds so we don't
     # fire if stdin was readable this iteration.
-    if client and stdin_fd not in readable:
+    if client and src_fd not in readable:
         now      = time.monotonic()
         idle_ms  = (now - _last_data_mono) * 1000
         if idle_ms > STALL_THRESHOLD_MS and _stall_start_mono is None:

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <!-- ──────────────────────────────────────────────────────────────────────
+         Naboo stream side — JOB 2 of 2. Runs run-go.sh:
+           serve_http.py  — :8765 HTTP listener + FIFO holder + ffmpeg supervisor
+           go-event.py    — polls go-librespot API → HA webhooks
+         go-librespot itself is the separate job com.go-librespot.naboo.
+         This split is the 2026-06-13 storm fix — see run-go.sh and
+         TROUBLESHOOTING.md 2026-06-13.
+
+         Install / reload:
+           cp ~/containers/home-automation/librespot/com.naboo.stream.plist \
+              ~/Library/LaunchAgents/
+           launchctl bootout  gui/$(id -u)/com.naboo.stream 2>/dev/null
+           launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/com.naboo.stream.plist
+
+         ThrottleInterval=30 + the rate guard in run-go.sh cap respawns at
+         once / 30s. serve_http.py also respawns a crashed ffmpeg in-process
+         (throttled) without exiting, so this job effectively never restarts.
+
+         Logs: ~/containers/home-automation/librespot/log/
+    ────────────────────────────────────────────────────────────────────────── -->
+
+    <key>Label</key>
+    <string>com.naboo.stream</string>
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>/bin/bash</string>
+        <string>/Users/media/containers/home-automation/librespot/run-go.sh</string>
+    </array>
+
+    <key>RunAtLoad</key>
+    <true/>
+    <key>KeepAlive</key>
+    <true/>
+
+    <!-- Restart-storm safety net: never relaunch more than once per 30s. -->
+    <key>ThrottleInterval</key>
+    <integer>30</integer>
+
+    <key>StandardOutPath</key>
+    <string>/Users/media/containers/home-automation/librespot/log/launchd-stream.out</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/media/containers/home-automation/librespot/log/launchd-stream.err</string>
+
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>PATH</key>
+        <string>/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin</string>
+        <key>HOME</key>
+        <string>/Users/media</string>
+    </dict>
+</dict>
+</plist>
