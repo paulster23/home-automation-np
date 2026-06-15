@@ -121,7 +121,7 @@ cameras:
         # can't sustain it (record-stream Connection-timeouts + CSeq desync, ffmpeg
         # restarting ~1x/min). Single low-res stream fits WiFi; clips are 640x480.
         # Re-add a main/record input if the camera is ever wired (ethernet/PoE).
-        - path:
+        - path: 
             rtsp://{FRIGATE_RTSP_USER}:{FRIGATE_RTSP_PASSWORD}@192.168.1.248:554/h264Preview_01_sub
           input_args: -rtsp_transport tcp -timeout 5000000
           roles:
@@ -136,12 +136,37 @@ cameras:
     # Wildlife labels get added here once a Frigate+ model is trained.
     objects:
       track:
+        - person
         - cat
         - dog
         - bird
-    # Zones intentionally omitted — draw in the Frigate UI zone editor
-    # after the feed is live, then paste coordinates back here.
+      filters:
+        # Lowered min_score (default 0.5) / threshold (default 0.7) to catch
+        # low-res/distant animals on the 640x480 detect stream — diagnostic
+        # 2026-06-15. Lower = more false positives (fine for Plus bootstrap).
+        # Tune up once dog/cat detect reliably.
+        dog:
+          min_score: 0.3
+          threshold: 0.5
+        cat:
+          min_score: 0.3
+          threshold: 0.5
+        bird:
+          min_score: 0.4
+          threshold: 0.55
+    # 'person' added 2026-06-15 for the collection/bootstrap phase: it's the most
+    # reliable COCO class, so it (a) confirms detection works and (b) generates
+    # submittable events. COCO also often mis-calls wildlife as person/cat/dog —
+    # submit those events + relabel correctly in Frigate+. Trim 'person' once the
+    # Plus wildlife model is trained (unless you also want person alerts here).
+    # NOTE: do NOT add a full-frame object mask — a mask of 0,0,1,0,1,1,0,1
+    # (added via UI 2026-06-15, removed same day) suppresses ALL detections.
+    # Object masks tell Frigate to IGNORE objects in the masked area.
     motion: {}
+    zones:
+      yard:
+        coordinates: 0,0,1,0.03,0.982,0.98,0.021,0.98
+        loitering_time: 0
 objects:
   track:
     - person
