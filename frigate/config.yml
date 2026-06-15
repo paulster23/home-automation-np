@@ -132,6 +132,14 @@ cameras:
       width: 640
       height: 480
       fps: 5
+    # Motion-based recording (2026-06-15) so wildlife the base model can't yet
+    # detect is still captured on video — review these clips, grab a frame, and
+    # upload it to plus.frigate.video to label/train. Backyard ONLY (640x480 sub,
+    # low bitrate = tiny on disk); NOT global — front_window is 5MP and motion-
+    # recording it could re-trigger the 2026-04-08 disk crisis.
+    record:
+      motion:
+        days: 2
     # Per-camera override of the global person/car tracking.
     # Wildlife labels get added here once a Frigate+ model is trained.
     objects:
