@@ -36,7 +36,7 @@ cameras:
       inputs:
         # Sub-stream (Fluent 896x512): used for object detection
         # Credentials loaded from environment variables (see docker-compose.yml secrets)
-        - path:
+        - path: 
             rtsp://{FRIGATE_RTSP_USER}:{FRIGATE_RTSP_PASSWORD}@192.168.1.33:554/h264Preview_01_sub
           input_args: -rtsp_transport tcp -timeout 5000000
           roles:
@@ -47,7 +47,7 @@ cameras:
         # camera stream stalls, so the watchdog can restart it immediately (~5s downtime)
         # rather than waiting 120s for the watchdog + 30s force-kill (~150s downtime).
         # Note: was -stimeout prior to 2026-05-28; renamed in newer ffmpeg builds.
-        - path:
+        - path: 
             rtsp://{FRIGATE_RTSP_USER}:{FRIGATE_RTSP_PASSWORD}@192.168.1.33:554/h264Preview_01_main
           input_args: -rtsp_transport tcp -timeout 5000000
           roles:
@@ -73,22 +73,23 @@ cameras:
     #   y=0-180:   far side (buildings, far parked cars) — NO ZONE (ignored)
     zones:
       entrance:
-        coordinates: 0,0,0.139,0,0.306,0.37,0.403,0.494,1,0.542,1,1,0,1,0,0.382
+        coordinates: 
+          0,0.197,0.088,0.214,0.255,0.262,0.241,0.633,0.984,0.756,1,1,0,1,0,0.382
         objects: person
         inertia: 3
         loitering_time: 0
       sidewalk:
-        coordinates: 0,0.215,1,0.318,1,0.862,0,0.782
+        coordinates: 0,0.34,0.99,0.507,1,0.831,0,0.699
         objects: person
         inertia: 3
         loitering_time: 0
       active_street:
-        coordinates: 0,0.096,1,0.142,1,0.531,0,0.436
+        coordinates: 0,0.249,1,0.35,1,0.762,0,0.6
         objects: car
         inertia: 3
         loitering_time: 0
       northside:
-        coordinates: 0,0,1,0,1,0.219,0,0.154
+        coordinates: 0,0,1,0,1,0.391,0,0.254
         loitering_time: 0
         objects: person
         inertia: 3
@@ -102,6 +103,45 @@ cameras:
           - entrance
           - sidewalk
           - active_street
+    motion: {}
+
+  # ── Backyard wildlife camera (RLC-510WA, WiFi) ───────────────
+  # Added 2026-06-12. Purpose: track animals crossing the yard.
+  # NOTE: stock COCO model only detects cat/dog/bird among animals.
+  # Raccoon/possum/squirrel/deer require a Frigate+ trained model —
+  # collect snapshots, train in Frigate+, then add labels to track below.
+  backyard:
+    enabled: true   # re-enabled 2026-06-15 (via Cowork) after restoring mac-monitor host-mem visibility; was TEMP-disabled 2026-06-13 during a Docker Desktop crash loop
+    ffmpeg:
+      input_args: preset-rtsp-restream
+      retry_interval: 10
+      inputs:
+        # Sub-stream (Fluent 640x480) — object detection
+        - path:
+            rtsp://{FRIGATE_RTSP_USER}:{FRIGATE_RTSP_PASSWORD}@192.168.1.248:554/h264Preview_01_sub
+          input_args: -rtsp_transport tcp -timeout 5000000
+          roles:
+            - detect
+        # Main stream (Clear) — full-quality recording
+        - path:
+            rtsp://{FRIGATE_RTSP_USER}:{FRIGATE_RTSP_PASSWORD}@192.168.1.248:554/h264Preview_01_main
+          input_args: -rtsp_transport tcp -timeout 5000000
+          roles:
+            - record
+    detect:
+      enabled: true
+      width: 640
+      height: 480
+      fps: 5
+    # Per-camera override of the global person/car tracking.
+    # Wildlife labels get added here once a Frigate+ model is trained.
+    objects:
+      track:
+        - cat
+        - dog
+        - bird
+    # Zones intentionally omitted — draw in the Frigate UI zone editor
+    # after the feed is live, then paste coordinates back here.
     motion: {}
 objects:
   track:
