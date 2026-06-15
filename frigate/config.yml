@@ -116,17 +116,16 @@ cameras:
       input_args: preset-rtsp-restream
       retry_interval: 10
       inputs:
-        # Sub-stream (Fluent 640x480) — object detection
+        # Sub-stream (Fluent 640x480) — detection AND recording.
+        # 2026-06-15: dropped the 5MP main stream — WiFi at the backyard mount
+        # can't sustain it (record-stream Connection-timeouts + CSeq desync, ffmpeg
+        # restarting ~1x/min). Single low-res stream fits WiFi; clips are 640x480.
+        # Re-add a main/record input if the camera is ever wired (ethernet/PoE).
         - path:
             rtsp://{FRIGATE_RTSP_USER}:{FRIGATE_RTSP_PASSWORD}@192.168.1.248:554/h264Preview_01_sub
           input_args: -rtsp_transport tcp -timeout 5000000
           roles:
             - detect
-        # Main stream (Clear) — full-quality recording
-        - path:
-            rtsp://{FRIGATE_RTSP_USER}:{FRIGATE_RTSP_PASSWORD}@192.168.1.248:554/h264Preview_01_main
-          input_args: -rtsp_transport tcp -timeout 5000000
-          roles:
             - record
     detect:
       enabled: true
