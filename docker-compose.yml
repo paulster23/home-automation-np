@@ -146,6 +146,10 @@ services:
     dns:
       - 1.1.1.1   # Bypass macOS host resolver — intermittent timeouts on api.wyzecam.com + accounts.spotify.com
       - 8.8.8.8   # Google fallback
+    dns_opt:      # 2026-06-26: harden c-ares against Docker Desktop DNS-forwarder blips (bursty aiodns timeouts on wyzecam/spotify)
+      - timeout:2   # 2s per try instead of c-ares ~5s default
+      - attempts:5  # retry up to 5x before surfacing a failure
+      - rotate      # spread queries across both servers, don't always hit 1.1.1.1 first
     networks:
       - home-automation
     healthcheck:
