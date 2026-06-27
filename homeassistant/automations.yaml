@@ -387,12 +387,14 @@
       sequence:
       - action: spotify_voice_assistant.pause
 - id: windmill_ac_daily_schedule
-  alias: Windmill AC – On 7am Auto @ 71°F Medium, off 2am
+  alias: Windmill AC – On 7am (auto), off 1am
+  # Power schedule only. Deliberately does NOT set temperature or fan mode, so
+  # whatever you last set via the Stream Deck persists (Stream Deck overrides).
   triggers:
   - at: 07:00:00
     id: morning_on
     trigger: time
-  - at: 02:00:00
+  - at: 01:00:00
     id: night_off
     trigger: time
   actions:
@@ -403,24 +405,14 @@
       sequence:
       - action: climate.set_hvac_mode
         target:
-          entity_id: climate.windmill_ac_2
+          entity_id: climate.windmill_ac
         data:
           hvac_mode: auto
-      - action: climate.set_temperature
-        target:
-          entity_id: climate.windmill_ac_2
-        data:
-          temperature: 73
-      - action: climate.set_fan_mode
-        target:
-          entity_id: climate.windmill_ac_2
-        data:
-          fan_mode: Medium
     - conditions:
       - condition: trigger
         id: night_off
       sequence:
       - action: climate.turn_off
         target:
-          entity_id: climate.windmill_ac_2
+          entity_id: climate.windmill_ac
   mode: single
