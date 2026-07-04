@@ -102,7 +102,17 @@ except OSError:
 # cap we stop filling: the client starves, drops to idle, and the normal
 # wind-down chain (premute etc.) takes over. A fresh play reconnects via the
 # librespot_playing webhook automation regardless.
-SILENCE_MAX_S = 45
+#
+# 2026-06-27: raised 45 -> 300. go-librespot keeps getting "connection reset by
+# peer" from Spotify (re-auth + audio-key timeouts) producing ~3.4-4.5 min FIFO
+# stalls; at 45s the keepalive gave up mid-stall, the stream went dry, and the
+# Voice PE stopped pulling :8765 (speaker silent while Spotify still "playing").
+# 2026-07-03: raised 300 -> 600. Jun 28 dropout storm: 48 dropouts 18:30-22:57 ET,
+# every ~6 min exactly. FIFO stalls were exceeding 5 min (Spotify AP reconnects
+# during a long session), causing the 300s cap to fire, the Voice PE to disconnect,
+# ffmpeg to respawn, and the cycle to repeat. 600s (10 min) gives 2× the observed
+# worst-case stall with margin. Graceful stops are unaffected.
+SILENCE_MAX_S = 600
 
 HTTP_HEADER = (
     b"HTTP/1.0 200 OK\r\n"
