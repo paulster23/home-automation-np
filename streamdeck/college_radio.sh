@@ -1,9 +1,9 @@
 #!/bin/bash
-# Skip to next track via Spotify API, then resume via HA
+# Play a random college-radio station from radio-browser.
 DIR="$(cd "$(dirname "$0")" && pwd)"
 # Last-run log: lets Claude diagnose button presses by reading the file.
 {
   echo "=== $(date) invoked-as=$0 user=$(whoami) ==="
-  /opt/homebrew/bin/python3.11 "$DIR/spotify_skip.py"
+  /opt/homebrew/bin/python3.11 "$DIR/college_radio.py"
   echo "exit: $?"
-} > "$DIR/spotify_skip.last.log" 2>&1
+} > "$DIR/college_radio.last.log" 2>&1

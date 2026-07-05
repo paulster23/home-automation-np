@@ -4,6 +4,7 @@
 import base64
 import json
 import os
+import sys
 import time
 import urllib.parse
 import urllib.request
@@ -44,11 +45,28 @@ req = urllib.request.Request(
 with urllib.request.urlopen(req) as r:
     access_token = json.loads(r.read())["access_token"]
 
-# ── Skip ──────────────────────────────────────────────────────────────────────
-NABOO_DEVICE_ID = "0596f720dd52a9e2e2d0020d00931a1b91014e64"
+# ── Resolve Naboo's current device ID ─────────────────────────────────────────
+# librespot/Spotify Connect device IDs are ephemeral — they change whenever
+# librespot restarts. Look it up by name each run instead of hardcoding.
+NABOO_NAME = "Naboo"
 
 req = urllib.request.Request(
-    f"https://api.spotify.com/v1/me/player/next?device_id={NABOO_DEVICE_ID}",
+    "https://api.spotify.com/v1/me/player/devices",
+    headers={"Authorization": f"Bearer {access_token}"},
+)
+with urllib.request.urlopen(req, timeout=10) as r:
+    devices = json.loads(r.read()).get("devices", [])
+
+naboo_device_id = next((d["id"] for d in devices if d["name"] == NABOO_NAME), None)
+if naboo_device_id is None:
+    visible = ", ".join(d["name"] for d in devices) or "none"
+    print(f"ERROR: '{NABOO_NAME}' not visible to Spotify — is librespot running? "
+          f"Devices seen: {visible}", file=sys.stderr)
+    sys.exit(1)
+
+# ── Skip ──────────────────────────────────────────────────────────────────────
+req = urllib.request.Request(
+    f"https://api.spotify.com/v1/me/player/next?device_id={naboo_device_id}",
     data=b"",
     headers={"Authorization": f"Bearer {access_token}"},
     method="POST",

@@ -31,12 +31,16 @@ cameras:
   front_window:
     ffmpeg:
       # RTSP resilience — auto-reconnect on camera drops, TCP for stability
+      # Note: Reolink RLC-810A has a CSeq desync bug ("CSeq N expected, 0 received")
+      # that causes ~80s restart cycles. Tried tcp→udp (no effect, CSeq is on control
+      # channel) and -allowed_media_types video (broke segment muxer — reverted 2026-06-26).
+      # Root fix: Reolink firmware update via Reolink app → Device → System → Firmware.
       input_args: preset-rtsp-restream
       retry_interval: 10
       inputs:
         # Sub-stream (Fluent 896x512): used for object detection
         # Credentials loaded from environment variables (see docker-compose.yml secrets)
-        - path: 
+        - path:
             rtsp://{FRIGATE_RTSP_USER}:{FRIGATE_RTSP_PASSWORD}@192.168.1.33:554/h264Preview_01_sub
           input_args: -rtsp_transport tcp -timeout 5000000
           roles:
@@ -47,7 +51,7 @@ cameras:
         # camera stream stalls, so the watchdog can restart it immediately (~5s downtime)
         # rather than waiting 120s for the watchdog + 30s force-kill (~150s downtime).
         # Note: was -stimeout prior to 2026-05-28; renamed in newer ffmpeg builds.
-        - path: 
+        - path:
             rtsp://{FRIGATE_RTSP_USER}:{FRIGATE_RTSP_PASSWORD}@192.168.1.33:554/h264Preview_01_main
           input_args: -rtsp_transport tcp -timeout 5000000
           roles:
@@ -121,7 +125,7 @@ cameras:
         # can't sustain it (record-stream Connection-timeouts + CSeq desync, ffmpeg
         # restarting ~1x/min). Single low-res stream fits WiFi; clips are 640x480.
         # Re-add a main/record input if the camera is ever wired (ethernet/PoE).
-        - path: 
+        - path:
             rtsp://{FRIGATE_RTSP_USER}:{FRIGATE_RTSP_PASSWORD}@192.168.1.248:554/h264Preview_01_sub
           input_args: -rtsp_transport tcp -timeout 5000000
           roles:
@@ -131,7 +135,7 @@ cameras:
       enabled: true
       width: 640
       height: 480
-      fps: 5
+      fps: 3  # reduced 5→3 2026-06-26 (Cowork) — Frigate memory hit 93.5% of 1536m cap (Jun 23); lowest-cost intervention before raising the limit
     # Motion-based recording (2026-06-15) so wildlife the base model can't yet
     # detect is still captured on video — review these clips, grab a frame, and
     # upload it to plus.frigate.video to label/train. Backyard ONLY (640x480 sub,
@@ -175,6 +179,9 @@ cameras:
       yard:
         coordinates: 0,0,1,0.03,0.982,0.98,0.021,0.98
         loitering_time: 0
+    review:
+      alerts:
+        required_zones: yard
 objects:
   track:
     - person
