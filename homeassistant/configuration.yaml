@@ -14,7 +14,7 @@ http:
     - 172.18.0.0/16
     - 172.19.0.0/16
     - 172.20.0.0/16
-    - 192.168.65.1    # Docker Desktop host gateway (macOS)
+    - 192.168.65.0/24  # Docker Desktop internal subnet (macOS)
   use_x_frame_options: false
   server_host: "0.0.0.0"
 

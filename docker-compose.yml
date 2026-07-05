@@ -130,7 +130,13 @@ services:
     # Entrypoint wrapper: runs patch_hacs.sh before /init to reapply the
     # startup-timeout patch if HACS updated itself and overwrote base.py.
     # exec /init ensures s6-overlay remains PID 1. Added 2026-04-30.
-    entrypoint: ["/bin/bash", "-c", "/config/scripts/patch_hacs.sh; exec /init"]
+    #
+    # SSL_CERT_FILE: Python 3.14 (HA 2026.7) uses an incomplete system CA bundle
+    # that lacks DigiCert Global Root CA, breaking ssl.create_default_context()
+    # for api.wyzecam.com and similar. Exporting SSL_CERT_FILE to certifi's bundle
+    # (which has the correct roots) before exec /init fixes this; the env var is
+    # inherited by s6-overlay → HA's Python process. Added 2026-07-04.
+    entrypoint: ["/bin/bash", "-c", "export SSL_CERT_FILE=$(python3 -c 'import certifi; print(certifi.where())' 2>/dev/null || true); /config/scripts/patch_hacs.sh; exec /init"]
     security_opt:
       - no-new-privileges:true
     depends_on:
@@ -143,13 +149,11 @@ services:
       - ./homeassistant:/config
     environment:
       TZ: America/New_York
-    dns:
-      - 192.168.1.70   # AdGuard (2026-07-03, Option 2) — cache_ttl_min:300 now absorbs short upstream/ISP blips; was 1.1.1.1 direct
-      - 8.8.8.8        # fallback if AdGuard itself is down
-    dns_opt:      # 2026-06-26: harden c-ares against Docker Desktop DNS-forwarder blips (bursty aiodns timeouts on wyzecam/spotify)
-      - timeout:2   # 2s per try instead of c-ares ~5s default
-      - attempts:5  # retry up to 5x before surfacing a failure
-      - rotate      # spread queries across both servers, don't always hit AdGuard first
+    # dns: removed 2026-07-04 — explicit nameserver (192.168.1.70/8.8.8.8) relies on vpnkit
+    # routing from the home-automation bridge to the host, which breaks on container restart.
+    # Docker's embedded resolver (127.0.0.11 via iptables) is more reliable; it forwards
+    # upstream to whatever the Mac's system DNS is (AdGuard at 192.168.1.70 on LAN).
+    # dns_opt: (timeout/attempts/rotate/use-vc) removed alongside — musl ignores most options.
     networks:
       - home-automation
     healthcheck:
