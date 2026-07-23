@@ -6,6 +6,35 @@
 
 ## Pending
 
+- **Instrument the Naboo Voice PE for Wi-Fi drops (added 2026-07-22):** the 07-22 cut-out incident (TROUBLESHOOTING.md) was diagnosed blind because stock Voice PE firmware exposes no RSSI/uptime. Two parts:
+
+  **(a) Uptime Kuma monitor — low effort, do first.** Add a monitor in Kuma (media-configuration, `--profile monitoring`, http://localhost:3001):
+  - Type: **TCP Port** (not ICMP ping — tests the actual ESPHome API HA depends on, and ESP32 ICMP is flaky)
+  - Hostname `192.168.1.47`, Port `6053`
+  - Heartbeat interval 60s, Retries 2, Retry interval 30s
+  - Notification: existing `homelab` ntfy channel
+  - Value: catches the device dropping off the mesh in real time; an uptime reset shows as a monitor blip = a reboot vs. a plain Wi-Fi drop.
+
+  **(b) ESPHome diagnostic sensors — higher effort, needs a reflash.** Adds RSSI + uptime + which Velop node it's on. Snippet to append to the Voice PE device YAML (after the Nabu Casa package import):
+  ```yaml
+  sensor:
+    - platform: wifi_signal
+      name: "Naboo Wi-Fi Signal"
+      update_interval: 60s
+      entity_category: diagnostic
+    - platform: uptime
+      name: "Naboo Uptime"
+      update_interval: 60s
+      entity_category: diagnostic
+  text_sensor:
+    - platform: wifi_info
+      bssid:
+        name: "Naboo Connected AP (BSSID)"   # which Velop node it roamed onto — key for mesh debugging
+      ssid: { name: "Naboo SSID" }
+      ip_address: { name: "Naboo IP" }
+  ```
+  **Prerequisite/decision:** HA here is a Container install (no Supervisor/add-ons), so there's no built-in ESPHome Device Builder. To flash custom YAML you must take over the device in a standalone ESPHome instance (e.g. a one-off `ghcr.io/esphome/esphome` container) using the Nabu Casa source config from `github.com/esphome/home-assistant-voice-pe`, then Install→OTA. Trade-off: once taken over, the Voice PE is no longer cloud/HA-managed for OTA updates — you own the YAML. Given that, (a) covers most of the monitoring need cheaply; only do (b) if we want RSSI/BSSID trend data.
+
 - **Reconnect Stream Deck to the relocated server (added 2026-07-14):** the Mac mini moved upstairs (wired, static .70); the physical Stream Deck is still downstairs by the speakers/Apple TV with nothing to plug into. The deck is USB input only — buttons trigger .app bundles on the Mac which call HA/Spotify over LAN — so only USB reach is broken. Options: (1) **Stream Deck Mobile** app on a phone/iPad (~$25/yr, zero hardware, works immediately — mirrors profiles from the Elgato software over LAN); (2) **Raspberry Pi + VirtualHere USB-over-IP** downstairs (~$50 Pi + $49 license) — deck appears locally-plugged to macOS; the same Pi could host the second AdGuardHome instance from infra's DNS-failover TODO (one device, two jobs); (3) port buttons to an HA dashboard on a tablet (cleanest long-term; Claude Code project — streamdeck scripts + osacompile). USB-over-Cat5 extender ruled out unless a dedicated (non-switched) cable run between floors exists.
 
 ## ✅ Completed
