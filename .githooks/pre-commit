@@ -1,0 +1,23 @@
+#!/bin/bash
+# Pre-commit hook: scan staged files for secrets before allowing a commit.
+# Requires gitleaks: brew install gitleaks
+
+if ! command -v gitleaks &> /dev/null; then
+    echo "⚠️  gitleaks is not installed. Install it with: brew install gitleaks"
+    echo "   Skipping secret scan..."
+    exit 0
+fi
+
+echo "🔍 Scanning for secrets..."
+gitleaks protect --staged --no-banner
+
+if [ $? -ne 0 ]; then
+    echo ""
+    echo "❌ Secrets detected in staged files! Commit blocked."
+    echo "   Move secrets to .env (which is gitignored) and try again."
+    echo ""
+    echo "   To bypass this check in an emergency: git commit --no-verify"
+    exit 1
+fi
+
+echo "✅ No secrets found. Proceeding with commit."
