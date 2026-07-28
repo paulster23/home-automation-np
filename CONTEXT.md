@@ -2,7 +2,7 @@
 
 *Deep reference for this stack. Read alongside root `SYSTEM_CONTEXT.md` and `OPS_RUNBOOK.md`.*
 
-*Last updated: 2026-05-10*
+*(No manual "last updated" stamp — see `git log` for history.)*
 
 ---
 
@@ -11,7 +11,7 @@
 | Container | Port | Purpose |
 |---|---|---|
 | mosquitto | 1883 (internal) | MQTT broker (Frigate ↔ HA) |
-| frigate | 8971/8554 | NVR — 1 camera (front_window @ 192.168.1.33), Apple Silicon ZMQ detection, 5fps. **Frigate 0.17.1.** Requires FrigateDetector.app running on host (Login Item, port 5555). Model: `/config/model_cache/yolo.onnx` (YOLOv9-t-320). Healthcheck: `curl -sf http://localhost:5000/api/version` (internal FastAPI, not nginx port 8971 — bare TCP probe caused 421 HTTP 400s/week). |
+| frigate | 8971/8554 | NVR — 2 cameras: front_window @ 192.168.1.33 (wired) + backyard @ 192.168.1.248 (RLC-510WA WiFi, added 2026-06-13, sub-stream detect only). Apple Silicon ZMQ detection, 5fps. **Frigate 0.17.1.** Requires FrigateDetector.app running on host (Login Item, port 5555). Model: `/config/model_cache/yolo.onnx` (YOLOv9-t-320). Healthcheck: `curl -sf http://localhost:5000/api/version` (internal FastAPI, not nginx port 8971 — bare TCP probe caused 421 HTTP 400s/week). |
 | homeassistant | 8123/6053 | Central automation hub + voice intents. **Version: 2026.6.2** (updated 2026-06-10). **Known bug:** Spotify coordinator throws `MissingField: Field "items" of type PlaylistTracks is missing` on every poll cycle (~every 10–20s) — caused by Spotify's Feb 2026 API change removing `/playlists/{id}/tracks`. Causes playback lag (error loop hammers API). No fix as of 2026.6.2 (upstream issue #166884 still open). Workaround: avoid Spotify algorithmic playlists (Daily Mix, Radio, Discover Weekly). **Trusted proxies:** `configuration.yaml` `http:` block includes `192.168.65.1` (Docker Desktop macOS host gateway) — required since 2026.6 hardened X-Forwarded-For enforcement; without it Tailscale-proxied requests return HTTP 400. |
 | ~~music-assistant~~ | 8095/8097 | **REMOVED 2026-05-03.** Was radio-only after Spotify removed 2026-03-28. Radio now uses direct MP3 streams via `script.radio_play_station`; Spotify via librespot → ESPHome direct path. Was consuming ~460m RAM. To restore: `git show HEAD~1:home-automation/docker-compose.yml \| grep -A40 'music-assistant:'` |
 | ~~whisper~~ | 10300 (internal) | **REMOVED 2026-04-22.** Replaced by native wyoming-whisperkit (port 7892) and wyoming-mlx-whisper (port 7891). To restore: `git show HEAD~1:home-automation/docker-compose.yml \| grep -A40 'whisper:'` |
@@ -110,7 +110,7 @@ sleep 5 && ps aux | grep -E "librespot|ffmpeg|serve_http" | grep -v grep
 
 ### Architecture
 ```
-Wake word → ESPHome mic → wyoming-whisperkit (STT, port 7892, Silero-VAD 900ms)
+Wake word → ESPHome mic → wyoming-whisperkit (STT, port 7892, Silero-VAD 700ms)
   → HA intent matching → spotify_voice_assistant.search (Spotify API)
   → spotify_voice_assistant.play (start_playback on device "Naboo")
   → librespot receives stream → ffmpeg (pipe:1) → serve_http.py :8765
@@ -174,7 +174,7 @@ The `librespot_playing` automation unmutes after naboo reaches "playing" with a 
 - Device IP: `192.168.1.47` (DHCP reserved)
 - No API encryption (removed 2026-04-29 after button-hold partially reset device encryption state)
 - Finished speaking detection: **relaxed** (set via `naboo_vad_relaxed` automation on HA start)
-- Silero-VAD silence threshold in wyoming-whisperkit: **900ms**
+- Silero-VAD silence threshold in wyoming-whisperkit: **700ms** (`VAD_SILENCE_MS` in `handler.py` — verified 2026-07-28)
 
 ### Auto-pause Automation
 Pauses `media_player.home_assistant_voice_0a3a76_media_player` when wake word fires so background audio doesn't degrade STT; resumes after pipeline completes only if the player is still in `paused` state (guards against stop/new-station commands re-triggering a resume).
@@ -183,7 +183,7 @@ Pauses `media_player.home_assistant_voice_0a3a76_media_player` when wake word fi
 
 ## Frigate / Camera
 
-- **Single camera:** `front_window` @ 192.168.1.33, 3 zones (entrance, sidewalk, active_street), tracks person + car
+- **Two cameras:** `front_window` @ 192.168.1.33 (wired; 3 zones — entrance, sidewalk, active_street; tracks person + car) and `backyard` @ 192.168.1.248 (RLC-510WA WiFi, added 2026-06-13; sub-stream detect only since 2026-06-15; powered off at times = normal)
 - **Detection:** Apple Silicon ZMQ via FrigateDetector.app (Login Item, port 5555). CPU usage ~20–40% (was ~200% before ZMQ offload). If Frigate fails to detect, check FrigateDetector is running first.
 - **Storage:** Retains alerts 14 days, detections 7 days. Continuous retention removed in 0.17.
 - **RTSP note:** Reolink app uses proprietary P2P — app working ≠ RTSP working. Always confirm via `ping 192.168.1.33` and checking Frigate logs.
@@ -196,8 +196,7 @@ Pauses `media_player.home_assistant_voice_0a3a76_media_player` when wake word fi
 mosquitto (MQTT broker)
   └── frigate (publishes events to MQTT)
   └── homeassistant (receives frigate events via MQTT)
-       ├── wyoming-whisperkit (native macOS, active STT, port 7892, Silero-VAD 900ms)
-       ├── wyoming-mlx-whisper (native macOS, STT fallback, port 7891)
+       ├── wyoming-whisperkit (native macOS, active STT, port 7892, Silero-VAD 700ms)
        ├── HA Spotify integration (provides spotifyaio client)
        │    └── spotify_voice_assistant custom component (search + play + podcast_play)
        │         ├── Spotify: Web API → librespot "Naboo" (native macOS)
