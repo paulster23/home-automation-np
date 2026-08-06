@@ -31,7 +31,13 @@ cameras:
   front_window:
     ffmpeg:
       # RTSP resilience — auto-reconnect on camera drops, TCP for stability
-      # Note: Reolink RLC-810A has a CSeq desync bug ("CSeq N expected, 0 received")
+      # MODEL CORRECTED 2026-08-04: this camera is a **Reolink E1 Pro** (indoor pan/tilt,
+      # 2.4-GHz Wi-Fi only, NO ethernet port), not an RLC-810A. The old note said RLC-810A,
+      # which is a PoE camera — wrong hardware, and it sent the 2026-08-04 outage diagnosis
+      # down a "just re-cable it" path that is physically impossible on this camera.
+      # See plans/NETWORK_TOPOLOGY_CONTEXT.md §1. The CSeq behaviour described below was
+      # observed on THIS camera and still stands; only the model name was wrong.
+      # Note: this camera has a CSeq desync bug ("CSeq N expected, 0 received")
       # that causes ~80s restart cycles. Tried tcp→udp (no effect, CSeq is on control
       # channel) and -allowed_media_types video (broke segment muxer — reverted 2026-06-26).
       # Root fix: Reolink firmware update via Reolink app → Device → System → Firmware.
@@ -115,7 +121,14 @@ cameras:
   # Raccoon/possum/squirrel/deer require a Frigate+ trained model —
   # collect snapshots, train in Frigate+, then add labels to track below.
   backyard:
-    enabled: true   # re-enabled 2026-06-15 (via Cowork) after restoring mac-monitor host-mem visibility; was TEMP-disabled 2026-06-13 during a Docker Desktop crash loop
+    # DISABLED 2026-08-05 (via Cowork) — was the twice-reopened TODO (07-23, reopened 07-30 because
+    # the 07-27 "disabled" fix never actually reached this file). Camera lost its .248 DHCP
+    # reservation when the Velop parent died 08-03, so it crash-loops on a dead address: 858 ffmpeg
+    # ERRORs in ~20 min, which truncates frigate.log's tail and hides front_window events. Paul is
+    # travelling 08-07 → ~08-14 and remote log diagnosis matters more than backyard coverage.
+    # RE-ENABLE after the UniFi Express 7 cutover restores DHCP reservations: set true, give the
+    # camera a static/reserved 192.168.1.248, then ./crestart -home. See TROUBLESHOOTING.md 2026-08-05.
+    enabled: false  # prev: true — re-enabled 2026-06-15 (via Cowork) after restoring mac-monitor host-mem visibility; was TEMP-disabled 2026-06-13 during a Docker Desktop crash loop
     ffmpeg:
       input_args: preset-rtsp-restream
       retry_interval: 10

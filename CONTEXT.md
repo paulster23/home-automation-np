@@ -170,11 +170,13 @@ The `librespot_playing` automation unmutes after naboo reaches "playing" with a 
 **`assist_satellite.abort` does not exist** — confirmed via Developer Tools. Hard restart requires ESPHome firmware action (not present as of 2026-04-15).
 
 ### Voice PE Settings
+- **Firmware: `26.6.0`** (ESPHome 2026.6.0) — updated 2026-07-29 from 26.4.0 via **USB-C web-installer reflash** (WiFi OTA repeatedly failed mid-download, low heap `Error reading data: -28679`). After flashing, **power from a USB wall adapter, not a laptop** — tethered to a computer it boot-loops (`rst:0x15 USB_UART_CHIP_RESET` / `Reset Reason: USB peripheral`). See TROUBLESHOOTING 2026-07-29.
 - Wake sound: OFF (`switch.home_assistant_voice_0a3a76_wake_sound`)
 - Device IP: `192.168.1.47` (DHCP reserved)
-- No API encryption (removed 2026-04-29 after button-hold partially reset device encryption state)
+- API encryption: **Noise ENABLED** as of the 26.6.0 reflash (`Noise encryption: YES`, saved PSK; HA 2026.7.4 connects fine). Supersedes the 2026-04-29 "encryption removed" state — the production-firmware reflash restored it.
 - Finished speaking detection: **relaxed** (set via `naboo_vad_relaxed` automation on HA start)
 - Silero-VAD silence threshold in wyoming-whisperkit: **700ms** (`VAD_SILENCE_MS` in `handler.py` — verified 2026-07-28)
+- **Once-a-minute `errno=128` in device/HA logs is NOT instability** — it's the uptime-kuma `Naboo Voice PE (ESPHome API)` TCP port monitor probing `:6053` every 60s (bare connect, no noise handshake → `Accept 192.168.1.70` + `CONNECTION_CLOSED errno=128`). Redundant ping monitor dropped + port monitor slowed 60s→300s on 2026-07-29. See TROUBLESHOOTING 2026-07-29.
 
 ### Auto-pause Automation
 Pauses `media_player.home_assistant_voice_0a3a76_media_player` when wake word fires so background audio doesn't degrade STT; resumes after pipeline completes only if the player is still in `paused` state (guards against stop/new-station commands re-triggering a resume).
