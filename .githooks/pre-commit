@@ -9,7 +9,7 @@ if ! command -v gitleaks &> /dev/null; then
 fi
 
 echo "🔍 Scanning for secrets..."
-gitleaks protect --staged --no-banner
+gitleaks git --staged --no-banner
 
 if [ $? -ne 0 ]; then
     echo ""
