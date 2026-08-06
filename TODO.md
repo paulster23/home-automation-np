@@ -14,12 +14,18 @@
 
 - **Instrument the Naboo Voice PE for Wi-Fi drops (added 2026-07-22):** the 07-22 cut-out incident (TROUBLESHOOTING.md) was diagnosed blind because stock Voice PE firmware exposes no RSSI/uptime. Two parts:
 
-  **(a) Uptime Kuma monitor — low effort, do first.** Add a monitor in Kuma (infra stack since 2026-07-23, no profile needed — path corrected 2026-07-30; http://192.168.1.70:3001):
+  **(a) Uptime Kuma monitor — ✅ DONE 2026-08-05 (via Cowork).** Monitor id **20** `Naboo Voice PE (ESPHome API)` is live: TCP Port `192.168.1.237:6053`, heartbeat **300s → 60s**, retries 2, notified via the new ntfy notifier. It already existed but was on a 5-minute heartbeat, so a drop could go unseen for five minutes. **Also wired Kuma → ntfy this session** (it had only "Gmail Alerts" — the assumption below that a `homelab` ntfy channel was already attached to Kuma was wrong). New notifier `ntfy · homelab` → `http://ntfy` (container name on the shared infra compose network — deliberately *not* `192.168.1.70:8111`, which would route through Docker Desktop's NAT and depend on the load-bearing host IP), topic `homelab`, priority 4 with DOWN events auto-escalating to 5. Test send returned "Sent Successfully"; verified in `kuma.db` that ntfy is attached to all 22 monitors. Original spec below for reference. — (closed via Cowork 2026-08-05)
+
+  <details><summary>Original spec (kept for context)</summary>
+
+  Add a monitor in Kuma (infra stack since 2026-07-23, no profile needed — path corrected 2026-07-30; http://192.168.1.70:3001):
   - Type: **TCP Port** (not ICMP ping — tests the actual ESPHome API HA depends on, and ESP32 ICMP is flaky)
   - Hostname ~~`192.168.1.47`~~ → **`192.168.1.237`** (corrected 2026-08-05 — the `.47` reservation died with the Velop parent; nothing pins this address until the UX7 lands, so a red monitor here may mean "lease changed," not "device dead"), Port `6053`
   - Heartbeat interval 60s, Retries 2, Retry interval 30s
   - Notification: existing `homelab` ntfy channel
   - Value: catches the device dropping off the mesh in real time; an uptime reset shows as a monitor blip = a reboot vs. a plain Wi-Fi drop.
+
+  </details>
 
   **(b) ESPHome diagnostic sensors — higher effort, needs a reflash.** Adds RSSI + uptime + which Velop node it's on. Snippet to append to the Voice PE device YAML (after the Nabu Casa package import):
   ```yaml
