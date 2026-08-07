@@ -44,10 +44,21 @@ spotify_voice_assistant:
 # ── Logging ────────────────────────────────────────────────────────────────────
 # WindmillAC (HACS) hardcodes _LOGGER.setLevel(DEBUG) in climate.py, which spams
 # the HA log (and the log-tailer). Pin it to warning to suppress the noise.
+#
+# esphome.manager: the Voice PE (Naboo, 0a3a76) logs a CONNECTION_CLOSED errno=128
+# WARNING every time uptime-kuma monitor #20 "Naboo Voice PE (ESPHome API)" opens and
+# drops a bare TCP connection to 192.168.1.237:6053. At the 60s heartbeat set 2026-08-05
+# that is 1,440 lines/day, which buries real HA signal. Diagnosed 2026-07-29, reintroduced
+# 2026-08-05 when the heartbeat went 300s -> 60s for faster Wi-Fi-drop detection.
+# Kuma + ntfy now own drop alerting for this device, so the HA log does not need to carry
+# it. Trade-off accepted 2026-08-06 (Paul): this hides ALL esphome.manager WARNINGs, incl.
+# genuine reconnect storms on other ESPHome devices -- if you are debugging ESPHome
+# connectivity, comment this line out first. See weekly-report-2026-08-06.html.
 logger:
   default: info
   logs:
     custom_components.windmillac: error
+    homeassistant.components.esphome.manager: error
 
 # ── Database housekeeping ──────────────────────────────────────────────────────
 # Auto-purge entity state history older than 30 days to prevent DB bloat.
