@@ -1,0 +1,39 @@
+# gitleaks allowlist — one fingerprint per line:  <commit>:<file>:<rule>:<line>
+#
+# Added 2026-08-09 after the first full-history scan of this repo
+# (`gitleaks git`) reported "leaks found: 4".
+#
+# ⚠️ Why the pre-commit hook never caught these: the hook runs
+# `gitleaks git --staged` and only sees the diff being committed. A secret in
+# an old commit is invisible to it forever. A clean hook run is not evidence of
+# a clean repo — only a full-history scan is.
+#
+# ── NONE OF THESE ARE FALSE POSITIVES ───────────────────────────────────────
+# All four were real credentials. All four have already been remediated in the
+# WORKING TREE — that is why the current files scan clean — but the values stay
+# in git history permanently. These entries stop the findings blocking every
+# push; they are not a statement that the credentials are safe.
+#
+# THE FIX IS ROTATION, NOT HISTORY REWRITING. Rotating renders the historical
+# value worthless in one step, with none of the risk of rewriting history.
+# Tracked in home-automation/TODO.md → "Rotate credentials left in git history".
+#
+# 1-2. Home Assistant long-lived access token, inline in the voice-bench
+#      configs. Since refactored to `ha_token_file: "./secrets/ha_token"`.
+#      ⚠️ HIGHEST PRACTICAL SEVERITY HERE: an HA LLAT grants full API control of
+#      the house — locks, cameras, everything — and HA long-lived tokens do not
+#      expire. Delete the old token in HA (profile → Long-lived access tokens)
+#      and confirm secrets/ha_token holds a NEW one, not the same value.
+e2c3069657ad7078f8d307a0ba41973c403fe554:voice-bench/config.whisperkit.yaml:jwt:9
+89b25d500b421e25d2b5b1b9fd0558d6ff387990:voice-bench/config.yaml:jwt:6
+#
+# 3.   Same class of token in the `whisper` service block of docker-compose.yml.
+#      That container was removed 2026-04-22; line 192 is comments now.
+5eb354574a995e25d3f005d9cf9dadea1dc98189:docker-compose.yml:jwt:192
+#
+# 4.   A real TLS private key, committed in "Initial working config".
+#      certs/privkey.pem is now gitignored (.gitignore:8) and untracked; only
+#      certs/fullchain.pem (the public chain) is tracked, which is fine.
+#      A leaked private key means anyone holding it can impersonate the cert —
+#      regenerate the keypair rather than relying on the repo being private.
+f15860a61b3f7e4cd74827039c1686100beb4f5e:certs/privkey.pem:private-key:1
