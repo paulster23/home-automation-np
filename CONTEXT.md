@@ -172,7 +172,7 @@ The `librespot_playing` automation unmutes after naboo reaches "playing" with a 
 ### Voice PE Settings
 - **Firmware: `26.6.0`** (ESPHome 2026.6.0) — updated 2026-07-29 from 26.4.0 via **USB-C web-installer reflash** (WiFi OTA repeatedly failed mid-download, low heap `Error reading data: -28679`). After flashing, **power from a USB wall adapter, not a laptop** — tethered to a computer it boot-loops (`rst:0x15 USB_UART_CHIP_RESET` / `Reset Reason: USB peripheral`). See TROUBLESHOOTING 2026-07-29.
 - Wake sound: OFF (`switch.home_assistant_voice_0a3a76_wake_sound`)
-- Device IP: ~~`192.168.1.47`~~ → **`192.168.1.237` since 2026-08-05, and UNPINNED.** The `.47` reservation died with the Velop parent (see TROUBLESHOOTING 2026-08-03); nothing pins this address until the UX7 lands, so **expect it to drift again**. Authoritative value: `SYSTEM_CONTEXT.md` → device table. Corrected here 2026-08-11 after the stale `.47` nearly caused a duplicate Kuma monitor aimed at a dead address.
+- Device IP: **`192.168.1.47`** — a **UniFi fixed IP** on the UX7 since the 2026-08-19 cutover, so it is pinned again and should not drift. (It floated on `192.168.1.237` from 2026-08-05 to 2026-08-19, the window when the LAN had no reservations at all.) Authoritative value: `SYSTEM_CONTEXT.md` → device table.
 - API encryption: **Noise ENABLED** as of the 26.6.0 reflash (`Noise encryption: YES`, saved PSK; HA 2026.7.4 connects fine). Supersedes the 2026-04-29 "encryption removed" state — the production-firmware reflash restored it.
 - Finished speaking detection: **relaxed** (set via `naboo_vad_relaxed` automation on HA start)
 - Silero-VAD silence threshold in wyoming-whisperkit: **700ms** (`VAD_SILENCE_MS` in `handler.py` — verified 2026-07-28)
@@ -234,9 +234,9 @@ Read `infra/log-reports/frigate.log` first. `Connection refused` or `Connection 
 **Symptom:** Blue spinning LED. HA log shows `TimeoutAPIError` to device IP.
 
 ```bash
-ping 192.168.1.237  # current (unpinned) lease — .47 since 2026-08-05. No response = it moved again.
+ping 192.168.1.47   # UniFi fixed IP since 2026-08-19. No response = device down, not a moved lease.
 ```
-Check router connected devices for `home-assisant-coice-0a3a76`.
+Check the UniFi UI client list for `home-assistant-voice-0a3a76`.
 
 **If IP changed:** Edit `homeassistant/.storage/core.config_entries` directly — find the ESPHome entry and update `host`. Then restart HA:
 ```bash
@@ -254,7 +254,7 @@ The HA UI reconfigure flow is unreliable for this — edit the file directly.
 
 **If HA shows "disabled transport encryption" error:** Button hold partially reset API encryption. Confirm removal in HA UI — device reconnects without encryption. `noise_psk` cleared from `core.config_entries`.
 
-**Prevention:** Always set DHCP reservations for ESPHome devices immediately after adoption. ⚠️ **There is currently NO reservation** — the `.47` one died with the Velop parent on 2026-08-03 and the device has floated on `192.168.1.237` since. Re-pin when the UX7 is installed (`plans/NETWORK_REBUILD_PLAN.md` has the reserve-then-reconfigure procedure).
+**Prevention:** Always set DHCP reservations for ESPHome devices immediately after adoption. ✅ **Done** — `.47` is a UniFi fixed IP on the UX7 as of 2026-08-19 (set outside the `.100–.199` pool, so it cannot collide with a lease).
 
 ---
 

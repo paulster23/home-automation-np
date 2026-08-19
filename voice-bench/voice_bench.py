@@ -40,6 +40,7 @@ from typing import Dict, List, Optional, Tuple
 import yaml
 from aiohttp import web
 import websockets  # type: ignore
+from websockets.exceptions import ConnectionClosed  # type: ignore
 
 # ── Paths ───────────────────────────────────────────────────────────────────
 SCRIPT_DIR = Path(__file__).parent.resolve()
@@ -602,14 +603,25 @@ class VoiceBench:
         music_id     = self.config.get("music_entity", "")
         radio_id     = self.config.get("radio_active_entity", "")
 
+        # Reconnect backoff — grows on repeated connect/auth failure, resets to
+        # base once a connection is established and authenticated.
+        backoff      = 5
+        backoff_max  = 60
+
         while True:
             try:
-                async with websockets.connect(url, ping_interval=20, ping_timeout=10) as ws:
+                # ping_timeout raised 10→20 so a slow HA (or a normal server
+                # close racing our ping) no longer trips the library keepalive
+                # task with a "timed out while closing" traceback — the exact
+                # failure that silently stopped this daemon on 2026-08-07.
+                async with websockets.connect(
+                    url, ping_interval=20, ping_timeout=20, close_timeout=5
+                ) as ws:
                     # ── Auth handshake ──────────────────────────────────────
                     msg = json.loads(await ws.recv())
                     if msg.get("type") != "auth_required":
                         print(f"[voice-bench] Unexpected HA message: {msg}")
-                        await asyncio.sleep(5)
+                        await asyncio.sleep(backoff)
                         continue
 
                     await ws.send(json.dumps({"type": "auth", "access_token": token}))
@@ -643,8 +655,21 @@ class VoiceBench:
                         print(f"[voice-bench] get_states failed: {seed_msg}")
 
                     print(f"[voice-bench] Connected to HA ✓  watching: {satellite_id}")
+                    backoff = 5  # healthy, authenticated connection — reset backoff
 
-                    async for raw in ws:
+                    # Explicit recv() loop rather than `async for raw in ws`:
+                    # in websockets 15.x the async iterator exits *silently*
+                    # (no exception) when the server sends a normal close
+                    # (code 1000), so a clean HA restart would drop us out of
+                    # the read loop without a trace. recv() instead raises
+                    # ConnectionClosed on any close, which we log and reconnect.
+                    while True:
+                        try:
+                            raw = await ws.recv()
+                        except ConnectionClosed as e:
+                            print(f"[voice-bench] HA connection closed ({e!r}) — reconnecting")
+                            break
+
                         msg = json.loads(raw)
                         if msg.get("type") != "event":
                             continue
@@ -688,9 +713,12 @@ class VoiceBench:
                                 ts = datetime.now().astimezone()
                             await self.stream_monitor.on_amp_state(old_state, new_state, ts)
 
+            except asyncio.CancelledError:
+                raise  # genuine shutdown — do not swallow
             except Exception as e:
-                print(f"[voice-bench] HA WebSocket error: {e!r} — reconnecting in 5s…")
-                await asyncio.sleep(5)
+                print(f"[voice-bench] HA WebSocket error: {e!r} — reconnecting in {backoff}s…")
+                await asyncio.sleep(backoff)
+                backoff = min(backoff * 2, backoff_max)
 
     async def _on_satellite(self, old: str, new: str, ts: datetime,
                              amp_id: str, music_id: str):
@@ -986,15 +1014,48 @@ class VoiceBench:
 
     # ── Entry point ───────────────────────────────────────────────────────────
 
+    async def _supervise(self, name: str, factory,
+                         base_delay: float = 5, max_delay: float = 60) -> None:
+        """
+        Run factory() forever, restarting it on crash or unexpected return.
+
+        This is the safety net that prevents a single failing coroutine from
+        silently taking the whole daemon down (as happened 2026-08-07, when the
+        HA websocket task died and instrumentation went dark for ~5 days).
+        A genuine shutdown (CancelledError) is allowed to propagate.
+        """
+        delay = base_delay
+        while True:
+            start = time.monotonic()
+            try:
+                await factory()
+                reason = "exited unexpectedly"
+            except asyncio.CancelledError:
+                raise
+            except Exception as e:
+                reason = f"crashed: {e!r}"
+            # Reset backoff if the task stayed up a while, so chronic slow
+            # failures don't get stuck at max_delay.
+            if time.monotonic() - start > 300:
+                delay = base_delay
+            print(f"[voice-bench] task {name!r} {reason}; restarting in {delay:.0f}s")
+            await asyncio.sleep(delay)
+            delay = min(delay * 2, max_delay)
+
     async def run(self):
         DATA_DIR.mkdir(parents=True, exist_ok=True)
+
+        # Long-running loops are supervised so any one crashing is logged and
+        # restarted rather than tearing down asyncio.gather and exiting.
         tasks = [
-            self.watch_ha(),
-            self.tail_whisper_log(),
-            self.start_server(),
+            self._supervise("watch_ha",         self.watch_ha),
+            self._supervise("tail_whisper_log", self.tail_whisper_log),
         ]
         if self.stream_monitor:
-            tasks.append(self.stream_monitor.run())
+            tasks.append(self._supervise("stream_monitor", self.stream_monitor.run))
+        # start_server binds a port once and self-exits on EADDRINUSE — run it
+        # directly (no restart loop; a bind failure should stay fatal).
+        tasks.append(self.start_server())
         await asyncio.gather(*tasks)
 
 

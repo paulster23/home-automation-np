@@ -388,15 +388,15 @@
       - action: spotify_voice_assistant.pause
 - id: windmill_ac_daily_schedule
   alias: Windmill AC – On 7am (auto), off 1am
-  # Power schedule only. Deliberately does NOT set temperature or fan mode, so
-  # whatever you last set via the Stream Deck persists (Stream Deck overrides).
   triggers:
   - at: 07:00:00
     id: morning_on
     trigger: time
+    enabled: true
   - at: 01:00:00
     id: night_off
     trigger: time
+    enabled: true
   actions:
   - choose:
     - conditions:
