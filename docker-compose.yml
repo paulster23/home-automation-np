@@ -1,7 +1,12 @@
 # ═══════════════════════════════════════════════════════════════
 # Home Automation Stack — Docker Compose
-# Services: Frigate, Mosquitto, Home Assistant, Music Assistant,
-#           Whisper (STT), Google Translate (TTS — cloud, no container)
+# Services: Frigate, Mosquitto, Home Assistant, Whisper (STT),
+#           Google Translate (TTS — cloud, no container)
+# Host: woodhull (amd64) — migrated from media (arm64) 2026-08-31.
+# HOST_IP / FRIGATE_MEDIA come from .env (gitignored, host-specific —
+# see .env.example). The ${HOST_IP:?} guard below is deliberate: it
+# stops a stray `docker compose up` on a host with no .env (e.g. the
+# old Mac) from re-binding the ports there instead of failing loudly.
 # ═══════════════════════════════════════════════════════════════
 
 services:
@@ -14,7 +19,6 @@ services:
   mosquitto:
     container_name: mosquitto
     image: eclipse-mosquitto:2
-    platform: linux/arm64
     restart: unless-stopped
     security_opt:
       - no-new-privileges:true
@@ -46,39 +50,37 @@ services:
 
   # ──────────────────────────────────────────────
   # Frigate NVR — motion detection + recording
-  # Web UI: http://localhost:8971 (HTTP — TLS disabled, served directly)
-  # LAN access: http://media.local:8971
-  # Tailscale: https://media.tail317990.ts.net:8971 (via tailscale serve on host)
+  # Web UI: http://192.168.1.71:8971
+  # Tailscale: https://woodhull.tail317990.ts.net:8971 (via tailscale serve on host)
   # Publishes camera events to MQTT for Home Assistant
   # Camera credentials loaded from secrets via env vars
+  # Detector: OpenVINO on the iGPU (/dev/dri/renderD128) — replaces the
+  # Apple Neural Engine ZMQ bridge (FrigateDetector.app) that ran on media.
   # ──────────────────────────────────────────────
   frigate:
     container_name: frigate
-    image: ghcr.io/blakeblackshear/frigate:0.17.2-standard-arm64  # upgraded 2026-07-08 from 0.17.1
-    platform: linux/arm64
+    image: ghcr.io/blakeblackshear/frigate:0.17.2   # multi-arch — amd64 verified present 2026-08-31
     restart: unless-stopped
     stop_grace_period: 30s
     # cap_drop: ALL removed — Frigate uses s6-overlay which needs CHOWN/SETUID/SETGID
     # at startup to set up log directories. security_opt still hardens against privesc.
     security_opt:
       - no-new-privileges:true
-    # Required for Apple Silicon detector — allows container to reach
-    # FrigateDetector.app running on the macOS host via ZMQ on port 5555
-    extra_hosts:
-      - "host.docker.internal:host-gateway"
+    devices:
+      - /dev/dri/renderD128:/dev/dri/renderD128   # iGPU — OpenVINO detector + VAAPI decode
     depends_on:
       mosquitto:
         condition: service_started  # Start after mosquitto, don't block on health
     # Shared memory — increase if you add more cameras
     shm_size: "512mb"   # 256mb -> 512mb (2026-06-12) — added backyard camera (2nd feed)
     ports:
-      - "192.168.1.70:8971:8971"   # Frigate web UI — direct host port (no proxy)
-      - "192.168.1.70:8554:8554"   # RTSP re-stream (optional)
+      - "${HOST_IP:?set HOST_IP in .env}:8971:8971"   # Frigate web UI — direct host port (no proxy)
+      - "${HOST_IP:?set HOST_IP in .env}:8554:8554"   # RTSP re-stream (optional)
     volumes:
       # Config directory — frigate.db lives here
       - ./frigate:/config
-      # All recordings and snapshots
-      - ./frigate/storage:/media/frigate
+      # Recordings/snapshots/exports — outside the repo, on the 1TB NVMe (not the USB media SSD)
+      - ${FRIGATE_MEDIA:?set FRIGATE_MEDIA in .env}:/media/frigate
       # Tmpfs cache reduces SSD wear (1 GB in RAM)
       - type: tmpfs
         target: /tmp/cache
@@ -102,7 +104,7 @@ services:
     deploy:
       resources:
         limits:
-          memory: 1536m   # raised from 1310m (2026-05-27) — post-restart drift +247 MiB/week trend; 1536m gives ~4 weeks runway
+          memory: 2048m   # raised from 1536m (2026-08-31 migration) — woodhull has the headroom the 8GB Mac didn't
           cpus: "2.0"     # reduced from 4.0 — no CPU detection workload
         reservations:
           memory: 512m
@@ -114,14 +116,12 @@ services:
 
   # ──────────────────────────────────────────────
   # Home Assistant — central hub for all automation
-  # Web UI: http://localhost:8123
-  # First run: visit UI to create your admin account
+  # Web UI: http://192.168.1.71:8123
   # MQTT credentials: user=homeassistant, pass in secrets/mqtt_password
   # ──────────────────────────────────────────────
   homeassistant:
     container_name: homeassistant
     image: ghcr.io/home-assistant/home-assistant:stable
-    platform: linux/arm64
     restart: unless-stopped
     labels:
       com.centurylinklabs.watchtower.enable: "true"
@@ -143,17 +143,15 @@ services:
       mosquitto:
         condition: service_started  # Start after mosquitto, don't block on health
     ports:
-      - "192.168.1.70:8123:8123"   # Web UI
-      - "192.168.1.70:6053:6053"   # ESPHome native API (Voice PE connects here)
+      - "${HOST_IP:?set HOST_IP in .env}:8123:8123"   # Web UI
+      - "${HOST_IP:?set HOST_IP in .env}:6053:6053"   # ESPHome native API (Voice PE connects here)
     volumes:
       - ./homeassistant:/config
     environment:
       TZ: America/New_York
-    # dns: removed 2026-07-04 — explicit nameserver (192.168.1.70/8.8.8.8) relies on vpnkit
-    # routing from the home-automation bridge to the host, which breaks on container restart.
-    # Docker's embedded resolver (127.0.0.11 via iptables) is more reliable; it forwards
-    # upstream to whatever the Mac's system DNS is (AdGuard at 192.168.1.70 on LAN).
-    # dns_opt: (timeout/attempts/rotate/use-vc) removed alongside — musl ignores most options.
+    # dns: removed 2026-07-04 — explicit nameserver relies on host-bridge routing that
+    # breaks on container restart. Docker's embedded resolver (127.0.0.11 via iptables)
+    # forwards upstream to the host's system DNS instead.
     networks:
       - home-automation
     healthcheck:
@@ -176,22 +174,41 @@ services:
         max-file: "5"
 
   # ──────────────────────────────────────────────
-  # Music Assistant — Spotify, radio, media playback
-  # Web UI: http://localhost:8095
-  # music-assistant removed 2026-05-03 — was radio-only (RadioBrowser/TuneIn) after
-  # Spotify removed 2026-03-28. Radio now uses direct MP3 streams; Spotify via
-  # librespot → ESPHome direct path. MA was consuming ~460m RAM doing nothing.
-  # To restore: git show HEAD~1:home-automation/docker-compose.yml | grep -A40 'music-assistant:'
-
+  # Whisper — local speech-to-text (Wyoming protocol)
+  # Replaces native wyoming-whisperkit (CoreML/ANE, Mac-only — no Linux
+  # equivalent). Added 2026-08-31 for the woodhull migration bake-off;
+  # see HOME_AUTOMATION_STACK_MIGRATION.md §5.4 for the winning model/settings.
+  # Published port is for the Phase-1 bake-off only (the live Mac HA points at
+  # it during the trial) — drop the ports block after cutover once HA on
+  # woodhull reaches it as whisper:10300 over the compose network.
   # ──────────────────────────────────────────────
-  # Whisper — general-purpose local speech-to-text
-  # Uses OpenAI's Whisper model (tiny.en) to transcribe
-  # whisper container removed 2026-04-22 — inactive since 2026-03-15.
-  # STT is handled by native wyoming-whisperkit (LaunchAgent, port 7892).
-  # Fallback is wyoming-mlx-whisper (LaunchAgent, port 7891).
-  # To restore Docker whisper if both native backends fail:
-  #   git show HEAD~1:home-automation/docker-compose.yml | grep -A40 'whisper:'
-  #   docker compose --profile stt up -d whisper
+  whisper:
+    container_name: whisper
+    image: rhasspy/wyoming-whisper:latest
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+    command: >-
+      --model base.en --language en --beam-size 1
+      --data-dir /data --download-dir /data
+    volumes:
+      - /srv/whisper:/data
+    environment:
+      TZ: America/New_York
+    networks:
+      - home-automation
+    ports:
+      - "${HOST_IP:?set HOST_IP in .env}:10300:10300"
+    deploy:
+      resources:
+        limits:
+          memory: 1500m
+          cpus: "3.0"
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
 
 # ──────────────────────────────────────────────
 # Shared Docker network — all services can reach
@@ -200,12 +217,6 @@ services:
 networks:
   home-automation:
     name: home-automation
-
-# ──────────────────────────────────────────────
-# Named volumes for voice models (downloaded on first run)
-# ──────────────────────────────────────────────
-# volumes block removed — whisper-data volume removed 2026-04-22 with whisper service.
-# Run `docker volume rm home-automation_whisper-data` to reclaim disk space if not already done.
 
 # ──────────────────────────────────────────────
 # Secrets — API keys and credentials stored outside the compose file

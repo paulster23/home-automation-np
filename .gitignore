@@ -61,3 +61,6 @@ librespot/go-config/lockfile
 streamdeck/*.app/
 streamdeck/*.log
 .claude/settings.local.json
+
+# ── Host-specific compose overrides (woodhull migration, 2026-08-31) ──
+.env

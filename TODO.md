@@ -1,6 +1,6 @@
 # Home Automation — To-Do List
 
-*Last updated: 2026-08-30*
+*Last updated: 2026-08-31*
 
 > **Structure rule (2026-07-28):** sections in order — Pending → Watching/deferred → Future → Completed (newest first, max ~10; older items go to `archive/TODO-completed.md` in this repo). **Scheduled-task appends must be ≤300 chars + a pointer** to the full report/TROUBLESHOOTING entry — no inline essays.
 
@@ -8,7 +8,9 @@
 
 ## Pending
 
-- [ ] **🔵 Migrate the home-automation stack (`homeassistant`, `mosquitto`, `frigate`) from `media` to `woodhull`.** Decided 2026-08-30: runs right after the infra-stack migration, same session. Frigate's detector changes from the Apple Silicon ANE bridge to OpenVINO on `woodhull`'s iGPU — not a straight port, needs its own verification. WhisperKit STT and go-librespot are native-macOS and out of scope for this move (WhisperKit needs a Linux Whisper port separately; librespot runs on Linux as-is once it's addressed). See `plans/NP_HOMELAB_PLAN.md` §5 Phase A. — (via Cowork 2026-08-30)
+- [ ] **Watch frigate memory creeping up on the Mac** — ~820→1444 MB (94% of 1.5 GiB) over 08-27→08-30, 48h avg ~80%. Lines up with the media stack leaving the Mac (08-26) freeing RAM (likely buffers, not a leak). If sustained >1.45 GB or OOM-restarts, investigate/bump cap. See budget-report-2026-08-31.md — (via weekly-resource-budget 2026-08-31)
+
+- [ ] **🔵 Migrate the home-automation stack (`homeassistant`, `mosquitto`, `frigate`) from `media` to `woodhull`.** Decided 2026-08-30: runs right after the infra-stack migration, same session. Frigate's detector changes from the Apple Silicon ANE bridge to OpenVINO on `woodhull`'s iGPU — not a straight port, needs its own verification. WhisperKit STT and go-librespot are native-macOS and out of scope for this move (WhisperKit needs a Linux Whisper port separately; librespot runs on Linux as-is once it's addressed). **PLAN WRITTEN 2026-08-31 (Cowork, planning only, uncommitted): `plans/HOME_AUTOMATION_STACK_MIGRATION.md`** — full pre-flight, two bake-offs (faster-whisper STT and the OpenVINO detector) run on woodhull *before* cutover, phase order, verification matrix, rollback. Decisions taken: full 28 GB Frigate rsync, recordings to `/srv/frigate` on the NVMe, STT replaced by `wyoming-faster-whisper` (no Mac fallback), go-librespot ported as systemd user units. The Stream Deck is NOT migrated — see `plans/DOWNSTAIRS_CONTROL_PLAN.md`. See also `plans/NP_HOMELAB_PLAN.md` §5 Phase A. — (via Cowork 2026-08-30, planned 2026-08-31)
 
 - [ ] **switch.plug_1 (Wyze) still `unavailable` since 08-23 07:01 — deferred by Paul.** Confirmed offline in the Wyze app (physical/Wi-Fi, not HA/DNS). `switch.speaker` had the same issue and was fixed same day (power-cycled, back `on` 08-27 23:17 UTC) — plug_1 needs the same physical power-cycle whenever Paul wants that plug back; not urgent. See TROUBLESHOOTING.md 2026-08-27. — (via Cowork 2026-08-27)
 
