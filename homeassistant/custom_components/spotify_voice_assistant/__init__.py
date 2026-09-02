@@ -2,9 +2,11 @@
 import logging
 import re
 import xml.etree.ElementTree as ET
+import aiohttp
 import voluptuous as vol
 from homeassistant.core import HomeAssistant, ServiceCall
 import homeassistant.helpers.config_validation as cv
+from homeassistant.helpers.aiohttp_client import async_get_clientsession
 from homeassistant.helpers.typing import ConfigType
 
 _LOGGER = logging.getLogger(__name__)
@@ -20,6 +22,57 @@ _spotify_cache = {
     "entity_id": None,
     "user_playlists": None,
 }
+
+# Naboo's go-librespot instance exposes a local control API (loopback-only on
+# the Mac: server.address=localhost in go-config/config.yml) that can start
+# playback of any Spotify URI directly, using its own already-stored Spotify
+# credentials — no active Spotify Connect / Zeroconf session required.
+# Reached from HA's Docker container via host.docker.internal, the same
+# pattern already used for other native-macOS services on this box (e.g. the
+# retired wyoming-mlx-whisper on host.docker.internal:7891).
+#
+# Added 2026-09-01: Naboo intermittently drops out of Spotify's cloud device
+# list (get_devices()) whenever it's been idle since its last Zeroconf
+# handshake — confirmed 3x in <24h (see TROUBLESHOOTING.md 2026-09-01). When
+# that happens, the cloud-based play path below silently no-ops (calls
+# start_playback with no device_id, which targets whatever Spotify considers
+# "currently active" — usually nothing). This local API bypasses that cloud
+# dependency entirely for Naboo, so voice commands work regardless of
+# get_devices() state. The cloud path is kept below as a fallback in case the
+# local API is ever unreachable (e.g. go-librespot mid-restart).
+NABOO_LOCAL_API = "http://host.docker.internal:3678"
+
+
+async def _play_via_naboo_local_api(hass: HomeAssistant, uri: str) -> bool:
+    """Try to start playback directly via Naboo's go-librespot local API.
+
+    Returns True on success, False on any failure — callers should fall back
+    to the cloud (Spotify Web API) device-lookup path when this returns False.
+    """
+    session = async_get_clientsession(hass)
+    try:
+        async with session.post(
+            f"{NABOO_LOCAL_API}/player/play",
+            json={"uri": uri},
+            timeout=aiohttp.ClientTimeout(total=5),
+        ) as resp:
+            if resp.status < 300:
+                _LOGGER.info(
+                    "▶ Started playback on Naboo via local API "
+                    "(bypassing Spotify cloud device list): %s", uri,
+                )
+                return True
+            _LOGGER.warning(
+                "Naboo local API returned HTTP %s for %s — "
+                "falling back to cloud device lookup", resp.status, uri,
+            )
+            return False
+    except Exception as err:
+        _LOGGER.warning(
+            "Naboo local API unreachable (%s) — falling back to cloud device lookup",
+            err,
+        )
+        return False
 
 
 def clean_query(query: str, search_type: str) -> str:
@@ -301,6 +354,12 @@ async def async_setup(hass: HomeAssistant, config: ConfigType) -> bool:
         """Start playback of a URI on a named Spotify Connect device.
 
         Strategy:
+          0. If device_name is "Naboo", try go-librespot's own local control
+             API first (_play_via_naboo_local_api). It already holds valid
+             Spotify credentials and can self-initiate a session, so this
+             works even when Naboo has dropped out of Spotify's cloud device
+             list — the recurring failure mode diagnosed 2026-09-01 (see
+             TROUBLESHOOTING.md). Success here skips steps 1-2 entirely.
           1. Try get_devices() to find the device by name and get its ID.
           2. If device not found (librespot session ≠ HA OAuth session), fall back
              to HA's media_player.select_source to transfer playback to the device
@@ -317,6 +376,32 @@ async def async_setup(hass: HomeAssistant, config: ConfigType) -> bool:
         if not uri:
             _LOGGER.error("No URI provided to spotify_voice_assistant.play")
             return {"error": "No URI provided"}
+
+        async def _reconnect_stream_and_finish():
+            """Point Naboo's ESPHome player at the librespot HTTP stream and
+            report success. Shared by the local-API and cloud play paths."""
+            radio_active = hass.states.get("input_boolean.radio_active")
+            if radio_active is None or radio_active.state != "on":
+                _LOGGER.info("↔ Reconnecting naboo to HTTP stream after play command")
+                hass.async_create_task(
+                    hass.services.async_call(
+                        "media_player",
+                        "play_media",
+                        {
+                            "entity_id": "media_player.home_assistant_voice_0a3a76_media_player",
+                            "media_content_id": "http://192.168.1.70:8765",
+                            "media_content_type": "music",
+                        },
+                    )
+                )
+            else:
+                _LOGGER.info("↔ Skipping naboo reconnect — radio is active")
+            return {"success": True, "device": device_name, "uri": uri}
+
+        # ── Step 0: Naboo fast path — bypass the Spotify cloud device list
+        # entirely via go-librespot's own local API. ──────────────────────────
+        if device_name == "Naboo" and await _play_via_naboo_local_api(hass, uri):
+            return await _reconnect_stream_and_finish()
 
         try:
             client = await get_spotify_client()
@@ -425,26 +510,7 @@ async def async_setup(hass: HomeAssistant, config: ConfigType) -> bool:
                     context_uri=uri
                 )
 
-            # Reconnect naboo to the librespot HTTP stream on every voice-initiated
-            # play. Guards against stream orphaning after HA restarts or radio use.
-            radio_active = hass.states.get("input_boolean.radio_active")
-            if radio_active is None or radio_active.state != "on":
-                _LOGGER.info("↔ Reconnecting naboo to HTTP stream after play command")
-                hass.async_create_task(
-                    hass.services.async_call(
-                        "media_player",
-                        "play_media",
-                        {
-                            "entity_id": "media_player.home_assistant_voice_0a3a76_media_player",
-                            "media_content_id": "http://192.168.1.70:8765",
-                            "media_content_type": "music",
-                        },
-                    )
-                )
-            else:
-                _LOGGER.info("↔ Skipping naboo reconnect — radio is active")
-
-            return {"success": True, "device": device_name, "uri": uri}
+            return await _reconnect_stream_and_finish()
 
         except Exception as err:
             _LOGGER.exception("Error starting playback on %s", device_name)
