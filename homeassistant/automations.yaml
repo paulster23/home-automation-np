@@ -196,7 +196,7 @@
     target:
       entity_id: media_player.home_assistant_voice_0a3a76_media_player
     data:
-      media_content_id: http://192.168.1.70:8765
+      media_content_id: http://192.168.1.71:8765
       media_content_type: music
   - wait_template: '{{ is_state(''media_player.home_assistant_voice_0a3a76_media_player'',
       ''playing'') }}'
@@ -220,7 +220,7 @@
         target:
           entity_id: media_player.home_assistant_voice_0a3a76_media_player
         data:
-          media_content_id: http://192.168.1.70:8765
+          media_content_id: http://192.168.1.71:8765
           media_content_type: music
       - wait_template: '{{ is_state(''media_player.home_assistant_voice_0a3a76_media_player'',
           ''playing'') }}'
@@ -248,7 +248,7 @@
     target:
       entity_id: media_player.home_assistant_voice_0a3a76_media_player
     data:
-      media_content_id: http://192.168.1.70:8765
+      media_content_id: http://192.168.1.71:8765
       media_content_type: music
 - id: timer_finished_announce
   alias: Timer – Announce when timer.general finishes
@@ -322,7 +322,7 @@
     target:
       entity_id: media_player.home_assistant_voice_0a3a76_media_player
     data:
-      media_content_id: http://192.168.1.70:8765
+      media_content_id: http://192.168.1.71:8765
       media_content_type: music
   - wait_template: '{{ is_state(''media_player.home_assistant_voice_0a3a76_media_player'',
       ''playing'') }}'

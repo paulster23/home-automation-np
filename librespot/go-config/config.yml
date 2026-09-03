@@ -20,5 +20,5 @@ zeroconf_port: 5354
 # HTTP API — used by go-event.py for state polling.
 server:
   enabled: true
-  address: localhost
+  address: 0.0.0.0
   port: 3678

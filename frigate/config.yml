@@ -26,6 +26,12 @@ mqtt:
   user: '{FRIGATE_MQTT_USER}'
   password: '{FRIGATE_MQTT_PASSWORD}'
 
+# ── Hardware decode (added 2026-09-03 Phase 2 cutover) ────────
+# Intel VAAPI on woodhull's iGPU — most of the CPU win alongside the OpenVINO
+# detector swap below. Global so both cameras' ffmpeg processes use it.
+ffmpeg:
+  hwaccel_args: preset-vaapi
+
 # ── Camera Configuration ──────────────────────────────────────
 cameras:
   front_window:
@@ -270,17 +276,22 @@ tls:
 
 version: 0.17-0
 
+# Detector swapped 2026-09-03 (Phase 2 cutover, woodhull) — Apple Silicon ZMQ/ANE
+# bridge doesn't exist on this host. OpenVINO on the iGPU per the §5.5 bake-off
+# (PASS: 7.3-8.9ms inference, comfortably under the ANE bridge's own 15-25ms
+# healthy range). Bundled SSDLite MobileNet v2 (91-class COCO) — dropping the
+# model: block entirely crashes Frigate 0.17.2's OpenVINOModelRunner, must be
+# pointed explicitly at the bundled files in /openvino-model/.
 detectors:
-  apple-silicon:
-    type: zmq
-    endpoint: tcp://host.docker.internal:5555
+  ov:
+    type: openvino
+    device: GPU
 
 model:
-  model_type: yolo-generic
-  width: 320
-  height: 320
-  input_tensor: nchw
-  input_dtype: float
-  path: /config/model_cache/yolo.onnx
-  labelmap_path: /labelmap/coco-80.txt
+  path: /openvino-model/ssdlite_mobilenet_v2.xml
+  width: 300
+  height: 300
+  input_tensor: nhwc
+  input_pixel_format: bgr
+  labelmap_path: /openvino-model/coco_91cl_bkgr.txt
 

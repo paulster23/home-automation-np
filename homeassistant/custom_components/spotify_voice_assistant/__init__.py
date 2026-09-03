@@ -23,13 +23,9 @@ _spotify_cache = {
     "user_playlists": None,
 }
 
-# Naboo's go-librespot instance exposes a local control API (loopback-only on
-# the Mac: server.address=localhost in go-config/config.yml) that can start
+# Naboo's go-librespot instance exposes a local control API that can start
 # playback of any Spotify URI directly, using its own already-stored Spotify
 # credentials — no active Spotify Connect / Zeroconf session required.
-# Reached from HA's Docker container via host.docker.internal, the same
-# pattern already used for other native-macOS services on this box (e.g. the
-# retired wyoming-mlx-whisper on host.docker.internal:7891).
 #
 # Added 2026-09-01: Naboo intermittently drops out of Spotify's cloud device
 # list (get_devices()) whenever it's been idle since its last Zeroconf
@@ -40,7 +36,17 @@ _spotify_cache = {
 # dependency entirely for Naboo, so voice commands work regardless of
 # get_devices() state. The cloud path is kept below as a fallback in case the
 # local API is ever unreachable (e.g. go-librespot mid-restart).
-NABOO_LOCAL_API = "http://host.docker.internal:3678"
+#
+# Repointed 2026-09-03 (Phase 2 cutover, woodhull): the original
+# http://host.docker.internal:3678 relied on Docker Desktop's automatic
+# host-gateway hostname plus go-librespot's server.address=localhost bind —
+# neither holds on native Linux Docker (host.docker.internal doesn't resolve
+# without an explicit extra_hosts entry, and a localhost-bound host service
+# still isn't reachable from a container even with one). go-librespot's
+# go-config/config.yml server.address was changed to 0.0.0.0 and this now
+# points at the LAN IP directly, matching the media_content_id pattern
+# already used a few lines below for the HTTP stream.
+NABOO_LOCAL_API = "http://192.168.1.71:3678"
 
 
 async def _play_via_naboo_local_api(hass: HomeAssistant, uri: str) -> bool:
@@ -389,7 +395,7 @@ async def async_setup(hass: HomeAssistant, config: ConfigType) -> bool:
                         "play_media",
                         {
                             "entity_id": "media_player.home_assistant_voice_0a3a76_media_player",
-                            "media_content_id": "http://192.168.1.70:8765",
+                            "media_content_id": "http://192.168.1.71:8765",
                             "media_content_type": "music",
                         },
                     )
