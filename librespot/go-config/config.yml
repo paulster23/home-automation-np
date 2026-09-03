@@ -10,7 +10,7 @@ bitrate: 320
 # stay up regardless of whether anyone is consuming audio. See run-naboo.sh and
 # TROUBLESHOOTING.md 2026-06-13.
 audio_backend: pipe
-audio_output_pipe: /Users/media/containers/home-automation/librespot/log/naboo.pcm.fifo
+audio_output_pipe: /home/woodhull/containers/home-automation/librespot/log/naboo.pcm.fifo
 audio_output_pipe_format: s16le
 
 # Zeroconf: register as Spotify Connect device on the LAN.
