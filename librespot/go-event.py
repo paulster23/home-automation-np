@@ -24,7 +24,7 @@ from typing import Optional
 from urllib.request import urlopen
 from urllib.error import URLError
 
-HA_URL = "http://192.168.1.70:8123"
+HA_URL = "http://192.168.1.71:8123"
 API_URL = "http://localhost:3678/status"
 ROOT_URL = "http://localhost:3678/"  # reachability check — responds even with no session
 BASE_DIR = Path.home() / "containers/home-automation/librespot"

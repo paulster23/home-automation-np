@@ -2,21 +2,22 @@
 # Loads default set of integrations. Do not remove.
 default_config:
 
-# ── Reverse proxy (Caddy) ──────────────────────────────────────────────────────
-# Allows HA to accept connections proxied through Caddy at /ha/.
-# use_x_forwarded_for: trust X-Forwarded-For headers from Caddy.
-# trusted_proxies: Caddy container IP + Docker bridge range.
-# use_x_frame_options: false allows HA frontend to load in iframes (e.g. dashboards).
-http:
-  use_x_forwarded_for: true
-  trusted_proxies:
-    - 172.17.0.0/16
-    - 172.18.0.0/16
-    - 172.19.0.0/16
-    - 172.20.0.0/16
-    - 192.168.65.0/24  # Docker Desktop internal subnet (macOS)
-  use_x_frame_options: false
-  server_host: "0.0.0.0"
+# ── Reverse proxy (Caddy / tailscale serve) ─────────────────────────────────────
+# As of HA 2026.7+, the http: integration config (use_x_forwarded_for,
+# trusted_proxies, etc.) is migrated to storage on first boot and YAML is
+# IGNORED on every boot after that (see homeassistant/components/http/config.py,
+# async_load_config: "YAML config is only migrated once. Subsequent boots will
+# ignore YAML and use the store exclusively."). Leaving an http: block here
+# after migration also raises a nagging Repair issue
+# (yaml_still_present_after_migration), so it has been removed.
+#
+# The live trusted_proxies list now lives in
+# homeassistant/.storage/http (data.stable.trusted_proxies), NOT in this file.
+# To add a trusted proxy: stop the homeassistant container, edit that JSON
+# file directly (owned by the woodhull user, no sudo needed), restart the
+# container. See TROUBLESHOOTING.md 2026-09-03 UPDATE for the full writeup
+# of the 400 Bad Request incident this caused, and the current trusted_proxies
+# contents as of the fix.
 
 
 # Load frontend themes from the themes folder

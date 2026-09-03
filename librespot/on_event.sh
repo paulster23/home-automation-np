@@ -22,7 +22,7 @@
 # HA will see the request from the Docker bridge IP (not loopback), which is
 # why automations.yaml sets local_only: false on both librespot webhook triggers.
 # ─────────────────────────────────────────────────────────────────────────────
-HA_URL="http://192.168.1.70:8123"
+HA_URL="http://192.168.1.71:8123"
 BASE_DIR="$HOME/containers/home-automation/librespot"
 LOG="$BASE_DIR/log/events.log"
 STATE_FILE="$BASE_DIR/log/.librespot_state"
