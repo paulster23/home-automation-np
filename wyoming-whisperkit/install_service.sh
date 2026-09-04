@@ -20,5 +20,7 @@ echo "✓ wyoming-whisperkit installed and started."
 echo "  Logs: $(pwd)/log/whisper.log"
 echo "  Port: tcp://0.0.0.0:7892"
 echo ""
-echo "To point HA at it, update the Wyoming integration host/port to 192.168.1.70:7892"
+echo "RETIRED 2026-08-31: WhisperKit (CoreML/ANE, Mac-only) was replaced by the"
+echo "wyoming-whisper container on woodhull. Do NOT point HA at 192.168.1.70:7892 —"  # host-audit:ok — retirement notice, not a live target
+echo "that host is powered down. Kept for reference only; see home-automation/CONTEXT.md."
 echo "  Settings → Integrations → Wyoming Protocol → (edit existing or add new)"
