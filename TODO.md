@@ -1,12 +1,15 @@
 # Home Automation — To-Do List
 
-*Last updated: 2026-09-03 (Cowork — STT bake-off verdict)*
+*Last updated: 2026-09-04 (Cowork — reboot-survival PASS)*
 
 > **Structure rule (2026-07-28):** sections in order — Pending → Watching/deferred → Future → Completed (newest first, max ~10; older items go to `archive/TODO-completed.md` in this repo). **Scheduled-task appends must be ≤300 chars + a pointer** to the full report/TROUBLESHOOTING entry — no inline essays.
 
 ---
 
 ## Pending
+
+- [ ] **🔵 Home-automation migration — Phase 3/4/5 remain. §10 #18 reboot survival: ✅ PASS 2026-09-04 13:42 ET.** Cold `sudo reboot` on woodhull: all 24 containers back and healthy at 2 min; `go-librespot-naboo` + `naboo-stream` both `active` (enable-linger holds — the launchd equivalent failed this 5x silently); detector `inference_speed` 8.39 ms, in the bake-off band; `:8765` served 122 KB in a 5 s pull. Still to check: Spotify Connect device-picker visibility from a phone. Next: Phase 3 (Mac guard verify + FrigateDetector Login Item) then Phase 4 (6 remaining LaunchAgents, 3 dead cron lines, `service-watchdog` retirement, `tail-native.sh` sources) in ONE sitting — splitting them re-opens the 09-02 watchdog-revival window. Full result: plan §10 #18 RESULT. — (via Cowork 2026-09-04)
+
 
 - [ ] **🔴 ACTIVE — Naboo Spotify Connect / play_media investigation. READ THIS FIRST if starting a new session on this.** Long multi-session investigation, not yet fully resolved. Full blow-by-blow history is below this block (many superseded theories, kept for the record) — this is the current, consolidated state as of 2026-09-04 (Cowork).
 
