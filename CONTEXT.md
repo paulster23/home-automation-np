@@ -8,26 +8,39 @@
 
 ## Containers
 
+> **This stack runs on `woodhull` (`192.168.1.71`) since the 2026-09-03 cutover.** Every port below
+> is on `.71`. The Mac's copies still exist but are `Exited` and cannot start (no `.env`,
+> `${HOST_IP:?}` guard) — they are the rollback. Migration record:
+> `plans/HOME_AUTOMATION_STACK_MIGRATION.md`.
+
+
 | Container | Port | Purpose |
 |---|---|---|
 | mosquitto | 1883 (internal) | MQTT broker (Frigate ↔ HA) |
 | frigate | 8971/8554 | NVR — 2 cameras: front_window @ 192.168.1.33 (wired) + backyard @ 192.168.1.248 (RLC-510WA WiFi, added 2026-06-13, sub-stream detect only). Apple Silicon ZMQ detection, 5fps. **Frigate 0.17.1.** Requires FrigateDetector.app running on host (Login Item, port 5555). Model: `/config/model_cache/yolo.onnx` (YOLOv9-t-320). Healthcheck: `curl -sf http://localhost:5000/api/version` (internal FastAPI, not nginx port 8971 — bare TCP probe caused 421 HTTP 400s/week). |
 | homeassistant | 8123/6053 | Central automation hub + voice intents. **Version: 2026.9.0** (verified live via `GET /api/config` 2026-09-04; was 2026.6.2 on the Mac). **Known bug:** Spotify coordinator throws `MissingField: Field "items" of type PlaylistTracks is missing` on every poll cycle (~every 10–20s) — caused by Spotify's Feb 2026 API change removing `/playlists/{id}/tracks`. Causes playback lag (error loop hammers API). No fix as of 2026.6.2 (upstream issue #166884 still open). Workaround: avoid Spotify algorithmic playlists (Daily Mix, Radio, Discover Weekly). **Trusted proxies (corrected 2026-09-04):** as of HA 2026.7+ the `http:` integration config is migrated out of YAML into `homeassistant/.storage/http` (`data.stable.trusted_proxies`) — `configuration.yaml` only carries a comment pointing there. Live list: `172.17.0.0/16`, `172.18.0.0/16`, `172.19.0.0/16`, `172.20.0.0/16`, `192.168.65.0/24`. **Base URLs (added 2026-09-04):** internal `http://192.168.1.71:8123`, external `https://woodhull.tail317990.ts.net:8123`, stored in `.storage/core.config` — these are *host identity*, not portable config, and an rsync'd config dir carries the old host's values across. They silently broke every ESPHome media playback after the woodhull cutover; see TROUBLESHOOTING.md 2026-09-04 (late). |
 | ~~music-assistant~~ | 8095/8097 | **REMOVED 2026-05-03.** Was radio-only after Spotify removed 2026-03-28. Radio now uses direct MP3 streams via `script.radio_play_station`; Spotify via librespot → ESPHome direct path. Was consuming ~460m RAM. To restore: `git show HEAD~1:home-automation/docker-compose.yml \| grep -A40 'music-assistant:'` |
-| ~~whisper~~ | 10300 (internal) | **REMOVED 2026-04-22.** Replaced by native wyoming-whisperkit (port 7892) and wyoming-mlx-whisper (port 7891). To restore: `git show HEAD~1:home-automation/docker-compose.yml \| grep -A40 'whisper:'` |
+| **whisper** | 10300 | **BACK, as the primary STT, 2026-09-03** — `rhasspy/wyoming-whisper`, `base.en`, beam-size 1, models in `/srv/whisper`. Replaced the Mac's native WhisperKit (the Apple Neural Engine does not follow to Linux). HA reaches it as `whisper:10300` on the compose network. ⚠️ Wyoming is a **raw protocol, not HTTP** — an HTTP probe of `:10300` returns nothing and that is correct. Median STT hop 4.19 s on a thin 9-cycle sample vs WhisperKit's ~1.1 s; see plan §5.4 VERDICT. Historical: an earlier `whisper` container was **REMOVED 2026-04-22.** Replaced by native wyoming-whisperkit (port 7892) and wyoming-mlx-whisper (port 7891). To restore: `git show HEAD~1:home-automation/docker-compose.yml \| grep -A40 'whisper:'` |
 
 ---
 
-## Native macOS Services
+## Native macOS Services — ⚠️ ALL RETIRED 2026-09-03/04
 
-These run via LaunchAgents, not Docker. All logs tailed to `infra/log-reports/` by log-tailer-native.
+**Nothing in this section still runs.** Every service here was a Mac LaunchAgent; the stack moved to
+Linux and each was replaced, moved, or parked. All labels were booted out **and** `launchctl
+disable`d 2026-09-04 (Phase 4). Kept for the record and for rollback.
 
-| Service | Port | Location |
-|---|---|---|
+⚠️ **Do not re-bootstrap the librespot agents on the Mac under any circumstances** — go-librespot
+runs on woodhull now, and a second Spotify Connect device named "Naboo" on the network is exactly
+the collision that happened during cutover. `librespot/launchagent-watchdog.sh`'s cron line was
+commented out for that reason, not deleted.
+
+| Service | Port | Location | Disposition |
+|---|---|---|---|
 | ~~wyoming-mlx-whisper~~ | ~~7891~~ | **RETIRED 2026-06-02** (STT fallback, unused). Files kept at `home-automation/wyoming-mlx-whisper`. To restore: re-enable LaunchAgent + re-add Wyoming entry on 7891. |
-| wyoming-whisperkit | 7892 | `home-automation/wyoming-whisperkit` |
-| librespot | 8765 (HTTP out) | `home-automation/librespot` |
-| voice-bench | 7700 | `home-automation/voice-bench` |
+| ~~wyoming-whisperkit~~ | ~~7892~~ | `home-automation/wyoming-whisperkit` | **REPLACED** by the `whisper` container on woodhull |
+| ~~librespot~~ | ~~8765~~ | `home-automation/librespot` | **MOVED** to woodhull as systemd user units `go-librespot-naboo` + `naboo-stream`; linger proven by a cold reboot 2026-09-04 |
+| ~~voice-bench~~ | ~~7700~~ | `home-automation/voice-bench` | **PARKED** — its `config_tag` describes a pipeline that no longer exists; CSV kept as the baseline |
 
 ### wyoming-mlx-whisper — RETIRED 2026-06-02
 Was the STT fallback (port 7891). Retired because the active pipeline only ever used WhisperKit (7892); the fallback was never routed to in normal operation, and it was crash-looping (model drift to `distil-whisper-large-v3` + a since-fixed `NameError` in `__main__.py`) while idle. Freed RAM on the 8 GB box.
@@ -110,12 +123,22 @@ sleep 5 && ps aux | grep -E "librespot|ffmpeg|serve_http" | grep -v grep
 
 ### Architecture
 ```
-Wake word → ESPHome mic → wyoming-whisperkit (STT, port 7892, Silero-VAD 700ms)
-  → HA intent matching → spotify_voice_assistant.search (Spotify API)
-  → spotify_voice_assistant.play (start_playback on device "Naboo")
-  → librespot receives stream → ffmpeg (pipe:1) → serve_http.py :8765
-  → on_event.sh fires HA webhook → media_player.home_assistant_voice_0a3a76_media_player (ESPHome direct)
-  → librespot_playing automation: wait for naboo "playing", delay 2s, unmute amp
+Wake word -> ESPHome mic -> whisper container (STT, woodhull :10300, faster-whisper base.en)
+  -> HA intent matching -> spotify_voice_assistant.search (Spotify API)
+  -> spotify_voice_assistant.play -> go-librespot LOCAL control API (:3678) FIRST, Spotify cloud
+     device list only as fallback (fix 9e14f41 -- the local API holds its own credentials and
+     self-initiates a session, so it works even when Naboo has aged out of the cloud device list)
+  -> go-librespot receives stream -> ffmpeg (pipe:1) -> serve_http.py :8765
+  -> go-event.py fires HA webhook -> media_player.home_assistant_voice_0a3a76_media_player
+  -> librespot_playing automation: wait for naboo "playing", delay 2s, unmute amp
+
+  *** THE STEP THAT IS EASY TO MISS, AND COST TWO DAYS ***
+  HA does NOT hand that :8765 URL to the ESPHome device. It routes media through its own
+  transcoder at /api/esphome/ffmpeg_proxy/<device>/<token>.mp3 and makes THAT absolute using
+  `internal_url` from .storage/core.config. So the HTTP client that fetches :8765 is the
+  homeassistant container (172.21.0.x), never Naboo's own 192.168.1.47. After the cutover
+  `internal_url` still said http://192.168.1.70:8123 and every play silently pointed at the
+  dead Mac. See TROUBLESHOOTING.md 2026-09-04 (late).
 ```
 
 ### Voice Command Flows
@@ -186,7 +209,7 @@ Pauses `media_player.home_assistant_voice_0a3a76_media_player` when wake word fi
 ## Frigate / Camera
 
 - **Two cameras:** `front_window` @ 192.168.1.33 (wired; 3 zones — entrance, sidewalk, active_street; tracks person + car) and `backyard` @ 192.168.1.248 (RLC-510WA WiFi, added 2026-06-13; sub-stream detect only since 2026-06-15; powered off at times = normal)
-- **Detection:** Apple Silicon ZMQ via FrigateDetector.app (Login Item, port 5555). CPU usage ~20–40% (was ~200% before ZMQ offload). If Frigate fails to detect, check FrigateDetector is running first.
+- **Detection (changed 2026-09-03):** **OpenVINO on woodhull's Intel iGPU** — `detectors: ov / type: openvino / device: GPU`, `/dev/dri/renderD128` passed in, bundled SSDLite MobileNet v2 at `/openvino-model/`, plus `hwaccel_args: preset-vaapi` for decode. `inference_speed` 7–9 ms (the ANE's healthy range was 15–25 ms). ⚠️ The `model:` block must be **explicit** — Frigate 0.17.2 has no auto-default for the openvino detector and crashes on startup without it. Zones survived the swap (coordinates are normalised 0–1) but the labelmap went 80-class → 91-class, so re-check `objects.track`/`filters` names. Historical, now retired: Apple Silicon ZMQ via FrigateDetector.app (Login Item, port 5555). CPU usage ~20–40% (was ~200% before ZMQ offload). If Frigate fails to detect, check FrigateDetector is running first.
 - **Storage:** Retains alerts 14 days, detections 7 days. Continuous retention removed in 0.17.
 - **RTSP note:** Reolink app uses proprietary P2P — app working ≠ RTSP working. Always confirm via `ping 192.168.1.33` and checking Frigate logs.
 
@@ -198,14 +221,14 @@ Pauses `media_player.home_assistant_voice_0a3a76_media_player` when wake word fi
 mosquitto (MQTT broker)
   └── frigate (publishes events to MQTT)
   └── homeassistant (receives frigate events via MQTT)
-       ├── wyoming-whisperkit (native macOS, active STT, port 7892, Silero-VAD 700ms)
+       ├── whisper container (woodhull, :10300, wyoming-faster-whisper base.en)
        ├── HA Spotify integration (provides spotifyaio client)
        │    └── spotify_voice_assistant custom component (search + play + podcast_play)
-       │         ├── Spotify: Web API → librespot "Naboo" (native macOS)
+       │         ├── Spotify: local API :3678 → go-librespot "Naboo" (systemd user unit)
        │         │    └── ffmpeg (PCM→MP3, pipe:1) → serve_http.py (port 8765)
-       │         │         └── HA webhook → ESPHome media_player direct
+       │         │         └── HA ffmpeg_proxy (absolute URL built from internal_url!) → ESPHome media_player
        │         └── Podcasts: iTunes API → RSS → MP3 URL → ESPHome media_player directly
-       └── FrigateDetector.app (native macOS, port 5555, ZMQ object detection)
+       └── OpenVINO detector, in-container (/dev/dri/renderD128) — replaced FrigateDetector.app
 
 NOTE: music-assistant REMOVED 2026-05-03. Radio and Spotify bypass MA entirely.
 ```
