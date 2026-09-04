@@ -34,6 +34,15 @@
       is_volume_muted: false
 - id: voice_resume_media_on_done
   alias: Voice – Resume media after pipeline completes
+  # NOTE (Cowork 2026-09-04): the voice_paused_music check used to run
+  # immediately when this automation triggered, racing StopMusic's intent
+  # script -- which explicitly clears voice_paused_music first specifically
+  # to prevent an auto-resume after "stop." Observed in the logs losing that
+  # race by ~45ms, so a real "stop" command would get silently undone a
+  # second later. Moved the delay before the condition checks (instead of
+  # only before media_play) so StopMusic has a full second of margin to
+  # clear the flag before we decide whether to resume -- 1s vs the ~45ms
+  # race window actually observed should make this reliable.
   trigger:
   - platform: state
     entity_id: assist_satellite.home_assistant_voice_0a3a76_assist_satellite
@@ -44,6 +53,8 @@
       entity_id: media_player.home_assistant_voice_0a3a76_media_player
     data:
       is_volume_muted: false
+  - delay:
+      seconds: 1
   - condition: state
     entity_id: input_boolean.voice_paused_music
     state: 'on'
@@ -53,8 +64,6 @@
   - action: input_boolean.turn_off
     target:
       entity_id: input_boolean.voice_paused_music
-  - delay:
-      seconds: 1
   - action: media_player.media_play
     target:
       entity_id: media_player.home_assistant_voice_0a3a76_media_player
