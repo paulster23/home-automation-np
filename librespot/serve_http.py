@@ -343,15 +343,23 @@ while True:
                     _stall_start_mono = None  # clear any active stall — session is over
 
             # Throughput tracking — cumulative bytes and rate for this session.
-            _tp_bytes += len(data)
-            now2 = time.monotonic()
-            if now2 - _tp_last_report >= THROUGHPUT_INTERVAL:
-                elapsed = max(now2 - _tp_session_start, 0.001)
-                bps     = int(_tp_bytes / elapsed)
-                _stream_log(
-                    f"THROUGHPUT bytes={_tp_bytes} rate={bps}bps elapsed={elapsed:.1f}s"
-                )
-                _tp_last_report = now2
+            # Gated on `client` (fixed 2026-09-04): counts only bytes actually
+            # delivered to a connected client. It previously incremented on every
+            # FIFO read regardless, so a live go-librespot with nobody fetching
+            # :8765 still produced steady THROUGHPUT lines — read during the Naboo
+            # investigation as proof that playback was working when nothing was
+            # listening at all. `ss -tn` showed zero established connections at the
+            # same moment. See TROUBLESHOOTING.md 2026-09-03 (late) / 2026-09-04.
+            if client:
+                _tp_bytes += len(data)
+                now2 = time.monotonic()
+                if now2 - _tp_last_report >= THROUGHPUT_INTERVAL:
+                    elapsed = max(now2 - _tp_session_start, 0.001)
+                    bps     = int(_tp_bytes / elapsed)
+                    _stream_log(
+                        f"THROUGHPUT bytes={_tp_bytes} rate={bps}bps elapsed={elapsed:.1f}s"
+                    )
+                    _tp_last_report = now2
 
             # Unconditional real-time rate limiter (cumulative).
             # Sleeps only the deficit so sendall() time counts toward pacing.

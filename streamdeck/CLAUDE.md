@@ -11,10 +11,10 @@
 
 ## Architecture
 
-Stream Deck buttons trigger `.app` files (built with osacompile) which call `.sh` scripts in `/Users/media/streamdeck/`. Scripts source `~/.streamdeck_env` for credentials.
+Stream Deck buttons trigger `.app` files (built with osacompile) which call `.sh` scripts in `/Users/media/streamdeck/`. Scripts read credentials from `~/containers/home-automation/secrets/ha.env` and `secrets/spotify.env` (the older `~/.streamdeck_env` path is stale — verified 2026-09-04).
 
-**`~/.streamdeck_env` contains:**
-- `HA_URL=http://192.168.1.70:8123`
+**`secrets/ha.env` + `secrets/spotify.env` contain:**
+- `HA_URL=http://192.168.1.71:8123` (was `.70`; repointed 2026-09-04 when HA moved to woodhull — the Mac's HA is gone, so `.70` meant every button silently failed)
 - `HA_TOKEN`
 - `SPOTIFY_CLIENT_ID`, `SPOTIFY_CLIENT_SECRET`, `SPOTIFY_REFRESH_TOKEN`
 
@@ -86,7 +86,7 @@ Three buttons that control the Windmill AC (`climate.windmill_ac`) via the **cgi
 **Location:** dedicated **page 4** of the Default Profile on the Stream Deck Mini (no folder — was a folder on page 3 until 2026-06-26, moved out via right-click Copy → Paste, which preserves full button config). Top row reads `−  72°  +`; the toggle is the middle `72°` key (shows set temp when on, `⏻` when off). Bottom-left is an auto-added "Previous page" key. Reached from home by pressing the "›" (Next page) keys through pages 2→3→4 (page 3's top-right "›" leads to page 4). Page-nav keys use Stream Deck's built-in Next page / Previous page actions, which auto-populate when a page is added.
 
 **Plugin connection (Global Settings, shared by all keys):**
-- Server URL: `http://192.168.1.70:8123`
+- Server URL: `http://192.168.1.71:8123`
 - Access Token: HA long-lived token (same value as `secrets/ha.env` HA_TOKEN). Paste manually — never type tokens via automation.
 
 **Plugin gotchas (learned the hard way):**
