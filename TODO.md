@@ -1,12 +1,14 @@
 # Home Automation — To-Do List
 
-*Last updated: 2026-09-04 (Cowork — reboot-survival PASS)*
+*Last updated: 2026-09-07 (weekly-resource-budget)*
 
 > **Structure rule (2026-07-28):** sections in order — Pending → Watching/deferred → Future → Completed (newest first, max ~10; older items go to `archive/TODO-completed.md` in this repo). **Scheduled-task appends must be ≤300 chars + a pointer** to the full report/TROUBLESHOOTING entry — no inline essays.
 
 ---
 
 ## Pending
+
+- [ ] **Watch/bump frigate on woodhull — riding its own 2 GiB cap.** Since the 09-03 cutover frigate averages 83.8% / peaks 94.7% of 2 GiB (both cameras here now). No host risk (woodhull has ~9 GB free) but close to its own cap → frigate-only OOM risk. Bump `mem_limit` 2→3 GiB on woodhull, or add an OOM ntfy alert. See budget-report-2026-09-07.md — (via weekly-resource-budget 2026-09-07)
 
 - [ ] **🟡 Rebuild `voice-bench` on woodhull with a new `config_tag` — it has been dark since 2026-09-03 and its LaunchAgent was retired 09-04.** Paul noticed it missing the same day; worth saying plainly that Phase 4 took it down deliberately (plan §2.1 "park it"), it wasn't an accident, but the user-visible loss wasn't flagged at the time.
 
