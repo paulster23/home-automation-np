@@ -52,7 +52,7 @@ cameras:
       inputs:
         # Sub-stream (Fluent 896x512): used for object detection
         # Credentials loaded from environment variables (see docker-compose.yml secrets)
-        - path:
+        - path: 
             rtsp://{FRIGATE_RTSP_USER}:{FRIGATE_RTSP_PASSWORD}@192.168.1.33:554/h264Preview_01_sub
           input_args: -rtsp_transport tcp -timeout 5000000
           roles:
@@ -63,7 +63,7 @@ cameras:
         # camera stream stalls, so the watchdog can restart it immediately (~5s downtime)
         # rather than waiting 120s for the watchdog + 30s force-kill (~150s downtime).
         # Note: was -stimeout prior to 2026-05-28; renamed in newer ffmpeg builds.
-        - path:
+        - path: 
             rtsp://{FRIGATE_RTSP_USER}:{FRIGATE_RTSP_PASSWORD}@192.168.1.33:554/h264Preview_01_main
           input_args: -rtsp_transport tcp -timeout 5000000
           roles:
@@ -90,22 +90,21 @@ cameras:
     zones:
       entrance:
         coordinates: 
-          0,0.197,0.088,0.214,0.255,0.262,0.241,0.633,0.984,0.756,1,1,0,1,0,0.382
+          0,0.197,0.088,0.214,0.255,0.262,0.263,0.43,0.984,0.756,1,1,0,1,0,0.382
         objects: person
         inertia: 3
         loitering_time: 0
       sidewalk:
-        coordinates: 0,0.34,0.99,0.507,1,0.831,0,0.699
+        coordinates: 0,0.337,0.99,0.691,0.985,0.91,0,0.699
         objects: person
         inertia: 3
         loitering_time: 0
       active_street:
-        coordinates: 0,0.249,1,0.35,1,0.762,0,0.6
-        objects: car
+        coordinates: 0,0.097,1,0.315,1,0.712,0,0.323
         inertia: 3
         loitering_time: 0
       northside:
-        coordinates: 0,0,1,0,1,0.391,0,0.254
+        coordinates: 0,0,1,0,0.99,0.344,0,0.19
         loitering_time: 0
         objects: person
         inertia: 3
@@ -144,7 +143,7 @@ cameras:
         # can't sustain it (record-stream Connection-timeouts + CSeq desync, ffmpeg
         # restarting ~1x/min). Single low-res stream fits WiFi; clips are 640x480.
         # Re-add a main/record input if the camera is ever wired (ethernet/PoE).
-        - path:
+        - path: 
             rtsp://{FRIGATE_RTSP_USER}:{FRIGATE_RTSP_PASSWORD}@192.168.1.248:554/h264Preview_01_sub
           input_args: -rtsp_transport tcp -timeout 5000000
           roles:
