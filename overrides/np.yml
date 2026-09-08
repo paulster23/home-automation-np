@@ -20,10 +20,11 @@
 # in exchange for zero live writes to a running NVR. If BK ever
 # stops being the default shape, split it properly then.
 #
-# ⚠️ REQUIRES Docker Compose >= 2.24 for the `!reset` tag.
-#    Check before the move:  docker compose version
-#    On an older Compose, `devices: !reset null` is a parse error —
-#    Frigate will not start and the error will not mention /dev/dri.
+# `!reset` needs Docker Compose >= 2.24. VERIFIED on the M1 2026-09-08:
+# Docker Desktop ships Compose v5.4.0 there, so this is settled — but if
+# Docker Desktop is ever reinstalled from an old image, re-check. On an
+# older Compose `devices: !reset null` is a parse error, and the error
+# will not mention /dev/dri.
 # ═══════════════════════════════════════════════════════════════
 
 services:
