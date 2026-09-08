@@ -47,7 +47,8 @@ mqtt:
   password: '{FRIGATE_MQTT_PASSWORD}'
 
 # ── Camera Configuration ──────────────────────────────────────
-# ⚠️ TEMPLATE — there are no NP cameras yet (NP_SITE_REFERENCE.md:13:
+# `backyard` below is a REAL camera arriving with the M1. `front_door` is a
+# TEMPLATE — there are no other NP cameras yet (NP_SITE_REFERENCE.md:13:
 # no cameras until the UniFi gear is in). This one camera exists so the
 # file is valid YAML that Frigate will boot on; it is disabled so a
 # nonexistent address cannot crash-loop ffmpeg the way backyard did on
@@ -99,6 +100,82 @@ cameras:
     # northside geometry is meaningless at NP and is deliberately not
     # carried over.
     motion: {}
+
+  # ── Backyard wildlife camera (Reolink RLC-510WA) ─────────────
+  # MOVED FROM BROOKLYN 2026-09-08. This is a real camera that travels with
+  # the M1, not a template — the settings below are months of tuning and are
+  # worth keeping. Only the address is a guess.
+  #
+  # ⚠️ It is 2.4 GHz WiFi with no PoE option, which is exactly what
+  # MOVE_READINESS §3.5 says not to spec at NP. It is grandfathered, not
+  # endorsed: give it a DHCP reservation on day one. Losing its .248
+  # reservation when the Velop died on 2026-08-03 is what crash-looped
+  # ffmpeg (858 ERRORs in ~20 min) and got it disabled on 08-05.
+  #
+  # Stock COCO only detects cat/dog/bird among animals. Raccoon/possum/
+  # squirrel/deer need a Frigate+ trained model — collect snapshots, train,
+  # then add labels to `track` below.
+  backyard:
+    enabled: false   # ⚠️ set true once it is mounted at a reserved NP address
+    ffmpeg:
+      input_args: preset-rtsp-restream
+      retry_interval: 10
+      inputs:
+        # Sub-stream (Fluent 640x480) — detection AND recording.
+        # 2026-06-15: dropped the 5MP main stream — WiFi at the mount could not
+        # sustain it (record-stream Connection-timeouts + CSeq desync, ffmpeg
+        # restarting ~1x/min). Re-add a main/record input only if it gets wired.
+        - path:
+            rtsp://{FRIGATE_RTSP_USER}:{FRIGATE_RTSP_PASSWORD}@192.168.2.34:554/h264Preview_01_sub
+          input_args: -rtsp_transport tcp -timeout 5000000
+          roles:
+            - detect
+            - record
+    detect:
+      enabled: true
+      width: 640
+      height: 480
+      fps: 3   # 5->3 on 2026-06-26 — frigate hit 93.5% of its 1536m cap
+    # Motion-based recording so wildlife the base model cannot yet detect is
+    # still captured — review the clips, grab a frame, upload to Frigate+.
+    # Backyard ONLY (640x480, low bitrate). NOT global: motion-recording a
+    # 5MP feed is what caused the 2026-04-08 disk crisis.
+    record:
+      motion:
+        days: 2
+    objects:
+      track:
+        - person
+        - cat
+        - dog
+        - bird
+      filters:
+        # Lowered min_score/threshold to catch low-res distant animals on the
+        # 640x480 detect stream. More false positives is fine for a Frigate+
+        # bootstrap; tune up once dog/cat detect reliably.
+        dog:
+          min_score: 0.3
+          threshold: 0.5
+        cat:
+          min_score: 0.3
+          threshold: 0.5
+        bird:
+          min_score: 0.4
+          threshold: 0.55
+    motion: {}
+    # ⚠️ NEVER add a full-frame object mask (0,0,1,0,1,1,0,1). Tried via the UI
+    # 2026-06-15 and removed the same day — object masks tell Frigate to IGNORE
+    # objects in the masked area, so it suppressed every detection.
+    #
+    # Redraw the yard zone on site; the Brooklyn one is close to full-frame
+    # and is kept only as a starting shape.
+    zones:
+      yard:
+        coordinates: 0,0,1,0.03,0.982,0.98,0.021,0.98
+        loitering_time: 0
+    review:
+      alerts:
+        required_zones: yard
 
 # ── Object tracking ───────────────────────────────────────────
 # Carried over from BK unchanged. Revisit at NP: `car` was tuned for a
