@@ -64,3 +64,6 @@ streamdeck/*.log
 
 # ── Host-specific compose overrides (woodhull migration, 2026-08-31) ──
 .env
+
+# ── Per-site override symlink (points at overrides/<site>.yml) ──
+docker-compose.override.yml

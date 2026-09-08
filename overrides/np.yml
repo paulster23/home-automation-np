@@ -1,0 +1,105 @@
+# ═══════════════════════════════════════════════════════════════
+# New Paltz site override — home-automation stack
+#
+# Activate on the NP host (the M1, hostname still `media`):
+#     cd ~/containers/home-automation
+#     ln -s overrides/np.yml docker-compose.override.yml
+#
+# Compose auto-loads docker-compose.override.yml, so no -f flags and
+# no change to crestart / the watchdogs. The symlink is untracked
+# (.gitignore), the file it points at is tracked.
+#
+# ── Why this file is asymmetric ────────────────────────────────
+# There is deliberately NO overrides/bk.yml. docker-compose.yml is
+# still the woodhull/Brooklyn shape, and woodhull runs with no
+# override file at all — so nothing about the live BK stack changed
+# when this was written. This file un-does the woodhull-specific
+# bits instead of both sites declaring themselves.
+# Tradeoff accepted 2026-09-08: it leaves the "one compose file
+# describes one host" debt from INFRA_STACK_MIGRATION.md in place,
+# in exchange for zero live writes to a running NVR. If BK ever
+# stops being the default shape, split it properly then.
+#
+# ⚠️ REQUIRES Docker Compose >= 2.24 for the `!reset` tag.
+#    Check before the move:  docker compose version
+#    On an older Compose, `devices: !reset null` is a parse error —
+#    Frigate will not start and the error will not mention /dev/dri.
+# ═══════════════════════════════════════════════════════════════
+
+services:
+
+  # ──────────────────────────────────────────────
+  # Frigate — un-migrated from the woodhull shape.
+  #
+  # The 2026-09-03 cutover rewrote Frigate for woodhull: amd64 image,
+  # /dev/dri passthrough, OpenVINO detector, VAAPI decode. None of
+  # that exists on an M1. This restores the Apple Silicon shape.
+  #
+  # Compose can only fix half of it. The other half — detector,
+  # model, hwaccel, cameras, zones — lives inside frigate/config.yml,
+  # which compose cannot reach. See frigate/config.np.yml and the
+  # move-day copy step at the bottom of this file.
+  # ──────────────────────────────────────────────
+  frigate:
+    # arm64 image. The base file's `frigate:0.17.2` tag is multi-arch and
+    # would in fact pull an arm64 layer here, but pinning the explicit
+    # variant keeps the M1 on the same image the pre-migration stack ran
+    # (7864c45^) rather than trusting manifest resolution on move day.
+    image: ghcr.io/blakeblackshear/frigate:0.17.2-standard-arm64
+    platform: linux/arm64
+
+    # ⛔ THE LOAD-BEARING LINE.
+    # Compose MERGES list keys across override files — it never removes
+    # entries. Without !reset, the base file's /dev/dri/renderD128 stays
+    # in the merged config, and Docker Desktop refuses to start a
+    # container asking for a device the host does not have.
+    devices: !reset null
+
+    # Lets the container reach FrigateDetector.app on the macOS host
+    # via ZMQ :5555. Required by the detector block in config.np.yml.
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+    deploy:
+      resources:
+        limits:
+          # Back down from woodhull's 2048m. The M1 has 8 GB total and
+          # Docker Desktop is capped well below that — 1536m is the value
+          # this container actually ran at through 2026-08-31, sized off a
+          # +247 MiB/week post-restart drift with ~4 weeks of runway.
+          memory: 1536m
+
+# ═══════════════════════════════════════════════════════════════
+# NOT handled here — read before the first `docker compose up` at NP
+# ═══════════════════════════════════════════════════════════════
+#
+# 1. .env  (untracked, per-host — see .env.example)
+#       HOST_IP=192.168.2.70
+#       FRIGATE_MEDIA=./frigate/storage
+#    The base file's ${HOST_IP:?} guard means compose FAILS LOUDLY
+#    with no .env rather than binding the wrong address. That guard is
+#    why the Mac could not accidentally re-bind BK's ports after the
+#    migration — keep it.
+#
+# 2. Frigate config — compose cannot override it:
+#       cp frigate/config.np.yml frigate/config.yml
+#    Do this BEFORE `up`. config.yml on disk is still Brooklyn's
+#    (OpenVINO detector, VAAPI, front_window/backyard cameras) and
+#    Frigate 0.17.2 will fail detector init on an M1 with it.
+#
+# 3. FrigateDetector.app must be running on macOS before Frigate starts,
+#    and must be a Login Item. The ZMQ detector has no fallback — if the
+#    app is not listening on :5555, Frigate starts and detects nothing.
+#    https://github.com/frigate-nvr/apple-silicon-detector
+#    Confirm the app survived the move; it is not in this repo.
+#
+# 4. frigate/model_cache/yolo.onnx must be present (gitignored, 9.2 MB).
+#    Verified present on the Mac 2026-09-08. It is the ZMQ detector's
+#    model — the OpenVINO path does not use it, so nothing has been
+#    keeping it alive since 09-03.
+#
+# 5. The `whisper` container in the base file should NOT run at NP —
+#    the M1 keeps native wyoming-whisperkit (MOVE_READINESS §3.6), which
+#    is the whole reason the M1 goes to NP. Either add a `whisper`
+#    section here with a profile, or just never `up` it. Out of scope
+#    for the Frigate un-migration; decide before Phase 4.
