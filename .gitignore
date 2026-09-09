@@ -67,3 +67,6 @@ streamdeck/*.log
 
 # ── Per-site override symlink (points at overrides/<site>.yml) ──
 docker-compose.override.yml
+
+# Timestamped backups np-day-one.sh makes before swapping in the NP config
+frigate/config.bk-*.yml

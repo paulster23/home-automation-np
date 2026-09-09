@@ -32,18 +32,34 @@ say "== 3. frigate config =="
 if [ ! -f frigate/config.np.yml ]; then
   say "   MISSING frigate/config.np.yml"
   FAIL=1
-elif grep -q "apple-silicon" frigate/config.yml 2>/dev/null; then
-  say "   config.yml is already the NP config, not overwriting"
+elif cmp -s frigate/config.np.yml frigate/config.yml; then
+  say "   config.yml already matches config.np.yml byte for byte, nothing to do"
 else
   if [ -f frigate/config.yml ]; then
-    cp frigate/config.yml "frigate/config.bk-$(date +%Y%m%d-%H%M%S).yml"
-    say "   backed up Brooklyn config.yml alongside it"
+    BK="frigate/config.bk-$(date +%Y%m%d-%H%M%S).yml"
+    cp frigate/config.yml "$BK"
+    say "   backed up the existing config.yml to $BK"
   fi
   cp frigate/config.np.yml frigate/config.yml
-  say "   config.yml is now the NP apple-silicon config"
+  say "   copied config.np.yml over config.yml"
 fi
 
-say "== 4. detector preflight =="
+say "== 4. what config.yml actually asks for =="
+if grep -qE "^[^#]*type:[[:space:]]*zmq" frigate/config.yml; then
+  say "   live detector is zmq, correct for the M1"
+else
+  say "   ERROR: config.yml has no live zmq detector line"
+  FAIL=1
+fi
+if grep -qE "^[^#]*(openvino|preset-vaapi|/dev/dri)" frigate/config.yml; then
+  say "   ERROR: config.yml still carries woodhull hardware (openvino / vaapi / dri)"
+  grep -nE "^[^#]*(openvino|preset-vaapi|/dev/dri)" frigate/config.yml | sed 's/^/     /'
+  FAIL=1
+else
+  say "   no openvino, vaapi or /dev/dri left in config.yml"
+fi
+
+say "== 5. detector preflight =="
 if [ -f frigate/model_cache/yolo.onnx ]; then
   say "   yolo.onnx present, $(wc -c < frigate/model_cache/yolo.onnx | tr -d ' ') bytes"
 else
@@ -69,7 +85,7 @@ else
   FAIL=1
 fi
 
-say "== 5. merged compose, reads only =="
+say "== 6. merged compose, reads only =="
 if docker compose config >/dev/null 2>&1; then
   say "   docker compose config parses OK"
   if docker compose config 2>/dev/null | grep -q "/dev/dri"; then
