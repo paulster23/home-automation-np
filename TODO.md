@@ -1,6 +1,6 @@
 # Home Automation — To-Do List
 
-*Last updated: 2026-09-08 (weekly-disk-health)*
+*Last updated: 2026-09-09 (homelab-advisor)*
 
 > **Structure rule (2026-07-28):** sections in order — Pending → Watching/deferred → Future → Completed (newest first, max ~10; older items go to `archive/TODO-completed.md` in this repo). **Scheduled-task appends must be ≤300 chars + a pointer** to the full report/TROUBLESHOOTING entry — no inline essays.
 
@@ -8,6 +8,7 @@
 
 ## Pending
 
+- [ ] **front_window: new hwaccel decode errors on woodhull's iGPU post-migration — `Failed to sync surface` / `hwdownload Failed to download frame -5`.** Occasional (1–2 per ~7h window, no ffmpeg-restart loop, frigate healthy), but new since the 09-03 detector switch to iGPU. Low watch. See advisor-2026-09-09.html. — (via homelab-advisor 2026-09-09)
 - [ ] **Frigate records to `/srv/frigate` — woodhull's boot NVMe, not the 3.7 T `/srv/media`.** 44 GB after 5 days, still filling (14-day tier cycles ~09-17). Same shape as the 07-27 crash. Relocate or document. See infra/disk_reports/disk-health-2026-09-08.md — (via weekly-disk-health 2026-09-08)
 
 - [ ] **Watch/bump frigate on woodhull — riding its own 2 GiB cap.** Since the 09-03 cutover frigate averages 83.8% / peaks 94.7% of 2 GiB (both cameras here now). No host risk (woodhull has ~9 GB free) but close to its own cap → frigate-only OOM risk. Bump `mem_limit` 2→3 GiB on woodhull, or add an OOM ntfy alert. See budget-report-2026-09-07.md — (via weekly-resource-budget 2026-09-07)
