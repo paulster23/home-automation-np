@@ -104,7 +104,14 @@ services:
     deploy:
       resources:
         limits:
-          memory: 2048m   # raised from 1536m (2026-08-31 migration) — woodhull has the headroom the 8GB Mac didn't
+          # 1536m (Mac) -> 2048m (2026-08-31 migration) -> 3072m (2026-09-09).
+          # Frigate drifts upward ~70 MiB/day and resets on restart: in the 2.25
+          # days after its 09-07 restart it went 84.2% -> 91.3% of the 2048m cap,
+          # which projected to hitting the ceiling in ~2.5 more days. anon is the
+          # real thing here (1.28 G of 2 G), not page cache — unlike every other
+          # container on this host. 3072m turns a ~4-day runway into ~8+ days.
+          # It buys time; it does not fix the drift. See home-automation/TODO.md.
+          memory: 3072m
           cpus: "2.0"     # reduced from 4.0 — no CPU detection workload
         reservations:
           memory: 512m
