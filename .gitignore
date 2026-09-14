@@ -74,11 +74,13 @@ frigate/config.bk-*.yml
 # ── Archived Brooklyn HA clone, kept as the New Paltz rollback (2026-09-14) ──
 # 661 MB. Never commit it. `mv` it back over homeassistant/ to roll back.
 #
-# NOTE for whoever sees a dirty tree here: at NEW PALTZ these stay permanently
-# modified/deleted on purpose, exactly like frigate/config.yml —
-#   homeassistant/configuration.yaml   (the NP copy of configuration.np.yml)
-#   homeassistant/automations.yaml     (NP HVAC automations)
-#   homeassistant/scripts.yaml         (NP away/arrive)
-#   homeassistant/custom_components/   (Brooklyn-only, archived here)
-# Do NOT "tidy" them by committing — that would push NP's config over Brooklyn's.
+# ⚠️ REVERSED 2026-09-14 by the repo split. The note that used to sit here told
+# you these files stay permanently modified and must NOT be committed, because
+# this branch was shared with Brooklyn and committing would overwrite its
+# config. That is no longer true and following it now would be wrong: this repo
+# is New Paltz only, and configuration.yaml / automations.yaml / scripts.yaml
+# ARE committed here as of 299439f. Commit NP config changes normally.
+#
+# Note homeassistant/ is ignored above as runtime data, so adding a NEW config
+# file needs: git add -f homeassistant/<file>.
 homeassistant.bk-clone-*/
