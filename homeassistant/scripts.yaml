@@ -1,111 +1,70 @@
-radio_play_station:
-  alias: "Play Radio Station with Fallback"
-  description: >
-    Tries each URL for the requested station in order.
-    Announces via assist_satellite TTS if falling back to a backup stream,
-    or if all streams are unreachable.
-  mode: restart
-  fields:
-    station:
-      description: "Normalised call sign (kexp, wfmu, kcrw, wqxr, wnyc, wbgo)"
-      selector:
-        text:
-  variables:
-    station_streams:
-      kexp:
-        - "https://kexp-mp3-128.streamguys1.com/kexp128.mp3"
-      wfmu:
-        - "http://stream2.wfmu.org/freeform-128k"
-        - "http://stream0.wfmu.org/freeform-128k"
-      kcrw:
-        - "https://streams.kcrw.com/kcrw_mp3"
-      wqxr:
-        - "http://stream.wqxr.org/wqxr"
-      wnyc:
-        - "https://fm939.wnyc.org/wnycfm-web"
-      wbgo:
-        - "https://ais-sa8.cdnstream1.com/3629_128.mp3"
-    urls: "{{ station_streams.get(station, []) }}"
+# New Paltz scripts. Run from the HA companion app.
+
+np_away:
+  alias: "NP · Away"
+  icon: mdi:home-export-outline
+  description: >-
+    Departure setback. Winter holds 52 °F, which is well clear of the 45 °F
+    freeze trigger so the two never fight each other. Summer turns the units
+    off outright. Month-based rather than a thermostat mode, because an empty
+    house has nobody to flip it.
+  mode: single
   sequence:
-    # Unknown station — no URLs in the table
-    - if:
-        - condition: template
-          value_template: "{{ urls | length == 0 }}"
-      then:
-        - action: assist_satellite.announce
+    - choose:
+        - conditions:
+            - condition: template
+              value_template: "{{ now().month in [10, 11, 12, 1, 2, 3, 4] }}"
+          sequence:
+            - action: climate.set_hvac_mode
+              target:
+                entity_id: &np_units
+                  - climate.np_living
+                  - climate.np_br_down_1
+              data:
+                hvac_mode: heat
+            - action: climate.set_temperature
+              target:
+                entity_id: *np_units
+              data:
+                temperature: 52
+      default:
+        - action: climate.set_hvac_mode
           target:
-            entity_id: assist_satellite.home_assistant_voice_0a3a76_assist_satellite
+            entity_id: *np_units
           data:
-            message: "Sorry, I don't have a stream for that station."
-        - stop: "Unknown station"
-    # Try each URL in sequence; stop on first that reaches playing state
-    - repeat:
-        for_each: "{{ urls }}"
-        sequence:
-          - action: media_player.play_media
-            target:
-              entity_id: media_player.home_assistant_voice_0a3a76_media_player
-            data:
-              media_content_id: "{{ repeat.item }}"
-              media_content_type: music
-          # Wait up to 12 s for the player to reach "playing" state.
-          # A stream that is completely unreachable will go idle or stay
-          # buffering; a working stream transitions to playing.
-          - wait_for_trigger:
-              - platform: state
-                entity_id: media_player.home_assistant_voice_0a3a76_media_player
-                to: "playing"
-            timeout:
-              seconds: 12
-          - if:
-              - condition: template
-                value_template: "{{ wait.completed }}"
-            then:
-              # Stream is up — done.
-              - stop: "Stream started"
-            else:
-              - if:
-                  # More URLs remain — try the next one with a spoken heads-up
-                  - condition: template
-                    value_template: "{{ not repeat.last }}"
-                then:
-                  - action: assist_satellite.announce
-                    target:
-                      entity_id: assist_satellite.home_assistant_voice_0a3a76_assist_satellite
-                    data:
-                      message: "Trouble connecting. Trying backup stream."
-                else:
-                  # All URLs exhausted
-                  - action: assist_satellite.announce
-                    target:
-                      entity_id: assist_satellite.home_assistant_voice_0a3a76_assist_satellite
-                    data:
-                      message: "{{ station | upper }} is not available right now."
+            hvac_mode: "off"
+    - action: rest_command.ntfy
+      data:
+        title: "NP set to Away"
+        priority: "low"
+        tags: "house"
+        message: >-
+          {{ 'Winter setback, holding 52°F.' if now().month in [10,11,12,1,2,3,4]
+             else 'Summer, units off.' }}
 
-windmill_temp_up:
-  alias: "Windmill AC Temp Up"
-  icon: mdi:thermometer-plus
-  mode: queued
-  max: 5
+np_arrive:
+  alias: "NP · Arriving"
+  icon: mdi:home-import-outline
+  description: >-
+    Pre-condition before a drive up. Trigger it manually ~2 h out; a geofence
+    can replace the manual trigger later.
+  mode: single
   sequence:
+    - action: climate.set_hvac_mode
+      target:
+        entity_id: &np_units2
+          - climate.np_living
+          - climate.np_br_down_1
+      data:
+        hvac_mode: heat
     - action: climate.set_temperature
       target:
-        entity_id: climate.windmill_ac
+        entity_id: *np_units2
       data:
-        temperature: >
-          {{ [ (state_attr('climate.windmill_ac','temperature') | float(72)) + 1,
-               state_attr('climate.windmill_ac','max_temp') | float(95) ] | min }}
-
-windmill_temp_down:
-  alias: "Windmill AC Temp Down"
-  icon: mdi:thermometer-minus
-  mode: queued
-  max: 5
-  sequence:
-    - action: climate.set_temperature
-      target:
-        entity_id: climate.windmill_ac
+        temperature: 68
+    - action: rest_command.ntfy
       data:
-        temperature: >
-          {{ [ (state_attr('climate.windmill_ac','temperature') | float(72)) - 1,
-               state_attr('climate.windmill_ac','min_temp') | float(45) ] | max }}
+        title: "NP warming up"
+        priority: "low"
+        tags: "fire"
+        message: "New Paltz pre-conditioning to 68°F."

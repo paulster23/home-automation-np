@@ -1,28 +1,28 @@
-
-# Loads default set of integrations. Do not remove.
-default_config:
-
-# ── Reverse proxy (Caddy / tailscale serve) ─────────────────────────────────────
-# As of HA 2026.7+, the http: integration config (use_x_forwarded_for,
-# trusted_proxies, etc.) is migrated to storage on first boot and YAML is
-# IGNORED on every boot after that (see homeassistant/components/http/config.py,
-# async_load_config: "YAML config is only migrated once. Subsequent boots will
-# ignore YAML and use the store exclusively."). Leaving an http: block here
-# after migration also raises a nagging Repair issue
-# (yaml_still_present_after_migration), so it has been removed.
+# ═══════════════════════════════════════════════════════════════
+# New Paltz — Home Assistant site configuration
 #
-# The live trusted_proxies list now lives in
-# homeassistant/.storage/http (data.stable.trusted_proxies), NOT in this file.
-# To add a trusted proxy: stop the homeassistant container, edit that JSON
-# file directly (owned by the woodhull user, no sudo needed), restart the
-# container. See TROUBLESHOOTING.md 2026-09-03 UPDATE for the full writeup
-# of the 400 Bad Request incident this caused, and the current trusted_proxies
-# contents as of the fix.
+# This is the TRACKED source of truth for NP. configuration.yaml is a
+# copy of it and is deliberately divergent from Brooklyn's — the same
+# pattern frigate/config.np.yml uses, for the same reason: one file
+# cannot describe two houses, and the live copy must never be committed
+# over the other site's.
+#
+# Deliberately NOT carried over from Brooklyn:
+#   spotify_voice_assistant / intent_script  — BK voice stack
+#   shell_command.playball                   — points at 192.168.1.70
+#   input_boolean voice helpers, timer       — BK voice pipeline
+#   custom_components (windmillac, HACS)     — no HACS at NP
+#   frontend.themes                          — no themes dir here
+#
+# No http: block. HA 2026.7+ migrates http: config into .storage/http on
+# first boot and IGNORES YAML on every boot after, and leaving the block
+# present also raises a Repair issue. See TROUBLESHOOTING.md 2026-09-03
+# for the 400 Bad Request incident this caused at Brooklyn.
+# ═══════════════════════════════════════════════════════════════
 
-
-# Load frontend themes from the themes folder
-frontend:
-  themes: !include_dir_merge_named themes
+# Brings in frontend, history, logbook, mobile_app, zeroconf, ssdp,
+# dhcp discovery, backup, and the rest of the standard set.
+default_config:
 
 automation: !include automations.yaml
 script: !include scripts.yaml
@@ -30,594 +30,56 @@ scene: !include scenes.yaml
 
 conversation:
 
-# Custom component — must be declared here to trigger async_setup and register
-# the spotify_voice_assistant.search service used by voice intents.
-spotify_voice_assistant:
-
-# ── Spotcast — DISABLED ──────────────────────────────────────────────────────
-# Spotcast v4 is broken: Spotify removed the /server-time endpoint it depends on.
-# All voice intents now use spotify_voice_assistant.play which calls
-# the Spotify Web API directly (start_playback with device_id).
-# spotcast:
-#   sp_dc: !secret spotcast_sp_dc
-#   sp_key: !secret spotcast_sp_key
-
-# ── Logging ────────────────────────────────────────────────────────────────────
-# WindmillAC (HACS) hardcodes _LOGGER.setLevel(DEBUG) in climate.py, which spams
-# the HA log (and the log-tailer). Pin it to warning to suppress the noise.
-#
-# esphome.manager: the Voice PE (Naboo, 0a3a76) logs a CONNECTION_CLOSED errno=128
-# WARNING every time uptime-kuma monitor #20 "Naboo Voice PE (ESPHome API)" opens and
-# drops a bare TCP connection to 192.168.1.237:6053. At the 60s heartbeat set 2026-08-05
-# that is 1,440 lines/day, which buries real HA signal. Diagnosed 2026-07-29, reintroduced
-# 2026-08-05 when the heartbeat went 300s -> 60s for faster Wi-Fi-drop detection.
-# Kuma + ntfy now own drop alerting for this device, so the HA log does not need to carry
-# it. Trade-off accepted 2026-08-06 (Paul): this hides ALL esphome.manager WARNINGs, incl.
-# genuine reconnect storms on other ESPHome devices -- if you are debugging ESPHome
-# connectivity, comment this line out first. See weekly-report-2026-08-06.html.
 logger:
   default: info
-  logs:
-    custom_components.windmillac: error
-    homeassistant.components.esphome.manager: error
 
-# ── Database housekeeping ──────────────────────────────────────────────────────
-# Auto-purge entity state history older than 30 days to prevent DB bloat.
-# Without this, home-assistant_v2.db grows ~1-2 MB/month and never shrinks.
+# ── Database housekeeping ─────────────────────────────────────
+# 14 days rather than Brooklyn's 30. This instance tracks a handful of
+# climate entities and one camera, and it lives on the M1's 460 GB boot
+# disk inside a 4.1 GB Docker VM — keep the DB small on purpose.
 recorder:
-  purge_keep_days: 30
+  purge_keep_days: 14
   commit_interval: 1
 
-# ── Voice pipeline helpers ────────────────────────────────────────────────────
-# Tracks whether we auto-paused music for a voice command, so we know
-# whether to resume after the pipeline finishes.
-input_boolean:
-  voice_paused_music:
-    name: Voice paused music
-    icon: mdi:music-note-off
-  radio_active:
-    name: Radio is playing
-    icon: mdi:radio
+# ── Paging ────────────────────────────────────────────────────────
+# ntfy lives on woodhull in BROOKLYN. Verified 2026-09-14 from inside
+# this container: 192.168.1.71:8111 answers in ~56 ms — but woodhull's
+# TAILNET address (100.103.72.117) does NOT resolve/connect from in here
+# at all. The container can only use the LAN address, and that works
+# solely because the Mac runs Tailscale with RouteAll: true.
+#
+# ⛔ `tailscale set --accept-routes=false` on this Mac SILENTLY kills New
+#    Paltz's ability to page. That is Site Magic step 4 — do not run it
+#    until a gateway tunnel is proven. See plans/ + project memory.
+#
+# Consequence to design around: if the INTER-SITE link is down, the page
+# does not arrive. So every automation below acts on the hardware FIRST
+# and notifies SECOND — a failed notify must never block the heat.
+rest_command:
+  ntfy:
+    url: "http://192.168.1.71:8111/homelab"
+    method: POST
+    content_type: "text/plain; charset=utf-8"
+    payload: "{{ message }}"
+    timeout: 10
+    headers:
+      Title: "{{ title }}"
+      Priority: "{{ priority | default('default') }}"
+      Tags: "{{ tags | default('house') }}"
 
-# ── Timers ────────────────────────────────────────────────────────────────────
-timer:
-  general:
-    name: Timer
-    duration: "00:00:00"
-
-# ── Shell commands (run on Mac host via webhook bridge) ───────────────────────
-# HA runs in Docker and cannot exec host binaries directly.
-# shell_command.playball curls the playball-webhook.py listener (port 8766)
-# running as a launchd service on the Mac host. The listener runs playball.py
-# in the background and returns 200 immediately so HA doesn't block.
-shell_command:
-  playball: >-
-    curl -s -m 5 -X POST http://192.168.1.70:8766/playball
-    -H "Content-Type: application/json"
-    -d '{"team": "{{ team }}"}'
-
-# ── Music & voice command intents ─────────────────────────────────────────────
-intent_script:
-  GetWeather:
-    speech:
-      text: >
-        {% set condition = states('weather.home') %}
-        {% set conditions = {
-          'sunny': 'sunny',
-          'clear-night': 'clear',
-          'cloudy': 'cloudy',
-          'partlycloudy': 'partly cloudy',
-          'rainy': 'rainy',
-          'pouring': 'pouring rain',
-          'snowy': 'snowy',
-          'snowy-rainy': 'a wintry mix',
-          'windy': 'windy',
-          'windy-variant': 'windy with clouds',
-          'fog': 'foggy',
-          'lightning': 'stormy',
-          'lightning-rainy': 'stormy'
-        } %}
-        {% set now = now() %}
-        {% set is_night = now.hour >= 21 or now.hour < 6 %}
-        {% set friendly = conditions.get(condition, condition) %}
-        {% if condition == 'sunny' and is_night %}
-          {% set friendly = 'clear' %}
-        {% endif %}
-        It's currently {{ state_attr('weather.home', 'temperature') | round }}° and {{ friendly }}.
-    action: []
-
-  # ── Spotify intents (via spotify_voice_assistant custom component) ───────────
-  # Flow: spotify_voice_assistant.search → URI → spotify_voice_assistant.play
-  #   → Spotify Web API start_playback(device="Naboo") → librespot plays
-  #   → on_event.sh webhook → naboo_media_player plays http://192.168.1.70:8765
-  #
-  # voice_paused_music is cleared before playback fires so the resume automation
-  # doesn't try to restart the old stream after the pipeline completes.
-  # ─────────────────────────────────────────────────────────────────────────────
-
-  PlayMusic:
-    speech:
-      text: ""
-    action:
-      # Unmute amp so audio plays when the stream reaches naboo
-      - action: media_player.volume_mute
-        continue_on_error: true
-        target:
-          entity_id: media_player.home_assistant_voice_0a3a76_media_player
-        data:
-          is_volume_muted: false
-      # HA's intent matcher sometimes routes call signs here instead of
-      # PlayCallSign. Detect and redirect to direct stream radio.
-      - choose:
-          - conditions:
-              - >-
-                {{ artist | lower | replace('-','') | replace(' ','')
-                   in ['kexp','wfmu','kcrw','wqxr','wnyc','wbgo',
-                        'wsmu','wsnu','wbmu','wfmyou'] }}
-            sequence:
-              # Stop Spotify so it doesn't reassert over the radio stream
-              - action: spotify_voice_assistant.pause
-              - action: input_boolean.turn_on
-                target:
-                  entity_id: input_boolean.radio_active
-              # Delegate to radio_play_station script for URL fallback and TTS feedback.
-              - action: script.radio_play_station
-                data:
-                  station: >-
-                    {% set clean = artist | lower | replace('-','') | replace(' ','') %}
-                    {% if clean in ['wsmu','wsnu','wbmu','wfmyou'] %}wfmu{% else %}{{ clean }}{% endif %}
-        # Normal Spotify artist playback
-        default:
-          - action: input_boolean.turn_off
-            target:
-              entity_id: input_boolean.voice_paused_music
-          - action: input_boolean.turn_off
-            target:
-              entity_id: input_boolean.radio_active
-          - action: spotify_voice_assistant.search
-
-            data:
-              query: "{{ artist }}"
-              type: artist
-            response_variable: search_result
-          - condition: template
-            value_template: "{{ 'uri' in search_result }}"
-          - action: spotify_voice_assistant.play
-            data:
-              uri: "{{ search_result.uri }}"
-              device_name: "Naboo"
-
-  PlayAlbum:
-    speech:
-      text: ""
-    action:
-      - action: input_boolean.turn_off
-        continue_on_error: true
-        target:
-          entity_id: input_boolean.voice_paused_music
-      - action: media_player.volume_mute
-        continue_on_error: true
-        target:
-          entity_id: media_player.home_assistant_voice_0a3a76_media_player
-        data:
-          is_volume_muted: false
-      - action: spotify_voice_assistant.search
-        data:
-          query: "{{ album }}"
-          type: album
-        response_variable: search_result
-      - condition: template
-        value_template: "{{ 'uri' in search_result }}"
-      - action: spotify_voice_assistant.play
-        data:
-          uri: "{{ search_result.uri }}"
-          device_name: "Naboo"
-
-  PlayPlaylist:
-    speech:
-      text: ""
-    action:
-      - action: input_boolean.turn_off
-        continue_on_error: true
-        target:
-          entity_id: input_boolean.voice_paused_music
-      - action: media_player.volume_mute
-        continue_on_error: true
-        target:
-          entity_id: media_player.home_assistant_voice_0a3a76_media_player
-        data:
-          is_volume_muted: false
-      # Searches user library first, then public Spotify playlists
-      - action: spotify_voice_assistant.search
-        data:
-          query: "{{ playlist }}"
-          type: playlist
-        response_variable: search_result
-      - condition: template
-        value_template: "{{ 'uri' in search_result }}"
-      - action: spotify_voice_assistant.play
-        data:
-          uri: "{{ search_result.uri }}"
-          device_name: "Naboo"
-
-  PlayGenre:
-    speech:
-      text: ""
-    action:
-      - action: input_boolean.turn_off
-        continue_on_error: true
-        target:
-          entity_id: input_boolean.voice_paused_music
-      - action: media_player.volume_mute
-        continue_on_error: true
-        target:
-          entity_id: media_player.home_assistant_voice_0a3a76_media_player
-        data:
-          is_volume_muted: false
-      # Search for a genre playlist and play on Naboo
-      - action: spotify_voice_assistant.search
-        data:
-          query: "{{ genre }}"
-          type: playlist
-        response_variable: search_result
-      - condition: template
-        value_template: "{{ 'uri' in search_result }}"
-      - action: spotify_voice_assistant.play
-        data:
-          uri: "{{ search_result.uri }}"
-          device_name: "Naboo"
-
-  PlaySong:
-    speech:
-      text: ""
-    action:
-      - action: input_boolean.turn_off
-        continue_on_error: true
-        target:
-          entity_id: input_boolean.voice_paused_music
-      - action: media_player.volume_mute
-        continue_on_error: true
-        target:
-          entity_id: media_player.home_assistant_voice_0a3a76_media_player
-        data:
-          is_volume_muted: false
-      - action: spotify_voice_assistant.search
-        data:
-          query: "{{ song }}"
-          type: track
-        response_variable: search_result
-      - condition: template
-        value_template: "{{ 'uri' in search_result }}"
-      - action: spotify_voice_assistant.play
-        data:
-          uri: "{{ search_result.uri }}"
-          device_name: "Naboo"
-
-  PlayPodcast:
-    speech:
-      text: ""
-    action:
-      - action: input_boolean.turn_off
-        continue_on_error: true
-        target:
-          entity_id: input_boolean.voice_paused_music
-      - action: media_player.volume_mute
-        continue_on_error: true
-        target:
-          entity_id: media_player.home_assistant_voice_0a3a76_media_player
-        data:
-          is_volume_muted: false
-      # RSS bypass: podcast_play fetches the latest episode directly via iTunes
-      # Search API + RSS, then plays the MP3 URL on naboo. This avoids librespot
-      # entirely (librespot cannot decode spotify:episode: audio keys — known bug).
-      - action: spotify_voice_assistant.podcast_play
-        data:
-          query: "{{ podcast }}"
-
-  # Play the latest episode of a podcast by name.
-  # Same RSS bypass as PlayPodcast — both intents route here.
-  # Say: "play the latest episode of the Daily"
-  #      "play an episode of Radiolab"
-  PlayEpisode:
-    speech:
-      text: ""
-    action:
-      - action: input_boolean.turn_off
-        continue_on_error: true
-        target:
-          entity_id: input_boolean.voice_paused_music
-      - action: media_player.volume_mute
-        continue_on_error: true
-        target:
-          entity_id: media_player.home_assistant_voice_0a3a76_media_player
-        data:
-          is_volume_muted: false
-      - action: spotify_voice_assistant.podcast_play
-        data:
-          query: "{{ podcast }}"
-
-  PlayLikedSongs:
-    speech:
-      text: ""
-    action:
-      - action: input_boolean.turn_off
-        continue_on_error: true
-        target:
-          entity_id: input_boolean.voice_paused_music
-      - action: media_player.volume_mute
-        continue_on_error: true
-        target:
-          entity_id: media_player.home_assistant_voice_0a3a76_media_player
-        data:
-          is_volume_muted: false
-      # Play Liked Songs on Naboo via direct Spotify Web API
-      - action: spotify_voice_assistant.play
-        data:
-          uri: "spotify:user:paulster23:collection"
-          device_name: "Naboo"
-
-  StopMusic:
-    speech:
-      text: ""
-    action:
-      # Clear the auto-pause flag FIRST so the resume automation won't
-      # re-start music after the pipeline finishes
-      - action: input_boolean.turn_off
-        continue_on_error: true
-        target:
-          entity_id: input_boolean.voice_paused_music
-      # Clear radio_active so librespot_stream_resilience works normally again
-      - action: input_boolean.turn_off
-        continue_on_error: true
-        target:
-          entity_id: input_boolean.radio_active
-      # Ensure the ESPHome amp is never left muted after a stop command.
-      # (The resume automation is the normal unmute path, but it won't fire
-      # after StopMusic because its conditions are intentionally not met.)
-      - action: media_player.volume_mute
-        continue_on_error: true
-        target:
-          entity_id: media_player.home_assistant_voice_0a3a76_media_player
-        data:
-          is_volume_muted: false
-      # Pause Spotify on the Naboo device so librespot_stream_resilience
-      # doesn't see spotify_paulster23 still "playing" and immediately
-      # reconnect the HTTP stream, undoing the stop command.
-      - action: spotify_voice_assistant.pause
-        continue_on_error: true
-      - action: media_player.media_stop
-        target:
-          entity_id: media_player.home_assistant_voice_0a3a76_media_player
-
-  WhatsPlaying:
-    speech:
-      text: >
-        {% set player = 'media_player.home_assistant_voice_0a3a76_media_player' %}
-        {% if states(player) == 'playing' %}
-          Now playing {{ state_attr(player, 'media_title') | default('something') }}
-          {% if state_attr(player, 'media_artist') %}
-            by {{ state_attr(player, 'media_artist') }}
-          {% endif %}.
-        {% else %}
-          Nothing is playing right now.
-        {% endif %}
-    action: []
-
-  AddToQueue:
-    speech:
-      text: ""
-    action:
-      # Note: this replaces current playback rather than true queuing.
-      # For true queuing, use the Spotify app directly.
-      - action: input_boolean.turn_off
-        continue_on_error: true
-        target:
-          entity_id: input_boolean.voice_paused_music
-      - action: media_player.volume_mute
-        continue_on_error: true
-        target:
-          entity_id: media_player.home_assistant_voice_0a3a76_media_player
-        data:
-          is_volume_muted: false
-      - action: spotify_voice_assistant.search
-        data:
-          query: "{{ song }}"
-          type: track
-        response_variable: search_result
-      - condition: template
-        value_template: "{{ 'uri' in search_result }}"
-      - action: spotify_voice_assistant.play
-        data:
-          uri: "{{ search_result.uri }}"
-          device_name: "Naboo"
-
-  PlayArtistRadio:
-    speech:
-      text: ""
-    action:
-      # Plays the artist catalog. For a true radio experience,
-      # open Spotify app → Go to artist → Radio.
-      - action: input_boolean.turn_off
-        continue_on_error: true
-        target:
-          entity_id: input_boolean.voice_paused_music
-      - action: media_player.volume_mute
-        continue_on_error: true
-        target:
-          entity_id: media_player.home_assistant_voice_0a3a76_media_player
-        data:
-          is_volume_muted: false
-      - action: spotify_voice_assistant.search
-        data:
-          query: "{{ artist }}"
-          type: artist
-        response_variable: search_result
-      - condition: template
-        value_template: "{{ 'uri' in search_result }}"
-      - action: spotify_voice_assistant.play
-        data:
-          uri: "{{ search_result.uri }}"
-          device_name: "Naboo"
-
-  # Broadcast radio by call sign ("play KEXP", "play K-E-X-P radio").
-  # Normalises whatever Whisper heard into an uppercase callsign by stripping
-  # spaces and hyphens, then delegates to script.radio_play_station (direct MP3 streams).
-  PlayCallSign:
-    speech:
-      text: ""
-    action:
-      - action: media_player.volume_mute
-        continue_on_error: true
-        target:
-          entity_id: media_player.home_assistant_voice_0a3a76_media_player
-        data:
-          is_volume_muted: false
-      # Set radio_active so librespot_stream_resilience doesn't stomp the radio stream
-      - action: input_boolean.turn_on
-        target:
-          entity_id: input_boolean.radio_active
-      # Stop Spotify so it doesn't reassert over the radio stream
-      - action: spotify_voice_assistant.pause
-        continue_on_error: true
-      # Delegate to radio_play_station script for URL fallback and TTS feedback.
-      - action: script.radio_play_station
-        data:
-          station: >-
-            {% set clean = callsign | lower | replace('-', '') | replace(' ', '') %}
-            {% if clean in ['wsmu', 'wsnu', 'wbmu', 'wfmyou'] %}wfmu{% else %}{{ clean }}{% endif %}
-
-  # Song-seeded radio ("play song Shark Smile radio").
-  # Requires the word "song" in the command to distinguish from artist radio.
-  PlaySongRadio:
-    speech:
-      text: ""
-    action:
-      # Plays the track directly (no song-radio mode available).
-      - action: input_boolean.turn_off
-        continue_on_error: true
-        target:
-          entity_id: input_boolean.voice_paused_music
-      - action: media_player.volume_mute
-        continue_on_error: true
-        target:
-          entity_id: media_player.home_assistant_voice_0a3a76_media_player
-        data:
-          is_volume_muted: false
-      - action: spotify_voice_assistant.search
-        data:
-          query: "{{ song }}"
-          type: track
-        response_variable: search_result
-      - condition: template
-        value_template: "{{ 'uri' in search_result }}"
-      - action: spotify_voice_assistant.play
-        data:
-          uri: "{{ search_result.uri }}"
-          device_name: "Naboo"
-
-  PlayRadio:
-    speech:
-      text: ""
-    action:
-      - action: media_player.volume_mute
-        continue_on_error: true
-        target:
-          entity_id: media_player.home_assistant_voice_0a3a76_media_player
-        data:
-          is_volume_muted: false
-      # Set radio_active so librespot_stream_resilience doesn't stomp the radio stream
-      - action: input_boolean.turn_on
-        target:
-          entity_id: input_boolean.radio_active
-      # Stop Spotify so it doesn't reassert over the radio stream
-      - action: spotify_voice_assistant.pause
-        continue_on_error: true
-      # Delegate to radio_play_station script for URL fallback and TTS feedback.
-      - action: script.radio_play_station
-        data:
-          station: >-
-            {% set clean = station | lower | replace('-', '') | replace(' ', '') %}
-            {% if clean in ['wsmu', 'wsnu', 'wbmu', 'wfmyou'] %}wfmu{% else %}{{ clean }}{% endif %}
-
-  GoodNight:
-    speech:
-      text: ""
-    action:
-      - action: switch.turn_off
-        target:
-          entity_id:
-            - switch.plug_1
-            - switch.speaker
-      - action: media_player.media_stop
-        target:
-          entity_id: media_player.home_assistant_voice_0a3a76_media_player
-
-  # ── Skip track ────────────────────────────────────────────────────────────────
-  SkipTrack:
-    speech:
-      text: ""
-    action:
-      - action: media_player.media_next_track
-        target:
-          entity_id: media_player.home_assistant_voice_0a3a76_media_player
-
-  # ── Timer intents ─────────────────────────────────────────────────────────────
-  # Uses the existing timer.general helper (already defined above).
-  # Duration is parsed from hours/minutes/seconds slots. Any slot not spoken
-  # defaults to 0. HA timer fires a timer.finished event when it expires.
-  SetTimer:
-    speech:
-      text: >
-        {% set h = hours | default(0) | int %}
-        {% set m = minutes | default(0) | int %}
-        {% set s = seconds | default(0) | int %}
-        {% set total = h * 3600 + m * 60 + s %}
-        {% if total == 0 %}
-          Sorry, I didn't catch a duration for that timer.
-        {% elif h > 0 and m > 0 %}
-          Timer set for {{ h }} hour{% if h != 1 %}s{% endif %} and {{ m }} minute{% if m != 1 %}s{% endif %}.
-        {% elif h > 0 %}
-          Timer set for {{ h }} hour{% if h != 1 %}s{% endif %}.
-        {% elif m > 0 and s > 0 %}
-          Timer set for {{ m }} minute{% if m != 1 %}s{% endif %} and {{ s }} second{% if s != 1 %}s{% endif %}.
-        {% elif m > 0 %}
-          Timer set for {{ m }} minute{% if m != 1 %}s{% endif %}.
-        {% else %}
-          Timer set for {{ s }} second{% if s != 1 %}s{% endif %}.
-        {% endif %}
-    action:
-      - variables:
-          h: "{{ hours | default(0) | int }}"
-          m: "{{ minutes | default(0) | int }}"
-          s: "{{ seconds | default(0) | int }}"
-          total: "{{ (hours | default(0) | int) * 3600 + (minutes | default(0) | int) * 60 + (seconds | default(0) | int) }}"
-      - condition: template
-        value_template: "{{ total | int > 0 }}"
-      - action: timer.start
-        target:
-          entity_id: timer.general
-        data:
-          duration: "{{ '%02d:%02d:%02d' | format(h | int, m | int, s | int) }}"
-
-  CancelTimer:
-    speech:
-      text: "Timer cancelled."
-    action:
-      - action: timer.cancel
-        target:
-          entity_id: timer.general
-
-  # ── Playball — stream a live sports game to the Apple TV ─────────────────────
-  # Voice: "playball Celtics" → webhook → playball.py --team Celtics on Mac host.
-  # The webhook server (playball-webhook.py, port 8766) launches playball.py in
-  # the background and returns 200 immediately. HA speaks "on it" right away
-  # rather than waiting for the game finder (which can take several seconds).
-  # ─────────────────────────────────────────────────────────────────────────────
-  PlayBall:
-    speech:
-      text: "On it."
-    action:
-      - action: shell_command.playball
-        data:
-          team: "{{ team }}"
-
+  # ── Liveness heartbeat → Uptime Kuma on woodhull ──────────────────
+  # Kuma monitor 36 "NP · Home Assistant · heartbeat" (push type, token below).
+  # WHY: Kuma monitor 35 pings the Mac. The Mac can be up and answering
+  # while THIS container is dead and freeze protection is silently gone.
+  # A host ping cannot tell those apart; a push from inside HA can.
+  # Same LAN path as rest_command.ntfy above, and load-bearing for the
+  # same reason — see the RouteAll warning there.
+  # Cadence: automation np_kuma_heartbeat every 5 min + on HA start.
+  # Kuma: interval 300, retry 300, maxretries 1 → DOWN after ~10 min of
+  # silence, then ntfy. Push tokens are not secrets in the credential
+  # sense (write-only, one monitor), so this one stays inline.
+  kuma_heartbeat:
+    url: >-
+      http://192.168.1.71:3001/api/push/Xs7BkAZ7Mv?status=up&msg={{ msg | default('ok') | urlencode }}&ping=
+    method: GET
+    timeout: 10

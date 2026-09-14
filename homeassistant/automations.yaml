@@ -1,427 +1,103 @@
-- id: voice_pause_media_on_wake
-  alias: Voice – Mute amp (and pause media if playing) when wake word detected
-  trigger:
-  - platform: state
-    entity_id: assist_satellite.home_assistant_voice_0a3a76_assist_satellite
-    from: idle
-    to: listening
-  action:
-  - action: media_player.volume_mute
-    target:
-      entity_id: media_player.home_assistant_voice_0a3a76_media_player
-    data:
-      is_volume_muted: true
-  - condition: state
-    entity_id: media_player.home_assistant_voice_0a3a76_media_player
-    state: playing
-  - action: input_boolean.turn_on
-    target:
-      entity_id: input_boolean.voice_paused_music
-  - action: media_player.media_pause
-    target:
-      entity_id: media_player.home_assistant_voice_0a3a76_media_player
-- id: voice_unmute_after_listening
-  alias: Voice – Unmute amp when speech recording ends
-  trigger:
-  - platform: state
-    entity_id: assist_satellite.home_assistant_voice_0a3a76_assist_satellite
-    from: listening
-  action:
-  - action: media_player.volume_mute
-    target:
-      entity_id: media_player.home_assistant_voice_0a3a76_media_player
-    data:
-      is_volume_muted: false
-- id: voice_resume_media_on_done
-  alias: Voice – Resume media after pipeline completes
-  # NOTE (Cowork 2026-09-04): the voice_paused_music check used to run
-  # immediately when this automation triggered, racing StopMusic's intent
-  # script -- which explicitly clears voice_paused_music first specifically
-  # to prevent an auto-resume after "stop." Observed in the logs losing that
-  # race by ~45ms, so a real "stop" command would get silently undone a
-  # second later. Moved the delay before the condition checks (instead of
-  # only before media_play) so StopMusic has a full second of margin to
-  # clear the flag before we decide whether to resume -- 1s vs the ~45ms
-  # race window actually observed should make this reliable.
-  trigger:
-  - platform: state
-    entity_id: assist_satellite.home_assistant_voice_0a3a76_assist_satellite
-    to: idle
-  action:
-  - action: media_player.volume_mute
-    target:
-      entity_id: media_player.home_assistant_voice_0a3a76_media_player
-    data:
-      is_volume_muted: false
-  - delay:
-      seconds: 1
-  - condition: state
-    entity_id: input_boolean.voice_paused_music
-    state: 'on'
-  - condition: state
-    entity_id: media_player.home_assistant_voice_0a3a76_media_player
-    state: paused
-  - action: input_boolean.turn_off
-    target:
-      entity_id: input_boolean.voice_paused_music
-  - action: media_player.media_play
-    target:
-      entity_id: media_player.home_assistant_voice_0a3a76_media_player
-- id: voice_premute_when_idle
-  alias: Voice – Pre-mute amp when music stops
-  trigger:
-  - platform: state
-    entity_id: media_player.home_assistant_voice_0a3a76_media_player
-    to:
-    - idle
-    - 'off'
-    for:
-      seconds: 15
-  - platform: state
-    entity_id: media_player.home_assistant_voice_0a3a76_media_player
-    to: paused
-    for:
-      seconds: 15
-  condition:
-  - condition: state
-    entity_id: assist_satellite.home_assistant_voice_0a3a76_assist_satellite
-    state: idle
-  - condition: template
-    value_template: '{{ not is_state(''media_player.home_assistant_voice_0a3a76_media_player'',
-      ''playing'') }}'
-  - condition: template
-    value_template: '{{ not is_state(''media_player.spotify_paulster23'', ''playing'')
-      }}'
-  action:
-  - action: media_player.volume_mute
-    target:
-      entity_id: media_player.home_assistant_voice_0a3a76_media_player
-    data:
-      is_volume_muted: true
-- id: voice_listening_timeout
-  alias: Voice – Recover Naboo if stuck in listening for too long
+# New Paltz automations.
+#
+# ⚠️ The climate entities below DO NOT EXIST YET. They appear when the Serin
+# CN105 dongles are flashed and adopted (reserved .81 / .82). Until then these
+# automations load cleanly and simply never trigger — that is intentional, so
+# the logic is written and reviewed in Brooklyn rather than on a ladder.
+#
+# Adding units 3-5 later: extend the entity_id lists in BOTH automations and
+# both scripts. There are four lists; a grep for "climate.np_" finds them all.
+
+- id: np_freeze_protection
+  alias: "NP · Freeze protection"
+  description: >-
+    Any head unit reporting under 45 °F for 5 minutes puts every unit into heat
+    at 55 °F, then pages. This is the one automation that must survive a WAN
+    outage: the climate calls are local (ESPHome native API over the LAN) and
+    run before the notify, so an unreachable ntfy cannot stop the heat.
+    The 5-minute debounce rejects a single bad reading; a spurious trigger only
+    turns the heat on, which is harmless, while a missed one is not.
   mode: single
   max_exceeded: silent
-  trigger:
-  - platform: state
-    entity_id: assist_satellite.home_assistant_voice_0a3a76_assist_satellite
-    to: listening
-    for:
-      seconds: 15
-    id: warn
-  - platform: state
-    entity_id: assist_satellite.home_assistant_voice_0a3a76_assist_satellite
-    to: listening
-    for:
-      seconds: 60
-    id: restart
-  action:
-  - if:
-    - condition: trigger
-      id: warn
-    then:
-    - action: persistent_notification.create
-      data:
-        notification_id: naboo_listening_hang
-        title: Naboo listening hang
-        message: 'Naboo has been in "listening" for 15+ seconds ({{ now().strftime(''%H:%M:%S'')
-          }}). Pipeline may be stuck. Will restart device if still listening at 60s.
-
-          '
-  - if:
-    - condition: trigger
-      id: restart
-    then:
-    - action: persistent_notification.create
-      data:
-        notification_id: naboo_listening_hang
-        title: ⚠️ Naboo stuck listening 60s — attempting recovery
-        message: 'Naboo stuck in "listening" for 60s ({{ now().strftime(''%H:%M:%S'')
-          }}). Toggling mic mute to force VAD end-of-speech.
-
-          '
-    - action: switch.turn_on
-      target:
-        entity_id: switch.home_assistant_voice_0a3a76_mute
-    - delay:
-        seconds: 2
-    - action: switch.turn_off
-      target:
-        entity_id: switch.home_assistant_voice_0a3a76_mute
-    - delay:
-        seconds: 3
-    - if:
-      - condition: state
-        entity_id: assist_satellite.home_assistant_voice_0a3a76_assist_satellite
-        state: listening
-      then:
-      - action: persistent_notification.create
-        data:
-          notification_id: naboo_listening_hang
-          title: ⚠️ Naboo still stuck — mute toggle failed
-          message: 'Recovery attempt failed at {{ now().strftime(''%H:%M:%S'') }}.
-            Device still in listening state. Manual intervention required (say the
-            wake word again, or power-cycle).
-
-            '
-      else:
-      - action: persistent_notification.dismiss
-        data:
-          notification_id: naboo_listening_hang
-- id: naboo_vad_relaxed
-  alias: Voice – Set Naboo finished-speaking detection to relaxed
-  mode: single
-  trigger:
-  - platform: homeassistant
-    event: start
-  - platform: state
-    entity_id: select.home_assistant_voice_0a3a76_finished_speaking_detection
-    to: default
-  - platform: state
-    entity_id: select.home_assistant_voice_0a3a76_finished_speaking_detection
-    to: aggressive
-  action:
-  - delay:
-      seconds: 10
-  - action: select.select_option
-    target:
-      entity_id: select.home_assistant_voice_0a3a76_finished_speaking_detection
-    data:
-      option: relaxed
-- id: librespot_playing
-  alias: Librespot – Play HTTP stream on naboo when Spotify Connect starts
-  mode: restart
-  trigger:
-  - platform: webhook
-    webhook_id: librespot_playing
-    allowed_methods:
-    - POST
-    local_only: false
-  action:
-  - condition: state
-    entity_id: input_boolean.radio_active
-    state: 'off'
-  - action: media_player.play_media
-    target:
-      entity_id: media_player.home_assistant_voice_0a3a76_media_player
-    data:
-      media_content_id: http://192.168.1.71:8765
-      media_content_type: music
-  - wait_template: '{{ is_state(''media_player.home_assistant_voice_0a3a76_media_player'',
-      ''playing'') }}'
-    timeout: 00:00:20
-  - delay:
-      seconds: 2
-  - action: media_player.volume_mute
-    target:
-      entity_id: media_player.home_assistant_voice_0a3a76_media_player
-    data:
-      is_volume_muted: false
-  - delay:
-      seconds: 3
-  - choose:
-    - conditions:
-      - condition: template
-        value_template: '{{ not is_state(''media_player.home_assistant_voice_0a3a76_media_player'',
-          ''playing'') }}'
-      sequence:
-      - action: media_player.play_media
-        target:
-          entity_id: media_player.home_assistant_voice_0a3a76_media_player
-        data:
-          media_content_id: http://192.168.1.71:8765
-          media_content_type: music
-      - wait_template: '{{ is_state(''media_player.home_assistant_voice_0a3a76_media_player'',
-          ''playing'') }}'
-        timeout: 00:00:20
-      - action: media_player.volume_mute
-        target:
-          entity_id: media_player.home_assistant_voice_0a3a76_media_player
-        data:
-          is_volume_muted: false
-- id: librespot_reconnect_on_ha_start
-  alias: Librespot – Reconnect naboo stream on HA startup
-  mode: single
-  trigger:
-  - platform: homeassistant
-    event: start
-  action:
-  - delay: 00:02:00
-  - action: input_boolean.turn_off
-    target:
-      entity_id: input_boolean.radio_active
-  - condition: template
-    value_template: "{{ is_state('media_player.spotify_paulster23', 'playing')\n   and
-      state_attr('media_player.spotify_paulster23', 'source') == 'Naboo' }}\n"
-  - action: media_player.play_media
-    target:
-      entity_id: media_player.home_assistant_voice_0a3a76_media_player
-    data:
-      media_content_id: http://192.168.1.71:8765
-      media_content_type: music
-- id: timer_finished_announce
-  alias: Timer – Announce when timer.general finishes
-  trigger:
-  - platform: event
-    event_type: timer.finished
-    event_data:
-      entity_id: timer.general
-  action:
-  - if:
-    - condition: state
-      entity_id: media_player.home_assistant_voice_0a3a76_media_player
-      state: playing
-    then:
-    - action: media_player.media_pause
-      target:
-        entity_id: media_player.home_assistant_voice_0a3a76_media_player
-    - action: input_boolean.turn_on
-      target:
-        entity_id: input_boolean.voice_paused_music
-  - action: media_player.volume_mute
-    target:
-      entity_id: media_player.home_assistant_voice_0a3a76_media_player
-    data:
-      is_volume_muted: false
-  - action: tts.speak
-    target:
-      entity_id: tts.google_translate_en_com
-    data:
-      cache: false
-      media_player_entity_id: media_player.home_assistant_voice_0a3a76_media_player
-      message: Timer's up.
-  - delay:
-      seconds: 3
-  - if:
-    - condition: state
-      entity_id: input_boolean.voice_paused_music
-      state: 'on'
-    then:
-    - action: media_player.media_play
-      target:
-        entity_id: media_player.home_assistant_voice_0a3a76_media_player
-    - action: input_boolean.turn_off
-      target:
-        entity_id: input_boolean.voice_paused_music
-- id: librespot_stream_resilience
-  alias: Librespot – Reconnect naboo stream if it drops while Spotify is playing
-  mode: single
-  max_exceeded: silent
-  trigger:
-  - platform: state
-    entity_id: media_player.home_assistant_voice_0a3a76_media_player
-    to:
-    - idle
-    - paused
-    - 'off'
-    for:
-      seconds: 5
-  condition:
-  - condition: state
-    entity_id: input_boolean.radio_active
-    state: 'off'
-  - condition: state
-    entity_id: media_player.spotify_paulster23
-    state: playing
-  - condition: state
-    entity_id: assist_satellite.home_assistant_voice_0a3a76_assist_satellite
-    state: idle
-  action:
-  - action: media_player.play_media
-    target:
-      entity_id: media_player.home_assistant_voice_0a3a76_media_player
-    data:
-      media_content_id: http://192.168.1.71:8765
-      media_content_type: music
-  - wait_template: '{{ is_state(''media_player.home_assistant_voice_0a3a76_media_player'',
-      ''playing'') }}'
-    timeout: 00:00:20
-  - condition: template
-    value_template: '{{ is_state(''media_player.home_assistant_voice_0a3a76_media_player'',
-      ''playing'') }}'
-  - action: media_player.volume_mute
-    target:
-      entity_id: media_player.home_assistant_voice_0a3a76_media_player
-    data:
-      is_volume_muted: false
-- id: naboo_unmute_on_play
-  alias: Voice – Unmute amp when naboo starts playing (safety net)
-  mode: restart
-  trigger:
-  - platform: state
-    entity_id: media_player.home_assistant_voice_0a3a76_media_player
-    to: playing
-  action:
-  - action: media_player.volume_mute
-    target:
-      entity_id: media_player.home_assistant_voice_0a3a76_media_player
-    data:
-      is_volume_muted: false
-- id: librespot_stopped
-  alias: Librespot – Stop HTTP stream on naboo when Spotify Connect stops
-  trigger:
-  - platform: webhook
-    webhook_id: librespot_stopped
-    allowed_methods:
-    - POST
-    local_only: false
-  action:
-  - action: input_boolean.turn_off
-    target:
-      entity_id: input_boolean.radio_active
-  - action: media_player.media_stop
-    target:
-      entity_id: media_player.home_assistant_voice_0a3a76_media_player
-- id: admute_spotify
-  alias: Ad-mute – Resume/pause Spotify on Naboo during commercial breaks
-  mode: restart
-  trigger:
-  - platform: webhook
-    webhook_id: admute_spotify
-    allowed_methods:
-    - POST
-    local_only: false
-  action:
-  - choose:
-    - conditions:
-      - condition: template
-        value_template: '{{ trigger.json.action == ''start'' }}'
-      sequence:
-      - action: spotify_voice_assistant.resume
-        data:
-          device_name: Naboo
-    - conditions:
-      - condition: template
-        value_template: '{{ trigger.json.action == ''stop'' }}'
-      sequence:
-      - action: spotify_voice_assistant.pause
-- id: windmill_ac_daily_schedule
-  alias: Windmill AC – On 7am (auto), off 1am
   triggers:
-  - at: 07:00:00
-    id: morning_on
-    trigger: time
-    enabled: true
-  - at: 01:00:00
-    id: night_off
-    trigger: time
-    enabled: true
+    - trigger: numeric_state
+      entity_id:
+        - climate.np_living
+        - climate.np_br_down_1
+      attribute: current_temperature
+      below: 45
+      for: "00:05:00"
   actions:
-  - choose:
-    - conditions:
-      - condition: trigger
-        id: morning_on
-      sequence:
-      - action: climate.set_hvac_mode
-        target:
-          entity_id: climate.windmill_ac
-        data:
-          hvac_mode: auto
-    - conditions:
-      - condition: trigger
-        id: night_off
-      sequence:
-      - action: climate.turn_off
-        target:
-          entity_id: climate.windmill_ac
+    - action: climate.set_hvac_mode
+      target:
+        entity_id: &np_all_units
+          - climate.np_living
+          - climate.np_br_down_1
+      data:
+        hvac_mode: heat
+    - action: climate.set_temperature
+      target:
+        entity_id: *np_all_units
+      data:
+        temperature: 55
+    - action: rest_command.ntfy
+      data:
+        title: "NP FREEZE RISK"
+        priority: "urgent"
+        tags: "rotating_light,snowflake"
+        message: >-
+          {{ trigger.to_state.name }} read
+          {{ trigger.to_state.attributes.current_temperature }}°F.
+          All New Paltz units forced to heat 55°F.
+
+- id: np_climate_unavailable
+  alias: "NP · Climate entity unavailable"
+  description: >-
+    A dongle that drops off Wi-Fi stops reporting temperature, which would make
+    freeze protection silently blind — the trigger above can never fire on an
+    entity that is 'unavailable'. This is the watchdog for that blind spot.
+    30 minutes tolerates a reboot or a brief AP blip.
   mode: single
+  triggers:
+    - trigger: state
+      entity_id:
+        - climate.np_living
+        - climate.np_br_down_1
+      to: "unavailable"
+      for: "00:30:00"
+  actions:
+    - action: rest_command.ntfy
+      data:
+        title: "NP HVAC sensor offline"
+        priority: "high"
+        tags: "warning"
+        message: >-
+          {{ trigger.to_state.name }} has been unavailable for 30 min.
+          Freeze protection cannot see this unit.
+
+- id: np_kuma_heartbeat
+  alias: "NP · Kuma heartbeat"
+  description: >-
+    Pushes to Uptime Kuma monitor 36 every 5 minutes so Brooklyn can tell a
+    dead Home Assistant from a merely-quiet one. Kuma monitor 35 pings the
+    Mac; it stays green while this container is stopped, crash-looping, or
+    wedged — which is exactly when freeze protection is not running.
+    Unconditional on purpose: it reports that HA is ALIVE, never whether HA
+    is HAPPY. Gating it on the state of another automation would turn one
+    alert into two meanings. The message body carries the freeze-protection
+    state and the count of responding climate entities for context only.
+    Also fires on HA start so the monitor recovers within seconds of a
+    restart instead of waiting out the 5-minute cycle.
+  mode: single
+  max_exceeded: silent
+  triggers:
+    - trigger: time_pattern
+      minutes: "/5"
+    - trigger: homeassistant
+      event: start
+  actions:
+    - action: rest_command.kuma_heartbeat
+      data:
+        msg: >-
+          freeze={{ states('automation.np_freeze_protection') }}
+          units={{ states.climate | rejectattr('state', 'in', ['unavailable', 'unknown']) | list | count }}
