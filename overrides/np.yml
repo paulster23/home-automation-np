@@ -70,6 +70,29 @@ services:
           # +247 MiB/week post-restart drift with ~4 weeks of runway.
           memory: 1536m
 
+  # ──────────────────────────────────────────────
+  # Home Assistant — New Paltz runs its OWN instance.
+  #
+  # Until 2026-09-14 this service was never started at NP ("woodhull owns
+  # homeassistant", np-day-one.sh). That changed: NP gets an autonomous HA
+  # so the freeze-protection and setback automations keep running with the
+  # WAN down — an automation that needs the internet is not freeze
+  # protection. See plans/WEEK_2026-09-14_NP.md.
+  #
+  # The base entrypoint runs /config/scripts/patch_hacs.sh, which is two
+  # Brooklyn-specific fixes bolted together:
+  #   1. reapplies a HACS startup-timeout patch  — no HACS at NP
+  #   2. injects DigiCert Global Root CA for api.wyzecam.com — no Wyze at NP
+  # Neither applies to a fresh instance, and #2 writes to /config/ssl which
+  # this config dir does not have. The SSL_CERT_FILE export is kept: it is
+  # site-agnostic and fixes Python 3.14's incomplete CA bundle generally.
+  # ──────────────────────────────────────────────
+  homeassistant:
+    entrypoint:
+      - /bin/bash
+      - -c
+      - export SSL_CERT_FILE=$$(python3 -c 'import certifi; print(certifi.where())' 2>/dev/null || true); exec /init
+
 # ═══════════════════════════════════════════════════════════════
 # NOT handled here — read before the first `docker compose up` at NP
 # ═══════════════════════════════════════════════════════════════

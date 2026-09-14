@@ -70,3 +70,15 @@ docker-compose.override.yml
 
 # Timestamped backups np-day-one.sh makes before swapping in the NP config
 frigate/config.bk-*.yml
+
+# ── Archived Brooklyn HA clone, kept as the New Paltz rollback (2026-09-14) ──
+# 661 MB. Never commit it. `mv` it back over homeassistant/ to roll back.
+#
+# NOTE for whoever sees a dirty tree here: at NEW PALTZ these stay permanently
+# modified/deleted on purpose, exactly like frigate/config.yml —
+#   homeassistant/configuration.yaml   (the NP copy of configuration.np.yml)
+#   homeassistant/automations.yaml     (NP HVAC automations)
+#   homeassistant/scripts.yaml         (NP away/arrive)
+#   homeassistant/custom_components/   (Brooklyn-only, archived here)
+# Do NOT "tidy" them by committing — that would push NP's config over Brooklyn's.
+homeassistant.bk-clone-*/
