@@ -120,6 +120,33 @@ cat > "$HA/automations.yaml" <<'AUTOEOF'
         message: >-
           {{ trigger.to_state.name }} has been unavailable for 30 min.
           Freeze protection cannot see this unit.
+
+- id: np_kuma_heartbeat
+  alias: "NP · Kuma heartbeat"
+  description: >-
+    Pushes to Uptime Kuma monitor 36 every 5 minutes so Brooklyn can tell a
+    dead Home Assistant from a merely-quiet one. Kuma monitor 35 pings the
+    Mac; it stays green while this container is stopped, crash-looping, or
+    wedged — which is exactly when freeze protection is not running.
+    Unconditional on purpose: it reports that HA is ALIVE, never whether HA
+    is HAPPY. Gating it on the state of another automation would turn one
+    alert into two meanings. The message body carries the freeze-protection
+    state and the count of responding climate entities for context only.
+    Also fires on HA start so the monitor recovers within seconds of a
+    restart instead of waiting out the 5-minute cycle.
+  mode: single
+  max_exceeded: silent
+  triggers:
+    - trigger: time_pattern
+      minutes: "/5"
+    - trigger: homeassistant
+      event: start
+  actions:
+    - action: rest_command.kuma_heartbeat
+      data:
+        msg: >-
+          freeze={{ states('automation.np_freeze_protection') }}
+          units={{ states.climate | rejectattr('state', 'in', ['unavailable', 'unknown']) | list | count }}
 AUTOEOF
 
 # ── 3. scripts ───────────────────────────────────────────────────────────────

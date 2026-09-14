@@ -66,3 +66,20 @@ rest_command:
       Title: "{{ title }}"
       Priority: "{{ priority | default('default') }}"
       Tags: "{{ tags | default('house') }}"
+
+  # ── Liveness heartbeat → Uptime Kuma on woodhull ──────────────────
+  # Kuma monitor 36 "NP · Home Assistant · heartbeat" (push type, token below).
+  # WHY: Kuma monitor 35 pings the Mac. The Mac can be up and answering
+  # while THIS container is dead and freeze protection is silently gone.
+  # A host ping cannot tell those apart; a push from inside HA can.
+  # Same LAN path as rest_command.ntfy above, and load-bearing for the
+  # same reason — see the RouteAll warning there.
+  # Cadence: automation np_kuma_heartbeat every 5 min + on HA start.
+  # Kuma: interval 300, retry 300, maxretries 1 → DOWN after ~10 min of
+  # silence, then ntfy. Push tokens are not secrets in the credential
+  # sense (write-only, one monitor), so this one stays inline.
+  kuma_heartbeat:
+    url: >-
+      http://192.168.1.71:3001/api/push/Xs7BkAZ7Mv?status=up&msg={{ msg | default('ok') | urlencode }}&ping=
+    method: GET
+    timeout: 10
