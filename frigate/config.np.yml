@@ -43,6 +43,16 @@ mqtt:
   enabled: true
   host: mosquitto
   port: 1883
+  # ── Site identity — set 2026-09-14, BEFORE the first NP camera is adopted ──
+  # Both sites' Frigates publish to their own mosquitto today, but they share
+  # one Home Assistant MQTT namespace the moment the two are ever bridged, and
+  # a default client_id of "frigate" means the second one to connect kicks the
+  # first off the broker in a reconnect loop. Changing topic_prefix AFTER
+  # entities exist forces HA to re-adopt every camera entity under new unique
+  # IDs, losing history and every automation reference. Free to set now, ugly
+  # to set later — so it is set now, while NP has no adopted entities at all.
+  topic_prefix: frigate_np
+  client_id: frigate_np
   user: '{FRIGATE_MQTT_USER}'
   password: '{FRIGATE_MQTT_PASSWORD}'
 
