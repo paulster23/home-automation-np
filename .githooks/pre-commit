@@ -1,23 +1,54 @@
 #!/bin/bash
 # Pre-commit hook: scan staged files for secrets before allowing a commit.
-# Requires gitleaks: brew install gitleaks
+#
+# Enable per clone:  git config core.hooksPath .githooks
+# Install gitleaks:  brew install gitleaks                                (macOS)
+#                    github.com/gitleaks/gitleaks/releases -> ~/.local/bin (Linux)
+#
+# ── Why this resolves the binary instead of just calling `gitleaks` ─────────
+# Git hooks inherit the PATH of whatever invoked git, and that is routinely not
+# a login shell. A non-interactive ssh session gets, on the Mac:
+#   /Users/media/.cargo/bin:/usr/bin:/bin:/usr/sbin:/sbin   (no /opt/homebrew/bin)
+# and on woodhull:
+#   /usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games (no ~/.local/bin)
+#
+# gitleaks 8.30.1 had been installed on the Mac since 2026-08-05, yet every
+# commit made over ssh on 2026-09-14 printed "gitleaks is not installed" and
+# skipped the scan entirely. A secret scanner that silently disables itself in
+# exactly the automated contexts most likely to commit a key is worse than no
+# scanner at all, because the skip line reads like a pass. So resolve the
+# binary explicitly, and print which one actually ran.
+GITLEAKS=""
+for cand in \
+    gitleaks \
+    /opt/homebrew/bin/gitleaks \
+    /usr/local/bin/gitleaks \
+    "${HOME}/.local/bin/gitleaks" \
+    /home/linuxbrew/.linuxbrew/bin/gitleaks \
+    "${HOME}/go/bin/gitleaks"
+do
+    if command -v "$cand" >/dev/null 2>&1; then
+        GITLEAKS="$(command -v "$cand")"
+        break
+    fi
+done
 
-if ! command -v gitleaks &> /dev/null; then
-    echo "⚠️  gitleaks is not installed. Install it with: brew install gitleaks"
-    echo "   Skipping secret scan..."
+if [ -z "$GITLEAKS" ]; then
+    echo "=================================================================="
+    echo "⚠️  gitleaks NOT FOUND — staged files were NOT scanned for secrets."
+    echo "    This commit is proceeding UNSCANNED."
+    echo "    macOS: brew install gitleaks"
+    echo "    Linux: install the release binary to ~/.local/bin"
+    echo "=================================================================="
     exit 0
 fi
 
-echo "🔍 Scanning for secrets..."
-gitleaks git --staged --no-banner
-
-if [ $? -ne 0 ]; then
+echo "🔍 Scanning staged files for secrets (${GITLEAKS})..."
+if ! "$GITLEAKS" git --staged --no-banner; then
     echo ""
     echo "❌ Secrets detected in staged files! Commit blocked."
     echo "   Move secrets to .env (which is gitignored) and try again."
+    echo "   False positive? Add its fingerprint to .gitleaksignore."
     echo ""
-    echo "   To bypass this check in an emergency: git commit --no-verify"
     exit 1
 fi
-
-echo "✅ No secrets found. Proceeding with commit."
