@@ -90,7 +90,7 @@ Key implementation details:
 - **SO_SNDBUF=8192** limits kernel TCP send buffer to ~170ms — keeps skip/pause latency low
 - **Rate counters reset on new client connection** (2026-05-02) — prevents burst send after pause/resume
 - **`--zeroconf-port 5354`** — fixed port for Spotify Connect handshake (random port caused phone discovery failures on mixed wired/WiFi)
-- **Audio path (2026-05-02):** HA `librespot_playing` webhook plays `http://192.168.1.70:8765` directly on `media_player.home_assistant_voice_0a3a76_media_player` (ESPHome entity) — bypasses Music Assistant entirely
+- **Audio path (2026-05-02):** HA `librespot_playing` webhook plays `http://192.168.1.71:8765` directly on `media_player.home_assistant_voice_0a3a76_media_player` (ESPHome entity) — bypasses Music Assistant entirely
 
 **on_event.sh:** PID-based debounce; only fires `librespot_playing` webhook on first play/resume (not track changes); ignores `play_request_id_changed` while stream is live.
 
