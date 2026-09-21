@@ -79,7 +79,7 @@ cameras:
       retry_interval: 10
       inputs:
         # Sub-stream — object detection only. Keep this low-res.
-        - path:
+        - path: 
             rtsp://{FRIGATE_RTSP_USER}:{FRIGATE_RTSP_PASSWORD}@192.168.2.33:554/h264Preview_01_sub
           input_args: -rtsp_transport tcp -timeout 5000000
           roles:
@@ -89,7 +89,7 @@ cameras:
         # -timeout 5000000: socket-level read timeout (5s). Makes ffmpeg self-exit
         # when the stream stalls so the watchdog restarts it in ~5s rather than
         # ~150s. (Was -stimeout before 2026-05-28; renamed in newer ffmpeg builds.)
-        - path:
+        - path: 
             rtsp://{FRIGATE_RTSP_USER}:{FRIGATE_RTSP_PASSWORD}@192.168.2.33:554/h264Preview_01_main
           input_args: -rtsp_transport tcp -timeout 5000000
           roles:
@@ -123,8 +123,8 @@ cameras:
   # Stock COCO only detects cat/dog/bird among animals. Raccoon/possum/
   # squirrel/deer need a Frigate+ trained model — collect snapshots, train,
   # then add labels to `track` below.
-  backyard:
-    enabled: false   # ⚠️ set true once it is mounted at a reserved NP address
+  porch:
+    enabled: true    # Porch cam (ex-Brooklyn backyard RLC-510WA); enabled 2026-09-18
     ffmpeg:
       input_args: preset-rtsp-restream
       retry_interval: 10
@@ -133,7 +133,7 @@ cameras:
         # 2026-06-15: dropped the 5MP main stream — WiFi at the mount could not
         # sustain it (record-stream Connection-timeouts + CSeq desync, ffmpeg
         # restarting ~1x/min). Re-add a main/record input only if it gets wired.
-        - path:
+        - path: 
             rtsp://{FRIGATE_RTSP_USER}:{FRIGATE_RTSP_PASSWORD}@192.168.2.34:554/h264Preview_01_sub
           input_args: -rtsp_transport tcp -timeout 5000000
           roles:
@@ -152,11 +152,18 @@ cameras:
       motion:
         days: 2
     objects:
+      # 2026-09-20: NP is a RURAL dead-end; the driveway is in frame. Brooklyn's
+      # settings were built to SUPPRESS a busy street. Here the base rate of real
+      # traffic is near zero, so a false positive is cheap and a miss is expensive.
+      # A camera-level track list REPLACES the global one, it does not merge --
+      # which is why `car` was absent from this camera and from the zone editor.
       track:
         - person
+        - car
         - cat
         - dog
         - bird
+        - bear
       filters:
         # Lowered min_score/threshold to catch low-res distant animals on the
         # 640x480 detect stream. More false positives is fine for a Frigate+
@@ -170,6 +177,27 @@ cameras:
         bird:
           min_score: 0.4
           threshold: 0.55
+        # person: looser than the global 1500/0.5/0.7. At 640x480 a person at the
+        # end of the drive is ~900-1200 px, so 1500 was cutting off exactly the
+        # early-warning case this camera exists for.
+        person:
+          min_area: 700
+          min_score: 0.5
+          threshold: 0.6
+        # car: the global min_area of 12000 was raised from 8000 on 2026-04-08 to
+        # hide distant parked cars on a Brooklyn street, and it is 3.9% of THIS
+        # camera's 640x480 frame vs 2.6% of woodhull's 896x512 -- markedly stricter
+        # on the camera where the drive is furthest away. 2500 is PROVISIONAL:
+        # put a real car in the drive, read the area Frigate reports in the debug
+        # view, then raise this to just under it. Do not guess a final number.
+        car:
+          min_area: 2500
+          min_score: 0.6
+          threshold: 0.7
+        bear:
+          min_area: 2000
+          min_score: 0.5
+          threshold: 0.6
     motion: {}
     # ⚠️ NEVER add a full-frame object mask (0,0,1,0,1,1,0,1). Tried via the UI
     # 2026-06-15 and removed the same day — object masks tell Frigate to IGNORE
@@ -179,11 +207,38 @@ cameras:
     # and is kept only as a starting shape.
     zones:
       yard:
-        coordinates: 0,0,1,0.03,0.982,0.98,0.021,0.98
+        coordinates: 
+          0.459,0.469,0.101,0.514,0.093,0.163,0.473,0.177,1,0.307,1,0.934,0.644,0.645
         loitering_time: 0
+        inertia: 3
+      frontporch:
+        coordinates: 
+          0.016,0.065,0.086,0.147,0.45,0.155,0.458,0.31,0.832,0.561,0.823,0.835,1,1,0,1
+        loitering_time: 0
+        inertia: 3
+        # No `car` here ON PURPOSE. required_zones is per-SEVERITY, not per-label,
+        # so it cannot say "car alerts from the yard, person alerts from both".
+        # Omitting car from this zone achieves exactly that: a car can never be
+        # "in" frontporch, so with both zones required below, car alerts can only
+        # ever originate in the yard while a person alerts from either.
+        objects:
+          - person
+          - cat
+          - dog
+          - bird
+          - bear
     review:
       alerts:
-        required_zones: yard
+        # Only person and car PAGE. Animals still generate detections -- recorded
+        # and reviewable in the UI -- but must never wake Paul at 3am for a cat.
+        labels:
+          - person
+          - car
+        # frontporch added 2026-09-20: a person already standing at the door was
+        # producing a detection and no alert, which is backwards for an empty house.
+        required_zones:
+          - yard
+          - frontporch
 
 # ── Object tracking ───────────────────────────────────────────
 # Carried over from BK unchanged. Revisit at NP: `car` was tuned for a

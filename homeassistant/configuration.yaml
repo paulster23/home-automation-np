@@ -83,3 +83,51 @@ rest_command:
       http://192.168.1.71:3001/api/push/Xs7BkAZ7Mv?status=up&msg={{ msg | default('ok') | urlencode }}&ping=
     method: GET
     timeout: 10
+
+# ── Frigate (NP) porch camera over MQTT ───────────────────────────
+# No HACS at NP, so the Frigate camera is surfaced with native MQTT
+# entities rather than the Frigate integration. Topic prefix is
+# `frigate_np` (frigate/config.yml mqtt.topic_prefix); availability is
+# frigate_np/available. These are cheap (no extra video decode) — a live
+# camera decode is deliberately NOT added, the M1's 4.1 GB VM is tight.
+# Added 2026-09-18 when the porch cam (Reolink RLC-510WA, static .34)
+# went live. See home-automation/CONTEXT.md + frigate/config.yml.
+mqtt:
+  binary_sensor:
+    - name: "Porch Motion"
+      unique_id: np_porch_motion
+      state_topic: "frigate_np/porch/motion/state"
+      payload_on: "ON"
+      payload_off: "OFF"
+      device_class: motion
+      availability_topic: "frigate_np/available"
+      payload_available: "online"
+      payload_not_available: "offline"
+      device: &porch_dev
+        identifiers: ["np_frigate_porch"]
+        name: "Porch Camera (Frigate)"
+        manufacturer: "Reolink"
+        model: "RLC-510WA"
+    - name: "Porch Person Occupancy"
+      unique_id: np_porch_person_occupancy
+      state_topic: "frigate_np/porch/person"
+      value_template: "{{ 'ON' if (value | int(0)) > 0 else 'OFF' }}"
+      device_class: occupancy
+      availability_topic: "frigate_np/available"
+      payload_available: "online"
+      payload_not_available: "offline"
+      device: *porch_dev
+  sensor:
+    - name: "Porch Person Count"
+      unique_id: np_porch_person_count
+      state_topic: "frigate_np/porch/person"
+      value_template: "{{ value | int(0) }}"
+      availability_topic: "frigate_np/available"
+      payload_available: "online"
+      payload_not_available: "offline"
+      device: *porch_dev
+  camera:
+    - name: "Porch Last Person"
+      unique_id: np_porch_last_person
+      topic: "frigate_np/porch/person/snapshot"
+      device: *porch_dev
