@@ -10,9 +10,28 @@
 
 - [ ] **🟡 MEASURE `car.min_area` on the NP porch camera — the value in place is a PLACEHOLDER.** Set to **2500** on 2026-09-20 when `car` was added to the porch track list; it has never seen a real car. Put a car in the drive, read the area Frigate reports in the debug view, then raise `cameras.porch.objects.filters.car.min_area` to just under it. Context: the global 12000 was raised from 8000 on 2026-04-08 to hide distant parked cars on a Brooklyn street, and it is 3.9% of this camera's 640x480 frame vs 2.6% of woodhull's 896x512 — far stricter on the camera where the drive is furthest away, and the failure is silent (looks like car detection is broken when it is only filtered out). — (via Cowork 2026-09-20)
 
-- [ ] **🟡 NP person alerting is configured in Frigate but nothing PAGES yet.** `review.alerts` now fires for person/car across both zones, but no HA automation turns that into an ntfy push. Paul wants **every person while the house is empty**. Design agreed 2026-09-20: trigger off the per-zone MQTT topics (so the page can say drive vs porch), and gate on an explicit `input_boolean.np_occupied` flipped by the existing `script.np_away`/`script.np_arrive` — **not** on `device_tracker.ppjjss`, whose companion-app sensors are already reading `unavailable` and which would silently suppress every alert if it stuck at `home`. Fail-safe direction: alert unless explicitly occupied. ⚠️ Test by walking in front of the camera — do not ship this unwalked. — (via Cowork 2026-09-20)
+- [x] **🟡 NP person alerting is configured in Frigate but nothing PAGES yet.** `review.alerts` now fires for person/car across both zones, but no HA automation turns that into an ntfy push. Paul wants **every person while the house is empty**. Design agreed 2026-09-20: trigger off the per-zone MQTT topics (so the page can say drive vs porch), and gate on an explicit `input_boolean.np_occupied` flipped by the existing `script.np_away`/`script.np_arrive` — **not** on `device_tracker.ppjjss`, whose companion-app sensors are already reading `unavailable` and which would silently suppress every alert if it stuck at `home`. Fail-safe direction: alert unless explicitly occupied. ⚠️ Test by walking in front of the camera — do not ship this unwalked. — (via Cowork 2026-09-20)
 
-- [ ] **🔴 A person alert fired during an NP WAN outage is LOST, silently.** `notify.sh` logs and returns 0, and the 09-17 report recorded 12× `FAILED-BOTH (primary=000 fallback=000)` — both ntfy and the ntfy.sh fallback cross the same dead link, and outages have run 4 min to 2h36m. The events are still recorded locally, so only the notification is lost. Wanted: a **catch-up** — on HA start and on ntfy recovery, query Frigate's review API for person events in the gap and send one summary page. Turns a silent miss into a late notice. — (via Cowork 2026-09-20)
+  **✅ DONE 2026-09-20 (Cowork).** `np_porch_person_page` pages via ntfy with the Frigate
+  snapshot attached, gated on `input_boolean.np_occupied`. Built off the raw `frigate_np/events`
+  stream rather than `review.alerts`, because alerts require a zone and the two real people
+  tracked in frame outside both zones on 09-20 would never have paged. Delivery is
+  `homeassistant/scripts/np_porch_page.py` (home-automation-np `88f8971`); ntfy needed
+  `attachment-cache-dir` set on woodhull first (infra `b4c7656`) -- it was rejecting every
+  upload with 40014. Verified with synthetic MQTT events: person+empty paged with an 82 KB
+  image, dog / type=end / other-camera all stayed silent.
+  ⬜ **Still open:** the occupancy flag is MANUAL. The phone is off the tailnet most of the
+  time so a companion-app device_tracker would fail exactly when it mattered. An auto-flip
+  from the UX7's view of the wifi is the obvious upgrade; `np_occupied_stuck` (36 h) is the
+  interim guard against the flag being left on and silently suppressing every page.
+
+- [x] **🔴 A person alert fired during an NP WAN outage is LOST, silently.** `notify.sh` logs and returns 0, and the 09-17 report recorded 12× `FAILED-BOTH (primary=000 fallback=000)` — both ntfy and the ntfy.sh fallback cross the same dead link, and outages have run 4 min to 2h36m. The events are still recorded locally, so only the notification is lost. Wanted: a **catch-up** — on HA start and on ntfy recovery, query Frigate's review API for person events in the gap and send one summary page. Turns a silent miss into a late notice. — (via Cowork 2026-09-20)
+
+  **✅ DONE 2026-09-20 (Cowork).** Every failed send is queued to
+  `/config/np_alert_queue.jsonl` and retried by `np_porch_alert_flush` every 5 min and on HA
+  start; the late batch is announced as late so a 3 a.m. page landing at 7 a.m. is not read as
+  something happening now. Entries older than 24 h are dropped rather than delivered as stale
+  news. Verified by queueing a real event against a rejecting ntfy, then flushing it through.
 
 - [x] **✅ FIXED 2026-09-20 (Cowork) — NP freeze protection now initialises.** Was: `unknown entity climate.np_living` / `climate.np_br_down_1` on every HA start (09-13, 09-14, 09-17); `NP · Climate entity unavailable` used the same two. **Cause:** the first Serin dongle was adopted on 09-18 under ESPHome device name `np-livingroom`, so HA generated `climate.np_living_room`, while all four entity lists in `automations.yaml`/`scripts.yaml` reference the reserved `climate.np_living`. **Fix:** renamed the entity in `.storage/core.entity_registry` with HA stopped (timestamped backup written alongside), then restarted. Verified: `Initialized trigger NP · Freeze protection` and `... NP · Climate entity unavailable` both in the log, container healthy. ⚠️ One warning remains and is expected — `climate.np_br_down_1` is the second dongle, not yet flashed. See weekly-report-2026-09-17.html — (via weekly-docker-log-report 2026-09-17; fixed via Cowork 2026-09-20)
 
