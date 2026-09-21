@@ -131,3 +131,34 @@ mqtt:
       unique_id: np_porch_last_person
       topic: "frigate_np/porch/person/snapshot"
       device: *porch_dev
+
+# ── Occupancy flag (New Paltz) ────────────────────────────────────
+# The gate on camera paging. OFF means the house is empty and a person on
+# the porch camera is worth waking Paul for; ON means someone is there and
+# it is not.
+#
+# Deliberately a manual flag, not a device_tracker. NP Home Assistant is
+# only reachable on the LAN or over the tailnet, and the phone is off the
+# tailnet most of the time (iphone173: "last seen 2 days ago" on 2026-09-20),
+# so presence detection through the companion app would be wrong exactly
+# when it mattered. At the house the flag is one tap in the HA app on the
+# local network. Automation `np_occupied_stuck` covers the failure mode
+# that actually bites: leaving it ON, which silently disables paging.
+#
+# State is RESTORED across restarts rather than forced. Forcing it off
+# would be fail-safe, but it would also page Paul about himself after every
+# HA restart while he is in the house, and an alert that cries wolf stops
+# being read.
+input_boolean:
+  np_occupied:
+    name: "NP occupied"
+    icon: mdi:home-account
+
+# ── Camera paging (New Paltz) ─────────────────────────────────────
+# See homeassistant/scripts/np_porch_page.py for why this is a script and
+# not a rest_command: the page carries the snapshot as an ntfy attachment,
+# and every send that fails (NP's WAN drops most nights) is queued and
+# retried rather than lost.
+shell_command:
+  np_porch_page: "python3 /config/scripts/np_porch_page.py {{ event_id }}"
+  np_porch_flush: "python3 /config/scripts/np_porch_page.py --flush"

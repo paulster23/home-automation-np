@@ -101,3 +101,85 @@
         msg: >-
           freeze={{ states('automation.np_freeze_protection') }}
           units={{ states.climate | rejectattr('state', 'in', ['unavailable', 'unknown']) | list | count }}
+
+# ── Camera paging ─────────────────────────────────────────────────
+# Added 2026-09-20. The porch camera has been recording alerts since 09-18
+# but nothing turned one into a page, so the camera was recording for
+# nobody.
+
+- id: np_porch_person_page
+  alias: "NP · Porch person page (house empty)"
+  description: >-
+    Pages on every person the porch camera sees while `input_boolean.np_occupied`
+    is off. Deliberately triggered on Frigate's raw event stream rather than on
+    its `alert` severity: alerts require a zone, and on 2026-09-20 two real
+    people were tracked in frame but inside neither zone, which Frigate scores
+    as a mere `detection`. For an empty house "in frame at all" is the bar Paul
+    asked for, so the zone only shapes the wording, never whether it pages.
+    Fires on type `new` rather than `end` -- the snapshot is poorer but it
+    arrives while the person is still there, which is the entire point.
+    mode queued so two people arriving together produce two pages, not one.
+  mode: queued
+  max: 10
+  max_exceeded: silent
+  triggers:
+    - trigger: mqtt
+      topic: "frigate_np/events"
+  conditions:
+    - condition: template
+      value_template: >-
+        {{ trigger.payload_json.type == 'new'
+           and trigger.payload_json.after.camera == 'porch'
+           and trigger.payload_json.after.label == 'person' }}
+    - condition: state
+      entity_id: input_boolean.np_occupied
+      state: "off"
+  actions:
+    - action: shell_command.np_porch_page
+      data:
+        event_id: "{{ trigger.payload_json.after.id }}"
+
+- id: np_porch_alert_flush
+  alias: "NP · Re-send porch pages missed during a WAN outage"
+  description: >-
+    ntfy lives on woodhull in Brooklyn. When New Paltz's WAN is down the house
+    cannot page and cannot report that it cannot page -- 12x FAILED-BOTH on
+    2026-09-17, primary and ntfy.sh fallback crossing the same dead link. The
+    events themselves are recorded locally, so only the notification is lost.
+    This drains the queue the page script writes on every failure. Also runs on
+    HA start, because a restart is one of the ways a page gets dropped.
+  mode: single
+  max_exceeded: silent
+  triggers:
+    - trigger: time_pattern
+      minutes: "/5"
+    - trigger: homeassistant
+      event: start
+  actions:
+    - action: shell_command.np_porch_flush
+
+- id: np_occupied_stuck
+  alias: "NP · Occupancy flag left on"
+  description: >-
+    `np_occupied` left ON means camera paging is silently disabled. That is the
+    same shape of failure as BK_HA=0 sitting in the backup plist for three
+    weeks: a flag that was right once, never flipped back, and quiet about it.
+    36 hours is longer than any normal stay-and-leave, short enough to catch a
+    drive home with the flag still set.
+  mode: single
+  max_exceeded: silent
+  triggers:
+    - trigger: state
+      entity_id: input_boolean.np_occupied
+      to: "on"
+      for: "36:00:00"
+  actions:
+    - action: rest_command.ntfy
+      data:
+        title: "NP camera paging is off"
+        priority: "default"
+        tags: "eyes"
+        message: >-
+          The New Paltz occupancy flag has been ON for 36 hours, so person
+          alerts from the porch camera are suppressed. Turn it off if you have
+          left the house.
