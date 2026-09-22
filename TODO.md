@@ -8,7 +8,7 @@
 
 ## Pending
 
-- [ ] **🔴 Frigate per-day recording volume jumped ~6× at the 0.18.0 upgrade (09-16).** 0.2–1.3 GB/day through 09-15, then 4.5/6.5/6.9/18/6.9/7.0 GB. `config.yml` vs its pre-0.18 backup differs only in the `version:` line. Either 0.18 changed record semantics, or the feed was failing 09-13→15 and 0.18 fixed it — check Frigate's logs for that window. See infra/disk_reports/disk-health-2026-09-22.md §6.2 — (via weekly-disk-health 2026-09-22)
+- [ ] **🔴 Frigate per-day recording volume jumped ~6× at the 0.18.0 upgrade (09-16).** 0.2–1.3 GB/day before, 6.5–7.0 after; config differs only in the `version:` line. Changed record semantics, or a feed that was failing 09-13→15? See infra/disk_reports/disk-health-2026-09-22.md §6.2 — (via weekly-disk-health 2026-09-22)
 
 - [ ] **🟡 MEASURE `car.min_area` on the NP porch camera — the value in place is a PLACEHOLDER.** Set to **2500** on 2026-09-20 when `car` was added to the porch track list; it has never seen a real car. Put a car in the drive, read the area Frigate reports in the debug view, then raise `cameras.porch.objects.filters.car.min_area` to just under it. Context: the global 12000 was raised from 8000 on 2026-04-08 to hide distant parked cars on a Brooklyn street, and it is 3.9% of this camera's 640x480 frame vs 2.6% of woodhull's 896x512 — far stricter on the camera where the drive is furthest away, and the failure is silent (looks like car detection is broken when it is only filtered out). — (via Cowork 2026-09-20)
 
