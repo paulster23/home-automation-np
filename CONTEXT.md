@@ -213,6 +213,21 @@ Pauses `media_player.home_assistant_voice_0a3a76_media_player` when wake word fi
 - **Storage:** Retains alerts 14 days, detections 7 days. Continuous retention removed in 0.17.
 - **RTSP note:** Reolink app uses proprietary P2P — app working ≠ RTSP working. Always confirm via `ping 192.168.1.33` and checking Frigate logs.
 
+
+### NP (brookside, `media`) — detector start-order check (in `detector-monitor`)
+
+- **Where:** step 0 of `infra/detector-monitor.sh`, which runs under LaunchAgent `com.homelab.detector-monitor` every 5 min. It is **not** a separate agent: a parallel `detector-order-watch` agent was prototyped on 2026-09-24 and removed the same evening.
+- **Why:** NP Frigate's ZMQ detector (`FrigateDetector`, launchd `com.homelab.frigate-detector`, `:5555`) has to be up **before** frigate. On **2026-09-21** the detector was **SIGKILLed manually, not by jetsam**: the `kill -9` KeepAlive test in the launchd hand-over session (`infra@cbbc05c`). launchd respawned it at 14:02:27, about 5 min after frigate's 13:57:34 start. Frigate never re-requested the model from the new process, so detection was dead until 09-24 21:10 while `detector-monitor` stayed green. Full write-up: root `TROUBLESHOOTING.md` → 2026-09-21 → 09-24.
+- **Rule:** if the `:5555` listener started after frigate's `.State.StartedAt`, it runs `docker restart frigate`, waits up to 120 s for `Model yolo.onnx is ready` in the frigate log, then sends a **high-priority** page. If nothing is listening on `:5555`, that is not this check's case: the existing `dead` trigger handles it.
+- **Alert path: ntfy.sh direct, NOT woodhull.** The `page_direct()` function curls `NTFY_FALLBACK_URL`/`TOPIC`/`TOKEN` from `infra/notify.env`. It does not call `notify.sh`, which tries woodhull's ntfy first. It still needs NP's own WAN. The monitor's older heal/recovery pushes still go through `notify.sh`.
+- **Guardrails:**
+  - skips unless frigate is `running`;
+  - `ORDER_DEFER` if the detector is under 90 s old;
+  - at most one restart per 30 min (`/tmp/detector_monitor_last_order_restart`);
+  - after acting, the poll exits instead of judging mid-restart stats.
+- **Log lines** in `infra/log-reports/detector-monitor.log`: `ORDER_RESTART`, `ORDER_OK`, `ORDER_FAILED`, `ORDER_DEFER`, `ORDER_COOLDOWN_SKIP`, `ORDER_PAGE http=…`.
+- **Test:** `DETECTOR_ORDER_FORCE=1 DETECTOR_HEAL_DRYRUN=1 infra/detector-monitor.sh`. Verified for real on 2026-09-24: `ORDER_OK … ready after 10s`, `ORDER_PAGE http=200`, frigate `healthy`.
+
 ---
 
 ## Dependency Map
