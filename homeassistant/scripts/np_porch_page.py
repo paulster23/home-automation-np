@@ -29,7 +29,26 @@ needs no auth. HA and Frigate share the `home-automation` docker network.
 import json, os, re, sys, time, urllib.request, urllib.error
 
 FRIGATE = os.environ.get("FRIGATE_URL", "http://frigate:5000")
-NTFY    = os.environ.get("NTFY_URL", "http://192.168.1.71:8111/homelab")
+def _secret(key, default):
+    """Read a plain `key: "value"` line from HA's secrets.yaml -- the same
+    ntfy_server / ntfy_topic_page the packages use, so the page topic is set
+    in exactly one place."""
+    try:
+        for line in open("/config/secrets.yaml"):
+            m = re.match(rf'^{key}:\s*"?([^"#\n]+?)"?\s*(#.*)?$', line)
+            if m:
+                return m.group(1).strip()
+    except OSError:
+        pass
+    return default
+
+
+NTFY    = os.environ.get("NTFY_URL") or (
+    _secret("ntfy_server", "http://192.168.1.71:8111").rstrip("/") + "/"
+    + _secret("ntfy_topic_page", "homelab"))
+# 2026-09-26: urgent -> high. A yard entry at an empty house is worth a page,
+# not a max-priority alarm that overrides Do Not Disturb.
+PAGE_PRIORITY = "high"
 # Tailnet URL for the "open it" tap target. Tailnet-only on purpose -- see
 # infra/ntfy/README.md; the phone needs Tailscale up to follow it.
 UI      = os.environ.get("NP_FRIGATE_UI", "https://media.tail317990.ts.net:18971")
@@ -46,9 +65,19 @@ def log(line):
         f.write(f"{time.strftime('%Y-%m-%d %H:%M:%S')} | {line}\n")
 
 
-def get_event(eid):
-    with urllib.request.urlopen(f"{FRIGATE}/api/events/{eid}", timeout=TIMEOUT) as r:
-        return json.load(r)
+def get_event(eid, tries=4):
+    # A page fires on an in-progress object, and Frigate may not have written
+    # the event row yet: 404 for a second or two. Retry briefly here rather
+    # than dropping to the WAN queue, whose flush runs only every 5 minutes.
+    # (2026-09-25 19:40:29: ku2slf queued on 404, sent 76 s later by flush.)
+    for attempt in range(tries):
+        try:
+            with urllib.request.urlopen(f"{FRIGATE}/api/events/{eid}", timeout=TIMEOUT) as r:
+                return json.load(r)
+        except urllib.error.HTTPError as e:
+            if e.code != 404 or attempt == tries - 1:
+                raise
+            time.sleep(2)
 
 
 def get_snapshot(eid):
@@ -82,17 +111,17 @@ def compose(ev):
     title = f"NP: {label} at {ZONE_WORDS.get(zones[0], zones[0]) if zones else 'the house'}"
     conf = f"{round(score * 100)}% confidence" if score else "confidence unknown"
     body = (f"{label.capitalize()} detected in {where} at {when}, "
-            f"{conf}. House is marked empty.")
+            f"{conf}. House is empty (binary_sensor.np_occupied off).")
     return title, body
 
 
-def send(eid):
-    ev = get_event(eid)
+def send(eid, tries=4):
+    ev = get_event(eid, tries)
     title, body = compose(ev)
     img = get_snapshot(eid)
     headers = {
         "Title": title,
-        "Priority": "urgent",
+        "Priority": PAGE_PRIORITY,
         "Tags": "rotating_light,house",
         "Click": f"{UI}/explore?event_id={eid}",
     }
@@ -144,15 +173,24 @@ def flush():
             dropped += 1
             continue
         try:
-            send(row["id"])
+            send(row["id"], tries=1)      # no 404 retry here: 70 rows x 6 s blew HA's 60 s limit
             sent += 1
+        except urllib.error.HTTPError as e:
+            # 404 long after queueing = Frigate discarded the event (short-lived
+            # false positive). It will never send; retrying it every 5 min for
+            # 24 h is noise. A fresh 404 is the write race -- keep it.
+            if e.code == 404 and now - row.get("queued_at", 0) > 300:
+                dropped += 1
+                log(f"DROP-404 {row['id']} (Frigate no longer has this event)")
+            else:
+                keep.append(row)
         except Exception:
             keep.append(row)
     with open(QUEUE, "w") as f:
         for row in keep:
             f.write(json.dumps(row) + "\n")
     if sent or dropped:
-        log(f"FLUSH sent={sent} dropped_stale={dropped} still_queued={len(keep)}")
+        log(f"FLUSH sent={sent} dropped={dropped} still_queued={len(keep)}")
         if sent:
             # Say plainly that these are late. A 3am page arriving at 7am
             # without that context reads as something happening right now.

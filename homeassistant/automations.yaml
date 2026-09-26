@@ -108,6 +108,8 @@
 # nobody.
 
 - id: np_porch_person_page
+  # DISABLED 2026-09-26: superseded by np_porch_yard_page + np_porch_info (packages/np_porch_alerts.yaml).
+  initial_state: false
   alias: "NP · Porch person page (house empty)"
   description: >-
     Pages on every person the porch camera sees while `input_boolean.np_occupied`
@@ -159,6 +161,8 @@
     - action: shell_command.np_porch_flush
 
 - id: np_occupied_stuck
+  # DISABLED 2026-09-26: superseded by np_occupancy_override_stuck (packages/np_occupancy.yaml).
+  initial_state: false
   alias: "NP · Occupancy flag left on"
   description: >-
     `np_occupied` left ON means camera paging is silently disabled. That is the

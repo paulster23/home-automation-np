@@ -236,6 +236,69 @@ Pauses `media_player.home_assistant_voice_0a3a76_media_player` when wake word fi
 - **Log lines** in `infra/log-reports/detector-monitor.log`: `ORDER_RESTART`, `ORDER_OK`, `ORDER_FAILED`, `ORDER_DEFER`, `ORDER_COOLDOWN_SKIP`, `ORDER_PAGE http=…`.
 - **Test:** `DETECTOR_ORDER_FORCE=1 DETECTOR_HEAL_DRYRUN=1 infra/detector-monitor.sh`. Verified for real on 2026-09-24: `ORDER_OK … ready after 10s`, `ORDER_PAGE http=200`, frigate `healthy`.
 
+
+### NP presence — `binary_sensor.np_occupied` (shared building block, 2026-09-26)
+
+**Any NP automation that should act differently when someone is in the house reads this ONE
+entity** — never `person.*` or a `device_tracker` directly. On = someone at NP, off = empty.
+Defined in `homeassistant/packages/np_occupancy.yaml`; the resident logic lives once in
+`homeassistant/custom_templates/np_occupancy.jinja` so state and attributes cannot disagree.
+
+| Piece | What |
+|---|---|
+| `binary_sensor.np_occupied` | template, `device_class: occupancy` |
+| `input_select.np_occupancy_override` | `auto` (presence decides) · `occupied` (force on: guests, contractors) · `empty` (force off: testing paging while in the house). Restored across restarts. Forced for 36 h → page (`np_occupancy_override_stuck`) |
+| `group.np_residents` | the residents: `person.paul`, `person.michelle` |
+| attributes | `override`, `source` (`override`/`presence`), `residents_home`, `residents_away`, `stale_ignored` |
+
+**Presence source — UniFi only.** `person.paul` = `device_tracker.paul_phone`, the brookside
+UniFi tracker for `paul-phone` (38:e1:3d:dc:7a:36). The HA UniFi Network integration logs in
+as local **View Only** user `ha-np` at `192.168.2.1`; options: clients only, SSIDs `sinola` +
+`sinola 2.4`, **detection time 1800 s** — Paul's phone sits at ~-81 dBm on 5 GHz and drops off
+the AP for minutes, so 30 min of absence is needed before he counts as away. Cost: pages stay
+suppressed up to 30 min after leaving.
+
+⛔ **Do not attach `device_tracker.ppjjss` (companion app).** Paul does not use the app; that
+tracker read `home` continuously from 09-20 through 09-26, including the days he was in
+Brooklyn — it only re-asserts its last value on HA restart. Attached, it pins `np_occupied` on
+and silences every page. The template carries a **stale-app guard** anyway (a resident whose
+`np_wifi_tracker` has been `not_home` > 2 h is not counted home, listed in `stale_ignored`) in
+case an app tracker is ever attached.
+
+`person.michelle` exists with **no trackers** (always away) until her iPhone is identified —
+one of `76:19:8d:3e:3b:3c` (.121) / `42:b4:ba:2f:9d:cd` (.111), both fixed private MACs.
+
+**Adding a resident:** (1) Settings → People: add the person, attach their UniFi tracker
+(rename the client in UniFi first so the entity id is readable); (2) add `person.<name>` to
+`group.np_residents`; (3) add `np_wifi_tracker: device_tracker.<tracker>` under
+`homeassistant: customize:` in the same package; (4) reload groups, template entities and
+customizations, or restart.
+
+### NP porch paging — `packages/np_porch_alerts.yaml` (2026-09-26)
+
+Per-object, off **`frigate_np/events`**, gated on `binary_sensor.np_occupied` = off:
+
+| Case | Result |
+|---|---|
+| person/car whose **first** entered zone is `yard` (arrived from outside) | **one page**, priority **high (4)**, topic `homelab`, snapshot attached, WAN-outage queue (`scripts/np_porch_page.py`); 2-min cooldown |
+| person whose first zone is not `yard` (from the door, on the porch, outside both zones) | **one note**, priority **low (2)**, topic **`np-info`**; 10-min cooldown; none within 10 min after a page |
+| house occupied | silent — Frigate still records everything |
+
+**Why first zone and not "ever in yard":** the porch rail hides a standing person's legs, so the
+box ends at the rail top — the `yard` polygon's lower edge. Paul standing on the porch entered
+`yard` twice in the 09-26 test. **Why events and not `frigate_np/reviews`:** a review item
+aggregates every object in the clip (`[person, dog]`, `[frontporch, yard]`), so it cannot say
+who was where. Secrets `ntfy_server` / `ntfy_topic_page` / `ntfy_topic_info` in
+`homeassistant/secrets.yaml` (uncommitted); the page script reads the same two keys.
+Subscribe to `np-info` at `https://woodhull.tail317990.ts.net` — body needs Tailscale, as for
+`homelab`. The old `np_porch_person_page` and `np_occupied_stuck` are disabled
+(`initial_state: false`); `input_boolean.np_occupied` is retired and read by nothing.
+
+**Verified 2026-09-26** (Paul on site, override `empty`): yard walk-in → exactly one page, 14:07:52,
+priority 4, photo, same second the object entered `yard`; one `np-info` note 14:08:11 from the
+re-acquired porch-first object (the post-page suppression was added after this). Porch-sit via
+the front door: **not yet re-run on the final logic** — see TODO.
+
 ---
 
 ## Dependency Map

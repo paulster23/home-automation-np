@@ -1,0 +1,39 @@
+{#-
+  np_occupancy.jinja -- one place that decides "who is at New Paltz".
+  Used by packages/np_occupancy.yaml for BOTH the state and the attributes of
+  binary_sensor.np_occupied, so the two can never disagree.
+
+  Returns JSON:  {"home": [names], "away": [names], "stale": [names]}
+
+  A resident is anyone in group.np_residents. A resident counts as home when
+  their person.* entity is `home`, UNLESS the stale-app guard fires:
+
+  STALE-APP GUARD. NP HA is reachable only on the NP LAN or the tailnet. When
+  Paul drives off, his phone leaves the Wi-Fi before the companion app's
+  geofence exit fires, and with Tailscale off the app cannot deliver that exit
+  until he is back on a network that reaches HA -- maybe hours. Meanwhile
+  person.paul keeps the app's last word: `home`. That would silence every
+  porch page for an empty house. So if the resident's Wi-Fi tracker
+  (customize attribute `np_wifi_tracker`) has been not_home for longer than
+  NP_STALE_S, the app's `home` is treated as stale. Cost: up to NP_STALE_S of
+  suppressed pages after leaving. 2 h, because Paul's phone sits at ~-81 dBm on
+  5 GHz and drops off the AP for minutes at a time while he is in the house.
+-#}
+{%- macro np_residents() -%}
+{%- set NP_STALE_S = 7200 -%}
+{%- set ns = namespace(home=[], away=[], stale=[]) -%}
+{%- for p in expand('group.np_residents') -%}
+  {%- set wifi = state_attr(p.entity_id, 'np_wifi_tracker') -%}
+  {%- set w = states[wifi] if wifi else none -%}
+  {%- set stale = w is not none and w.state == 'not_home'
+        and (now() - w.last_changed).total_seconds() > NP_STALE_S -%}
+  {%- if p.state == 'home' and not stale -%}
+    {%- set ns.home = ns.home + [p.name] -%}
+  {%- elif p.state == 'home' -%}
+    {%- set ns.stale = ns.stale + [p.name] -%}
+  {%- else -%}
+    {%- set ns.away = ns.away + [p.name] -%}
+  {%- endif -%}
+{%- endfor -%}
+{{- {'home': ns.home, 'away': ns.away, 'stale': ns.stale} | to_json -}}
+{%- endmacro -%}

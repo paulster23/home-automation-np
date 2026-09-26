@@ -24,6 +24,11 @@
 # dhcp discovery, backup, and the rest of the standard set.
 default_config:
 
+# Packages: one file per feature under packages/ (2026-09-26). Currently
+# np_occupancy.yaml (binary_sensor.np_occupied) and np_porch_alerts.yaml.
+homeassistant:
+  packages: !include_dir_named packages
+
 automation: !include automations.yaml
 script: !include scripts.yaml
 scene: !include scenes.yaml
@@ -149,9 +154,13 @@ mqtt:
 # would be fail-safe, but it would also page Paul about himself after every
 # HA restart while he is in the house, and an alert that cries wolf stops
 # being read.
+# ⛔ RETIRED 2026-09-26 — superseded by binary_sensor.np_occupied and
+# input_select.np_occupancy_override (packages/np_occupancy.yaml). Nothing
+# reads this flag any more; its two automations are disabled. Kept only so
+# the disabled automations still reference a real entity. Remove together.
 input_boolean:
   np_occupied:
-    name: "NP occupied"
+    name: "NP occupied (retired flag)"
     icon: mdi:home-account
 
 # ── Camera paging (New Paltz) ─────────────────────────────────────

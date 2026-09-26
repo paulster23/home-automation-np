@@ -1,0 +1,138 @@
+# ═══════════════════════════════════════════════════════════════
+# np_porch_alerts.yaml — porch camera → ntfy, per tracked OBJECT
+#
+# Supersedes automation np_porch_person_page (paged on every person in frame
+# at priority urgent, gated on a manual flag). Disabled in automations.yaml in
+# the same commit that added this file.
+#
+# Policy (Paul, 2026-09-26), house EMPTY (binary_sensor.np_occupied off):
+#   person or car whose FIRST entered zone is `yard` (arrived from outside)
+#       → ONE page, priority high (4), topic ntfy_topic_page, snapshot
+#       attached, queued if the WAN is down (scripts/np_porch_page.py).
+#       2-min cooldown: one arrival = one page, even car + person.
+#   person whose first zone is NOT `yard` (came out of the house, sitting on
+#       the porch, in frame outside both zones) → ONE low-priority (2) note on
+#       ntfy_topic_info when that object ends. 10-min cooldown, and none
+#       within 10 min after a page (Frigate re-acquires an arriving person on
+#       the porch as a new porch-first object).
+# House OCCUPIED → silent. Frigate still records and reviews everything.
+#
+# WHY frigate_np/events AND NOT frigate_np/reviews (the first draft):
+#   A review item AGGREGATES every object in the clip. The 13:53 porch-sit
+#   test produced one review with objects [person, dog] and zones
+#   [frontporch, yard] -- no way to say who was where.
+# WHY "first zone", NOT "ever in yard":
+#   The porch rail hides a standing person's legs, so Frigate's box ends at
+#   the rail top -- which IS the yard polygon's lower edge. Paul, standing on
+#   the porch, entered `yard` twice in that test (objects l5ft26, pv2gif).
+#   Entry ORDER is the robust signal: from outside you hit yard first; from
+#   the door you hit frontporch first.
+# KNOWN GAP: someone climbing the steps from OUT of frame enters frontporch
+#   first → note, not page. See TROUBLESHOOTING 2026-09-26.
+#
+# Payload fields relied on (frigate_np/events, Frigate 0.18, confirmed live
+# 2026-09-26):
+#   type                    new | update | end
+#   after.id                event id -- fed to the page script
+#   after.camera, after.label
+#   after.entered_zones     ORDERED list of zones this object has entered
+#   before.entered_zones    same, as of the previous message
+#
+# Secrets (homeassistant/secrets.yaml, not committed):
+#   ntfy_server       http://192.168.1.71:8111  (woodhull LAN — the ONLY path
+#                     NP's container has; see configuration.yaml Paging note)
+#   ntfy_topic_page   homelab
+#   ntfy_topic_info   np-info
+# ═══════════════════════════════════════════════════════════════
+
+rest_command:
+  # ntfy JSON publish: POST to the server ROOT with the topic in the body, so
+  # one command serves every topic and the server URL lives in one secret.
+  np_ntfy:
+    url: !secret ntfy_server
+    method: POST
+    content_type: "application/json"
+    timeout: 10
+    payload: >-
+      {{ {'topic': topic, 'title': title, 'message': message,
+          'priority': priority | default(3) | int,
+          'tags': tags | default(['house'])} | to_json }}
+
+automation:
+  - id: np_porch_yard_page
+    # Every porch MQTT message leaves a trace; the default 5 lose a real run in seconds.
+    trace:
+      stored_traces: 100
+    alias: "NP · Porch: person/car arrived via the yard (page)"
+    # single + trailing delay = cooldown: triggers during the delay are dropped.
+    mode: single
+    max_exceeded: silent
+    triggers:
+      - trigger: mqtt
+        topic: "frigate_np/events"
+    variables:
+      ev: "{{ trigger.payload_json }}"
+      now_zones: "{{ ev.after.entered_zones | default([]) }}"
+      was_zones: "{{ ev.before.entered_zones | default([]) if ev.type != 'new' else [] }}"
+    conditions:
+      - condition: template
+        value_template: >-
+          {{ ev.after.camera == 'porch'
+             and ev.after.label in ['person', 'car']
+             and now_zones | count > 0 and now_zones[0] == 'yard'
+             and was_zones | count == 0 }}
+      - condition: state
+        entity_id: binary_sensor.np_occupied
+        state: "off"
+    actions:
+      # The script owns priority (high), snapshot, and the WAN-outage queue.
+      - action: shell_command.np_porch_page
+        continue_on_error: true
+        data:
+          event_id: "{{ ev.after.id }}"
+      - delay: "00:02:00"
+
+  - id: np_porch_info
+    # Every porch MQTT message leaves a trace; the default 5 lose a real run in seconds.
+    trace:
+      stored_traces: 100
+    alias: "NP · Porch: person not from the yard (info)"
+    mode: single
+    max_exceeded: silent
+    triggers:
+      - trigger: mqtt
+        topic: "frigate_np/events"
+    variables:
+      ev: "{{ trigger.payload_json }}"
+      zones: "{{ ev.after.entered_zones | default([]) }}"
+    conditions:
+      - condition: template
+        value_template: >-
+          {{ ev.type == 'end'
+             and ev.after.camera == 'porch'
+             and ev.after.label == 'person'
+             and (zones | count == 0 or zones[0] != 'yard') }}
+      # No note within 10 min of an arrival page: Frigate re-acquires the same
+      # person on the porch as a new, porch-first object (14:08:11 walk-in test).
+      - condition: template
+        value_template: >-
+          {% set lt = state_attr('automation.np_porch_person_car_entered_the_yard_page', 'last_triggered') %}
+          {{ lt is none or (now() - lt).total_seconds() > 600 }}
+      - condition: state
+        entity_id: binary_sensor.np_occupied
+        state: "off"
+    actions:
+      - action: rest_command.np_ntfy
+        continue_on_error: true
+        data:
+          topic: !secret ntfy_topic_info
+          priority: 2
+          tags: ["bust_in_silhouette"]
+          title: >-
+            NP: {{ 'someone on the porch' if 'frontporch' in zones else 'person in frame' }}
+          message: >-
+            Porch camera saw a person {{ 'on the front porch' if 'frontporch' in zones
+            else 'outside both zones' }} at
+            {{ ev.after.start_time | timestamp_custom('%-I:%M %p') }}. They did not
+            arrive through the yard, so this is a note, not a page. House is empty.
+      - delay: "00:10:00"

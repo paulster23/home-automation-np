@@ -1,0 +1,109 @@
+# ═══════════════════════════════════════════════════════════════
+# np_occupancy.yaml — binary_sensor.np_occupied, NP's shared presence signal
+#
+# THE building block for any NP automation that should behave differently
+# when someone is in the house (camera paging, setback, arrival scenes).
+# Consumers read ONE entity and never the people or trackers directly:
+#
+#   binary_sensor.np_occupied   on = someone is at NP, off = house empty
+#     attributes:
+#       override        auto | occupied | empty  (input_select below)
+#       source          override | presence
+#       residents_home  names counted as home
+#       residents_away  names not home
+#       stale_ignored   names whose app says home but whose Wi-Fi tracker
+#                       has been gone > 2 h (see custom_templates/np_occupancy.jinja)
+#
+#   input_select.np_occupancy_override
+#       auto      presence decides (normal)
+#       occupied  force ON  — guests without our phones, contractors
+#       empty     force OFF — testing porch paging while standing in the house
+#     A forced value left for 36 h pages (automation below): an override
+#     nobody remembers is how the old manual flag silently disabled alerts.
+#
+# ADDING A RESIDENT
+#   1. HA: Settings → People → add the person, attach their companion-app
+#      tracker and their brookside UniFi tracker (device_tracker.<client name>).
+#   2. Add person.<name> to group.np_residents below.
+#   3. Add `np_wifi_tracker: device_tracker.<their unifi tracker>` under
+#      customize below (enables the stale-app guard; omit if they have none).
+#   4. Reload: YAML → Groups, Template entities, Customizations (or restart).
+#
+# Replaces input_boolean.np_occupied (manual flag, 2026-09-20). That flag is
+# retired: its automations are disabled and nothing reads it.
+# ═══════════════════════════════════════════════════════════════
+
+homeassistant:
+  customize:
+    person.paul:
+      np_wifi_tracker: device_tracker.paul_phone
+    # person.michelle: np_wifi_tracker: device_tracker.michelle_phone
+    #   — add once her iPhone is identified and renamed in UniFi.
+
+group:
+  np_residents:
+    name: "NP residents"
+    entities:
+      - person.paul
+      - person.michelle
+
+input_select:
+  np_occupancy_override:
+    name: "NP occupancy override"
+    icon: mdi:home-switch
+    options:
+      - auto
+      - occupied
+      - empty
+    # No `initial:` — the value is restored across restarts on purpose, so a
+    # deliberate override survives an HA update.
+
+template:
+  - binary_sensor:
+      - name: "NP occupied"
+        unique_id: np_occupied
+        device_class: occupancy
+        icon: mdi:home-account
+        state: >-
+          {% from 'np_occupancy.jinja' import np_residents %}
+          {% set ov = states('input_select.np_occupancy_override') %}
+          {% if ov == 'occupied' %}true
+          {% elif ov == 'empty' %}false
+          {% else %}{{ (np_residents() | from_json).home | count > 0 }}{% endif %}
+        attributes:
+          override: "{{ states('input_select.np_occupancy_override') }}"
+          source: >-
+            {{ 'override' if states('input_select.np_occupancy_override') in ['occupied', 'empty']
+               else 'presence' }}
+          residents_home: >-
+            {% from 'np_occupancy.jinja' import np_residents %}{{ (np_residents() | from_json).home }}
+          residents_away: >-
+            {% from 'np_occupancy.jinja' import np_residents %}{{ (np_residents() | from_json).away }}
+          stale_ignored: >-
+            {% from 'np_occupancy.jinja' import np_residents %}{{ (np_residents() | from_json).stale }}
+
+automation:
+  - id: np_occupancy_override_stuck
+    alias: "NP · Occupancy override left forced"
+    description: >-
+      A forced override silently decides paging for the whole house. 36 h is
+      longer than any normal stay, short enough to catch driving home with it
+      set. Successor to np_occupied_stuck (the retired manual flag).
+    mode: single
+    max_exceeded: silent
+    triggers:
+      - trigger: state
+        entity_id: input_select.np_occupancy_override
+        to: ["occupied", "empty"]
+        for: "36:00:00"
+    actions:
+      - action: rest_command.np_ntfy
+        continue_on_error: true
+        data:
+          topic: !secret ntfy_topic_page
+          priority: 3
+          tags: ["eyes"]
+          title: "NP occupancy override still forced"
+          message: >-
+            input_select.np_occupancy_override has been '{{ trigger.to_state.state }}'
+            for 36 hours, so presence is being ignored. Set it back to auto.
