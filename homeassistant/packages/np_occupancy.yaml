@@ -35,10 +35,13 @@
 
 homeassistant:
   customize:
+    # Trackers are the brookside UniFi clients, named in UniFi 2026-09-26.
+    # Both iPhones use a FIXED PRIVATE MAC, which iOS keeps per SSID -- a phone
+    # that hops between `sinola` and `sinola 2.4` shows up as two clients.
     person.paul:
-      np_wifi_tracker: device_tracker.paul_phone
-    # person.michelle: np_wifi_tracker: device_tracker.michelle_phone
-    #   — add once her iPhone is identified and renamed in UniFi.
+      np_wifi_tracker: device_tracker.pauls_iphone      # "Pauls Iphone" 42:b4:ba:2f:9d:cd (.111)
+    person.michelle:
+      np_wifi_tracker: device_tracker.michelle_iphone   # "Michelle Iphone" 76:19:8d:3e:3b:3c (.121)
 
 group:
   np_residents:
