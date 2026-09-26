@@ -1,0 +1,15 @@
+# New Paltz · Serin CN105 controller · kitchen
+# Shared config: common/serin-np.yaml. Build + OTA recipe: see that file and project notes.
+# Name chosen so HA generates climate.np_kitchen — the ID the NP automations reference.
+
+substitutions:
+  name: np-kitchen
+  friendly_name: "NP Kitchen"
+  govee_mac: "A4:C1:38:30:75:41"
+
+api:
+  encryption:
+    key: !secret np_kitchen_api_key
+
+packages:
+  serin_np: !include common/serin-np.yaml

@@ -1,0 +1,269 @@
+# New Paltz · Serin CN105 controller · shared config for every NP mini-split dongle
+#
+# Included by np-<room>.yaml, which sets: name, friendly_name, govee_mac, and the api key.
+# Built 2026-09-25 (Cowork) from Serin-Labs/serin-cn105 esphome/common/*, pinned to the
+# same CN105 component commit Serin ships, plus a direct BLE reader for the Govee H5074
+# room sensor that comes in the Serin kit — read on the dongle and fed to the heat pump
+# as its remote temperature, with no Home Assistant in the loop (same principle as the NP
+# freeze-protection design).
+#
+# Rooms without a Govee: leave govee_mac "" — the unit keeps its own thermistor, and
+# "Govee Heard" still reports any H5074 in range.
+#
+# Wi-Fi credentials are NOT in YAML on purpose: provision once via the fallback AP /
+# captive portal or ESPHome Web (improv), and they persist in NVS under ESPHome's fixed
+# no-STA key, so every later OTA keeps them. (The Serin web-built images had creds
+# COMPILED IN — the first OTA away from one of those drops Wi-Fi until re-provisioned.)
+#
+# If the bound Govee goes quiet for remote_temperature_timeout (30 min) the unit falls back
+# to its own thermistor by itself. "Use Govee Sensor" off reverts immediately.
+
+esphome:
+  name: ${name}
+  friendly_name: ${friendly_name}
+  min_version: 2026.7.4
+  name_add_mac_suffix: false
+  project:
+    name: "serin-esp32c6.cn105"
+    version: "0.1-np.govee3"
+
+esp32:
+  board: esp32-c6-devkitm-1
+  variant: esp32c6
+  flash_size: 4MB
+  framework:
+    type: esp-idf
+    version: 5.5.5
+    sdkconfig_options:
+      CONFIG_ESPTOOLPY_FLASHSIZE_4MB: y
+
+external_components:
+  - source: github://echavet/MitsubishiCN105ESPHome@29133a9b84d826f6a6e9a3025f9c556460b0e0f8
+
+logger:
+  level: INFO
+
+ota:
+  - platform: esphome
+    password: !secret np_ota_password
+
+wifi:
+  ap:
+    password: "serinlabs"
+
+captive_portal:
+
+improv_serial:
+
+web_server:
+  version: 3
+
+uart:
+  id: HP_UART
+  baud_rate: 2400
+  tx_pin: GPIO1
+  rx_pin: GPIO2
+
+interval:
+  - interval: 60s
+    then:
+      - lambda: 'ESP_LOGI("govee", "scanner alive, adverts seen in last 60s: %u", (unsigned) id(ble_adv_count)); id(ble_adv_count) = 0;'
+
+globals:
+  - id: ble_adv_count
+    type: uint32_t
+    initial_value: "0"
+  - id: govee_last_apply_ms
+    type: uint32_t
+    initial_value: "0"
+  - id: govee_last_heard_pub_ms
+    type: uint32_t
+    initial_value: "0"
+
+climate:
+  - platform: cn105
+    id: hp
+    name: None
+    icon: mdi:heat-pump
+    visual:
+      min_temperature: 15
+      max_temperature: 31
+      temperature_step:
+        target_temperature: 0.5
+        current_temperature: 0.1
+    update_interval: 3500ms
+    debounce_delay: 100ms
+    remote_temperature_timeout: 30min
+    vertical_vane_select:
+      name: Vertical Vane
+      icon: mdi:swap-vertical
+    supports:
+      mode: [AUTO, COOL, HEAT, FAN_ONLY, DRY]
+      fan_mode: [AUTO, QUIET, LOW, MEDIUM, MIDDLE, HIGH]
+
+# ── Govee H5074 over BLE ──────────────────────────────────────────────
+# ACTIVE scan required: on the H5074 the name rides in the advert but the manufacturer
+# data (0xEC88) is in the SCAN RESPONSE — proven 2026-09-25 by govee2 logging
+# mfr_blocks=0 on every passive capture. Payload (0xEC88,
+# 7 bytes: [?, temp int16 LE /100, hum uint16 LE /100, battery %, ?]) — same decode as
+# Bluetooth-Devices/govee-ble.
+esp32_ble_tracker:
+  scan_parameters:
+    active: true
+    interval: 1000ms
+    window: 300ms
+  on_ble_advertise:
+    - then:
+        - lambda: |-
+            id(ble_adv_count)++;
+            // Diagnostics: anything that looks like a Govee, rate-limited, even if it
+            // carries no decodable reading (name-only or other payload lengths).
+            {
+              const std::string nm = x.get_name();
+              bool govee_like = nm.find("5074") != std::string::npos || nm.find("Govee") != std::string::npos;
+              for (auto &md : x.get_manufacturer_datas())
+                if (md.uuid == esp32_ble::ESPBTUUID::from_uint16(0xEC88)) govee_like = true;
+              static uint32_t last_diag_ms = 0;
+              if (govee_like && (last_diag_ms == 0 || millis() - last_diag_ms > 10000)) {
+                last_diag_ms = millis();
+                ESP_LOGI("govee", "heard %s name='%s' rssi=%d mfr_blocks=%u", x.address_str().c_str(), nm.c_str(), x.get_rssi(), (unsigned) x.get_manufacturer_datas().size());
+                for (auto &md : x.get_manufacturer_datas())
+                  { char ub[48]; ESP_LOGI("govee", "  mfr %s len=%u", md.uuid.to_str(ub), (unsigned) md.data.size()); }
+                if (id(govee_heard).state.empty())
+                  id(govee_heard).publish_state(x.address_str() + " (" + to_string(x.get_rssi()) + " dBm)");
+              }
+            }
+            for (auto &md : x.get_manufacturer_datas()) {
+              if (!(md.uuid == esp32_ble::ESPBTUUID::from_uint16(0xEC88))) continue;
+              if (md.data.size() != 7) continue;
+              const auto &d = md.data;
+              const float t = static_cast<int16_t>(d[1] | (d[2] << 8)) / 100.0f;
+              const float h = static_cast<uint16_t>(d[3] | (d[4] << 8)) / 100.0f;
+              const float batt = d[5];
+              const std::string mac = x.address_str();
+              const int rssi = x.get_rssi();
+              const uint32_t now = millis();
+
+              // Discovery: publish what we hear, at most once a minute.
+              if (id(govee_last_heard_pub_ms) == 0 || now - id(govee_last_heard_pub_ms) > 60000) {
+                id(govee_heard).publish_state(mac + " (" + to_string(rssi) + " dBm)");
+                id(govee_last_heard_pub_ms) = now;
+              }
+
+              const std::string bound = id(govee_mac).state;
+              if (bound.empty() || strcasecmp(bound.c_str(), mac.c_str()) != 0) continue;
+              if (t < 1.0f || t > 40.0f || h > 100.0f) continue;  // Mitsubishi accepts 1–40 °C
+              if (id(govee_last_apply_ms) != 0 && now - id(govee_last_apply_ms) < 60000) continue;
+              id(govee_last_apply_ms) = now;
+
+              id(govee_temperature).publish_state(t);
+              id(govee_humidity).publish_state(h);
+              id(govee_battery).publish_state(batt);
+              id(govee_rssi).publish_state(rssi);
+              if (id(use_govee).state) {
+                id(hp).set_remote_temperature(t);
+              }
+            }
+
+text:
+  - platform: template
+    id: govee_mac
+    name: "Govee MAC"
+    icon: mdi:bluetooth
+    mode: text
+    min_length: 0
+    max_length: 17
+    optimistic: true
+    restore_value: true
+    initial_value: "${govee_mac}"
+    entity_category: config
+
+switch:
+  - platform: template
+    id: use_govee
+    name: "Use Govee Sensor"
+    icon: mdi:thermometer-bluetooth
+    optimistic: true
+    restore_mode: RESTORE_DEFAULT_ON
+    entity_category: config
+    on_turn_off:
+      - lambda: 'id(hp).set_remote_temperature(0);'
+
+sensor:
+  - platform: uptime
+    name: Uptime
+    update_interval: 60s
+    internal: true
+  - platform: wifi_signal
+    name: Signal dB
+    id: wifi_signal_db
+    update_interval: 60s
+    entity_category: diagnostic
+  - platform: template
+    id: govee_temperature
+    name: "Govee Temperature"
+    unit_of_measurement: "°C"
+    device_class: temperature
+    state_class: measurement
+    accuracy_decimals: 1
+  - platform: template
+    id: govee_humidity
+    name: "Govee Humidity"
+    unit_of_measurement: "%"
+    device_class: humidity
+    state_class: measurement
+    accuracy_decimals: 0
+  - platform: template
+    id: govee_battery
+    name: "Govee Battery"
+    unit_of_measurement: "%"
+    device_class: battery
+    state_class: measurement
+    accuracy_decimals: 0
+    entity_category: diagnostic
+  - platform: template
+    id: govee_rssi
+    name: "Govee Signal"
+    unit_of_measurement: "dBm"
+    device_class: signal_strength
+    state_class: measurement
+    accuracy_decimals: 0
+    entity_category: diagnostic
+
+text_sensor:
+  - platform: template
+    id: govee_heard
+    name: "Govee Heard"
+    icon: mdi:bluetooth-audio
+    entity_category: diagnostic
+  - platform: wifi_info
+    ip_address:
+      name: IP
+    ssid:
+      name: SSID
+  - platform: version
+    name: ESPHome Version
+    hide_timestamp: true
+    icon: mdi:new-box
+    entity_category: diagnostic
+
+light:
+  - platform: esp32_rmt_led_strip
+    rgb_order: GRB
+    pin: 20
+    num_leds: 4
+    chipset: ws2812
+    id: led
+    name: "Led"
+
+binary_sensor:
+  - platform: gpio
+    name: Button
+    pin:
+      number: GPIO9
+      inverted: true
+      mode:
+        input: true
+        pullup: true
+    filters:
+      - delayed_off: 10ms

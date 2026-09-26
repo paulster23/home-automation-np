@@ -69,7 +69,7 @@ cat > "$HA/automations.yaml" <<'AUTOEOF'
     - trigger: numeric_state
       entity_id:
         - climate.np_living
-        - climate.np_br_down_1
+        - climate.np_kitchen
       attribute: current_temperature
       below: 45
       for: "00:05:00"
@@ -78,7 +78,7 @@ cat > "$HA/automations.yaml" <<'AUTOEOF'
       target:
         entity_id: &np_all_units
           - climate.np_living
-          - climate.np_br_down_1
+          - climate.np_kitchen
       data:
         hvac_mode: heat
     - action: climate.set_temperature
@@ -103,14 +103,21 @@ cat > "$HA/automations.yaml" <<'AUTOEOF'
     freeze protection silently blind — the trigger above can never fire on an
     entity that is 'unavailable'. This is the watchdog for that blind spot.
     30 minutes tolerates a reboot or a brief AP blip.
+    TEMPORARY (2026-09-26, Paul): the kitchen dongle sits at ~-92 dBm and drops
+    off several times a night, so it gets 2 h until the NP network upgrade. Put
+    it back in the 30-minute list once the kitchen signal is fixed.
   mode: single
   triggers:
     - trigger: state
       entity_id:
         - climate.np_living
-        - climate.np_br_down_1
       to: "unavailable"
       for: "00:30:00"
+    - trigger: state
+      entity_id:
+        - climate.np_kitchen
+      to: "unavailable"
+      for: "02:00:00"
   actions:
     - action: rest_command.ntfy
       data:
@@ -118,7 +125,7 @@ cat > "$HA/automations.yaml" <<'AUTOEOF'
         priority: "high"
         tags: "warning"
         message: >-
-          {{ trigger.to_state.name }} has been unavailable for 30 min.
+          {{ trigger.to_state.name }} has been unavailable for {{ trigger.for }} (h:mm:ss).
           Freeze protection cannot see this unit.
 
 - id: np_kuma_heartbeat
@@ -172,7 +179,7 @@ np_away:
               target:
                 entity_id: &np_units
                   - climate.np_living
-                  - climate.np_br_down_1
+                  - climate.np_kitchen
               data:
                 hvac_mode: heat
             - action: climate.set_temperature
@@ -207,7 +214,7 @@ np_arrive:
       target:
         entity_id: &np_units2
           - climate.np_living
-          - climate.np_br_down_1
+          - climate.np_kitchen
       data:
         hvac_mode: heat
     - action: climate.set_temperature

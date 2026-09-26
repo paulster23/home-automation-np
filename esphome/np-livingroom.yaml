@@ -1,0 +1,17 @@
+# New Paltz · Serin CN105 controller · living room
+# Shared config: common/serin-np.yaml. Build + OTA recipe: see that file and project notes.
+# Identity MUST stay np-livingroom / "NP Living Room" (flashed 2026-09-18): HA's entity
+# unique_ids derive from it, and the NP automations need climate.np_living (renamed in
+# HA's registry 2026-09-20).
+
+substitutions:
+  name: np-livingroom
+  friendly_name: "NP Living Room"
+  govee_mac: "A4:C1:38:30:76:15"
+
+api:
+  encryption:
+    key: !secret np_livingroom_api_key
+
+packages:
+  serin_np: !include common/serin-np.yaml

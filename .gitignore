@@ -84,3 +84,9 @@ frigate/config.bk-*.yml
 # Note homeassistant/ is ignored above as runtime data, so adding a NEW config
 # file needs: git add -f homeassistant/<file>.
 homeassistant.bk-clone-*/
+
+# ── ESPHome (Serin CN105 dongles) ─────────
+# YAML is tracked; secrets and build output are not.
+esphome/secrets.yaml
+esphome/build/
+esphome/.esphome/
