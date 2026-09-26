@@ -251,11 +251,16 @@ Defined in `homeassistant/packages/np_occupancy.yaml`; the resident logic lives 
 | `group.np_residents` | the residents: `person.paul`, `person.michelle` |
 | attributes | `override`, `source` (`override`/`presence`), `residents_home`, `residents_away`, `stale_ignored` |
 
-**Presence source — UniFi only.** `person.paul` = `device_tracker.paul_phone`, the brookside
-UniFi tracker for `paul-phone` (38:e1:3d:dc:7a:36). The HA UniFi Network integration logs in
-as local **View Only** user `ha-np` at `192.168.2.1`; options: clients only, SSIDs `sinola` +
-`sinola 2.4`, **detection time 1800 s** — Paul's phone sits at ~-81 dBm on 5 GHz and drops off
-the AP for minutes, so 30 min of absence is needed before he counts as away. Cost: pages stay
+**Presence source — UniFi only.** `person.paul` = `device_tracker.pauls_iphone` (UniFi
+"Pauls Iphone", `42:b4:ba:2f:9d:cd`, .111); `person.michelle` = `device_tracker.michelle_iphone`
+("Michelle Iphone", `76:19:8d:3e:3b:3c`, .121). Both are **fixed private MACs, which iOS keeps
+per SSID** — a phone that joins the other `sinola` SSID shows up as a new client and reads away.
+⚠️ UniFi client `paul-phone` (`38:e1:3d:dc:7a:36`, hostname PPJJSS) is **not** Paul's phone; it
+was assumed to be until Paul corrected it 2026-09-26. Identity unknown, attached to no one.
+The HA UniFi Network integration logs in as local **View Only** user `ha-np` at `192.168.2.1`;
+options: clients only, SSIDs `sinola` + `sinola 2.4`, **detection time 1800 s**. That was sized
+for a phone at ~-81 dBm, which turned out to be `paul-phone`; Paul's iPhone reads -51…-77 dBm on
+2.4 GHz, so it can come down if pages after leaving feel slow. Cost as set: pages stay
 suppressed up to 30 min after leaving.
 
 ⛔ **Do not attach `device_tracker.ppjjss` (companion app).** Paul does not use the app; that
@@ -264,9 +269,6 @@ Brooklyn — it only re-asserts its last value on HA restart. Attached, it pins 
 and silences every page. The template carries a **stale-app guard** anyway (a resident whose
 `np_wifi_tracker` has been `not_home` > 2 h is not counted home, listed in `stale_ignored`) in
 case an app tracker is ever attached.
-
-`person.michelle` exists with **no trackers** (always away) until her iPhone is identified —
-one of `76:19:8d:3e:3b:3c` (.121) / `42:b4:ba:2f:9d:cd` (.111), both fixed private MACs.
 
 **Adding a resident:** (1) Settings → People: add the person, attach their UniFi tracker
 (rename the client in UniFi first so the entity id is readable); (2) add `person.<name>` to
