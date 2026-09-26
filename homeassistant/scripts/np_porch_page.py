@@ -123,7 +123,10 @@ def send(eid, tries=4):
         "Title": title,
         "Priority": PAGE_PRIORITY,
         "Tags": "rotating_light,house",
-        "Click": f"{UI}/explore?event_id={eid}",
+        # No "Click" header (removed 2026-09-26, Paul): tapping the alert should
+        # open it in ntfy, where the attached snapshot is shown -- not a Frigate
+        # login in a browser he does not otherwise use. The event is still in
+        # Frigate (explore?event_id=<id>) for the clip.
     }
     def post_text():
         req = urllib.request.Request(NTFY, data=body.encode("utf-8"),
