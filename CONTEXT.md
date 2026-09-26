@@ -299,7 +299,8 @@ Subscribe to `np-info` at `https://woodhull.tail317990.ts.net` — body needs Ta
 **Verified 2026-09-26** (Paul on site, override `empty`): yard walk-in → exactly one page, 14:07:52,
 priority 4, photo, same second the object entered `yard`; one `np-info` note 14:08:11 from the
 re-acquired porch-first object (the post-page suppression was added after this). Porch-sit via
-the front door: **not yet re-run on the final logic** — see TODO.
+the front door, 16:00–16:04: one object (`frontporch` only), **one `np-info` note at 16:04:00,
+priority 2, no page** — the automation fired once, the page automation not at all.
 
 ---
 

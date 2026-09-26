@@ -8,7 +8,7 @@
 
 ## Pending
 
-- [ ] **NP porch-sit test not yet run on the final paging logic (2026-09-26).** When the floors allow: override `empty`, out the FRONT door, sit ~1 min, back in → expect one `np-info` note (priority 2), no page. Then override → `auto`. Yard walk-in already passed. See CONTEXT "NP porch paging". — (via Cowork 2026-09-26)
+- [x] **✅ NP porch-sit test passed on the final logic 2026-09-26 16:00–16:04** — front door, sat ~4 min: one `np-info` note (priority 2) at 16:04:00, no page. Yard walk-in passed 14:07:52. — (via Cowork 2026-09-26)
 
 - [ ] **NP porch: tighten the `yard` polygon above the porch rail.** Its lower edge IS the rail top, so a person standing at the rail (legs hidden) reads as in `yard`. Paging keys on the *first* zone so this is harmless today, but anything that later reads `yard` membership will misfire. Known gap either way: someone climbing the steps from out of frame enters `frontporch` first → note, not page. See TROUBLESHOOTING 2026-09-26. — (via Cowork 2026-09-26)
 
