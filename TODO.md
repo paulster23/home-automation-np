@@ -275,6 +275,14 @@
 
 ## 🔮 Future / Lower Priority
 
+- [ ] **🔵 NP/BK decoupling — low priority (raised 2026-09-23, filed 2026-09-26).** Each site should notice and report its own failures without the other site's help:
+  - [ ] **NP-local Uptime Kuma on `media`.** Kuma lives on woodhull, whose `RouteAll: false` cannot reach `192.168.2.x`, which is why NP monitors are push-only today. Size it against the 8 GB Mac or wait for the NP IT12.
+  - [ ] **External heartbeat monitor for both sites' WAN.** An off-estate check (e.g. a hosted heartbeat/dead-man service) so a whole-site WAN loss is seen from outside. Today each site's WAN is judged only from inside it or from the other site.
+  - [ ] **BK-WAN canary in woodhull Kuma**, so NP-down alerts raised during a Brooklyn outage read as noise rather than as an NP fault.
+  - [ ] **NP alert path to ntfy that does not route through woodhull.** Related to the open 🔴 *NP alerting is blind during an NP WAN outage* and *ntfy.sh fallback rides the same WAN* items in Pending. Pick one design across all three.
+  - [x] ~~NP DNS off the BK resolver~~ — **✅ DONE 2026-09-26** via the tailnet *Override DNS servers* → off change. NP resolves through its own AdGuard (option 6 → `192.168.2.70`). See `TROUBLESHOOTING.md` 2026-09-26.
+  — (via Claude Code 2026-09-26)
+- [ ] **🔵 NP option 6 has a single resolver.** If AdGuard on `media` dies, **all NP DNS fails**. Decide on a secondary (e.g. the gateway `192.168.2.1` or Quad9), knowing it would **bypass filtering whenever it wins**: clients race resolvers rather than fail over, as 2026-09-26 just demonstrated for Tailscale. The mirror of Brooklyn's accepted single-`.71` decision (`CLAUDE.md` rule 5). Revisit when the NP IT12 lands. — (via Claude Code 2026-09-26)
 - [ ] **Investigate go-librespot as librespot replacement** — Go rewrite of the Spotify Connect protocol; ARM64 binary available; built-in HTTP control API (could replace serve_http.py); reports better long-term stability than C++ librespot. Goal: eliminate the heal loop, watchdog, and retry logic in spotify_resume.py.
 - [ ] **Monitor small model accuracy (ongoing)** — `whisper-small-mlx-4bit` / WhisperKit small benchmarked well but needs real-world validation across voice diversity, proper nouns (WFMU, KEXP), and noisy conditions. Watch voice-bench dashboard for transcription errors.
 - [ ] **voice-bench (no transcription) for radio commands** — P8/low. VAD early-trigger path produces two WhisperKit transcriptions per command; session finalizer races the slower result. Deferred — latency and hang tracking still work, transcription text unreliable for radio commands. Candidate for deprecation.
@@ -285,6 +293,8 @@
 ---
 
 ## ✅ Completed
+
+- **✅ DONE 2026-09-26 (Claude Code) — NP DNS off the BK resolver.** Tailscale admin → DNS → *Override DNS servers* → **off**. NP now resolves through its own AdGuard via option 6 (`192.168.2.70`); verified on `PS-Macbook` at NP: default resolver `192.168.2.70`, `doubleclick.net` → `0.0.0.0`, MagicDNS still answers. `TROUBLESHOOTING.md` 2026-09-26.
 
 - **✅ DONE 2026-09-24 — Brooklyn HA no longer references the missing `switch.plug_2`.** Zero occurrences in 7 days of woodhull `homeassistant` logs (was 4). Closed by weekly-docker-log-report 2026-09-24.
 - **✅ DONE 2026-09-23 — Frigate upgraded to 0.18.0 stable (09-16), the release with per-object `max_frames`.** 0.18-stable-watch item closed; `ghcr.io/blakeblackshear/frigate:0.18.0` running healthy on woodhull. Caveat: per-day recording volume jumped ~6× at the upgrade — tracked separately as the open Pending item. (via homelab-advisor 2026-09-23; orig homelab-advisor 2026-08-26)

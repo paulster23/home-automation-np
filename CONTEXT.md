@@ -4,6 +4,14 @@
 
 *(No manual "last updated" stamp — see `git log` for history.)*
 
+> **Two sites run this stack.** The tables below are **Brooklyn** (`woodhull`, `192.168.1.71`).
+> **New Paltz** (`brookside`) runs `homeassistant`, `mosquitto` and `frigate` on `media` at
+> `192.168.2.70`. NP network, verified 2026-09-26: UniFi gateway `brookside` (`UDMA69B`) at
+> `192.168.2.1`, LAN "Brookside" `192.168.2.0/24`, pool `.100–.199`, SSIDs `sinola` / `sinola 2.4`.
+> **NP DNS is NP's own AdGuard**: a native LaunchDaemon on `media` at `192.168.2.70:53`, handed out
+> as DHCP option 6 with no secondary. The tailnet DNS override is off, so NP name resolution no
+> longer routes through Brooklyn. Full NP reference: `plans/NP_SITE_REFERENCE.md`.
+
 ---
 
 ## Containers
