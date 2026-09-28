@@ -149,8 +149,12 @@ cameras:
         # on the camera where the drive is furthest away. 2500 is PROVISIONAL:
         # put a real car in the drive, read the area Frigate reports in the debug
         # view, then raise this to just under it. Do not guess a final number.
+        # 2026-09-28: set to 300 on Paul's call. Cars park on the gray gravel
+        # patch top-right (inside `yard`), far from the lens, and no car had
+        # ever been tracked at 2500. Measurement mode: read real car areas from
+        # events over the next week, then set just under the smallest.
         car:
-          min_area: 2500
+          min_area: 300
           min_score: 0.6
           threshold: 0.7
         bear:
