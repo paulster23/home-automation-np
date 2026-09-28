@@ -122,17 +122,21 @@ automation:
         entity_id: binary_sensor.np_occupied
         state: "off"
     actions:
-      - action: rest_command.np_ntfy
+      # 2026-09-28: sent via the script, NOT rest_command.np_ntfy straight from
+      # the MQTT payload. Frigate publishes new/end for tracks it then discards
+      # as false positives (no event, no review, API 404) -- 06:01 and 07:02
+      # that morning told Paul "someone on the porch" with nobody there. The
+      # script checks /api/events/<id> and skips a 404. HA shlex-splits the
+      # rendered args, so "--note <id>" arrives as two argv entries.
+      - action: shell_command.np_porch_page
         continue_on_error: true
         data:
-          topic: !secret ntfy_topic_info
-          priority: 2
-          tags: ["bust_in_silhouette"]
-          title: >-
-            NP: {{ 'someone on the porch' if 'frontporch' in zones else 'person in frame' }}
-          message: >-
-            Porch camera saw a person {{ 'on the front porch' if 'frontporch' in zones
-            else 'outside both zones' }} at
-            {{ ev.after.start_time | timestamp_custom('%-I:%M %p') }}. They did not
-            arrive through the yard, so this is a note, not a page. House is empty.
-      - delay: "00:10:00"
+          event_id: "--note {{ ev.after.id }}"
+        response_variable: note_result
+      # Cooldown only after a note actually went out, so a ghost track can't
+      # swallow a real note that follows it within 10 min.
+      - if:
+          - condition: template
+            value_template: "{{ note_result is defined and 'NOTE-SENT' in (note_result.stdout | default('')) }}"
+        then:
+          - delay: "00:10:00"

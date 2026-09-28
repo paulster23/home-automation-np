@@ -5,6 +5,7 @@ while the house is marked empty.
 
 Called by HA as:  shell_command.np_porch_page  ->  python3 /config/scripts/np_porch_page.py <frigate_event_id>
 Re-sent by:       shell_command.np_porch_flush ->  python3 /config/scripts/np_porch_page.py --flush
+Porch note:       shell_command.np_porch_page with event_id "--note <id>" (np_porch_info)
 
 WHY A SCRIPT AND NOT rest_command.ntfy
 --------------------------------------
@@ -206,12 +207,66 @@ def flush():
                 pass
 
 
+
+def note(eid):
+    """Low-priority porch note (automation np_porch_info), sent only if Frigate
+    actually KEPT the event.
+
+    WHY (2026-09-28): Frigate publishes new/end on frigate_np/events for tracks
+    it later discards as false positives -- no event row, no timeline, no
+    review item, API 404. The page path already survives this (send() 404s,
+    the queue drops it), but np_porch_info posted straight from the MQTT
+    payload, so a ghost track told Paul "someone on the porch" at 06:01 and
+    07:02 with nobody there and nothing in Frigate. Same signature as the 70
+    DROP-404 rows on 2026-09-26. Checking the API at end-time is the one test
+    that matches what Paul sees in Frigate.
+    """
+    try:
+        ev = get_event(eid, tries=4)          # ~6 s of 404 grace for the write race
+    except urllib.error.HTTPError as e:
+        if e.code == 404:
+            log(f"NOTE-SKIP-404 {eid} (Frigate discarded this track -- false positive, no note sent)")
+            return
+        log(f"NOTE-FAIL {eid} frigate HTTP {e.code}")
+        return
+    except Exception as e:
+        log(f"NOTE-FAIL {eid} frigate {e!r}")
+        return
+    zones = [z for z in (ev.get("zones") or []) if z]
+    title = "NP: someone on the porch" if "frontporch" in zones else "NP: person in frame"
+    where = "on the front porch" if "frontporch" in zones else "outside both zones"
+    when = time.strftime("%-I:%M %p", time.localtime(ev.get("start_time", time.time())))
+    data = ev.get("data") or {}
+    score = data.get("top_score") or data.get("score") or 0
+    conf = f", {round(score * 100)}% confidence" if score else ""
+    body = (f"Porch camera saw a person {where} at {when}{conf}. They did not arrive "
+            f"through the yard, so this is a note, not a page. House is empty.")
+    url = _secret("ntfy_server", "http://192.168.1.71:8111").rstrip("/") + "/" + _secret("ntfy_topic_info", "np-info")
+    req = urllib.request.Request(url, data=body.encode("utf-8"), method="POST",
+                                 headers={"Title": title, "Priority": "low",
+                                          "Tags": "bust_in_silhouette"})
+    try:
+        urllib.request.urlopen(req, timeout=TIMEOUT).read()
+        log(f"NOTE-SENT {eid} | {title} | {body}")
+        print("NOTE-SENT")                    # np_porch_info starts its cooldown only on this
+    except Exception as e:
+        # Not queued: a stale porch note is worth less than the noise of a late one.
+        log(f"NOTE-FAIL {eid} ntfy {e!r}")
+
+
 def main():
     if len(sys.argv) < 2:
         log("NO-ARG")
         return 1
     if sys.argv[1] == "--flush":
         flush()
+        return 0
+    if sys.argv[1] == "--note":
+        eid = sys.argv[2].strip() if len(sys.argv) > 2 else ""
+        if not re.fullmatch(r"[0-9]+\.[0-9]+-[A-Za-z0-9]+", eid):
+            log(f"BAD-ID note {eid!r}")
+            return 1
+        note(eid)
         return 0
     eid = sys.argv[1].strip()
     # Frigate ids are "<epoch>.<frac>-<slug>". Anything else is not ours.
