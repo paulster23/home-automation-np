@@ -1,6 +1,6 @@
 # Home Automation — To-Do List
 
-*Last updated: 2026-09-26 (Cowork — NP occupancy + porch paging)*
+*Last updated: 2026-09-28 (weekly-resource-budget)*
 
 > **Structure rule (2026-07-28):** sections in order — Pending → Watching/deferred → Future → Completed (newest first, max ~10; older items go to `archive/TODO-completed.md` in this repo). **Scheduled-task appends must be ≤300 chars + a pointer** to the full report/TROUBLESHOOTING entry — no inline essays.
 
@@ -20,7 +20,7 @@
 
 - [ ] **front_window: 151 ffmpeg crashes 09-19→09-22 (110 on 09-20), 126× `No route to host` + CSeq desync — wired cam, not the WiFi exemption.** Check UniFi history for 192.168.1.33. Clean since the 09-22 restart. See weekly-report-2026-09-24.html — (via weekly-docker-log-report 2026-09-24)
 
-- [ ] **NP `np_kuma_heartbeat` times out ~6% of runs (116 fails/7 d, ongoing).** Raise the `rest_command` timeout to 30 s, add `continue_on_error: true`, confirm it targets the MagicDNS name. See weekly-report-2026-09-24.html — (via weekly-docker-log-report 2026-09-24)
+- [ ] **NP `np_kuma_heartbeat` times out ~6% of runs (116 fails/7 d, ongoing).** Raise the `rest_command` timeout to 30 s, add `continue_on_error: true`, confirm it targets the MagicDNS name. **2026-09-28 (Cowork): LIVE since HA restart 10:20:53 ET** (on-start heartbeat reached Kuma 10:20:53). Watch the daily fail count drop to ~0 this week. Edit detail: — `configuration.yaml` `kuma_heartbeat.timeout` 10→30 and `continue_on_error: true` on the action in `automations.yaml` (backup `automations.yaml.bak-20260928-heartbeat`); `check_config` clean. Needs an HA restart on the Mac (rest_command changes do not hot-reload). Fail count per day, 7 d: 22/32/18/16/8/8/2 (09-21→09-28), trending down. **MagicDNS: deliberately NOT changed** — it uses `192.168.1.71` over the subnet route on purpose, the same path as `rest_command.ntfy` (see the RouteAll comment in configuration.yaml). See weekly-report-2026-09-24.html — (via weekly-docker-log-report 2026-09-24)
 
 - [ ] **🔴 Frigate per-day recording volume jumped ~6× at the 0.18.0 upgrade (09-16).** 0.2–1.3 GB/day before, 6.5–7.0 after; config differs only in `version:`. Record-semantics change, or a feed failing 09-13→15? See disk-health-2026-09-22.md §6.2 — (via weekly-disk-health 2026-09-22) — (2026-09-23 homelab-advisor: Frigate 0.18.0 release notes document NO recording-default change, so the 6× is not expected 0.18 behavior — investigate config/feed, e.g. a detect stream silently continuous-recording, not a benign upgrade side-effect.)
 
@@ -53,11 +53,10 @@
 
 - [x] **✅ FIXED 2026-09-20 (Cowork) — NP freeze protection now initialises.** Was: `unknown entity climate.np_living` / `climate.np_br_down_1` on every HA start (09-13, 09-14, 09-17); `NP · Climate entity unavailable` used the same two. **Cause:** the first Serin dongle was adopted on 09-18 under ESPHome device name `np-livingroom`, so HA generated `climate.np_living_room`, while all four entity lists in `automations.yaml`/`scripts.yaml` reference the reserved `climate.np_living`. **Fix:** renamed the entity in `.storage/core.entity_registry` with HA stopped (timestamped backup written alongside), then restarted. Verified: `Initialized trigger NP · Freeze protection` and `... NP · Climate entity unavailable` both in the log, container healthy. ⚠️ One warning remains and is expected — `climate.np_br_down_1` is the second dongle, not yet flashed. See weekly-report-2026-09-17.html — (via weekly-docker-log-report 2026-09-17; fixed via Cowork 2026-09-20)
 
-- [ ] **Size the NP box before NP Frigate comes back.** The Mac reads `7610M used (3306M compressor), 61M unused`, load 2.66, on `homeassistant`+`mosquitto` alone; Frigate now needs 3072m. 8 GB will not carry it. See weekly-report-2026-09-17.html — (via weekly-docker-log-report 2026-09-17) — **carried over 1× (2026-09-24)**
+- [ ] **Size the NP box before NP Frigate comes back.** The Mac reads `7610M used (3306M compressor), 61M unused`, load 2.66, on `homeassistant`+`mosquitto` alone; Frigate now needs 3072m. 8 GB will not carry it. See weekly-report-2026-09-17.html — (via weekly-docker-log-report 2026-09-17) — **carried over 1× (2026-09-24)** — (2026-09-28 weekly-resource-budget: NP Frigate now live a full week; 8 GB Mac swap avg 2.7 GB / peak 5.08 GB (+167% WoW), warn 87%, 0 critical, no OOM — driver is Claude/Chrome sessions + Docker VM, not containers. Watch; no cap bumps on 8 GB per hard-rule #4. See budget-report-2026-09-28.md)
 
 - [ ] **🟡 NEW 2026-09-14 — no UPS at New Paltz.** `pmset -g ps` = AC only. A flicker is survivable (`autorestart 1`), but a brownout can wedge the engine mid-write, and when the UX7/ONT drop with it the ntfy page saying so never leaves the house. Small UPS on Mac + UX7 + ONT; USB signalling so macOS can shut down cleanly. On-site purchase/install; size for ~15 min.
 
-- [ ] **Frigate drift outran its 09-09 cap bump — fix the drift, not the cap.** Back to 2.65 GiB = 88% of the new 3 GiB cap in 5 days, ~70 MiB/day. Do a scheduled weekly `docker restart frigate` or move to Frigate 0.18. See budget-report-2026-09-14.md — (via weekly-resource-budget 2026-09-14) — (2026-09-21: manual restart 09-16 reset it, then drifted to **99.1 % of 3 GiB (3,043 MiB) in 5 days**, 63k reclaim events, oom_kill=0. Restart works but is NOT scheduled — make it a cron. Carried. See budget-report-2026-09-21.md — via weekly-resource-budget) — (2026-09-23 homelab-advisor: the 0.18.0 upgrade did NOT stop the drift; frigate manually restarted again 09-22 16:13, now 52% and climbing ~70 MiB/day. Weekly `docker restart frigate` cron is still the only durable fix — no cron exists. Carried.)
 
 - [x] **Watch whisper memory settling on woodhull — ✅ SETTLED, closing.** 74% of 1.465 GiB, +8.1 this week; still warming since its 09-03 arrival. No action unless it crosses ~90% or OOM-restarts. See budget-report-2026-09-14.md — (via weekly-resource-budget 2026-09-14) — (2026-09-21: settled — avg 68.3 % / peak 74.0 %, trend DOWN, no OOM. Watch closed. See budget-report-2026-09-21.md — via weekly-resource-budget)
 
@@ -301,6 +300,8 @@
 ---
 
 ## ✅ Completed
+
+- [x] **Frigate drift — weekly restart cron is now the durable fix. ✅ DONE 2026-09-28.** woodhull crontab `30 3 * * 0 docker restart frigate` is live and fired Sun 09-27 (frigate 99.1% → 48.6% of 3 GiB, on 0.18.0, oom_kill=0). Carried 3+ / featured. See budget-report-2026-09-28.md — (via weekly-resource-budget 2026-09-28)
 
 - **✅ DONE 2026-09-26 (Claude Code) — NP DNS off the BK resolver.** Tailscale admin → DNS → *Override DNS servers* → **off**. NP now resolves through its own AdGuard via option 6 (`192.168.2.70`); verified on `PS-Macbook` at NP: default resolver `192.168.2.70`, `doubleclick.net` → `0.0.0.0`, MagicDNS still answers. `TROUBLESHOOTING.md` 2026-09-26.
 

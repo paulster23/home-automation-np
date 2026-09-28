@@ -55,12 +55,8 @@ mqtt:
   password: '{FRIGATE_MQTT_PASSWORD}'
 
 # ── Camera Configuration ──────────────────────────────────────
-# `backyard` below is a REAL camera arriving with the M1. `front_door` is a
-# TEMPLATE — there are no other NP cameras yet (NP_SITE_REFERENCE.md:13:
-# no cameras until the UniFi gear is in). This one camera exists so the
-# file is valid YAML that Frigate will boot on; it is disabled so a
-# nonexistent address cannot crash-loop ffmpeg the way backyard did on
-# 2026-08-05.
+# One camera at New Paltz: `porch`. The disabled `front_door` template that
+# kept this file bootable before any camera existed was removed 2026-09-28.
 #
 # Phase 5 (NP_IMPLEMENTATION_PLAN §5): mount 2-4 Reolink **PoE** cameras,
 # reserve .33-.36 in DHCP on day one (MOVE_READINESS §3.5 — the 2026-08-03
@@ -72,43 +68,6 @@ mqtt:
 # Spec PoE, not Wi-Fi. BK's .33 E1 Pro is 2.4 GHz with no ethernet port and
 # is a standing demonstration of the cost.
 cameras:
-  front_door:
-    enabled: false   # ⚠️ set true once the camera exists at a reserved address
-    ffmpeg:
-      input_args: preset-rtsp-restream
-      retry_interval: 10
-      inputs:
-        # Sub-stream — object detection only. Keep this low-res.
-        - path: 
-            rtsp://{FRIGATE_RTSP_USER}:{FRIGATE_RTSP_PASSWORD}@192.168.2.33:554/h264Preview_01_sub
-          input_args: -rtsp_transport tcp -timeout 5000000
-          roles:
-            - detect
-
-        # Main stream — full-quality recording.
-        # -timeout 5000000: socket-level read timeout (5s). Makes ffmpeg self-exit
-        # when the stream stalls so the watchdog restarts it in ~5s rather than
-        # ~150s. (Was -stimeout before 2026-05-28; renamed in newer ffmpeg builds.)
-        - path: 
-            rtsp://{FRIGATE_RTSP_USER}:{FRIGATE_RTSP_PASSWORD}@192.168.2.33:554/h264Preview_01_main
-          input_args: -rtsp_transport tcp -timeout 5000000
-          roles:
-            - record
-
-    # ⚠️ Placeholder resolution — MUST match the camera's real sub-stream.
-    # A mismatch here does not error, it just degrades detection silently.
-    detect:
-      enabled: true
-      width: 896
-      height: 512
-      fps: 5
-
-    # Zones: draw them in the Frigate UI on site, then copy config.yml
-    # back over this file. Brooklyn's entrance/sidewalk/active_street/
-    # northside geometry is meaningless at NP and is deliberately not
-    # carried over.
-    motion: {}
-
   # ── Backyard wildlife camera (Reolink RLC-510WA) ─────────────
   # MOVED FROM BROOKLYN 2026-09-08. This is a real camera that travels with
   # the M1, not a template — the settings below are months of tuning and are
@@ -208,7 +167,7 @@ cameras:
     zones:
       yard:
         coordinates: 
-          0.459,0.469,0.101,0.514,0.093,0.163,0.473,0.177,1,0.307,1,0.934,0.644,0.645
+          0.499,0.493,0.101,0.514,0.093,0.163,0.477,0.167,1,0.307,1,0.934,0.66,0.635
         loitering_time: 0
         inertia: 3
       frontporch:

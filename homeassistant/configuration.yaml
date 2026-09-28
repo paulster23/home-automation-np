@@ -87,7 +87,7 @@ rest_command:
     url: >-
       http://192.168.1.71:3001/api/push/Xs7BkAZ7Mv?status=up&msg={{ msg | default('ok') | urlencode }}&ping=
     method: GET
-    timeout: 10
+    timeout: 30
 
 # ── Frigate (NP) porch camera over MQTT ───────────────────────────
 # No HACS at NP, so the Frigate camera is surfaced with native MQTT
