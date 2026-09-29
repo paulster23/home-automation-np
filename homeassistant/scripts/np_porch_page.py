@@ -53,6 +53,14 @@ PAGE_PRIORITY = "high"
 # Tailnet URL for the "open it" tap target. Tailnet-only on purpose -- see
 # infra/ntfy/README.md; the phone needs Tailscale up to follow it.
 UI      = os.environ.get("NP_FRIGATE_UI", "https://media.tail317990.ts.net:18971")
+# 2026-09-29 -- pager MIRROR. The self-hosted ntfy relays only a poll request to
+# ntfy.sh, so off the tailnet the phone buzzes but opens EMPTY (tested
+# 2026-09-20). ntfy_mirror in secrets.yaml is a full https://ntfy.sh/<topic>
+# URL -- the same topic as notify.sh's NTFY_FALLBACK_TOPIC -- where the body
+# and the photo are readable on cellular. Pages only; porch notes are not
+# mirrored. Unset -> no mirror. Mirror failures queue independently of the
+# primary (row "target": "mirror") so neither blocks the other.
+MIRROR  = os.environ.get("NTFY_MIRROR_URL") or _secret("ntfy_mirror", "")
 QUEUE   = "/config/np_alert_queue.jsonl"
 LOG     = "/config/np_alerts.log"
 MAX_AGE = 24 * 3600          # drop a queued page older than this; it is news no longer
@@ -116,7 +124,9 @@ def compose(ev):
     return title, body
 
 
-def send(eid, tries=4):
+def send(eid, tries=4, url=None):
+    url = url or NTFY
+    tag = "" if url == NTFY else " [mirror]"
     ev = get_event(eid, tries)
     title, body = compose(ev)
     img = get_snapshot(eid)
@@ -130,16 +140,16 @@ def send(eid, tries=4):
         # Frigate (explore?event_id=<id>) for the clip.
     }
     def post_text():
-        req = urllib.request.Request(NTFY, data=body.encode("utf-8"),
+        req = urllib.request.Request(url, data=body.encode("utf-8"),
                                      headers=headers, method="POST")
         urllib.request.urlopen(req, timeout=TIMEOUT).read()
 
     if img:
         h = dict(headers, Filename="porch.jpg", Message=body)
-        req = urllib.request.Request(NTFY, data=img, headers=h, method="PUT")
+        req = urllib.request.Request(url, data=img, headers=h, method="PUT")
         try:
             urllib.request.urlopen(req, timeout=TIMEOUT).read()
-            log(f"SENT {eid} img=yes | {title} | {body}")
+            log(f"SENT{tag} {eid} img=yes | {title} | {body}")
             return
         except urllib.error.HTTPError as e:
             # ntfy 40014 "attachments not allowed" -- the server has no
@@ -150,15 +160,15 @@ def send(eid, tries=4):
                 detail = e.read().decode("utf-8", "replace")[:200]
             except Exception:
                 pass
-            log(f"ATTACH-REJECTED {eid} HTTP {e.code} {detail} -- falling back to text")
+            log(f"ATTACH-REJECTED{tag} {eid} HTTP {e.code} {detail} -- falling back to text")
     post_text()
-    log(f"SENT {eid} img=no | {title} | {body}")
+    log(f"SENT{tag} {eid} img=no | {title} | {body}")
 
 
-def enqueue(eid, err):
+def enqueue(eid, err, target="primary"):
     with open(QUEUE, "a") as f:
-        f.write(json.dumps({"id": eid, "queued_at": time.time()}) + "\n")
-    log(f"QUEUED {eid} ({err})")
+        f.write(json.dumps({"id": eid, "queued_at": time.time(), "target": target}) + "\n")
+    log(f"QUEUED{'' if target == 'primary' else ' [mirror]'} {eid} ({err})")
 
 
 def flush():
@@ -172,13 +182,20 @@ def flush():
     if not rows:
         return
     now, keep, sent, dropped = time.time(), [], 0, 0
+    late = {}                             # target url -> count delivered late
     for row in rows:
         if now - row.get("queued_at", 0) > MAX_AGE:
             dropped += 1
             continue
+        target = row.get("target", "primary")
+        if target == "mirror" and not MIRROR:
+            dropped += 1                  # mirror switched off since queueing
+            continue
+        url = MIRROR if target == "mirror" else NTFY
         try:
-            send(row["id"], tries=1)      # no 404 retry here: 70 rows x 6 s blew HA's 60 s limit
+            send(row["id"], tries=1, url=url)  # no 404 retry here: 70 rows x 6 s blew HA's 60 s limit
             sent += 1
+            late[url] = late.get(url, 0) + 1
         except urllib.error.HTTPError as e:
             # 404 long after queueing = Frigate discarded the event (short-lived
             # false positive). It will never send; retrying it every 5 min for
@@ -195,12 +212,12 @@ def flush():
             f.write(json.dumps(row) + "\n")
     if sent or dropped:
         log(f"FLUSH sent={sent} dropped={dropped} still_queued={len(keep)}")
-        if sent:
-            # Say plainly that these are late. A 3am page arriving at 7am
-            # without that context reads as something happening right now.
+        # Say plainly that these are late. A 3am page arriving at 7am
+        # without that context reads as something happening right now.
+        for url, n in late.items():
             try:
                 urllib.request.urlopen(urllib.request.Request(
-                    NTFY, data=f"{sent} New Paltz alert(s) from during the outage were just delivered.".encode(),
+                    url, data=f"{n} New Paltz alert(s) from during the outage were just delivered.".encode(),
                     headers={"Title": "NP alerts delivered late", "Priority": "default",
                              "Tags": "clock"}, method="POST"), timeout=TIMEOUT)
             except Exception:
@@ -273,11 +290,19 @@ def main():
     if not re.fullmatch(r"[0-9]+\.[0-9]+-[A-Za-z0-9]+", eid):
         log(f"BAD-ID {eid!r}")
         return 1
+    primary_ok = True
     try:
         send(eid)
     except Exception as e:
         enqueue(eid, repr(e))
-        return 0          # never fail loudly into HA; the queue is the recovery
+        primary_ok = False  # never fail loudly into HA; the queue is the recovery
+    if MIRROR:
+        try:
+            send(eid, tries=1, url=MIRROR)   # the event row exists by now
+        except Exception as e:
+            enqueue(eid, repr(e), target="mirror")
+    if not primary_ok:
+        return 0
     # A successful send is also the moment to try anything stranded earlier.
     try:
         flush()
