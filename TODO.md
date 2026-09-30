@@ -1,6 +1,6 @@
 # Home Automation — To-Do List
 
-*Last updated: 2026-09-29 (weekly-disk-health)*
+*Last updated: 2026-09-30 (homelab-advisor)*
 
 > **Structure rule (2026-07-28):** sections in order — Pending → Watching/deferred → Future → Completed (newest first, max ~10; older items go to `archive/TODO-completed.md` in this repo). **Scheduled-task appends must be ≤300 chars + a pointer** to the full report/TROUBLESHOOTING entry — no inline essays.
 
@@ -8,6 +8,7 @@
 
 ## Pending
 
+- [ ] **woodhull mosquitto cap 8->16 MiB — `OOMKilled=true` (RestartCount=0, up since 09-25).** 8 MiB is tight for its now dual-stack (Bkln HA + Frigate) MQTT load; trivial bump on a 16 GB host. See advisor-2026-09-30.html §2 — (via homelab-advisor 2026-09-30)
 - [x] **✅ NP porch-sit test passed on the final logic 2026-09-26 16:00–16:04** — front door, sat ~4 min: one `np-info` note (priority 2) at 16:04:00, no page. Yard walk-in passed 14:07:52. — (via Cowork 2026-09-26)
 
 - [ ] **NP porch: tighten the `yard` polygon above the porch rail.** Its lower edge IS the rail top, so a person standing at the rail (legs hidden) reads as in `yard`. Paging keys on the *first* zone so this is harmless today, but anything that later reads `yard` membership will misfire. Known gap either way: someone climbing the steps from out of frame enters `frontporch` first → note, not page. See TROUBLESHOOTING 2026-09-26. — (via Cowork 2026-09-26)
@@ -18,7 +19,7 @@
 
 - [x] **✅ NP monitoring — detector start-order check added to `detector-monitor` 2026-09-24.** Cause of the 09-21→09-24 3-day detection outage: a manual `kill -9` KeepAlive test (`infra@cbbc05c`, not jetsam) left the detector newer than frigate. Now: if the detector is newer, restart frigate, wait for `Model yolo.onnx is ready`, and page ntfy.sh directly (not via woodhull). Verified for real: `ORDER_OK` after 10 s, page `http=200`. Remaining gap: the page still needs NP's WAN (see the infra "NP alerting is blind" item). See TROUBLESHOOTING.md 2026-09-21 → 09-24. — (via Claude Code 2026-09-24)
 
-- [ ] **front_window: 151 ffmpeg crashes 09-19→09-22 (110 on 09-20), 126× `No route to host` + CSeq desync — wired cam, not the WiFi exemption.** Check UniFi history for 192.168.1.33. Clean since the 09-22 restart. See weekly-report-2026-09-24.html — (via weekly-docker-log-report 2026-09-24)
+- [ ] **front_window: 151 ffmpeg crashes 09-19→09-22 (110 on 09-20), 126× `No route to host` + CSeq desync — wired cam, not the WiFi exemption.** Check UniFi history for 192.168.1.33. Clean since the 09-22 restart. See weekly-report-2026-09-24.html — (via weekly-docker-log-report 2026-09-24) — **homelab-advisor 2026-09-30:** recovered; only 26 crashes since, all 09-27 (weekly-restart day), 0 No-route-to-host, clean since. Not failing HW.
 
 - [ ] **NP `np_kuma_heartbeat` times out ~6% of runs (116 fails/7 d, ongoing).** Raise the `rest_command` timeout to 30 s, add `continue_on_error: true`, confirm it targets the MagicDNS name. **2026-09-28 (Cowork): LIVE since HA restart 10:20:53 ET** (on-start heartbeat reached Kuma 10:20:53). Watch the daily fail count drop to ~0 this week. Edit detail: — `configuration.yaml` `kuma_heartbeat.timeout` 10→30 and `continue_on_error: true` on the action in `automations.yaml` (backup `automations.yaml.bak-20260928-heartbeat`); `check_config` clean. Needs an HA restart on the Mac (rest_command changes do not hot-reload). Fail count per day, 7 d: 22/32/18/16/8/8/2 (09-21→09-28), trending down. **MagicDNS: deliberately NOT changed** — it uses `192.168.1.71` over the subnet route on purpose, the same path as `rest_command.ntfy` (see the RouteAll comment in configuration.yaml). See weekly-report-2026-09-24.html — (via weekly-docker-log-report 2026-09-24)
 
