@@ -19,7 +19,7 @@
 > **This stack runs on `woodhull` (`192.168.1.71`) since the 2026-09-03 cutover.** Every port below
 > is on `.71`. The Mac's copies still exist but are `Exited` and cannot start (no `.env`,
 > `${HOST_IP:?}` guard) — they are the rollback. Migration record:
-> `plans/HOME_AUTOMATION_STACK_MIGRATION.md`.
+> `archive/HOME_AUTOMATION_STACK_MIGRATION.md`.
 
 
 | Container | Port | Purpose |
