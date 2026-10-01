@@ -1,6 +1,6 @@
 # Home Automation — To-Do List
 
-*Last updated: 2026-09-30 (homelab-advisor)*
+*Last updated: 2026-10-01 (quarterly-doc-audit)*
 
 > **Structure rule (2026-07-28):** sections in order — Pending → Watching/deferred → Future → Completed (newest first, max ~10; older items go to `archive/TODO-completed.md` in this repo). **Scheduled-task appends must be ≤300 chars + a pointer** to the full report/TROUBLESHOOTING entry — no inline essays.
 
@@ -8,6 +8,7 @@
 
 ## Pending
 
+- [ ] **Trim TODO.md (117 KB, 75 bullets >500 chars):** append rule is ≤300 chars + pointer; condense or archive the long ones, and move Completed beyond ~10 to `archive/TODO-completed.md`. — (via quarterly-doc-audit 2026-10-01) → `reports/doc-audit-2026-10-01.md` Hygiene
 - [ ] **woodhull mosquitto cap 8->16 MiB — `OOMKilled=true` (RestartCount=0, up since 09-25).** 8 MiB is tight for its now dual-stack (Bkln HA + Frigate) MQTT load; trivial bump on a 16 GB host. See advisor-2026-09-30.html §2 — (via homelab-advisor 2026-09-30)
 - [x] **✅ NP porch-sit test passed on the final logic 2026-09-26 16:00–16:04** — front door, sat ~4 min: one `np-info` note (priority 2) at 16:04:00, no page. Yard walk-in passed 14:07:52. — (via Cowork 2026-09-26)
 
