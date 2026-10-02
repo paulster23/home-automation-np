@@ -37,6 +37,22 @@ services:
     # The SSL_CERT_FILE export is KEPT — it is site-agnostic and fixes
     # Python 3.14's incomplete CA bundle generally.
     #
+    # ── 3. Resolve woodhull's tailnet name inside the container ──
+    # brookside runs --accept-dns=false (NP's AdGuard via DHCP is the
+    # resolver and must stay that way), so MagicDNS names do not resolve.
+    # The host has an /etc/hosts entry, but CONTAINERS DO NOT INHERIT IT.
+    #
+    # Needed because configuration.yaml's rest_command targets reach ntfy
+    # and Uptime Kuma through woodhull's `tailscale serve` endpoints. The
+    # name, not the IP, because the tailnet TLS cert is issued to it.
+    #
+    # woodhull is tagged with key expiry disabled, so 100.103.72.117 is
+    # stable -- but it IS a hardcoded dependency. If woodhull's tailnet
+    # address ever changes, NP's alerting goes silent. Same caveat as the
+    # entry in cowork-bootstrap.sh.
+    extra_hosts:
+      - "woodhull.tail317990.ts.net:100.103.72.117"
+
     # Identical to the homeassistant section of overrides/np.yml.
     entrypoint:
       - /bin/bash
