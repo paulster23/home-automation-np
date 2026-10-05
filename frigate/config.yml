@@ -189,8 +189,14 @@ cameras:
         # patch top-right (inside `yard`), far from the lens, and no car had
         # ever been tracked at 2500. Measurement mode: read real car areas from
         # events over the next week, then set just under the smallest.
+        # 2026-10-05 (Paul): measured. Real cars on the gravel patch = 9750 and
+        # 11484 (zone yard). 37 false "cars" = the porch pillar/rail, 28k-78k,
+        # mostly under IR at night. min 7500 = ~20% under the smallest real car;
+        # max 25000 drops every rail false positive. A car much nearer the lens
+        # than the patch would now be filtered -- revisit if that ever matters.
         car:
-          min_area: 300
+          min_area: 7500
+          max_area: 25000
           min_score: 0.6
           threshold: 0.7
         bear:
