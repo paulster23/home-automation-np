@@ -62,7 +62,7 @@ recorder:
 # and notifies SECOND — a failed notify must never block the heat.
 rest_command:
   ntfy:
-    url: "http://192.168.1.71:8111/homelab"
+    url: "https://woodhull.tail317990.ts.net/homelab"
     method: POST
     content_type: "text/plain; charset=utf-8"
     payload: "{{ message }}"
@@ -85,7 +85,7 @@ rest_command:
   # sense (write-only, one monitor), so this one stays inline.
   kuma_heartbeat:
     url: >-
-      http://192.168.1.71:3001/api/push/Xs7BkAZ7Mv?status=up&msg={{ msg | default('ok') | urlencode }}&ping=
+      https://woodhull.tail317990.ts.net:13001/api/push/Xs7BkAZ7Mv?status=up&msg={{ msg | default('ok') | urlencode }}&ping=
     method: GET
     timeout: 30
 

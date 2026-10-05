@@ -1,3 +1,42 @@
+# ═══════════════════════════════════════════════════════════════
+# brookside — New Paltz on LINUX (amd64, Intel iGPU)
+#
+# Activate on brookside BEFORE the first `docker compose up`:
+#     cd ~/containers/home-automation
+#     cp frigate/config.brookside.yml frigate/config.yml
+#
+# Same idiom as overrides/np.yml's move-day copy step. brookside uses the
+# BASE docker-compose.yml with NO docker-compose.override.yml symlink —
+# the base file is already the Linux shape (amd64 image, /dev/dri
+# passthrough). overrides/np.yml is the M1's un-migration and must NOT be
+# linked here.
+#
+# Derived from config.yml (the M1's NP config) 2026-10-01, changing only
+# what the architecture forces:
+#   - detectors: ZMQ apple-silicon -> OpenVINO on the iGPU
+#   - model:     yolo.onnx (320, nchw) -> ssdlite_mobilenet_v2 (300, nhwc)
+#   - hwaccel:   added preset-vaapi for hardware decode
+#   - version:   0.17-0 -> 0.18-0
+# Cameras, zones, objects, record and snapshot settings are UNCHANGED
+# from New Paltz's tuned config.
+#
+# Benchmarked on brookside 2026-10-01: 5.62 ms mean GPU inference over
+# 200 runs, against woodhull's 5.79 ms on identical hardware. The ZMQ
+# detector and FrigateDetector.app are NOT needed on this host, and
+# neither is the detector-monitor start-order watchdog that existed only
+# to catch that process dying.
+#
+# ⚠️ Labelmap goes 80-class (coco-80) -> 91-class (coco_91cl_bkgr).
+# Verified 2026-10-01: both tracked objects, `person` and `car`, exist in
+# the 91-class map, so objects.track and objects.filters carry over
+# unchanged. Re-check this if more object types are added.
+#
+# ⚠️ Disk: brookside is 225 G total, ~196 G free. woodhull runs 14-day
+# alert retention on 4 cameras against 800 G free. One camera here at the
+# same retention should land well inside the budget, but it is NOT the
+# same headroom — measure actual growth before adding a second camera.
+# ═══════════════════════════════════════════════════════════════
+
 # ─────────────────────────────────────────────────────────────
 # Frigate NVR Configuration — NEW PALTZ site
 #
@@ -22,20 +61,16 @@ auth:
   session_length: 2592000   # 30 days (default is 86400 = 1 day)
 
 # ── Object Detection ─────────────────────────────────────────
-# Apple Silicon ZMQ detector (Frigate 0.17+).
-# FrigateDetector.app runs on the macOS host, bridges Docker → Neural Engine
-# via ZMQ on port 5555. Must be running before Frigate starts.
-# Set as a Login Item so it starts on boot.
-# See: https://github.com/frigate-nvr/apple-silicon-detector
+# OpenVINO on the Intel iGPU, in-container. No host-side helper process,
+# no Login Item, nothing to start in a particular order.
 # Detector + model blocks are at the bottom of this file.
 
-# ── No hwaccel ────────────────────────────────────────────────
-# woodhull's `ffmpeg: hwaccel_args: preset-vaapi` is deliberately absent.
-# VAAPI is Intel/Linux. Docker Desktop on macOS cannot pass VideoToolbox
-# into a container, so decode is software here — this is the CPU cost the
-# M1 paid before the migration and pays again. Budget for it: keep detect
-# streams at sub-stream resolution and 5 fps, never decode a main stream
-# for detection.
+# ── Hardware decode — ENABLED on brookside ────────────────────
+# `hwaccel_args: preset-vaapi` is set on the porch camera above. VAAPI is
+# Intel/Linux and this host has /dev/dri/renderD128, so decode runs on the
+# iGPU. The M1 could not do this — Docker Desktop on macOS cannot pass
+# VideoToolbox into a container, so NP has been paying a software-decode
+# CPU cost since the move. That cost goes away here.
 
 # ── MQTT — connects Frigate → Home Assistant via Mosquitto ───
 # The hostname "mosquitto" resolves on the Docker network
@@ -85,6 +120,7 @@ cameras:
   porch:
     enabled: true    # Porch cam (ex-Brooklyn backyard RLC-510WA); enabled 2026-09-18
     ffmpeg:
+      hwaccel_args: preset-vaapi   # Intel iGPU decode (added for brookside)
       input_args: preset-rtsp-restream
       retry_interval: 10
       inputs:
@@ -153,8 +189,14 @@ cameras:
         # patch top-right (inside `yard`), far from the lens, and no car had
         # ever been tracked at 2500. Measurement mode: read real car areas from
         # events over the next week, then set just under the smallest.
+        # 2026-10-05 (Paul): measured. Real cars on the gravel patch = 9750 and
+        # 11484 (zone yard). 37 false "cars" = the porch pillar/rail, 28k-78k,
+        # mostly under IR at night. min 7500 = ~20% under the smallest real car;
+        # max 25000 drops every rail false positive. A car much nearer the lens
+        # than the patch would now be filtered -- revisit if that ever matters.
         car:
-          min_area: 300
+          min_area: 7500
+          max_area: 25000
           min_score: 0.6
           threshold: 0.7
         bear:
@@ -282,32 +324,36 @@ birdseye:
 tls:
   enabled: false
 
-version: 0.17-0
+version: 0.18-0
 
-# ── Detector — RESTORED from the pre-cutover config (fe347dd^) ────────
-# woodhull ran `type: openvino, device: GPU` against /dev/dri/renderD128.
-# There is no /dev/dri on an M1. This is the Apple Neural Engine bridge:
-# Frigate → ZMQ :5555 → FrigateDetector.app on the macOS host → ANE.
+# ── Detector — OpenVINO on the Intel iGPU ─────────────────────
+# Replaces the M1's ZMQ bridge (Frigate → :5555 → FrigateDetector.app →
+# Apple Neural Engine), which has no Linux equivalent and was the single
+# hardest part of this migration.
 #
-# Healthy inference_speed on this path was 15-25ms (vs woodhull's OpenVINO
-# 7.3-8.9ms). Slower is expected and was accepted — MOVE_READINESS §3.3:
-# "the two sites diverging on detector is fine and expected".
-# If inference_speed reads 0 or the detector never appears, check that
-# FrigateDetector.app is running BEFORE assuming a Frigate problem.
+# Measured on brookside 2026-10-01: 5.62 ms mean over 200 inferences,
+# against woodhull's 5.79 ms on identical silicon — same model, same
+# image, same script. The M1's ANE path ran 15-25 ms.
+#
+# This also retires a whole class of failure. The ZMQ detector was an
+# external process that could die independently, and on 2026-09-21 it did:
+# detection was silently dead for three days while detector-monitor stayed
+# green. OpenVINO runs in-container, so there is nothing to race and
+# nothing to restart in order. Do NOT port detector-monitor's ORDER_*
+# checks to this host.
 detectors:
-  apple-silicon:
-    type: zmq
-    endpoint: tcp://host.docker.internal:5555
+  ov:
+    type: openvino
+    device: GPU
 
-# Model must match the detector. yolo.onnx lives in frigate/model_cache/
-# (gitignored, 9.2 MB, verified present on the Mac 2026-09-08). The
-# OpenVINO block that replaced this pointed at /openvino-model/ inside the
-# amd64 image and does not exist in the arm64 one.
+# Model must match the detector. This is the OpenVINO model bundled inside
+# the amd64 image at /openvino-model/ — nothing to download and no
+# model_cache/yolo.onnx needed. Frigate has no auto-default for the
+# openvino detector and crashes at startup if this block is absent.
 model:
-  model_type: yolo-generic
-  width: 320
-  height: 320
-  input_tensor: nchw
-  input_dtype: float
-  path: /config/model_cache/yolo.onnx
-  labelmap_path: /labelmap/coco-80.txt
+  path: /openvino-model/ssdlite_mobilenet_v2.xml
+  width: 300
+  height: 300
+  input_tensor: nhwc
+  input_pixel_format: bgr
+  labelmap_path: /openvino-model/coco_91cl_bkgr.txt

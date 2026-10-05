@@ -1,0 +1,87 @@
+# ═══════════════════════════════════════════════════════════════
+# brookside site override — home-automation stack
+#
+# Activate on brookside:
+#     cd ~/containers/home-automation
+#     ln -s overrides/brookside.yml docker-compose.override.yml
+#
+# ── Why this file exists, and why np.yml is NOT the right one ──
+# docker-compose.yml is the woodhull/LINUX shape: amd64 images,
+# /dev/dri passthrough, OpenVINO. brookside IS Linux on an Intel
+# iGPU, so it wants almost all of that — unlike the M1, which needs
+# overrides/np.yml to un-migrate Frigate back to arm64 + ZMQ.
+#
+# Linking np.yml here would strip /dev/dri and pull an arm64 image.
+# Do not do that. This file overrides ONLY the two things the base
+# file gets wrong for brookside, both on Home Assistant.
+# ═══════════════════════════════════════════════════════════════
+
+services:
+
+  homeassistant:
+    # ── 1. Pin the version for the migration ──────────────────
+    # The Mac runs 2026.8.3; `:stable` is 2026.9.4 as of 2026-10-01.
+    # Migrating hosts and upgrading HA at the same time is two
+    # variables — if it misbehaves you cannot tell which caused it.
+    # Pinned for the cutover; upgrade as its own step once brookside
+    # is proven, with the Mac's untouched config still as the fallback.
+    image: ghcr.io/home-assistant/home-assistant:2026.8.3
+
+    # ── 2. Skip patch_hacs.sh ─────────────────────────────────
+    # ⛔ THE LOAD-BEARING LINE. The base entrypoint runs
+    # /config/scripts/patch_hacs.sh, which is two Brooklyn-specific
+    # fixes: a HACS startup-timeout patch (no HACS at NP) and a
+    # DigiCert CA injection for api.wyzecam.com (no Wyze at NP, and
+    # it writes to /config/ssl, which this config dir does not have).
+    #
+    # The SSL_CERT_FILE export is KEPT — it is site-agnostic and fixes
+    # Python 3.14's incomplete CA bundle generally.
+    #
+    # ── 3. Resolve woodhull's tailnet name inside the container ──
+    # brookside runs --accept-dns=false (NP's AdGuard via DHCP is the
+    # resolver and must stay that way), so MagicDNS names do not resolve.
+    # The host has an /etc/hosts entry, but CONTAINERS DO NOT INHERIT IT.
+    #
+    # Needed because configuration.yaml's rest_command targets reach ntfy
+    # and Uptime Kuma through woodhull's `tailscale serve` endpoints. The
+    # name, not the IP, because the tailnet TLS cert is issued to it.
+    #
+    # woodhull is tagged with key expiry disabled, so 100.103.72.117 is
+    # stable -- but it IS a hardcoded dependency. If woodhull's tailnet
+    # address ever changes, NP's alerting goes silent. Same caveat as the
+    # entry in cowork-bootstrap.sh.
+    extra_hosts:
+      - "woodhull.tail317990.ts.net:100.103.72.117"
+
+    # Identical to the homeassistant section of overrides/np.yml.
+    entrypoint:
+      - /bin/bash
+      - -c
+      - export SSL_CERT_FILE=$$(python3 -c 'import certifi; print(certifi.where())' 2>/dev/null || true); exec /init
+
+  frigate:
+    # ── Version pin, to match config.brookside.yml ────────────
+    # This repo (home-automation-np) pins 0.17.2 in the base file —
+    # that is the M1's version. Brooklyn's separate repo is already on
+    # 0.18.0. config.brookside.yml declares `version: 0.18-0` and the
+    # 5.62 ms OpenVINO benchmark was run against 0.18.0, so the image
+    # must match or Frigate will fail on a config it does not expect.
+    #
+    # Everything ELSE about the base frigate service is correct here:
+    # amd64, /dev/dri/renderD128 passthrough, no arm64 un-migration.
+    # Do not copy np.yml's `devices: !reset null`.
+    image: ghcr.io/blakeblackshear/frigate:0.18.0
+
+# ═══════════════════════════════════════════════════════════════
+# Deliberately NOT overridden
+# ═══════════════════════════════════════════════════════════════
+#
+# mosquitto — no host ports, no site-specific anything. Running
+#   unmodified since 2026-10-01.
+#
+# whisper — present in the base file, must NOT run at NP. Never
+#   `up` it; STT lives on woodhull.
+#
+# Memory limits — the base file is sized for woodhull (16 GB) and
+#   brookside also has 16 GB, so they are left alone. NP's old
+#   1536m Frigate cap existed for the 8 GB M1 and is not copied.
