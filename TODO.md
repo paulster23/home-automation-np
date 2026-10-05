@@ -1,6 +1,6 @@
 # Home Automation — To-Do List
 
-*Last updated: 2026-10-01 (quarterly-doc-audit follow-ups)*
+*Last updated: 2026-10-05 (weekly-resource-budget)*
 
 > **Structure rule (2026-07-28):** sections in order — Pending → Watching/deferred → Future → Completed (newest first, max ~10; older items go to `archive/TODO-completed.md` in this repo). **Scheduled-task appends must be ≤300 chars + a pointer** to the full report/TROUBLESHOOTING entry — no inline essays.
 >
@@ -10,6 +10,7 @@
 
 ## Pending
 
+- [ ] **🟡 NEW 2026-10-04 — Face recognition — measure, train, then decide on detect resolution.** Live on front_window (see CONTEXT.md → Frigate). (1) Train Michelle + Broomhilda in Face Library → aim 20–30 images each, daylight, no IR. (2) After ~1 week read face sizes/scores in Recent Recognitions: if most faces < ~25 px, move `detect` to the main stream (scale person/car `min_area` ×4.5, check iGPU + 4 GiB cap) — record already pulls main, so no extra Wi-Fi. (3) Re-measure frigate mem vs new 4096m cap and `inference_speed` (14 ms right after enable vs 7–9 before). (4) Broomhilda high path not yet fired for real (low path + MQTT trigger verified with a test name).
 - [ ] **🔴 NP porch cam RTSP down — Frigate ffmpeg crash loop, 5,132 crashes on 10-01** (132 on 09-27, 1,165 on 09-30); `192.168.2.34:554` refused. Paging is blind. Fix the lease/RTSP in NP UniFi, or set `enabled: false`. See weekly-report-2026-10-01.html — (via weekly-docker-log-report 2026-10-01)
 
 - [ ] **HA windmillac integration failing and climbing — 120 errors/7 d** (`dashboard.windmillair.com` max retries), 15→30→35 a day 09-28→09-30, after the WAN settled. Re-auth or remove the component. See weekly-report-2026-10-01.html — (via weekly-docker-log-report 2026-10-01)
@@ -23,6 +24,7 @@
 - [ ] **🔴 Frigate per-day recording volume jumped ~6× at the 0.18.0 upgrade (09-16).** — (via weekly-disk-health 2026-09-22) → full text: `archive/TODO-detail.md` §H-003
 
 - [ ] **🟡 MEASURE `car.min_area` on the NP porch camera — the value in place is a PLACEHOLDER.** — (via Cowork 2026-09-20) → full text: `archive/TODO-detail.md` §H-004
+  - **2026-10-05 readout (Cowork, brookside Frigate, events since 10-02 clean start; 09-28→10-01 only in the Mac archive):** 39 porch `car` events. **2 real** — a car on the gravel patch, zone `yard`, box ≈ x0.71 y0.33 w0.21 h0.17: area **9750** (10-02 04:35, score 0.70) and **11484** (10-02 15:41, 0.99, 16 min, snapshot confirms SUV). **37 false** — the porch pillar/rail corner read as a car, box centred ~(0.5,0.5), area **28,420–77,924**, score 0.70–0.84, no zone, mostly at night under IR (snapshots 10-04 12:36 and 23:48 confirm). No car pages found in ntfy over 96 h. **APPLIED 2026-10-05 10:17 on Paul's call (home-automation-np 073c6d2, Frigate restarted healthy, /api/config reads min 7500 / max 25000, HA receiving Frigate MQTT again by 10:17:51):** porch `car` `min_area: 7500` (≈20% under 9750) **and** `max_area: 25000` — removes all 37 rail false positives, keeps both real cars. Alternative: an object mask over the pillar/rail for `car`. Snapshots: infra/log-reports/np-car-snaps-20261005/.
 
 - [ ] **Size the NP box before NP Frigate comes back.** — (via weekly-docker-log-report 2026-09-17) → full text: `archive/TODO-detail.md` §H-005
 
@@ -95,6 +97,8 @@
 ---
 
 ## ✅ Completed
+
+- [x] **Deploy stats-collector on brookside — ✅ DONE 2026-10-05.** Native cron `5 * * * *` runs infra/stats-collector.sh → memory_reports/hourly_stats.csv (verified, 5 containers). Mac collector already retired. See budget-report-2026-10-05.md §6 — (via weekly-resource-budget 2026-10-05)
 
 - [x] **Trim TODO.md — ✅ DONE 2026-10-01 (Cowork).** 110→19 KB: done items moved verbatim to `archive/TODO-completed.md`, long open items summarized with full text in `archive/TODO-detail.md`; line-preservation check passed. — (via quarterly-doc-audit 2026-10-01)
 
