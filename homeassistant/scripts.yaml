@@ -19,7 +19,7 @@ np_away:
               target:
                 entity_id: &np_units
                   - climate.np_living
-                  - climate.np_br_down_1
+                  - climate.np_kitchen
               data:
                 hvac_mode: heat
             - action: climate.set_temperature
@@ -54,7 +54,7 @@ np_arrive:
       target:
         entity_id: &np_units2
           - climate.np_living
-          - climate.np_br_down_1
+          - climate.np_kitchen
       data:
         hvac_mode: heat
     - action: climate.set_temperature
