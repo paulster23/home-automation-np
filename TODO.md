@@ -10,6 +10,8 @@
 
 ## Pending
 
+- [ ] **🟡 NP "Heading to NP" — first real test 10-10/11 (added 2026-10-05, Cowork).** Note when the iPhone Arrive prompt fires vs arrival time; confirm `np_heading_arrived` cancelled `timer.np_heading_window` (trace) and units held 68/high/both; tune the ~40 mi geofence radius. Open: summer behaviour (cool to 68?). See CONTEXT.md → NP "Heading to NP".
+
 - [ ] **🟡 NEW 2026-10-04 — Face recognition — measure, train, then decide on detect resolution.** Live on front_window (see CONTEXT.md → Frigate). (1) Train Michelle + Broomhilda in Face Library → aim 20–30 images each, daylight, no IR. (2) After ~1 week read face sizes/scores in Recent Recognitions: if most faces < ~25 px, move `detect` to the main stream (scale person/car `min_area` ×4.5, check iGPU + 4 GiB cap) — record already pulls main, so no extra Wi-Fi. (3) Re-measure frigate mem vs new 4096m cap and `inference_speed` (14 ms right after enable vs 7–9 before). (4) Broomhilda high path not yet fired for real (low path + MQTT trigger verified with a test name).
 - [ ] **🔴 NP porch cam RTSP down — Frigate ffmpeg crash loop, 5,132 crashes on 10-01** (132 on 09-27, 1,165 on 09-30); `192.168.2.34:554` refused. Paging is blind. Fix the lease/RTSP in NP UniFi, or set `enabled: false`. See weekly-report-2026-10-01.html — (via weekly-docker-log-report 2026-10-01)
 

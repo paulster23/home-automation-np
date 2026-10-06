@@ -327,6 +327,7 @@ that serve still points at the Mac's stopped HA.
   heat/68/high/both within 10 s, no resend needed, off at timer expiry. Arrival-cancel path
   untested until a real trip.
 - Adding units: `units` in `np_arrive` and the list in `np_heading_no_show` (`grep climate.np_`).
+- iPhone side (2026-10-05): Shortcut **Heading to NP** = one *Get Contents of URL* action (Web → URLs → Show More), POST, JSON `source: shortcut`. Automation = **Arrive** at 75 Brookside Rd, radius ≈ 40 mi (the picker caps each edit; widened by saving and re-editing), Run After Confirmation. Arrive fires on entry only, so the drive home does not prompt. Phone path verified 21:16 (webhook hit, both units heating by 21:16:09).
 
 ## Dependency Map
 
