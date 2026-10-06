@@ -100,10 +100,9 @@ automation:
         to: ["occupied", "empty"]
         for: "36:00:00"
     actions:
-      - action: rest_command.np_ntfy
+      - action: shell_command.np_notify
         continue_on_error: true
         data:
-          topic: !secret ntfy_topic_page
           priority: 3
           tags: ["eyes"]
           title: "NP occupancy override still forced"

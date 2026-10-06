@@ -40,7 +40,8 @@
         entity_id: *np_all_units
       data:
         temperature: 55
-    - action: rest_command.ntfy
+    - action: shell_command.np_notify
+      continue_on_error: true
       data:
         title: "NP FREEZE RISK"
         priority: "urgent"
@@ -73,7 +74,8 @@
       to: "unavailable"
       for: "02:00:00"
   actions:
-    - action: rest_command.ntfy
+    - action: shell_command.np_notify
+      continue_on_error: true
       data:
         title: "NP HVAC sensor offline"
         priority: "high"
@@ -167,6 +169,10 @@
       event: start
   actions:
     - action: shell_command.np_porch_flush
+      continue_on_error: true
+    # 2026-10-06: same cadence drains np_notify.py's queue (every other NP alert).
+    - action: shell_command.np_notify_flush
+      continue_on_error: true
 
 - id: np_occupied_stuck
   # DISABLED 2026-09-26: superseded by np_occupancy_override_stuck (packages/np_occupancy.yaml).
@@ -186,7 +192,8 @@
       to: "on"
       for: "36:00:00"
   actions:
-    - action: rest_command.ntfy
+    - action: shell_command.np_notify
+      continue_on_error: true
       data:
         title: "NP camera paging is off"
         priority: "default"

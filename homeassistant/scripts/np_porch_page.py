@@ -52,7 +52,7 @@ NTFY    = os.environ.get("NTFY_URL") or (
 PAGE_PRIORITY = "high"
 # Tailnet URL for the "open it" tap target. Tailnet-only on purpose -- see
 # infra/ntfy/README.md; the phone needs Tailscale up to follow it.
-UI      = os.environ.get("NP_FRIGATE_UI", "https://media.tail317990.ts.net:18971")
+UI      = os.environ.get("NP_FRIGATE_UI", "https://brookside.tail317990.ts.net:18971")  # 2026-10-06: Frigate moved off the Mac; unused since the Click header went (09-26)
 # 2026-09-29 -- pager MIRROR. The self-hosted ntfy relays only a poll request to
 # ntfy.sh, so off the tailnet the phone buzzes but opens EMPTY (tested
 # 2026-09-20). ntfy_mirror in secrets.yaml is a full https://ntfy.sh/<topic>

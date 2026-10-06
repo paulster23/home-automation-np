@@ -16,8 +16,8 @@
 # first stats message. Both automations require a real on<->off transition
 # (from: "on" / from: "off"), so a reload never fires either alert.
 #
-# Paging path: same as np_porch_alerts.yaml — rest_command.np_ntfy to the
-# page topic over woodhull's LAN address (needs the NP tailnet path up).
+# Paging path (2026-10-06): shell_command.np_notify — woodhull + ntfy.sh mirror
+# + retry queue, so a Brooklyn outage does not drop these pages.
 # ═══════════════════════════════════════════════════════════════
 
 template:
@@ -55,10 +55,9 @@ automation:
       - condition: template
         value_template: "{{ (now() - trigger.from_state.last_changed).total_seconds() >= 600 }}"
     actions:
-      - action: rest_command.np_ntfy
+      - action: shell_command.np_notify
         continue_on_error: true
         data:
-          topic: !secret ntfy_topic_page
           title: "NP porch camera back online"
           message: >-
             Frames flowing again ({{ state_attr('binary_sensor.np_porch_camera_streaming', 'camera_fps') }} fps).
@@ -76,10 +75,9 @@ automation:
         to: "off"
         for: "00:10:00"
     actions:
-      - action: rest_command.np_ntfy
+      - action: shell_command.np_notify
         continue_on_error: true
         data:
-          topic: !secret ntfy_topic_page
           title: "NP porch camera offline"
           message: >-
             No frames from the porch camera for 10 min. Usually power at the

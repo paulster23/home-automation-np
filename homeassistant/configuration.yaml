@@ -47,19 +47,19 @@ recorder:
   commit_interval: 1
 
 # ── Paging ────────────────────────────────────────────────────────
-# ntfy lives on woodhull in BROOKLYN. Verified 2026-09-14 from inside
-# this container: 192.168.1.71:8111 answers in ~56 ms — but woodhull's
-# TAILNET address (100.103.72.117) does NOT resolve/connect from in here
-# at all. The container can only use the LAN address, and that works
-# solely because the Mac runs Tailscale with RouteAll: true.
+# ⚠️ 2026-10-06: DO NOT call rest_command.ntfy (or np_ntfy) for alerts — use
+# shell_command.np_notify (scripts/np_notify.py). Same data keys.
 #
-# ⛔ `tailscale set --accept-routes=false` on this Mac SILENTLY kills New
-#    Paltz's ability to page. That is Site Magic step 4 — do not run it
-#    until a gateway tunnel is proven. See plans/ + project memory.
+# ntfy lives on woodhull in BROOKLYN, and the BK WAN drops (Paul 2026-10-06:
+# assume it keeps happening). A direct post to woodhull is lost during a BK
+# outage. np_notify mirrors page-topic alerts to ntfy.sh (no Brooklyn hop)
+# and queues failures for re-send; the porch page has its own equivalent
+# (np_porch_page.py). Since 2026-10-06 this container reaches woodhull over the
+# UniFi SD-WAN mesh (192.168.1.71) and via brookside's own tailnet node — the
+# old dependency on the Mac's RouteAll is gone.
 #
-# Consequence to design around: if the INTER-SITE link is down, the page
-# does not arrive. So every automation below acts on the hardware FIRST
-# and notifies SECOND — a failed notify must never block the heat.
+# Design rule kept: every automation acts on the hardware FIRST and notifies
+# SECOND — a failed notify must never block the heat.
 rest_command:
   ntfy:
     url: "https://woodhull.tail317990.ts.net/homelab"
@@ -171,3 +171,11 @@ input_boolean:
 shell_command:
   np_porch_page: "python3 /config/scripts/np_porch_page.py {{ event_id }}"
   np_porch_flush: "python3 /config/scripts/np_porch_page.py --flush"
+  # 2026-10-06 — every other NP notification. Woodhull + ntfy.sh mirror for the
+  # page topic + a retry queue, so a BROOKLYN outage no longer drops NP pages.
+  # One base64 JSON arg because HA shlex-splits rendered args. See the script.
+  np_notify: >-
+    python3 /config/scripts/np_notify.py {{ {'title': title, 'message': message | default(''),
+    'priority': priority | default('default'), 'tags': tags | default('house'),
+    'topic': topic | default('')} | to_json | base64_encode }}
+  np_notify_flush: "python3 /config/scripts/np_notify.py --flush"

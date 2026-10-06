@@ -33,7 +33,8 @@ np_away:
             entity_id: *np_units
           data:
             hvac_mode: "off"
-    - action: rest_command.ntfy
+    - action: shell_command.np_notify
+      continue_on_error: true
       data:
         title: "NP set to Away"
         priority: "low"
@@ -91,7 +92,7 @@ np_arrive:
         - delay: 30
     - variables:
         failed: *np_arrive_mismatch
-    - action: rest_command.ntfy
+    - action: shell_command.np_notify
       continue_on_error: true
       data:
         title: >-

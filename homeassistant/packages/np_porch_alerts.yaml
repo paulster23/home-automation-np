@@ -48,6 +48,7 @@
 rest_command:
   # ntfy JSON publish: POST to the server ROOT with the topic in the body, so
   # one command serves every topic and the server URL lives in one secret.
+  # ⚠️ 2026-10-06: no callers left — use shell_command.np_notify (mirror + queue).
   np_ntfy:
     url: !secret ntfy_server
     method: POST

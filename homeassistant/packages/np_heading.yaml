@@ -90,7 +90,7 @@ automation:
             - climate.np_kitchen
         data:
           hvac_mode: "off"
-      - action: rest_command.ntfy
+      - action: shell_command.np_notify
         continue_on_error: true
         data:
           title: "NP splits off — no arrival"
