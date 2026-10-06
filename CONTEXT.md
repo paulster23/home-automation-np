@@ -307,6 +307,27 @@ priority 2, no page** — the automation fired once, the page automation not at 
 
 ---
 
+### NP "Heading to NP" — `packages/np_heading.yaml` (2026-10-05)
+
+iPhone Shortcuts personal automation (**Arrive** at a point ~60 min from NP, **Run After
+Confirmation**) → tap = yes, ignore = no → Shortcut POSTs to
+`https://brookside.tail317990.ts.net:18123/api/webhook/<np_heading_webhook_id>` (secrets.yaml).
+Works because Paul keeps Tailscale on at all times. Do NOT use `media.tail317990.ts.net:18123` —
+that serve still points at the Mac's stopped HA.
+
+- Webhook → `script.np_arrive` (heat 68 °F, fan `high`, swing `both`, via `script.np_climate_apply`
+  — one write per setting 2 s apart; 60 s readback, one resend; ntfy reports actual per-unit state,
+  `high` priority + "CHECK UNITS" if a unit did not confirm).
+- Webhook also starts `timer.np_heading_window` (90 min, `restore: true`) **only if the house is
+  empty**. `binary_sensor.np_occupied` → on cancels it. Timer finishes with the house still empty →
+  both splits **off** + ntfy. Running `np_arrive` by hand never arms the guard.
+- `local_only: false` is required: HA sees the caller's tailnet IP (100.64/10, not "local" to HA)
+  through `tailscale serve` + X-Forwarded-For. `allowed_methods: [POST]` — a GET gets 405.
+- Tested 2026-10-05 20:25 from the Mac over the tailnet with a 3-min window: both units
+  heat/68/high/both within 10 s, no resend needed, off at timer expiry. Arrival-cancel path
+  untested until a real trip.
+- Adding units: `units` in `np_arrive` and the list in `np_heading_no_show` (`grep climate.np_`).
+
 ## Dependency Map
 
 ```

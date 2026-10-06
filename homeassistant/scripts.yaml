@@ -46,25 +46,99 @@ np_arrive:
   alias: "NP · Arriving"
   icon: mdi:home-import-outline
   description: >-
-    Pre-condition before a drive up. Trigger it manually ~2 h out; a geofence
-    can replace the manual trigger later.
+    Pre-condition before a drive up: every unit heat 68 °F, fan high, swing
+    both. Run by the "Heading to NP" iPhone Shortcut (packages/np_heading.yaml,
+    which also arms the 90-min no-show guard) or by hand (no guard).
+    Commands go 2 s apart because the Serins drop back-to-back writes; after
+    60 s each unit is read back and anything that did not stick is resent
+    once. The ntfy message reports what the units actually show.
   mode: single
+  max_exceeded: silent
+  variables:
+    units:
+      - climate.np_living
+      - climate.np_kitchen
+    target_temp: 68
+    fan: "high"
+    swing: "both"
   sequence:
-    - action: climate.set_hvac_mode
+    - action: script.np_climate_apply
+      data:
+        entity_ids: "{{ units }}"
+        temperature: "{{ target_temp }}"
+        fan_mode: "{{ fan }}"
+        swing_mode: "{{ swing }}"
+    - delay: 60
+    - variables:
+        retry: &np_arrive_mismatch >-
+          {% set ns = namespace(l=[]) %}
+          {% for s in expand(units) %}
+            {% if s.state != 'heat'
+                  or ((s.attributes.temperature | float(0)) - target_temp) | abs > 0.6
+                  or s.attributes.fan_mode != fan
+                  or s.attributes.swing_mode != swing %}
+              {% set ns.l = ns.l + [s.entity_id] %}
+            {% endif %}
+          {% endfor %}{{ ns.l }}
+    - if: "{{ retry | count > 0 }}"
+      then:
+        - action: script.np_climate_apply
+          data:
+            entity_ids: "{{ retry }}"
+            temperature: "{{ target_temp }}"
+            fan_mode: "{{ fan }}"
+            swing_mode: "{{ swing }}"
+        - delay: 30
+    - variables:
+        failed: *np_arrive_mismatch
+    - action: rest_command.ntfy
+      continue_on_error: true
+      data:
+        title: >-
+          {{ 'NP warming up' if failed | count == 0 else 'NP warming up — CHECK UNITS' }}
+        priority: "{{ 'low' if failed | count == 0 else 'high' }}"
+        tags: "{{ 'fire' if failed | count == 0 else 'fire,warning' }}"
+        message: >-
+          {% for s in expand(units) -%}
+          {{ s.name }}: {{ s.state }}
+          {%- if s.state not in ['unavailable', 'unknown'] %} {{ s.attributes.temperature }}°F,
+          fan {{ s.attributes.fan_mode }}, swing {{ s.attributes.swing_mode }}
+          (room {{ s.attributes.current_temperature }}°F){% endif %}
+          {%- if s.entity_id in failed %} ⚠️ not confirmed{% endif %}
+          {% endfor %}
+
+np_climate_apply:
+  alias: "NP · Apply climate settings (helper)"
+  icon: mdi:hvac
+  description: >-
+    Used by np_arrive. One write per setting, 2 s apart — the Serin CN105
+    dongles drop commands that arrive back to back. Unavailable units are
+    skipped by HA; errors never stop the remaining writes.
+  mode: queued
+  fields:
+    entity_ids: {description: "climate entities", required: true}
+    temperature: {description: "°F", required: true}
+    fan_mode: {required: true}
+    swing_mode: {required: true}
+  sequence:
+    - action: climate.set_temperature
+      continue_on_error: true
       target:
-        entity_id: &np_units2
-          - climate.np_living
-          - climate.np_kitchen
+        entity_id: "{{ entity_ids }}"
       data:
         hvac_mode: heat
-    - action: climate.set_temperature
+        temperature: "{{ temperature }}"
+    - delay: 2
+    - action: climate.set_fan_mode
+      continue_on_error: true
       target:
-        entity_id: *np_units2
+        entity_id: "{{ entity_ids }}"
       data:
-        temperature: 68
-    - action: rest_command.ntfy
+        fan_mode: "{{ fan_mode }}"
+    - delay: 2
+    - action: climate.set_swing_mode
+      continue_on_error: true
+      target:
+        entity_id: "{{ entity_ids }}"
       data:
-        title: "NP warming up"
-        priority: "low"
-        tags: "fire"
-        message: "New Paltz pre-conditioning to 68°F."
+        swing_mode: "{{ swing_mode }}"

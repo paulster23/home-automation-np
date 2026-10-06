@@ -1,0 +1,101 @@
+# ═══════════════════════════════════════════════════════════════
+# np_heading.yaml — "Heading to NP" (2026-10-05)
+#
+# The iPhone decides WHEN: a Shortcuts personal automation ("Arrive" at a
+# point ~60 min from NP, Run After Confirmation) asks; tapping it POSTs to
+# the webhook below over Tailscale (https://brookside.tail317990.ts.net:18123).
+# Ignoring the prompt = no; nothing reaches HA.
+#
+#   webhook   → script.np_arrive (heat 68 °F, fan high, swing both)
+#             → timer.np_heading_window (90 min) when the house is empty
+#   arrival   (binary_sensor.np_occupied → on) cancels the timer
+#   timer ran out with the house still empty → splits OFF + ntfy
+#
+# The 90-min no-show guard exists ONLY for webhook runs. Running
+# script.np_arrive by hand never starts the timer.
+#
+# local_only: false is required — HA sees the phone's tailnet address
+# (100.64/10) via tailscale serve + X-Forwarded-For, and HA does not count
+# 100.64/10 as local. The endpoint is still tailnet-only; the webhook id
+# (secrets.yaml: np_heading_webhook_id) is the shared secret.
+#
+# Adding units: extend `units` in script.np_arrive AND the list in
+# np_heading_no_show below (grep "climate.np_").
+# ═══════════════════════════════════════════════════════════════
+
+timer:
+  np_heading_window:
+    name: "NP heading-up window"
+    duration: "01:30:00"
+    restore: true          # a restart mid-window resumes it; if it expired
+    icon: mdi:car-clock    # while HA was down, timer.finished fires at startup
+
+automation:
+  - id: np_heading_webhook
+    alias: "NP · Heading to NP (iPhone Shortcut)"
+    mode: single
+    max_exceeded: silent
+    triggers:
+      - trigger: webhook
+        webhook_id: !secret np_heading_webhook_id
+        allowed_methods: [POST]
+        local_only: false
+    actions:
+      - if:
+          - condition: state
+            entity_id: binary_sensor.np_occupied
+            state: "off"
+        then:
+          - action: timer.start
+            target:
+              entity_id: timer.np_heading_window
+      - action: script.turn_on
+        target:
+          entity_id: script.np_arrive
+
+  - id: np_heading_arrived
+    alias: "NP · Heading to NP — arrived, cancel no-show guard"
+    mode: single
+    triggers:
+      - trigger: state
+        entity_id: binary_sensor.np_occupied
+        to: "on"
+    conditions:
+      - condition: state
+        entity_id: timer.np_heading_window
+        state: ["active", "paused"]
+    actions:
+      - action: timer.cancel
+        target:
+          entity_id: timer.np_heading_window
+
+  - id: np_heading_no_show
+    alias: "NP · Heading to NP — no arrival in 90 min, splits off"
+    mode: single
+    triggers:
+      - trigger: event
+        event_type: timer.finished
+        event_data:
+          entity_id: timer.np_heading_window
+    conditions:
+      - condition: state
+        entity_id: binary_sensor.np_occupied
+        state: "off"
+    actions:
+      - action: climate.set_hvac_mode
+        continue_on_error: true
+        target:
+          entity_id:
+            - climate.np_living
+            - climate.np_kitchen
+        data:
+          hvac_mode: "off"
+      - action: rest_command.ntfy
+        continue_on_error: true
+        data:
+          title: "NP splits off — no arrival"
+          priority: "default"
+          tags: "house,zzz"
+          message: >-
+            Nobody arrived at New Paltz within 90 minutes of "Heading to NP",
+            so the splits were turned off. Freeze protection still applies.
