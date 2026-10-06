@@ -120,7 +120,7 @@ cameras:
   porch:
     enabled: true    # Porch cam (ex-Brooklyn backyard RLC-510WA); enabled 2026-09-18
     ffmpeg:
-      hwaccel_args: preset-vaapi   # Intel iGPU decode (added for brookside)
+      hwaccel_args: []   # 2026-10-05: CPU decode. VAAPI hwdownload failed ~400x/day on this stream (TROUBLESHOOTING 2026-10-05). Empty list, not omitted: 0.18 defaults to auto and picks VAAPI again.
       input_args: preset-rtsp-restream
       retry_interval: 10
       inputs:
