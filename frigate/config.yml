@@ -15,6 +15,8 @@
 # what the architecture forces:
 #   - detectors: ZMQ apple-silicon -> OpenVINO on the iGPU
 #   - model:     yolo.onnx (320, nchw) -> ssdlite_mobilenet_v2 (300, nhwc)
+#                REVERTED 2026-10-07 -> yolo.onnx on OpenVINO GPU (ssdlite false
+#                positives; see the model: block at the bottom)
 #   - hwaccel:   added preset-vaapi for hardware decode
 #   - version:   0.17-0 -> 0.18-0
 # Cameras, zones, objects, record and snapshot settings are UNCHANGED
@@ -26,7 +28,8 @@
 # neither is the detector-monitor start-order watchdog that existed only
 # to catch that process dying.
 #
-# ⚠️ Labelmap goes 80-class (coco-80) -> 91-class (coco_91cl_bkgr).
+# ⚠️ (Historical, 10-01 — labelmap is coco-80 again since 2026-10-07.)
+# Labelmap goes 80-class (coco-80) -> 91-class (coco_91cl_bkgr).
 # Verified 2026-10-01: both tracked objects, `person` and `car`, exist in
 # the 91-class map, so objects.track and objects.filters carry over
 # unchanged. Re-check this if more object types are added.
@@ -147,6 +150,11 @@ cameras:
       motion:
         days: 2
     objects:
+      mask:   # porch lantern, see motion.mask (0.18: masks are named dicts)
+        porch_lantern:
+          friendly_name: "Porch lantern"
+          enabled: true
+          coordinates: "0.27,0,0.37,0,0.37,0.25,0.27,0.25"
       # 2026-09-20: NP is a RURAL dead-end; the driveway is in frame. Brooklyn's
       # settings were built to SUPPRESS a busy street. Here the base rate of real
       # traffic is near zero, so a false positive is cheap and a miss is expensive.
@@ -203,7 +211,15 @@ cameras:
           min_area: 2000
           min_score: 0.5
           threshold: 0.6
-    motion: {}
+    # 2026-10-07: the hanging green glass lantern under the porch ceiling (top-left)
+    # was detected as `bird` ~120x on ssdlite and sways in wind. Small ceiling-only
+    # rectangle, masked for both motion and objects — nothing real can be there.
+    motion:
+      mask:
+        porch_lantern:
+          friendly_name: "Porch lantern"
+          enabled: true
+          coordinates: "0.27,0,0.37,0,0.37,0.25,0.27,0.25"
     # ⚠️ NEVER add a full-frame object mask (0,0,1,0,1,1,0,1). Tried via the UI
     # 2026-06-15 and removed the same day — object masks tell Frigate to IGNORE
     # objects in the masked area, so it suppressed every detection.
@@ -346,14 +362,21 @@ detectors:
     type: openvino
     device: GPU
 
-# Model must match the detector. This is the OpenVINO model bundled inside
-# the amd64 image at /openvino-model/ — nothing to download and no
-# model_cache/yolo.onnx needed. Frigate has no auto-default for the
-# openvino detector and crashes at startup if this block is absent.
+# Model: YOLOv9-t 320 (yolo-generic ONNX) on OpenVINO GPU — 2026-10-07.
+# The 10-01 cutover used the image-bundled ssdlite_mobilenet_v2, which produced
+# confident false positives on this camera: the porch lantern as `bird`
+# (~120 events), sun patches on the porch floor as `person` (paged 10-05..10-07)
+# and `dog` (up to 0.96). This is the same yolo.onnx the M1 ran (sha256
+# 28d264aa...ed46), copied from the Mac's frigate/model_cache. The thresholds in
+# this file were tuned against it. model_cache/ is NOT in git — if the volume is
+# rebuilt, copy yolo.onnx back from the Mac or Frigate will not start.
+# Labelmap is coco-80 again; every label in objects.track exists in it (bear incl.).
 model:
-  path: /openvino-model/ssdlite_mobilenet_v2.xml
-  width: 300
-  height: 300
-  input_tensor: nhwc
-  input_pixel_format: bgr
-  labelmap_path: /openvino-model/coco_91cl_bkgr.txt
+  model_type: yolo-generic
+  width: 320
+  height: 320
+  input_tensor: nchw
+  input_dtype: float
+  input_pixel_format: rgb
+  path: /config/model_cache/yolo.onnx
+  labelmap_path: /labelmap/coco-80.txt
