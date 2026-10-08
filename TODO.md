@@ -1,6 +1,6 @@
 # Home Automation — To-Do List
 
-*Last updated: 2026-10-05 (weekly-resource-budget)*
+*Last updated: 2026-10-08 (weekly-docker-log-report)*
 
 > **Structure rule (2026-07-28):** sections in order — Pending → Watching/deferred → Future → Completed (newest first, max ~10; older items go to `archive/TODO-completed.md` in this repo). **Scheduled-task appends must be ≤300 chars + a pointer** to the full report/TROUBLESHOOTING entry — no inline essays.
 >
@@ -10,17 +10,20 @@
 
 ## Pending
 
+- [ ] **brookside mosquitto restarted ~10× in 7 d (4 on 10-07), exit 0, no watchdog heal — each one drops Frigate's MQTT.** Find the caller. See weekly-report-2026-10-08.html — (via weekly-docker-log-report 2026-10-08)
+- [ ] **`np_porch_camera_back_online_page` timed out 86× (+18 `np_kuma_heartbeat`) during the porch outage; now 3–5/day.** If it climbs, add `continue_on_error: true`. See weekly-report-2026-10-08.html — (via weekly-docker-log-report 2026-10-08)
+
 - [ ] **🟡 NP "Heading to NP" — first real test 10-10/11 (added 2026-10-05, Cowork).** Note when the iPhone Arrive prompt fires vs arrival time; confirm `np_heading_arrived` cancelled `timer.np_heading_window` (trace) and units held 68/high/both; tune the ~40 mi geofence radius. Open: summer behaviour (cool to 68?). See CONTEXT.md → NP "Heading to NP".
 
 - [ ] **🟡 NEW 2026-10-04 — Face recognition — measure, train, then decide on detect resolution.** Live on front_window (see CONTEXT.md → Frigate). (1) Train Michelle + Broomhilda in Face Library → aim 20–30 images each, daylight, no IR. (2) After ~1 week read face sizes/scores in Recent Recognitions: if most faces < ~25 px, move `detect` to the main stream (scale person/car `min_area` ×4.5, check iGPU + 4 GiB cap) — record already pulls main, so no extra Wi-Fi. (3) Re-measure frigate mem vs new 4096m cap and `inference_speed` (14 ms right after enable vs 7–9 before). (4) Broomhilda high path not yet fired for real (low path + MQTT trigger verified with a test name).
-- [ ] **🔴 NP porch cam RTSP down — Frigate ffmpeg crash loop, 5,132 crashes on 10-01** (132 on 09-27, 1,165 on 09-30); `192.168.2.34:554` refused. Paging is blind. Fix the lease/RTSP in NP UniFi, or set `enabled: false`. See weekly-report-2026-10-01.html — (via weekly-docker-log-report 2026-10-01) **2026-10-06 (Cowork): recurred** — ffmpeg exit/refused loop ran continuously 10-03→10-05 (~3,800 lines/day, 110-210/h) and stopped when the frigate container was recreated 10-05 22:23 ET; 0 errors in the 17 h since, porch 3.1 fps. A Frigate restart clears it; cause still unknown (camera RTSP server wedging?). Watch the next weekly log report before building an auto-restart.
+- [ ] **🔴 NP porch cam RTSP down — Frigate ffmpeg crash loop, 5,132 crashes on 10-01** (132 on 09-27, 1,165 on 09-30); `192.168.2.34:554` refused. Paging is blind. Fix the lease/RTSP in NP UniFi, or set `enabled: false`. See weekly-report-2026-10-01.html — (via weekly-docker-log-report 2026-10-01) **2026-10-06 (Cowork): recurred** — ffmpeg exit/refused loop ran continuously 10-03→10-05 (~3,800 lines/day, 110-210/h) and stopped when the frigate container was recreated 10-05 22:23 ET; 0 errors in the 17 h since, porch 3.1 fps. A Frigate restart clears it; cause still unknown (camera RTSP server wedging?). Watch the next weekly log report before building an auto-restart. — **2026-10-08: NEAR-RESOLVED, and it was not just the restart.** Errors/day 5,529 (10-03) → 3,808 → 3,782 → 446 (10-06) → 17 (10-07) → 1 (10-08); clean 17 h, porch 3.0 fps. Two real fixes landed: `hwaccel_args: []` (CPU decode) on 10-05 and the 10-07 15:25 UTC restart carrying the YOLOv9-t/OpenVINO swap (`f710785`). No auto-restart needed — confirm clean next week, then CLOSE. See weekly-report-2026-10-08.html — (via weekly-docker-log-report 2026-10-08)**
   - **2026-10-05 (Cowork):** brookside-era crash loop was a different cause — VAAPI `hwdownload` failures, 2,180 crashes 10-03→10-05. Fixed with porch `hwaccel_args: []` (home-automation-np `1386af0`). The 10-01 Mac-era `192.168.2.34:554 refused` cause was not seen on brookside. Close this item once 48 h of porch logs show no crash loop. See TROUBLESHOOTING 2026-10-05.
 - [ ] **NP HA long-lived token missing on brookside** — `secrets/ha.env` there is Brooklyn's (`192.168.1.71`), so NP HA's API returns 401 and automation reloads need a container restart. Create a token in NP HA and write a separate `ha-np.env`. — (via Cowork 2026-10-05)
 - [x] **✅ CLOSED 2026-10-06 (Cowork): not stale — an MCP quirk.** `unifi_list_clients` live (no `include_offline`) shows Porch online, -44 dBm, sinola 2.4, last_seen now; `search` + `include_offline=true` returns the historical /rest/user record whose status is computed from an old last_seen. Use the live list. ~~**`unifi-brookside` looks stale** — lists Porch offline since 10-04 02:00 ET and returns 0 events in 24 h while the camera streams at 3 fps. Check the MCP's controller/site config. — (via Cowork 2026-10-05)~~
 
-- [ ] **HA windmillac integration failing and climbing — 120 errors/7 d** (`dashboard.windmillair.com` max retries), 15→30→35 a day 09-28→09-30, after the WAN settled. Re-auth or remove the component. See weekly-report-2026-10-01.html — (via weekly-docker-log-report 2026-10-01)
+- [ ] **HA windmillac integration failing and climbing — 120 errors/7 d** (`dashboard.windmillair.com` max retries), 15→30→35 a day 09-28→09-30, after the WAN settled. Re-auth or remove the component. — **2026-10-08: WORSE — 175 error lines/7 d (84+82+9) vs 120 at tagging; two unbroken weeks of `Max retries exceeded`, ~1/10th of this host's HA error volume. Re-auth, or remove the component if the vendor API is gone. See weekly-report-2026-10-08.html** — (via weekly-docker-log-report 2026-10-08)
 
-- [ ] **woodhull mosquitto cap 8->16 MiB — `OOMKilled=true` (RestartCount=0, up since 09-25).** — (via homelab-advisor 2026-09-30) (via weekly-docker-log-report 2026-10-01) → full text: `archive/TODO-detail.md` §H-001
+- [ ] **🔴 woodhull mosquitto cap 8->16 MiB — `OOMKilled=true`, now `RestartCount=1` (killed 10-01 03:14 UTC; cap still 8388608).** Set `mem_limit: 16m` and recreate on BOTH hosts — brookside carries the same 8 MiB cap. See weekly-report-2026-10-08.html — (via homelab-advisor 2026-09-30) (via weekly-docker-log-report 2026-10-08) → full text: `archive/TODO-detail.md` §H-001
 
 - [ ] **NP porch: tighten the `yard` polygon above the porch rail.** Its lower edge IS the rail top, so a person standing at the rail (legs hidden) reads as in `yard`. Paging keys on the *first* zone so this is harmless today, but anything that later reads `yard` membership will misfire. Known gap either way: someone climbing the steps from out of frame enters `frontporch` first → note, not page. See TROUBLESHOOTING 2026-09-26. — (via Cowork 2026-09-26)
 
@@ -31,7 +34,6 @@
 - [ ] **🟡 MEASURE `car.min_area` on the NP porch camera — the value in place is a PLACEHOLDER.** — (via Cowork 2026-09-20) → full text: `archive/TODO-detail.md` §H-004
   - **2026-10-05 readout (Cowork, brookside Frigate, events since 10-02 clean start; 09-28→10-01 only in the Mac archive):** 39 porch `car` events. **2 real** — a car on the gravel patch, zone `yard`, box ≈ x0.71 y0.33 w0.21 h0.17: area **9750** (10-02 04:35, score 0.70) and **11484** (10-02 15:41, 0.99, 16 min, snapshot confirms SUV). **37 false** — the porch pillar/rail corner read as a car, box centred ~(0.5,0.5), area **28,420–77,924**, score 0.70–0.84, no zone, mostly at night under IR (snapshots 10-04 12:36 and 23:48 confirm). No car pages found in ntfy over 96 h. **APPLIED 2026-10-05 10:17 on Paul's call (home-automation-np 073c6d2, Frigate restarted healthy, /api/config reads min 7500 / max 25000, HA receiving Frigate MQTT again by 10:17:51):** porch `car` `min_area: 7500` (≈20% under 9750) **and** `max_area: 25000` — removes all 37 rail false positives, keeps both real cars. Alternative: an object mask over the pillar/rail for `car`. Snapshots: infra/log-reports/np-car-snaps-20261005/.
 
-- [ ] **Size the NP box before NP Frigate comes back.** — (via weekly-docker-log-report 2026-09-17) → full text: `archive/TODO-detail.md` §H-005
 
 - [ ] **🟡 NEW 2026-09-14 — no UPS at New Paltz.** `pmset -g ps` = AC only. A flicker is survivable (`autorestart 1`), but a brownout can wedge the engine mid-write, and when the UX7/ONT drop with it the ntfy page saying so never leaves the house. Small UPS on Mac + UX7 + ONT; USB signalling so macOS can shut down cleanly. On-site purchase/install; size for ~15 min.
 
@@ -49,7 +51,7 @@
 
 - [ ] **switch.plug_1 (Wyze) still `unavailable` since 08-23 07:01 — deferred by Paul.** Confirmed offline in the Wyze app (physical/Wi-Fi, not HA/DNS). `switch.speaker` had the same issue and was fixed same day (power-cycled, back `on` 08-27 23:17 UTC) — plug_1 needs the same physical power-cycle whenever Paul wants that plug back; not urgent. See TROUBLESHOOTING.md 2026-08-27. — (via Cowork 2026-08-27)
 
-- [ ] **Voice PE `0a3a76` esp32 crash — `Fault - IllegalInstruction` at `speaker_source_media_player:222`, +1,790 error lines in 31s.** — (via homelab-advisor 2026-09-02) (via weekly-docker-log-report 2026-09-10) → full text: `archive/TODO-detail.md` §H-011
+- [ ] **Voice PE `0a3a76` esp32 crash — `Fault - IllegalInstruction` at `speaker_source_media_player:222`.** 2026-10-08: quiet — 27 lines/7 d (vs 4,320 on 09-29); still not reflashed. — (via homelab-advisor 2026-09-02) (via weekly-docker-log-report 2026-10-08) → full text: `archive/TODO-detail.md` §H-011
 
 - [ ] **Rotate credentials left in git history — found 2026-08-09 by the repo's first full-history `gitleaks git` scan (4 findings).** → full text: `archive/TODO-detail.md` §H-012
 
@@ -102,6 +104,9 @@
 ---
 
 ## ✅ Completed
+
+- [x] **Size the NP box before NP Frigate comes back — ✅ DONE 2026-10-08.** NP Frigate is live on brookside (porch 3.0 fps / 6.4 detect fps) on a 16 GB / 221 GB host sitting at 11% disk with 12.5 GB RAM available, up 5 d. Sizing is comfortable. (was §H-005) — (via weekly-docker-log-report 2026-10-08)
+
 
 - [x] **Deploy stats-collector on brookside — ✅ DONE 2026-10-05.** Native cron `5 * * * *` runs infra/stats-collector.sh → memory_reports/hourly_stats.csv (verified, 5 containers). Mac collector already retired. See budget-report-2026-10-05.md §6 — (via weekly-resource-budget 2026-10-05)
 
