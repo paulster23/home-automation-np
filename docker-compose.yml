@@ -38,7 +38,7 @@ services:
     deploy:
       resources:
         limits:
-          memory: 8m     # trimmed from 16m (2026-04-14) — avg 2m, max 11m; 8m still gives safe headroom
+          memory: 32m    # 8m -> 32m 2026-10-08: memcg OOM-killed at 00:51 (triggered by healthcheck exec) + 3 watchdog heals 10-07. 8m was below the old observed max of 11m.
           cpus: "0.5"
         reservations:
           memory: 8m
