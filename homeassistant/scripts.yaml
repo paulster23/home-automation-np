@@ -20,6 +20,7 @@ np_away:
                 entity_id: &np_units
                   - climate.np_living
                   - climate.np_kitchen
+                  - climate.np_back
               data:
                 hvac_mode: heat
             - action: climate.set_temperature
