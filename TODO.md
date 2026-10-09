@@ -13,6 +13,8 @@
 - [ ] **brookside mosquitto restarted ~10× in 7 d (4 on 10-07), exit 0, no watchdog heal — each one drops Frigate's MQTT.** Find the caller. See weekly-report-2026-10-08.html — (via weekly-docker-log-report 2026-10-08)
 - [ ] **`np_porch_camera_back_online_page` timed out 86× (+18 `np_kuma_heartbeat`) during the porch outage; now 3–5/day.** If it climbs, add `continue_on_error: true`. See weekly-report-2026-10-08.html — (via weekly-docker-log-report 2026-10-08)
 
+- [ ] **🟡 NP morning schedule — first live run 2026-10-10 08:00/09:00 (added 2026-10-09, Cowork).** Check the automation trace: both units heat ~69.8 at 08:00, ~67.1 at 09:00, no CHECK UNITS page. Kitchen Wi-Fi is the likely failure. See CONTEXT.md → NP morning schedule.
+
 - [ ] **🟡 NP "Heading to NP" — first real test 10-10/11 (added 2026-10-05, Cowork).** Note when the iPhone Arrive prompt fires vs arrival time; confirm `np_heading_arrived` cancelled `timer.np_heading_window` (trace) and units held 68/high/both; tune the ~40 mi geofence radius. Open: summer behaviour (cool to 68?). See CONTEXT.md → NP "Heading to NP".
 
 - [ ] **🟡 NEW 2026-10-04 — Face recognition — measure, train, then decide on detect resolution.** Live on front_window (see CONTEXT.md → Frigate). (1) Train Michelle + Broomhilda in Face Library → aim 20–30 images each, daylight, no IR. (2) After ~1 week read face sizes/scores in Recent Recognitions: if most faces < ~25 px, move `detect` to the main stream (scale person/car `min_area` ×4.5, check iGPU + 4 GiB cap) — record already pulls main, so no extra Wi-Fi. (3) Re-measure frigate mem vs new 4096m cap and `inference_speed` (14 ms right after enable vs 7–9 before). (4) Broomhilda high path not yet fired for real (low path + MQTT trigger verified with a test name).

@@ -1,0 +1,122 @@
+# ═══════════════════════════════════════════════════════════════
+# np_morning_schedule.yaml — NP morning warm-up (2026-10-09)
+#
+# Paul's ask: when we're at NP, living room + kitchen splits go to
+#   08:00 → 70 °F      09:00 → 67 °F
+# and nothing overrides manual changes for the rest of the day.
+#
+# Rules:
+#   - Runs only when binary_sensor.np_occupied is on (np_occupancy.yaml —
+#     anyone home, or the override forced to `occupied`).
+#   - Two time triggers, one write each. No state triggers, no re-assertion,
+#     no catch-up after an HA restart — a missed 08:00 is just skipped.
+#   - 08:00: units in `heat` or `off` → heat 70 °F. A unit someone put in
+#     cool / dry / fan_only / auto is left alone (summer, or a deliberate mode).
+#   - 09:00: only turns DOWN, only units in `heat` with a setpoint above 67 and
+#     no higher than 70 (the 08:00 value, or np_arrive's 68). A unit turned up
+#     past 70 or off between 08:00 and 09:00 is someone's adjustment — kept.
+#   - Fan and swing are never touched.
+#
+# Setpoints: the Serins work in 0.5 °C steps, so 70 °F lands as 69.8 °F and
+# 67 °F as 67.1 °F. Readback tolerance 0.6 °F, same as np_arrive. The 09:00
+# window's upper bound (70.3) admits 69.8 but not 70.7, the next step up.
+#
+# Writes are one unit at a time, 2 s apart (the CN105 dongles drop
+# back-to-back commands), 60 s readback, one resend, ntfy ONLY on failure.
+#
+# Adding units: extend `units` below (grep "climate.np_").
+# ═══════════════════════════════════════════════════════════════
+
+automation:
+  - id: np_morning_schedule
+    alias: "NP · Morning schedule (living room + kitchen)"
+    description: >-
+      08:00 heat 70 °F, 09:00 down to 67 °F, living room + kitchen, only when
+      binary_sensor.np_occupied is on. Fires once at each time and never
+      re-asserts, so manual changes during the day stand. See the header of
+      packages/np_morning_schedule.yaml for the per-unit skip rules.
+    mode: queued
+    max: 2
+    triggers:
+      - trigger: time
+        at: "08:00:00"
+        id: warm
+      - trigger: time
+        at: "09:00:00"
+        id: setback
+    conditions:
+      - condition: state
+        entity_id: binary_sensor.np_occupied
+        state: "on"
+    variables:
+      units:
+        - climate.np_living
+        - climate.np_kitchen
+      target: "{{ 70 if trigger.id == 'warm' else 67 }}"
+      todo: >-
+        {% set ns = namespace(l=[]) %}
+        {% for s in expand(units) %}
+          {% set sp = s.attributes.temperature | float(0) %}
+          {% if trigger.id == 'warm' and s.state in ['heat', 'off'] %}
+            {% set ns.l = ns.l + [s.entity_id] %}
+          {% elif trigger.id == 'setback' and s.state == 'heat' and 67.6 < sp <= 70.3 %}
+            {% set ns.l = ns.l + [s.entity_id] %}
+          {% endif %}
+        {% endfor %}{{ ns.l }}
+    actions:
+      - if: "{{ todo | count == 0 }}"
+        then:
+          - stop: "No unit qualifies — all adjusted, off at 09:00, or in another mode"
+      - repeat:
+          for_each: "{{ todo }}"
+          sequence:
+            - action: climate.set_temperature
+              continue_on_error: true
+              target:
+                entity_id: "{{ repeat.item }}"
+              data:
+                hvac_mode: heat
+                temperature: "{{ target }}"
+            - delay: 2
+      - delay: 60
+      - variables:
+          retry: &np_morning_mismatch >-
+            {% set ns = namespace(l=[]) %}
+            {% for s in expand(todo) %}
+              {% if s.state != 'heat'
+                    or ((s.attributes.temperature | float(0)) - target) | abs > 0.6 %}
+                {% set ns.l = ns.l + [s.entity_id] %}
+              {% endif %}
+            {% endfor %}{{ ns.l }}
+      - if: "{{ retry | count > 0 }}"
+        then:
+          - repeat:
+              for_each: "{{ retry }}"
+              sequence:
+                - action: climate.set_temperature
+                  continue_on_error: true
+                  target:
+                    entity_id: "{{ repeat.item }}"
+                  data:
+                    hvac_mode: heat
+                    temperature: "{{ target }}"
+                - delay: 2
+          - delay: 30
+      - variables:
+          failed: *np_morning_mismatch
+      - if: "{{ failed | count > 0 }}"
+        then:
+          - action: shell_command.np_notify
+            continue_on_error: true
+            data:
+              title: "NP morning schedule — CHECK UNITS"
+              priority: "high"
+              tags: "thermometer,warning"
+              message: >-
+                {{ trigger.id == 'warm' and '08:00 → 70 °F' or '09:00 → 67 °F' }} did not
+                confirm after one resend:
+                {% for s in expand(failed) -%}
+                {{ s.name }}: {{ s.state }}
+                {%- if s.state not in ['unavailable', 'unknown'] %} {{ s.attributes.temperature }}°F
+                (room {{ s.attributes.current_temperature }}°F){% endif %}
+                {% endfor %}

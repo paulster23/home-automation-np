@@ -329,6 +329,27 @@ that serve still points at the Mac's stopped HA.
 - Adding units: `units` in `np_arrive` and the list in `np_heading_no_show` (`grep climate.np_`).
 - iPhone side (2026-10-05): Shortcut **Heading to NP** = one *Get Contents of URL* action (Web → URLs → Show More), POST, JSON `source: shortcut`. Automation = **Arrive** at 75 Brookside Rd, radius ≈ 40 mi (the picker caps each edit; widened by saving and re-editing), Run After Confirmation. Arrive fires on entry only, so the drive home does not prompt. Phone path verified 21:16 (webhook hit, both units heating by 21:16:09).
 
+---
+
+### NP morning schedule — `packages/np_morning_schedule.yaml` (2026-10-09)
+
+Paul's ask: when at NP, living room + kitchen go to **70 °F at 08:00** and **67 °F at 09:00**, and
+**nothing overrides manual changes for the rest of the day.**
+
+- Gate: `binary_sensor.np_occupied` on (anyone home, or override `occupied`).
+- Two time triggers only. No state triggers, no re-assertion, no catch-up after an HA restart.
+- 08:00: units in `heat` or `off` → heat 70. Units in cool/dry/fan_only/auto are skipped.
+- 09:00: only turns DOWN — units in `heat` with setpoint in (67.6, 70.3] → 67. A unit turned up past
+  70, turned off, or switched mode between 08:00 and 09:00 is kept as adjusted. np_arrive's 68 is
+  lowered.
+- Fan and swing never touched. One unit at a time, 2 s apart; 60 s readback, one resend; ntfy
+  (`high`, "CHECK UNITS") **only on failure** — no daily success notes.
+- 0.5 °C steps: 70 °F reads back as 69.8, 67 °F as 67.1; tolerance 0.6 °F.
+- Verified 2026-10-09: check_config valid, `Initialized trigger`, unit-selection template
+  dry-run against live state. First live run 2026-10-10 08:00 (TODO).
+- Adding units: `units` in the automation (`grep climate.np_`).
+
+
 ## Dependency Map
 
 ```
