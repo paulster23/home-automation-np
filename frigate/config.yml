@@ -264,6 +264,45 @@ cameras:
 # ── Object tracking ───────────────────────────────────────────
 # Carried over from BK unchanged. Revisit at NP: `car` was tuned for a
 # Brooklyn street full of parked cars, which is not the NP problem.
+  back:
+    enabled: true    # Reolink Duo 3 WiFi (MAC 14:14:16:60:03:11, fixed .35), north wall at the kitchen/primary junction; added 2026-10-09
+    ffmpeg:
+      hwaccel_args: []   # CPU decode, same as porch (0.18 auto picks VAAPI, which broke on porch 2026-10-05). Only the 1536x432 sub is decoded.
+      input_args: preset-rtsp-restream
+      retry_interval: 10
+      inputs:
+        - path: 
+            rtsp://{FRIGATE_RTSP_USER}:{FRIGATE_RTSP_PASSWORD}@192.168.2.35:554/h264Preview_01_sub
+          input_args: -rtsp_transport tcp -timeout 5000000
+          roles:
+            - detect
+        - path: 
+            rtsp://{FRIGATE_RTSP_USER}:{FRIGATE_RTSP_PASSWORD}@192.168.2.35:554/h264Preview_01_main
+          input_args: -rtsp_transport tcp -timeout 5000000
+          roles:
+            - record    # main = HEVC 7680x2160 @15, copied not decoded; ~1.9 Mb/s indoors at setup (2026-10-09)
+    detect:
+      enabled: true
+      width: 1536
+      height: 432
+      fps: 5
+    record:
+      motion:
+        days: 2
+    objects:
+      track:
+        - person
+        - car
+        - cat
+        - dog
+        - bird
+        - bear
+    review:
+      alerts:
+        labels:
+          - person
+          - car
+
 objects:
   track:
     - person

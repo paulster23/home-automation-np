@@ -1,0 +1,73 @@
+# ═══════════════════════════════════════════════════════════════
+# np_back_camera_health.yaml — is the back camera (Reolink Duo 3 WiFi,
+# 192.168.2.35) actually streaming?
+#
+# Added 2026-10-09 with the camera. A copy of np_porch_camera_health.yaml —
+# read that file's header for the design: Frigate's own stats on MQTT
+# (frigate_np/stats, every 60 s); camera_fps > 0 = frames arriving end to end.
+# Both automations need a real on<->off transition, so a restart or reload
+# never pages. Paging via shell_command.np_notify (survives a BK outage).
+# ═══════════════════════════════════════════════════════════════
+
+template:
+  - triggers:
+      - trigger: mqtt
+        topic: "frigate_np/stats"
+    binary_sensor:
+      - name: "NP Back Camera Streaming"
+        unique_id: np_back_camera_streaming
+        device_class: connectivity
+        state: >-
+          {% set cams = trigger.payload_json.get('cameras', {}) if trigger.payload_json is mapping else {} %}
+          {{ (cams.get('back', {}).get('camera_fps', 0) | float(0)) > 0 }}
+        attributes:
+          camera_fps: >-
+            {% set cams = trigger.payload_json.get('cameras', {}) if trigger.payload_json is mapping else {} %}
+            {{ cams.get('back', {}).get('camera_fps', 0) | float(0) }}
+
+automation:
+  - id: np_back_camera_online_again
+    alias: "NP · Back camera online again (page)"
+    mode: single
+    triggers:
+      - trigger: state
+        entity_id: binary_sensor.np_back_camera_streaming
+        from: "off"
+        to: "on"
+    variables:
+      down_min: >-
+        {{ ((now() - trigger.from_state.last_changed).total_seconds() / 60) | round(0) | int }}
+    # Only page if the 10-min "offline" page also went out (same rule as porch, 2026-10-05).
+    conditions:
+      - condition: template
+        value_template: "{{ (now() - trigger.from_state.last_changed).total_seconds() >= 600 }}"
+    actions:
+      - action: shell_command.np_notify
+        continue_on_error: true
+        data:
+          title: "NP back camera online again"
+          message: >-
+            Frames flowing again ({{ state_attr('binary_sensor.np_back_camera_streaming', 'camera_fps') }} fps).
+            It was down about {{ down_min }} min.
+          priority: 4
+          tags: ["white_check_mark", "camera"]
+
+  - id: np_back_camera_offline
+    alias: "NP · Back camera offline 10 min (page)"
+    mode: single
+    triggers:
+      - trigger: state
+        entity_id: binary_sensor.np_back_camera_streaming
+        from: "on"
+        to: "off"
+        for: "00:10:00"
+    actions:
+      - action: shell_command.np_notify
+        continue_on_error: true
+        data:
+          title: "NP back camera offline"
+          message: >-
+            No frames from the back camera (Duo 3, .35) for 10 min. Usually its
+            12 V adapter or Wi-Fi. Frigate is still running.
+          priority: 4
+          tags: ["warning", "camera"]
