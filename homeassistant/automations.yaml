@@ -25,6 +25,8 @@
         - climate.np_living
         - climate.np_kitchen
         - climate.np_back
+        - climate.np_front
+        - climate.np_upstairs
       attribute: current_temperature
       below: 45
       for: "00:05:00"
@@ -35,6 +37,8 @@
           - climate.np_living
           - climate.np_kitchen
           - climate.np_back
+          - climate.np_front
+          - climate.np_upstairs
       data:
         hvac_mode: heat
     - action: climate.set_temperature
@@ -69,6 +73,8 @@
       entity_id:
         - climate.np_living
         - climate.np_back
+        - climate.np_front
+        - climate.np_upstairs
       to: "unavailable"
       for: "00:30:00"
     - trigger: state

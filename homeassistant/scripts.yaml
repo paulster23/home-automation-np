@@ -21,6 +21,8 @@ np_away:
                   - climate.np_living
                   - climate.np_kitchen
                   - climate.np_back
+                  - climate.np_front
+                  - climate.np_upstairs
               data:
                 hvac_mode: heat
             - action: climate.set_temperature
