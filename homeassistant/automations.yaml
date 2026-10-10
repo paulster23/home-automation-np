@@ -64,9 +64,8 @@
     freeze protection silently blind — the trigger above can never fire on an
     entity that is 'unavailable'. This is the watchdog for that blind spot.
     30 minutes tolerates a reboot or a brief AP blip.
-    TEMPORARY (2026-09-26, Paul): the kitchen dongle sits at ~-92 dBm and drops
-    off several times a night, so it gets 2 h until the NP network upgrade. Put
-    it back in the 30-minute list once the kitchen signal is fixed.
+    Kitchen had a temporary 2 h window (2026-09-26, ~-92 dBm); back to 30 min
+    2026-10-10 after the U7 Lite went in (kitchen -60 dBm on it).
   mode: single
   triggers:
     - trigger: state
@@ -75,13 +74,9 @@
         - climate.np_back
         - climate.np_front
         - climate.np_upstairs
-      to: "unavailable"
-      for: "00:30:00"
-    - trigger: state
-      entity_id:
         - climate.np_kitchen
       to: "unavailable"
-      for: "02:00:00"
+      for: "00:30:00"
   actions:
     - action: shell_command.np_notify
       continue_on_error: true
