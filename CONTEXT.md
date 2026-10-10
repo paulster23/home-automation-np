@@ -333,16 +333,18 @@ that serve still points at the Mac's stopped HA.
 
 ### NP morning schedule — `packages/np_morning_schedule.yaml` (2026-10-09)
 
-Paul's ask: when at NP, living room + kitchen go to **70 °F at 08:00** and **67 °F at 09:00**, and
+Paul's ask: when at NP, living room + kitchen go to **heat 70 °F, fan high, swing both at 08:00** and **67 °F, fan low,
+swing both at 09:00** (fan/swing added same evening), and
 **nothing overrides manual changes for the rest of the day.**
 
 - Gate: `binary_sensor.np_occupied` on (anyone home, or override `occupied`).
 - Two time triggers only. No state triggers, no re-assertion, no catch-up after an HA restart.
-- 08:00: units in `heat` or `off` → heat 70. Units in cool/dry/fan_only/auto are skipped.
+- 08:00: units in `heat` or `off` → heat 70 / high / both. Units in cool/dry/fan_only/auto are skipped.
 - 09:00: only turns DOWN — units in `heat` with setpoint in (67.6, 70.3] → 67. A unit turned up past
-  70, turned off, or switched mode between 08:00 and 09:00 is kept as adjusted. np_arrive's 68 is
-  lowered.
-- Fan and swing never touched. One unit at a time, 2 s apart; 60 s readback, one resend; ntfy
+  70, turned off, or switched mode between 08:00 and 09:00 is kept as adjusted (fan and swing too).
+  np_arrive's 68 is lowered.
+- Writes via `script.np_climate_apply` (setpoint, fan, swing, 2 s apart); 60 s readback of all
+  three, one resend; ntfy
   (`high`, "CHECK UNITS") **only on failure** — no daily success notes.
 - 0.5 °C steps: 70 °F reads back as 69.8, 67 °F as 67.1; tolerance 0.6 °F.
 - Verified 2026-10-09: check_config valid, `Initialized trigger`, unit-selection template
