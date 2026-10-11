@@ -2,9 +2,11 @@
 # np_heading.yaml — "Heading to NP" (2026-10-05)
 #
 # The iPhone decides WHEN: a Shortcuts personal automation ("Arrive" at a
-# point ~60 min from NP, Run After Confirmation) asks; tapping it POSTs to
-# the webhook below over Tailscale (https://brookside.tail317990.ts.net:18123).
-# Ignoring the prompt = no; nothing reaches HA.
+# ~40 mi circle round NP) POSTs to the webhook below over Tailscale
+# (https://brookside.tail317990.ts.net:18123). Since 2026-10-11 it runs
+# IMMEDIATELY (no confirmation): the prompt never surfaced while driving.
+# Opt-out instead: an np-info ntfy note with a "Not going" button that POSTs
+# to np_heading_cancel_webhook_id.
 #
 #   webhook   → script.np_arrive (heat 68 °F, fan high, swing both)
 #             → timer.np_heading_window (90 min) when the house is empty
@@ -52,6 +54,77 @@ automation:
       - action: script.turn_on
         target:
           entity_id: script.np_arrive
+      # 2026-10-11: the iPhone automation now runs WITHOUT confirmation (the
+      # prompt never reached Paul while driving with Waze/CarPlay, 10-09), so
+      # this note is the opt-OUT: one tap on the ntfy button cancels.
+      # np-info is not mirrored to ntfy.sh, so the cancel URL stays private.
+      - if:
+          - condition: state
+            entity_id: timer.np_heading_window
+            state: "active"
+        then:
+          - action: shell_command.np_notify
+            continue_on_error: true
+            data:
+              title: "Heading to NP — pre-heating"
+              priority: "default"
+              tags: "car,fire"
+              topic: !secret ntfy_topic_info
+              message: >-
+                Living room + kitchen splits heating to 68 °F. They turn off by
+                themselves if nobody arrives within 90 min. Not going? Tap below.
+              actions:
+                - action: http
+                  label: "Not going — turn off"
+                  url: !secret np_heading_cancel_url
+                  method: POST
+                  clear: true
+
+  - id: np_heading_cancel
+    alias: "NP · Heading to NP — cancelled from the ntfy button"
+    mode: single
+    max_exceeded: silent
+    triggers:
+      - trigger: webhook
+        webhook_id: !secret np_heading_cancel_webhook_id
+        allowed_methods: [POST]
+        local_only: false
+    actions:
+      - if:
+          - condition: state
+            entity_id: timer.np_heading_window
+            state: ["active", "paused"]
+        then:
+          - action: timer.cancel
+            target:
+              entity_id: timer.np_heading_window
+          - action: climate.set_hvac_mode
+            continue_on_error: true
+            target:
+              entity_id:
+                - climate.np_living
+                - climate.np_kitchen
+            data:
+              hvac_mode: "off"
+          - action: shell_command.np_notify
+            continue_on_error: true
+            data:
+              title: "NP pre-heat cancelled"
+              priority: "low"
+              tags: "house,zzz"
+              topic: !secret ntfy_topic_info
+              message: "Splits turned off. Freeze protection still applies."
+        else:
+          - action: shell_command.np_notify
+            continue_on_error: true
+            data:
+              title: "NP cancel ignored"
+              priority: "low"
+              tags: "house"
+              topic: !secret ntfy_topic_info
+              message: >-
+                No pre-heat window is running (already arrived, already
+                expired, or someone is home), so nothing was changed.
 
   - id: np_heading_arrived
     alias: "NP · Heading to NP — arrived, cancel no-show guard"

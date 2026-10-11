@@ -177,5 +177,5 @@ shell_command:
   np_notify: >-
     python3 /config/scripts/np_notify.py {{ {'title': title, 'message': message | default(''),
     'priority': priority | default('default'), 'tags': tags | default('house'),
-    'topic': topic | default('')} | to_json | base64_encode }}
+    'topic': topic | default(''), 'actions': actions | default([])} | to_json | base64_encode }}
   np_notify_flush: "python3 /config/scripts/np_notify.py --flush"

@@ -9,6 +9,7 @@ Re-sent by:       shell_command.np_notify_flush  (automation np_porch_flush, eve
     data: {title, message, priority, tags, [topic]}
       priority  min|low|default|high|urgent or 1-5   (default: default)
       tags      "a,b" or ["a", "b"]                  (default: house)
+      actions   optional list of ntfy action dicts (2026-10-11, used by np_heading)
       topic     optional; default ntfy_topic_page -- the same topic the old
                 rest_command.ntfy always posted to, so routing is unchanged.
 
@@ -87,6 +88,7 @@ def normalise(n):
         "priority": max(1, min(5, prio)),
         "tags": tags,
         "topic": str(n.get("topic") or PAGE_TOPIC),
+        "actions": n.get("actions") if isinstance(n.get("actions"), list) else [],
     }
 
 
@@ -98,8 +100,11 @@ def post(target, n, late_from=None):
     title = n["title"]
     if late_from:
         title += f" [late, queued {time.strftime('%H:%M', time.localtime(late_from))}]"
-    body = json.dumps({"topic": topic, "title": title, "message": n["message"],
-                       "priority": n["priority"], "tags": n["tags"]}).encode("utf-8")
+    payload = {"topic": topic, "title": title, "message": n["message"],
+               "priority": n["priority"], "tags": n["tags"]}
+    if n.get("actions"):                   # ntfy action buttons (2026-10-11), max 3
+        payload["actions"] = n["actions"][:3]
+    body = json.dumps(payload).encode("utf-8")
     req = urllib.request.Request(root + "/", data=body, method="POST",
                                  headers={"Content-Type": "application/json"})
     urllib.request.urlopen(req, timeout=TIMEOUT).read()
