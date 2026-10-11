@@ -286,22 +286,74 @@ cameras:
       width: 1536
       height: 432
       fps: 5
+    # ── 2026-10-11 (Paul): wildlife camera. Few alerts, animals as detections,
+    # porch-like retention. Before this it motion-recorded the 8K main stream
+    # ~37 GB/day (umbrella, tarp, wet deck rail, canopy in wind/rain).
     record:
       motion:
-        days: 2
+        days: 2            # same as porch
+      detections:
+        retain:
+          days: 14         # wildlife clips kept 2 weeks here only (global 2)
+    motion:
+      mask:
+        umbrella:
+          friendly_name: "Patio umbrella"
+          enabled: true
+          coordinates: "0,0,0.14,0,0.14,0.22,0,0.22"
+        deck_foreground:
+          friendly_name: "Tarp + deck rail"
+          enabled: true
+          coordinates: "0,0.22,0.27,0.22,0.27,0.55,0.32,0.56,0.48,1,0,1"
+        house_wall:
+          friendly_name: "House wall + window"
+          enabled: true
+          coordinates: "0.78,0,1,0,1,1,0.78,1"
+        timestamp:
+          friendly_name: "OSD timestamp"
+          enabled: true
+          coordinates: "0.36,0,0.63,0,0.63,0.1,0.36,0.1"
+        canopy:
+          friendly_name: "Tree canopy above the treeline"
+          enabled: true
+          coordinates: "0.14,0,0.78,0,0.78,0.38,0.27,0.38,0.27,0.22,0.14,0.22"
     objects:
+      # COCO-80 has no deer: deer usually land as dog / horse / sheep / cow.
       track:
         - person
-        - car
+        - bird
         - cat
         - dog
-        - bird
+        - horse
+        - sheep
+        - cow
         - bear
+      filters:
+        dog:   {min_score: 0.3, threshold: 0.5}
+        cat:   {min_score: 0.3, threshold: 0.5}
+        horse: {min_score: 0.3, threshold: 0.5}
+        sheep: {min_score: 0.3, threshold: 0.5}
+        cow:   {min_score: 0.3, threshold: 0.5}
+        bird:  {min_score: 0.4, threshold: 0.55}
+        bear:  {min_score: 0.5, threshold: 0.6}
+        person: {min_area: 700, min_score: 0.5, threshold: 0.6}
+    snapshots:
+      enabled: true
+      retain:
+        default: 14
     review:
       alerts:
-        labels:
+        labels:            # only these become alerts; every animal is a detection
           - person
-          - car
+          - bear
+      detections:
+        labels:
+          - bird
+          - cat
+          - dog
+          - horse
+          - sheep
+          - cow
 
 objects:
   track:
