@@ -95,9 +95,17 @@ automation:
             entity_id: timer.np_heading_window
             state: ["active", "paused"]
         then:
+          # Stop np_arrive FIRST: inside its 60 s readback it would otherwise see
+          # the units off and resend heat (happened in testing 2026-10-11 18:12).
+          - action: script.turn_off
+            target:
+              entity_id:
+                - script.np_arrive
+                - script.np_climate_apply
           - action: timer.cancel
             target:
               entity_id: timer.np_heading_window
+          - delay: 2
           - action: climate.set_hvac_mode
             continue_on_error: true
             target:

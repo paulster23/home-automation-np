@@ -30,6 +30,30 @@
       attribute: current_temperature
       below: 45
       for: "00:05:00"
+      id: crossed
+    # 2026-10-11 (Paul: units stay OFF when away, freeze protection is the
+    # backstop, and he must be alerted). numeric_state fires only on a CROSSING,
+    # so a unit already under 45 at HA start would never trigger. These re-check
+    # every 15 min and at startup, and act only if a unit is cold AND not heating.
+    - trigger: homeassistant
+      event: start
+      id: recheck
+    - trigger: time_pattern
+      minutes: "/15"
+      id: recheck
+  conditions:
+    - condition: or
+      conditions:
+        - condition: trigger
+          id: crossed
+        - condition: template
+          value_template: >-
+            {{ expand('climate.np_living', 'climate.np_kitchen', 'climate.np_back',
+                      'climate.np_front', 'climate.np_upstairs')
+               | selectattr('attributes.current_temperature', 'defined')
+               | rejectattr('attributes.current_temperature', 'none')
+               | selectattr('attributes.current_temperature', 'lt', 45)
+               | rejectattr('state', 'eq', 'heat') | list | count > 0 }}
   actions:
     - action: climate.set_hvac_mode
       target:
@@ -53,8 +77,13 @@
         priority: "urgent"
         tags: "rotating_light,snowflake"
         message: >-
-          {{ trigger.to_state.name }} read
-          {{ trigger.to_state.attributes.current_temperature }}°F.
+          {% set cold = expand('climate.np_living', 'climate.np_kitchen', 'climate.np_back',
+                               'climate.np_front', 'climate.np_upstairs')
+             | selectattr('attributes.current_temperature', 'defined')
+             | rejectattr('attributes.current_temperature', 'none')
+             | selectattr('attributes.current_temperature', 'lt', 45) | list %}
+          {% for s in cold %}{{ s.name }} {{ s.attributes.current_temperature }}°F{{ ', ' if not loop.last }}{% endfor %}
+          {%- if not cold %}A unit read under 45°F{% endif %}.
           All New Paltz units forced to heat 55°F.
 
 - id: np_climate_unavailable
