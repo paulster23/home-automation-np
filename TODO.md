@@ -1,6 +1,6 @@
 # Home Automation — To-Do List
 
-*Last updated: 2026-10-08 (weekly-docker-log-report)*
+*Last updated: 2026-10-13 (weekly-disk-health)*
 
 > **Structure rule (2026-07-28):** sections in order — Pending → Watching/deferred → Future → Completed (newest first, max ~10; older items go to `archive/TODO-completed.md` in this repo). **Scheduled-task appends must be ≤300 chars + a pointer** to the full report/TROUBLESHOOTING entry — no inline essays.
 >
@@ -9,6 +9,9 @@
 ---
 
 ## Pending
+
+- [ ] **Watch brookside root: Frigate spiked it 21→94 GB (10-09→10-12), now 58 GB falling; confirm plateau (~41 GB Frigate) by 10-20; flag >110 GB.** See infra/disk_reports/disk-health-2026-10-13.md §3 — (via weekly-disk-health 2026-10-13)
+- [ ] **Watch brookside frigate drift — 46%/67% of 3 GiB, +11.6 half-over-half (young series).** No restart cron here; if it climbs toward cap over 1–2 wk add woodhull's weekly `docker restart frigate`. See budget-report-2026-10-12.md §6 — (via weekly-resource-budget 2026-10-12)
 
 - [ ] **brookside mosquitto restarted ~10× in 7 d (4 on 10-07), exit 0, no watchdog heal — each one drops Frigate's MQTT.** Find the caller. See weekly-report-2026-10-08.html — (via weekly-docker-log-report 2026-10-08)
 - [ ] **`np_porch_camera_back_online_page` timed out 86× (+18 `np_kuma_heartbeat`) during the porch outage; now 3–5/day.** If it climbs, add `continue_on_error: true`. See weekly-report-2026-10-08.html — (via weekly-docker-log-report 2026-10-08)
