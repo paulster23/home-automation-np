@@ -26,7 +26,6 @@
 - [x] **✅ DONE 2026-10-08: token in `secrets/ha-np.env` (HA_URL + HA_TOKEN, 600, gitignored); /api/ → 200.** ~~NP HA long-lived token missing on brookside~~ — `secrets/ha.env` there is Brooklyn's (`192.168.1.71`), so NP HA's API returns 401 and automation reloads need a container restart. Create a token in NP HA and write a separate `ha-np.env`. — (via Cowork 2026-10-05)
 - [x] **✅ CLOSED 2026-10-06 (Cowork): not stale — an MCP quirk.** `unifi_list_clients` live (no `include_offline`) shows Porch online, -44 dBm, sinola 2.4, last_seen now; `search` + `include_offline=true` returns the historical /rest/user record whose status is computed from an old last_seen. Use the live list. ~~**`unifi-brookside` looks stale** — lists Porch offline since 10-04 02:00 ET and returns 0 events in 24 h while the camera streams at 3 fps. Check the MCP's controller/site config. — (via Cowork 2026-10-05)~~
 
-- [ ] **HA windmillac integration failing and climbing — 120 errors/7 d** (`dashboard.windmillair.com` max retries), 15→30→35 a day 09-28→09-30, after the WAN settled. Re-auth or remove the component. — **2026-10-08: WORSE — 175 error lines/7 d (84+82+9) vs 120 at tagging; two unbroken weeks of `Max retries exceeded`, ~1/10th of this host's HA error volume. Re-auth, or remove the component if the vendor API is gone. See weekly-report-2026-10-08.html** — (via weekly-docker-log-report 2026-10-08)
 
 - [x] **✅ DONE 2026-10-08: 32m on both hosts — brookside 742bbab, woodhull home-automation 2e10d22 (recreated 18:55, healthy, MQTT clients back).** ~~woodhull mosquitto cap 8->16 MiB — `OOMKilled=true`, now `RestartCount=1` (killed 10-01 03:14 UTC; cap still 8388608).** Set `mem_limit: 16m` and recreate on BOTH hosts — brookside carries the same 8 MiB cap. See weekly-report-2026-10-08.html — (via homelab-advisor 2026-09-30) (via weekly-docker-log-report 2026-10-08) → full text: `archive/TODO-detail.md` §H-001
 
@@ -109,6 +108,8 @@
 ---
 
 ## ✅ Completed
+
+- [x] **HA windmillac errors — ✅ CLOSED 2026-10-13: integration disabled for the season.** The Windmill AC is off for the cool weather (Paul), so `dashboard.windmillair.com` retries were expected noise. Config entry `01KZACV45SHCFK4F416N0XBEFN` on **woodhull's (Brooklyn) HA** set `disabled_by: user` via the config-entries API, no restart; 0 windmill log lines in the next 3 min. Re-enable in spring: Settings → Devices & services → Windmill → Enable. NB: this item was filed in the NP repo's TODO but is a Brooklyn issue.
 
 - [x] **Size the NP box before NP Frigate comes back — ✅ DONE 2026-10-08.** NP Frigate is live on brookside (porch 3.0 fps / 6.4 detect fps) on a 16 GB / 221 GB host sitting at 11% disk with 12.5 GB RAM available, up 5 d. Sizing is comfortable. (was §H-005) — (via weekly-docker-log-report 2026-10-08)
 
