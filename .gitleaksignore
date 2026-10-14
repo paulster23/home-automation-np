@@ -14,6 +14,7 @@
 # in git history permanently. These entries stop the findings blocking every
 # push; they are not a statement that the credentials are safe.
 #
+# ✅ 2026-10-13: ALL FOUR NOW DEAD — both HA tokens deleted, the TLS key long replaced (TODO-detail §H-012).
 # THE FIX IS ROTATION, NOT HISTORY REWRITING. Rotating renders the historical
 # value worthless in one step, with none of the risk of rewriting history.
 # Tracked in home-automation/TODO.md → "Rotate credentials left in git history".

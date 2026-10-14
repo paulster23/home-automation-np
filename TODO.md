@@ -57,7 +57,7 @@
 
 - [ ] **Voice PE `0a3a76` esp32 crash — `Fault - IllegalInstruction` at `speaker_source_media_player:222`.** 2026-10-08: quiet — 27 lines/7 d (vs 4,320 on 09-29); still not reflashed. — (via homelab-advisor 2026-09-02) (via weekly-docker-log-report 2026-10-08) → full text: `archive/TODO-detail.md` §H-011
 
-- [ ] **Rotate credentials left in git history — found 2026-08-09 by the repo's first full-history `gitleaks git` scan (4 findings).** → full text: `archive/TODO-detail.md` §H-012
+- [x] **Rotate credentials left in git history — ✅ CLOSED 2026-10-13.** Both HA long-lived tokens (voice_performance, speech-to-phrase — still valid on woodhull's BK HA until then) deleted by Paul; refresh-token ids verified gone from `.storage/auth`. The leaked mkcert privkey was already replaced and nothing mounts `certs/`. No history rewrite. Originally: found 2026-08-09 by the repo's first full-history `gitleaks git` scan (4 findings). → full text: `archive/TODO-detail.md` §H-012
 
 - [ ] **stream_health logger writes bogus pipe_stall duration.** — (via homelab-advisor 2026-08-19) (via homelab-advisor 2026-09-02) → full text: `archive/TODO-detail.md` §H-013
 
