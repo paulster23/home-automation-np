@@ -109,7 +109,7 @@
 
 ## ✅ Completed
 
-- [x] **HA windmillac errors — ✅ CLOSED 2026-10-13: integration disabled for the season.** The Windmill AC is off for the cool weather (Paul), so `dashboard.windmillair.com` retries were expected noise. Config entry `01KZACV45SHCFK4F416N0XBEFN` on **woodhull's (Brooklyn) HA** set `disabled_by: user` via the config-entries API, no restart; 0 windmill log lines in the next 3 min. Re-enable in spring: Settings → Devices & services → Windmill → Enable. NB: this item was filed in the NP repo's TODO but is a Brooklyn issue.
+- [x] **HA windmillac errors — ✅ CLOSED 2026-10-13: integration kept ENABLED year-round, logger at critical.** Root cause: SSLEOFError/timeouts to dashboard.windmillair.com during Brooklyn WAN drops (cloud_polling every 60 s), not the unit being off. Paul uses the AC seasonally and wants HA to pick it up again with no re-config, so the entry stays enabled and `custom_components.windmillac: critical` (woodhull's BK repo `home-automation`, configuration.yaml). Trade-off: a real API break is silent too — the sign is climate.windmill_ac staying unavailable in spring. Filed here in the NP repo but it is a Brooklyn item.
 
 - [x] **Size the NP box before NP Frigate comes back — ✅ DONE 2026-10-08.** NP Frigate is live on brookside (porch 3.0 fps / 6.4 detect fps) on a 16 GB / 221 GB host sitting at 11% disk with 12.5 GB RAM available, up 5 d. Sizing is comfortable. (was §H-005) — (via weekly-docker-log-report 2026-10-08)
 
