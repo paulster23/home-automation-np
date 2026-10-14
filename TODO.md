@@ -1,6 +1,6 @@
 # Home Automation — To-Do List
 
-*Last updated: 2026-10-13 (weekly-disk-health)*
+*Last updated: 2026-10-14 (homelab-advisor)*
 
 > **Structure rule (2026-07-28):** sections in order — Pending → Watching/deferred → Future → Completed (newest first, max ~10; older items go to `archive/TODO-completed.md` in this repo). **Scheduled-task appends must be ≤300 chars + a pointer** to the full report/TROUBLESHOOTING entry — no inline essays.
 >
@@ -13,7 +13,6 @@
 - [ ] **Watch brookside root: Frigate spiked it 21→94 GB (10-09→10-12), now 58 GB falling; confirm plateau (~41 GB Frigate) by 10-20; flag >110 GB.** See infra/disk_reports/disk-health-2026-10-13.md §3 — (via weekly-disk-health 2026-10-13)
 - [ ] **Watch brookside frigate drift — 46%/67% of 3 GiB, +11.6 half-over-half (young series).** No restart cron here; if it climbs toward cap over 1–2 wk add woodhull's weekly `docker restart frigate`. See budget-report-2026-10-12.md §6 — (via weekly-resource-budget 2026-10-12)
 
-- [ ] **brookside mosquitto restarted ~10× in 7 d (4 on 10-07), exit 0, no watchdog heal — each one drops Frigate's MQTT.** Find the caller. See weekly-report-2026-10-08.html — (via weekly-docker-log-report 2026-10-08)
 - [ ] **`np_porch_camera_back_online_page` timed out 86× (+18 `np_kuma_heartbeat`) during the porch outage; now 3–5/day.** If it climbs, add `continue_on_error: true`. See weekly-report-2026-10-08.html — (via weekly-docker-log-report 2026-10-08)
 
 - [ ] **🟡 NP morning schedule — first live run 2026-10-10 08:00/09:00 (added 2026-10-09, Cowork).** Check the automation trace: both units heat ~69.8/high/both at 08:00, ~67.1/low/both at 09:00, no CHECK UNITS page. Kitchen Wi-Fi is the likely failure. See CONTEXT.md → NP morning schedule.
@@ -21,7 +20,10 @@
 - [ ] **🟡 NP "Heading to NP" — first real test 10-10/11 (added 2026-10-05, Cowork).** Note when the iPhone Arrive prompt fires vs arrival time; confirm `np_heading_arrived` cancelled `timer.np_heading_window` (trace) and units held 68/high/both; tune the ~40 mi geofence radius. Open: summer behaviour (cool to 68?). See CONTEXT.md → NP "Heading to NP".
 
 - [ ] **🟡 NEW 2026-10-04 — Face recognition — measure, train, then decide on detect resolution.** Live on front_window (see CONTEXT.md → Frigate). (1) Train Michelle + Broomhilda in Face Library → aim 20–30 images each, daylight, no IR. (2) After ~1 week read face sizes/scores in Recent Recognitions: if most faces < ~25 px, move `detect` to the main stream (scale person/car `min_area` ×4.5, check iGPU + 4 GiB cap) — record already pulls main, so no extra Wi-Fi. (3) Re-measure frigate mem vs new 4096m cap and `inference_speed` (14 ms right after enable vs 7–9 before). (4) Broomhilda high path not yet fired for real (low path + MQTT trigger verified with a test name).
+- [ ] **Confirm + document the new NP `back` camera on brookside Frigate (streaming 5.1 cam fps since the 10-09/11 visit) — brookside Frigate now runs 2 cameras, not 1; fold it into the 3 GiB mem + root-disk watches. See advisor-2026-10-14.html §4.** — (via homelab-advisor 2026-10-14)
+
 - [ ] **🔴 NP porch cam RTSP down — Frigate ffmpeg crash loop, 5,132 crashes on 10-01** (132 on 09-27, 1,165 on 09-30); `192.168.2.34:554` refused. Paging is blind. Fix the lease/RTSP in NP UniFi, or set `enabled: false`. See weekly-report-2026-10-01.html — (via weekly-docker-log-report 2026-10-01) **2026-10-06 (Cowork): recurred** — ffmpeg exit/refused loop ran continuously 10-03→10-05 (~3,800 lines/day, 110-210/h) and stopped when the frigate container was recreated 10-05 22:23 ET; 0 errors in the 17 h since, porch 3.1 fps. A Frigate restart clears it; cause still unknown (camera RTSP server wedging?). Watch the next weekly log report before building an auto-restart. — **2026-10-08: NEAR-RESOLVED, and it was not just the restart.** Errors/day 5,529 (10-03) → 3,808 → 3,782 → 446 (10-06) → 17 (10-07) → 1 (10-08); clean 17 h, porch 3.0 fps. Two real fixes landed: `hwaccel_args: []` (CPU decode) on 10-05 and the 10-07 15:25 UTC restart carrying the YOLOv9-t/OpenVINO swap (`f710785`). No auto-restart needed — confirm clean next week, then CLOSE. See weekly-report-2026-10-08.html — (via weekly-docker-log-report 2026-10-08)**
+  - **2026-10-14 (homelab-advisor):** re-spiked during the 10-09/11 NP visit (5,930→1,965→128 crashes/day) then clean since 10-11, porch 3.1 fps — visit churn, not a regression. Confirm 1 more clean week then CLOSE. See advisor-2026-10-14.html §4.
   - **2026-10-05 (Cowork):** brookside-era crash loop was a different cause — VAAPI `hwdownload` failures, 2,180 crashes 10-03→10-05. Fixed with porch `hwaccel_args: []` (home-automation-np `1386af0`). The 10-01 Mac-era `192.168.2.34:554 refused` cause was not seen on brookside. Close this item once 48 h of porch logs show no crash loop. See TROUBLESHOOTING 2026-10-05.
 - [x] **✅ DONE 2026-10-08: token in `secrets/ha-np.env` (HA_URL + HA_TOKEN, 600, gitignored); /api/ → 200.** ~~NP HA long-lived token missing on brookside~~ — `secrets/ha.env` there is Brooklyn's (`192.168.1.71`), so NP HA's API returns 401 and automation reloads need a container restart. Create a token in NP HA and write a separate `ha-np.env`. — (via Cowork 2026-10-05)
 - [x] **✅ CLOSED 2026-10-06 (Cowork): not stale — an MCP quirk.** `unifi_list_clients` live (no `include_offline`) shows Porch online, -44 dBm, sinola 2.4, last_seen now; `search` + `include_offline=true` returns the historical /rest/user record whose status is computed from an old last_seen. Use the live list. ~~**`unifi-brookside` looks stale** — lists Porch offline since 10-04 02:00 ET and returns 0 events in 24 h while the camera streams at 3 fps. Check the MCP's controller/site config. — (via Cowork 2026-10-05)~~
@@ -108,6 +110,8 @@
 ---
 
 ## ✅ Completed
+
+- [x] **brookside mosquitto restarted ~10× in 7 d — ✅ RESOLVED by evidence 2026-10-14 (homelab-advisor).** 0 restarts since the 10-10 closet-move reboot (RestartCount=0, stable 4 d); cap now 32 m (10-08). The 10-01→08 cluster (4 on 10-07) was visit-prep/migration churn — caller never confirmed, symptom gone. Reopen if Frigate MQTT drops recur. See advisor-2026-10-14.html §1.
 
 - [x] **HA windmillac errors — ✅ CLOSED 2026-10-13: durable year-round setup (BK home-automation d8abad1).** Off/unplugged never caused errors (Blynk returns last values); all errors were the cloud unreachable during BK WAN drops. Integration stays enabled; `binary_sensor.windmill_ac_connected` (Blynk isHardwareConnected, 5 min, !secret windmill_token) gates the 7am/1am schedule so removing the unit in fall stops it and reinstalling resumes it; logger filters drop only cloud-unreachable lines (255/255 of last week). Nothing to do each season. Filed in the NP repo but it is a Brooklyn item.
 
