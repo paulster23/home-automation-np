@@ -90,3 +90,6 @@ homeassistant.bk-clone-*/
 esphome/secrets.yaml
 esphome/build/
 esphome/.esphome/
+
+# ── Zigbee2MQTT runtime data (network key, coordinator backup, secrets) ──
+zigbee2mqtt/data/

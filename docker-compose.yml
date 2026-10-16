@@ -217,6 +217,53 @@ services:
         max-size: "10m"
         max-file: "3"
 
+  # ──────────────────────────────────────────────
+  # Zigbee2MQTT — NP leak sensors, pipe temp, Aqara T1 main-water valve, TR plugs
+  # Coordinator: SLZB-06MU (EFR32MG21, ember) over TCP at 192.168.2.40:6638
+  #   (PoE, closet switch port 3, UniFi DHCP reservation). Added 2026-10-15.
+  # Frontend: http://192.168.2.72:8080 (LAN only, auth_token in data/secret.yaml)
+  # Data dir is gitignored: network key + coordinator_backup.json are in it —
+  #   nightly backup-configs → restic is the only copy off this box.
+  # Resource estimate: ~120–180 MiB RSS (node), negligible CPU → 256m cap.
+  # ──────────────────────────────────────────────
+  zigbee2mqtt:
+    container_name: zigbee2mqtt
+    image: koenkk/zigbee2mqtt:2.14.2
+    restart: unless-stopped
+    user: "1000:1000"
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    depends_on:
+      mosquitto:
+        condition: service_started
+    ports:
+      - "${HOST_IP:?set HOST_IP in .env}:8080:8080"
+    volumes:
+      - ./zigbee2mqtt/data:/app/data
+    environment:
+      TZ: America/New_York
+    networks:
+      - home-automation
+    healthcheck:
+      # The failure/onboarding page is also served on 8080 — a bare wget would call a refused start healthy.
+      test: ["CMD-SHELL", "wget -q -O /tmp/hc http://127.0.0.1:8080 && ! grep -q Onboarding /tmp/hc"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 60s
+    deploy:
+      resources:
+        limits:
+          memory: 256m
+          cpus: "1.0"
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
 # ──────────────────────────────────────────────
 # Shared Docker network — all services can reach
 # each other by container name (e.g. "mosquitto")

@@ -1,0 +1,30 @@
+# Zigbee2MQTT — New Paltz (brookside). Seed config 2026-10-15.
+# Example — real file is zigbee2mqtt/data/configuration.yaml (gitignored).
+# Z2M rewrites this file at runtime (devices/groups) — the tracked copy is zigbee2mqtt/configuration.example.yaml.
+version: 5
+homeassistant:
+  enabled: true
+mqtt:
+  base_topic: zigbee2mqtt
+  server: mqtt://mosquitto:1883
+  user: zigbee2mqtt
+  password: '!secret.yaml mqtt_password'
+serial:
+  # SLZB-06MU over Ethernet/PoE, closet switch port 3, UniFi reservation 192.168.2.40
+  port: tcp://192.168.2.40:6638
+  adapter: ember
+advanced:
+  channel: 15          # clear of NP Wi-Fi 2.4 GHz (UX7 ch 1, U7 ch 11). Changing it later means re-pairing everything.
+  network_key: '!secret.yaml network_key'
+  pan_id: <inline, see data/configuration.yaml>
+  ext_pan_id: <inline>
+  log_level: info
+  log_output:
+    - console
+  last_seen: ISO_8601
+availability:
+  enabled: true
+frontend:
+  enabled: true
+  port: 8080
+  auth_token: '!secret.yaml frontend_token'
