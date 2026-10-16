@@ -1,6 +1,6 @@
 # Home Automation — To-Do List
 
-*Last updated: 2026-10-15 (weekly-docker-log-report)*
+*Last updated: 2026-10-15 (Cowork — NP Zigbee)*
 
 > **Structure rule (2026-07-28):** sections in order — Pending → Watching/deferred → Future → Completed (newest first, max ~10; older items go to `archive/TODO-completed.md` in this repo). **Scheduled-task appends must be ≤300 chars + a pointer** to the full report/TROUBLESHOOTING entry — no inline essays.
 >
@@ -9,6 +9,11 @@
 ---
 
 ## Pending
+
+- [ ] **🔴 NP Zigbee leak shutoff — finish Fri 2026-10-16 (Cowork).** Z2M live on brookside since 10-15 (70709b3); 4 plugs, 4 leak, 1 temp, valve `np_valve_main` paired. Valve mounted on WRONG pipe 10-15 — move to main, on-pipe OFF/ON test, place sensors, rename by wet test, write automations. Plan: project doc `claude/NP_ZIGBEE_DAY2_PLAN.md`.
+- [ ] **Z2M: leak sensors (3RWS18BZ) report powerSource "Mains" → actively pinged, falsely marked offline when asleep.** Switch them to passive availability before the leak watchdog uses `unavailable`. Also logs `Failed to configure … genOnOff` (harmless, alarm path proven). §NP_ZIGBEE_PREP_PLAN_A quirks.
+- [ ] **Z2M: decide coordinator location from the network map once devices are in final spots** (Ethernet run to the house centre/basement vs keep the closet). Valve currently routes via plug …1765, LQI 122. 
+- [ ] **Buy remaining sensors:** 4 leak (kitchen sink, dishwasher, each bathroom) + 5 temp. Sinopé TH1300ZB floor-heat thermostat still waiting for restock. See `claude/NP_SAFETY_SENSORS_PLAN.md`.
 
 - [ ] **Camera-level health probe at NP — container health is blind to dead cameras.** `back` (.35) crash-looped 2 d, 8,864 watchdog restarts, while service-watchdog and Kuma #44 read `frigate=healthy`. Alert on camera_fps=0 or no new mp4 in 10 min. §M4 — (via weekly-docker-log-report 2026-10-15)
 - [ ] **🔑 Rotate the Windmill dashboard token; stop HA logging it.** `custom_components.windmillac` printed the full URL incl. `token=` 179× in 7 d into `log-reports/homeassistant.log`. Redact the query string or filter `token=`. §M3 — (via weekly-docker-log-report 2026-10-15)
