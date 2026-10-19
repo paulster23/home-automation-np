@@ -1,0 +1,79 @@
+# ═══════════════════════════════════════════════════════════════
+# np_leak_alerts.yaml — urgent page whenever ANY moisture sensor goes wet.
+#
+# Added 2026-10-18 at Paul's request ("urgent alert on ntfy any time a
+# moisture sensor goes off").
+#
+# Trigger is state_changed filtered on device_class: moisture, not a list of
+# entity ids: the four Third Reality sensors still carry their IEEE names
+# (renaming to np_leak_<spot> is pending) and more sensors may be bought.
+# A rename or a new sensor is covered with no edit here.
+#
+# Fires on any transition INTO "on" from anything but "on" — including
+# unavailable/unknown -> on, so a leak that started while a sensor or HA was
+# down still pages (a duplicate page after a restart mid-leak is accepted).
+# mode: parallel so a second wet sensor pages too.
+#
+# Paging via shell_command.np_notify (woodhull ntfy + ntfy.sh mirror + retry
+# queue) — survives a Brooklyn WAN outage.
+#
+# This is ALERTING ONLY. It does not touch switch.np_valve_main; the
+# automatic shutoff (np_leak_shutoff) waits on the on-pipe valve test.
+# ═══════════════════════════════════════════════════════════════
+
+automation:
+  - id: np_leak_alert
+    alias: "NP · Water leak detected (urgent page)"
+    mode: parallel
+    max: 20
+    triggers:
+      - trigger: event
+        event_type: state_changed
+    conditions:
+      - condition: template
+        value_template: >-
+          {% set n = trigger.event.data.new_state %}
+          {% set o = trigger.event.data.old_state %}
+          {{ n is not none
+             and n.domain == 'binary_sensor'
+             and n.attributes.get('device_class') == 'moisture'
+             and n.state == 'on'
+             and (o is none or o.state != 'on') }}
+    actions:
+      - action: shell_command.np_notify
+        continue_on_error: true
+        data:
+          title: "NP WATER LEAK"
+          priority: "urgent"
+          tags: "rotating_light,droplet"
+          message: >-
+            {{ trigger.event.data.new_state.name }} is WET
+            ({{ trigger.event.data.entity_id }}) at
+            {{ now().strftime('%H:%M') }}. Main water is NOT auto-closed yet.
+
+  - id: np_leak_cleared
+    alias: "NP · Water leak sensor dry again (note)"
+    mode: parallel
+    max: 20
+    triggers:
+      - trigger: event
+        event_type: state_changed
+    conditions:
+      - condition: template
+        value_template: >-
+          {% set n = trigger.event.data.new_state %}
+          {% set o = trigger.event.data.old_state %}
+          {{ n is not none and o is not none
+             and n.domain == 'binary_sensor'
+             and n.attributes.get('device_class') == 'moisture'
+             and o.state == 'on' and n.state == 'off' }}
+    actions:
+      - action: shell_command.np_notify
+        continue_on_error: true
+        data:
+          title: "NP leak sensor dry"
+          priority: "default"
+          tags: "droplet,white_check_mark"
+          message: >-
+            {{ trigger.event.data.new_state.name }} reads dry again
+            ({{ trigger.event.data.entity_id }}). Check the spot in person.
