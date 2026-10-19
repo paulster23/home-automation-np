@@ -1,11 +1,13 @@
 # New Paltz · Serin CN105 controller · kitchen
 # Shared config: common/serin-np.yaml. Build + OTA recipe: see that file and project notes.
 # Name chosen so HA generates climate.np_kitchen — the ID the NP automations reference.
+# 2026-10-18: Govee A4:C1:38:30:75:41 moved to the back bedroom; kitchen runs on its own thermistor
+# (switch.np_kitchen_use_govee_sensor off). Re-add a sensor here when one is bought.
 
 substitutions:
   name: np-kitchen
   friendly_name: "NP Kitchen"
-  govee_mac: "A4:C1:38:30:75:41"
+  govee_mac: ""
 
 api:
   encryption:

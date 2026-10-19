@@ -1,12 +1,14 @@
 # New Paltz · Serin CN105 controller · back bedroom ("NP Back", named by Paul 2026-10-08)
-# Shared config: common/serin-np.yaml. No Govee in this room (unit keeps its own thermistor).
+# Shared config: common/serin-np.yaml.
+# 2026-10-18: Govee H5074 A4:C1:38:30:75:41 (ex-kitchen) moved here — the head's own thermistor read
+# 4-8 F high in heat (68 -> 72.5 F in 7 min with the room cold). Bound live via text.np_back_govee_mac.
 # Name chosen so HA generates climate.np_back — add that ID to the NP automations only AFTER
 # the dongle is adopted (an unknown entity in a numeric_state trigger blocks the whole automation).
 
 substitutions:
   name: np-back
   friendly_name: "NP Back"
-  govee_mac: ""
+  govee_mac: "A4:C1:38:30:75:41"
 
 api:
   encryption:
