@@ -11,8 +11,10 @@
 - id: np_freeze_protection
   alias: "NP · Freeze protection"
   description: >-
-    Any head unit reporting under 45 °F for 5 minutes puts every unit into heat
-    at 55 °F, then pages. This is the one automation that must survive a WAN
+    The basement-pipes sensor under 40 °F, or any head unit under 45 °F, for
+    5 minutes puts every unit into heat at 55 °F, then pages. The basement
+    sensor is the primary signal (2026-10-18, Paul): units without a Govee read
+    their own thermistor, which runs several °F high, so they trip late. This is the one automation that must survive a WAN
     outage: the climate calls are local (ESPHome native API over the LAN) and
     run before the notify, so an unreachable ntfy cannot stop the heat.
     The 5-minute debounce rejects a single bad reading; a spurious trigger only
@@ -29,6 +31,11 @@
         - climate.np_upstairs
       attribute: current_temperature
       below: 45
+      for: "00:05:00"
+      id: crossed
+    - trigger: numeric_state
+      entity_id: sensor.np_temp_basement_pipes_temperature
+      below: 40
       for: "00:05:00"
       id: crossed
     # 2026-10-11 (Paul: units stay OFF when away, freeze protection is the
@@ -53,7 +60,11 @@
                | selectattr('attributes.current_temperature', 'defined')
                | rejectattr('attributes.current_temperature', 'none')
                | selectattr('attributes.current_temperature', 'lt', 45)
-               | rejectattr('state', 'eq', 'heat') | list | count > 0 }}
+               | rejectattr('state', 'eq', 'heat') | list | count > 0
+               or (states('sensor.np_temp_basement_pipes_temperature') | float(99) < 40
+                   and expand('climate.np_living', 'climate.np_kitchen', 'climate.np_back',
+                              'climate.np_front', 'climate.np_upstairs')
+                       | rejectattr('state', 'eq', 'heat') | list | count > 0) }}
   actions:
     - action: climate.set_hvac_mode
       target:
@@ -83,7 +94,8 @@
              | rejectattr('attributes.current_temperature', 'none')
              | selectattr('attributes.current_temperature', 'lt', 45) | list %}
           {% for s in cold %}{{ s.name }} {{ s.attributes.current_temperature }}°F{{ ', ' if not loop.last }}{% endfor %}
-          {%- if not cold %}A unit read under 45°F{% endif %}.
+          {%- set b = states('sensor.np_temp_basement_pipes_temperature') %}
+          {%- if cold %}. {% endif %}Basement pipes {{ b }}°F.
           All New Paltz units forced to heat 55°F.
 
 - id: np_climate_unavailable
