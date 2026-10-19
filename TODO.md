@@ -1,6 +1,6 @@
 # Home Automation — To-Do List
 
-*Last updated: 2026-10-15 (Cowork — NP Zigbee)*
+*Last updated: 2026-10-19 (weekly-resource-budget)*
 
 > **Structure rule (2026-07-28):** sections in order — Pending → Watching/deferred → Future → Completed (newest first, max ~10; older items go to `archive/TODO-completed.md` in this repo). **Scheduled-task appends must be ≤300 chars + a pointer** to the full report/TROUBLESHOOTING entry — no inline essays.
 >
@@ -23,7 +23,7 @@
 - [ ] **🔑 Rotate the Windmill dashboard token; stop HA logging it.** `custom_components.windmillac` printed the full URL incl. `token=` 179× in 7 d into `log-reports/homeassistant.log`. Redact the query string or filter `token=`. §M3 — (via weekly-docker-log-report 2026-10-15)
 
 - [ ] **Watch brookside root: Frigate spiked it 21→94 GB (10-09→10-12), now 58 GB falling; confirm plateau (~41 GB Frigate) by 10-20; flag >110 GB.** See infra/disk_reports/disk-health-2026-10-13.md §3 — (via weekly-disk-health 2026-10-13) — **2026-10-15 (weekly-docker-log-report): plateauing — root 51 GB / 24% of 221 G (160 GB free), 33 GB of it Frigate. Both cams recording (porch 720 + back 396 segments / 2 h). 14-d alert / 2-d detection retention, no continuous; steady state ~70–80 GB (~36%) by 10-23. See weekly-report-2026-10-15.html §M8.**
-- [ ] **Watch brookside frigate drift — 46%/67% of 3 GiB, +11.6 half-over-half (young series).** No restart cron here; if it climbs toward cap over 1–2 wk add woodhull's weekly `docker restart frigate`. See budget-report-2026-10-12.md §6 — (via weekly-resource-budget 2026-10-12)
+- [ ] **Watch brookside frigate drift — 46%/67% of 3 GiB, +11.6 half-over-half (young series).** No restart cron here; if it climbs toward cap over 1–2 wk add woodhull's weekly `docker restart frigate`. See budget-report-2026-10-12.md §6 — (via weekly-resource-budget 2026-10-12) — carried over 1x (2026-10-19: avg 50%/peak 57% of 3 GiB, +6.1 — peak down from 67%, slope halved, not climbing to cap; see budget-report-2026-10-19.md §2)
 
 - [ ] **`np_porch_camera_back_online_page` timed out 86× (+18 `np_kuma_heartbeat`) during the porch outage; now 3–5/day.** If it climbs, add `continue_on_error: true`. See weekly-report-2026-10-08.html — (via weekly-docker-log-report 2026-10-08) — **carried over 1× (2026-10-15): NOT improving. Kuma #36 `NP · HA · heartbeat` went Pending on all 8 days, 26–54/day (275 Pending + 9 Failing). `continue_on_error: true` still unapplied; also widen #36's window 300→600 s. See weekly-report-2026-10-15.html §M1.**
 
