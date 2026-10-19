@@ -11,9 +11,7 @@
 - [ ] **NP heat pads on the water inputs** (Paul, 2026-10-18): heating pads on the water entry, switched by a smart plug.
   When the plug is in HA, add `switch.turn_on` for it as the FIRST action of `np_freeze_protection` (basement < 40 °F trigger),
   plus an off rule (e.g. basement > 45 °F for 30 min). Check the pad's wattage against the plug rating.
-- [ ] **NP heat pads on the water inputs** (Paul, 2026-10-18): heating pads on the water entry, switched by a smart plug.
-  When the plug is in HA, add `switch.turn_on` for it as the FIRST action of `np_freeze_protection` (basement < 40 °F trigger),
-  plus an off rule (e.g. basement > 45 °F for 30 min). Check the pad's wattage against the plug rating.
+
 ## Pending
 
 - [ ] **🔴 NP Zigbee leak shutoff — finish Fri 2026-10-16 (Cowork).** Z2M live on brookside since 10-15 (70709b3); 4 plugs, 4 leak, 1 temp, valve `np_valve_main` paired. Valve mounted on WRONG pipe 10-15 — move to main, on-pipe OFF/ON test, place sensors, rename by wet test, write automations. Plan: project doc `claude/NP_ZIGBEE_DAY2_PLAN.md`.
