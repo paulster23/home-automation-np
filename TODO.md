@@ -14,8 +14,9 @@
 
 ## Pending
 
-- [ ] **🔴 NP Zigbee leak shutoff — finish Fri 2026-10-16 (Cowork).** Z2M live on brookside since 10-15 (70709b3); 4 plugs, 4 leak, 1 temp, valve `np_valve_main` paired. Valve mounted on WRONG pipe 10-15 — move to main, on-pipe OFF/ON test, place sensors, rename by wet test, write automations. Plan: project doc `claude/NP_ZIGBEE_DAY2_PLAN.md`.
-- [ ] **Z2M: leak sensors (3RWS18BZ) report powerSource "Mains" → actively pinged, falsely marked offline when asleep.** Switch them to passive availability before the leak watchdog uses `unavailable`. Also logs `Failed to configure … genOnOff` (harmless, alarm path proven). §NP_ZIGBEE_PREP_PLAN_A quirks.
+- [ ] **🔴 NP Zigbee leak shutoff (Cowork).** Z2M live on brookside since 10-15 (70709b3). 10-19: leak sensors placed + renamed by wet test (np_leak_washer / _water_pump / _water_filter / _water_heater); leak paging live (86ecd8f). Remaining: valve troubleshooting (stiff valve, T1 clamp too loose on small pipe) → mount on main → on-pipe OFF/ON test → np_leak_shutoff + device watchdog (exclude/remove the unplugged spare plugs). Plan: project doc `claude/NP_ZIGBEE_DAY2_PLAN.md`.
+- [ ] **Zigbee: can basement devices reach the coordinator directly?** Coordinator (SLZB-06MU) sits on the floor of the closet directly above the basement; the floor is thin. 10-19 all 4 leak sensors + valve parent on basement plugs (map: zigbee2mqtt/data/networkmap-2026-10-19-post-unplug.json). Test on a visit: unplug BOTH basement plugs, wait ~10 min, confirm every leak sensor + np_valve_main re-announces, keeps checking in (~2 min) and that a valve OFF/ON command acks; take a network map for direct-link LQIs; replug. Decides whether the basement plugs are redundancy or a single point of failure. (Paul 2026-10-19)
+- [x] ~~Z2M: leak sensors report powerSource Mains → falsely offline~~ — resolved 10-16 by fw v73 on all four (Battery, passive availability). (closed 2026-10-19)
 - [ ] **Z2M: decide coordinator location from the network map once devices are in final spots** (Ethernet run to the house centre/basement vs keep the closet). Valve currently routes via plug …1765, LQI 122. 
 - [ ] **Buy remaining sensors:** 4 leak (kitchen sink, dishwasher, each bathroom) + 5 temp. Sinopé TH1300ZB floor-heat thermostat still waiting for restock. See `claude/NP_SAFETY_SENSORS_PLAN.md`.
 
