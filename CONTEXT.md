@@ -288,9 +288,9 @@ HA automation below, off `frigate_np/events`, and is unaffected by review severi
 | Camera | Alert | Detection |
 |---|---|---|
 | `porch` | person, car, cat, dog, bird, bear — in `yard` or `frontporch` (car can only be in `yard`; `frontporch` excludes it) | anything tracked outside both zones |
-| `back` | person, anywhere in frame (no zones) | every animal incl. bear, and car (`car` added to `back` tracking 2026-10-20 for this) |
+| `back` | person and every animal (bear, bird, cat, dog, horse, sheep, cow), anywhere in frame (no zones) | car (`car` added to `back` tracking 2026-10-20 for this) |
 
-Before: `porch` alerts were person + car only; `back` alerts were person + bear and it did not track cars.
+Before: `porch` alerts were person + car only; `back` alerts were person + bear and it did not track cars. Animals on `back` were briefly detections (995c77c) before Paul made them alerts the same day.
 
 ### NP porch paging — `packages/np_porch_alerts.yaml` (2026-09-26)
 

@@ -349,15 +349,12 @@ cameras:
       enabled: true
       retain:
         default: 14
-    # Review policy (2026-10-20, Paul): backyard alerts are PEOPLE ONLY.
-    # Every animal (bear included) and any car is a detection (14 d here).
+    # Review policy (2026-10-20, Paul, revised same day): backyard alerts are
+    # people AND every animal. Cars are detections (14 d here).
     review:
       alerts:
         labels:
           - person
-      detections:
-        labels:
-          - car
           - bear
           - bird
           - cat
@@ -365,6 +362,9 @@ cameras:
           - horse
           - sheep
           - cow
+      detections:
+        labels:
+          - car
 
 objects:
   track:
