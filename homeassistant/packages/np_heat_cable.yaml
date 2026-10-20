@@ -4,8 +4,9 @@
 #
 # Added 2026-10-20 (Paul). Plan: project doc claude/NP_WINTER_FREEZE_PLAN.md.
 #
-# Hardware: plug-in pipe heat cable WITH ITS OWN THERMOSTAT (EasyHeat AHB
-# class), on Third Reality plug 0xffffb40e06092796, renamed np_plug_heat_cable
+# Hardware: SELF-REGULATING plug-in pipe heat cable WITH ITS OWN THERMOSTAT
+# (runs under the existing foam insulation; constant-wattage AHB class would
+# need fiberglass), on Third Reality plug 0xffffb40e06092796, renamed np_plug_heat_cable
 # → switch.np_plug_heat_cable / sensor.np_plug_heat_cable_power.
 #
 # Design: the cable's thermostat does the switching. The plug stays ON all
