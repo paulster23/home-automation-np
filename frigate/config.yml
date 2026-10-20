@@ -248,13 +248,20 @@ cameras:
           - dog
           - bird
           - bear
+    # Review policy (2026-10-20, Paul): on the porch camera people, animals
+    # AND cars are all alerts, in yard or frontporch (a car can only be in yard;
+    # frontporch excludes it). Anything outside both zones stays a detection.
+    # Review severity does NOT page: paging is HA np_porch_alerts on
+    # frigate_np/events, so animal alerts here never wake anyone.
     review:
       alerts:
-        # Only person and car PAGE. Animals still generate detections -- recorded
-        # and reviewable in the UI -- but must never wake Paul at 3am for a cat.
         labels:
           - person
           - car
+          - cat
+          - dog
+          - bird
+          - bear
         # frontporch added 2026-09-20: a person already standing at the door was
         # producing a detection and no alert, which is backwards for an empty house.
         required_zones:
@@ -321,6 +328,7 @@ cameras:
       # COCO-80 has no deer: deer usually land as dog / horse / sheep / cow.
       track:
         - person
+        - car      # 2026-10-20: captured as a detection only (review below)
         - bird
         - cat
         - dog
@@ -341,13 +349,16 @@ cameras:
       enabled: true
       retain:
         default: 14
+    # Review policy (2026-10-20, Paul): backyard alerts are PEOPLE ONLY.
+    # Every animal (bear included) and any car is a detection (14 d here).
     review:
       alerts:
-        labels:            # only these become alerts; every animal is a detection
+        labels:
           - person
-          - bear
       detections:
         labels:
+          - car
+          - bear
           - bird
           - cat
           - dog

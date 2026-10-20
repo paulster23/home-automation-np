@@ -279,6 +279,19 @@ case an app tracker is ever attached.
 `homeassistant: customize:` in the same package; (4) reload groups, template entities and
 customizations, or restart.
 
+### NP Frigate review policy (2026-10-20, Paul)
+
+What lands in the Frigate UI **Alerts** tab vs **Detections** (and therefore retention:
+alerts 14 d; detections 2 d on `porch`, 14 d on `back`). **It does not page** — paging is the
+HA automation below, off `frigate_np/events`, and is unaffected by review severity.
+
+| Camera | Alert | Detection |
+|---|---|---|
+| `porch` | person, car, cat, dog, bird, bear — in `yard` or `frontporch` (car can only be in `yard`; `frontporch` excludes it) | anything tracked outside both zones |
+| `back` | person, anywhere in frame (no zones) | every animal incl. bear, and car (`car` added to `back` tracking 2026-10-20 for this) |
+
+Before: `porch` alerts were person + car only; `back` alerts were person + bear and it did not track cars.
+
 ### NP porch paging — `packages/np_porch_alerts.yaml` (2026-09-26)
 
 Per-object, off **`frigate_np/events`**, gated on `binary_sensor.np_occupied` = off:
