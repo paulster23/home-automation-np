@@ -19,13 +19,12 @@
 services:
 
   homeassistant:
-    # ── 1. Pin the version for the migration ──────────────────
-    # The Mac runs 2026.8.3; `:stable` is 2026.9.4 as of 2026-10-01.
-    # Migrating hosts and upgrading HA at the same time is two
-    # variables — if it misbehaves you cannot tell which caused it.
-    # Pinned for the cutover; upgrade as its own step once brookside
-    # is proven, with the Mac's untouched config still as the fallback.
-    image: ghcr.io/home-assistant/home-assistant:2026.8.3
+    # ── 1. Pin the version ────────────────────────────────────
+    # 2026-10-20: 2026.8.3 -> 2026.9.0 to match woodhull (BK). 2026.8's
+    # frontend pulls Map tiles from basemaps.cartocdn.com, which now
+    # answers "API KEY REQUIRED"; 2026.9 uses HA's own tile service.
+    # Kept pinned (not :stable) so NP upgrades stay a deliberate step.
+    image: ghcr.io/home-assistant/home-assistant:2026.9.0
 
     # ── 2. Skip patch_hacs.sh ─────────────────────────────────
     # ⛔ THE LOAD-BEARING LINE. The base entrypoint runs
