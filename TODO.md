@@ -8,9 +8,9 @@
 
 ---
 
-- [ ] **NP heat pads on the water inputs** (Paul, 2026-10-18): heating pads on the water entry, switched by a smart plug.
-  When the plug is in HA, add `switch.turn_on` for it as the FIRST action of `np_freeze_protection` (basement < 40 °F trigger),
-  plus an off rule (e.g. basement > 45 °F for 30 min). Check the pad's wattage against the plug rating.
+- [ ] **NP pipe heat cable (Paul, 2026-10-20; was "heat pads" 10-18).** Plug-in cable WITH built-in thermostat (EasyHeat AHB class) on the water entry -> filter run, on plug `np_plug_heat_cable` (0x...2796, renamed 10-20), GFCI outlet, plug ON all winter. AHB needs fiberglass/non-flammable insulation over it, not foam. Automations LIVE 10-20: `packages/np_heat_cable.yaml` + plug-on first in `np_freeze_protection`. On install: set Z2M `power_on_behavior: on`, confirm power reading. Plan: project doc `claude/NP_WINTER_FREEZE_PLAN.md`.
+- [ ] **NP winter physical checks - visit Thu 2026-10-22 (Paul).** (a) unused hydronic baseboard loop + boiler: drained or glycol? (b) hose bibs: close interior valve, drain, disconnect hoses; (c) bulkhead + basement window weatherstrip; (d) outdoor split units clear of snow line, drip cannot ice under them; (e) water heater type; (f) photo of the wall-entry -> pump -> filter run for heat-cable sizing. Plan: `claude/NP_WINTER_FREEZE_PLAN.md`.
+- [ ] **Buy 3+ SNZB-02P for freeze spots:** wall entry (separate from pump/valve), kitchen-sink cabinet, bathroom exterior wall. Add each to `np_freeze_protection` trigger + device watchdog. (Paul, 2026-10-20)
 
 ## Pending
 

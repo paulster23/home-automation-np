@@ -1,0 +1,70 @@
+# ═══════════════════════════════════════════════════════════════
+# np_cold_snap.yaml — forecast heads-up when a hard freeze is coming and
+# nobody is at NP.
+#
+# Added 2026-10-20 (Paul). Plan: project doc claude/NP_WINTER_FREEZE_PLAN.md.
+#
+# ADVISORY ONLY. weather.forecast_home is met.no and needs the NP WAN, so
+# nothing protective may depend on it: freeze protection and the heat cable
+# act on local sensors. If the forecast call fails the automation stops
+# silently. It changes no setpoints (away policy: splits OFF, Paul decides).
+#
+# Daily 17:00, so there is an evening to decide on a drive up. Window: today
+# plus the next 3 days. Lows < 10 °F → default page; any low < 0 °F → high.
+# Edit warn_below / high_below below to tune.
+# ═══════════════════════════════════════════════════════════════
+
+automation:
+  - id: np_cold_snap
+    alias: "NP · Cold snap forecast (house empty)"
+    mode: single
+    max_exceeded: silent
+    triggers:
+      - trigger: time
+        at: "17:00:00"
+    conditions:
+      - condition: state
+        entity_id: binary_sensor.np_occupied
+        state: "off"
+    actions:
+      - action: weather.get_forecasts
+        continue_on_error: true
+        target:
+          entity_id: weather.forecast_home
+        data:
+          type: daily
+        response_variable: fc
+      - variables:
+          warn_below: 10
+          high_below: 0
+          units:
+            - climate.np_living
+            - climate.np_kitchen
+            - climate.np_back
+            - climate.np_front
+            - climate.np_upstairs
+          days: >-
+            {{ (fc['weather.forecast_home'].forecast
+                if fc is defined and fc and 'weather.forecast_home' in fc
+                else [])[:4] }}
+          lows: "{{ days | map(attribute='templow') | reject('none') | list }}"
+          coldest: "{{ lows | min if lows | count > 0 else none }}"
+      - condition: template
+        value_template: "{{ coldest is not none and coldest < warn_below }}"
+      - action: shell_command.np_notify
+        continue_on_error: true
+        data:
+          title: "NP cold snap: low of {{ coldest }} °F forecast"
+          priority: "{{ 'high' if coldest < high_below else 'default' }}"
+          tags: "snowflake,thermometer"
+          message: >-
+            Forecast lows: {% for d in days %}{{ as_timestamp(d.datetime) | timestamp_custom('%a') }}
+            {{ d.templow }}°{{ ', ' if not loop.last }}{% endfor %}.
+            Basement pipes {{ states('sensor.np_temp_basement_pipes_temperature') }} °F.
+            {% set temps = expand(units) | selectattr('attributes.current_temperature', 'defined')
+                 | map(attribute='attributes.current_temperature') | reject('none') | list %}
+            Coldest room {{ temps | min if temps | count > 0 else 'n/a' }} °F;
+            splits heating {{ expand(units) | selectattr('state', 'eq', 'heat') | list | count }}/5.
+            Heat cable plug {{ states('switch.np_plug_heat_cable') }},
+            {{ states('sensor.np_plug_heat_cable_power') }} W.
+            Freeze protection {{ states('automation.np_freeze_protection') }}. Nobody is at NP.
