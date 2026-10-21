@@ -1,6 +1,6 @@
 # Home Automation — To-Do List
 
-*Last updated: 2026-10-20 (weekly-disk-health)*
+*Last updated: 2026-10-20 (Cowork - NP music)*
 
 > **Structure rule (2026-07-28):** sections in order — Pending → Watching/deferred → Future → Completed (newest first, max ~10; older items go to `archive/TODO-completed.md` in this repo). **Scheduled-task appends must be ≤300 chars + a pointer** to the full report/TROUBLESHOOTING entry — no inline essays.
 >
@@ -11,6 +11,7 @@
 - [ ] **NP pipe heat cable (Paul, 2026-10-20; was "heat pads" 10-18).** SELF-REGULATING plug-in cable WITH built-in thermostat (pipe is already foam-insulated wall->filter, so constant-wattage AHB/Frost King is out: they need fiberglass, not foam), length measured Thu 10-22, on plug `np_plug_heat_cable` (0x...2796, renamed 10-20), GFCI outlet, plug ON all winter. Automations LIVE 10-20: `packages/np_heat_cable.yaml` + plug-on first in `np_freeze_protection`. On install: set Z2M `power_on_behavior: on`, confirm power reading. Plan: project doc `claude/NP_WINTER_FREEZE_PLAN.md`.
 - [ ] **NP winter physical checks - visit Thu 2026-10-22 (Paul).** (a) unused hydronic baseboard loop + boiler: drained or glycol? (b) hose bibs: close interior valve, drain, disconnect hoses; (c) bulkhead + basement window weatherstrip; (d) outdoor split units clear of snow line, drip cannot ice under them; (e) water heater type; (f) photo of the wall-entry -> pump -> filter run for heat-cable sizing. Plan: `claude/NP_WINTER_FREEZE_PLAN.md`.
 - [ ] **Buy 3+ SNZB-02P for freeze spots:** wall entry (separate from pump/valve), kitchen-sink cabinet, bathroom exterior wall. Add each to `np_freeze_protection` trigger + device watchdog. (Paul, 2026-10-20)
+- [ ] **NP music, next visit (Paul, 2026-10-20): Music Assistant on brookside + an ESP32 squeezelite-esp32 bridge per BT speaker** (I2S DAC + line-in for receivers). Before: list speaker/receiver models + rooms, buy ESP32s, add-service resource estimate. On site: flash, pair, expose to HA. Paul rejected Naboo for this.
 
 ## Pending
 
