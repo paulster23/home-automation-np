@@ -17,8 +17,8 @@
 # Paging via shell_command.np_notify (woodhull ntfy + ntfy.sh mirror + retry
 # queue) — survives a Brooklyn WAN outage.
 #
-# This is ALERTING ONLY. It does not touch switch.np_valve_main; the
-# automatic shutoff (np_leak_shutoff) waits on the on-pipe valve test.
+# This is ALERTING ONLY. The automatic shutoff lives in np_leak_shutoff.yaml
+# (2026-10-23) and runs independently of this page.
 # ═══════════════════════════════════════════════════════════════
 
 automation:
@@ -49,7 +49,12 @@ automation:
           message: >-
             {{ trigger.event.data.new_state.name }} is WET
             ({{ trigger.event.data.entity_id }}) at
-            {{ now().strftime('%H:%M') }}. Main water is NOT auto-closed yet.
+            {{ now().strftime('%H:%M') }}.
+            {% if is_state('input_boolean.np_leak_shutoff_bypass', 'on') -%}
+            Shutoff BYPASS is on — main valve left OPEN.
+            {%- else -%}
+            Main valve closing (np_leak_shutoff).
+            {%- endif %}
 
   - id: np_leak_cleared
     alias: "NP · Water leak sensor dry again (note)"
@@ -77,3 +82,6 @@ automation:
           message: >-
             {{ trigger.event.data.new_state.name }} reads dry again
             ({{ trigger.event.data.entity_id }}). Check the spot in person.
+            {% if is_state('switch.np_valve_main', 'off') -%}
+            Main valve stays CLOSED until you reopen it (script.np_valve_reopen).
+            {%- endif %}

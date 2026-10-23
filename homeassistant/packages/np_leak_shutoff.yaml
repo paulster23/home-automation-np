@@ -1,0 +1,487 @@
+# ═══════════════════════════════════════════════════════════════
+# np_leak_shutoff.yaml — leak → close the main, confirm, lockout, watchdog,
+# monthly exercise.
+#
+# Added 2026-10-23 (Paul approved items 1–9 of project doc
+# claude/NP_LEAK_AUTOMATIONS_PLAN.md; A/B no, C deferred, D n/a, E yes).
+#
+# Valve: Aqara T1 switch.np_valve_main on the main (wall → pump → pump-outlet
+# valve → T1 → filter). ON = open, OFF = closed. The ball valve is TIGHT and
+# the T1 can twist a little on the pipe — Paul wants actuation kept to a
+# minimum: one retry only on failure, exercise monthly (may back off).
+#
+# Paging (alert-only) stays in np_leak_alerts.yaml — one urgent page per wet
+# sensor, sent independently of this file. This file adds:
+#   np_leak_shutoff          wet → script.np_leak_close_valve
+#   np_leak_shutoff_startup  HA start / Z2M back: wet + open → close
+#   np_leak_valve_reopened   valve → on during lockout: wet → high page,
+#                            dry → clear lockout
+#   np_leak_bypass_*         2 h auto-expiry, off at startup, FYI on enable
+#   np_leak_device_watchdog  pages when sensor.np_leak_system_problems gains
+#                            an entry (silence via last_seen, unavailable,
+#                            battery, bridge)
+#   np_valve_exercise_monthly 1st Saturday 10:00, only when occupied
+# Never auto-reopens. Reopen: script.np_valve_reopen (refuses while wet),
+# the phone, or the T1's button.
+# ═══════════════════════════════════════════════════════════════
+
+input_boolean:
+  np_leak_lockout:
+    name: "NP leak lockout (valve closed for a leak)"
+    icon: mdi:pipe-valve
+  np_leak_shutoff_bypass:
+    name: "NP leak shutoff bypass (2 h, page only)"
+    icon: mdi:water-off-outline
+
+template:
+  - sensor:
+      # "ok" or "; "-joined problems. No numbers in the text, so the state
+      # only changes when the SET of problems changes.
+      - name: "NP leak system problems"
+        unique_id: np_leak_system_problems
+        icon: mdi:shield-alert-outline
+        state: >-
+          {% set silent = {
+               'np_leak_washer': 15, 'np_leak_water_pump': 15,
+               'np_leak_water_filter': 15, 'np_leak_water_heater': 15,
+               'np_temp_basement_pipes': 90, 'np_valve_main': 120,
+               'np_plug_basement': 20, 'np_plug_2_washingmachine': 20 } %}
+          {% set main = {
+               'np_leak_washer': 'binary_sensor.np_leak_washer_water_leak',
+               'np_leak_water_pump': 'binary_sensor.np_leak_water_pump_water_leak',
+               'np_leak_water_filter': 'binary_sensor.np_leak_water_filter_water_leak',
+               'np_leak_water_heater': 'binary_sensor.np_leak_water_heater_water_leak',
+               'np_temp_basement_pipes': 'sensor.np_temp_basement_pipes_temperature',
+               'np_valve_main': 'switch.np_valve_main',
+               'np_plug_basement': 'switch.np_plug_basement',
+               'np_plug_2_washingmachine': 'switch.np_plug_2_washingmachine' } %}
+          {% set ns = namespace(p=[]) %}
+          {% for d, mins in silent.items() %}
+            {% set e = 'sensor.' ~ d ~ '_last_seen' %}
+            {% set s = states[e] %}
+            {% set ts = as_datetime(s.state, none) if s is not none else none %}
+            {% if ts is none and s is not none %}{% set ts = s.last_changed %}{% endif %}
+            {% if ts is none %}
+              {% set ns.p = ns.p + [d ~ ' has no last_seen'] %}
+            {% elif (now() - ts).total_seconds() > mins * 60 %}
+              {% set ns.p = ns.p + [d ~ ' silent >' ~ mins ~ ' min'] %}
+            {% endif %}
+            {% set m = states[main[d]] %}
+            {% if m is none or (m.state in ['unavailable', 'unknown']
+                 and (now() - m.last_changed).total_seconds() > 1800) %}
+              {% set ns.p = ns.p + [d ~ ' unavailable'] %}
+            {% endif %}
+          {% endfor %}
+          {% for d in ['np_leak_washer', 'np_leak_water_pump', 'np_leak_water_filter',
+                       'np_leak_water_heater', 'np_temp_basement_pipes', 'np_valve_main'] %}
+            {% set b = states('sensor.' ~ d ~ '_battery') %}
+            {% if is_number(b) and b | float < 20 %}
+              {% set ns.p = ns.p + [d ~ ' battery low'] %}
+            {% elif is_state('binary_sensor.' ~ d ~ '_battery_low', 'on') %}
+              {% set ns.p = ns.p + [d ~ ' battery low'] %}
+            {% endif %}
+          {% endfor %}
+          {% set br = states.binary_sensor.zigbee2mqtt_bridge_connection_state %}
+          {% if br is none or (br.state != 'on'
+               and (now() - br.last_changed).total_seconds() > 600) %}
+            {% set ns.p = ns.p + ['zigbee2mqtt bridge offline'] %}
+          {% endif %}
+          {{ (ns.p | join('; ') if ns.p else 'ok')[:255] }}
+
+script:
+  np_leak_close_valve:
+    alias: "NP · Close main valve for a leak"
+    mode: queued
+    max: 10
+    fields:
+      source:
+        description: "What asked for the close (sensor name)"
+    sequence:
+      - if:
+          - condition: state
+            entity_id: input_boolean.np_leak_shutoff_bypass
+            state: "on"
+        then:
+          - stop: "bypass on"
+      - action: input_boolean.turn_on
+        target: { entity_id: input_boolean.np_leak_lockout }
+      # Already closed (second wet sensor, or the startup re-check) → nothing
+      # to actuate; the valve is tight, so no extra strokes.
+      - if:
+          - condition: state
+            entity_id: switch.np_valve_main
+            state: "off"
+        then:
+          - stop: "already closed"
+      - variables:
+          t0: "{{ now().timestamp() }}"
+      - action: switch.turn_off
+        continue_on_error: true
+        target: { entity_id: switch.np_valve_main }
+      - wait_template: "{{ is_state('switch.np_valve_main', 'off') }}"
+        timeout: "00:00:20"
+      # One retry only.
+      - if:
+          - condition: template
+            value_template: "{{ not is_state('switch.np_valve_main', 'off') }}"
+        then:
+          - action: switch.turn_off
+            continue_on_error: true
+            target: { entity_id: switch.np_valve_main }
+          - wait_template: "{{ is_state('switch.np_valve_main', 'off') }}"
+            timeout: "00:00:20"
+      - if:
+          - condition: state
+            entity_id: switch.np_valve_main
+            state: "off"
+        then:
+          - action: shell_command.np_notify
+            continue_on_error: true
+            data:
+              title: "NP main valve closed"
+              priority: "low"
+              tags: "white_check_mark,droplet"
+              message: >-
+                Confirmed closed {{ (now().timestamp() - t0) | round(0) | int }} s
+                after {{ source | default('a leak') }} went wet. Stays closed until
+                you reopen it (script.np_valve_reopen, the app, or the T1 button).
+        else:
+          - action: shell_command.np_notify
+            continue_on_error: true
+            data:
+              title: "NP VALVE DID NOT CONFIRM CLOSED"
+              priority: "urgent"
+              tags: "rotating_light,warning"
+              message: >-
+                Leak at {{ source | default('a sensor') }}; np_valve_main reports
+                {{ states('switch.np_valve_main') }} after two close commands (40 s).
+                Close the main by hand.
+
+  np_valve_reopen:
+    alias: "NP · Reopen main valve"
+    icon: mdi:valve-open
+    mode: single
+    sequence:
+      - variables:
+          wet: >-
+            {{ states.binary_sensor | selectattr('attributes.device_class', 'defined')
+               | selectattr('attributes.device_class', 'eq', 'moisture')
+               | selectattr('state', 'eq', 'on') | map(attribute='name') | list }}
+      - if:
+          - condition: template
+            value_template: "{{ wet | count > 0 }}"
+        then:
+          - action: shell_command.np_notify
+            continue_on_error: true
+            data:
+              title: "NP valve reopen refused"
+              priority: "default"
+              tags: "no_entry,droplet"
+              message: "Still wet: {{ wet | join(', ') }}. Dry the sensor(s) first."
+          - stop: "sensor still wet"
+      - action: switch.turn_on
+        continue_on_error: true
+        target: { entity_id: switch.np_valve_main }
+      - wait_template: "{{ is_state('switch.np_valve_main', 'on') }}"
+        timeout: "00:00:30"
+      # Success is reported by np_leak_valve_reopened (it clears the lockout).
+      - if:
+          - condition: template
+            value_template: "{{ not is_state('switch.np_valve_main', 'on') }}"
+        then:
+          - action: shell_command.np_notify
+            continue_on_error: true
+            data:
+              title: "NP valve did not reopen"
+              priority: "high"
+              tags: "warning,droplet"
+              message: >-
+                np_valve_main reports {{ states('switch.np_valve_main') }} 30 s after
+                the open command. Open it by hand.
+
+  np_valve_exercise:
+    alias: "NP · Exercise main valve (close → reopen)"
+    icon: mdi:valve
+    mode: single
+    sequence:
+      - variables:
+          wet: >-
+            {{ states.binary_sensor | selectattr('attributes.device_class', 'defined')
+               | selectattr('attributes.device_class', 'eq', 'moisture')
+               | selectattr('state', 'eq', 'on') | list | count }}
+      - condition: template
+        value_template: >-
+          {{ is_state('switch.np_valve_main', 'on')
+             and is_state('input_boolean.np_leak_lockout', 'off') and wet == 0 }}
+      - variables:
+          t0: "{{ now().timestamp() }}"
+      - action: switch.turn_off
+        continue_on_error: true
+        target: { entity_id: switch.np_valve_main }
+      - wait_template: "{{ is_state('switch.np_valve_main', 'off') }}"
+        timeout: "00:00:30"
+      - variables:
+          t_close: "{{ (now().timestamp() - t0) | round(0) | int }}"
+          closed: "{{ is_state('switch.np_valve_main', 'off') }}"
+      - delay: "00:00:05"
+      # A leak during the exercise sets the lockout — then never reopen.
+      - if:
+          - condition: state
+            entity_id: input_boolean.np_leak_lockout
+            state: "on"
+        then:
+          - stop: "leak during exercise — valve left closed"
+      - variables:
+          t1: "{{ now().timestamp() }}"
+      - action: switch.turn_on
+        continue_on_error: true
+        target: { entity_id: switch.np_valve_main }
+      - wait_template: "{{ is_state('switch.np_valve_main', 'on') }}"
+        timeout: "00:00:30"
+      - variables:
+          t_open: "{{ (now().timestamp() - t1) | round(0) | int }}"
+          opened: "{{ is_state('switch.np_valve_main', 'on') }}"
+      - choose:
+          - conditions: "{{ not closed }}"
+            sequence:
+              - action: shell_command.np_notify
+                continue_on_error: true
+                data:
+                  title: "NP VALVE FAILED TO CLOSE (exercise)"
+                  priority: "urgent"
+                  tags: "rotating_light,warning"
+                  message: >-
+                    Monthly exercise: no close confirmation in 30 s (now
+                    {{ states('switch.np_valve_main') }}). The automatic leak
+                    shutoff may not work — check the T1 and the valve.
+          - conditions: "{{ not opened }}"
+            sequence:
+              - action: shell_command.np_notify
+                continue_on_error: true
+                data:
+                  title: "NP valve closed but did not reopen"
+                  priority: "high"
+                  tags: "warning,droplet"
+                  message: >-
+                    Exercise closed in {{ t_close }} s but no open confirmation in
+                    30 s (now {{ states('switch.np_valve_main') }}). Open it by hand.
+        default:
+          - action: shell_command.np_notify
+            continue_on_error: true
+            data:
+              title: "NP valve exercise OK"
+              priority: "low"
+              tags: "white_check_mark"
+              message: >-
+                Closed in {{ t_close }} s, reopened in {{ t_open }} s. Check the T1
+                hasn't twisted on the pipe next time you're downstairs.
+
+automation:
+  - id: np_leak_shutoff
+    alias: "NP · Leak → close main valve"
+    mode: queued
+    max: 20
+    triggers:
+      - trigger: event
+        event_type: state_changed
+    conditions:
+      - condition: template
+        value_template: >-
+          {% set n = trigger.event.data.new_state %}
+          {% set o = trigger.event.data.old_state %}
+          {{ n is not none
+             and n.domain == 'binary_sensor'
+             and n.attributes.get('device_class') == 'moisture'
+             and n.state == 'on'
+             and (o is none or o.state != 'on') }}
+    actions:
+      - action: script.np_leak_close_valve
+        data:
+          source: "{{ trigger.event.data.new_state.name }}"
+
+  - id: np_leak_shutoff_startup
+    alias: "NP · Leak shutoff re-check (startup / Z2M back)"
+    mode: single
+    max_exceeded: silent
+    triggers:
+      - trigger: homeassistant
+        event: start
+      - trigger: state
+        entity_id: binary_sensor.zigbee2mqtt_bridge_connection_state
+        to: "on"
+    actions:
+      - delay: "00:01:00"
+      - variables:
+          wet: >-
+            {{ states.binary_sensor | selectattr('attributes.device_class', 'defined')
+               | selectattr('attributes.device_class', 'eq', 'moisture')
+               | selectattr('state', 'eq', 'on') | map(attribute='name') | list }}
+      - condition: template
+        value_template: "{{ wet | count > 0 and is_state('switch.np_valve_main', 'on') }}"
+      - action: script.np_leak_close_valve
+        data:
+          source: "{{ wet | join(', ') }} (found wet at startup)"
+
+  - id: np_leak_valve_reopened
+    alias: "NP · Valve reopened during leak lockout"
+    mode: queued
+    triggers:
+      - trigger: state
+        entity_id: switch.np_valve_main
+        to: "on"
+    conditions:
+      - condition: state
+        entity_id: input_boolean.np_leak_lockout
+        state: "on"
+    actions:
+      - variables:
+          wet: >-
+            {{ states.binary_sensor | selectattr('attributes.device_class', 'defined')
+               | selectattr('attributes.device_class', 'eq', 'moisture')
+               | selectattr('state', 'eq', 'on') | map(attribute='name') | list }}
+      - if:
+          - condition: template
+            value_template: "{{ wet | count > 0 }}"
+        then:
+          - action: shell_command.np_notify
+            continue_on_error: true
+            data:
+              title: "NP valve REOPENED while still wet"
+              priority: "high"
+              tags: "warning,droplet"
+              message: >-
+                np_valve_main is open but {{ wet | join(', ') }} still reads wet.
+                Lockout kept on. Close it again if this wasn't you.
+        else:
+          - action: input_boolean.turn_off
+            target: { entity_id: input_boolean.np_leak_lockout }
+          - action: shell_command.np_notify
+            continue_on_error: true
+            data:
+              title: "NP main valve reopened"
+              priority: "low"
+              tags: "droplet,white_check_mark"
+              message: "All leak sensors dry; leak lockout cleared."
+
+  - id: np_leak_bypass_on_note
+    alias: "NP · Leak shutoff bypass enabled (note)"
+    triggers:
+      - trigger: state
+        entity_id: input_boolean.np_leak_shutoff_bypass
+        to: "on"
+    actions:
+      - action: shell_command.np_notify
+        continue_on_error: true
+        data:
+          title: "NP leak shutoff BYPASSED for 2 h"
+          priority: "default"
+          tags: "warning,water"
+          message: "Leaks still page, but the main valve will NOT close until the bypass expires."
+
+  - id: np_leak_bypass_expire
+    alias: "NP · Leak shutoff bypass expiry"
+    mode: single
+    triggers:
+      - trigger: state
+        entity_id: input_boolean.np_leak_shutoff_bypass
+        to: "on"
+        for: "02:00:00"
+      # A restart cancels the 2 h timer — fail safe and clear it.
+      - trigger: homeassistant
+        event: start
+    conditions:
+      - condition: state
+        entity_id: input_boolean.np_leak_shutoff_bypass
+        state: "on"
+    actions:
+      - action: input_boolean.turn_off
+        target: { entity_id: input_boolean.np_leak_shutoff_bypass }
+      - action: shell_command.np_notify
+        continue_on_error: true
+        data:
+          title: "NP leak shutoff re-armed"
+          priority: "low"
+          tags: "white_check_mark"
+          message: "Bypass ended; a wet sensor will close the main again."
+
+  - id: np_leak_device_watchdog
+    alias: "NP · Leak system device watchdog"
+    mode: queued
+    triggers:
+      - trigger: state
+        entity_id: sensor.np_leak_system_problems
+        for: "00:03:00"
+    variables:
+      bad: ['ok', 'unknown', 'unavailable', '', 'None']
+      new: >-
+        {{ [] if trigger.to_state.state in bad else trigger.to_state.state.split('; ') }}
+      old: >-
+        {{ [] if trigger.from_state is none or trigger.from_state.state in bad
+           else trigger.from_state.state.split('; ') }}
+      added: "{{ new | reject('in', old) | list }}"
+    conditions:
+      - condition: template
+        value_template: >-
+          {{ added | count > 0 or (new | count == 0 and old | count > 0) }}
+    actions:
+      - if:
+          - condition: template
+            value_template: "{{ added | count > 0 }}"
+        then:
+          - action: shell_command.np_notify
+            continue_on_error: true
+            data:
+              title: "NP leak system degraded"
+              priority: "high"
+              tags: "warning,droplet"
+              message: >-
+                New: {{ added | join('; ') }}.{% if new | count > added | count %}
+                Also: {{ new | reject('in', added) | join('; ') }}.{% endif %}
+                A silent sensor or valve means a leak may not close the main.
+        else:
+          - action: shell_command.np_notify
+            continue_on_error: true
+            data:
+              title: "NP leak system OK again"
+              priority: "low"
+              tags: "white_check_mark"
+              message: "Cleared: {{ old | join('; ') }}."
+
+  - id: np_valve_exercise_monthly
+    alias: "NP · Monthly main valve exercise"
+    mode: single
+    triggers:
+      - trigger: time
+        at: "10:00:00"
+    conditions:
+      - condition: time
+        weekday: sat
+      - condition: template
+        value_template: "{{ now().day <= 7 }}"
+    actions:
+      - variables:
+          wet: >-
+            {{ states.binary_sensor | selectattr('attributes.device_class', 'defined')
+               | selectattr('attributes.device_class', 'eq', 'moisture')
+               | selectattr('state', 'eq', 'on') | list | count }}
+          reason: >-
+            {% if not is_state('binary_sensor.np_occupied', 'on') %}nobody at NP
+            {% elif is_state('input_boolean.np_leak_lockout', 'on') %}leak lockout on
+            {% elif wet > 0 %}a leak sensor is wet
+            {% elif not is_state('switch.np_valve_main', 'on') %}valve is {{ states('switch.np_valve_main') }}
+            {% else %}{% endif %}
+      - if:
+          - condition: template
+            value_template: "{{ reason | trim == '' }}"
+        then:
+          - action: script.np_valve_exercise
+        else:
+          - action: shell_command.np_notify
+            continue_on_error: true
+            data:
+              title: "NP valve exercise skipped"
+              priority: "low"
+              tags: "calendar"
+              message: >-
+                Skipped this month: {{ reason | trim }}. Run script.np_valve_exercise
+                next time you're at NP.
