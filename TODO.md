@@ -1,6 +1,6 @@
 # Home Automation — To-Do List
 
-*Last updated: 2026-10-22 (weekly-docker-log-report)*
+*Last updated: 2026-10-24 (fix-high-issues)*
 
 > **Structure rule (2026-07-28):** sections in order — Pending → Watching/deferred → Future → Completed (newest first, max ~10; older items go to `archive/TODO-completed.md` in this repo). **Scheduled-task appends must be ≤300 chars + a pointer** to the full report/TROUBLESHOOTING entry — no inline essays.
 >
@@ -70,7 +70,6 @@
 
 - [ ] **switch.plug_1 (Wyze) still `unavailable` since 08-23 07:01 — deferred by Paul.** Confirmed offline in the Wyze app (physical/Wi-Fi, not HA/DNS). `switch.speaker` had the same issue and was fixed same day (power-cycled, back `on` 08-27 23:17 UTC) — plug_1 needs the same physical power-cycle whenever Paul wants that plug back; not urgent. See TROUBLESHOOTING.md 2026-08-27. — (via Cowork 2026-08-27)
 
-- [ ] **Voice PE `0a3a76` esp32 crash — `Fault - IllegalInstruction` at `speaker_source_media_player:222`.** 2026-10-08: quiet — 27 lines/7 d (vs 4,320 on 09-29); still not reflashed. — (via homelab-advisor 2026-09-02) (via weekly-docker-log-report 2026-10-08) → full text: `archive/TODO-detail.md` §H-011 — **carried over 2× (2026-10-15): REGRESSED — 71 crash lines / 5 events (11 on 10-08, 15 on 10-13, 45 on 10-14) vs 27 lines last week. Same `speaker_source_media_player:222` fault; never reflashed. See weekly-report-2026-10-15.html §H3.** — **carried 3× (2026-10-21, homelab-advisor): still not reflashed (no ESPHome build commit since tag); stale-and-blocking. No new HA-log run since 10-15 for fresh counts. See advisor-2026-10-21.html §Actions.** — **carried 4× (2026-10-22): 8 crash lines, all 10-21, same `speaker_source_media_player:222` fault; still not reflashed. Volume down 71→8. Ship the reflash or downgrade to Watching. See weekly-report-2026-10-22.html §H4.**
 
 - [x] **Rotate credentials left in git history — ✅ CLOSED 2026-10-13.** Both HA long-lived tokens (voice_performance, speech-to-phrase — still valid on woodhull's BK HA until then) deleted by Paul; refresh-token ids verified gone from `.storage/auth`. The leaked mkcert privkey was already replaced and nothing mounts `certs/`. No history rewrite. Originally: found 2026-08-09 by the repo's first full-history `gitleaks git` scan (4 findings). → full text: `archive/TODO-detail.md` §H-012
 
@@ -124,6 +123,7 @@
 
 ## ✅ Completed
 
+- [x] **✅ CLOSED 2026-10-24 (Cowork) — REPORTED IN ERROR, correcting the 10-22 run. 0 `IllegalInstruction` crashes in the 7-day window: the 3 such events were 10-13, outside it. The '8 lines on 10-21' were ONE event at 10-20 21:17 ET that the 10-22 run's `docker logs -t` grep bucketed by UTC date, and its reason was `Fault - Unknown` (PC 0x4038280E), a different signature. `speaker_source_media_player` appears 0× in 10 d — the fault attribution carried here for weeks is stale. Firmware already current (installed 26.9.0 = latest 26.9.0, update entity off), so there was nothing to reflash. Crash rate is ~1 unexplained event/week; reopen only if a signature recurs.** ~~**Voice PE `0a3a76` esp32 crash — `Fault - IllegalInstruction` at `speaker_source_media_player:222`.** 2026-10-08: quiet — 27 lines/7 d (vs 4,320 on 09-29); still not reflashed. — (via homelab-advisor 2026-09-02) (via weekly-docker-log-report 2026-10-08) → full text: `archive/TODO-detail.md` §H-011 — **carried over 2× (2026-10-15): REGRESSED — 71 crash lines / 5 events (11 on 10-08, 15 on 10-13, 45 on 10-14) vs 27 lines last week. Same `speaker_source_media_player:222` fault; never reflashed. See weekly-report-2026-10-15.html §H3.** — **carried 3× (2026-10-21, homelab-advisor): still not reflashed (no ESPHome build commit since tag); stale-and-blocking. No new HA-log run since 10-15 for fresh counts. See advisor-2026-10-21.html §Actions.** — **carried 4× (2026-10-22): 8 crash lines, all 10-21, same `speaker_source_media_player:222` fault; still not reflashed. Volume down 71→8. Ship the reflash or downgrade to Watching. See weekly-report-2026-10-22.html §H4.**~~
 - [x] **✅ DONE 2026-10-22 (weekly-docker-log-report): `np_porch_camera_health.yaml` + `np_back_camera_health.yaml` live on brookside (10-06/10-09), both alerting off MQTT `cameras.<cam>.camera_fps > 0` — the requested signal. Tag was raised after the fix shipped.** ~~**Camera-level health probe at NP — container health is blind to dead cameras.** `back` (.35) crash-looped 2 d, 8,864 watchdog restarts, while service-watchdog and Kuma #44 read `frigate=healthy`. Alert on camera_fps=0 or no new mp4 in 10 min. §M4 — (via weekly-docker-log-report 2026-10-15)~~
 - [x] **✅ DONE 2026-10-22 (weekly-docker-log-report): 0 occurrences of `token=` in 7 d of woodhull HA logs (was 179×). The 14 remaining `windmill` lines are benign automation INFO.** ~~**🔑 Rotate the Windmill dashboard token; stop HA logging it.** `custom_components.windmillac` printed the full URL incl. `token=` 179× in 7 d into `log-reports/homeassistant.log`. Redact the query string or filter `token=`. §M3 — (via weekly-docker-log-report 2026-10-15)~~
 - [x] **✅ DONE 2026-10-20 (weekly-disk-health): plateaued — root 44.7 GB (21%), peak 87.0 GB 10-12, 7d range 39–57 GB, well under 110 flag. See disk-health-2026-10-20.md §3.** Watch brookside root: Frigate spiked it 21→94 GB (10-09→10-12), now 58 GB falling; confirm plateau (~41 GB Frigate) by 10-20; flag >110 GB.** See infra/disk_reports/disk-health-2026-10-13.md §3 — (via weekly-disk-health 2026-10-13) — **2026-10-15 (weekly-docker-log-report): plateauing — root 51 GB / 24% of 221 G (160 GB free), 33 GB of it Frigate. Both cams recording (porch 720 + back 396 segments / 2 h). 14-d alert / 2-d detection retention, no continuous; steady state ~70–80 GB (~36%) by 10-23. See weekly-report-2026-10-15.html §M8.**
@@ -140,7 +140,6 @@
 
 - [x] **Trim TODO.md — ✅ DONE 2026-10-01 (Cowork).** 110→19 KB: done items moved verbatim to `archive/TODO-completed.md`, long open items summarized with full text in `archive/TODO-detail.md`; line-preservation check passed. — (via quarterly-doc-audit 2026-10-01)
 
-- [x] **✅ DONE 2026-10-01 — front_window iGPU hwaccel decode errors resolved.** 0 `Failed to sync surface` / `hwdownload Failed to download frame` across the full 7-day window. See weekly-report-2026-10-01.html
 
 
 
