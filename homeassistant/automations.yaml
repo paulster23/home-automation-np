@@ -66,13 +66,6 @@
                               'climate.np_front', 'climate.np_upstairs')
                        | rejectattr('state', 'eq', 'heat') | list | count > 0) }}
   actions:
-    # 2026-10-20: pipe heat cable on the water entry (packages/np_heat_cable.yaml).
-    # Normally already on all winter; forcing it here is harmless. continue_on_error
-    # so a dead plug never blocks the heat below.
-    - action: switch.turn_on
-      continue_on_error: true
-      target:
-        entity_id: switch.np_plug_heat_cable
     - action: climate.set_hvac_mode
       target:
         entity_id: &np_all_units

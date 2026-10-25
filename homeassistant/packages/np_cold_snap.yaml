@@ -5,8 +5,8 @@
 # Added 2026-10-20 (Paul). Plan: project doc claude/NP_WINTER_FREEZE_PLAN.md.
 #
 # ADVISORY ONLY. weather.forecast_home is met.no and needs the NP WAN, so
-# nothing protective may depend on it: freeze protection and the heat cable
-# act on local sensors. If the forecast call fails the automation stops
+# nothing protective may depend on it: freeze protection acts on local
+# sensors and the heat cable on its own thermostat (no plug since 2026-10-25). If the forecast call fails the automation stops
 # silently. It changes no setpoints (away policy: splits OFF, Paul decides).
 #
 # Daily 17:00, so there is an evening to decide on a drive up. Window: today
@@ -65,6 +65,4 @@ automation:
                  | map(attribute='attributes.current_temperature') | reject('none') | list %}
             Coldest room {{ temps | min if temps | count > 0 else 'n/a' }} °F;
             splits heating {{ expand(units) | selectattr('state', 'eq', 'heat') | list | count }}/5.
-            Heat cable plug {{ states('switch.np_plug_heat_cable') }},
-            {{ states('sensor.np_plug_heat_cable_power') }} W.
             Freeze protection {{ states('automation.np_freeze_protection') }}. Nobody is at NP.

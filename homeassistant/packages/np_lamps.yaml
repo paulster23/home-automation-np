@@ -1,0 +1,46 @@
+# ═══════════════════════════════════════════════════════════════
+# np_lamps.yaml — two lamps on Third Reality Zigbee plugs
+#
+# Added 2026-10-25 (Paul).
+#   switch.np_lamp_1  plug 0xffffb40e0608c096 (spare until 10-25)
+#   switch.np_lamp_2  plug 0xffffb40e06092796 (was np_plug_heat_cable — the heat
+#                     cable runs on its own thermostat and needs no plug, Paul 10-25)
+#
+# Rules (Paul):
+#   - On at sunset every day, whether anyone is at NP or not.
+#   - 23:30: off ONLY when NP is empty (binary_sensor.np_occupied off).
+#     When someone is there, HA never turns them off — that is done by hand.
+# The 23:30 check reads np_occupied at that moment; an unknown/unavailable
+# occupancy leaves the lamps on (fails toward "someone might be here").
+# ═══════════════════════════════════════════════════════════════
+
+automation:
+  - id: np_lamps_on_at_sunset
+    alias: "NP · Lamps on at sunset"
+    mode: single
+    triggers:
+      - trigger: sun
+        event: sunset
+    actions:
+      - action: switch.turn_on
+        target:
+          entity_id:
+            - switch.np_lamp_1
+            - switch.np_lamp_2
+
+  - id: np_lamps_off_2330_when_empty
+    alias: "NP · Lamps off at 23:30 when nobody is here"
+    mode: single
+    triggers:
+      - trigger: time
+        at: "23:30:00"
+    conditions:
+      - condition: state
+        entity_id: binary_sensor.np_occupied
+        state: "off"
+    actions:
+      - action: switch.turn_off
+        target:
+          entity_id:
+            - switch.np_lamp_1
+            - switch.np_lamp_2
