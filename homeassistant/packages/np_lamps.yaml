@@ -6,6 +6,13 @@
 #   switch.np_lamp_2  plug 0xffffb40e06092796 (was np_plug_heat_cable — the heat
 #                     cable runs on its own thermostat and needs no plug, Paul 10-25)
 #
+# UI: both plugs are wrapped by switch_as_x (UI config entries, .storage) as
+#   light.np_lamp_1 / light.np_lamp_2 so they show on the Lights dashboard
+#   (Paul 10-25). The switch_as_x wrapper hides the switch.* entities; they
+#   still work and these automations deliberately keep targeting them.
+#   The five Serin status LEDs (light.np_*_led) are hidden_by=user — they sit
+#   inside the head-unit casings and Paul does not want them on Lights.
+#
 # Rules (Paul):
 #   - On at sunset every day, whether anyone is at NP or not.
 #   - 23:30: off ONLY when NP is empty (binary_sensor.np_occupied off).
