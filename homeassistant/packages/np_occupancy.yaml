@@ -25,8 +25,8 @@
 #   1. HA: Settings → People → add the person, attach their companion-app
 #      tracker and their brookside UniFi tracker (device_tracker.<client name>).
 #   2. Add person.<name> to group.np_residents below.
-#   3. Add `np_wifi_tracker: device_tracker.<their unifi tracker>` under
-#      customize below (enables the stale-app guard; omit if they have none).
+#   3. Add `np_wifi_tracker: device_tracker.<their unifi tracker>` (or a list,
+#      one per SSID MAC) under customize below (enables the stale-app guard; omit if they have none).
 #   4. Reload: YAML → Groups, Template entities, Customizations (or restart).
 #
 # Replaces input_boolean.np_occupied (manual flag, 2026-09-20). That flag is
@@ -39,7 +39,12 @@ homeassistant:
     # Both iPhones use a FIXED PRIVATE MAC, which iOS keeps per SSID -- a phone
     # that hops between `sinola` and `sinola 2.4` shows up as two clients.
     person.paul:
-      np_wifi_tracker: device_tracker.pauls_iphone      # "Pauls Iphone" 42:b4:ba:2f:9d:cd (.111)
+      # Same iPhone, one private MAC per SSID (2026-10-25: person.paul read
+      # not_home while the phone sat on `sinola` as 38:e1). Both are also the
+      # person's device_trackers (.storage/person); any one `home` = home.
+      np_wifi_tracker:
+        - device_tracker.pauls_iphone   # "Pauls Iphone" 42:b4:ba:2f:9d:cd (.111) on sinola 2.4
+        - device_tracker.paul_phone     # "paul-phone"/PPJJSS 38:e1:3d:dc:7a:36 (.136) on sinola
     person.michelle:
       np_wifi_tracker: device_tracker.michelle_iphone   # "Michelle Iphone" 76:19:8d:3e:3b:3c (.121)
 

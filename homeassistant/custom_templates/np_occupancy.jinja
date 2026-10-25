@@ -23,10 +23,14 @@
 {%- set NP_STALE_S = 7200 -%}
 {%- set ns = namespace(home=[], away=[], stale=[]) -%}
 {%- for p in expand('group.np_residents') -%}
+  {#- np_wifi_tracker: one entity id or a list (one iPhone = one private MAC
+      per SSID). Stale only when EVERY listed tracker is not_home, and the most
+      recent of them changed more than NP_STALE_S ago. -#}
   {%- set wifi = state_attr(p.entity_id, 'np_wifi_tracker') -%}
-  {%- set w = states[wifi] if wifi else none -%}
-  {%- set stale = w is not none and w.state == 'not_home'
-        and (now() - w.last_changed).total_seconds() > NP_STALE_S -%}
+  {%- set ws = expand([wifi] if wifi is string else (wifi or [])) -%}
+  {%- set stale = ws | count > 0
+        and ws | rejectattr('state', 'eq', 'not_home') | list | count == 0
+        and (now() - (ws | map(attribute='last_changed') | max)).total_seconds() > NP_STALE_S -%}
   {%- if p.state == 'home' and not stale -%}
     {%- set ns.home = ns.home + [p.name] -%}
   {%- elif p.state == 'home' -%}
