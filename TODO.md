@@ -1,6 +1,6 @@
 # Home Automation — To-Do List
 
-*Last updated: 2026-10-24 (fix-high-issues)*
+*Last updated: 2026-10-26 (weekly-resource-budget)*
 
 > **Structure rule (2026-07-28):** sections in order — Pending → Watching/deferred → Future → Completed (newest first, max ~10; older items go to `archive/TODO-completed.md` in this repo). **Scheduled-task appends must be ≤300 chars + a pointer** to the full report/TROUBLESHOOTING entry — no inline essays.
 >
@@ -15,6 +15,8 @@
 
 ## Pending
 
+- [ ] **Watch woodhull homeassistant — avg 71%/peak 85% of 896 MiB, +8.0 HoH, first week over 80% peak.** If peak holds ≥85% or avg tops 80%, bump 896→1152 MiB (host has headroom). See budget-report-2026-10-26.md §6 — (via weekly-resource-budget 2026-10-26)
+
 - [ ] **brookside frigate: `back` record role 404s.** 25× `Error opening input file rtsp://...h264Preview_01_main` + 13× `Server returned 404 Not Found`; main stream was dropped 06-15. Point record at the sub stream. See weekly-report-2026-10-22.html §M4.
 - [ ] **brookside adguardhome-dns2 missed the 10-07 hardening.** Still 2 dead IPv6 bootstrap entries + `upstream_timeout: 10s` vs woodhull's IPv4-only/15s. 0 errors today; latent flap-amplifier on NP's primary resolver. Keep file root:root 600. See weekly-report-2026-10-22.html §M3.
 - [ ] **brookside HA: 29 `'value_json' is undefined` template errors** from an empty MQTT payload (zigbee2mqtt topic named in a 3rd warning). Guard the value_template. New since Z2M landed 10-16. See weekly-report-2026-10-22.html §M8.
@@ -25,7 +27,6 @@
 - [ ] **Buy remaining sensors:** 4 leak (kitchen sink, dishwasher, each bathroom) + 5 temp. Sinopé TH1300ZB floor-heat thermostat still waiting for restock. See `claude/NP_SAFETY_SENSORS_PLAN.md`.
 
 
-- [ ] **Watch brookside frigate drift — 46%/67% of 3 GiB, +11.6 half-over-half (young series).** No restart cron here; if it climbs toward cap over 1–2 wk add woodhull's weekly `docker restart frigate`. See budget-report-2026-10-12.md §6 — (via weekly-resource-budget 2026-10-12) — carried over 1x (2026-10-19: avg 50%/peak 57% of 3 GiB, +6.1 — peak down from 67%, slope halved, not climbing to cap; see budget-report-2026-10-19.md §2)
 
 - [ ] **`np_porch_camera_back_online_page` timed out 86× (+18 `np_kuma_heartbeat`) during the porch outage; now 3–5/day.** If it climbs, add `continue_on_error: true`. See weekly-report-2026-10-08.html — (via weekly-docker-log-report 2026-10-08) — **carried over 1× (2026-10-15): NOT improving. Kuma #36 `NP · HA · heartbeat` went Pending on all 8 days, 26–54/day (275 Pending + 9 Failing). `continue_on_error: true` still unapplied; also widen #36's window 300→600 s. See weekly-report-2026-10-15.html §M1.** — **2026-10-21 (advisor): paging now mitigated by kuma-np-gate (infra 98ea391, 10-18) — NP Kuma group held in maintenance during BK WAN down, so #36/#46 stop paging on blips. continue_on_error + 300→600 s window still open (trims the Pending noise itself). See advisor-2026-10-21.html §M1.** — **carried 2× (2026-10-22): neither half applied — kuma.db monitor 36 still `interval=300/retry=300`, `continue_on_error` only in the 09-14 backup clone. 266 Pending + 8 Failing; noise only now. See weekly-report-2026-10-22.html §M6.**
 
@@ -123,6 +124,7 @@
 
 ## ✅ Completed
 
+- [x] **✅ CLOSED 2026-10-26 — brookside frigate drift watch (carried 1×). 2nd stable week: avg 51%/peak 58% of 3 GiB, +4.4 (last 50%/57% +6.1). Peak flat ~58%, well under cap, not climbing — no restart cron needed on brookside.** See budget-report-2026-10-26.md §2 — (via weekly-resource-budget 2026-10-12)
 - [x] **✅ CLOSED 2026-10-24 (Cowork) — REPORTED IN ERROR, correcting the 10-22 run. 0 `IllegalInstruction` crashes in the 7-day window: the 3 such events were 10-13, outside it. The '8 lines on 10-21' were ONE event at 10-20 21:17 ET that the 10-22 run's `docker logs -t` grep bucketed by UTC date, and its reason was `Fault - Unknown` (PC 0x4038280E), a different signature. `speaker_source_media_player` appears 0× in 10 d — the fault attribution carried here for weeks is stale. Firmware already current (installed 26.9.0 = latest 26.9.0, update entity off), so there was nothing to reflash. Crash rate is ~1 unexplained event/week; reopen only if a signature recurs.** ~~**Voice PE `0a3a76` esp32 crash — `Fault - IllegalInstruction` at `speaker_source_media_player:222`.** 2026-10-08: quiet — 27 lines/7 d (vs 4,320 on 09-29); still not reflashed. — (via homelab-advisor 2026-09-02) (via weekly-docker-log-report 2026-10-08) → full text: `archive/TODO-detail.md` §H-011 — **carried over 2× (2026-10-15): REGRESSED — 71 crash lines / 5 events (11 on 10-08, 15 on 10-13, 45 on 10-14) vs 27 lines last week. Same `speaker_source_media_player:222` fault; never reflashed. See weekly-report-2026-10-15.html §H3.** — **carried 3× (2026-10-21, homelab-advisor): still not reflashed (no ESPHome build commit since tag); stale-and-blocking. No new HA-log run since 10-15 for fresh counts. See advisor-2026-10-21.html §Actions.** — **carried 4× (2026-10-22): 8 crash lines, all 10-21, same `speaker_source_media_player:222` fault; still not reflashed. Volume down 71→8. Ship the reflash or downgrade to Watching. See weekly-report-2026-10-22.html §H4.**~~
 - [x] **✅ DONE 2026-10-22 (weekly-docker-log-report): `np_porch_camera_health.yaml` + `np_back_camera_health.yaml` live on brookside (10-06/10-09), both alerting off MQTT `cameras.<cam>.camera_fps > 0` — the requested signal. Tag was raised after the fix shipped.** ~~**Camera-level health probe at NP — container health is blind to dead cameras.** `back` (.35) crash-looped 2 d, 8,864 watchdog restarts, while service-watchdog and Kuma #44 read `frigate=healthy`. Alert on camera_fps=0 or no new mp4 in 10 min. §M4 — (via weekly-docker-log-report 2026-10-15)~~
 - [x] **✅ DONE 2026-10-22 (weekly-docker-log-report): 0 occurrences of `token=` in 7 d of woodhull HA logs (was 179×). The 14 remaining `windmill` lines are benign automation INFO.** ~~**🔑 Rotate the Windmill dashboard token; stop HA logging it.** `custom_components.windmillac` printed the full URL incl. `token=` 179× in 7 d into `log-reports/homeassistant.log`. Redact the query string or filter `token=`. §M3 — (via weekly-docker-log-report 2026-10-15)~~
