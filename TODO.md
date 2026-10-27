@@ -1,6 +1,6 @@
 # Home Automation — To-Do List
 
-*Last updated: 2026-10-26 (weekly-resource-budget)*
+*Last updated: 2026-10-27 (weekly-disk-health)*
 
 > **Structure rule (2026-07-28):** sections in order — Pending → Watching/deferred → Future → Completed (newest first, max ~10; older items go to `archive/TODO-completed.md` in this repo). **Scheduled-task appends must be ≤300 chars + a pointer** to the full report/TROUBLESHOOTING entry — no inline essays.
 >
@@ -49,7 +49,7 @@
 
 - [ ] **NP Serin dongles — weak Wi-Fi at the kitchen, marginal Govee in the living room (added 2026-09-25, Cowork; accepted by Paul until the NP network audit/upgrade, "a few weeks").** → full text: `archive/TODO-detail.md` §H-002
 
-- [ ] **🔴 Frigate per-day recording volume jumped ~6× at the 0.18.0 upgrade (09-16).** — (via weekly-disk-health 2026-09-22) → full text: `archive/TODO-detail.md` §H-003 — carried (2026-10-20, no change)
+- [ ] **🔴 Frigate per-day recording volume jumped ~6× at the 0.18.0 upgrade (09-16).** — (via weekly-disk-health 2026-09-22) → full text: `archive/TODO-detail.md` §H-003 — carried (2026-10-27, no change)
 
 - [ ] **🟡 MEASURE `car.min_area` on the NP porch camera — the value in place is a PLACEHOLDER.** — (via Cowork 2026-09-20) → full text: `archive/TODO-detail.md` §H-004
   - **2026-10-05 readout (Cowork, brookside Frigate, events since 10-02 clean start; 09-28→10-01 only in the Mac archive):** 39 porch `car` events. **2 real** — a car on the gravel patch, zone `yard`, box ≈ x0.71 y0.33 w0.21 h0.17: area **9750** (10-02 04:35, score 0.70) and **11484** (10-02 15:41, 0.99, 16 min, snapshot confirms SUV). **37 false** — the porch pillar/rail corner read as a car, box centred ~(0.5,0.5), area **28,420–77,924**, score 0.70–0.84, no zone, mostly at night under IR (snapshots 10-04 12:36 and 23:48 confirm). No car pages found in ntfy over 96 h. **APPLIED 2026-10-05 10:17 on Paul's call (home-automation-np 073c6d2, Frigate restarted healthy, /api/config reads min 7500 / max 25000, HA receiving Frigate MQTT again by 10:17:51):** porch `car` `min_area: 7500` (≈20% under 9750) **and** `max_area: 25000` — removes all 37 rail false positives, keeps both real cars. Alternative: an object mask over the pillar/rail for `car`. Snapshots: infra/log-reports/np-car-snaps-20261005/.
@@ -57,7 +57,7 @@
 
 - [ ] **🟡 NEW 2026-09-14 — no UPS at New Paltz.** `pmset -g ps` = AC only. A flicker is survivable (`autorestart 1`), but a brownout can wedge the engine mid-write, and when the UX7/ONT drop with it the ntfy page saying so never leaves the house. Small UPS on Mac + UX7 + ONT; USB signalling so macOS can shut down cleanly. On-site purchase/install; size for ~15 min.
 
-- [ ] **Frigate records to `/srv/frigate` — woodhull's boot NVMe, not the 3.7 T `/srv/media`.** — (via weekly-disk-health 2026-09-15) → full text: `archive/TODO-detail.md` §H-006 — carried (2026-10-20, no change)
+- [ ] **Frigate records to `/srv/frigate` — woodhull's boot NVMe, not the 3.7 T `/srv/media`.** — (via weekly-disk-health 2026-09-15) → full text: `archive/TODO-detail.md` §H-006 — carried (2026-10-27, no change)
 
 - [ ] **🟡 Rebuild `voice-bench` on woodhull with a new `config_tag` — it has been dark since 2026-09-03 and its LaunchAgent was retired 09-04.** — (via Cowork 2026-09-04) → full text: `archive/TODO-detail.md` §H-007
 
