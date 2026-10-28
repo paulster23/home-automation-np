@@ -1,6 +1,6 @@
 # Home Automation — To-Do List
 
-*Last updated: 2026-10-27 (weekly-disk-health)*
+*Last updated: 2026-10-28 (homelab-advisor)*
 
 > **Structure rule (2026-07-28):** sections in order — Pending → Watching/deferred → Future → Completed (newest first, max ~10; older items go to `archive/TODO-completed.md` in this repo). **Scheduled-task appends must be ≤300 chars + a pointer** to the full report/TROUBLESHOOTING entry — no inline essays.
 >
@@ -15,7 +15,9 @@
 
 ## Pending
 
-- [ ] **Watch woodhull homeassistant — avg 71%/peak 85% of 896 MiB, +8.0 HoH, first week over 80% peak.** If peak holds ≥85% or avg tops 80%, bump 896→1152 MiB (host has headroom). See budget-report-2026-10-26.md §6 — (via weekly-resource-budget 2026-10-26)
+- [ ] **woodhull HA image tag is `:stable` (floating) while brookside is pinned `:2026.9.0`.** Both run 2026.9.0 now, but woodhull will silently jump to current stable on the next pull/Watchtower, diverging from NP. Pin woodhull HA to `:2026.9.0`. — (via homelab-advisor 2026-10-28)
+
+- [ ] **Watch woodhull homeassistant — avg 71%/peak 85% of 896 MiB, +8.0 HoH, first week over 80% peak.** If peak holds ≥85% or avg tops 80%, bump 896→1152 MiB (host has headroom). See budget-report-2026-10-26.md §6 — (via weekly-resource-budget 2026-10-26) — **2026-10-28 (homelab-advisor): condition met — avg 72.4%/peak 85.0% of 896 MiB over 7 d, peak holding ≥85% a 2nd week. Recommend the 896→1152 MiB bump now (woodhull 16 GB, ~10 GB free). See advisor-2026-10-28.html §2.**
 
 - [ ] **brookside frigate: `back` record role 404s.** 25× `Error opening input file rtsp://...h264Preview_01_main` + 13× `Server returned 404 Not Found`; main stream was dropped 06-15. Point record at the sub stream. See weekly-report-2026-10-22.html §M4.
 - [ ] **brookside adguardhome-dns2 missed the 10-07 hardening.** Still 2 dead IPv6 bootstrap entries + `upstream_timeout: 10s` vs woodhull's IPv4-only/15s. 0 errors today; latent flap-amplifier on NP's primary resolver. Keep file root:root 600. See weekly-report-2026-10-22.html §M3.
