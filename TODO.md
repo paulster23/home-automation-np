@@ -1,6 +1,6 @@
 # Home Automation — To-Do List
 
-*Last updated: 2026-10-28 (homelab-advisor)*
+*Last updated: 2026-10-29 (weekly-docker-log-report)*
 
 > **Structure rule (2026-07-28):** sections in order — Pending → Watching/deferred → Future → Completed (newest first, max ~10; older items go to `archive/TODO-completed.md` in this repo). **Scheduled-task appends must be ≤300 chars + a pointer** to the full report/TROUBLESHOOTING entry — no inline essays.
 >
@@ -30,7 +30,7 @@
 
 
 
-- [ ] **`np_porch_camera_back_online_page` timed out 86× (+18 `np_kuma_heartbeat`) during the porch outage; now 3–5/day.** If it climbs, add `continue_on_error: true`. See weekly-report-2026-10-08.html — (via weekly-docker-log-report 2026-10-08) — **carried over 1× (2026-10-15): NOT improving. Kuma #36 `NP · HA · heartbeat` went Pending on all 8 days, 26–54/day (275 Pending + 9 Failing). `continue_on_error: true` still unapplied; also widen #36's window 300→600 s. See weekly-report-2026-10-15.html §M1.** — **2026-10-21 (advisor): paging now mitigated by kuma-np-gate (infra 98ea391, 10-18) — NP Kuma group held in maintenance during BK WAN down, so #36/#46 stop paging on blips. continue_on_error + 300→600 s window still open (trims the Pending noise itself). See advisor-2026-10-21.html §M1.** — **carried 2× (2026-10-22): neither half applied — kuma.db monitor 36 still `interval=300/retry=300`, `continue_on_error` only in the 09-14 backup clone. 266 Pending + 8 Failing; noise only now. See weekly-report-2026-10-22.html §M6.**
+- [ ] **`np_porch_camera_back_online_page` timed out 86× (+18 `np_kuma_heartbeat`) during the porch outage; now 3–5/day.** If it climbs, add `continue_on_error: true`. See weekly-report-2026-10-08.html — (via weekly-docker-log-report 2026-10-08) — **carried over 1× (2026-10-15): NOT improving. Kuma #36 `NP · HA · heartbeat` went Pending on all 8 days, 26–54/day (275 Pending + 9 Failing). `continue_on_error: true` still unapplied; also widen #36's window 300→600 s. See weekly-report-2026-10-15.html §M1.** — **2026-10-21 (advisor): paging now mitigated by kuma-np-gate (infra 98ea391, 10-18) — NP Kuma group held in maintenance during BK WAN down, so #36/#46 stop paging on blips. continue_on_error + 300→600 s window still open (trims the Pending noise itself). See advisor-2026-10-21.html §M1.** — **carried 2× (2026-10-22): neither half applied — kuma.db monitor 36 still `interval=300/retry=300`, `continue_on_error` only in the 09-14 backup clone. 266 Pending + 8 Failing; noise only now. See weekly-report-2026-10-22.html §M6.** — **carried 3× (2026-10-29): HALF DONE — `continue_on_error: true` now live on rest_command.kuma_heartbeat (brookside automations.yaml:154). Kuma monitor 36 still interval=300; 254 Pending + 35 Failing / 7 d. `np_porch_camera_back_online_page` no longer exists in config. See weekly-report-2026-10-29.html §Previous actions.**
 
 - [ ] **🟡 NP morning schedule — first live run 2026-10-10 08:00/09:00 (added 2026-10-09, Cowork).** Check the automation trace: both units heat ~69.8/high/both at 08:00, ~67.1/low/both at 09:00, no CHECK UNITS page. Kitchen Wi-Fi is the likely failure. See CONTEXT.md → NP morning schedule.
 
@@ -85,6 +85,9 @@
 ---
 
 ---
+
+- [ ] **REOPENED: HA Voice 0a3a76 crash recurred — addr2line PC 0x4038280E.** 2 events (10-26, 10-28), same `Fault - Unknown` PC; 10-24 close said reopen on recurrence. Firmware is latest — resolve the backtrace. See weekly-report-2026-10-29.html §M3 — (via weekly-docker-log-report 2026-10-29)
+- [ ] **Narrow brookside `back` camera objects.track — 20 of 267 events were cow/bear/horse/sheep.** Indoor camera on COCO-80 yolo-generic; limit to person/dog/cat so false positives never become events. See weekly-report-2026-10-29.html §Low — (via weekly-docker-log-report 2026-10-29)
 
 ## 🔲 Pending  *(older / deferred)*
 
